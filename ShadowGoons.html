@@ -1,0 +1,2116 @@
+<!--- TO Do List
+	Add Drone & Host sheets
+	Settings needs a few toggles: Magic, Technomancer, Spirit
+	  ^ Powers need to appear/disappear based on above. Powers need to be rollable.
+	 Powers need to be rollable. Common Power buttons would be useful
+	 Skills need Specilazation options
+---->
+
+<!-- ~~~~~~~~ Roll Buttons & Toggles  ~~~~~~~~ -->
+<div class="roll-toggles">
+	<div class="toggle-buttons">
+		<button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Defense}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{defense}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Defense Roll"><span class="pictosC">e</span></button>
+		<button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Dice Roll}}{{base=Base}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(?{Base +/-|0}+?{Modifiers +/-|0}+@{wound_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="D6 Roll"><span class="d6">L</span></button>
+	</div>
+	<div class="toggle-toggles">
+		<input type="checkbox" class="whisper-flag" name="attr_gm_toggle" value="/w gm" title="GM Whisper Toggle" /><span class="whisper-flag">w</span>
+		<input type="checkbox" class="wound-flag" name="attr_wound_toggle" value="@{wounds}" title="Wounds Toggle" /><span class="wound-flag">k</span><span class="wound-line">Y</span>
+		<input type="checkbox" class="modifier-flag" name="attr_modifier_toggle" value="?{Modifiers +/-|0}" title="Modifier Toggle" /><span class="modifier-flag">?</span>
+		<input type="checkbox" class="edge-flag" name="attr_edge_toggle" value="@{edge}" title="Edge Toggle" /><span class="edge-flag">!</span>
+		<input type="hidden" name="attr_wounds" value="0" />
+		<input type="hidden" name="attr_explode_toggle" value="" />
+	</div>
+</div><!-- ~~~~~~~~ End Roll Toggles  ~~~~~~~~ -->
+<div class="stats toggle">
+	<input type="checkbox" class="settings-toggle" name="attr_stats_toggle" checked="checked" /><span>y</span>
+	<div class="settings">
+		<div class="attribute">
+			<div class="attr-header"><label>B</label><br /><input type="number" name="attr_body" value="" placeholder="3" /></div>
+			<div class="attr-header"><label>A</label><br /><input type="number" name="attr_agility" value="" placeholder="3" /></div>
+			<div class="attr-header"><label>R</label><br /><input type="number" name="attr_reaction" value="" placeholder="3" /></div>
+			<div class="attr-header"><label>S</label><br /><input type="number" name="attr_strength" value="" placeholder="3" /></div>
+			<div class="attr-header"><label>W</label><br /><input type="number" name="attr_willpower" value="" placeholder="3" /></div>
+			<div class="attr-header"><label>L</label><br /><input type="number" name="attr_logic" value="" placeholder="3" /></div>
+			<div class="attr-header"><label>I</label><br /><input type="number" name="attr_intuition" value="" placeholder="3" /></div>
+			<div class="attr-header"><label>C</label><br /><input type="number" name="attr_charisma" value="" placeholder="3" /></div>
+			<div class="attr-header"><label>E</label><br /><input type="number" name="attr_edge" value="" placeholder="3" /></div>
+			<div class="attr-header"><label>Ess</label><br /><input type="number" name="attr_essence" value="6" placeholder="3"  /></div>
+			<input type="hidden" class="character-type" name="attr_magic_flag" />
+			<div class="attr-header magic"><label>M</label><br /><input type="number" name="attr_magic" value="" placeholder="0" /></div>
+			<div class="attr-header magic"><label>F</label><br /><input type="number" name="attr_force" value="" placeholder="0" /></div>
+			<input type="hidden" class="character-type" name="attr_resonance_flag" />
+			<div class="attr-header resonance"><label>R</label><br /><input type="number" name="attr_resonance" value="" placeholder="0" /></div>
+			<div class="attr-header resonance"><label>L</label><br /><input type="number" name="attr_level" value="" placeholder="0" /></div>
+		</div>
+<!-- ~~~~~~~~ Bonuses  ~~~~~~~~ -->
+		<h1>Bonuses </h1>
+		<div class="row">
+			<div class="leftcol"><!--Start Left Bonuses-->
+				<label>Initiative: </label>
+				<input type="hidden" name="attr_initiative_mod" value="6" />
+				<input type="hidden" name="attr_initiative_dice" value="1" max="5" />
+				<input type="number" name="attr_initiative_bonus" value="0" placeholder="0" /><span> + </span>
+				<input type="number" name="attr_initiative_dice_bonus" value="0" min="0" max="4" placeholder="0" /><span> d6</span>
+				<br />
+				<input type="hidden" class="character-type" name="attr_magic_flag" />
+				<div class="magic-skill">
+				<label>Astral Initiative: </label>
+					<input type="hidden" name="attr_astral_mod" value="6" />
+					<input type="hidden" name="attr_astral_dice" value="3" max="5" />
+					<input type="number" name="attr_astral_mod_bonus" value="0" placeholder="0" /><span> + </span>
+					<input type="number" name="attr_astral_dice_bonus" value="0" min="0" max="3" placeholder="0" /><span> d6</span>
+					<br />
+				</div>
+				<label>Matrix Initiative: </label>
+				<input type="hidden" name="attr_matrix_mod" value="0" />
+				<input type="hidden" name="attr_matrix_dice" value="4" max="5" />
+				<input type="number" name="attr_matrix_mod_bonus" value="0" placeholder="0" /><span> + </span>
+				<input type="number" name="attr_matrix_dice_bonus" value="0" min="0" max="4" placeholder="0" /><span> d6</span>
+				<br />
+				<label>Movement: </label>
+				<input type="hidden" name="attr_walk" value="12" />
+				<input type="hidden" name="attr_run" value="24" />
+				<input type="number" name="attr_walk_bonus" value="0" placeholder="0" /><span> / </span>
+				<input type="number" name="attr_run_bonus" value="0" placeholder="0" /><span> / +</span>
+				<input type="number" name="attr_movement_mod" value="2" placeholder="2" />
+				<br />
+				<label>Condition Monitor (P/S): </label>
+				<input type="hidden" name="attr_physical" value="10" />
+				<input type="hidden" name="attr_stun" value="10" />
+				<input type="hidden" name="attr_physical_max" value="10" />
+				<input type="hidden" name="attr_stun_max" value="10" />
+				<input type="number" name="attr_physical_bonus" value="0" placeholder="0" /><span> / </span>
+				<input type="number" name="attr_stun_bonus" value="0" placeholder="0" />
+				<br />
+				<label>Limits: </label>
+				<input type="hidden" name="attr_physical_limit" value="4" />
+				<input type="hidden" name="attr_mental_limit"s value="4" />
+				<input type="hidden" name="attr_social_limit" value="5" />
+				<span>Physical </span><input type="number" name="attr_physical_bonus" value="0" placeholder="0" />,
+				<span>Mental </span><input type="number" name="attr_mental_bonus" value="0" placeholder="0" />,
+				<span>Social </span><input type="number" name="attr_social_bonus" value="0" placeholder="0" />
+				<br />
+				<label>Pain Tolerance: </label>
+				<input type="number" name="attr_pain_tolerance" value="0" placeholder="0" />
+				<br />
+				<label>Defense: </label>
+				<input type="hidden" name="attr_defense" value="6" />
+				<input type="number" name="attr_defense_bonus" value="0" placeholder="0" />
+			</div><!--End Left Bonuses-->
+			<div class="2col"><!--Start Mid Bonuses-->
+				<label>Armor: </label>
+				<input type="number" name="attr_armor" value="0" placeholder="9" />
+				<br />
+				<label>Soak: </label>
+				<input type="hidden" name="attr_soak" value="3" />
+				<input type="number" name="attr_soak_bonus" value="0" placeholder="0" />
+				<br />
+				<label>Acid Protection: </label>
+				<input type="number" name="attr_soak_acid" value="0" placeholder="0" />
+				<br />
+				<label>Cold Protection: </label>
+				<input type="number" name="attr_soak_cold" value="0" placeholder="0" />
+				<br />
+				<label>Electrical Protection: </label>
+				<input type="number" name="attr_soak_electrical" value="0" placeholder="0" />
+				<br />
+				<label>Fire Protection: </label>
+				<input type="number" name="attr_soak_fire" value="0" placeholder="0" />
+				<br />
+				<label>Radiation Protection: </label>
+				<input type="number" name="attr_soak_radiation" value="0" placeholder="0" />
+				<br />
+			</div>
+			<div class="2col">
+			<!--Start Right Checkboxes -->
+				<input class="character-type" type="checkbox" name="attr_magic_flag" value="magic" title="Magic" /><label>Magic</label><br />
+				<input class="character-type" type="checkbox" name="attr_resonance_flag" value="resonance" title="Resonance" /><label>Resonance</label><br />
+				<input class="character-type" type="checkbox" name="attr_matrix" value="matrix" title="Matrix" /><label>Matrix Device</label><br />
+			</div>
+		</div>
+		<br />
+<!-- ~~~~~~~~ Skills  ~~~~~~~~ -->
+		<label>Skills (Dice Pools): </label>
+		<div class="skill-row">
+			<ul class="skill-col">
+				<li><label>Acting</label>
+					<input type="number" name="attr_acting" value="" placeholder="#" />
+				</li>
+				<li><input type="checkbox" /><span>Con</span>
+					<input type="number" name="attr_con" value="" placeholder="#" />
+					<input type="text" name="attr_con_spec" placeholder="Specalization" title="@{con_spec}">
+					<input type="number" name="attr_con_bonus" placeholder="0" title="@{con_bonus}">
+				</li>
+				<li><input type="checkbox" /><span>Impersonation</span>
+					<input type="number" name="attr_impersonation" value="" placeholder="#" />
+					<input type="text" name="attr_impersonation_spec" placeholder="Specalization" title="@{impersonation_spec}">
+					<input type="number" name="attr_impersonation_bonus" placeholder="0" title="@{impersonation_bonus}">
+				</li>
+				<li><input type="checkbox" /><span>Performance</span>
+					<input type="number" name="attr_performance" value="" placeholder="#" />
+					<input type="text" name="attr_performance_spec" placeholder="Specalization" title="@{performance_spec}">
+					<input type="number" name="attr_performance_bonus" placeholder="0" title="@{performance_bonus}">
+				</li>
+			</ul>
+			<ul class="skill-col">
+				<li><label>Athletics</label>
+					<input type="number" name="attr_athletics" value="" placeholder="#" />
+				</li>
+				<li><input type="checkbox" /><span>gymnastics</span>
+					<input type="number" name="attr_gymnastics" value="" placeholder="#" />
+					<input type="text" name="attr_gymnastics_spec" placeholder="Specalization" title="@{gymnastics_spec}">
+					<input type="number" name="attr_gymnastics_bonus" placeholder="0" title="@{gymnastics_bonus}">
+				</li>
+				<li><input type="checkbox" /><span>running</span>
+					<input type="number" name="attr_running" value="" placeholder="#" />
+					<input type="text" name="attr_running_spec" placeholder="Specalization" title="@{running_spec}">
+					<input type="number" name="attr_running_bonus" placeholder="0" title="@{running_bonus}">
+				</li>
+				<li><input type="checkbox" /><span>swimming</span>
+					<input type="number" name="attr_swimming" value="" placeholder="#" />
+					<input type="text" name="attr_swimming_spec" placeholder="Specalization" title="@{swimming_spec}">
+					<input type="number" name="attr_swimming_bonus" placeholder="0" title="@{swimming_bonus}">
+				</li>
+			</ul>
+			<ul class="skill-col">
+				<li><label>biotech</label>
+					<input type="number" name="attr_biotech" value="" placeholder="#" />
+				</li>
+				<li><input type="checkbox" /><span>cybertechnology</span>
+					<input type="number" name="attr_cybertechnology" value="" placeholder="#" />
+					<input type="text" name="attr_cybertechnology_spec" placeholder="Specalization" title="@{cybertechnology_spec}">
+					<input type="number" name="attr_cybertechnology_bonus" placeholder="0" title="@{cybertechnology_bonus}">
+				</li>
+				<li><input type="checkbox" /><span>firstaid</span>
+					<input type="number" name="attr_firstaid" value="" placeholder="#" />
+					<input type="text" name="attr_firstaid_spec" placeholder="Specalization" title="@{firstaid_spec}">
+					<input type="number" name="attr_firstaid_bonus" placeholder="0" title="@{firstaid_bonus}">
+				</li>
+				<li><input type="checkbox" /><span>medicine</span>
+					<input type="number" name="attr_medicine" value="" placeholder="#" />
+					<input type="text" name="attr_medicine_spec" placeholder="Specalization" title="@{medicine_spec}">
+					<input type="number" name="attr_medicine_bonus" placeholder="0" title="@{medicine_bonus}">
+				</li>
+				<li><input type="checkbox" /><span>biotechnology</span>
+					<input type="number" name="attr_biotechnology" value="" placeholder="#" />
+					<input type="text" name="attr_biotechnology_spec" placeholder="Specalization" title="@{biotechnology_spec}">
+					<input type="number" name="attr_biotechnology_bonus" placeholder="0" title="@{biotechnology_bonus}">
+				</li>
+			</ul>
+			<ul class="skill-col">
+				<li><label>Close Combat</label>
+					<input type="number" name="attr_closecombat" value="" placeholder="#" />
+				</li>
+				<li><input type="checkbox" /><span>blades</span>
+					<input type="number" name="attr_blades" value="" placeholder="#" />
+					<input type="text" name="attr_blades_spec" placeholder="Specalization" title="@{blades_spec}">
+					<input type="number" name="attr_blades_bonus" placeholder="0" title="@{blades_bonus}">
+				</li>
+				<li><input type="checkbox" /><span>clubs</span>
+					<input type="number" name="attr_clubs" value="" placeholder="#" />
+					<input type="text" name="attr_clubs_spec" placeholder="Specalization" title="@{clubs_spec}">
+					<input type="number" name="attr_clubs_bonus" placeholder="0" title="@{clubs_bonus}">
+				</li>
+				<li><input type="checkbox" /><span>Unarmed Combat</span>
+					<input type="number" name="attr_unarmedcombat" value="" placeholder="#" />
+					<input type="text" name="attr_unarmedcombat_spec" placeholder="Specalization" title="@{unarmedcombat_spec}">
+					<input type="number" name="attr_unarmedcombat_bonus" placeholder="0" title="@{unarmedcombat_bonus}">
+				</li>
+			</ul>
+			<input type="hidden" class="character-type" name="attr_magic_flag" />
+			<ul class="skill-col magic-skill">
+				<li><label>conjuring</label>
+					<input type="number" name="attr_conjuring" value="" placeholder="#" />
+				</li>
+				<li><input type="checkbox" /><span>banishing</span>
+					<input type="number" name="attr_banishing" value="" placeholder="#" />
+					<input type="text" name="attr_banishing_spec" placeholder="Specalization" title="@{banishing_spec}">
+					<input type="number" name="attr_banishing_bonus" placeholder="2" title="@{banishing_bonus}">
+				</li>
+				<li><input type="checkbox" /><span>binding</span>
+					<input type="number" name="attr_binding" value="" placeholder="#" />
+					<input type="text" name="attr_binding_spec" placeholder="Specalization" title="@{binding_spec}">
+					<input type="number" name="attr_binding_bonus" placeholder="2" title="@{binding_bonus}">
+				</li>
+				<li><input type="checkbox" /><span>summoning</span>
+					<input type="number" name="attr_summoning" value="" placeholder="#" />
+					<input type="text" name="attr_summoning_spec" placeholder="Specalization" title="@{summoning_spec}">
+					<input type="number" name="attr_summoning_bonus" placeholder="2" title="@{summoning_bonus}">
+				</li>
+			</ul>
+			<ul class="skill-col">
+				<li><label>cracking</label>
+					<input type="number" name="attr_cracking" value="" placeholder="#" />
+				</li>
+				<li><input type="checkbox" /><span>cybercombat</span>
+					<input type="number" name="attr_cybercombat" value="" placeholder="#" />
+					<input type="text" name="attr_cybercombat_spec" placeholder="Specalization" title="@{cybercombat_spec}">
+					<input type="number" name="attr_cybercombat_bonus" placeholder="2" title="@{binding_bonus}">
+				</li>
+				<li><input type="checkbox" /><span>electronicwarfare</span>
+					<input type="number" name="attr_electronicwarfare" value="" placeholder="#" />
+					<input type="text" name="attr_electronicwarfare_spec" placeholder="Specalization" title="@{electronicwarfare_spec}">
+					<input type="number" name="attr_electronicwarfare_bonus" placeholder="2" title="@{electronicwarfare_bonus}">
+				</li>
+				<li><input type="checkbox" /><span>hacking</span>
+					<input type="number" name="attr_hacking" value="" placeholder="#" />
+					<input type="text" name="attr_hacking_spec" placeholder="Specalization" title="@{hacking_spec}">
+					<input type="number" name="attr_hacking_bonus" placeholder="0" title="@{hacking_bonus}">
+				</li>
+			</ul>
+			<ul class="skill-col">
+				<li><label>electronics</label>
+					<input type="number" name="attr_electronics" value="" placeholder="#" />
+				</li>
+				<li><input type="checkbox" /><span>computer</span>
+					<input type="number" name="attr_computer" value="" placeholder="#" />
+					<input type="text" name="attr_computer_spec" placeholder="Specalization" title="@{computer_spec}">
+				</li>
+				<li><input type="checkbox" /><span>hardware</span>
+					<input type="number" name="attr_hardware" value="" placeholder="#" />
+					<input type="text" name="attr_hardware_spec" placeholder="Specalization" title="@{hardware_spec}">
+				</li>
+				<li><input type="checkbox" /><span>software</span>
+					<input type="number" name="attr_software" value="" placeholder="#" />
+					<input type="text" name="attr_software_spec" placeholder="Specalization" title="@{software_spec}">
+				</li>
+			</ul>
+			<input type="hidden" class="character-type" name="attr_magic_flag" />
+			<ul class="skill-col magic-skill">
+				<li><label>enchanting</label>
+					<input type="number" name="attr_enchanting" value="" placeholder="#" />
+				</li>
+				<li><input type="checkbox" /><span>alchemy</span>
+					<input type="number" name="attr_alchemy" value="" placeholder="#" />
+					<input type="text" name="attr_alchemy_spec" placeholder="Specalization" title="@{alchemy_spec}">
+				</li>
+				<li><input type="checkbox" /><span>artificing</span>
+					<input type="number" name="attr_artificing" value="" placeholder="#" />
+					<input type="text" name="attr_artificing_spec" placeholder="Specalization" title="@{artificing_spec}">
+				</li>
+				<li><input type="checkbox" /><span>disenchanting</span>
+					<input type="number" name="attr_disenchanting" value="" placeholder="#" />
+					<input type="text" name="attr_disenchanting_spec" placeholder="Specalization" title="@{disenchanting_spec}">
+				</li>
+			</ul>
+			<ul class="skill-col">
+				<li><label>engineering</label>
+					<input type="number" name="attr_engineering" value="" placeholder="#" />
+				</li>
+				<li><input type="checkbox" /><span>Aeronautics Mech.</span>
+					<input type="number" name="attr_aeromech" value="" placeholder="#" />
+					<input type="text" name="attr_aeromech_spec" placeholder="Specalization" title="@{aeromech_spec}">
+				</li>
+				<li><input type="checkbox" /><span>Automotive Mech.</span>
+					<input type="number" name="attr_automech" value="" placeholder="#" />
+					<input type="text" name="attr_automech_spec" placeholder="Specalization" title="@{automech_spec}">
+				</li>
+				<li><input type="checkbox" /><span>Industrial Mech.</span>
+					<input type="number" name="attr_indusmech" value="" placeholder="#" />
+					<input type="text" name="attr_indusmech_spec" placeholder="Specalization" title="@{indusmech_spec}">
+				</li>
+				<li><input type="checkbox" /><span>Nautical Mech.</span>
+					<input type="number" name="attr_nautmech" value="" placeholder="#" />
+					<input type="text" name="attr_nautmech_spec" placeholder="Specalization" title="@{nautmech_spec}">
+				</li>
+			</ul>
+			<ul class="skill-col">
+				<li><label>firearms</label>
+					<input type="number" name="attr_firearms" value="" placeholder="#" />
+				</li>
+				<li><input type="checkbox" /><span>automatics</span>
+					<input type="number" name="attr_automatics" value="" placeholder="#" />
+					<input type="text" name="attr_automatics_spec" placeholder="Specalization" title="@{automatics_spec}">
+				</li>
+				<li><input type="checkbox" /><span>longarms</span>
+					<input type="number" name="attr_longarms" value="" placeholder="#" />
+					<input type="text" name="attr_longarms_spec" placeholder="Specalization" title="@{longarms_spec}">
+				</li>
+				<li><input type="checkbox" /><span>pistols</span>
+					<input type="number" name="attr_pistols" value="" placeholder="#" />
+					<input type="text" name="attr_pistols_spec" placeholder="Specalization" title="@{pistols_spec}">
+				</li>
+			</ul>
+			<ul class="skill-col">
+				<li><label>influence</label>
+					<input type="number" name="attr_influence" value="" placeholder="#" />
+				</li>
+				<li><input type="checkbox" /><span>etiquette</span>
+					<input type="number" name="attr_etiquette" value="" placeholder="#" />
+					<input type="text" name="attr_etiquette_spec" placeholder="Specalization" title="@{etiquette_spec}">
+				</li>
+				<li><input type="checkbox" /><span>leadership</span>
+					<input type="number" name="attr_leadership" value="" placeholder="#" />
+					<input type="text" name="attr_leadership_spec" placeholder="Specalization" title="@{leadership_spec}">
+				</li>
+				<li><input type="checkbox" /><span>negotiation</span>
+					<input type="number" name="attr_negotiation" value="" placeholder="#" />
+					<input type="text" name="attr_negotiation_spec" placeholder="Specalization" title="@{negotiation_spec}">
+				</li>
+			</ul>
+			<ul class="skill-col">
+				<li><label>outdoors</label>
+					<input type="number" name="attr_outdoors" value="" placeholder="#" />
+				</li>
+				<li><input type="checkbox" /><span>navigation</span>
+					<input type="number" name="attr_navigation" value="" placeholder="#" />
+					<input type="text" name="attr_navigation_spec" placeholder="Specalization" title="@{navigation_spec}">
+				</li>
+				<li><input type="checkbox" /><span>survival</span>
+					<input type="number" name="attr_survival" value="" placeholder="#" />
+					<input type="text" name="attr_survival_spec" placeholder="Specalization" title="@{survival_spec}">
+				</li>
+				<li><input type="checkbox" /><span>tracking</span>
+					<input type="number" name="attr_tracking" value="" placeholder="#" />
+					<input type="text" name="attr_tracking_spec" placeholder="Specalization" title="@{tracking_spec}">
+				</li>
+			</ul>
+			<input type="hidden" class="character-type" name="attr_magic_flag" />
+			<ul class="skill-col magic-skill">
+				<li><label>sorcery</label>
+					<input type="number" name="attr_sorcery" value="" placeholder="#" />
+				</li>
+				<li><input type="checkbox" /><span>counterspelling</span>
+					<input type="number" name="attr_counterspelling" value="" placeholder="#" />
+					<input type="text" name="attr_counterspelling_spec" placeholder="Specalization" title="@{counterspelling_spec}">
+				</li>
+				<li><input type="checkbox" /><span>Ritual Spell.</span>
+					<input type="number" name="attr_ritualspell" value="" placeholder="#" />
+					<input type="text" name="attr_ritualspell_spec" placeholder="Specalization" title="@{ritualspell_spec}">
+				</li>
+				<li><input type="checkbox" /><span>spellcasting</span>
+					<input type="number" name="attr_spellcasting" value="" placeholder="#" />
+					<input type="text" name="attr_spellcasting_spec" placeholder="Specalization" title="@{spellcasting_spec}">
+				</li>
+			</ul>
+			<ul class="skill-col">
+				<li><label>stealth</label>
+					<input type="number" name="attr_stealth" value="" placeholder="#" />
+				</li>
+				<li><input type="checkbox" /><span>disguise</span>
+					<input type="number" name="attr_disguise" value="" placeholder="#" />
+					<input type="text" name="attr_disguise_spec" placeholder="Specalization" title="@{disguise_spec}">
+				</li>
+				<li><input type="checkbox" /><span>palming</span>
+					<input type="number" name="attr_palming" value="" placeholder="#" />
+					<input type="text" name="attr_palming_spec" placeholder="Specalization" title="@{palming_spec}">
+				</li>
+				<li><input type="checkbox" /><span>sneaking</span>
+					<input type="number" name="attr_sneaking" value="" placeholder="#" />
+					<input type="text" name="attr_sneaking_spec" placeholder="Specalization" title="@{sneaking_spec}">
+				</li>
+			</ul>
+			<input type="hidden" class="character-type" name="attr_resonance_flag" />
+			<ul class="skill-col resonance-skill">
+				<li><label>tasking</label>
+					<input type="number" name="attr_tasking" value="" placeholder="#" />
+				</li>
+				<li><input type="checkbox" /><span>compiling</span>
+					<input type="number" name="attr_compiling" value="" placeholder="#" />
+					<input type="text" name="attr_compiling_spec" placeholder="Specalization" title="@{compiling_spec}">
+				</li>
+				<li><input type="checkbox" /><span>decompiling</span>
+					<input type="number" name="attr_decompiling" value="" placeholder="#" />
+					<input type="text" name="attr_decompiling_spec" placeholder="Specalization" title="@{decompiling_spec}">
+				</li>
+				<li><input type="checkbox" /><span>registering</span>
+					<input type="number" name="attr_registering" value="" placeholder="#" />
+					<input type="text" name="attr_registering_spec" placeholder="Specalization" title="@{registering_spec}">
+				</li>
+			</ul>
+		</div>
+		<hr />
+		<div class="skill-row">
+			<ul class="skill-col">
+				<li><label>Combat Skills</label>
+				</li>
+				<li><input type="checkbox" /><span>archery</span>
+					<input type="number" name="attr_archery" value="" placeholder="#" />
+					<input type="text" name="attr_archery_spec" placeholder="Specalization" title="@{archery_spec}">
+				</li>
+				<li><input type="checkbox" /><span>exotic melee</span>
+					<input type="number" name="attr_exoticmelee" value="" placeholder="#" />
+					<input type="text" name="attr_exoticmelee_spec" placeholder="Specalization" title="@{exoticmelee_spec}">
+				</li>
+				<li><input type="checkbox" /><span>exotic range</span>
+					<input type="number" name="attr_exoticrange" value="" placeholder="#" />
+					<input type="text" name="attr_exoticrange_spec" placeholder="Specalization" title="@{exoticrange_spec}">
+				</li>
+				<li><input type="checkbox" /><span>heavy weapons</span>
+					<input type="number" name="attr_heavyweapons" value="" placeholder="#" />
+					<input type="text" name="attr_heavyweapons_spec" placeholder="Specalization" title="@{heavyweapons_spec}">
+				</li>
+				<li><input type="checkbox" /><span>throwing Weapons</span>
+					<input type="number" name="attr_throwingweapons" value="" placeholder="#" />
+					<input type="text" name="attr_throwingweapons_spec" placeholder="Specalization" title="@{throwingweapons_spec}">
+				</li>
+			</ul>
+			<ul class="skill-col">
+				<li><label>Magical Skills</label></li>
+				<li><input type="checkbox" /><span>arcana</span>
+					<input type="number" name="attr_arcana" value="" placeholder="#" />
+					<input type="text" name="attr_arcana_spec" placeholder="Specalization" title="@{arcana_spec}">
+				</li>
+				<input type="hidden" class="character-type" name="attr_magic_flag" />
+				<li class="magic-skill"><input type="checkbox" /><span>assensing</span>
+					<input type="number" name="attr_assensing" value="" placeholder="#" />
+					<input type="text" name="attr_assensing_spec" placeholder="Specalization" title="@{assensing_spec}">
+				</li>
+				<li class="magic-skill"><input type="checkbox" /><span>astral combat</span>
+					<input type="number" name="attr_astralcombat" value="" placeholder="#" />
+					<input type="text" name="attr_astralcombat_spec" placeholder="Specalization" title="@{astralcombat_spec}">
+				</li>
+				<li><label>Social Skill</label>
+				<li><input type="checkbox" /><span>instruction</span>
+					<input type="number" name="attr_instruction" value="" placeholder="#" />
+					<input type="text" name="attr_instruction_spec" placeholder="Specalization" title="@{instruction_spec}">
+				</li>
+				<li><input type="checkbox" /><span>intimidation</span>
+					<input type="number" name="attr_intimidation" value="" placeholder="#" />
+					<input type="text" name="attr_intimidation_spec" placeholder="Specalization" title="@{intimidation_spec}">
+				</li>
+			</ul>
+			<ul class="skill-col">
+				<li><label>Physical Skills</label></li>
+				<li><input type="checkbox" /><span>diving</span>
+					<input type="number" name="attr_diving" value="" placeholder="#" />
+					<input type="text" name="attr_diving_spec" placeholder="Specalization" title="@{diving_spec}">
+				</li>
+				<li><input type="checkbox" /><span>Escape Artist</span>
+					<input type="number" name="attr_escapeartist" value="" placeholder="#" />
+					<input type="text" name="attr_escapeartist_spec" placeholder="Specalization" title="@{escapeartist_spec}">
+				</li>
+				<li><input type="checkbox" /><span>flight</span>
+					<input type="number" name="attr_flight" value="" placeholder="#" />
+					<input type="text" name="attr_flight_spec" placeholder="Specalization" title="@{flight_spec}">
+				</li>
+				<li><input type="checkbox" /><span>Free Fall</span>
+					<input type="number" name="attr_freefall" value="" placeholder="#" />
+					<input type="text" name="attr_freefall_spec" placeholder="Specalization" title="@{freefall_spec}">
+				</li>
+				<li><input type="checkbox" /><span>perception</span>
+					<input type="number" name="attr_perception" value="" placeholder="#" />
+					<input type="text" name="attr_perception_spec" placeholder="Specalization" title="@{perception_spec}">
+				</li>
+			</ul>
+			<ul class="skill-col">
+				<li><label>Technical Skills</label></li>
+				<li><input type="checkbox" /><span>Animal Handling</span>
+					<input type="number" name="attr_animalhandling" value="" placeholder="#" />
+					<input type="text" name="attr_animalhandling_spec" placeholder="Specalization" title="@{animalhandling_spec}">
+				</li>
+				<li><input type="checkbox" /><span>armorer</span>
+					<input type="number" name="attr_armorer" value="" placeholder="#" />
+					<input type="text" name="attr_armorer_spec" placeholder="Specalization" title="@{armorer_spec}">
+				</li>
+				<li><input type="checkbox" /><span>artisan</span>
+					<input type="number" name="attr_artisan" value="" placeholder="#" />
+					<input type="text" name="attr_artisan_spec" placeholder="Specalization" title="@{artisan_spec}">
+				</li>
+				<li><input type="checkbox" /><span>chemistry</span>
+					<input type="number" name="attr_chemistry" value="" placeholder="#" />
+					<input type="text" name="attr_chemistry_spec" placeholder="Specalization" title="@{chemistry_spec}">
+				</li>
+				<li><input type="checkbox" /><span>demolitions</span>
+					<input type="number" name="attr_demolitions" value="" placeholder="#" />
+					<input type="text" name="attr_demolitions_spec" placeholder="Specalization" title="@{demolitions_spec}">
+				</li>
+				<li><input type="checkbox" /><span>forgery</span>
+					<input type="number" name="attr_forgery" value="" placeholder="#" />
+					<input type="text" name="attr_forgery_spec" placeholder="Specalization" title="@{forgery_spec}">
+				</li>
+				<li><input type="checkbox" /><span>locksmith</span>
+					<input type="number" name="attr_locksmith" value="" placeholder="#" />
+					<input type="text" name="attr_locksmith_spec" placeholder="Specalization" title="@{locksmith_spec}">
+				</li>
+			</ul>
+			<ul class="skill-col">
+				<li><label>Vehicle Skills</label></li>
+				<li><input type="checkbox" /><span>gunnery</span>
+					<input type="number" name="attr_gunnery" value="" placeholder="#" />
+					<input type="text" name="attr_gunnery_spec" placeholder="Specalization" title="@{gunnery_spec}">
+				</li>
+				<li><input type="checkbox" /><span>Pilot Aerospace</span>
+					<input type="number" name="attr_pilotaerospace" value="" placeholder="#" />
+					<input type="text" name="attr_pilotaerospace_spec" placeholder="Specalization" title="@{pilotaerospace_spec}">
+				</li>
+				<li><input type="checkbox" /><span>Pilot Aircraft</span>
+					<input type="number" name="attr_pilotaircraft" value="" placeholder="#" />
+					<input type="text" name="attr_pilotaircraft_spec" placeholder="Specalization" title="@{pilotaircraft_spec}">
+				</li>
+				<li><input type="checkbox" /><span>Pilot Exotic Veh.</span>
+					<input type="number" name="attr_pilotexotic" value="" placeholder="#" />
+					<input type="text" name="attr_pilotexotic_spec" placeholder="Specalization" title="@{pilotexotic_spec}">
+				</li>
+				<li><input type="checkbox" /><span>Pilot Ground Craft</span>
+					<input type="number" name="attr_pilotground" value="" placeholder="#" />
+					<input type="text" name="attr_pilotground_spec" placeholder="Specalization" title="@{pilotground_spec}">
+				</li>
+				<li><input type="checkbox" /><span>Pilot Walker</span>
+					<input type="number" name="attr_pilotwalker" value="" placeholder="#" />
+					<input type="text" name="attr_pilotwalker_spec" placeholder="Specalization" title="@{pilotwalker_spec}">
+				</li>
+				<li><input type="checkbox" /><span>Pilot Watercraft</span>
+					<input type="number" name="attr_pilotwatercraft" value="" placeholder="#" />
+					<input type="text" name="attr_pilotwatercraft_spec" placeholder="Specalization" title="@{pilotwatercraft_spec}">
+				</li>
+			</ul>
+		</div><!-- ~~~~~~~~ End Skills Settings  ~~~~~~~~ -->
+		<br />
+	<!-- ~~~~~~~~ Qualities/Augs/Init/Gear/Weakness & Other STUFF ~~~~~~~~ -->
+		<div class="textrow">
+			<label>Knowledge Skills: </label>
+			<textarea name="attr_knowledge" placeholder="Knowledge Skills"></textarea>
+			<br />
+			<label>Languages Skills: </label>
+			<textarea name="attr_language" placeholder="Language Skills"></textarea>
+			<br />
+			<label>Qualities: </label>
+			<textarea name="attr_quality" placeholder="Quality"></textarea>
+			<br />
+			<label>Augmentations: </label>
+			<textarea name="attr_augmentations" placeholder="Augmentations"></textarea>
+			<br />
+			<label>Gear: </label>
+			<textarea name="attr_gear" placeholder="Gear"></textarea>
+		</div>
+		<input type="hidden" class="character-type" name="attr_magic_flag" />
+		<div class="textrow magic">
+			<label>Initiate: </label><input type="number" name="attr_initiate" value="0" placeholder="Grade" />
+			<textarea name="attr_metamagic" placeholder="Metamagics"></textarea>
+			<br />
+			<label>Powers: </label>
+			<textarea name="attr_powers" placeholder="Powers"></textarea>
+			<br />
+			<label>Weakness: </label>
+			<textarea  name="attr_weakness" placeholder="Weaknesses"></textarea>
+		</div>
+		<input type="hidden" class="character-type" name="attr_resonance_flag" />
+		<div class="textrow resonance">
+			<label>Submersion: </label><input type="number" name="attr_submersion" value="0" placeholder="Grade" />
+			<textarea name="attr_echos" placeholder="Echos"></textarea>
+			<br />
+			<label>Sprite Powers: </label>
+			<textarea name="attr_powers" placeholder="Powers"></textarea>
+		</div>
+	</div><!-- ~~~~~~~~ End of Settings  ~~~~~~~~ -->
+	<div class="display">
+	<!-- ~~~~~~~~ Attributes  ~~~~~~~~ -->
+		<div class="attribute">
+			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Body}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Body Roll"><b>B</b></button></label><br /><span name="attr_body"></span></div>
+			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Agility}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{agility}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Agility Roll"><b>A</b></button></label><br /><span name="attr_agility"></span></div>
+			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Reaction}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{reaction}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Reaction Roll"><b>R</b></button></label><br /><span name="attr_reaction"></span></div>
+			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Strength}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{strength}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Strength Roll"><b>S</b></button></label><br /><span name="attr_strength"></span></div>
+			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Willpower}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{willpower}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Willpower Roll"><b>W</b></button></label><br /><span name="attr_willpower"></span></div>
+			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Logic}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{logic}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Logic Roll"><b>L</b></button></label><br /><span name="attr_logic"></span></div>
+			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Intuition}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{intuition}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Intuition Roll"><b>I</b></button></label><br /><span name="attr_intuition"></span></div>
+			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Charisma}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{charisma}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Charisma Roll"><b>C</b></button></label><br /><span name="attr_charisma"></span></div>
+			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Edge}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{dice=[[(@{edge}+(?{Attribute|Only Edge,0|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle})d6>5]]}}" title="Edge Roll"><b>E</b></label><br /><span name="attr_edge"></span></div>
+			<div class="attr-header"><label>Ess</label><br /><span name="attr_essence"></span></div>
+			<input type="hidden" class="character-type" name="attr_magic_flag" />
+			<div class="attr-header magic"><label>M</label><br /><span name="attr_magic"></span></div>
+			<div class="attr-header magic"><label>F</label><br /><span name="attr_force"></span></div>
+			<input type="hidden" class="character-type" name="attr_resonance_flag" />
+			<div class="attr-header resonance"><label>R</label><br /><span name="attr_resonance"></span></div>
+			<div class="attr-header resonance"><label>L</label><br /><span name="attr_level"></span></div>
+		</div>
+	<!-- ~~~~~~~~ Initiative  ~~~~~~~~ -->
+	<div class="row">
+		<label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{initiative_mod}+@{wound_toggle}+@{modifier_toggle})+(@{initiative_dice})d6cf0 &{tracker}]]}}"><b>Initiative:</b> </button></label>
+		<span name="attr_initiative_mod"></span><span> + </span><span name="attr_initiative_dice"></span><span> d6</span>
+	</div>
+	<!-- ~~~~~~~~ Astral Initiative  ~~~~~~~~ -->
+	<input type="hidden" class="character-type" name="attr_magic_flag" />
+	<div class="magic">
+		<label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Astral Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{astral_mod}+@{wound_toggle}+@{modifier_toggle})+(@{astral_dice})d6cf0 &{tracker}]]}}"><b>Astral Initiative:</b> </button></label>
+		<span name="attr_astral_mod"></span><span> + </span><span name="attr_astral_dice"></span><span> d6</span>
+	</div>
+	<div class="row">
+	<!-- ~~~~~~~~ Matrix Initiative  ~~~~~~~~ -->
+		<label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Matrix Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{matrix_mod}+@{data_processing}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}"><b>Matrix Initiative: </b></button></label>
+		<span name="attr_matrix_mod"></span><span> + </span><span name="attr_matrix_dice"></span><span> d6</span>
+	</div>
+	<!-- ~~~~~~~~ Movement  ~~~~~~~~ -->
+	<div class="row">
+		<label>Movement: </label>
+		<span name="attr_walk" title="Walk Rate"></span><span> / </span><span name="attr_run" title="Run Tate"></span><span> / +</span><span name="attr_movement_mod"></span>
+	</div>
+	<!-- ~~~~~~~~ Condition Monitor  ~~~~~~~~ -->
+	<div class="row">
+		<input type="checkbox" class="con-reset" name="attr_cond_reset">
+		<label class="cond-header">Condition Monitor (P/S): </label>
+		<span name="attr_physical" title="Physical"></span><span> / </span><span name="attr_stun" title="Stun"></span>
+	</div>
+	<!-- ~~~~~~~~ Limits  ~~~~~~~~ -->
+	<div class="row">
+		<label>Limits: </label>
+		<span>Physical </span><span name="attr_physical_limit"></span>,
+		<span>Mental </span><span name="attr_mental_limit"></span>,
+		<span>Social </span><span name="attr_social_limit"></span>
+	</div>
+	<!-- ~~~~~~~~ Armor  ~~~~~~~~ -->
+	<div class="row">
+		<label><button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Armor Roll}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{armor}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Armor Roll"><b>Armor:</b> </button></label><span name="attr_armor"></span>
+		<div class="armor-buttons">
+			<button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Soak}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Soak"><span class="pictos3">b</span></button>
+			<button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Acid Protection}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{soak_acid}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Acid Protection"><span class="pictos3">d</span></button>
+			<button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Cold Protection}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{soak_cold}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Cold Protection"><span>b</span></button>
+			<button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Electricity Protection}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{soak_electrical}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Electrical Protection"><span>e</span></button>
+			<button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Fire Protection}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{soak_fire}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Fire Protection"><span class="pictos3">j</span></button>
+			<button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Radiation Protection}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{soak_radiation}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Radiation Protection"><span class="pictos3">l</span></button>
+		</div>
+	</div>
+	<!-- ~~~~~~~~ Skills  ~~~~~~~~ -->
+		<div class="row skillrow"><label>Skills (Dice Pools): </label>
+			<!-- ~~~~~~~~ Acting  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_acting_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Acting}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{acting}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Acting skill group </span><span name="attr_acting"></span></button>,</span>
+			<!-- ~~~~~~~~ Aeronautics Mechanic  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_aeromech_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Aeronautics Mechanic}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{aeromech}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Aeronautics Mechanic </span><span name="attr_aeromech"></span></button>,</span>
+			<!-- ~~~~~~~~ Alchemy  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_alchemy_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=alchemy}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{alchemy}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Alchemy </span><span name="attr_alchemy"></span></button>,</span>
+			<!-- ~~~~~~~~ animalhandling  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_animalhandling_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Animal Handling}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{animalhandling}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Animal Handling </span><span name="attr_animalhandling"></span></button>,</span>
+			<!-- ~~~~~~~~ arcana  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_arcana_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=arcana}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{dice=[[(@{arcana}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Arcana </span><span name="attr_arcana"></span></button>,</span>
+			<!-- ~~~~~~~~ archery  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_archery_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=archery}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{archery}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Archery </span><span name="attr_archery"></span></button>,</span>
+			<!-- ~~~~~~~~ armorer  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_armorer_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=armorer}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{armorer}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Armorer </span><span name="attr_armorer"></span></button>,</span>
+			<!-- ~~~~~~~~ Artificing  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_artificing_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Artificing}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{artificing}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Artificing </span><span name="attr_artificing"></span></button>,</span>
+			<!-- ~~~~~~~~ artisan  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_artisan_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Artisan}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{artisan}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Artisan </span><span name="attr_artisan"></span></button>,</span>
+			<!-- ~~~~~~~~ assensing  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_assensing_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=assensing}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{assensing}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Assensing </span><span name="attr_assensing"></span></button>,</span>
+			<!-- ~~~~~~~~ astralcombat  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_astralcombat_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Astral Combat}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{astralcombat}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Astral Combat </span><span name="attr_astralcombat"></span></button>,</span>
+			<!-- ~~~~~~~~ Athletics  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_athletics_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Athletics}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{Athletics}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Athletics skill group </span><span name="attr_athletics"></span></button>,</span>
+			<!-- ~~~~~~~~ Automatics  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_automatics_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=automatics}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{automatics}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Automatics </span><span name="attr_automatics"></span></button>,</span>
+			<!-- ~~~~~~~~ Automotive Mechanic  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_automech_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Automotive Mechanic}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{automech}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Automotive Mechanic </span><span name="attr_automech"></span></button>,</span>
+			<!-- ~~~~~~~~ Banishing  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_banishing_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=banishing}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{banishing}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Banishing </span><span name="attr_banishing"></span></button>,</span>
+			<!-- ~~~~~~~~ Binding  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_binding_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=binding}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{binding}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{opp=Spirit's Resistance[[(?{Force|5}+?{Force|5})d6>5@{explode_toggle}]]}}">
+				<span>Binding </span><span name="attr_binding"></span></button>,</span>
+			<!-- ~~~~~~~~ Biotech  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_biotech_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=biotech}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{biotech}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Biotech skill group </span><span name="attr_biotech"></span></button>,</span>
+			<!-- ~~~~~~~~ Biotechnology  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_biotechnology_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=biotechnology}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{biotechnology}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Biotechnology </span><span name="attr_biotechnology"></span></button>,</span>
+			<!-- ~~~~~~~~ Blades  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_blades_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Blades}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{blades}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Blades </span><span name="attr_blades"></span></button>,</span>
+			<!-- ~~~~~~~~ chemistry  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_chemistry_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=chemistry}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{chemistry}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Chemistry </span><span name="attr_chemistry"></span></button>,</span>
+			<!-- ~~~~~~~~ Close Combat  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_closecombat_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Close Combat}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{closecombat}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Close Combat skill group </span><span name="attr_closecombat"></span></button>,</span>
+			<!-- ~~~~~~~~ Clubs  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_clubs_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Clubs}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{clubs}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Clubs </span><span name="attr_clubs"></span></button>,</span>
+			<!-- ~~~~~~~~ compiling  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_compiling_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=compiling}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{compiling}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{opp=Sprite's Resist [[?{Level|5}d6>5@{explode_toggle}]]}}">
+				<span>Compiling </span><span name="attr_compiling"></span></button>,</span>
+			<!-- ~~~~~~~~ Computer  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_computer_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=computer}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{computer}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Computer </span><span name="attr_computer"></span></button>,</span>
+			<!-- ~~~~~~~~ Con  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_con_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Con}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{con}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Con </span><span name="attr_con"></span></button>,</span>
+			<!-- ~~~~~~~~ Conjuring  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_conjuring_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Conjuring}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{conjuring}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Conjuring skill group </span><span name="attr_conjuring"></span></button>,</span>
+			<!-- ~~~~~~~~ counterspelling  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_counterspelling_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=counterspelling}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{counterspelling}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Counterspelling </span><span name="attr_counterspelling"></span></button>,</span>
+			<!-- ~~~~~~~~ Cracking  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_cracking_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=cracking}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{cracking}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Cracking skill group </span><span name="attr_cracking"></span></button>,</span>
+			<!-- ~~~~~~~~ cybercombat  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_cybercombat_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=cybercombat}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{cybercombat}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Cybercombat </span><span name="attr_cybercombat"></span></button>,</span>
+			<!-- ~~~~~~~~ Cybertechnology  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_cybertechnology_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=cybertechnology}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{cybertechnology}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Cybertechnology </span><span name="attr_cybertechnology"></span></button>,</span>
+			<!-- ~~~~~~~~ decompiling  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_decompiling_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=decompiling}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{decompiling}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Decompiling </span><span name="attr_decompiling"></span></button>,</span>
+			<!-- ~~~~~~~~ demolitions  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_demolitions_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=demolitions}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{demolitions}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Demolitions</span><span name="attr_demolitions"></span></button>,</span>
+			<!-- ~~~~~~~~ disguise  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_disguise_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=disguise}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{disguise}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Disguise </span><span name="attr_disguise"></span></button>,</span>
+			<!-- ~~~~~~~~ Disenchanting  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_disenchanting_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=disenchanting}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{disenchanting}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Disenchanting </span><span name="attr_disenchanting"></span></button>,</span>
+			<!-- ~~~~~~~~ diving  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_diving_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=diving}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{diving}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Diving </span><span name="attr_diving"></span></button>,</span>
+			<!-- ~~~~~~~~ electronics  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_electronics_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=electronics}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{electronics}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Electronics skill group </span><span name="attr_electronics"></span></button>,</span>
+			<!-- ~~~~~~~~ Electronic Warfare  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_electronicwarfare_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Electronic Warfare}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{electronicwarfare}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Electronic Warfare </span><span name="attr_electronicwarfare"></span></button>,</span>
+			<!-- ~~~~~~~~ Enchanting  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_enchanting_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=enchanting}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{enchanting}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Enchanting skill group </span><span name="attr_enchanting"></span></button>,</span>
+			<!-- ~~~~~~~~ Engineering  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_engineering_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=engineering}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{engineering}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Engineering skill group </span><span name="attr_engineering"></span></button>,</span>
+			<!-- ~~~~~~~~ escapeartist  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_escapeartist_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Escape Artist}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{escapeartist}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Escape Artist </span><span name="attr_escapeartist"></span></button>,</span>
+			<!-- ~~~~~~~~ Etiquette  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_etiquette_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=etiquette}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{etiquette}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Etiquette </span><span name="attr_etiquette"></span></button>,</span>
+			<!-- ~~~~~~~~ exotic melee  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_exoticmelee_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Exotic Melee}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{exoticmelee}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Exotic Melee </span><span name="attr_exoticmelee"></span></button>,</span>
+			<!-- ~~~~~~~~ exotic range  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_exoticrange_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Exotic Range}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{exoticrange}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Exotic Range </span><span name="attr_exoticrange"></span></button>,</span>
+			<!-- ~~~~~~~~ Fire Arms Skill Group  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_firearms_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Firearms}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{firearms}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Firearms skill group </span><span name="attr_firearms"></span></button>,</span>
+			<!-- ~~~~~~~~ First Aid  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_firstaid_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=First Aid}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{firstaid}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>First Aid </span><span name="attr_firstaid"></span></button>,</span>
+			<!-- ~~~~~~~~ flight  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_flight_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Flight}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{flight}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Flight </span><span name="attr_flight"></span></button>,</span>
+			<!-- ~~~~~~~~ forgery  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_forgery_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=forgery}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{forgery}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Forgery </span><span name="attr_forgery"></span></button>,</span>
+			<!-- ~~~~~~~~ freefall  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_freefall_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Free Fall}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{freefall}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Free Fall </span><span name="attr_freefall"></span></button>,</span>
+			<!-- ~~~~~~~~ gunnery  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_gunnery_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=gunnery}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{gunnery}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Gunnery </span><span name="attr_gunnery"></span></button>,</span>
+			<!-- ~~~~~~~~ Gymnastics  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_gymnastics_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=gymnastics}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{gymnastics}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Gymnastics </span><span name="attr_gymnastics"></span></button>,</span>
+			<!-- ~~~~~~~~ Hacking  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_hacking_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Hacking}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{hacking}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Hacking </span><span name="attr_hacking"></span></button>,</span>
+			<!-- ~~~~~~~~ Hardware  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_hardware_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=hardware}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{hardware}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Hardware </span><span name="attr_hardware"></span></button>,</span>
+			<!-- ~~~~~~~~ heavy weapons  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_heavyweapons_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Heavy Weapons}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{heavyweapons}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Heavy Weapons </span><span name="attr_heavyweapons"></span></button>,</span>
+			<!-- ~~~~~~~~ Impersonation  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_impersonation_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Impersonation}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{impersonation}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Impersonation </span><span name="attr_impersonation"></span></button>,</span>
+			<!-- ~~~~~~~~ Industrial Mechanic  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_indusmech_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Industrial Mechanic}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{indusmech}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Industrial Mechanic </span><span name="attr_indusmech"></span></button>,</span>
+			<!-- ~~~~~~~~ Influence  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_influence_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=influence}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{influence}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Influence skill group </span><span name="attr_influence"></span></button>,</span>
+			<!-- ~~~~~~~~ instruction  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_instruction_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Instruction}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{instruction}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Instruction </span><span name="attr_instruction"></span></button>,</span>
+			<!-- ~~~~~~~~ intimidation  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_intimidation_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=intimidation}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{intimidation}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Intimidation </span><span name="attr_intimidation"></span></button>,</span>
+			<!-- ~~~~~~~~ leadership  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_leadership_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=leadership}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{leadership}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Leadership </span><span name="attr_leadership"></span></button>,</span>
+			<!-- ~~~~~~~~ locksmith  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_locksmith_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=locksmith}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{locksmith}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Locksmith </span><span name="attr_locksmith"></span></button>,</span>
+			<!-- ~~~~~~~~ longarms  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_longarms_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=longarms}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{longarms}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Longarms </span><span name="attr_longarms"></span></button>,</span>
+			<!-- ~~~~~~~~ Medicine  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_medicine_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Medicine}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{medicine}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Medicine </span><span name="attr_medicine"></span></button>,</span>
+			<!-- ~~~~~~~~ Nautical Mechanic  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_nautmech_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Nautical Mechanic}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{nautmech}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Nautical Mechanic </span><span name="attr_nautmech"></span></button>,</span>
+			<!-- ~~~~~~~~ navigation  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_navigation_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=navigation}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{navigation}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Navigation </span><span name="attr_navigation"></span></button>,</span>
+			<!-- ~~~~~~~~ negotiation  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_negotiation_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=negotiation}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{negotiation}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Negotiation </span><span name="attr_negotiation"></span></button>,</span>
+			<!-- ~~~~~~~~ outdoors  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_outdoors_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=outdoors}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{outdoors}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Outdoors skill group </span><span name="attr_outdoors"></span></button>,</span>
+			<!-- ~~~~~~~~ palming  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_palming_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=palming}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{palming}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Palming </span><span name="attr_palming"></span></button>,</span>
+			<!-- ~~~~~~~~ Perception  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_perception_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Perception}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{perception}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Perception </span><span name="attr_perception"></span></button>,</span>
+			<!-- ~~~~~~~~ Performance  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_performance_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Performance}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{performance}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Performance </span><span name="attr_performance"></span></button>,</span>
+			<!-- ~~~~~~~~ pilotaerospace  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_pilotaerospace_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Pilot Aerospace}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{pilotaerospace}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Pilot Aerospace </span><span name="attr_pilotaerospace"></span></button>,</span>
+			<!-- ~~~~~~~~ pilotaircraft  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_pilotaircraft_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Pilot Aircraft}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{pilotaircraft}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Pilot Aircraft </span><span name="attr_pilotaircraft"></span></button>,</span>
+			<!-- ~~~~~~~~ pilotground  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_pilotground_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Pilot Ground Craft}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{pilotground}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Pilot Ground Craft </span><span name="attr_pilotground"></span></button>,</span>
+			<!-- ~~~~~~~~ pilotexotic  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_pilotexotic_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Pilot Exotic Vehicle}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{pilotexotic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Pilot Exotic Vehicle </span><span name="attr_pilotexotic"></span></button>,</span>
+			<!-- ~~~~~~~~ pilotwalker  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_pilotwalker_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Pilot Walker}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{pilotwalker}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Pilot Walker </span><span name="attr_pilotwalker"></span></button>,</span>
+			<!-- ~~~~~~~~ pilotwatercraft  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_pilotwatercraft_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Pilot Watercraft}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{pilotwatercraft}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Pilot Watercraft </span><span name="attr_pilotwatercraft"></span></button>,</span>
+			<!-- ~~~~~~~~ Pistols  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_pistols_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=pistols}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{pistols}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Pistols </span><span name="attr_pistols"></span></button>,</span>
+			<!-- ~~~~~~~~ registering  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_registering_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=registering}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{registering}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{opp=Spirit's Resistance[[(?{Level|5}+?{Level|5})d6>5@{explode_toggle}]]}}">
+				<span>Registering </span><span name="attr_registering"></span></button>,</span>
+			<!-- ~~~~~~~~ ritualspell  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_ritualspell_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Ritual Spellcasting}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{ritualspell}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Ritual Spellcasting </span><span name="attr_ritualspell"></span></button>,</span>
+			<!-- ~~~~~~~~ Running  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_running_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=running}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{running}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Running </span><span name="attr_running"></span></button>,</span>
+			<!-- ~~~~~~~~ sneaking  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_sneaking_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=sneaking}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{sneaking}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Sneaking </span><span name="attr_sneaking"></span></button>,</span>
+			<!-- ~~~~~~~~ sorcery  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_sorcery_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=sorcery}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{sorcery}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Sorcery skill group </span><span name="attr_sorcery"></span></button>,</span>
+			<!-- ~~~~~~~~ Software  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_software_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=software}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{software}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Software </span><span name="attr_software"></span></button>,</span>
+			<!-- ~~~~~~~~ spellcasting  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_spellcasting_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=spellcasting}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{spellcasting}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Spellcasting </span><span name="attr_spellcasting"></span></button>,</span>
+			<!-- ~~~~~~~~ stealth  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_stealth_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=stealth}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{stealth}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Stealth skill group </span><span name="attr_stealth"></span></button>,</span>
+			<!-- ~~~~~~~~ Summoning  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_summoning_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=summoning}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{summoning}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{opp=Spirit's Resist [[?{Force|5}d6>5@{explode_toggle}]]}}">
+				<span>Summoning </span><span name="attr_summoning"></span></button>,</span>
+			<!-- ~~~~~~~~ survival  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_survival_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=survival}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{survival}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Survival </span><span name="attr_survival"></span></button>,</span>
+			<!-- ~~~~~~~~ Swimming  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_swimming_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=swimming}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{swimming}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Swimming </span><span name="attr_swimming"></span></button>,</span>
+			<!-- ~~~~~~~~ tasking  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_tasking_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=tasking}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{tasking}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Tasking skill group </span><span name="attr_tasking"></span></button>,</span>
+			<!-- ~~~~~~~~ Throwing weapons  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_throwingweapons_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Throwing Weapons}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{throwingweapons}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Throwing Weapons </span><span name="attr_throwingweapons"></span></button>,</span>
+			<!-- ~~~~~~~~ tracking  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_tracking_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=tracking}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{tracking}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}">
+				<span>Tracking </span><span name="attr_tracking"></span></button>,</span>
+			<!-- ~~~~~~~~ Unarmed Combat  ~~~~~~~~ -->
+			<input type="hidden" class="optional-flag0" name="attr_unarmedcombat_flag" value="0">
+			<span class="optional"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Unarmed Combat}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{unarmedcombat}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+				<span>Unarmed Combat </span><span name="attr_unarmedcombat"></span></button>,</span>
+		</div><!-- ~~~~~~~~ End of Dipslay Skills ~~~~~~~~ -->
+	<!-- ~~~~~~~~ Qualities/Augs/Init/Gear/Weakness & Other STUFF ~~~~~~~~ -->
+		<div class="textrow">
+			<input type="hidden" class="optional-flag0" name="attr_knowledge_flag" value="0" />
+			<div class="textboxes">
+				<label>Knowledge Skills: </label>
+				<span name="attr_knowledge"></span>
+			</div>
+			<input type="hidden" class="optional-flag0" name="attr_language_flag" value="0" />
+			<div class="textboxes">
+				<label>Languages Skills: </label>
+				<span name="attr_language"></span>
+			</div>
+			<input type="hidden" class="optional-flag0" name="attr_quality_flag" value="0" />
+			<div class="textboxes">
+				<label>Qualities: </label>
+				<span name="attr_quality"></span>
+			</div>
+			<input type="hidden" class="optional-flag0" name="attr_augmentation_flag" value="0" />
+			<div class="textboxes">
+				<label>Augmentations: </label>
+				<span name="attr_augmentations"></span>
+			</div>
+			<input type="hidden" class="optional-flag0" name="attr_initiate_flag" value="0" />
+			<div class="textboxes">
+				<label>Initiate: </label><span name="attr_initiate"></span><br />
+				<label>Metamagics: </label><span name="attr_metamagic"></span>
+			</div>
+			<input type="hidden" class="optional-flag0" name="attr_submersion_flag" value="0" />
+			<div class="textboxes">
+				<label>Submersion: </label><span name="attr_submersion"></span><br />
+				<label>Echos: </label><span name="attr_echos"></span>
+			</div>
+			<input type="hidden" class="optional-flag0" name="attr_power_flag" value="0" />
+			<div class="textboxes">
+				<label>Powers: </label>
+				<span name="attr_powers"></span>
+			</div>
+			<input type="hidden" class="optional-flag0" name="attr_gear_flag" value="0" />
+			<div class="textboxes">
+				<label>Gear: </label>
+				<span name="attr_gear"></span>
+			</div>
+			<input type="hidden" class="optional-flag0" name="attr_programs_flag" value="0" />
+			<div class="textboxes">
+				<label>Programs: </label>
+				<span name="attr_programs"></span>
+			</div>
+			<input type="hidden" class="optional-flag0" name="attr_weakness_flag" value="0" />
+			<div class="textboxes">
+				<label>Weakness: </label>
+				<span name="attr_weakness"></span>
+			</div>
+		</div><!-- ~~~~ End of Display Qualities/Augs/Init/Gear/Weakness ~~~~~ -->
+	</div><!-- ~~~~~~~~ End of Display  ~~~~~~~~ -->
+</div><!-- ~~~~~~~~ End of Stats area  ~~~~~~~~ -->
+<div class="row"><label>Weapons: </label>
+	<fieldset class="repeating_weapon">
+		<div class="weapon toggle">
+			<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" /><span>y</span>
+			<div class="settings">
+				<input type="radio" class="range-toggle" name="attr_weapon_range" value="" checked="checked" /><span>Range</span>
+				<input type="radio" class="melee-toggle" name="attr_weapon_range" value="{{rea=[[@{weapon_reach}]]}}" /><span>Melee</span>
+				<input type="number" name="attr_weapon_dice" value="" placeholder="Dice" />
+				<input type="text" name="attr_weapon_name" value="" placeholder="Ares Predator" />
+				<input type="text" name="attr_weapon_type" value="" placeholder="Heavy Pistol" />
+				<div class="weapon-melee">
+					<input type="number" name="attr_weapon_reach" value="0" min="0" placeholder="Reach" />
+				</div>
+				<input type="number" name="attr_weapon_acc" value="" placeholder="ACC" />
+				<input type="number" name="attr_weapon_dv" value="" placeholder="9P" />
+				<input type="number" name="attr_weapon_ap" value="" placeholder="AP" />
+				<div class="weapon-range">
+					<input type="text" name="attr_weapon_mode" value="" placeholder="SA/BF/FA" />
+					<input type="number" name="attr_weapon_rc" value="" placeholder="Recoil" />
+					<input type="number" name="attr_weapon_ammo" value="" placeholder="15" /><span>(c)</span>
+				</div>
+				<br />
+				<div class="weapon-note">
+					<input type="text"  name="attr_weapon_note" value="" placeholder="w/ 3 clips of explosive rounds"/>
+				</div>
+			</div>
+			<div class="display">
+				<input type="hidden" name="attr_weapon" value="" />
+				<div class="weapon-indent">
+					<span class="weapon-dice">(<span name="attr_weapon_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=@{weapon_type}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{weapon_dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{weapon_acc}, DV @{weapon_dv}, AP @{weapon_ap}}}@{weapon_range}"><span name="attr_weapon_name"></span></button><span name="attr_weapon"></span>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+</div>
+<input type="hidden" class="character-type" name="attr_magic_flag" />
+<div class="magic"><label>Spells: </label>
+	<fieldset class="repeating_spell">
+		<div class="weapon spell toggle">
+			<input type="checkbox" class="settings-toggle" name="attr_spell_toggle" checked="checked" /><span>y</span>
+			<div class="settings">
+				<select name="attr_spell_catagory">
+					<option class="option" value="Combat" selected="selected">Combat</option>
+					<option class="option" value="Detection">Detection</option>
+					<option class="option" value="Health">Health</option>
+					<option class="option" value="Illusion">Illusion</option>
+					<option class="option" value="Manipulation">Manipulation</option>
+				</select>
+				<input type="number" name="attr_spell_dice" value="" placeholder="Dice" />
+				<input type="text" name="attr_spell_name" value="" placeholder="Fireball" />
+				<select name="attr_spell_type">
+					<option class="option" value="M" selected="selected">Mana</option>
+					<option class="option" value="P">Physical</option>
+				</select>
+				<input type="text" name="attr_spell_range" value="" placeholder="LOS (A)" />
+				<input class="spell-input" type="text" name="attr_spell_duration" value="" placeholder="I" />
+				<span>F+/- </span>
+				<input type="number" name="attr_spell_drain" value="" placeholder="-1" />
+				<input class="spell_catagory" name="attr_spell_catagory" type="hidden" value="Combat">
+				<select class="combat-type" name="attr_combat_type">
+					<option class="option" value="Force " selected="selected"></option>
+					<option class="option" value="Direct, Force ">Direct</option>
+					<option class="option" value="Indirect, Force ?{Force|}, AP -">Indirect</option>
+				</select>
+				<input class="spell-input" type="text" name="attr_spell_damage" value="" placeholder="P" />
+				<div class="weapon-note">
+					<input type="text"  name="attr_spell_note" value="" placeholder="Spell notes"/>
+				</div>
+			</div>
+			<div class="display">
+				<input type="hidden" name="attr_spell" value="" />
+				<div class="weapon-indent">
+					<span class="weapon-dice">(<span name="attr_spell_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=@{spell_name}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{spell_dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{spell_drain})]]}}"><span name="attr_spell_name"></span></button><span name="attr_spell"></span>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+</div>
+<input type="hidden" class="character-type" name="attr_resonance_flag" />
+<div class="resonance"><label>Complex Forms: </label>
+	<fieldset class="repeating_form">
+		<div class="weapon spell toggle">
+			<input type="checkbox" class="settings-toggle" name="attr_form_toggle" checked="checked" /><span>y</span>
+			<div class="settings">
+				<input type="number" name="attr_software_dice" value="" placeholder="Dice" />
+				<input type="text" name="attr_form_name" value="" placeholder="Editor" />
+				<input class="spell-input" type="text" name="attr_form_duration" value="" placeholder="P" />
+				<span>L+/- </span>
+				<input type="number" name="attr_form_fade" value="" placeholder="+2" />
+				<div class="weapon-note">
+					<input type="text"  name="attr_form_note" value="" placeholder="Form notes"/>
+				</div>
+			</div>
+			<div class="display">
+				<input type="hidden" name="attr_form" value="" />
+				<div class="weapon-indent">
+					<span class="weapon-dice">(<span name="attr_software_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=@{form}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{form_dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=?{Level|}, Fade [[?{Level|}+(@{form_fade})]]}}"><span name="attr_form_name"></span></button><span name="attr_form"></span>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+</div>
+<input type="hidden" class="character-type" name="attr_matrix" />
+<div class="matrix"><h2>Matrix Device:</h2>
+	<div class="device-row">
+		<label><button type="roll" value="&{template:sGoon}{{header=Matrix Resistance}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{device_rating}+@{firewall})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Device Rating</button></label>
+		<input type="number" name="attr_device_rating" value="" placeholder="4" />
+		<input type="number" name="attr_device_attribute_1" value="" placeholder="7" />
+		<input type="number" name="attr_device_attribute_2" value="" placeholder="6" />
+		<input type="number" name="attr_device_attribute_3" value="" placeholder="5" />
+		<input type="number" name="attr_device_attribute_4" value="" placeholder="4" />
+		<input type="text" name="attr_device_name" placeholder="Sony CIY-720" />
+		<br/>
+	</div>
+	<div class="device-attr">
+		<label><button type="roll" value="&{template:sGoon}{{header=Attack}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Attack</button></label>
+		<input type="radio" name="attr_attack" value="@{device_attribute_1}" />
+		<input type="radio" name="attr_attack" value="@{device_attribute_2}" />
+		<input type="radio" name="attr_attack" value="@{device_attribute_3}" />
+		<input type="radio" name="attr_attack" value="@{device_attribute_4}" />
+		<input type="text" name="attr_attack_notes" placeholder="Attack notes" />
+	</div>
+	<div class="device-attr">
+		<label><button type="roll" value="&{template:sGoon}{{header=Sleaze}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{sleaze}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Sleaze</button></label>
+		<input type="radio" name="attr_sleaze" value="@{device_attribute_1}" />
+		<input type="radio" name="attr_sleaze" value="@{device_attribute_2}" />
+		<input type="radio" name="attr_sleaze" value="@{device_attribute_3}" />
+		<input type="radio" name="attr_sleaze" value="@{device_attribute_4}" />
+		<input type="text" name="attr_sleaze_notes" placeholder="Sleaze notes" />
+	</div>
+	<div class="device-attr">
+		<label><button type="roll" value="&{template:sGoon}{{header=Data Processing}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{data_processing}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Data Processing</button></label>
+		<input type="radio" name="attr_data_processing" value="@{device_attribute_1}" />
+		<input type="radio" name="attr_data_processing" value="@{device_attribute_2}" />
+		<input type="radio" name="attr_data_processing" value="@{device_attribute_3}" />
+		<input type="radio" name="attr_data_processing" value="@{device_attribute_4}" />
+		<input type="text" name="attr_data_processing_notes" placeholder="Data Processing notes" />
+	</div>
+	<div class="device-attr">
+		<label><button type="roll" value="&{template:sGoon}{{header=Firewall}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{firewall}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Firewall</button></label>
+		<input type="radio" name="attr_firewall" value="@{device_attribute_1}" />
+		<input type="radio" name="attr_firewall" value="@{device_attribute_2}" />
+		<input type="radio" name="attr_firewall" value="@{device_attribute_3}" />
+		<input type="radio" name="attr_firewall" value="@{device_attribute_4}" />
+		<input type="text" name="attr_firewall_notes" placeholder="Firewall notes" />
+	</div>
+</div>
+
+
+<div class="footer">The Topps Company, Inc. has sole ownership of the names, logo, artwork, marks, photographs, sounds, audio, video and/or any proprietary material used in connection with the game Shadowrun. The Topps Company, Inc. has granted permission to use such names, logos, artwork, marks and/or any proprietary materials for promotional and informational purposes on its website but does not endorse, and is not affiliated with any official capacity whatsoever.</div>
+
+
+<div class="rolltemplates">
+	<!--Roll Template for rolling without Focus-->
+    <rolltemplate class="sheet-rolltemplate-sGoon">
+    	<div class="sheet-template-body">
+	    	<div class="sheet-template-header">
+	    		{{#header}}{{header}}{{/header}}{{#spec}}<span> ({{spec}})</span>{{/spec}}<br />
+	    		{{#arm}}<span>{{arm}}</span>{{/arm}}
+	    		{{#base}}<span>{{base}}</span>{{/base}}
+	    		{{#rollLess() wound 0}}<span> ♦ Wounds</span>{{/rollLess() wound 0}}
+	    		{{#rollLess() mod 0}}<span> ♦ Modifier</span>{{/rollLess() mod 0}}
+	    		{{#rollGreater() mod 0}}<span> ♦ Modifier</span>{{/rollGreater() mod 0}}
+	    		{{#rollGreater() edge 0}}<span> ♦ Edge</span>{{/rollGreater() edge 0}}
+	    	</div>
+	    		{{#dice}}<div class="sheet-template-row">{{dice}}</div>{{/dice}}
+	    		{{#desc}}<div class="sheet-template-row"><span class="sheet-template-desc">{{desc}} {{#rollGreater() rea 0}}Reach {{rea}}{{/rollGreater() rea 0}} </span></div>{{/desc}}
+	    		{{#opp}}<div class="sheet-template-row">{{opp}}</div>{{/opp}}
+	    </div>
+    </rolltemplate>
+</div>
+
+
+<!--Sheet Worker-->
+<script type="text/worker">
+
+	//Calculate Movement Rates
+on("change:agility change:walk_bonus change:run_bonus", function (){
+	getAttrs(["agility", "walk_bonus", "run_bonus"], function(v) {
+		var agi = parseInt(v.agility) || 0;
+		var wbon = parseInt(v.walk_bonus) || 0;
+		var rbon = parseInt(v.run_bonus) || 0;
+		var walk = (agi * 2) + wbon;
+		var run = (agi * 4) + rbon;
+
+		setAttrs({walk: walk});
+		setAttrs({run: run});
+	});
+});
+
+	//Calculate Physical Track
+on("change:body change:physical_bonus", function() {
+	getAttrs(["body","physical_bonus"], function(v){
+		var bod = parseInt(v.body) || 0;
+		var bon = parseInt(v.physical_bonus) || 0;
+		var tot = Math.ceil(bod/2) + 8 + bon;
+
+		setAttrs({physical: tot});
+		setAttrs({physical_max: tot});
+	});
+});
+
+	//Calculate Willpower Track
+on("change:willpower change:stun_bonus", function() {
+	getAttrs(["willpower","stun_bonus"], function(v){
+		var wil = parseInt(v.willpower) || 0;
+		var bon = parseInt(v.stun_bonus) || 0;
+		var tot = Math.ceil(wil/2) + 8 + bon;
+
+		setAttrs({stun: tot});
+		setAttrs({stun_max: tot});
+	});
+});
+
+	//Calculate Meatspace Initiatve
+on("change:reaction change:intuition change:initiative_bonus", function() {
+	getAttrs(["reaction", "intuition", "initiative_bonus"], function(v){
+		var rea = parseInt(v.reaction) || 0;
+		var int = parseInt(v.intuition) || 0;
+		var bon = parseInt(v.initiative_bonus) || 0;
+		var tot = rea + int + bon;
+
+		setAttrs({initiative_mod: tot});
+	});
+});
+
+ on("change:initiative_dice_bonus change:edge_toggle", function () {
+	getAttrs(["initiative_dice_bonus", "edge_toggle"], function(v){
+		var bon = parseInt(v.initiative_dice_bonus) || 0;
+		var tot = Math.min(bon+1,5);
+		if (v.edge_toggle != 0) {setAttrs({initiative_dice: 5});} 
+			else {setAttrs({initiative_dice: tot});}});});
+
+	//Calculate Astral Initiatve
+on("change:intuition change:astral_mod_bonus", function() {
+	getAttrs(["intuition", "astral_mod_bonus"], function(v) {
+		var int = parseInt(v.intuition) || 0;
+		var bon = parseInt(v.astral_mod_bonus) || 0;
+		var tot = (int * 2) + bon;
+		setAttrs({astral_mod: tot});});});
+
+on("change:astral_dice_bonus change:edge_toggle", function () {
+	getAttrs(["astral_dice_bonus", "edge_toggle"], function(v){
+		var bon = parseInt(v.astral_dice_bonus) || 0;
+		var tot = Math.min(bon+3,5);
+		if (v.edge_toggle != 0) {setAttrs({astral_dice: 5});} 
+			else {setAttrs({astral_dice: tot});}
+	});
+});
+
+	//Calculate Matrix Initiatve
+on("change:intuition change:matrix_mod_bonus", function() {
+	getAttrs(["intuition", "matrix_mod_bonus"], function(v) {
+		var int = parseInt(v.intuition) || 0;
+		var bon = parseInt(v.matrix_mod_bonus) || 0;
+		var tot = (int + bon);
+		setAttrs({matrix_mod: tot});});});
+
+
+on("change:matrix_dice_bonus change:edge_toggle", function () {
+	getAttrs(["matrix_dice_bonus", "edge_toggle"], function(v){
+		var bon = parseInt(v.matrix_dice_bonus) || 0;
+		var tot = Math.min(bon+4,5);
+		if (v.edge_toggle != 0) {setAttrs({matrix_dice: 5});} 
+			else {setAttrs({matrix_dice: tot});}});});
+
+	//Calculate Mental Limit
+on("change:intuition change:willpower change:logic change:mental_bonus", function() {
+	getAttrs(["intuition", "willpower", "logic", "mental_bonus"], function(v){
+		var int = parseInt(v.intuition) || 0;
+		var wil = parseInt(v.willpower) || 0;
+		var log = parseInt(v.logic) || 0;
+		var bon = parseInt(v.mental_bonus) || 0;
+		var tot = ((int + wil + (log * 2))/3);
+		var num = Math.ceil(tot) + bon;
+
+		setAttrs({mental_limit: num});
+	});
+});
+
+	//Calculate Physical Limit
+on("change:body change:reaction change:strength change:physical_bonus", function() {
+	getAttrs(["body", "reaction", "strength", "physical_bonus"], function(v){
+		var bod = parseInt(v.body) || 0;
+		var rea = parseInt(v.reaction) || 0;
+		var str = parseInt(v.strength) || 0;
+		var bon = parseInt(v.physical_bonus) || 0;
+		var tot = ((bod + rea + (str * 2))/3);
+		var num = Math.ceil(tot) + bon;
+
+		setAttrs({physical_limit: num});
+	});
+});
+
+	//Calculate Social Limit
+on("change:charisma change:willpower change:essence change:social_bonus", function() {
+	getAttrs(["charisma", "willpower", "essence", "social_bonus"], function(v){
+		var cha = parseInt(v.charisma) || 0;
+		var wil = parseInt(v.willpower) || 0;
+		var ess = parseInt(v.essence) || 0;
+		var bon = parseInt(v.social_bonus) || 0;
+		var tot = ((ess + wil + (cha * 2))/3);
+		var num = Math.ceil(tot) + bon;
+
+		setAttrs({social_limit: num});
+	});
+});
+
+	//Calculate Defense Pool
+on("change:reaction change:intuition change:defense_bonus", function() {
+	getAttrs(["reaction", "intuition", "defense_bonus"], function(v){
+		var rea = parseInt(v.reaction) || 0;
+		var int = parseInt(v.intuition) || 0;
+		var bon = parseInt(v.defense_bonus) || 0;
+		var tot = rea + int + bon;
+		setAttrs({defense: tot});
+	});
+});
+
+	//Calculate Soak Pool
+on("change:body change:armor change:soak_bonus", function() {
+	getAttrs(["body", "armor", "soak_bonus"], function(v){
+		var bod = parseInt(v.body) || 0;
+		var arm = parseInt(v.armor) || 0;
+		var bon = parseInt(v.soak_bonus) || 0;
+		var tot = bod + arm + bon;
+		setAttrs({soak: tot});
+	});
+});
+
+	//Edge toggle to include ! for exploding dice
+on("change:edge_toggle", function() {
+	getAttrs(["edge_toggle"], function(v){
+		var exp = "!";
+		var emp = "";
+		if (v.edge_toggle != 0) {setAttrs({explode_toggle: exp});
+		} else {setAttrs({explode_toggle: emp});}
+	});
+});
+
+	//Add wound modifiers
+on("change:stun change:physical change:pain_tolerance", function() {
+	getAttrs(["stun", "physical", "physical_max", "stun_max", "pain_tolerance"], function(v) {
+		var stu = parseInt(v.stun) || 0;
+		var phy = parseInt(v.physical) || 0;
+		var pai = parseInt(v.pain_tolerance) || 0;
+		var pmax = parseInt(v.physical_max) || 0;
+		var smax = parseInt(v.stun_max) || 0;
+		var wou = Math.floor((-smax + stu)/(3 + pai)) + Math.floor((-pmax + phy)/(3 + pai));
+		console.log(wou);
+		setAttrs({wounds: wou});
+	});
+});
+
+	//Calculate Reset Condition Track
+on("change:cond_reset", function() {
+	getAttrs(["physical_max","stun_max"], function(v){
+		var phy = parseInt(v.physical_max) || 0;
+		var stun = parseInt(v.stun_max) || 0;
+		setAttrs({physical: phy});
+		setAttrs({stun: stun});
+	});
+});
+
+	//Weapon displays set into an Array
+on("change:repeating_weapon", function() {
+    getAttrs(["repeating_weapon_weapon_range", "repeating_weapon_weapon_melee", "repeating_weapon_weapon_type", "repeating_weapon_weapon_reach", "repeating_weapon_weapon_acc", "repeating_weapon_weapon_dv", "repeating_weapon_weapon_ap", "repeating_weapon_weapon_mode", "repeating_weapon_weapon_rc", "repeating_weapon_weapon_ammo", "repeating_weapon_weapon_note"], function(v){
+        var ran = (v.repeating_weapon_weapon_range);
+        var mel = (v.repeating_weapon_weapon_melee);
+        var typ = (v.repeating_weapon_weapon_type) + ", ";
+		var rea = "Reach " + (v.repeating_weapon_weapon_reach) + ", ";
+		var acc = "ACC " + (v.repeating_weapon_weapon_acc) + ", ";
+        var dv = "DV " + (v.repeating_weapon_weapon_dv) + ", ";
+        var ap = "AP " + (v.repeating_weapon_weapon_ap) + ", ";
+		var mod = (v.repeating_weapon_weapon_mode) + ", ";
+		var rc = "RC " + (v.repeating_weapon_weapon_rc) + ", ";
+        var amm = (v.repeating_weapon_weapon_ammo) + "(c), ";
+        var not = (v.repeating_weapon_weapon_note);
+
+		if (ran === "range" && mel === "melee") {
+			var display = (" [" + typ + rea + acc + dv + ap + mod + rc + amm + not + "]");
+		} else if (ran === "range" && mel === "0") {
+			var display = (" [" + typ + acc + dv + ap + mod + rc + amm + not + "]");
+		} else if (ran === "0" && mel === "melee"){
+			var display = (" [" + typ + rea + acc + dv + ap + not + "]");
+		} else {
+			var display = (" [" + typ + acc + dv + ap + not + "]");
+		}
+
+        setAttrs({
+            repeating_weapon_weapon: display
+        });
+    });
+});
+
+	//Spell displays set into an Array
+on("change:repeating_spell", function() {
+    getAttrs(["repeating_spell_combat_type", "repeating_spell_spell_type", "repeating_spell_spell_range", "repeating_spell_spell_damage", "repeating_spell_spell_duration", "repeating_spell_spell_drain", "repeating_spell_spell_note", ], function(v){
+        var com = (v.repeating_spell_combat_type);
+        var typ = "Type " + (v.repeating_spell_spell_type) + ", ";
+		var ran = (v.repeating_spell_spell_range) + ", ";
+		var dam = "Damage " + (v.repeating_spell_spell_damage) + ", ";
+		var dur = "Duration " + (v.repeating_spell_spell_duration) + ", ";
+		var dra = "F" + (v.repeating_spell_spell_drain) + ", ";
+		var not = (v.repeating_spell_spell_note);
+
+		if (com === "Direct, Force ") {
+			var display = (" (Direct) " + "[" + typ + ran + dam + dur + dra + not + "]");
+		} else if (com === "Indirect, Force ?{Force|}, AP -") {
+			var display = (" (Indirect) " + "[" + typ + ran + dam + dur + (dra) + not + "]");
+		} else {
+			var display = (" [" + typ + ran + dur + dra + not + "]");
+		}
+
+        setAttrs({
+            repeating_spell_spell: display
+        });
+    });
+});
+
+	//Complex Form displays  set into an Array
+on("change:repeating_form", function() {
+    getAttrs(["repeating_form_form_duration", "repeating_form_form_fade", "repeating_form_form_note", ], function(v){
+		var dur = "Duration " + (v.repeating_form_form_duration) + ", ";
+		var fad = "L" + (v.repeating_form_form_fade) + ", ";
+		var not = (v.repeating_form_form_note);
+		var display = (" [" + dur + fad + not + "]");
+
+        setAttrs({
+            repeating_form_form: display
+        });
+    });
+});
+
+	//Skill Display Toggles
+on("change:acting", function() {
+	getAttrs(["acting"], function(v){
+	var skl = parseInt(v.acting) || 0;
+	if (skl > 0) {setAttrs({acting_flag: 1});} else {
+		setAttrs({acting_flag: 0});}});});
+
+on("change:con", function() {
+	getAttrs(["con"], function(v){
+	var skl = parseInt(v.con) || 0;
+	if (skl > 0) {setAttrs({con_flag: 1});} else {
+	setAttrs({con_flag: 0});}});});
+
+on("change:impersonation", function() {
+	getAttrs(["impersonation"], function(v){
+	var skl = parseInt(v.impersonation) || 0;
+	if (skl > 0) {setAttrs({impersonation_flag: 1});} else {
+	setAttrs({impersonation_flag: 0});}});});
+
+on("change:performance", function() {
+	getAttrs(["performance"], function(v){
+	var skl = parseInt(v.performance) || 0;
+	if (skl > 0) {setAttrs({performance_flag: 1});} else {
+	setAttrs({performance_flag: 0});}});});
+
+on("change:athletics", function() {
+	getAttrs(["athletics"], function(v){
+	var skl = parseInt(v.athletics) || 0;
+	if (skl > 0) {setAttrs({athletics_flag: 1});} else {
+	setAttrs({athletics_flag: 0});}});});
+
+on("change:gymnastics", function() {
+	getAttrs(["gymnastics"], function(v){
+	var skl = parseInt(v.gymnastics) || 0;
+	if (skl > 0) {setAttrs({gymnastics_flag: 1});} else {
+	setAttrs({gymnastics_flag: 0});}});});
+
+on("change:running", function() {
+	getAttrs(["running"], function(v){
+	var skl = parseInt(v.running) || 0;
+	if (skl > 0) {setAttrs({running_flag: 1});} else {
+	setAttrs({running_flag: 0});}});});
+
+on("change:swimming", function() {
+	getAttrs(["swimming"], function(v){
+	var skl = parseInt(v.swimming) || 0;
+	if (skl > 0) {setAttrs({swimming_flag: 1});} else {
+	setAttrs({swimming_flag: 0});}});});
+
+on("change:biotech", function() {
+	getAttrs(["biotech"], function(v){
+	var skl = parseInt(v.biotech) || 0;
+	if (skl > 0) {setAttrs({biotech_flag: 1});} else {
+	setAttrs({biotech_flag: 0});}});});
+
+on("change:cybertechnology", function() {
+	getAttrs(["cybertechnology"], function(v){
+	var skl = parseInt(v.cybertechnology) || 0;
+	if (skl > 0) {setAttrs({cybertechnology_flag: 1});} else {
+	setAttrs({cybertechnology_flag: 0});}});});
+
+on("change:firstaid", function() {
+	getAttrs(["firstaid"], function(v){
+	var skl = parseInt(v.firstaid) || 0;
+	if (skl > 0) {setAttrs({firstaid_flag: 1});} else {
+	setAttrs({firstaid_flag: 0});}});});
+
+on("change:medicine", function() {
+	getAttrs(["medicine"], function(v){
+	var skl = parseInt(v.medicine) || 0;
+	if (skl > 0) {setAttrs({medicine_flag: 1});} else {
+	setAttrs({medicine_flag: 0});}});});
+
+on("change:biotechnology", function() {
+	getAttrs(["biotechnology"], function(v){
+	var skl = parseInt(v.biotechnology) || 0;
+	if (skl > 0) {setAttrs({biotechnology_flag: 1});} else {
+	setAttrs({biotechnology_flag: 0});}});});
+
+on("change:closecombat", function() {
+	getAttrs(["closecombat"], function(v){
+	var skl = parseInt(v.closecombat) || 0;
+	if (skl > 0) {setAttrs({closecombat_flag: 1});} else {
+	setAttrs({closecombat_flag: 0});}});});
+
+on("change:blades", function() {
+	getAttrs(["blades"], function(v){
+	var skl = parseInt(v.blades) || 0;
+	if (skl > 0) {setAttrs({blades_flag: 1});} else {
+	setAttrs({blades_flag: 0});}});});
+
+on("change:clubs", function() {
+	getAttrs(["clubs"], function(v){
+	var skl = parseInt(v.clubs) || 0;
+	if (skl > 0) {setAttrs({clubs_flag: 1});} else {
+	setAttrs({clubs_flag: 0});}});});
+
+on("change:unarmedcombat", function() {
+	getAttrs(["unarmedcombat"], function(v){
+	var skl = parseInt(v.unarmedcombat) || 0;
+	if (skl > 0) {setAttrs({unarmedcombat_flag: 1});} else {
+	setAttrs({unarmedcombat_flag: 0});}});});
+
+on("change:conjuring", function() {
+	getAttrs(["conjuring"], function(v){
+	var skl = parseInt(v.conjuring) || 0;
+	if (skl > 0) {setAttrs({conjuring_flag: 1});} else {
+	setAttrs({conjuring_flag: 0});}});});
+
+on("change:banishing", function() {
+	getAttrs(["banishing"], function(v){
+	var skl = parseInt(v.banishing) || 0;
+	if (skl > 0) {setAttrs({banishing_flag: 1});} else {
+	setAttrs({banishing_flag: 0});}});});
+
+on("change:binding", function() {
+	getAttrs(["binding"], function(v){
+	var skl = parseInt(v.binding) || 0;
+	if (skl > 0) {setAttrs({binding_flag: 1});} else {
+	setAttrs({binding_flag: 0});}});});
+
+on("change:summoning", function() {
+	getAttrs(["summoning"], function(v){
+	var skl = parseInt(v.summoning) || 0;
+	if (skl > 0) {setAttrs({summoning_flag: 1});} else {
+	setAttrs({summoning_flag: 0});}});});
+
+on("change:cracking", function() {
+	getAttrs(["cracking"], function(v){
+	var skl = parseInt(v.cracking) || 0;
+	if (skl > 0) {setAttrs({cracking_flag: 1});} else {
+	setAttrs({cracking_flag: 0});}});});
+
+on("change:cybercombat", function() {
+	getAttrs(["cybercombat"], function(v){
+	var skl = parseInt(v.cybercombat) || 0;
+	if (skl > 0) {setAttrs({cybercombat_flag: 1});} else {
+	setAttrs({cybercombat_flag: 0});}});});
+
+on("change:electronicwarfare", function() {
+	getAttrs(["electronicwarfare"], function(v){
+	var skl = parseInt(v.electronicwarfare) || 0;
+	if (skl > 0) {setAttrs({electronicwarfare_flag: 1});} else {
+	setAttrs({electronicwarfare_flag: 0});}});});
+
+on("change:hacking", function() {
+	getAttrs(["hacking"], function(v){
+	var skl = parseInt(v.hacking) || 0;
+	if (skl > 0) {setAttrs({hacking_flag: 1});} else {
+	setAttrs({hacking_flag: 0});}});});
+
+on("change:electronics", function() {
+	getAttrs(["electronics"], function(v){
+	var skl = parseInt(v.electronics) || 0;
+	if (skl > 0) {setAttrs({electronics_flag: 1});} else {
+	setAttrs({electronics_flag: 0});}});});
+
+on("change:computer", function() {
+	getAttrs(["computer"], function(v){
+	var skl = parseInt(v.computer) || 0;
+	if (skl > 0) {setAttrs({computer_flag: 1});} else {
+	setAttrs({computer_flag: 0});}});});
+
+on("change:hardware", function() {
+	getAttrs(["hardware"], function(v){
+	var skl = parseInt(v.hardware) || 0;
+	if (skl > 0) {setAttrs({hardware_flag: 1});} else {
+	setAttrs({hardware_flag: 0});}});});
+
+on("change:software", function() {
+	getAttrs(["software"], function(v){
+	var skl = parseInt(v.software) || 0;
+	if (skl > 0) {setAttrs({software_flag: 1});} else {
+	setAttrs({software_flag: 0});}});});
+
+on("change:enchanting", function() {
+	getAttrs(["enchanting"], function(v){
+	var skl = parseInt(v.enchanting) || 0;
+	if (skl > 0) {setAttrs({enchanting_flag: 1});} else {
+	setAttrs({enchanting_flag: 0});}});});
+
+on("change:alchemy", function() {
+	getAttrs(["alchemy"], function(v){
+	var skl = parseInt(v.alchemy) || 0;
+	if (skl > 0) {setAttrs({alchemy_flag: 1});} else {
+	setAttrs({alchemy_flag: 0});}});});
+
+on("change:artificing", function() {
+	getAttrs(["artificing"], function(v){
+	var skl = parseInt(v.artificing) || 0;
+	if (skl > 0) {setAttrs({artificing_flag: 1});} else {
+	setAttrs({artificing_flag: 0});}});});
+
+on("change:disenchanting", function() {
+	getAttrs(["disenchanting"], function(v){
+	var skl = parseInt(v.disenchanting) || 0;
+	if (skl > 0) {setAttrs({disenchanting_flag: 1});} else {
+	setAttrs({disenchanting_flag: 0});}});});
+
+on("change:engineering", function() {
+	getAttrs(["engineering"], function(v){
+	var skl = parseInt(v.engineering) || 0;
+	if (skl > 0) {setAttrs({engineering_flag: 1});} else {
+	setAttrs({engineering_flag: 0});}});});
+
+on("change:aeromech", function() {
+	getAttrs(["aeromech"], function(v){
+	var skl = parseInt(v.aeromech) || 0;
+	if (skl > 0) {setAttrs({aeromech_flag: 1});} else {
+	setAttrs({aeromech_flag: 0});}});});
+
+on("change:automech", function() {
+	getAttrs(["automech"], function(v){
+	var skl = parseInt(v.automech) || 0;
+	if (skl > 0) {setAttrs({automech_flag: 1});} else {
+	setAttrs({automech_flag: 0});}});});
+
+on("change:indusmech", function() {
+	getAttrs(["indusmech"], function(v){
+	var skl = parseInt(v.indusmech) || 0;
+	if (skl > 0) {setAttrs({indusmech_flag: 1});} else {
+	setAttrs({indusmech_flag: 0});}});});
+
+on("change:nautmech", function() {
+	getAttrs(["nautmech"], function(v){
+	var skl = parseInt(v.nautmech) || 0;
+	if (skl > 0) {setAttrs({nautmech_flag: 1});} else {
+	setAttrs({nautmech_flag: 0});}});});
+
+on("change:firearms", function() {
+	getAttrs(["firearms"], function(v){
+	var skl = parseInt(v.firearms) || 0;
+	if (skl > 0) {setAttrs({firearms_flag: 1});} else {
+	setAttrs({firearms_flag: 0});}});});
+
+on("change:automatics", function() {
+	getAttrs(["automatics"], function(v){
+	var skl = parseInt(v.automatics) || 0;
+	if (skl > 0) {setAttrs({automatics_flag: 1});} else {
+	setAttrs({automatics_flag: 0});}});});
+
+on("change:longarms", function() {
+	getAttrs(["longarms"], function(v){
+	var skl = parseInt(v.longarms) || 0;
+	if (skl > 0) {setAttrs({longarms_flag: 1});} else {
+	setAttrs({longarms_flag: 0});}});});
+
+on("change:pistols", function() {
+	getAttrs(["pistols"], function(v){
+	var skl = parseInt(v.pistols) || 0;
+	if (skl > 0) {setAttrs({pistols_flag: 1});} else {
+	setAttrs({pistols_flag: 0});}});});
+
+on("change:influence", function() {
+	getAttrs(["influence"], function(v){
+	var skl = parseInt(v.influence) || 0;
+	if (skl > 0) {setAttrs({influence_flag: 1});} else {
+	setAttrs({influence_flag: 0});}});});
+
+on("change:etiquette", function() {
+	getAttrs(["etiquette"], function(v){
+	var skl = parseInt(v.etiquette) || 0;
+	if (skl > 0) {setAttrs({etiquette_flag: 1});} else {
+	setAttrs({etiquette_flag: 0});}});});
+
+on("change:leadership", function() {
+	getAttrs(["leadership"], function(v){
+	var skl = parseInt(v.leadership) || 0;
+	if (skl > 0) {setAttrs({leadership_flag: 1});} else {
+	setAttrs({leadership_flag: 0});}});});
+
+on("change:negotiation", function() {
+	getAttrs(["negotiation"], function(v){
+	var skl = parseInt(v.negotiation) || 0;
+	if (skl > 0) {setAttrs({negotiation_flag: 1});} else {
+	setAttrs({negotiation_flag: 0});}});});
+
+on("change:outdoors", function() {
+	getAttrs(["outdoors"], function(v){
+	var skl = parseInt(v.outdoors) || 0;
+	if (skl > 0) {setAttrs({outdoors_flag: 1});} else {
+	setAttrs({outdoors_flag: 0});}});});
+
+on("change:navigation", function() {
+	getAttrs(["navigation"], function(v){
+	var skl = parseInt(v.navigation) || 0;
+	if (skl > 0) {setAttrs({navigation_flag: 1});} else {
+	setAttrs({navigation_flag: 0});}});});
+
+on("change:survival", function() {
+	getAttrs(["survival"], function(v){
+	var skl = parseInt(v.survival) || 0;
+	if (skl > 0) {setAttrs({survival_flag: 1});} else {
+	setAttrs({survival_flag: 0});}});});
+
+on("change:tracking", function() {
+	getAttrs(["tracking"], function(v){
+	var skl = parseInt(v.tracking) || 0;
+	if (skl > 0) {setAttrs({tracking_flag: 1});} else {
+	setAttrs({tracking_flag: 0});}});});
+
+on("change:sorcery", function() {
+	getAttrs(["sorcery"], function(v){
+	var skl = parseInt(v.sorcery) || 0;
+	if (skl > 0) {setAttrs({sorcery_flag: 1});} else {
+	setAttrs({sorcery_flag: 0});}});});
+
+on("change:counterspelling", function() {
+	getAttrs(["counterspelling"], function(v){
+	var skl = parseInt(v.counterspelling) || 0;
+	if (skl > 0) {setAttrs({counterspelling_flag: 1});} else {
+	setAttrs({counterspelling_flag: 0});}});});
+
+on("change:ritualspell", function() {
+	getAttrs(["ritualspell"], function(v){
+	var skl = parseInt(v.ritualspell) || 0;
+	if (skl > 0) {setAttrs({ritualspell_flag: 1});} else {
+	setAttrs({ritualspell_flag: 0});}});});
+
+on("change:spellcasting", function() {
+	getAttrs(["spellcasting"], function(v){
+	var skl = parseInt(v.spellcasting) || 0;
+	if (skl > 0) {setAttrs({spellcasting_flag: 1});} else {
+	setAttrs({spellcasting_flag: 0});}});});
+
+on("change:stealth", function() {
+	getAttrs(["stealth"], function(v){
+	var skl = parseInt(v.stealth) || 0;
+	if (skl > 0) {setAttrs({stealth_flag: 1});} else {
+	setAttrs({stealth_flag: 0});}});});
+
+on("change:disguise", function() {
+	getAttrs(["disguise"], function(v){
+	var skl = parseInt(v.disguise) || 0;
+	if (skl > 0) {setAttrs({disguise_flag: 1});} else {
+	setAttrs({disguise_flag: 0});}});});
+
+on("change:palming", function() {
+	getAttrs(["palming"], function(v){
+	var skl = parseInt(v.palming) || 0;
+	if (skl > 0) {setAttrs({palming_flag: 1});} else {
+	setAttrs({palming_flag: 0});}});});
+
+on("change:sneaking", function() {
+	getAttrs(["sneaking"], function(v){
+	var skl = parseInt(v.sneaking) || 0;
+	if (skl > 0) {setAttrs({sneaking_flag: 1});} else {
+	setAttrs({sneaking_flag: 0});}});});
+
+on("change:tasking", function() {
+	getAttrs(["tasking"], function(v){
+	var skl = parseInt(v.tasking) || 0;
+	if (skl > 0) {setAttrs({tasking_flag: 1});} else {
+	setAttrs({tasking_flag: 0});}});});
+
+on("change:compiling", function() {
+	getAttrs(["compiling"], function(v){
+	var skl = parseInt(v.compiling) || 0;
+	if (skl > 0) {setAttrs({compiling_flag: 1});} else {
+	setAttrs({compiling_flag: 0});}});});
+
+on("change:decompiling", function() {
+	getAttrs(["decompiling"], function(v){
+	var skl = parseInt(v.decompiling) || 0;
+	if (skl > 0) {setAttrs({decompiling_flag: 1});} else {
+	setAttrs({decompiling_flag: 0});}});});
+
+on("change:registering", function() {
+	getAttrs(["registering"], function(v){
+	var skl = parseInt(v.registering) || 0;
+	if (skl > 0) {setAttrs({registering_flag: 1});} else {
+	setAttrs({registering_flag: 0});}});});
+
+on("change:archery", function() {
+	getAttrs(["archery"], function(v){
+	var skl = parseInt(v.archery) || 0;
+	if (skl > 0) {setAttrs({archery_flag: 1});} else {
+	setAttrs({archery_flag: 0});}});});
+
+on("change:exoticmelee", function() {
+	getAttrs(["exoticmelee"], function(v){
+	var skl = parseInt(v.exoticmelee) || 0;
+	if (skl > 0) {setAttrs({exoticmelee_flag: 1});} else {
+	setAttrs({exoticmelee_flag: 0});}});});
+
+on("change:exoticrange", function() {
+	getAttrs(["exoticrange"], function(v){
+	var skl = parseInt(v.exoticrange) || 0;
+	if (skl > 0) {setAttrs({exoticrange_flag: 1});} else {
+	setAttrs({exoticrange_flag: 0});}});});
+
+on("change:heavyweapons", function() {
+	getAttrs(["heavyweapons"], function(v){
+	var skl = parseInt(v.heavyweapons) || 0;
+	if (skl > 0) {setAttrs({heavyweapons_flag: 1});} else {
+	setAttrs({heavyweapons_flag: 0});}});});
+
+on("change:throwingweapons", function() {
+	getAttrs(["throwingweapons"], function(v){
+	var skl = parseInt(v.throwingweapons) || 0;
+	if (skl > 0) {setAttrs({throwingweapons_flag: 1});} else {
+	setAttrs({throwingweapons_flag: 0});}});});
+
+on("change:arcana", function() {
+	getAttrs(["arcana"], function(v){
+	var skl = parseInt(v.arcana) || 0;
+	if (skl > 0) {setAttrs({arcana_flag: 1});} else {
+	setAttrs({arcana_flag: 0});}});});
+
+on("change:assensing", function() {
+	getAttrs(["assensing"], function(v){
+	var skl = parseInt(v.assensing) || 0;
+	if (skl > 0) {setAttrs({assensing_flag: 1});} else {
+	setAttrs({assensing_flag: 0});}});});
+
+on("change:astralcombat", function() {
+	getAttrs(["astralcombat"], function(v){
+	var skl = parseInt(v.astralcombat) || 0;
+	if (skl > 0) {setAttrs({astralcombat_flag: 1});} else {
+	setAttrs({astralcombat_flag: 0});}});});
+
+on("change:instruction", function() {
+	getAttrs(["instruction"], function(v){
+	var skl = parseInt(v.instruction) || 0;
+	if (skl > 0) {setAttrs({instruction_flag: 1});} else {
+	setAttrs({instruction_flag: 0});}});});
+
+on("change:intimidation", function() {
+	getAttrs(["intimidation"], function(v){
+	var skl = parseInt(v.intimidation) || 0;
+	if (skl > 0) {setAttrs({intimidation_flag: 1});} else {
+	setAttrs({intimidation_flag: 0});}});});
+
+on("change:diving", function() {
+	getAttrs(["diving"], function(v){
+	var skl = parseInt(v.diving) || 0;
+	if (skl > 0) {setAttrs({diving_flag: 1});} else {
+	setAttrs({diving_flag: 0});}});});
+
+on("change:escapeartist", function() {
+	getAttrs(["escapeartist"], function(v){
+	var skl = parseInt(v.escapeartist) || 0;
+	if (skl > 0) {setAttrs({escapeartist_flag: 1});} else {
+	setAttrs({escapeartist_flag: 0});}});});
+
+on("change:flight", function() {
+	getAttrs(["flight"], function(v){
+	var skl = parseInt(v.flight) || 0;
+	if (skl > 0) {setAttrs({flight_flag: 1});} else {
+	setAttrs({flight_flag: 0});}});});
+
+on("change:freefall", function() {
+	getAttrs(["freefall"], function(v){
+	var skl = parseInt(v.freefall) || 0;
+	if (skl > 0) {setAttrs({freefall_flag: 1});} else {
+	setAttrs({freefall_flag: 0});}});});
+
+on("change:animalhandling", function() {
+	getAttrs(["animalhandling"], function(v){
+	var skl = parseInt(v.animalhandling) || 0;
+	if (skl > 0) {setAttrs({animalhandling_flag: 1});} else {
+	setAttrs({animalhandling_flag: 0});}});});
+
+on("change:armorer", function() {
+	getAttrs(["armorer"], function(v){
+	var skl = parseInt(v.armorer) || 0;
+	if (skl > 0) {setAttrs({armorer_flag: 1});} else {
+	setAttrs({armorer_flag: 0});}});});
+
+on("change:artisan", function() {
+	getAttrs(["artisan"], function(v){
+	var skl = parseInt(v.artisan) || 0;
+	if (skl > 0) {setAttrs({artisan_flag: 1});} else {
+	setAttrs({artisan_flag: 0});}});});
+
+on("change:chemistry", function() {
+	getAttrs(["chemistry"], function(v){
+	var skl = parseInt(v.chemistry) || 0;
+	if (skl > 0) {setAttrs({chemistry_flag: 1});} else {
+	setAttrs({chemistry_flag: 0});}});});
+
+on("change:demolitions", function() {
+	getAttrs(["demolitions"], function(v){
+	var skl = parseInt(v.demolitions) || 0;
+	if (skl > 0) {setAttrs({demolitions_flag: 1});} else {
+	setAttrs({demolitions_flag: 0});}});});
+
+on("change:forgery", function() {
+	getAttrs(["forgery"], function(v){
+	var skl = parseInt(v.forgery) || 0;
+	if (skl > 0) {setAttrs({forgery_flag: 1});} else {
+	setAttrs({forgery_flag: 0});}});});
+
+on("change:locksmith", function() {
+	getAttrs(["locksmith"], function(v){
+	var skl = parseInt(v.locksmith) || 0;
+	if (skl > 0) {setAttrs({locksmith_flag: 1});} else {
+	setAttrs({locksmith_flag: 0});}});});
+
+on("change:gunnery", function() {
+	getAttrs(["gunnery"], function(v){
+	var skl = parseInt(v.gunnery) || 0;
+	if (skl > 0) {setAttrs({gunnery_flag: 1});} else {
+	setAttrs({gunnery_flag: 0});}});});
+
+on("change:pilotaerospace", function() {
+	getAttrs(["pilotaerospace"], function(v){
+	var skl = parseInt(v.pilotaerospace) || 0;
+	if (skl > 0) {setAttrs({pilotaerospace_flag: 1});} else {
+	setAttrs({pilotaerospace_flag: 0});}});});
+
+on("change:pilotaircraft", function() {
+	getAttrs(["pilotaircraft"], function(v){
+	var skl = parseInt(v.pilotaircraft) || 0;
+	if (skl > 0) {setAttrs({pilotaircraft_flag: 1});} else {
+	setAttrs({pilotaircraft_flag: 0});}});});
+
+on("change:pilotexotic", function() {
+	getAttrs(["pilotexotic"], function(v){
+	var skl = parseInt(v.pilotexotic) || 0;
+	if (skl > 0) {setAttrs({pilotexotic_flag: 1});} else {
+	setAttrs({pilotexotic_flag: 0});}});});
+
+on("change:pilotground", function() {
+	getAttrs(["pilotground"], function(v){
+	var skl = parseInt(v.pilotground) || 0;
+	if (skl > 0) {setAttrs({pilotground_flag: 1});} else {
+	setAttrs({pilotground_flag: 0});}});});
+
+on("change:pilotwalker", function() {
+	getAttrs(["pilotwalker"], function(v){
+	var skl = parseInt(v.pilotwalker) || 0;
+	if (skl > 0) {setAttrs({pilotwalker_flag: 1});} else {
+	setAttrs({pilotwalker_flag: 0});}});});
+
+on("change:pilotwatercraft", function() {
+	getAttrs(["pilotwatercraft"], function(v){
+	var skl = parseInt(v.pilotwatercraft) || 0;
+	if (skl > 0) {setAttrs({pilotwatercraft_flag: 1});} else {
+	setAttrs({pilotwatercraft_flag: 0});}});});
+
+on("change:perception", function() {
+	getAttrs(["perception"], function(v){
+	var skl = parseInt(v.perception) || 0;
+	if (skl > 0) {setAttrs({perception_flag: 1});} else {
+	setAttrs({perception_flag: 0});}});});
+
+	//Hide the Text boxes when they are empty
+on("change:knowledge", function() {
+	getAttrs(["knowledge"], function(v){
+	if (v.knowledge === '') {setAttrs({knowledge_flag: 0});} else {
+	setAttrs({knowledge_flag: 1});}});});
+
+on("change:language", function() {
+	getAttrs(["language"], function(v){
+	if (v.language === '') {setAttrs({language_flag: 0});} else {
+	setAttrs({language_flag: 1});}});});
+
+on("change:quality", function() {
+	getAttrs(["quality"], function(v){
+	if (v.quality === '') {setAttrs({quality_flag: 0});} else {
+	setAttrs({quality_flag: 1});}});});
+
+on("change:augmentations", function() {
+	getAttrs(["augmentations"], function(v){
+	if (v.augmentations === '') {setAttrs({augmentation_flag: 0});} else {
+	setAttrs({augmentation_flag: 1});}});});
+
+on("change:initiate", function() {
+	getAttrs(["initiate"], function(v){
+	if (v.initiate === '') {setAttrs({initiate_flag: 0});} else {
+	setAttrs({initiate_flag: 1});}});});
+
+on("change:submersion", function() {
+	getAttrs(["submersion"], function(v){
+	if (v.submersion === '') {setAttrs({submersion_flag: 0});} else {
+	setAttrs({submersion_flag: 1});}});});
+
+on("change:powers", function() {
+	getAttrs(["powers"], function(v){
+	if (v.powers === '') {setAttrs({power_flag: 0});} else {
+	setAttrs({power_flag: 1});}});});
+
+on("change:gear", function() {
+	getAttrs(["gear"], function(v){
+	if (v.gear === '') {setAttrs({gear_flag: 0});} else {
+	setAttrs({gear_flag: 1});}});});
+
+on("change:programs", function() {
+	getAttrs(["programs"], function(v){
+	if (v.programs === '') {setAttrs({programs_flag: 0});} else {
+	setAttrs({programs_flag: 1});}});});
+
+on("change:weakness", function() {
+	getAttrs(["weakness"], function(v){
+	if (v.weakness === '') {setAttrs({weakness_flag: 0});} else {
+	setAttrs({weakness_flag: 1});}});});
+</script>
