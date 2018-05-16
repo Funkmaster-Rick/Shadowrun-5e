@@ -1185,48 +1185,66 @@
 	</fieldset>
 </div>
 <input type="hidden" class="character-type" name="attr_matrix" />
-<div class="matrix"><h2>Matrix Device:</h2>
-	<div class="device-row">
-		<label><button type="roll" value="&{template:sGoon}{{header=Matrix Resistance}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{device_rating}+@{firewall})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Device Rating</button></label>
-		<input type="number" name="attr_device_rating" value="" placeholder="4" />
-		<input type="number" name="attr_device_attribute_1" value="" placeholder="7" />
-		<input type="number" name="attr_device_attribute_2" value="" placeholder="6" />
-		<input type="number" name="attr_device_attribute_3" value="" placeholder="5" />
-		<input type="number" name="attr_device_attribute_4" value="" placeholder="4" />
-		<input type="text" name="attr_device_name" placeholder="Sony CIY-720" />
-		<br/>
+<div class="matrix"><h2>Matrix Device:</h2><input type="text" name="attr_device_name" placeholder="Sony CIY-720" /><br />
+	<div class="2col">
+		<div class="device-row">
+			<label><button type="roll" value="&{template:sGoon}{{header=Matrix Resistance}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{device_rating}+@{firewall})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Device Rating</button></label>
+			<input type="number" name="attr_device_rating" value="" placeholder="4" />
+			<input type="number" name="attr_device_attribute_1" value="" placeholder="7" />
+			<input type="number" name="attr_device_attribute_2" value="" placeholder="6" />
+			<input type="number" name="attr_device_attribute_3" value="" placeholder="5" />
+			<input type="number" name="attr_device_attribute_4" value="" placeholder="4" />
+			<br/>
+		</div>
+		<div class="device-attr">
+			<label><button type="roll" value="&{template:sGoon}{{header=Attack}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Attack</button></label>
+			<input type="radio" name="attr_attack" value="@{device_attribute_1}" />
+			<input type="radio" name="attr_attack" value="@{device_attribute_2}" />
+			<input type="radio" name="attr_attack" value="@{device_attribute_3}" />
+			<input type="radio" name="attr_attack" value="@{device_attribute_4}" />
+		</div>
+		<div class="device-attr">
+			<label><button type="roll" value="&{template:sGoon}{{header=Sleaze}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{sleaze}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Sleaze</button></label>
+			<input type="radio" name="attr_sleaze" value="@{device_attribute_1}" />
+			<input type="radio" name="attr_sleaze" value="@{device_attribute_2}" />
+			<input type="radio" name="attr_sleaze" value="@{device_attribute_3}" />
+			<input type="radio" name="attr_sleaze" value="@{device_attribute_4}" />
+		</div>
+		<div class="device-attr">
+			<label><button type="roll" value="&{template:sGoon}{{header=Data Processing}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{data_processing}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Data Processing</button></label>
+			<input type="radio" name="attr_data_processing" value="@{device_attribute_1}" />
+			<input type="radio" name="attr_data_processing" value="@{device_attribute_2}" />
+			<input type="radio" name="attr_data_processing" value="@{device_attribute_3}" />
+			<input type="radio" name="attr_data_processing" value="@{device_attribute_4}" />
+		</div>
+		<div class="device-attr">
+			<label><button type="roll" value="&{template:sGoon}{{header=Firewall}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{firewall}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Firewall</button></label>
+			<input type="radio" name="attr_firewall" value="@{device_attribute_1}" />
+			<input type="radio" name="attr_firewall" value="@{device_attribute_2}" />
+			<input type="radio" name="attr_firewall" value="@{device_attribute_3}" />
+			<input type="radio" name="attr_firewall" value="@{device_attribute_4}" />
+		</div>
 	</div>
-	<div class="device-attr">
-		<label><button type="roll" value="&{template:sGoon}{{header=Attack}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Attack</button></label>
-		<input type="radio" name="attr_attack" value="@{device_attribute_1}" />
-		<input type="radio" name="attr_attack" value="@{device_attribute_2}" />
-		<input type="radio" name="attr_attack" value="@{device_attribute_3}" />
-		<input type="radio" name="attr_attack" value="@{device_attribute_4}" />
-		<input type="text" name="attr_attack_notes" placeholder="Attack notes" />
-	</div>
-	<div class="device-attr">
-		<label><button type="roll" value="&{template:sGoon}{{header=Sleaze}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{sleaze}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Sleaze</button></label>
-		<input type="radio" name="attr_sleaze" value="@{device_attribute_1}" />
-		<input type="radio" name="attr_sleaze" value="@{device_attribute_2}" />
-		<input type="radio" name="attr_sleaze" value="@{device_attribute_3}" />
-		<input type="radio" name="attr_sleaze" value="@{device_attribute_4}" />
-		<input type="text" name="attr_sleaze_notes" placeholder="Sleaze notes" />
-	</div>
-	<div class="device-attr">
-		<label><button type="roll" value="&{template:sGoon}{{header=Data Processing}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{data_processing}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Data Processing</button></label>
-		<input type="radio" name="attr_data_processing" value="@{device_attribute_1}" />
-		<input type="radio" name="attr_data_processing" value="@{device_attribute_2}" />
-		<input type="radio" name="attr_data_processing" value="@{device_attribute_3}" />
-		<input type="radio" name="attr_data_processing" value="@{device_attribute_4}" />
-		<input type="text" name="attr_data_processing_notes" placeholder="Data Processing notes" />
-	</div>
-	<div class="device-attr">
-		<label><button type="roll" value="&{template:sGoon}{{header=Firewall}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{firewall}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Firewall</button></label>
-		<input type="radio" name="attr_firewall" value="@{device_attribute_1}" />
-		<input type="radio" name="attr_firewall" value="@{device_attribute_2}" />
-		<input type="radio" name="attr_firewall" value="@{device_attribute_3}" />
-		<input type="radio" name="attr_firewall" value="@{device_attribute_4}" />
-		<input type="text" name="attr_firewall_notes" placeholder="Firewall notes" />
+	<div class="2col program-col">
+		<h3>Programs</h3>
+		<fieldset class="repeating_form">
+		<div class="weapon spell toggle">
+			<input type="checkbox" class="settings-toggle" name="" /><span>y</span>
+			<div class="settings">
+				<input type="text" name="attr_program" value="" placeholder="Program Name" />
+				<div class="weapon-note">
+					<input type="text"  name="attr_program_note" value="" placeholder="Program Description"/>
+				</div>
+			</div>
+			<div class="display">
+			<input type="hidden" class="program-toggle" name="attr_program_toggle" value="" />
+				<div class="weapon-indent">
+					<input type="checkbox" class="program-toggle" name="attr_program_toggle" checked="checked" /><span class="program-toggle">Q</span>
+					<button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=@{program}}}{{desc=@{program_note}}}"><span name="attr_program"></span></button><span name="attr_program_note"></span>
+				</div>
+			</div>
+		</div>
+		</fieldset>
 	</div>
 </div>
 
