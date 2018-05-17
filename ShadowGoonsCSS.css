@@ -98,19 +98,15 @@ h2 {
 	font-size: 1rem;
 }
 
-.charsheet {
+.charsheet,
+.sheet-goon,
+.sheet-host,
+.sheet-vehicle {
 	width: 700px;
 	min-height: 600px;
-	color: white;
+	color: #fff;
 	background-color: #101010; 
 }
-
-.sheet-wrapper {
-	display: inline-block !important;
-	font-size: 0.8em;
-	width: calc(100% - 0px) !important;
-}
-
 
 /***** Customize columns & rows *****/
 .sheet-row {margin: 0px 0px 0px 0px;}
@@ -153,10 +149,16 @@ input.sheet-whisper-flag:checked ~ span.sheet-whisper-flag,
 input.sheet-wound-flag:checked ~ span.sheet-wound-flag,
 input.sheet-modifier-flag:checked ~ span.sheet-modifier-flag,
 input.sheet-edge-flag:checked ~ span.sheet-edge-flag,
+input.sheet-npc-type:checked + span.sheet-goon-flag,
+input.sheet-npc-type:checked + span.sheet-host-flag, 
+input.sheet-npc-type:checked + span.sheet-vehicle-flag, 
 input.sheet-whisper-flag:hover ~ span.sheet-whisper-flag,
 input.sheet-wound-flag:hover ~ span.sheet-wound-flag,
 input.sheet-modifier-flag:hover ~ span.sheet-modifier-flag,
-input.sheet-edge-flag:hover ~ span.sheet-edge-flag {
+input.sheet-edge-flag:hover ~ span.sheet-edge-flag,
+input.sheet-npc-type:hover + span.sheet-goon-flag,
+input.sheet-npc-type:hover + span.sheet-host-flag, 
+input.sheet-npc-type:hover + span.sheet-vehicle-flag  {
 	 color: #FCD116;
 }
 
@@ -258,7 +260,17 @@ input.sheet-settings-toggle:checked ~ div.sheet-settings {
 	margin: 0px 23px 5px 23px;
 }
 
-.sheet-settings .sheet-attr-header {margin: 0px 16px 5px 16px;}
+.sheet-host .sheet-attr-header  {
+	margin-left: 35px;
+	margin-right: 35px;
+}
+
+.sheet-vehicle .sheet-attr-header  {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.sheet-goon .sheet-settings .sheet-attr-header {margin: 0px 16px 5px 16px;}
 
 /***** Bonus Row Customization *****/
 .sheet-bonusrow {
@@ -332,8 +344,8 @@ input.sheet-con-reset + label {margin-left: -167px;}
 
 /**** Customize all the cogs Toggle Settings ****/
 .sheet-stats input.sheet-settings-toggle {
-	top: -15px;
-	left: 67%;
+	top: -25px;
+	left: 97%;
 }
 
 .sheet-stats input.sheet-settings-toggle + span,
@@ -343,8 +355,8 @@ input.sheet-con-reset + label {margin-left: -167px;}
 }
 
 .sheet-stats input.sheet-settings-toggle + span {
-	top: -14px;
-	left: 63.5%;
+	top: -24px;
+	left: 93.5%;
 }
 
 .sheet-textrow input.sheet-settings-toggle {
@@ -377,7 +389,7 @@ input.sheet-con-reset + label {margin-left: -167px;}
 	text-align: left;
 } 
 
-.sheet-weapon-indent {
+.sheet-repeat-indent {
 	padding-left: 2.5rem; 
 	text-indent: -1.5rem;
 }
@@ -533,7 +545,7 @@ span.sheet-program-toggle {
 	font-size: 15px !important;
 }
 
-.sheet-program-toggle[value="0"] + div.sheet-weapon-indent {
+.sheet-program-toggle[value="0"] + div.sheet-repeat-indent {
 	opacity: 0.3;
 }
 
@@ -554,7 +566,10 @@ span.sheet-program-toggle {
 .sheet-optional-flag0[value="0"] + .sheet-textboxes,
 .sheet-optional-flag0[value="0"] + .sheet-attr-header,
 .sheet-spell_catagory + select,
-.sheet-spell_catagory + select + input {
+.sheet-spell_catagory + select + input,
+.sheet-goon,
+.sheet-host,
+.sheet-vehicle  {
 	display: none;
 }
 
@@ -567,7 +582,10 @@ span.sheet-program-toggle {
 .sheet-character-type[value="magic"] + .sheet-magic,
 .sheet-character-type[value="magic"] + .sheet-magic + .sheet-magic,
 .sheet-character-type[value="resonance"] + .sheet-resonance,
-.sheet-character-type[value="resonance"] + .sheet-resonance + .sheet-resonance {
+.sheet-character-type[value="resonance"] + .sheet-resonance + .sheet-resonance,
+.sheet-npc-type[value="goon"] + .sheet-goon,
+.sheet-npc-type[value="host"] + .sheet-host,
+.sheet-npc-type[value="vehicle"] + .sheet-vehicle {
 	display: inline-block;
 }
 
@@ -604,7 +622,7 @@ input::-webkit-inner-spin-button {
 /**** Roll Toggles ****/
 .sheet-roll-toggles,
 .sheet-roll-toggles span {
-	display: inline-block;
+	display: inline;
 	font-size: 1.5rem;
 	font-family: "pictos";
 	position: relative;
@@ -626,17 +644,21 @@ input::-webkit-inner-spin-button {
 	letter-spacing: -8px;
 }
 
-span.sheet-pictosC {
-	font-family: "Pictos Custom";
+.sheet-type-toggles {
+	display: inline-block;
+	letter-spacing: -8px;
+	margin-left: 50%;
 }
 
-span.sheet-pictos3 {
-	font-family: "Pictos Three";
+.sheet-type-toggles input[type="radio"] {
+	left: 23px;
 }
 
-span.sheet-d6 {
-	font-family: "dicefontd6";
-}
+span.sheet-pictosC {font-family: "Pictos Custom";}
+
+span.sheet-pictos3 {font-family: "Pictos Three";}
+
+span.sheet-d6 {font-family: "dicefontd6";}
 
 input.sheet-whisper-flag,
 input.sheet-wound-flag,
@@ -652,6 +674,8 @@ span.sheet-wound-line {
 	left: -7%;
 	top: -1px;
 }
+
+/**** Sheet Toggles ****/
 
 /**** Footer ****/
 .sheet-footer {
