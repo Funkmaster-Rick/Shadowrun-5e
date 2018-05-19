@@ -162,7 +162,7 @@ input.sheet-npc-type:hover + span.sheet-vehicle-flag  {
 	 color: #FCD116;
 }
 
-.sheet-toggle .sheet-2col input[type="checkbox"] {
+.sheet-toggle .sheet-2col input {
 	width: 55px;
 	left: 55px;
 }
@@ -257,7 +257,7 @@ input.sheet-settings-toggle:checked ~ div.sheet-settings {
 
 .sheet-attr-header {
 	text-align: center;
-	margin: 0px 23px 5px 23px;
+	margin: 3px 30px 5px 29px;
 }
 
 .sheet-host .sheet-attr-header  {
@@ -270,7 +270,22 @@ input.sheet-settings-toggle:checked ~ div.sheet-settings {
 	margin-right: 15px;
 }
 
-.sheet-goon .sheet-settings .sheet-attr-header {margin: 0px 16px 5px 16px;}
+.sheet-goon .sheet-settings .sheet-attr-header {
+	margin-left: 22px;
+	margin-right: 22px;
+}
+
+.sheet-character-type[value="magic"] ~ .sheet-attr-header,
+.sheet-character-type[value="resonance"] ~ .sheet-attr-header {
+	margin-left: 23px;
+	margin-right: 24px;
+}
+
+.sheet-settings .sheet-attribute .sheet-character-type[value="magic"] ~ .sheet-attr-header,
+.sheet-settings .sheet-attribute .sheet-character-type[value="resonance"] ~ .sheet-attr-header {
+	margin-left: 16px;
+	margin-right: 17px;
+}
 
 /***** Bonus Row Customization *****/
 .sheet-bonusrow {
@@ -350,7 +365,7 @@ input.sheet-con-reset + label {margin-left: -167px;}
 
 .sheet-stats input.sheet-settings-toggle + span,
 .sheet-textrow input.sheet-settings-toggle + span,
-.sheet-weapon input.sheet-settings-toggle + span {
+.sheet-repeating input.sheet-settings-toggle + span {
 	position: relative;
 }
 
@@ -369,23 +384,23 @@ input.sheet-con-reset + label {margin-left: -167px;}
 	left: 750px;
 }
 
-.sheet-weapon input.sheet-settings-toggle {
+.sheet-repeating input.sheet-settings-toggle {
 	top: 20px;
 	left: -5px;
 }
 
-.sheet-weapon input.sheet-settings-toggle + span {
+.sheet-repeating input.sheet-settings-toggle + span {
 	top: 20px;
 	left: -20px;
 	font-size: 0.8rem;
 }
 
 /**** Weapons Customize ****/
-.sheet-weapon {
+.sheet-repeating {
 	display:inline-block;
 }
 
-.sheet-weapon button.sheet-display {
+.sheet-repeating button.sheet-display {
 	text-align: left;
 } 
 
@@ -408,7 +423,7 @@ span.sheet-weapon-dice,
     line-height: 15px;  
 }
 
-.sheet-weapon input[type="checkbox"] {
+.sheet-repeating input[type="checkbox"] {
 	width: 15px;
 	height: 15px;
 }
@@ -439,21 +454,25 @@ input.sheet-melee-toggle {
 	left: 36px;
 }
 
-.sheet-weapon .sheet-settings input[type="number"] {width: 35px;}
+.sheet-repeating .sheet-settings input[type="number"] {width: 35px;}
 
 input.sheet-melee-toggle + span {margin-right: 0px !important;}
+
+.sheet-repeating select {
+	width: 20%;
+	color: #FCD116;
+	background-color: #000;
+	border: none;
+	margin-left: 10px;
+}
 
 /**** Spell Customizations ****/
 .sheet-magic {margin-bottom: 5px;}
 
 input.sheet-spell-toggle {margin: 0px -38px 0px 5px;}
 
-.sheet-spell select {
+.sheet-magic .sheet-repeating select {
 	width: 10%;
-	color: #FCD116;
-	background-color: #000;
-	border: none;
-	margin-left: 10px;
 }
 
 input.sheet-spell-input {width: 35px !important;}
@@ -579,10 +598,10 @@ span.sheet-program-toggle {
 	display: inherit;
 }
 
-.sheet-character-type[value="magic"] + .sheet-magic,
-.sheet-character-type[value="magic"] + .sheet-magic + .sheet-magic,
-.sheet-character-type[value="resonance"] + .sheet-resonance,
-.sheet-character-type[value="resonance"] + .sheet-resonance + .sheet-resonance,
+.sheet-character-type[value="magic"] ~ .sheet-magic,
+.sheet-character-type[value="magic"] ~ .sheet-magic + .sheet-magic,
+.sheet-character-type[value="resonance"] ~ .sheet-resonance,
+.sheet-character-type[value="resonance"] ~ .sheet-resonance + .sheet-resonance,
 .sheet-npc-type[value="goon"] + .sheet-goon,
 .sheet-npc-type[value="host"] + .sheet-host,
 .sheet-npc-type[value="vehicle"] + .sheet-vehicle {

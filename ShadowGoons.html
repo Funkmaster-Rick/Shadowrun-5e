@@ -30,6 +30,7 @@
 		<input type="checkbox" class="settings-toggle" name="attr_stats_toggle" checked="checked" /><span>y</span>
 		<div class="settings">
 			<div class="attribute">
+				<input type="hidden" class="character-type" name="attr_special_flag" />
 				<div class="attr-header"><label>B</label><br /><input type="number" name="attr_body" value="" placeholder="3" /></div>
 				<div class="attr-header"><label>A</label><br /><input type="number" name="attr_agility" value="" placeholder="3" /></div>
 				<div class="attr-header"><label>R</label><br /><input type="number" name="attr_reaction" value="" placeholder="3" /></div>
@@ -40,10 +41,8 @@
 				<div class="attr-header"><label>C</label><br /><input type="number" name="attr_charisma" value="" placeholder="3" /></div>
 				<div class="attr-header"><label>E</label><br /><input type="number" name="attr_edge" value="" placeholder="3" /></div>
 				<div class="attr-header"><label>Ess</label><br /><input type="number" name="attr_essence" value="6" placeholder="3"  /></div>
-				<input type="hidden" class="character-type" name="attr_magic_flag" />
 				<div class="attr-header magic"><label>M</label><br /><input type="number" name="attr_magic" value="" placeholder="0" /></div>
 				<div class="attr-header magic"><label>F</label><br /><input type="number" name="attr_force" value="" placeholder="0" /></div>
-				<input type="hidden" class="character-type" name="attr_resonance_flag" />
 				<div class="attr-header resonance"><label>R</label><br /><input type="number" name="attr_resonance" value="" placeholder="0" /></div>
 				<div class="attr-header resonance"><label>L</label><br /><input type="number" name="attr_level" value="" placeholder="0" /></div>
 			</div>
@@ -57,7 +56,7 @@
 					<input type="number" name="attr_initiative_bonus" value="0" placeholder="0" /><span> + </span>
 					<input type="number" name="attr_initiative_dice_bonus" value="0" min="0" max="4" placeholder="0" /><span> d6</span>
 					<br />
-					<input type="hidden" class="character-type" name="attr_magic_flag" />
+					<input type="hidden" class="character-type" name="attr_special_flag" />
 					<div class="magic-skill">
 					<label>Astral Initiative: </label>
 						<input type="hidden" name="attr_astral_mod" value="6" />
@@ -128,8 +127,9 @@
 				</div>
 				<div class="2col">
 				<!--Start Right Checkboxes -->
-					<input class="character-type" type="checkbox" name="attr_magic_flag" value="magic" title="Magic" /><label>Magic</label><br />
-					<input class="character-type" type="checkbox" name="attr_resonance_flag" value="resonance" title="Resonance" /><label>Resonance</label><br />
+					<input class="character-type" type="radio" name="attr_special_flag" value="mundane" title="Mundane" selected="selected" /><label>Mundane</label><br />
+					<input class="character-type" type="radio" name="attr_special_flag" value="magic" title="Magic" /><label>Magic</label><br />
+					<input class="character-type" type="radio" name="attr_special_flag" value="resonance" title="Resonance" /><label>Resonance</label><br />
 					<input class="character-type" type="checkbox" name="attr_matrix" value="matrix" title="Matrix" /><label>Matrix Device</label><br />
 				</div>
 			</div>
@@ -222,7 +222,7 @@
 						<input type="number" name="attr_unarmedcombat_bonus" placeholder="0" title="@{unarmedcombat_bonus}">
 					</li>
 				</ul>
-				<input type="hidden" class="character-type" name="attr_magic_flag" />
+				<input type="hidden" class="character-type" name="attr_special_flag" />
 				<ul class="skill-col magic-skill">
 					<li><label>conjuring</label>
 						<input type="number" name="attr_conjuring" value="" placeholder="#" />
@@ -280,7 +280,7 @@
 						<input type="text" name="attr_software_spec" placeholder="Specalization" title="@{software_spec}">
 					</li>
 				</ul>
-				<input type="hidden" class="character-type" name="attr_magic_flag" />
+				<input type="hidden" class="character-type" name="attr_special_flag" />
 				<ul class="skill-col magic-skill">
 					<li><label>enchanting</label>
 						<input type="number" name="attr_enchanting" value="" placeholder="#" />
@@ -370,7 +370,7 @@
 						<input type="text" name="attr_tracking_spec" placeholder="Specalization" title="@{tracking_spec}">
 					</li>
 				</ul>
-				<input type="hidden" class="character-type" name="attr_magic_flag" />
+				<input type="hidden" class="character-type" name="attr_special_flag" />
 				<ul class="skill-col magic-skill">
 					<li><label>sorcery</label>
 						<input type="number" name="attr_sorcery" value="" placeholder="#" />
@@ -405,7 +405,7 @@
 						<input type="text" name="attr_sneaking_spec" placeholder="Specalization" title="@{sneaking_spec}">
 					</li>
 				</ul>
-				<input type="hidden" class="character-type" name="attr_resonance_flag" />
+				<input type="hidden" class="character-type" name="attr_special_flag" />
 				<ul class="skill-col resonance-skill">
 					<li><label>tasking</label>
 						<input type="number" name="attr_tasking" value="" placeholder="#" />
@@ -456,7 +456,7 @@
 						<input type="number" name="attr_arcana" value="" placeholder="#" />
 						<input type="text" name="attr_arcana_spec" placeholder="Specalization" title="@{arcana_spec}">
 					</li>
-					<input type="hidden" class="character-type" name="attr_magic_flag" />
+					<input type="hidden" class="character-type" name="attr_special_flag" />
 					<li class="magic-skill"><input type="checkbox" /><span>assensing</span>
 						<input type="number" name="attr_assensing" value="" placeholder="#" />
 						<input type="text" name="attr_assensing_spec" placeholder="Specalization" title="@{assensing_spec}">
@@ -579,7 +579,7 @@
 				<label>Gear: </label>
 				<textarea name="attr_gear" placeholder="Gear"></textarea>
 			</div>
-			<input type="hidden" class="character-type" name="attr_magic_flag" />
+			<input type="hidden" class="character-type" name="attr_special_flag" />
 			<div class="textrow magic">
 				<label>Initiate: </label><input type="number" name="attr_initiate" value="0" placeholder="Grade" />
 				<textarea name="attr_metamagic" placeholder="Metamagics"></textarea>
@@ -590,7 +590,7 @@
 				<label>Weakness: </label>
 				<textarea  name="attr_weakness" placeholder="Weaknesses"></textarea>
 			</div>
-			<input type="hidden" class="character-type" name="attr_resonance_flag" />
+			<input type="hidden" class="character-type" name="attr_special_flag" />
 			<div class="textrow resonance">
 				<label>Submersion: </label><input type="number" name="attr_submersion" value="0" placeholder="Grade" />
 				<textarea name="attr_echos" placeholder="Echos"></textarea>
@@ -602,6 +602,7 @@
 		<div class="display">
 		<!-- ~~~~~~~~ Attributes  ~~~~~~~~ -->
 			<div class="attribute">
+				<input type="hidden" class="character-type" name="attr_special_flag" />
 				<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Body}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Body Roll"><b>B</b></button></label><br /><span name="attr_body"></span></div>
 				<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Agility}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{agility}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Agility Roll"><b>A</b></button></label><br /><span name="attr_agility"></span></div>
 				<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Reaction}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{reaction}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Reaction Roll"><b>R</b></button></label><br /><span name="attr_reaction"></span></div>
@@ -612,10 +613,8 @@
 				<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Charisma}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{charisma}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Charisma Roll"><b>C</b></button></label><br /><span name="attr_charisma"></span></div>
 				<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Edge}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{dice=[[(@{edge}+(?{Attribute|Only Edge,0|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle})d6>5]]}}" title="Edge Roll"><b>E</b></label><br /><span name="attr_edge"></span></div>
 				<div class="attr-header"><label>Ess</label><br /><span name="attr_essence"></span></div>
-				<input type="hidden" class="character-type" name="attr_magic_flag" />
 				<div class="attr-header magic"><label>M</label><br /><span name="attr_magic"></span></div>
 				<div class="attr-header magic"><label>F</label><br /><span name="attr_force"></span></div>
-				<input type="hidden" class="character-type" name="attr_resonance_flag" />
 				<div class="attr-header resonance"><label>R</label><br /><span name="attr_resonance"></span></div>
 				<div class="attr-header resonance"><label>L</label><br /><span name="attr_level"></span></div>
 			</div>
@@ -625,7 +624,7 @@
 			<span name="attr_initiative_mod"></span><span> + </span><span name="attr_initiative_dice"></span><span> d6</span>
 		</div>
 		<!-- ~~~~~~~~ Astral Initiative  ~~~~~~~~ -->
-		<input type="hidden" class="character-type" name="attr_magic_flag" />
+		<input type="hidden" class="character-type" name="attr_special_flag" />
 		<div class="magic">
 			<label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Astral Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{astral_mod}+@{wound_toggle}+@{modifier_toggle})+(@{astral_dice})d6cf0 &{tracker}]]}}"><b>Astral Initiative:</b> </button></label>
 			<span name="attr_astral_mod"></span><span> + </span><span name="attr_astral_dice"></span><span> d6</span>
@@ -1089,7 +1088,7 @@
 	</div><!-- ~~~~~~~~ End of Stats area  ~~~~~~~~ -->
 	<div class="row"><label>Weapons: </label>
 		<fieldset class="repeating_weapon">
-			<div class="weapon toggle">
+			<div class="repeating toggle">
 				<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" /><span>y</span>
 				<div class="settings">
 					<input type="radio" class="range-toggle" name="attr_weapon_range" value="" checked="checked" /><span>Range</span>
@@ -1122,10 +1121,10 @@
 			</div>
 		</fieldset>
 	</div>
-	<input type="hidden" class="character-type" name="attr_magic_flag" />
+	<input type="hidden" class="character-type" name="attr_special_flag" />
 	<div class="magic"><label>Spells: </label>
 		<fieldset class="repeating_spell">
-			<div class="weapon spell toggle">
+			<div class="repeating toggle">
 				<input type="checkbox" class="settings-toggle" name="attr_spell_toggle" checked="checked" /><span>y</span>
 				<div class="settings">
 					<select name="attr_spell_catagory">
@@ -1165,10 +1164,10 @@
 			</div>
 		</fieldset>
 	</div>
-	<input type="hidden" class="character-type" name="attr_resonance_flag" />
+	<input type="hidden" class="character-type" name="attr_special_flag" />
 	<div class="resonance"><label>Complex Forms: </label>
 		<fieldset class="repeating_form">
-			<div class="weapon spell toggle">
+			<div class="repeating spell toggle">
 				<input type="checkbox" class="settings-toggle" name="attr_form_toggle" checked="checked" /><span>y</span>
 				<div class="settings">
 					<input type="number" name="attr_software_dice" value="" placeholder="Dice" />
@@ -1234,7 +1233,7 @@
 		<div class="2col program-col">
 			<h3>Programs</h3>
 			<fieldset class="repeating_form">
-			<div class="weapon spell toggle">
+			<div class="repeating spell toggle">
 				<input type="checkbox" class="settings-toggle" name="" /><span>y</span>
 				<div class="settings">
 					<input type="text" name="attr_program" value="" placeholder="Program Name" />
@@ -1270,35 +1269,38 @@
 		</div>
 		<div class="display">
 			<div class="attribute">
-				<div class="attr-header"><label><button type="roll" value="&{template:sGoon}{{header=Matrix Resistance}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{host_rating}+@{firewall})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Host Rating</b></button></label><br /><span name="attr_host_rating"></span></div>
+				<div class="attr-header"><label><button type="roll" value="&{template:sGoon}{{header=Matrix Resistance}}{{base=Host Rating ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{host_rating}+@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Host Rating</b></button></label><br /><span name="attr_host_rating"></span></div>
 				<br />
-				<div class="attr-header"><label><button type="roll" value="&{template:sGoon}{{header=Attack}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Attack</b></button></label><br /><span name="attr_attack"></span></div>
+				<div class="attr-header"><label><button type="roll" value="&{template:sGoon}{{header=Attack ♦ Host Rating}}{{base=Attack}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Attack</b></button></label><br /><span name="attr_attack"></span></div>
 				<br />
-				<div class="attr-header"><label><button type="roll" value="&{template:sGoon}{{header=Sleaze}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{sleaze}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Sleaze</b></button></label><br /><span name="attr_sleaze"></span></div>
+				<div class="attr-header"><label><button type="roll" value="&{template:sGoon}{{header=Sleaze}}{{base=Sleaze ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{sleaze}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Sleaze</b></button></label><br /><span name="attr_sleaze"></span></div>
 				<br />
-				<div class="attr-header"><label><button type="roll" value="&{template:sGoon}{{header=Data Processing}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{data_processing}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Data Processing</b></button></label><br /><span name="attr_data_processing"></span></div>
+				<div class="attr-header"><label><button type="roll" value="&{template:sGoon}{{header=Data Processing}}{{base=Data Processing ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{data_processing}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Data Processing</b></button></label><br /><span name="attr_data_processing"></span></div>
 				<br />
-				<div class="attr-header"><label><button type="roll" value="&{template:sGoon}{{header=Firewall}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{firewall}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Firewall</b></button></label><br /><span name="attr_firewall"></span></div>
+				<div class="attr-header"><label><button type="roll" value="&{template:sGoon}{{header=Firewall}}{{base=Firewall ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{firewall}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Firewall</b></button></label><br /><span name="attr_firewall"></span></div>
 			</div>
 		</div>
 	</div>
 	<input type="hidden" name="attr_IC_attack" min="1" value="" />
 	<div class="row"><label>Intrusion Countermeasures: </label>
 		<fieldset class="repeating_IC">
-			<div class="weapon spell toggle">
+			<div class="repeating toggle">
 				<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" /><span>y</span>
 				<div class="settings">
-					<input type="text" name="attr_IC_name" value="" placeholder="Binder" />
-					<select name="attr_IC_limit">
+					<input type="text" name="attr_IC_name" value="" placeholder="IC Name" />
+					<span>[</span>
+					<select name="attr_IC_limit" title="Limit">
 						<option class="option" value="@{attack}" selected="selected">Attack</option>
 						<option class="option" value="@{data_processing}">Data Processing</option>
 					</select>
-					<select name="attr_IC_attribute">
+					<span>]</span>
+					<select name="attr_IC_attribute" title="Mental attribute resistance">
 						<option class="option" value="Willpower" selected="selected">Willpower</option>
 						<option class="option" value="Intuition">Intuition</option>
 						<option class="option" value="Logic">Logic</option>
 					</select>
-					<select name="attr_IC_matrix">
+					<span> vs. </span>
+					<select name="attr_IC_matrix" title="Matrix attribute resistance">
 						<option class="option" value="Attack">Attack</option>
 						<option class="option" value="Sleaze">Sleaze</option>
 						<option class="option" value="Data Processing" selected="selected">Data Processing</option>
@@ -1306,11 +1308,11 @@
 					</select>
 					<br />
 					<div class="weapon-note">
-						<input type="text"  name="attr_IC_note" value="" placeholder=""/>
+						<input type="text"  name="attr_IC_note" value="" placeholder="IC notes"/>
 					</div>
 				</div>
 				<div class="display">
-					<input type="hidden" name="attr_IC" value="" />
+					<input type="hidden" name="attr_IC" value="" /> 
 					<div class="repeat-indent">
 						<span class="weapon-dice"><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=@{IC_name}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+@{attack}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{IC_note}}"><span name="attr_IC_name"></span></button><span name="attr_IC"></span>
 					</div>
@@ -1737,15 +1739,20 @@ on("change:repeating_form", function() {
 
 
 	//IC displays are set into an Array
-on("change:repeating_IC" function() {
-    getAttrs(["attack", "repeating_IC_IC_limit", "repeating_IC_IC_attribute", "repeating_IC_IC_matrix", "repeating_IC_IC_note"], function(v){
+on("change:repeating_IC", function() {
+    getAttrs(["host_rating", "attack", "data_processing", "repeating_IC_IC_limit", "repeating_IC_IC_attribute", "repeating_IC_IC_matrix", "repeating_IC_IC_note"], function(v){
+    	var hos = parseInt(v.host_rating) || 0;
     	var att = parseInt(v.attack) || 0;
-    	var math = Math.min(att + att, 2);
+    	var data = parseInt(v.data_processing) || 0;
+    	var math = Math.min(v.host_rating * 2, 2);
 		var lim = (v.repeating_IC_IC_limit);
-		var attr = " vs. " + (v.repeating_IC_IC_attribute);
+		var attr = (v.repeating_IC_IC_attribute);
 		var mat = (v.repeating_IC_IC_matrix);
 		var not = (v.repeating_IC_IC_note);
-		var display = (" (" + math + "[" + lim + "]" + attr + " + " + mat + ")" + not);
+		
+		if (lim === "@{data_processing}") {
+			var display = (" (" + math + " [" + data + "]" + " vs. " + attr + " + " + mat + ")" + not);
+		} else {var display = (" (" + math + " [" + att + "]" + " vs. " + attr + " + " + mat + ")" + not);}
 
         setAttrs({
             repeating_form_IC: display
