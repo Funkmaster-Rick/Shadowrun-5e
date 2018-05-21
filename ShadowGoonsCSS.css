@@ -18,7 +18,7 @@ button {
 button[type="roll"] {
 	color: #fff;
 	font-size: 0.9rem !important;
-	padding: 2px 0px !important;
+	padding: 0px 0px !important;
 	margin: 0px 0px 0px 0px !important;
 }
 
@@ -29,7 +29,9 @@ button:hover {
 
 button:before {display: none;}
 
-div {background-color: transparent;}
+div {
+	background-color: transparent;
+}
 
 fieldset {
 	background: transparent;
@@ -37,12 +39,26 @@ fieldset {
 	width: 40%;
 }
 
+hr {
+	border: 0.5px solid #555555;
+	margin: 7px 0px -2px 0px;
+}
+
+h1, h2 {
+	font-size: 1.5rem;
+	color: #FCD116;
+}
+
+h2 {
+	font-size: 1rem;
+}
+
 label {
 	display: inline-block;
 	color: #fff;
 	font-size: 0.9rem;
 	text-transform: capitalize;
-	width: auto;
+	width: fit-content;
 }
 
 input,
@@ -66,6 +82,14 @@ input[type="radio"] {
     position: relative;
 }
 
+select {
+	width: fit-content;
+	color: #FCD116;
+	background-color: #000;
+	border: none;
+	margin-bottom: 0px;
+}
+
 textarea {
 	resize: vertical;
 	background-color: #333;
@@ -84,28 +108,17 @@ textarea {
 	border-bottom: 1px dotted #FCD116;
 }
 
-hr {
-	border: 0.5px solid #555555;
-	margin: 7px 0px -2px 0px;
+.charsheet {
+	width: 700px;
+	min-height: 800px;
+	color: #fff;
+	background-color: #101010; 
 }
 
-h1, h2 {
-	font-size: 1.5rem;
-	color: #FCD116;
-}
-
-h2 {
-	font-size: 1rem;
-}
-
-.charsheet,
 .sheet-goon,
 .sheet-host,
 .sheet-vehicle {
-	width: 700px;
-	min-height: 600px;
-	color: #fff;
-	background-color: #101010; 
+	width: 100%;
 }
 
 /***** Customize columns & rows *****/
@@ -227,8 +240,6 @@ input.sheet-npc-type:hover + span.sheet-vehicle-flag  {
 	overflow: hidden;
 }
 
-.sheet-display .sheet-skillrow span {padding: 0px;}
-
 .sheet-settings,
 .sheet-weapon-melee,
 .sheet-weapon-range,
@@ -243,11 +254,10 @@ input.sheet-settings-toggle:checked ~ div.sheet-settings {
 }
 
 /***** Customize Stats section *****/
-.sheet-stats {display: inline-block;}
+.sheet-stats {display: inline;}
 
 /***** Customize Attribute Section *****/
 .sheet-attribute {
-	display: inline-flex;
 	width: 100%;
 	margin: 0px 0px 10px 0px;
 	text-indent: center;
@@ -261,8 +271,8 @@ input.sheet-settings-toggle:checked ~ div.sheet-settings {
 }
 
 .sheet-host .sheet-attr-header  {
-	margin-left: 35px;
-	margin-right: 35px;
+	margin-left: 33px;
+	margin-right: 33px;
 }
 
 .sheet-vehicle .sheet-attr-header  {
@@ -270,7 +280,7 @@ input.sheet-settings-toggle:checked ~ div.sheet-settings {
 	margin-right: 15px;
 }
 
-.sheet-goon .sheet-settings .sheet-attr-header {
+.sheet-settings .sheet-goon .sheet-attr-header {
 	margin-left: 22px;
 	margin-right: 22px;
 }
@@ -293,13 +303,15 @@ input.sheet-settings-toggle:checked ~ div.sheet-settings {
 	width: 100%;
 }
 
-.sheet-con-reset {width: 23% !important;}
+.sheet-con-reset {
+	width: 23.2% !important;
+	margin-left:-165px;
+	margin-right: 5px;
+}
 
-input.sheet-con-reset + label {margin-left: -167px;}
+input.sheet-con-reset + label {float: left;}
 
 /***** Customizations to skills section *****/
-.sheet-stats {display: inline;}
-
 .sheet-skill-row {margin: 5px 0px 0px 0px;}
 
 .sheet-skill-col {
@@ -308,9 +320,7 @@ input.sheet-con-reset + label {margin-left: -167px;}
 	margin: 5px 0px 0px 4px;
 }
 
-.sheet-skill-col label {
-	text-decoration: underline;
-}
+.sheet-skill-col label {text-decoration: underline;}
 
 .sheet-stats ul {
 	vertical-align: top;
@@ -346,7 +356,7 @@ input.sheet-con-reset + label {margin-left: -167px;}
 
 .sheet-textrow textarea {margin-bottom: 10px;}
 
-.sheet-settings .sheet-textrow label {margin-bottom: 33px;}
+.sheet-settings .sheet-textrow label {margin-bottom: 36px;}
 
 .sheet-quality div.sheet-display,
 .sheet-weakness div.sheet-display {text-indent: 78px;}
@@ -358,21 +368,19 @@ input.sheet-con-reset + label {margin-left: -167px;}
 .sheet-gear div.sheet-display {text-indent: 45px;}
 
 /**** Customize all the cogs Toggle Settings ****/
-.sheet-stats input.sheet-settings-toggle {
-	top: -25px;
-	left: 97%;
-}
-
 .sheet-stats input.sheet-settings-toggle + span,
 .sheet-textrow input.sheet-settings-toggle + span,
 .sheet-repeating input.sheet-settings-toggle + span {
 	position: relative;
 }
 
+.sheet-stats input.sheet-settings-toggle,
 .sheet-stats input.sheet-settings-toggle + span {
-	top: -24px;
-	left: 93.5%;
+	top: -25px;
+	left: 97%;
 }
+
+.sheet-stats input.sheet-settings-toggle + span {left: 93.5%;}
 
 .sheet-textrow input.sheet-settings-toggle {
 	top: -12px;
@@ -396,13 +404,9 @@ input.sheet-con-reset + label {margin-left: -167px;}
 }
 
 /**** Weapons Customize ****/
-.sheet-repeating {
-	display:inline-block;
-}
+.sheet-repeating {display:inline-block;}
 
-.sheet-repeating button.sheet-display {
-	text-align: left;
-} 
+.sheet-repeating button.sheet-display {text-align: left;} 
 
 .sheet-repeat-indent {
 	padding-left: 2.5rem; 
@@ -410,9 +414,7 @@ input.sheet-con-reset + label {margin-left: -167px;}
 }
 
 span.sheet-weapon-dice,
-.sheet-weapon-dice span {
-	font-size: 12px;
-}
+.sheet-weapon-dice span {font-size: 12px;}
 
 .sheet-weapon-settings label {
     width: 100%;
@@ -458,22 +460,10 @@ input.sheet-melee-toggle {
 
 input.sheet-melee-toggle + span {margin-right: 0px !important;}
 
-.sheet-repeating select {
-	width: 20%;
-	color: #FCD116;
-	background-color: #000;
-	border: none;
-	margin-left: 10px;
-}
-
 /**** Spell Customizations ****/
-.sheet-magic {margin-bottom: 5px;}
-
 input.sheet-spell-toggle {margin: 0px -38px 0px 5px;}
 
-.sheet-magic .sheet-repeating select {
-	width: 10%;
-}
+.sheet-magic .sheet-repeating select {width: 12.4%;}
 
 input.sheet-spell-input {width: 35px !important;}
 
@@ -537,7 +527,8 @@ input.sheet-spell-input {width: 35px !important;}
 }
 
 .sheet-matrix .sheet-weapon-note input[type="text"] {
-	width: 50%;
+	margin-top: 5px;
+	width: 49%;
 }
 
 .sheet-device-row label + input[type="number"] {
@@ -560,18 +551,12 @@ input.sheet-program-toggle {
 	left: 15px;
 }
 
-span.sheet-program-toggle {
-	font-size: 15px !important;
-}
+span.sheet-program-toggle {font-size: 15px !important;}
 
-.sheet-program-toggle[value="0"] + div.sheet-repeat-indent {
-	opacity: 0.3;
-}
+.sheet-program-toggle[value="0"] + div.sheet-repeat-indent {opacity: 0.3;}
 
 /**** Hide Sections that are not used ****/
-.sheet-optional-flag0[value="1"] + .sheet-optional {
-	display: inline-block;
-}
+.sheet-optional-flag0[value="1"] + .sheet-optional {display: inline-block;}
 
 .sheet-optional-flag0[value="1"] + .sheet-textboxes {
 	display: inherit;
@@ -588,36 +573,34 @@ span.sheet-program-toggle {
 .sheet-spell_catagory + select + input,
 .sheet-goon,
 .sheet-host,
-.sheet-vehicle  {
-	display: none;
-}
+.sheet-vehicle  {display: none;}
 
 .sheet-spell_catagory[value="Combat"] + select,
 .sheet-spell_catagory[value="Combat"] + select + input,
-.sheet-character-type[value="matrix"] + .sheet-matrix {
-	display: inherit;
-}
+.sheet-character-type[value="matrix"] + .sheet-matrix {display: inherit;}
 
 .sheet-character-type[value="magic"] ~ .sheet-magic,
 .sheet-character-type[value="magic"] ~ .sheet-magic + .sheet-magic,
 .sheet-character-type[value="resonance"] ~ .sheet-resonance,
 .sheet-character-type[value="resonance"] ~ .sheet-resonance + .sheet-resonance,
-.sheet-npc-type[value="goon"] + .sheet-goon,
-.sheet-npc-type[value="host"] + .sheet-host,
-.sheet-npc-type[value="vehicle"] + .sheet-vehicle {
-	display: inline-block;
-}
+.sheet-npc-type[value="goon"] ~ .sheet-goon,
+.sheet-npc-type[value="host"] ~ .sheet-host,
+.sheet-npc-type[value="vehicle"] ~ .sheet-vehicle {display: inline-block;}
 
+.sheet-npc-type[value="goon"] ~ div.sheet-goon.sheet-attribute,
+.sheet-npc-type[value="host"] ~ div.sheet-host.sheet-attribute,
+.sheet-npc-type[value="vehicle"] ~ div.sheet-vehicle.sheet-attribute {display: inline-flex;}
+
+.sheet-npc-type[value="host"] ~ .sheet-wound-flag,
+.sheet-npc-type[value="host"] ~ .sheet-edge-flag,
+.sheet-npc-type[value="vehicle"] ~ .sheet-wound-flag,
+.sheet-npc-type[value="vehicle"] ~ .sheet-edge-flag,
 .sheet-magic-skill,
-.sheet-resonance-skill {
-	opacity: 0.1;
-}
+.sheet-resonance-skill {opacity: 0.1;}
 
 .sheet-character-type[value="magic"] + .sheet-magic-skill,
 .sheet-character-type[value="magic"] + .sheet-magic-skill + .sheet-magic-skill,
-.sheet-character-type[value="resonance"] + .sheet-resonance-skill {
-	opacity: 1;
-}
+.sheet-character-type[value="resonance"] + .sheet-resonance-skill {opacity: 1;}
 
 /**** Removes the arrows for increase numbers ****/
 input::-webkit-outer-spin-button,
@@ -665,13 +648,10 @@ input::-webkit-inner-spin-button {
 
 .sheet-type-toggles {
 	display: inline-block;
-	letter-spacing: -8px;
-	margin-left: 50%;
+	margin-left: 55%;
 }
 
-.sheet-type-toggles input[type="radio"] {
-	left: 23px;
-}
+.sheet-type-toggles input[type="radio"] {left: 23px;}
 
 span.sheet-pictosC {font-family: "Pictos Custom";}
 
@@ -693,8 +673,6 @@ span.sheet-wound-line {
 	left: -7%;
 	top: -1px;
 }
-
-/**** Sheet Toggles ****/
 
 /**** Footer ****/
 .sheet-footer {
