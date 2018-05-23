@@ -579,10 +579,6 @@ span.sheet-program-toggle {font-size: 15px !important;}
 .sheet-spell_catagory[value="Combat"] + select + input,
 .sheet-character-type[value="matrix"] + .sheet-matrix {display: inherit;}
 
-.sheet-character-type[value="magic"] ~ .sheet-magic,
-.sheet-character-type[value="magic"] ~ .sheet-magic + .sheet-magic,
-.sheet-character-type[value="resonance"] ~ .sheet-resonance,
-.sheet-character-type[value="resonance"] ~ .sheet-resonance + .sheet-resonance,
 .sheet-npc-type[value="goon"] ~ .sheet-goon,
 .sheet-npc-type[value="host"] ~ .sheet-host,
 .sheet-npc-type[value="vehicle"] ~ .sheet-vehicle {display: inline-block;}
@@ -596,11 +592,16 @@ span.sheet-program-toggle {font-size: 15px !important;}
 .sheet-npc-type[value="vehicle"] ~ .sheet-wound-flag,
 .sheet-npc-type[value="vehicle"] ~ .sheet-edge-flag,
 .sheet-magic-skill,
-.sheet-resonance-skill {opacity: 0.1;}
+.sheet-resonance-skill {opacity: 0.15;}
 
 .sheet-character-type[value="magic"] + .sheet-magic-skill,
 .sheet-character-type[value="magic"] + .sheet-magic-skill + .sheet-magic-skill,
 .sheet-character-type[value="resonance"] + .sheet-resonance-skill {opacity: 1;}
+
+.sheet-character-type[value="magic"] ~ .sheet-magic,
+.sheet-character-type[value="magic"] ~ .sheet-magic + .sheet-magic,
+.sheet-character-type[value="resonance"] ~ .sheet-resonance,
+.sheet-character-type[value="resonance"] ~ .sheet-resonance + .sheet-resonance {display: inline-block;} 
 
 /**** Removes the arrows for increase numbers ****/
 input::-webkit-outer-spin-button,

@@ -1,10 +1,8 @@
 <!--- TO Do List
-	Add Drone & Host sheets
-	 Powers need to be rollable. Common Power buttons would be useful
-	 Skills need Specilazation options
-	 Intiative needs to account for Vehicle & Host iniative.
-	 Matrix Intiative still needs auto calculate
-	 Give Display Labels a right margin and remove all spaces
+	Goons the Matrix Mod is not getting the Data Processing
+	Powers need to be rollable. Common Power buttons would be useful
+	Skills need Specilazation options
+	Give Display Labels a right margin and remove all spaces
 ---->
 
 <div class="roll-toggles"><!-- ~~~~~~~~ Roll Buttons & Toggles  ~~~~~~~~ -->
@@ -37,19 +35,19 @@
 	<!-- ~~~~~~~~ Attributes  ~~~~~~~~ -->
 		<div class="goon attribute">
 			<input type="hidden" class="character-type" name="attr_special_flag" />
-			<div class="attr-header"><label>B</label><br /><input type="number" name="attr_body" value="" placeholder="3" /></div>
-			<div class="attr-header"><label>A</label><br /><input type="number" name="attr_agility" value="" placeholder="3" /></div>
-			<div class="attr-header"><label>R</label><br /><input type="number" name="attr_reaction" value="" placeholder="3" /></div>
-			<div class="attr-header"><label>S</label><br /><input type="number" name="attr_strength" value="" placeholder="3" /></div>
-			<div class="attr-header"><label>W</label><br /><input type="number" name="attr_willpower" value="" placeholder="3" /></div>
-			<div class="attr-header"><label>L</label><br /><input type="number" name="attr_logic" value="" placeholder="3" /></div>
-			<div class="attr-header"><label>I</label><br /><input type="number" name="attr_intuition" value="" placeholder="3" /></div>
-			<div class="attr-header"><label>C</label><br /><input type="number" name="attr_charisma" value="" placeholder="3" /></div>
-			<div class="attr-header"><label>E</label><br /><input type="number" name="attr_edge" value="" placeholder="3" /></div>
+			<div class="attr-header"><label>B</label><br /><input type="number" name="attr_body" value="3" placeholder="3" /></div>
+			<div class="attr-header"><label>A</label><br /><input type="number" name="attr_agility" value="3" placeholder="3" /></div>
+			<div class="attr-header"><label>R</label><br /><input type="number" name="attr_reaction" value="3" placeholder="3" /></div>
+			<div class="attr-header"><label>S</label><br /><input type="number" name="attr_strength" value="3" placeholder="3" /></div>
+			<div class="attr-header"><label>W</label><br /><input type="number" name="attr_willpower" value="3" placeholder="3" /></div>
+			<div class="attr-header"><label>L</label><br /><input type="number" name="attr_logic" value="3" placeholder="3" /></div>
+			<div class="attr-header"><label>I</label><br /><input type="number" name="attr_intuition" value="3" placeholder="3" /></div>
+			<div class="attr-header"><label>C</label><br /><input type="number" name="attr_charisma" value="3" placeholder="3" /></div>
+			<div class="attr-header"><label>E</label><br /><input type="number" name="attr_edge" value="3" placeholder="3" /></div>
 			<div class="attr-header"><label>Ess</label><br /><input type="number" name="attr_essence" value="6" placeholder="3"  /></div>
-			<div class="attr-header magic"><label>M</label><br /><input type="number" name="attr_magic" value="" placeholder="0" /></div>
-			<div class="attr-header magic"><label>F</label><br /><input type="number" name="attr_force" value="" placeholder="0" /></div>
-			<div class="attr-header resonance"><label>R</label><br /><input type="number" name="attr_resonance" value="" placeholder="0" /></div>
+			<div class="attr-header magic"><label>M</label><br /><input type="number" name="attr_magic" value="3" placeholder="0" /></div>
+			<div class="attr-header magic"><label>F</label><br /><input type="number" name="attr_force" value="3" placeholder="0" /></div>
+			<div class="attr-header resonance"><label>R</label><br /><input type="number" name="attr_resonance" value="3" placeholder="0" /></div>
 			<div class="attr-header resonance"><label>L</label><br /><input type="number" name="attr_level" value="" placeholder="0" /></div>
 		</div>
 		<div class="host attribute">
@@ -74,25 +72,23 @@
 		<h1>Bonuses </h1>
 		<div class="leftcol"><!--Start Left Bonuses-->
 		<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
-			<div class="goon vehicle">
+			<div class="goon">
 				<label>Initiative: </label>
 				<input type="hidden" name="attr_initiative_mod" value="6" />
-				<input type="hidden" name="attr_initiative_dice" value="1" max="5" />
+				<input type="hidden" name="attr_initiative_dice" value="1" min="1" max="5" />
 				<input type="number" name="attr_initiative_bonus" value="0" placeholder="0" /><span> + </span>
 				<input type="number" name="attr_initiative_dice_bonus" value="0" min="0" max="4" placeholder="0" /><span> d6</span>
-			</div>
-			<input type="hidden" class="character-type" name="attr_special_flag" />
-			<div class="goon magic-skill">
-			<label>Astral Initiative: </label>
-				<input type="hidden" name="attr_astral_mod" value="6" />
-				<input type="hidden" name="attr_astral_dice" value="3" max="5" />
-				<input type="number" name="attr_astral_mod_bonus" value="0" placeholder="0" /><span> + </span>
-				<input type="number" name="attr_astral_dice_bonus" value="0" min="0" max="3" placeholder="0" /><span> d6</span>
-			</div>
-			<div class="goon">
+				<input type="hidden" class="character-type" name="attr_special_flag" />
+				<div class="magic-skill">
+					<label>Astral Initiative: </label>
+					<input type="hidden" name="attr_astral_mod" value="6" />
+					<input type="hidden" name="attr_astral_dice" value="3" max="5" />
+					<input type="number" name="attr_astral_mod_bonus" value="0" placeholder="0" /><span> + </span>
+					<input type="number" name="attr_astral_dice_bonus" value="0" min="0" max="3" placeholder="0" /><span> d6</span>
+				</div>
 				<label>Matrix Initiative: </label>
 				<input type="hidden" name="attr_matrix_mod" value="0" />
-				<input type="hidden" name="attr_matrix_dice" value="4" max="5" />
+				<input type="hidden" name="attr_matrix_dice" max="5" />
 				<input type="number" name="attr_matrix_mod_bonus" value="0" placeholder="0" /><span> + </span>
 				<input type="number" name="attr_matrix_dice_bonus" value="0" min="0" max="4" placeholder="0" /><span> d6</span>
 				<br />
@@ -692,12 +688,10 @@
 			<div class="attr-header"><label><b>Seat</b></label><br /><span name="attr_seating"></span></div>
 		</div>
 	<!-- ~~~~~~~~ Initiative  ~~~~~~~~ -->
-		<div class="row">
+		<div class="goon">
 			<label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{initiative_mod}+@{wound_toggle}+@{modifier_toggle})+(@{initiative_dice})d6cf0 &{tracker}]]}}"><b>Initiative:</b> </button></label>
 			<span name="attr_initiative_mod"></span><span> + </span><span name="attr_initiative_dice"></span><span>d6</span>
 			<br />
-		</div>
-		<div class="goon">
 	<!-- ~~~~~~~~ Astral Initiative  ~~~~~~~~ -->
 			<input type="hidden" class="character-type" name="attr_special_flag" />
 			<div class="magic">
@@ -705,11 +699,13 @@
 				<span name="attr_astral_mod"></span><span> + </span><span name="attr_astral_dice"></span><span>d6</span>
 				<br />
 			</div>
+		</div>
 	<!-- ~~~~~~~~ Matrix Initiative  ~~~~~~~~ -->
-			<label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Matrix Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{matrix_mod}+@{data_processing}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}"><b>Matrix Initiative: </b></button></label>
-			<span name="attr_matrix_mod"></span><span> + </span><span name="attr_matrix_dice"></span><span>d6</span>
-			<br />
-	<!-- ~~~~~~~~ Movement  ~~~~~~~~ -->
+		<label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Matrix Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{matrix_mod}+@{data_processing}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}"><b>Matrix Initiative: </b></button></label>
+		<span name="attr_matrix_mod"></span><span> + </span><span name="attr_matrix_dice"></span><span>d6</span>
+		<br />
+		<div class="goon">
+<!-- ~~~~~~~~ Movement  ~~~~~~~~ -->
 			<label>Movement: </label>
 			<span name="attr_walk" title="Walk Rate"></span><span> / </span><span name="attr_run" title="Run Tate"></span><span> / +</span><span name="attr_movement_mod"></span>
 			<br />
@@ -1218,7 +1214,7 @@
 </div><!-- ~~~~~~~~ End Weapons ~~~~~~~~ -->
 <!-- ~~~~~~~~ Spells ~~~~~~~~ -->
 <input type="hidden" class="character-type" name="attr_special_flag" />
-<div class="goon magic"><label>Spells: </label>
+<div class="magic"><label>Spells: </label>
 	<fieldset class="repeating_spell">
 		<div class="repeating toggle">
 			<input type="checkbox" class="settings-toggle" name="attr_spell_toggle" checked="checked" /><span>y</span>
@@ -1262,7 +1258,7 @@
 </div><!-- ~~~~~~~~ End of Spells ~~~~~~~~ -->
 <!-- ~~~~~~~~ Complex Forms ~~~~~~~~ -->
 <input type="hidden" class="character-type" name="attr_special_flag" />
-<div class="goon resonance"><label>Complex Forms: </label>
+<div class="resonance"><label>Complex Forms: </label>
 	<fieldset class="repeating_form">
 		<div class="repeating spell toggle">
 			<input type="checkbox" class="settings-toggle" name="attr_form_toggle" checked="checked" /><span>y</span>
@@ -1329,7 +1325,7 @@
 </div><!-- ~~~~~~~~ End of IC! ~~~~~~~~ -->
 <!-- ~~~~~~~~ Start of Matrix Area ~~~~~~~~ -->
 <input type="hidden" class="character-type" name="attr_matrix_flag" />
-<div class="goon matrix"><h2>Matrix Device:</h2><input type="text" name="attr_device_name" placeholder="Sony CIY-720" /><br />
+<div class="matrix"><h2>Matrix Device:</h2><input type="text" name="attr_device_name" placeholder="Sony CIY-720" /><br />
 	<div class="2col">
 		<div class="device-row">
 			<label><button type="roll" value="&{template:sGoon}{{header=Matrix Resistance}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{device_rating}+@{firewall})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Device Rating</button></label>
@@ -1434,17 +1430,25 @@ on("change:agility change:walk_bonus change:run_bonus", function (){
 
 	//Calculate Physical Track
 on("change:body change:physical_bonus", function() {
-	getAttrs(["body","physical_bonus"], function(v){
+	getAttrs(["body","physical_bonus", "sheet_type"], function(v){
 		var bod = parseInt(v.body) || 0;
 		var bon = parseInt(v.physical_bonus) || 0;
 		var tot = Math.ceil(bod/2) + 8 + bon;
+		var veh = Math.ceil(bod/2) + 12 + bon;
 
-		setAttrs({physical: tot});
-		setAttrs({physical_max: tot});
+		if (v.sheet_type === "goon") {
+			setAttrs({physical: tot});
+			setAttrs({physical_max: tot});
+		} else if (v.sheet_type === "vehicle") {
+			setAttrs({physical: veh});
+			setAttrs({physical_max: veh});
+		} else {
+			return "Not a goon or vehicle";
+		};
 	});
 });
 
-	//Calculate Willpower Track
+	//Calculate Stun Track
 on("change:willpower change:stun_bonus", function() {
 	getAttrs(["willpower","stun_bonus"], function(v){
 		var wil = parseInt(v.willpower) || 0;
@@ -1453,6 +1457,18 @@ on("change:willpower change:stun_bonus", function() {
 
 		setAttrs({stun: tot});
 		setAttrs({stun_max: tot});
+	});
+});
+
+//Calculate Device Rating Track Track
+on("change:device_rating change:matrix_bonus", function() {
+	getAttrs(["device_rating","matrix_bonus"], function(v){
+		var dev = parseInt(v.device_rating) || 0;
+		var bon = parseInt(v.matrix_bonus) || 0;
+		var tot = Math.ceil(dev/2) + 8 + bon;
+
+		setAttrs({matrix: tot});
+		setAttrs({matrix_max: tot});
 	});
 });
 
@@ -1492,21 +1508,36 @@ on("change:astral_dice_bonus change:edge_toggle", function () {
 	});
 });
 
-	//Calculate Matrix Initiatve
-on("change:intuition change:matrix_mod_bonus", function() {
-	getAttrs(["intuition", "matrix_mod_bonus"], function(v) {
+	//Calculate Matrix Initiatve. This is just Initiative for Host & Vehicles
+on("change:host_rating change:data_processing change:pilot change:intuition change:matrix_mod_bonus change:matrix_dice_bonus", function() {
+	getAttrs(["sheet_type", "data_processing", "pilot", "intuition", "matrix_mod_bonus", "matrix_dice_bonus", "host_rating"], function(v){
+		var dat = parseInt(v.data_processing) || 0;
+		var pil = parseInt(v.pilot) || 0;
 		var int = parseInt(v.intuition) || 0;
-		var bon = parseInt(v.matrix_mod_bonus) || 0;
-		var tot = (int + bon);
-		setAttrs({matrix_mod: tot});});});
+		var mat = parseInt(v.matrix_mod_bonus) || 0;
+		var dic = parseInt(v.matrix_dice_bonus) || 0;
+		var hos = parseInt(v.host_rating) || 0;
 
-
-on("change:matrix_dice_bonus change:edge_toggle", function () {
-	getAttrs(["matrix_dice_bonus", "edge_toggle"], function(v){
-		var bon = parseInt(v.matrix_dice_bonus) || 0;
-		var tot = Math.min(bon+4,5);
-		if (v.edge_toggle != 0) {setAttrs({matrix_dice: 5});} 
-			else {setAttrs({matrix_dice: tot});}});});
+		if (v.sheet_type === "goon") {
+			var ini = dat + int + mat;
+			var dice = 4 + dic;
+			setAttrs({matrix_mod: ini});
+			setAttrs({matrix_dice: dice});
+		} else if (v.sheet_type === "vehicle") {
+			var ini = dat + pil;
+			var dice = 4;
+			setAttrs({matrix_mod: ini});
+			setAttrs({matrix_dice: dice});
+		} else if (v.sheet_type === "host") {
+			var ini = dat + hos;
+			var dice = 4;
+			setAttrs({matrix_mod: ini});
+			setAttrs({matrix_dice: dice});
+		} else {
+			return;
+		};
+	});
+});
 
 	//Calculate Mental Limit
 on("change:intuition change:willpower change:logic change:mental_bonus", function() {
@@ -1598,11 +1629,20 @@ on("change:stun change:physical change:pain_tolerance", function() {
 
 	//Calculate Reset Condition Track
 on("change:cond_reset", function() {
-	getAttrs(["physical_max","stun_max"], function(v){
+	getAttrs(["sheet_type","physical_max","stun_max", "matrix_max"], function(v){
 		var phy = parseInt(v.physical_max) || 0;
 		var stun = parseInt(v.stun_max) || 0;
-		setAttrs({physical: phy});
-		setAttrs({stun: stun});
+		var mat = parseInt(v.matrix_max) || 0;
+
+		if (v.sheet_type === "goon") {
+			setAttrs({physical: phy});
+			setAttrs({stun: stun});
+		} else if (v.sheet_type === "vehicle") {
+			setAttrs({physical: phy});
+			setAttrs({matrix: mat});
+		} else {
+			return "Not a goon or vehicle";
+		};
 	});
 });
 
@@ -1704,7 +1744,7 @@ on("change:host_rating", function() {
 		var tot = 8 + Math.ceil(hos/2);
 		var atk = Math.min(hos + hos);
 
-		setAttrs({ic_condition: tot});
+		setAttrs({matrix: tot});
 		setAttrs({ic_attack: atk});
 	});
 });
