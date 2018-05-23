@@ -1511,12 +1511,22 @@ on("change:astral_dice_bonus change:edge_toggle", function () {
 	//Calculate Matrix Initiatve. This is just Initiative for Host & Vehicles
 on("change:host_rating change:data_processing change:pilot change:intuition change:matrix_mod_bonus change:matrix_dice_bonus", function() {
 	getAttrs(["sheet_type", "data_processing", "pilot", "intuition", "matrix_mod_bonus", "matrix_dice_bonus", "host_rating"], function(v){
-		var dat = parseInt(v.data_processing) || 0;
 		var pil = parseInt(v.pilot) || 0;
 		var int = parseInt(v.intuition) || 0;
 		var mat = parseInt(v.matrix_mod_bonus) || 0;
 		var dic = parseInt(v.matrix_dice_bonus) || 0;
 		var hos = parseInt(v.host_rating) || 0;
+
+		console.log(v.data_processing);
+
+		if (v.data_processing.indexOf('@{') !== -1) {
+			console.log("Its not a number");
+			var dat = (v.data_processing).slice(2, 20);
+			console.log(dat);
+		} else {
+			console.log("Its a number!");
+			var dat = parseInt(v.data_processing) || 0;
+		};
 
 		if (v.sheet_type === "goon") {
 			var ini = dat + int + mat;
@@ -1538,6 +1548,7 @@ on("change:host_rating change:data_processing change:pilot change:intuition chan
 		};
 	});
 });
+
 
 	//Calculate Mental Limit
 on("change:intuition change:willpower change:logic change:mental_bonus", function() {
