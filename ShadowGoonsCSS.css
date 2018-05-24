@@ -206,7 +206,9 @@ input.sheet-npc-type:hover + span.sheet-vehicle-flag  {
 
 .sheet-skill-col input[type="checkbox"]:checked ~ input[type="text"] {
 	display: inline-block;
-	width: 100px;
+	text-align: left;
+	width: 133px;
+	margin-bottom: 3px;
 }
 
 .sheet-skill-col input[type="checkbox"]:checked ~ input[type="number"] {
@@ -231,7 +233,7 @@ input.sheet-npc-type:hover + span.sheet-vehicle-flag  {
 .sheet-display span {
 	border: 0px;
 	line-height: 1em;
-	font-size: 15px;
+	font-size: 14px;
 }
 
 .sheet-display .sheet-textrow span {
@@ -401,6 +403,11 @@ input.sheet-con-reset + label {float: left;}
 	top: 20px;
 	left: -20px;
 	font-size: 0.8rem;
+}
+
+button.sheet-spec-button {
+	margin-left: 2px !important;
+	margin-right: 2px !important;
 }
 
 /**** Weapons Customize ****/
