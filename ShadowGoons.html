@@ -1543,8 +1543,10 @@ on("change:reaction change:intuition change:initiative_bonus", function() {
 	getAttrs(["initiative_dice_bonus", "edge_toggle"], function(v){
 		var bon = parseInt(v.initiative_dice_bonus) || 0;
 		var tot = Math.min(bon+1,5);
-		if (v.edge_toggle != 0) {setAttrs({initiative_dice: 5});} 
-			else {setAttrs({initiative_dice: tot});}});});
+		edg = (v.edge_toggle == 0) ? tot : 5;
+		setAttrs({initiative_dice: edg});
+	});
+});
 
 	//Calculate Astral Initiatve
 on("change:intuition change:astral_mod_bonus", function() {
@@ -1552,14 +1554,16 @@ on("change:intuition change:astral_mod_bonus", function() {
 		var int = parseInt(v.intuition) || 0;
 		var bon = parseInt(v.astral_mod_bonus) || 0;
 		var tot = (int * 2) + bon;
-		setAttrs({astral_mod: tot});});});
+		setAttrs({astral_mod: tot});
+	});
+});
 
 on("change:astral_dice_bonus change:edge_toggle", function () {
 	getAttrs(["astral_dice_bonus", "edge_toggle"], function(v){
 		var bon = parseInt(v.astral_dice_bonus) || 0;
 		var tot = Math.min(bon+3,5);
-		if (v.edge_toggle != 0) {setAttrs({astral_dice: 5});} 
-			else {setAttrs({astral_dice: tot});}
+		edg = (v.edge_toggle == 0) ? tot : 5;
+		setAttrs({astral_dice: edg});
 	});
 });
 
@@ -1661,10 +1665,8 @@ on("change:body change:armor change:soak_bonus", function() {
 	//Edge toggle to include ! for exploding dice
 on("change:edge_toggle", function() {
 	getAttrs(["edge_toggle"], function(v){
-		var exp = "!";
-		var emp = "";
-		if (v.edge_toggle != 0) {setAttrs({explode_toggle: exp});
-		} else {setAttrs({explode_toggle: emp});}
+		edg = (v.edge_toggle != 0) ? "!" : "";
+		{setAttrs({explode_toggle: edg});}
 	});
 });
 
@@ -1807,9 +1809,10 @@ on("change:host_rating", function() {
 	//Skill Display Toggles
 on("change:acting", function() {
 	getAttrs(["acting"], function(v){
-	var skl = parseInt(v.acting) || 0;
-	if (skl > 0) {setAttrs({acting_flag: 1});} else {
-		setAttrs({acting_flag: 0});}});});
+	skl = (v.acting > 0) ? 1 : 0;
+	setAttrs({acting_flag: skl});
+	});
+});
 
 on("change:con change:con_spec", function() {
 	getAttrs(["con", "con_spec"], function(v){
