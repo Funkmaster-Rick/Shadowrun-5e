@@ -2,6 +2,7 @@
 	Matrix Init Rolls correctly but displays incorrect.
 	Powers need to be rollable. Common Power buttons would be useful
 	Give Display Labels a right margin and remove all spaces
+	Fix IC which is overlapping item control
 ---->
 
 <div class="roll-toggles"><!-- ~~~~~~~~ Roll Buttons & Toggles  ~~~~~~~~ -->
@@ -1478,6 +1479,7 @@ on("change:agility change:walk_bonus change:run_bonus", function (){
 		var rbon = parseInt(v.run_bonus) || 0;
 		var walk = (agi * 2) + wbon;
 		var run = (agi * 4) + rbon;
+
 		setAttrs({walk: walk});
 		setAttrs({run: run});
 	});
@@ -1488,18 +1490,13 @@ on("change:body change:physical_bonus", function() {
 	getAttrs(["body","physical_bonus", "sheet_type"], function(v){
 		var bod = parseInt(v.body) || 0;
 		var bon = parseInt(v.physical_bonus) || 0;
-		var tot = Math.ceil(bod/2) + 8 + bon;
-		var veh = Math.ceil(bod/2) + 12 + bon;
 
-		if (v.sheet_type === "goon") {
-			setAttrs({physical: tot});
-			setAttrs({physical_max: tot});
-		} else if (v.sheet_type === "vehicle") {
-			setAttrs({physical: veh});
-			setAttrs({physical_max: veh});
-		} else {
-			return "Not a goon or vehicle";
-		};
+		tra = (v.sheet_type === "goon") ? (Math.ceil(bod/2) + 8 + bon) : 
+			  ((v.sheet_type === "vehicle") ? (Math.ceil(bod/2) + 12 + bon) :
+			  "Not a goon or vehicle");
+
+		setAttrs({physical: tra});
+		setAttrs({physical_max: tra});
 	});
 });
 
@@ -1544,6 +1541,7 @@ on("change:reaction change:intuition change:initiative_bonus", function() {
 		var bon = parseInt(v.initiative_dice_bonus) || 0;
 		var tot = Math.min(bon+1,5);
 		edg = (v.edge_toggle == 0) ? tot : 5;
+
 		setAttrs({initiative_dice: edg});
 	});
 });
@@ -1554,6 +1552,7 @@ on("change:intuition change:astral_mod_bonus", function() {
 		var int = parseInt(v.intuition) || 0;
 		var bon = parseInt(v.astral_mod_bonus) || 0;
 		var tot = (int * 2) + bon;
+
 		setAttrs({astral_mod: tot});
 	});
 });
@@ -1563,13 +1562,14 @@ on("change:astral_dice_bonus change:edge_toggle", function () {
 		var bon = parseInt(v.astral_dice_bonus) || 0;
 		var tot = Math.min(bon+3,5);
 		edg = (v.edge_toggle == 0) ? tot : 5;
+
 		setAttrs({astral_dice: edg});
 	});
 });
 
 	//Calculate Matrix Initiatve. This is just Initiative for Host & Vehicles
 on("change:host_rating change:data_processing change:pilot change:intuition change:matrix_mod_bonus change:matrix_dice_bonus", function() {
-	getAttrs(["sheet_type", "data_processing", "pilot", "intuition", "matrix_mod_bonus", "matrix_dice_bonus", "host_rating"], function(v){
+	getAttrs(["sheet_type", "data_processing", "pilot", "intuition", "matrix_mod_bonus", "matrix_dice_bonus", "host_rating"], function(v) {
 		var dat = parseInt(v.data_processing) || 0;
 		var pil = parseInt(v.pilot) || 0;
 		var int = parseInt(v.intuition) || 0;
@@ -1577,26 +1577,18 @@ on("change:host_rating change:data_processing change:pilot change:intuition chan
 		var dic = parseInt(v.matrix_dice_bonus) || 0;
 		var hos = parseInt(v.host_rating) || 0;
 
-		if (v.sheet_type === "goon") {
-			var ini = dat + int + mat;
-			var dice = 4 + dic;
-			setAttrs({matrix_mod: ini});
-			setAttrs({matrix_dice: dice});
-		} else if (v.sheet_type === "vehicle") {
-			var ini = dat + pil;
-			var dice = 4;
-			setAttrs({matrix_mod: ini});
-			setAttrs({matrix_dice: dice});
-		} else if (v.sheet_type === "host") {
-			var ini = dat + hos;
-			var dice = 4;
-			setAttrs({matrix_mod: ini});
-			setAttrs({matrix_dice: dice});
-		} else {
-			return;
-		};
+		ini = (v.sheet_type === "goon") ? dat + int + mat :
+			  ((v.sheet_type === "vehicle") ? dat + pil :
+			  ((v.sheet_type === "host") ? dat + hos :
+			  	"Invald sheet type"));
+
+		dice = (v.sheet_type === "goon") ? 4 + dic : 4;
+
+		setAttrs({matrix_mod: ini});
+		setAttrs({matrix_dice: dice});
 	});
 });
+
 
 	//Calculate Mental Limit
 on("change:intuition change:willpower change:logic change:mental_bonus", function() {
@@ -1647,6 +1639,7 @@ on("change:reaction change:intuition change:defense_bonus", function() {
 		var int = parseInt(v.intuition) || 0;
 		var bon = parseInt(v.defense_bonus) || 0;
 		var tot = rea + int + bon;
+
 		setAttrs({defense: tot});
 	});
 });
@@ -1658,6 +1651,7 @@ on("change:body change:armor change:soak_bonus", function() {
 		var arm = parseInt(v.armor) || 0;
 		var bon = parseInt(v.soak_bonus) || 0;
 		var tot = bod + arm + bon;
+
 		setAttrs({soak: tot});
 	});
 });
@@ -1666,7 +1660,8 @@ on("change:body change:armor change:soak_bonus", function() {
 on("change:edge_toggle", function() {
 	getAttrs(["edge_toggle"], function(v){
 		edg = (v.edge_toggle != 0) ? "!" : "";
-		{setAttrs({explode_toggle: edg});}
+
+		setAttrs({explode_toggle: edg});
 	});
 });
 
@@ -1679,7 +1674,7 @@ on("change:stun change:physical change:pain_tolerance", function() {
 		var pmax = parseInt(v.physical_max) || 0;
 		var smax = parseInt(v.stun_max) || 0;
 		var wou = Math.floor((-smax + stu)/(3 + pai)) + Math.floor((-pmax + phy)/(3 + pai));
-		console.log(wou);
+
 		setAttrs({wounds: wou});
 	});
 });
@@ -1718,21 +1713,17 @@ on("change:repeating_weapon", function() {
         var amm = (v.repeating_weapon_weapon_ammo) + "(c), ";
         var not = (v.repeating_weapon_weapon_note);
 
-		if (ran === "range" && mel === "melee") {
-			var display = (" [" + typ + rea + acc + dv + ap + mod + rc + amm + not + "]");
-		} else if (ran === "range" && mel === "0") {
-			var display = (" [" + typ + acc + dv + ap + mod + rc + amm + not + "]");
-		} else if (ran === "0" && mel === "melee"){
-			var display = (" [" + typ + rea + acc + dv + ap + not + "]");
-		} else {
-			var display = (" [" + typ + acc + dv + ap + not + "]");
-		}
+		display = (ran === "range" && mel === "melee") ? (" [" + typ + rea + acc + dv + ap + mod + rc + amm + not + "]") :
+				  ((ran === "range" && mel === "0") ? (" [" + typ + acc + dv + ap + mod + rc + amm + not + "]") :
+				  ((ran === "0" && mel === "melee") ? (" [" + typ + rea + acc + dv + ap + not + "]") :
+				  (" [" + typ + acc + dv + ap + not + "]")));
 
         setAttrs({
             repeating_weapon_weapon: display
         });
     });
 });
+
 
 	//Spell displays set into an Array
 on("change:repeating_spell", function() {
@@ -1745,13 +1736,9 @@ on("change:repeating_spell", function() {
 		var dra = "F" + (v.repeating_spell_spell_drain) + ", ";
 		var not = (v.repeating_spell_spell_note);
 
-		if (com === "Direct, Force ") {
-			var display = (" (Direct) " + "[" + typ + ran + dam + dur + dra + not + "]");
-		} else if (com === "Indirect, Force ?{Force|}, AP -") {
-			var display = (" (Indirect) " + "[" + typ + ran + dam + dur + (dra) + not + "]");
-		} else {
-			var display = (" [" + typ + ran + dur + dra + not + "]");
-		}
+		display = (com === "Direct, Force ") ? (" (Direct) " + "[" + typ + ran + dam + dur + dra + not + "]") :
+				  ((com === "Indirect, Force ?{Force|}, AP -") ? (" (Indirect) " + "[" + typ + ran + dam + dur + (dra) + not + "]") :
+				  (" [" + typ + ran + dur + dra + not + "]"));
 
         setAttrs({
             repeating_spell_spell: display
@@ -1778,21 +1765,18 @@ on("change:repeating_IC", function() {
     getAttrs(["attack", "data_processing", "repeating_IC_IC_limit", "repeating_IC_IC_attribute", "repeating_IC_IC_matrix", "repeating_IC_IC_note"], function(v){
     	var att = parseInt(v.attack) || 0;
     	var data = parseInt(v.data_processing) || 0;
-		var lim = (v.repeating_IC_IC_limit);
 		var attr = (v.repeating_IC_IC_attribute);
 		var mat = (v.repeating_IC_IC_matrix);
 		var not = (v.repeating_IC_IC_note);
 
-		if (lim === "@{data_processing}") {
-			var display = (" (" + "[" + data + "]" + " vs. " + attr + " + " + mat + ", " + not + ")");
-		} else {
-			var display = (" (" + "[" + att + "]" + " vs. " + attr + " + " + mat + ", " + not + ")");}
+		display = (v.repeating_IC_IC_limit === "@{data_processing}") ? (" (" + "[" + data + "]" + " vs. " + attr + " + " + mat + ", " + not + ")") : (" (" + "[" + att + "]" + " vs. " + attr + " + " + mat + ", " + not + ")");
 
         setAttrs({
             repeating_IC_IC: display
         });
     });
 });
+
 
 	//IC  Attack Dice & Condition Track
 on("change:host_rating", function() {
@@ -1806,902 +1790,865 @@ on("change:host_rating", function() {
 	});
 });
 
-	//Skill Display Toggles
+	//Skill Group Display Toggles
 on("change:acting", function() {
-	getAttrs(["acting"], function(v){
-	skl = (v.acting > 0) ? 1 : 0;
-	setAttrs({acting_flag: skl});
+	getAttrs(["acting"], function(v) {
+		skl = (v.acting > 0) ? 1 : 0;
+		setAttrs({acting_flag: skl});
 	});
 });
 
+on("change:athletics", function() {
+    getAttrs(["athletics"], function(v) {
+        skl = (v.athletics > 0) ? 1 : 0;
+        setAttrs({athletics_flag: skl});
+    });
+});
+
+on("change:biotech", function() {
+    getAttrs(["biotech"], function(v) {
+        skl = (v.biotech > 0) ? 1 : 0;
+        setAttrs({biotech_flag: skl});
+    });
+});
+
+on("change:closecombat", function() {
+    getAttrs(["closecombat"], function(v) {
+        skl = (v.closecombat > 0) ? 1 : 0;
+        setAttrs({closecombat_flag: skl});
+    });
+});
+
+on("change:conjuring", function() {
+    getAttrs(["conjuring"], function(v) {
+        skl = (v.conjuring > 0) ? 1 : 0;
+        setAttrs({conjuring_flag: skl});
+    });
+});
+
+on("change:cracking", function() {
+    getAttrs(["cracking"], function(v) {
+        skl = (v.cracking > 0) ? 1 : 0;
+        setAttrs({cracking_flag: skl});
+    });
+});
+
+on("change:electronics", function() {
+    getAttrs(["electronics"], function(v) {
+        skl = (v.electronics > 0) ? 1 : 0;
+        setAttrs({electronics_flag: skl});
+    });
+});
+
+on("change:enchanting", function() {
+    getAttrs(["enchanting"], function(v) {
+        skl = (v.enchanting > 0) ? 1 : 0;
+        setAttrs({enchanting_flag: skl});
+    });
+});
+
+on("change:engineering", function() {
+    getAttrs(["engineering"], function(v) {
+        skl = (v.engineering > 0) ? 1 : 0;
+        setAttrs({engineering_flag: skl});
+    });
+});
+
+on("change:firearms", function() {
+    getAttrs(["firearms"], function(v) {
+        skl = (v.firearms > 0) ? 1 : 0;
+        setAttrs({firearms_flag: skl});
+    });
+});
+
+on("change:influence", function() {
+    getAttrs(["influence"], function(v) {
+        skl = (v.influence > 0) ? 1 : 0;
+        setAttrs({influence_flag: skl});
+    });
+});
+
+on("change:outdoors", function() {
+    getAttrs(["outdoors"], function(v) {
+        skl = (v.outdoors > 0) ? 1 : 0;
+        setAttrs({outdoors_flag: skl});
+    });
+});
+
+on("change:sorcery", function() {
+    getAttrs(["sorcery"], function(v) {
+        skl = (v.sorcery > 0) ? 1 : 0;
+        setAttrs({sorcery_flag: skl});
+    });
+});
+
+on("change:stealth", function() {
+    getAttrs(["stealth"], function(v) {
+        skl = (v.stealth > 0) ? 1 : 0;
+        setAttrs({stealth_flag: skl});
+    });
+});
+
+on("change:tasking", function() {
+    getAttrs(["tasking"], function(v) {
+        skl = (v.tasking > 0) ? 1 : 0;
+        setAttrs({tasking_flag: skl});
+    });
+});
+
+
+	//Individual Skills Display Toggles
 on("change:con change:con_spec", function() {
 	getAttrs(["con", "con_spec"], function(v){
-	var skl = parseInt(v.con) || 0;
-	var ski = "(" + (v.con_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({con_flag: 1});} 
-	else {setAttrs({con_flag: 0});}
-    if (v.con_spec === '') {setAttrs({con_spec_display: emp});} 
-    else {setAttrs({con_spec_display: ski});};});});
+    	skl = (v.con > 0) ? 1 : 0;
+    	spe = (v.con_spec === '') ? "" : "(" + (v.con_spec) + ")";
+    	setAttrs({con_flag: skl});
+    	setAttrs({con_spec_display: spe});
+	});
+});
 
 on("change:impersonation change:impersonation_spec", function() {
-	getAttrs(["impersonation", "impersonation_spec"], function(v){
-	var skl = parseInt(v.impersonation) || 0;
-	var ski = "(" + (v.impersonation_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({impersonation_flag: 1});} 
-	else {setAttrs({impersonation_flag: 0});}
-    if (v.impersonation_spec === '') {setAttrs({impersonation_spec_display: emp});} 
-    else {setAttrs({impersonation_spec_display: ski});};});});
+	getAttrs(["impersonation", "impersonation_spec"], function(v) {
+    	skl = (v.impersonation > 0) ? 1 : 0;
+    	spe = (v.impersonation_spec === '') ? "" : "(" + (v.impersonation_spec) + ")";
+    	setAttrs({impersonation_flag: skl});
+    	setAttrs({impersonation_spec_display: spe});
+	});
+});
 
 on("change:performance change:performance_spec", function() {
 	getAttrs(["performance", "performance_spec"], function(v){
-	var skl = parseInt(v.performance) || 0;
-	var ski = "(" + (v.performance_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({performance_flag: 1});} 
-	else {setAttrs({performance_flag: 0});}
-    if (v.performance_spec === '') {setAttrs({performance_spec_display: emp});} 
-    else {setAttrs({performance_spec_display: ski});};});});
-
-on("change:athletics", function() {
-	getAttrs(["athletics"], function(v){
-	var skl = parseInt(v.athletics) || 0;
-	if (skl > 0) {setAttrs({athletics_flag: 1});} else {
-	setAttrs({athletics_flag: 0});}});});
+    	skl = (v.performance > 0) ? 1 : 0;
+    	spe = (v.performance_spec === '') ? "" : "(" + (v.performance_spec) + ")";
+    	setAttrs({performance_flag: skl});
+    	setAttrs({performance_spec_display: spe});
+	});
+});
 
 on("change:gymnastics change:gymnastics_spec", function() {
 	getAttrs(["gymnastics", "gymnastics_spec"], function(v){
-	var skl = parseInt(v.gymnastics) || 0;
-	var ski = "(" + (v.gymnastics_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({gymnastics_flag: 1});} 
-	else {setAttrs({gymnastics_flag: 0});}
-    if (v.gymnastics_spec === '') {setAttrs({gymnastics_spec_display: emp});} 
-    else {setAttrs({gymnastics_spec_display: ski});};});});
+    	skl = (v.gymnastics > 0) ? 1 : 0;
+    	spe = (v.gymnastics_spec === '') ? "" : "(" + (v.gymnastics_spec) + ")";
+    	setAttrs({gymnastics_flag: skl});
+    	setAttrs({gymnastics_spec_display: spe});
+	});
+});
 
 on("change:running change:running_spec", function() {
-	getAttrs(["running", "running_spec"], function(v){
-	var skl = parseInt(v.running) || 0;
-	var ski = "(" + (v.running_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({running_flag: 1});} 
-	else {setAttrs({running_flag: 0});}
-    if (v.running_spec === '') {setAttrs({running_spec_display: emp});} 
-    else {setAttrs({running_spec_display: ski});};});});
+	getAttrs(["running", "running_spec"], function(v) {
+    	skl = (v.running > 0) ? 1 : 0;
+    	spe = (v.running_spec === '') ? "" : "(" + (v.running_spec) + ")";
+    	setAttrs({running_flag: skl});
+    	setAttrs({running_spec_display: spe});
+	});
+});
 
-on("change:swimming", function() {
-	getAttrs(["swimming"], function(v){
-	var skl = parseInt(v.swimming) || 0;
-	if (skl > 0) {setAttrs({swimming_flag: 1});} else {
-	setAttrs({swimming_flag: 0});}});});
-
-on("change:biotech", function() {
-	getAttrs(["biotech"], function(v){
-	var skl = parseInt(v.biotech) || 0;
-	if (skl > 0) {setAttrs({biotech_flag: 1});} else {
-	setAttrs({biotech_flag: 0});}});});
+on("change:swimming change:swimming_spec", function() {
+	getAttrs(["swimming", "swimming_spec"], function(v){
+    	skl = (v.swimming > 0) ? 1 : 0;
+    	spe = (v.swimming_spec === '') ? "" : "(" + (v.swimming_spec) + ")";
+    	setAttrs({swimming_flag: skl});
+    	setAttrs({swimming_spec_display: spe});
+	});
+});
 
 on("change:cybertechnology change:cybertechnology_spec", function() {
 	getAttrs(["cybertechnology", "cybertechnology_spec"], function(v){
-	var skl = parseInt(v.cybertechnology) || 0;
-	var ski = "(" + (v.cybertechnology_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({cybertechnology_flag: 1});} 
-	else {setAttrs({cybertechnology_flag: 0});}
-    if (v.cybertechnology_spec === '') {setAttrs({cybertechnology_spec_display: emp});} 
-    else {setAttrs({cybertechnology_spec_display: ski});};});});
+    	skl = (v.cybertechnology > 0) ? 1 : 0;
+    	spe = (v.cybertechnology_spec === '') ? "" : "(" + (v.cybertechnology_spec) + ")";
+    	setAttrs({cybertechnology_flag: skl});
+    	setAttrs({cybertechnology_spec_display: spe});
+	});
+});
 
 on("change:firstaid change:firstaid_spec", function() {
-	getAttrs(["firstaid", "firstaid_spec"], function(v){
-	var skl = parseInt(v.firstaid) || 0;
-	var ski = "(" + (v.firstaid_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({firstaid_flag: 1});} 
-	else {setAttrs({firstaid_flag: 0});}
-    if (v.firstaid_spec === '') {setAttrs({firstaid_spec_display: emp});} 
-    else {setAttrs({firstaid_spec_display: ski});};});});
+	getAttrs(["firstaid", "firstaid_spec"], function(v) {
+    	skl = (v.firstaid > 0) ? 1 : 0;
+    	spe = (v.firstaid_spec === '') ? "" : "(" + (v.firstaid_spec) + ")";
+    	setAttrs({firstaid_flag: skl});
+    	setAttrs({firstaid_spec_display: spe});
+	});
+});
 
 on("change:medicine change:medicine_spec", function() {
 	getAttrs(["medicine", "medicine_spec"], function(v){
-	var skl = parseInt(v.medicine) || 0;
-	var ski = "(" + (v.medicine_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({medicine_flag: 1});} 
-	else {setAttrs({medicine_flag: 0});}
-    if (v.medicine_spec === '') {setAttrs({medicine_spec_display: emp});} 
-    else {setAttrs({medicine_spec_display: ski});};});});
+    	skl = (v.medicine > 0) ? 1 : 0;
+    	spe = (v.medicine_spec === '') ? "" : "(" + (v.medicine_spec) + ")";
+    	setAttrs({medicine_flag: skl});
+    	setAttrs({medicine_spec_display: spe});
+	});
+});
 
 on("change:biotechnology change:biotechnology_spec", function() {
-	getAttrs(["biotechnology", "biotechnology_spec"], function(v){
-	var skl = parseInt(v.biotechnology) || 0;
-	var ski = "(" + (v.biotechnology_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({biotechnology_flag: 1});} 
-	else {setAttrs({biotechnology_flag: 0});}
-    if (v.biotechnology_spec === '') {setAttrs({biotechnology_spec_display: emp});} 
-    else {setAttrs({biotechnology_spec_display: ski});};});});
-
-on("change:closecombat", function() {
-	getAttrs(["closecombat"], function(v){
-	var skl = parseInt(v.closecombat) || 0;
-	if (skl > 0) {setAttrs({closecombat_flag: 1});} else {
-	setAttrs({closecombat_flag: 0});}});});
+	getAttrs(["biotechnology", "biotechnology_spec"], function(v) {
+    	skl = (v.biotechnology > 0) ? 1 : 0;
+    	spe = (v.biotechnology_spec === '') ? "" : "(" + (v.biotechnology_spec) + ")";
+    	setAttrs({biotechnology_flag: skl});
+    	setAttrs({biotechnology_spec_display: spe});
+	});
+});
 
 on("change:blades change:blades_spec", function() {
 	getAttrs(["blades", "blades_spec"], function(v){
-	var skl = parseInt(v.blades) || 0;
-	var ski = "(" + (v.blades_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({blades_flag: 1});} 
-	else {setAttrs({blades_flag: 0});}
-    if (v.blades_spec === '') {setAttrs({blades_spec_display: emp});} 
-    else {setAttrs({blades_spec_display: ski});};});});
+    	skl = (v.blades > 0) ? 1 : 0;
+    	spe = (v.blades_spec === '') ? "" : "(" + (v.blades_spec) + ")";
+    	setAttrs({blades_flag: skl});
+    	setAttrs({blades_spec_display: spe});
+	});
+});
 
 on("change:clubs change:clubs_spec", function() {
-	getAttrs(["clubs", "clubs_spec"], function(v){
-	var skl = parseInt(v.clubs) || 0;
-	var ski = "(" + (v.clubs_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({clubs_flag: 1});} 
-	else {setAttrs({clubs_flag: 0});}
-    if (v.clubs_spec === '') {setAttrs({clubs_spec_display: emp});} 
-    else {setAttrs({clubs_spec_display: ski});};});});
+	getAttrs(["clubs", "clubs_spec"], function(v) {
+    	skl = (v.clubs > 0) ? 1 : 0;
+    	spe = (v.clubs_spec === '') ? "" : "(" + (v.clubs_spec) + ")";
+    	setAttrs({clubs_flag: skl});
+    	setAttrs({clubs_spec_display: spe});
+	});
+});
 
 on("change:unarmedcombat change:unarmedcombat_spec", function() {
 	getAttrs(["unarmedcombat", "unarmedcombat_spec"], function(v){
-	var skl = parseInt(v.unarmedcombat) || 0;
-	var ski = "(" + (v.unarmedcombat_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({unarmedcombat_flag: 1});} 
-	else {setAttrs({unarmedcombat_flag: 0});}
-    if (v.unarmedcombat_spec === '') {setAttrs({unarmedcombat_spec_display: emp});} 
-    else {setAttrs({unarmedcombat_spec_display: ski});};});});
-
-on("change:conjuring", function() {
-	getAttrs(["conjuring"], function(v){
-	var skl = parseInt(v.conjuring) || 0;
-	if (skl > 0) {setAttrs({conjuring_flag: 1});} else {
-	setAttrs({conjuring_flag: 0});}});});
+    	skl = (v.unarmedcombat > 0) ? 1 : 0;
+    	spe = (v.unarmedcombat_spec === '') ? "" : "(" + (v.unarmedcombat_spec) + ")";
+    	setAttrs({unarmedcombat_flag: skl});
+    	setAttrs({unarmedcombat_spec_display: spe});
+	});
+});
 
 on("change:banishing change:banishing_spec", function() {
-	getAttrs(["banishing", "banishing_spec"], function(v){
-	var skl = parseInt(v.banishing) || 0;
-	var ski = "(" + (v.banishing_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({banishing_flag: 1});} 
-	else {setAttrs({banishing_flag: 0});}
-    if (v.banishing_spec === '') {setAttrs({banishing_spec_display: emp});} 
-    else {setAttrs({banishing_spec_display: ski});};});});
+	getAttrs(["banishing", "banishing_spec"], function(v) {
+    	skl = (v.banishing > 0) ? 1 : 0;
+    	spe = (v.banishing_spec === '') ? "" : "(" + (v.banishing_spec) + ")";
+    	setAttrs({banishing_flag: skl});
+    	setAttrs({banishing_spec_display: spe});
+	});
+});
 
 on("change:binding change:binding_spec", function() {
 	getAttrs(["binding", "binding_spec"], function(v){
-	var skl = parseInt(v.binding) || 0;
-	var ski = "(" + (v.binding_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({binding_flag: 1});} 
-	else {setAttrs({binding_flag: 0});}
-    if (v.binding_spec === '') {setAttrs({binding_spec_display: emp});} 
-    else {setAttrs({binding_spec_display: ski});};});});
+    	skl = (v.binding > 0) ? 1 : 0;
+    	spe = (v.binding_spec === '') ? "" : "(" + (v.binding_spec) + ")";
+    	setAttrs({binding_flag: skl});
+    	setAttrs({binding_spec_display: spe});
+	});
+});
 
 on("change:summoning change:summoning_spec", function() {
-	getAttrs(["summoning", "summoning_spec"], function(v){
-	var skl = parseInt(v.summoning) || 0;
-	var ski = "(" + (v.summoning_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({summoning_flag: 1});} 
-	else {setAttrs({summoning_flag: 0});}
-    if (v.summoning_spec === '') {setAttrs({summoning_spec_display: emp});} 
-    else {setAttrs({summoning_spec_display: ski});};});});
-
-on("change:cracking", function() {
-	getAttrs(["cracking"], function(v){
-	var skl = parseInt(v.cracking) || 0;
-	if (skl > 0) {setAttrs({cracking_flag: 1});} else {
-	setAttrs({cracking_flag: 0});}});});
+	getAttrs(["summoning", "summoning_spec"], function(v) {
+    	skl = (v.summoning > 0) ? 1 : 0;
+    	spe = (v.summoning_spec === '') ? "" : "(" + (v.summoning_spec) + ")";
+    	setAttrs({summoning_flag: skl});
+    	setAttrs({summoning_spec_display: spe});
+	});
+});
 
 on("change:cybercombat change:cybercombat_spec", function() {
 	getAttrs(["cybercombat", "cybercombat_spec"], function(v){
-	var skl = parseInt(v.cybercombat) || 0;
-	var ski = "(" + (v.cybercombat_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({cybercombat_flag: 1});} 
-	else {setAttrs({cybercombat_flag: 0});}
-    if (v.cybercombat_spec === '') {setAttrs({cybercombat_spec_display: emp});} 
-    else {setAttrs({cybercombat_spec_display: ski});};});});
+    	skl = (v.cybercombat > 0) ? 1 : 0;
+    	spe = (v.cybercombat_spec === '') ? "" : "(" + (v.cybercombat_spec) + ")";
+    	setAttrs({cybercombat_flag: skl});
+    	setAttrs({cybercombat_spec_display: spe});
+	});
+});
 
 on("change:electronicwarfare change:electronicwarfare_spec", function() {
-	getAttrs(["electronicwarfare", "electronicwarfare_spec"], function(v){
-	var skl = parseInt(v.electronicwarfare) || 0;
-	var ski = "(" + (v.electronicwarfare_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({electronicwarfare_flag: 1});} 
-	else {setAttrs({electronicwarfare_flag: 0});}
-    if (v.electronicwarfare_spec === '') {setAttrs({electronicwarfare_spec_display: emp});} 
-    else {setAttrs({electronicwarfare_spec_display: ski});};});});
+	getAttrs(["electronicwarfare", "electronicwarfare_spec"], function(v) {
+    	skl = (v.electronicwarfare > 0) ? 1 : 0;
+    	spe = (v.electronicwarfare_spec === '') ? "" : "(" + (v.electronicwarfare_spec) + ")";
+    	setAttrs({electronicwarfare_flag: skl});
+    	setAttrs({electronicwarfare_spec_display: spe});
+	});
+});
 
 on("change:hacking change:hacking_spec", function() {
 	getAttrs(["hacking", "hacking_spec"], function(v){
-	var skl = parseInt(v.hacking) || 0;
-	var ski = "(" + (v.hacking_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({hacking_flag: 1});} 
-	else {setAttrs({hacking_flag: 0});}
-    if (v.hacking_spec === '') {setAttrs({hacking_spec_display: emp});} 
-    else {setAttrs({hacking_spec_display: ski});};});});
-
-on("change:electronics", function() {
-	getAttrs(["electronics"], function(v){
-	var skl = parseInt(v.electronics) || 0;
-	if (skl > 0) {setAttrs({electronics_flag: 1});} else {
-	setAttrs({electronics_flag: 0});}});});
+    	skl = (v.hacking > 0) ? 1 : 0;
+    	spe = (v.hacking_spec === '') ? "" : "(" + (v.hacking_spec) + ")";
+    	setAttrs({hacking_flag: skl});
+    	setAttrs({hacking_spec_display: spe});
+	});
+});
 
 on("change:computer change:computer_spec", function() {
-	getAttrs(["computer", "computer_spec"], function(v){
-	var skl = parseInt(v.computer) || 0;
-	var ski = "(" + (v.computer_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({computer_flag: 1});} 
-	else {setAttrs({computer_flag: 0});}
-    if (v.computer_spec === '') {setAttrs({computer_spec_display: emp});} 
-    else {setAttrs({computer_spec_display: ski});};});});
+	getAttrs(["computer", "computer_spec"], function(v) {
+    	skl = (v.computer > 0) ? 1 : 0;
+    	spe = (v.computer_spec === '') ? "" : "(" + (v.computer_spec) + ")";
+    	setAttrs({computer_flag: skl});
+    	setAttrs({computer_spec_display: spe});
+	});
+});
 
 on("change:hardware change:hardware_spec", function() {
 	getAttrs(["hardware", "hardware_spec"], function(v){
-	var skl = parseInt(v.hardware) || 0;
-	var ski = "(" + (v.hardware_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({hardware_flag: 1});} 
-	else {setAttrs({hardware_flag: 0});}
-    if (v.hardware_spec === '') {setAttrs({hardware_spec_display: emp});} 
-    else {setAttrs({hardware_spec_display: ski});};});});
+    	skl = (v.hardware > 0) ? 1 : 0;
+    	spe = (v.hardware_spec === '') ? "" : "(" + (v.hardware_spec) + ")";
+    	setAttrs({hardware_flag: skl});
+    	setAttrs({hardware_spec_display: spe});
+	});
+});
 
 on("change:software change:software_spec", function() {
-	getAttrs(["software", "software_spec"], function(v){
-	var skl = parseInt(v.software) || 0;
-	var ski = "(" + (v.software_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({software_flag: 1});} 
-	else {setAttrs({software_flag: 0});}
-    if (v.software_spec === '') {setAttrs({software_spec_display: emp});} 
-    else {setAttrs({software_spec_display: ski});};});});
-
-on("change:enchanting", function() {
-	getAttrs(["enchanting"], function(v){
-	var skl = parseInt(v.enchanting) || 0;
-	if (skl > 0) {setAttrs({enchanting_flag: 1});} else {
-	setAttrs({enchanting_flag: 0});}});});
+	getAttrs(["software", "software_spec"], function(v) {
+    	skl = (v.software > 0) ? 1 : 0;
+    	spe = (v.software_spec === '') ? "" : "(" + (v.software_spec) + ")";
+    	setAttrs({software_flag: skl});
+    	setAttrs({software_spec_display: spe});
+	});
+});
 
 on("change:alchemy change:alchemy_spec", function() {
 	getAttrs(["alchemy", "alchemy_spec"], function(v){
-	var skl = parseInt(v.alchemy) || 0;
-	var ski = "(" + (v.alchemy_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({alchemy_flag: 1});} 
-	else {setAttrs({alchemy_flag: 0});}
-    if (v.alchemy_spec === '') {setAttrs({alchemy_spec_display: emp});} 
-    else {setAttrs({alchemy_spec_display: ski});};});});
+    	skl = (v.alchemy > 0) ? 1 : 0;
+    	spe = (v.alchemy_spec === '') ? "" : "(" + (v.alchemy_spec) + ")";
+    	setAttrs({alchemy_flag: skl});
+    	setAttrs({alchemy_spec_display: spe});
+	});
+});
 
 on("change:artificing change:artificing_spec", function() {
-	getAttrs(["artificing", "artificing_spec"], function(v){
-	var skl = parseInt(v.artificing) || 0;
-	var ski = "(" + (v.artificing_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({artificing_flag: 1});} 
-	else {setAttrs({artificing_flag: 0});}
-    if (v.artificing_spec === '') {setAttrs({artificing_spec_display: emp});} 
-    else {setAttrs({artificing_spec_display: ski});};});});
+	getAttrs(["artificing", "artificing_spec"], function(v) {
+    	skl = (v.artificing > 0) ? 1 : 0;
+    	spe = (v.artificing_spec === '') ? "" : "(" + (v.artificing_spec) + ")";
+    	setAttrs({artificing_flag: skl});
+    	setAttrs({artificing_spec_display: spe});
+	});
+});
 
 on("change:disenchanting change:disenchanting_spec", function() {
 	getAttrs(["disenchanting", "disenchanting_spec"], function(v){
-	var skl = parseInt(v.disenchanting) || 0;
-	var ski = "(" + (v.disenchanting_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({disenchanting_flag: 1});} 
-	else {setAttrs({disenchanting_flag: 0});}
-    if (v.disenchanting_spec === '') {setAttrs({disenchanting_spec_display: emp});} 
-    else {setAttrs({disenchanting_spec_display: ski});};});});
-
-on("change:engineering", function() {
-	getAttrs(["engineering"], function(v){
-	var skl = parseInt(v.engineering) || 0;
-	if (skl > 0) {setAttrs({engineering_flag: 1});} else {
-	setAttrs({engineering_flag: 0});}});});
+    	skl = (v.disenchanting > 0) ? 1 : 0;
+    	spe = (v.disenchanting_spec === '') ? "" : "(" + (v.disenchanting_spec) + ")";
+    	setAttrs({disenchanting_flag: skl});
+    	setAttrs({disenchanting_spec_display: spe});
+	});
+});
 
 on("change:aeromech change:aeromech_spec", function() {
-	getAttrs(["aeromech", "aeromech_spec"], function(v){
-	var skl = parseInt(v.aeromech) || 0;
-	var ski = "(" + (v.aeromech_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({aeromech_flag: 1});} 
-	else {setAttrs({aeromech_flag: 0});}
-    if (v.aeromech_spec === '') {setAttrs({aeromech_spec_display: emp});} 
-    else {setAttrs({aeromech_spec_display: ski});};});});
+	getAttrs(["aeromech", "aeromech_spec"], function(v) {
+    	skl = (v.aeromech > 0) ? 1 : 0;
+    	spe = (v.aeromech_spec === '') ? "" : "(" + (v.aeromech_spec) + ")";
+    	setAttrs({aeromech_flag: skl});
+    	setAttrs({aeromech_spec_display: spe});
+	});
+});
 
 on("change:automech change:automech_spec", function() {
 	getAttrs(["automech", "automech_spec"], function(v){
-	var skl = parseInt(v.automech) || 0;
-	var ski = "(" + (v.automech_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({automech_flag: 1});} 
-	else {setAttrs({automech_flag: 0});}
-    if (v.automech_spec === '') {setAttrs({automech_spec_display: emp});} 
-    else {setAttrs({automech_spec_display: ski});};});});
+    	skl = (v.automech > 0) ? 1 : 0;
+    	spe = (v.automech_spec === '') ? "" : "(" + (v.automech_spec) + ")";
+    	setAttrs({automech_flag: skl});
+    	setAttrs({automech_spec_display: spe});
+	});
+});
 
 on("change:indusmech change:indusmech_spec", function() {
-	getAttrs(["indusmech", "indusmech_spec"], function(v){
-	var skl = parseInt(v.indusmech) || 0;
-	var ski = "(" + (v.indusmech_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({indusmech_flag: 1});} 
-	else {setAttrs({indusmech_flag: 0});}
-    if (v.indusmech_spec === '') {setAttrs({indusmech_spec_display: emp});} 
-    else {setAttrs({indusmech_spec_display: ski});};});});
+	getAttrs(["indusmech", "indusmech_spec"], function(v) {
+    	skl = (v.indusmech > 0) ? 1 : 0;
+    	spe = (v.indusmech_spec === '') ? "" : "(" + (v.indusmech_spec) + ")";
+    	setAttrs({indusmech_flag: skl});
+    	setAttrs({indusmech_spec_display: spe});
+	});
+});
 
 on("change:nautmech change:nautmech_spec", function() {
 	getAttrs(["nautmech", "nautmech_spec"], function(v){
-	var skl = parseInt(v.nautmech) || 0;
-	var ski = "(" + (v.nautmech_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({nautmech_flag: 1});} 
-	else {setAttrs({nautmech_flag: 0});}
-    if (v.nautmech_spec === '') {setAttrs({nautmech_spec_display: emp});} 
-    else {setAttrs({nautmech_spec_display: ski});};});});
-
-on("change:firearms", function() {
-	getAttrs(["firearms"], function(v){
-	var skl = parseInt(v.firearms) || 0;
-	if (skl > 0) {setAttrs({firearms_flag: 1});} else {
-	setAttrs({firearms_flag: 0});}});});
+    	skl = (v.nautmech > 0) ? 1 : 0;
+    	spe = (v.nautmech_spec === '') ? "" : "(" + (v.nautmech_spec) + ")";
+    	setAttrs({nautmech_flag: skl});
+    	setAttrs({nautmech_spec_display: spe});
+	});
+});
 
 on("change:automatics change:automatics_spec", function() {
-	getAttrs(["automatics", "automatics_spec"], function(v){
-	var skl = parseInt(v.automatics) || 0;
-	var ski = "(" + (v.automatics_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({automatics_flag: 1});} 
-	else {setAttrs({automatics_flag: 0});}
-    if (v.automatics_spec === '') {setAttrs({automatics_spec_display: emp});} 
-    else {setAttrs({automatics_spec_display: ski});};});});
+	getAttrs(["automatics", "automatics_spec"], function(v) {
+    	skl = (v.automatics > 0) ? 1 : 0;
+    	spe = (v.automatics_spec === '') ? "" : "(" + (v.automatics_spec) + ")";
+    	setAttrs({automatics_flag: skl});
+    	setAttrs({automatics_spec_display: spe});
+	});
+});
 
 on("change:longarms change:longarms_spec", function() {
 	getAttrs(["longarms", "longarms_spec"], function(v){
-	var skl = parseInt(v.longarms) || 0;
-	var ski = "(" + (v.longarms_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({longarms_flag: 1});} 
-	else {setAttrs({longarms_flag: 0});}
-    if (v.longarms_spec === '') {setAttrs({longarms_spec_display: emp});} 
-    else {setAttrs({longarms_spec_display: ski});};});});
+    	skl = (v.longarms > 0) ? 1 : 0;
+    	spe = (v.longarms_spec === '') ? "" : "(" + (v.longarms_spec) + ")";
+    	setAttrs({longarms_flag: skl});
+    	setAttrs({longarms_spec_display: spe});
+	});
+});
 
 on("change:pistols change:pistols_spec", function() {
-	getAttrs(["pistols", "pistols_spec"], function(v){
-	var skl = parseInt(v.pistols) || 0;
-	var ski = "(" + (v.pistols_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({pistols_flag: 1});} 
-	else {setAttrs({pistols_flag: 0});}
-    if (v.pistols_spec === '') {setAttrs({pistols_spec_display: emp});} 
-    else {setAttrs({pistols_spec_display: ski});};});});
-
-on("change:influence", function() {
-	getAttrs(["influence"], function(v){
-	var skl = parseInt(v.influence) || 0;
-	if (skl > 0) {setAttrs({influence_flag: 1});} else {
-	setAttrs({influence_flag: 0});}});});
+	getAttrs(["pistols", "pistols_spec"], function(v) {
+    	skl = (v.pistols > 0) ? 1 : 0;
+    	spe = (v.pistols_spec === '') ? "" : "(" + (v.pistols_spec) + ")";
+    	setAttrs({pistols_flag: skl});
+    	setAttrs({pistols_spec_display: spe});
+	});
+});
 
 on("change:etiquette change:etiquette_spec", function() {
 	getAttrs(["etiquette", "etiquette_spec"], function(v){
-	var skl = parseInt(v.etiquette) || 0;
-	var ski = "(" + (v.etiquette_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({etiquette_flag: 1});} 
-	else {setAttrs({etiquette_flag: 0});}
-    if (v.etiquette_spec === '') {setAttrs({etiquette_spec_display: emp});} 
-    else {setAttrs({etiquette_spec_display: ski});};});});
+    	skl = (v.etiquette > 0) ? 1 : 0;
+    	spe = (v.etiquette_spec === '') ? "" : "(" + (v.etiquette_spec) + ")";
+    	setAttrs({etiquette_flag: skl});
+    	setAttrs({etiquette_spec_display: spe});
+	});
+});
 
 on("change:leadership change:leadership_spec", function() {
-	getAttrs(["leadership", "leadership_spec"], function(v){
-	var skl = parseInt(v.leadership) || 0;
-	var ski = "(" + (v.leadership_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({leadership_flag: 1});} 
-	else {setAttrs({leadership_flag: 0});}
-    if (v.leadership_spec === '') {setAttrs({leadership_spec_display: emp});} 
-    else {setAttrs({leadership_spec_display: ski});};});});
+	getAttrs(["leadership", "leadership_spec"], function(v) {
+    	skl = (v.leadership > 0) ? 1 : 0;
+    	spe = (v.leadership_spec === '') ? "" : "(" + (v.leadership_spec) + ")";
+    	setAttrs({leadership_flag: skl});
+    	setAttrs({leadership_spec_display: spe});
+	});
+});
 
 on("change:negotiation change:negotiation_spec", function() {
 	getAttrs(["negotiation", "negotiation_spec"], function(v){
-	var skl = parseInt(v.negotiation) || 0;
-	var ski = "(" + (v.negotiation_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({negotiation_flag: 1});} 
-	else {setAttrs({negotiation_flag: 0});}
-    if (v.negotiation_spec === '') {setAttrs({negotiation_spec_display: emp});} 
-    else {setAttrs({negotiation_spec_display: ski});};});});
-
-on("change:outdoors", function() {
-	getAttrs(["outdoors"], function(v){
-	var skl = parseInt(v.outdoors) || 0;
-	if (skl > 0) {setAttrs({outdoors_flag: 1});} else {
-	setAttrs({outdoors_flag: 0});}});});
+    	skl = (v.negotiation > 0) ? 1 : 0;
+    	spe = (v.negotiation_spec === '') ? "" : "(" + (v.negotiation_spec) + ")";
+    	setAttrs({negotiation_flag: skl});
+    	setAttrs({negotiation_spec_display: spe});
+	});
+});
 
 on("change:navigation change:navigation_spec", function() {
-	getAttrs(["navigation", "navigation_spec"], function(v){
-	var skl = parseInt(v.navigation) || 0;
-	var ski = "(" + (v.navigation_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({navigation_flag: 1});} 
-	else {setAttrs({navigation_flag: 0});}
-    if (v.navigation_spec === '') {setAttrs({navigation_spec_display: emp});} 
-    else {setAttrs({navigation_spec_display: ski});};});});
+	getAttrs(["navigation", "navigation_spec"], function(v) {
+    	skl = (v.navigation > 0) ? 1 : 0;
+    	spe = (v.navigation_spec === '') ? "" : "(" + (v.navigation_spec) + ")";
+    	setAttrs({navigation_flag: skl});
+    	setAttrs({navigation_spec_display: spe});
+	});
+});
 
 on("change:survival change:survival_spec", function() {
 	getAttrs(["survival", "survival_spec"], function(v){
-	var skl = parseInt(v.survival) || 0;
-	var ski = "(" + (v.survival_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({survival_flag: 1});} 
-	else {setAttrs({survival_flag: 0});}
-    if (v.survival_spec === '') {setAttrs({survival_spec_display: emp});} 
-    else {setAttrs({survival_spec_display: ski});};});});
+    	skl = (v.survival > 0) ? 1 : 0;
+    	spe = (v.survival_spec === '') ? "" : "(" + (v.survival_spec) + ")";
+    	setAttrs({survival_flag: skl});
+    	setAttrs({survival_spec_display: spe});
+	});
+});
 
 on("change:tracking change:tracking_spec", function() {
-	getAttrs(["tracking", "tracking_spec"], function(v){
-	var skl = parseInt(v.tracking) || 0;
-	var ski = "(" + (v.tracking_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({tracking_flag: 1});} 
-	else {setAttrs({tracking_flag: 0});}
-    if (v.tracking_spec === '') {setAttrs({tracking_spec_display: emp});} 
-    else {setAttrs({tracking_spec_display: ski});};});});
-
-on("change:sorcery", function() {
-	getAttrs(["sorcery"], function(v){
-	var skl = parseInt(v.sorcery) || 0;
-	if (skl > 0) {setAttrs({sorcery_flag: 1});} else {
-	setAttrs({sorcery_flag: 0});}});});
+	getAttrs(["tracking", "tracking_spec"], function(v) {
+    	skl = (v.tracking > 0) ? 1 : 0;
+    	spe = (v.tracking_spec === '') ? "" : "(" + (v.tracking_spec) + ")";
+    	setAttrs({tracking_flag: skl});
+    	setAttrs({tracking_spec_display: spe});
+	});
+});
 
 on("change:counterspelling change:counterspelling_spec", function() {
 	getAttrs(["counterspelling", "counterspelling_spec"], function(v){
-	var skl = parseInt(v.counterspelling) || 0;
-	var ski = "(" + (v.counterspelling_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({counterspelling_flag: 1});} 
-	else {setAttrs({counterspelling_flag: 0});}
-    if (v.counterspelling_spec === '') {setAttrs({counterspelling_spec_display: emp});} 
-    else {setAttrs({counterspelling_spec_display: ski});};});});
+    	skl = (v.counterspelling > 0) ? 1 : 0;
+    	spe = (v.counterspelling_spec === '') ? "" : "(" + (v.counterspelling_spec) + ")";
+    	setAttrs({counterspelling_flag: skl});
+    	setAttrs({counterspelling_spec_display: spe});
+	});
+});
 
 on("change:ritualspell change:ritualspell_spec", function() {
-	getAttrs(["ritualspell", "ritualspell_spec"], function(v){
-	var skl = parseInt(v.ritualspell) || 0;
-	var ski = "(" + (v.ritualspell_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({ritualspell_flag: 1});} 
-	else {setAttrs({ritualspell_flag: 0});}
-    if (v.ritualspell_spec === '') {setAttrs({ritualspell_spec_display: emp});} 
-    else {setAttrs({ritualspell_spec_display: ski});};});});
+	getAttrs(["ritualspell", "ritualspell_spec"], function(v) {
+    	skl = (v.ritualspell > 0) ? 1 : 0;
+    	spe = (v.ritualspell_spec === '') ? "" : "(" + (v.ritualspell_spec) + ")";
+    	setAttrs({ritualspell_flag: skl});
+    	setAttrs({ritualspell_spec_display: spe});
+	});
+});
 
 on("change:spellcasting change:spellcasting_spec", function() {
 	getAttrs(["spellcasting", "spellcasting_spec"], function(v){
-	var skl = parseInt(v.spellcasting) || 0;
-	var ski = "(" + (v.spellcasting_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({spellcasting_flag: 1});} 
-	else {setAttrs({spellcasting_flag: 0});}
-    if (v.spellcasting_spec === '') {setAttrs({spellcasting_spec_display: emp});} 
-    else {setAttrs({spellcasting_spec_display: ski});};});});
-
-on("change:stealth", function() {
-	getAttrs(["stealth"], function(v){
-	var skl = parseInt(v.stealth) || 0;
-	if (skl > 0) {setAttrs({stealth_flag: 1});} else {
-	setAttrs({stealth_flag: 0});}});});
+    	skl = (v.spellcasting > 0) ? 1 : 0;
+    	spe = (v.spellcasting_spec === '') ? "" : "(" + (v.spellcasting_spec) + ")";
+    	setAttrs({spellcasting_flag: skl});
+    	setAttrs({spellcasting_spec_display: spe});
+	});
+});
 
 on("change:disguise change:disguise_spec", function() {
-	getAttrs(["disguise", "disguise_spec"], function(v){
-	var skl = parseInt(v.disguise) || 0;
-	var ski = "(" + (v.disguise_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({disguise_flag: 1});} 
-	else {setAttrs({disguise_flag: 0});}
-    if (v.disguise_spec === '') {setAttrs({disguise_spec_display: emp});} 
-    else {setAttrs({disguise_spec_display: ski});};});});
+	getAttrs(["disguise", "disguise_spec"], function(v) {
+    	skl = (v.disguise > 0) ? 1 : 0;
+    	spe = (v.disguise_spec === '') ? "" : "(" + (v.disguise_spec) + ")";
+    	setAttrs({disguise_flag: skl});
+    	setAttrs({disguise_spec_display: spe});
+	});
+});
 
 on("change:palming change:palming_spec", function() {
 	getAttrs(["palming", "palming_spec"], function(v){
-	var skl = parseInt(v.palming) || 0;
-	var ski = "(" + (v.palming_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({palming_flag: 1});} 
-	else {setAttrs({palming_flag: 0});}
-    if (v.palming_spec === '') {setAttrs({palming_spec_display: emp});} 
-    else {setAttrs({palming_spec_display: ski});};});});
+    	skl = (v.palming > 0) ? 1 : 0;
+    	spe = (v.palming_spec === '') ? "" : "(" + (v.palming_spec) + ")";
+    	setAttrs({palming_flag: skl});
+    	setAttrs({palming_spec_display: spe});
+	});
+});
 
 on("change:sneaking change:sneaking_spec", function() {
-	getAttrs(["sneaking", "sneaking_spec"], function(v){
-	var skl = parseInt(v.sneaking) || 0;
-	var ski = "(" + (v.sneaking_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({sneaking_flag: 1});} 
-	else {setAttrs({sneaking_flag: 0});}
-    if (v.sneaking_spec === '') {setAttrs({sneaking_spec_display: emp});} 
-    else {setAttrs({sneaking_spec_display: ski});};});});
-
-on("change:tasking", function() {
-	getAttrs(["tasking"], function(v){
-	var skl = parseInt(v.tasking) || 0;
-	if (skl > 0) {setAttrs({tasking_flag: 1});} else {
-	setAttrs({tasking_flag: 0});}});});
+	getAttrs(["sneaking", "sneaking_spec"], function(v) {
+    	skl = (v.sneaking > 0) ? 1 : 0;
+    	spe = (v.sneaking_spec === '') ? "" : "(" + (v.sneaking_spec) + ")";
+    	setAttrs({sneaking_flag: skl});
+    	setAttrs({sneaking_spec_display: spe});
+	});
+});
 
 on("change:compiling change:compiling_spec", function() {
 	getAttrs(["compiling", "compiling_spec"], function(v){
-	var skl = parseInt(v.compiling) || 0;
-	var ski = "(" + (v.compiling_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({compiling_flag: 1});} 
-	else {setAttrs({compiling_flag: 0});}
-    if (v.compiling_spec === '') {setAttrs({compiling_spec_display: emp});} 
-    else {setAttrs({compiling_spec_display: ski});};});});
+    	skl = (v.compiling > 0) ? 1 : 0;
+    	spe = (v.compiling_spec === '') ? "" : "(" + (v.compiling_spec) + ")";
+    	setAttrs({compiling_flag: skl});
+    	setAttrs({compiling_spec_display: spe});
+	});
+});
 
 on("change:decompiling change:decompiling_spec", function() {
-	getAttrs(["decompiling", "decompiling_spec"], function(v){
-	var skl = parseInt(v.decompiling) || 0;
-	var ski = "(" + (v.decompiling_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({decompiling_flag: 1});} 
-	else {setAttrs({decompiling_flag: 0});}
-    if (v.decompiling_spec === '') {setAttrs({decompiling_spec_display: emp});} 
-    else {setAttrs({decompiling_spec_display: ski});};});});
+	getAttrs(["decompiling", "decompiling_spec"], function(v) {
+    	skl = (v.decompiling > 0) ? 1 : 0;
+    	spe = (v.decompiling_spec === '') ? "" : "(" + (v.decompiling_spec) + ")";
+    	setAttrs({decompiling_flag: skl});
+    	setAttrs({decompiling_spec_display: spe});
+	});
+});
 
 on("change:registering change:registering_spec", function() {
 	getAttrs(["registering", "registering_spec"], function(v){
-	var skl = parseInt(v.registering) || 0;
-	var ski = "(" + (v.registering_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({registering_flag: 1});} 
-	else {setAttrs({registering_flag: 0});}
-    if (v.registering_spec === '') {setAttrs({registering_spec_display: emp});} 
-    else {setAttrs({registering_spec_display: ski});};});});
+    	skl = (v.registering > 0) ? 1 : 0;
+    	spe = (v.registering_spec === '') ? "" : "(" + (v.registering_spec) + ")";
+    	setAttrs({registering_flag: skl});
+    	setAttrs({registering_spec_display: spe});
+	});
+});
 
 on("change:archery change:archery_spec", function() {
-	getAttrs(["archery", "archery_spec"], function(v){
-	var skl = parseInt(v.archery) || 0;
-	var ski = "(" + (v.archery_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({archery_flag: 1});} 
-	else {setAttrs({archery_flag: 0});}
-    if (v.archery_spec === '') {setAttrs({archery_spec_display: emp});} 
-    else {setAttrs({archery_spec_display: ski});};});});
+	getAttrs(["archery", "archery_spec"], function(v) {
+    	skl = (v.archery > 0) ? 1 : 0;
+    	spe = (v.archery_spec === '') ? "" : "(" + (v.archery_spec) + ")";
+    	setAttrs({archery_flag: skl});
+    	setAttrs({archery_spec_display: spe});
+	});
+});
 
 on("change:exoticmelee change:exoticmelee_spec", function() {
 	getAttrs(["exoticmelee", "exoticmelee_spec"], function(v){
-	var skl = parseInt(v.exoticmelee) || 0;
-	var ski = "(" + (v.exoticmelee_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({exoticmelee_flag: 1});} 
-	else {setAttrs({exoticmelee_flag: 0});}
-    if (v.exoticmelee_spec === '') {setAttrs({exoticmelee_spec_display: emp});} 
-    else {setAttrs({exoticmelee_spec_display: ski});};});});
+    	skl = (v.exoticmelee > 0) ? 1 : 0;
+    	spe = (v.exoticmelee_spec === '') ? "" : "(" + (v.exoticmelee_spec) + ")";
+    	setAttrs({exoticmelee_flag: skl});
+    	setAttrs({exoticmelee_spec_display: spe});
+	});
+});
 
 on("change:exoticrange change:exoticrange_spec", function() {
-	getAttrs(["exoticrange", "exoticrange_spec"], function(v){
-	var skl = parseInt(v.exoticrange) || 0;
-	var ski = "(" + (v.exoticrange_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({exoticrange_flag: 1});} 
-	else {setAttrs({exoticrange_flag: 0});}
-    if (v.exoticrange_spec === '') {setAttrs({exoticrange_spec_display: emp});} 
-    else {setAttrs({exoticrange_spec_display: ski});};});});
+	getAttrs(["exoticrange", "exoticrange_spec"], function(v) {
+    	skl = (v.exoticrange > 0) ? 1 : 0;
+    	spe = (v.exoticrange_spec === '') ? "" : "(" + (v.exoticrange_spec) + ")";
+    	setAttrs({exoticrange_flag: skl});
+    	setAttrs({exoticrange_spec_display: spe});
+	});
+});
 
 on("change:heavyweapons change:heavyweapons_spec", function() {
-	getAttrs(["heavyweapons", "heavyweapons_spec"], function(v){
-	var skl = parseInt(v.heavyweapons) || 0;
-	var ski = "(" + (v.heavyweapons_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({heavyweapons_flag: 1});} 
-	else {setAttrs({heavyweapons_flag: 0});}
-    if (v.heavyweapons_spec === '') {setAttrs({heavyweapons_spec_display: emp});} 
-    else {setAttrs({heavyweapons_spec_display: ski});};});});
+    getAttrs(["heavyweapons", "heavyweapons_spec"], function(v){
+        skl = (v.heavyweapons > 0) ? 1 : 0;
+        spe = (v.heavyweapons_spec === '') ? "" : "(" + (v.heavyweapons_spec) + ")";
+        setAttrs({heavyweapons_flag: skl});
+        setAttrs({heavyweapons_spec_display: spe});
+    });
+});
 
 on("change:throwingweapons change:throwingweapons_spec", function() {
-	getAttrs(["throwingweapons", "throwingweapons_spec"], function(v){
-	var skl = parseInt(v.throwingweapons) || 0;
-	var ski = "(" + (v.throwingweapons_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({throwingweapons_flag: 1});} 
-	else {setAttrs({throwingweapons_flag: 0});}
-    if (v.throwingweapons_spec === '') {setAttrs({throwingweapons_spec_display: emp});} 
-    else {setAttrs({throwingweapons_spec_display: ski});};});});
+    getAttrs(["throwingweapons", "throwingweapons_spec"], function(v) {
+        skl = (v.throwingweapons > 0) ? 1 : 0;
+        spe = (v.throwingweapons_spec === '') ? "" : "(" + (v.throwingweapons_spec) + ")";
+        setAttrs({throwingweapons_flag: skl});
+        setAttrs({throwingweapons_spec_display: spe});
+    });
+});
 
 on("change:arcana change:arcana_spec", function() {
 	getAttrs(["arcana", "arcana_spec"], function(v){
-	var skl = parseInt(v.arcana) || 0;
-	var ski = "(" + (v.arcana_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({arcana_flag: 1});} 
-	else {setAttrs({arcana_flag: 0});}
-    if (v.arcana_spec === '') {setAttrs({arcana_spec_display: emp});} 
-    else {setAttrs({arcana_spec_display: ski});};});});
+    	skl = (v.arcana > 0) ? 1 : 0;
+    	spe = (v.arcana_spec === '') ? "" : "(" + (v.arcana_spec) + ")";
+    	setAttrs({arcana_flag: skl});
+    	setAttrs({arcana_spec_display: spe});
+	});
+});
 
 on("change:assensing change:assensing_spec", function() {
-	getAttrs(["assensing", "assensing_spec"], function(v){
-	var skl = parseInt(v.assensing) || 0;
-	var ski = "(" + (v.assensing_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({assensing_flag: 1});} 
-	else {setAttrs({assensing_flag: 0});}
-    if (v.assensing_spec === '') {setAttrs({assensing_spec_display: emp});} 
-    else {setAttrs({assensing_spec_display: ski});};});});
+	getAttrs(["assensing", "assensing_spec"], function(v) {
+    	skl = (v.assensing > 0) ? 1 : 0;
+    	spe = (v.assensing_spec === '') ? "" : "(" + (v.assensing_spec) + ")";
+    	setAttrs({assensing_flag: skl});
+    	setAttrs({assensing_spec_display: spe});
+	});
+});
 
 on("change:astralcombat change:astralcombat_spec", function() {
-	getAttrs(["astralcombat", "astralcombat_spec"], function(v){
-	var skl = parseInt(v.astralcombat) || 0;
-	var ski = "(" + (v.astralcombat_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({astralcombat_flag: 1});} 
-	else {setAttrs({astralcombat_flag: 0});}
-    if (v.astralcombat_spec === '') {setAttrs({astralcombat_spec_display: emp});} 
-    else {setAttrs({astralcombat_spec_display: ski});};});});
+    getAttrs(["astralcombat", "astralcombat_spec"], function(v){
+        skl = (v.astralcombat > 0) ? 1 : 0;
+        spe = (v.astralcombat_spec === '') ? "" : "(" + (v.astralcombat_spec) + ")";
+        setAttrs({astralcombat_flag: skl});
+        setAttrs({astralcombat_spec_display: spe});
+    });
+});
 
 on("change:instruction change:instruction_spec", function() {
-	getAttrs(["instruction", "instruction_spec"], function(v){
-	var skl = parseInt(v.instruction) || 0;
-	var ski = "(" + (v.instruction_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({instruction_flag: 1});} 
-	else {setAttrs({instruction_flag: 0});}
-    if (v.instruction_spec === '') {setAttrs({instruction_spec_display: emp});} 
-    else {setAttrs({instruction_spec_display: ski});};});});
+    getAttrs(["instruction", "instruction_spec"], function(v) {
+        skl = (v.instruction > 0) ? 1 : 0;
+        spe = (v.instruction_spec === '') ? "" : "(" + (v.instruction_spec) + ")";
+        setAttrs({instruction_flag: skl});
+        setAttrs({instruction_spec_display: spe});
+    });
+});
 
 on("change:intimidation change:intimidation_spec", function() {
 	getAttrs(["intimidation", "intimidation_spec"], function(v){
-	var skl = parseInt(v.intimidation) || 0;
-	var ski = "(" + (v.intimidation_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({intimidation_flag: 1});} 
-	else {setAttrs({intimidation_flag: 0});}
-    if (v.intimidation_spec === '') {setAttrs({intimidation_spec_display: emp});} 
-    else {setAttrs({intimidation_spec_display: ski});};});});
+    	skl = (v.intimidation > 0) ? 1 : 0;
+    	spe = (v.intimidation_spec === '') ? "" : "(" + (v.intimidation_spec) + ")";
+    	setAttrs({intimidation_flag: skl});
+    	setAttrs({intimidation_spec_display: spe});
+	});
+});
 
 on("change:diving change:diving_spec", function() {
-	getAttrs(["diving", "diving_spec"], function(v){
-	var skl = parseInt(v.diving) || 0;
-	var ski = "(" + (v.diving_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({diving_flag: 1});} 
-	else {setAttrs({diving_flag: 0});}
-    if (v.diving_spec === '') {setAttrs({diving_spec_display: emp});} 
-    else {setAttrs({diving_spec_display: ski});};});});
+	getAttrs(["diving", "diving_spec"], function(v) {
+    	skl = (v.diving > 0) ? 1 : 0;
+    	spe = (v.diving_spec === '') ? "" : "(" + (v.diving_spec) + ")";
+    	setAttrs({diving_flag: skl});
+    	setAttrs({diving_spec_display: spe});
+	});
+});
 
 on("change:escapeartist change:escapeartist_spec", function() {
-	getAttrs(["escapeartist", "escapeartist_spec"], function(v){
-	var skl = parseInt(v.escapeartist) || 0;
-	var ski = "(" + (v.escapeartist_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({escapeartist_flag: 1});} 
-	else {setAttrs({escapeartist_flag: 0});}
-    if (v.escapeartist_spec === '') {setAttrs({escapeartist_spec_display: emp});} 
-    else {setAttrs({escapeartist_spec_display: ski});};});});
+    getAttrs(["escapeartist", "escapeartist_spec"], function(v){
+        skl = (v.escapeartist > 0) ? 1 : 0;
+        spe = (v.escapeartist_spec === '') ? "" : "(" + (v.escapeartist_spec) + ")";
+        setAttrs({escapeartist_flag: skl});
+        setAttrs({escapeartist_spec_display: spe});
+    });
+});
 
 on("change:flight change:flight_spec", function() {
-	getAttrs(["flight", "flight_spec"], function(v){
-	var skl = parseInt(v.flight) || 0;
-	var ski = "(" + (v.flight_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({flight_flag: 1});} 
-	else {setAttrs({flight_flag: 0});}
-    if (v.flight_spec === '') {setAttrs({flight_spec_display: emp});} 
-    else {setAttrs({flight_spec_display: ski});};});});
+    getAttrs(["flight", "flight_spec"], function(v) {
+        skl = (v.flight > 0) ? 1 : 0;
+        spe = (v.flight_spec === '') ? "" : "(" + (v.flight_spec) + ")";
+        setAttrs({flight_flag: skl});
+        setAttrs({flight_spec_display: spe});
+    });
+});
 
 on("change:freefall change:freefall_spec", function() {
 	getAttrs(["freefall", "freefall_spec"], function(v){
-	var skl = parseInt(v.freefall) || 0;
-	var ski = "(" + (v.freefall_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({freefall_flag: 1});} 
-	else {setAttrs({freefall_flag: 0});}
-    if (v.freefall_spec === '') {setAttrs({freefall_spec_display: emp});} 
-    else {setAttrs({freefall_spec_display: ski});};});});
+    	skl = (v.freefall > 0) ? 1 : 0;
+    	spe = (v.freefall_spec === '') ? "" : "(" + (v.freefall_spec) + ")";
+    	setAttrs({freefall_flag: skl});
+    	setAttrs({freefall_spec_display: spe});
+	});
+});
 
 on("change:animalhandling change:animalhandling_spec", function() {
-	getAttrs(["animalhandling", "animalhandling_spec"], function(v){
-	var skl = parseInt(v.animalhandling) || 0;
-	var ski = "(" + (v.animalhandling_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({animalhandling_flag: 1});} 
-	else {setAttrs({animalhandling_flag: 0});}
-    if (v.animalhandling_spec === '') {setAttrs({animalhandling_spec_display: emp});} 
-    else {setAttrs({animalhandling_spec_display: ski});};});});
+	getAttrs(["animalhandling", "animalhandling_spec"], function(v) {
+    	skl = (v.animalhandling > 0) ? 1 : 0;
+    	spe = (v.animalhandling_spec === '') ? "" : "(" + (v.animalhandling_spec) + ")";
+    	setAttrs({animalhandling_flag: skl});
+    	setAttrs({animalhandling_spec_display: spe});
+	});
+});
 
 on("change:armorer change:armorer_spec", function() {
-	getAttrs(["armorer", "armorer_spec"], function(v){
-	var skl = parseInt(v.armorer) || 0;
-	var ski = "(" + (v.armorer_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({armorer_flag: 1});} 
-	else {setAttrs({armorer_flag: 0});}
-    if (v.armorer_spec === '') {setAttrs({armorer_spec_display: emp});} 
-    else {setAttrs({armorer_spec_display: ski});};});});
+    getAttrs(["armorer", "armorer_spec"], function(v){
+        skl = (v.armorer > 0) ? 1 : 0;
+        spe = (v.armorer_spec === '') ? "" : "(" + (v.armorer_spec) + ")";
+        setAttrs({armorer_flag: skl});
+        setAttrs({armorer_spec_display: spe});
+    });
+});
 
 on("change:artisan change:artisan_spec", function() {
-	getAttrs(["artisan", "artisan_spec"], function(v){
-	var skl = parseInt(v.artisan) || 0;
-	var ski = "(" + (v.artisan_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({artisan_flag: 1});} 
-	else {setAttrs({artisan_flag: 0});}
-    if (v.artisan_spec === '') {setAttrs({artisan_spec_display: emp});} 
-    else {setAttrs({artisan_spec_display: ski});};});});
+    getAttrs(["artisan", "artisan_spec"], function(v) {
+        skl = (v.artisan > 0) ? 1 : 0;
+        spe = (v.artisan_spec === '') ? "" : "(" + (v.artisan_spec) + ")";
+        setAttrs({artisan_flag: skl});
+        setAttrs({artisan_spec_display: spe});
+    });
+});
 
 on("change:chemistry change:chemistry_spec", function() {
 	getAttrs(["chemistry", "chemistry_spec"], function(v){
-	var skl = parseInt(v.chemistry) || 0;
-	var ski = "(" + (v.chemistry_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({chemistry_flag: 1});} 
-	else {setAttrs({chemistry_flag: 0});}
-    if (v.chemistry_spec === '') {setAttrs({chemistry_spec_display: emp});} 
-    else {setAttrs({chemistry_spec_display: ski});};});});
+    	skl = (v.chemistry > 0) ? 1 : 0;
+    	spe = (v.chemistry_spec === '') ? "" : "(" + (v.chemistry_spec) + ")";
+    	setAttrs({chemistry_flag: skl});
+    	setAttrs({chemistry_spec_display: spe});
+	});
+});
 
 on("change:demolitions change:demolitions_spec", function() {
-	getAttrs(["demolitions", "demolitions_spec"], function(v){
-	var skl = parseInt(v.demolitions) || 0;
-	var ski = "(" + (v.demolitions_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({demolitions_flag: 1});} 
-	else {setAttrs({demolitions_flag: 0});}
-    if (v.demolitions_spec === '') {setAttrs({demolitions_spec_display: emp});} 
-    else {setAttrs({demolitions_spec_display: ski});};});});
+	getAttrs(["demolitions", "demolitions_spec"], function(v) {
+    	skl = (v.demolitions > 0) ? 1 : 0;
+    	spe = (v.demolitions_spec === '') ? "" : "(" + (v.demolitions_spec) + ")";
+    	setAttrs({demolitions_flag: skl});
+    	setAttrs({demolitions_spec_display: spe});
+	});
+});
 
 on("change:forgery change:forgery_spec", function() {
-	getAttrs(["forgery", "forgery_spec"], function(v){
-	var skl = parseInt(v.forgery) || 0;
-	var ski = "(" + (v.forgery_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({forgery_flag: 1});} 
-	else {setAttrs({forgery_flag: 0});}
-    if (v.forgery_spec === '') {setAttrs({forgery_spec_display: emp});} 
-    else {setAttrs({forgery_spec_display: ski});};});});
+    getAttrs(["forgery", "forgery_spec"], function(v){
+        skl = (v.forgery > 0) ? 1 : 0;
+        spe = (v.forgery_spec === '') ? "" : "(" + (v.forgery_spec) + ")";
+        setAttrs({forgery_flag: skl});
+        setAttrs({forgery_spec_display: spe});
+    });
+});
 
 on("change:locksmith change:locksmith_spec", function() {
-	getAttrs(["locksmith", "locksmith_spec"], function(v){
-	var skl = parseInt(v.locksmith) || 0;
-	var ski = "(" + (v.locksmith_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({locksmith_flag: 1});} 
-	else {setAttrs({locksmith_flag: 0});}
-    if (v.locksmith_spec === '') {setAttrs({locksmith_spec_display: emp});} 
-    else {setAttrs({locksmith_spec_display: ski});};});});
+    getAttrs(["locksmith", "locksmith_spec"], function(v) {
+        skl = (v.locksmith > 0) ? 1 : 0;
+        spe = (v.locksmith_spec === '') ? "" : "(" + (v.locksmith_spec) + ")";
+        setAttrs({locksmith_flag: skl});
+        setAttrs({locksmith_spec_display: spe});
+    });
+});
 
 on("change:gunnery change:gunnery_spec", function() {
 	getAttrs(["gunnery", "gunnery_spec"], function(v){
-	var skl = parseInt(v.gunnery) || 0;
-	var ski = "(" + (v.gunnery_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({gunnery_flag: 1});} 
-	else {setAttrs({gunnery_flag: 0});}
-    if (v.gunnery_spec === '') {setAttrs({gunnery_spec_display: emp});} 
-    else {setAttrs({gunnery_spec_display: ski});};});});
+    	skl = (v.gunnery > 0) ? 1 : 0;
+    	spe = (v.gunnery_spec === '') ? "" : "(" + (v.gunnery_spec) + ")";
+    	setAttrs({gunnery_flag: skl});
+    	setAttrs({gunnery_spec_display: spe});
+	});
+});
 
 on("change:pilotaerospace change:pilotaerospace_spec", function() {
-	getAttrs(["pilotaerospace", "pilotaerospace_spec"], function(v){
-	var skl = parseInt(v.pilotaerospace) || 0;
-	var ski = "(" + (v.pilotaerospace_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({pilotaerospace_flag: 1});} 
-	else {setAttrs({pilotaerospace_flag: 0});}
-    if (v.pilotaerospace_spec === '') {setAttrs({pilotaerospace_spec_display: emp});} 
-    else {setAttrs({pilotaerospace_spec_display: ski});};});});
+	getAttrs(["pilotaerospace", "pilotaerospace_spec"], function(v) {
+    	skl = (v.pilotaerospace > 0) ? 1 : 0;
+    	spe = (v.pilotaerospace_spec === '') ? "" : "(" + (v.pilotaerospace_spec) + ")";
+    	setAttrs({pilotaerospace_flag: skl});
+    	setAttrs({pilotaerospace_spec_display: spe});
+	});
+});
 
 on("change:pilotaircraft change:pilotaircraft_spec", function() {
-	getAttrs(["pilotaircraft", "pilotaircraft_spec"], function(v){
-	var skl = parseInt(v.pilotaircraft) || 0;
-	var ski = "(" + (v.pilotaircraft_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({pilotaircraft_flag: 1});} 
-	else {setAttrs({pilotaircraft_flag: 0});}
-    if (v.pilotaircraft_spec === '') {setAttrs({pilotaircraft_spec_display: emp});} 
-    else {setAttrs({pilotaircraft_spec_display: ski});};});});
+    getAttrs(["pilotaircraft", "pilotaircraft_spec"], function(v){
+        skl = (v.pilotaircraft > 0) ? 1 : 0;
+        spe = (v.pilotaircraft_spec === '') ? "" : "(" + (v.pilotaircraft_spec) + ")";
+        setAttrs({pilotaircraft_flag: skl});
+        setAttrs({pilotaircraft_spec_display: spe});
+    });
+});
 
 on("change:pilotexotic change:pilotexotic_spec", function() {
-	getAttrs(["pilotexotic", "pilotexotic_spec"], function(v){
-	var skl = parseInt(v.pilotexotic) || 0;
-	var ski = "(" + (v.pilotexotic_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({pilotexotic_flag: 1});} 
-	else {setAttrs({pilotexotic_flag: 0});}
-    if (v.pilotexotic_spec === '') {setAttrs({pilotexotic_spec_display: emp});} 
-    else {setAttrs({pilotexotic_spec_display: ski});};});});
+    getAttrs(["pilotexotic", "pilotexotic_spec"], function(v) {
+        skl = (v.pilotexotic > 0) ? 1 : 0;
+        spe = (v.pilotexotic_spec === '') ? "" : "(" + (v.pilotexotic_spec) + ")";
+        setAttrs({pilotexotic_flag: skl});
+        setAttrs({pilotexotic_spec_display: spe});
+    });
+});
 
 on("change:pilotground change:pilotground_spec", function() {
 	getAttrs(["pilotground", "pilotground_spec"], function(v){
-	var skl = parseInt(v.pilotground) || 0;
-	var ski = "(" + (v.pilotground_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({pilotground_flag: 1});} 
-	else {setAttrs({pilotground_flag: 0});}
-    if (v.pilotground_spec === '') {setAttrs({pilotground_spec_display: emp});} 
-    else {setAttrs({pilotground_spec_display: ski});};});});
+    	skl = (v.pilotground > 0) ? 1 : 0;
+    	spe = (v.pilotground_spec === '') ? "" : "(" + (v.pilotground_spec) + ")";
+    	setAttrs({pilotground_flag: skl});
+    	setAttrs({pilotground_spec_display: spe});
+	});
+});
 
 on("change:pilotwalker change:pilotwalker_spec", function() {
-	getAttrs(["pilotwalker", "pilotwalker_spec"], function(v){
-	var skl = parseInt(v.pilotwalker) || 0;
-	var ski = "(" + (v.pilotwalker_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({pilotwalker_flag: 1});} 
-	else {setAttrs({pilotwalker_flag: 0});}
-    if (v.pilotwalker_spec === '') {setAttrs({pilotwalker_spec_display: emp});} 
-    else {setAttrs({pilotwalker_spec_display: ski});};});});
+	getAttrs(["pilotwalker", "pilotwalker_spec"], function(v) {
+    	skl = (v.pilotwalker > 0) ? 1 : 0;
+    	spe = (v.pilotwalker_spec === '') ? "" : "(" + (v.pilotwalker_spec) + ")";
+    	setAttrs({pilotwalker_flag: skl});
+    	setAttrs({pilotwalker_spec_display: spe});
+	});
+});
 
 on("change:pilotwatercraft change:pilotwatercraft_spec", function() {
-	getAttrs(["pilotwatercraft", "pilotwatercraft_spec"], function(v){
-	var skl = parseInt(v.pilotwatercraft) || 0;
-	var ski = "(" + (v.pilotwatercraft_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({pilotwatercraft_flag: 1});} 
-	else {setAttrs({pilotwatercraft_flag: 0});}
-    if (v.pilotwatercraft_spec === '') {setAttrs({pilotwatercraft_spec_display: emp});} 
-    else {setAttrs({pilotwatercraft_spec_display: ski});};});});
+    getAttrs(["pilotwatercraft", "pilotwatercraft_spec"], function(v){
+        skl = (v.pilotwatercraft > 0) ? 1 : 0;
+        spe = (v.pilotwatercraft_spec === '') ? "" : "(" + (v.pilotwatercraft_spec) + ")";
+        setAttrs({pilotwatercraft_flag: skl});
+        setAttrs({pilotwatercraft_spec_display: spe});
+    });
+});
 
 on("change:perception change:perception_spec", function() {
-	getAttrs(["perception", "perception_spec"], function(v){
-	var skl = parseInt(v.perception) || 0;
-	var ski = "(" + (v.perception_spec) + ")";
-    var emp = "";
-	if (skl > 0) {setAttrs({perception_flag: 1});} 
-	else {setAttrs({perception_flag: 0});}
-    if (v.perception_spec === '') {setAttrs({perception_spec_display: emp});} 
-    else {setAttrs({perception_spec_display: ski});};});});
+    getAttrs(["perception", "perception_spec"], function(v) {
+        skl = (v.perception > 0) ? 1 : 0;
+        spe = (v.perception_spec === '') ? "" : "(" + (v.perception_spec) + ")";
+        setAttrs({perception_flag: skl});
+        setAttrs({perception_spec_display: spe});
+    });
+});
 
 	//Hide the Text boxes when they are empty
 on("change:knowledge", function() {
-	getAttrs(["knowledge"], function(v){
-	if (v.knowledge === '') {setAttrs({knowledge_flag: 0});} else {
-	setAttrs({knowledge_flag: 1});}});});
+	getAttrs(["knowledge"], function(v) {
+		fla = (v.knowledge === '') ? 0 : 1;
+		setAttrs({knowledge_flag: fla});
+	});
+});
 
 on("change:language", function() {
-	getAttrs(["language"], function(v){
-	if (v.language === '') {setAttrs({language_flag: 0});} else {
-	setAttrs({language_flag: 1});}});});
+	getAttrs(["language"], function(v) {
+		fla = (v.language === '') ? 0 : 1;
+		setAttrs({language_flag: fla});
+	});
+});
 
 on("change:quality", function() {
-	getAttrs(["quality"], function(v){
-	if (v.quality === '') {setAttrs({quality_flag: 0});} else {
-	setAttrs({quality_flag: 1});}});});
+	getAttrs(["quality"], function(v) {
+		fla = (v.quality === '') ? 0 : 1;
+		setAttrs({quality_flag: fla});
+	});
+});
 
 on("change:augmentations", function() {
-	getAttrs(["augmentations"], function(v){
-	if (v.augmentations === '') {setAttrs({augmentation_flag: 0});} else {
-	setAttrs({augmentation_flag: 1});}});});
+	getAttrs(["augmentations"], function(v) {
+		fla = (v.augmentations === '') ? 0 : 1;
+		setAttrs({augmentations_flag: fla});
+	});
+});
 
 on("change:initiate", function() {
-	getAttrs(["initiate"], function(v){
-	if (v.initiate === '') {setAttrs({initiate_flag: 0});} else {
-	setAttrs({initiate_flag: 1});}});});
+	getAttrs(["initiate"], function(v) {
+		fla = (v.initiate === '') ? 0 : 1;
+		setAttrs({initiate_flag: fla});
+	});
+});
 
 on("change:submersion", function() {
-	getAttrs(["submersion"], function(v){
-	if (v.submersion === '') {setAttrs({submersion_flag: 0});} else {
-	setAttrs({submersion_flag: 1});}});});
+	getAttrs(["submersion"], function(v) {
+		fla = (v.submersion === '') ? 0 : 1;
+		setAttrs({submersion_flag: fla});
+	});
+});
 
 on("change:powers", function() {
-	getAttrs(["powers"], function(v){
-	if (v.powers === '') {setAttrs({power_flag: 0});} else {
-	setAttrs({power_flag: 1});}});});
+	getAttrs(["powers"], function(v) {
+		fla = (v.powers === '') ? 0 : 1;
+		setAttrs({powers_flag: fla});
+	});
+});
 
 on("change:gear", function() {
-	getAttrs(["gear"], function(v){
-	if (v.gear === '') {setAttrs({gear_flag: 0});} else {
-	setAttrs({gear_flag: 1});}});});
+	getAttrs(["gear"], function(v) {
+		fla = (v.gear === '') ? 0 : 1;
+		setAttrs({gear_flag: fla});
+	});
+});
 
 on("change:programs", function() {
-	getAttrs(["programs"], function(v){
-	if (v.programs === '') {setAttrs({programs_flag: 0});} else {
-	setAttrs({programs_flag: 1});}});});
-
+	getAttrs(["programs"], function(v) {
+		fla = (v.programs === '') ? 0 : 1;
+		setAttrs({programs_flag: fla});
+	});
+});
 on("change:weakness", function() {
-	getAttrs(["weakness"], function(v){
-	if (v.weakness === '') {setAttrs({weakness_flag: 0});} else {
-	setAttrs({weakness_flag: 1});}});});
+	getAttrs(["weakness"], function(v) {
+		fla = (v.weakness === '') ? 0 : 1;
+		setAttrs({weakness_flag: fla});
+	});
+});
 </script>
