@@ -1322,6 +1322,15 @@
 			<div class="settings">
 				<input type="number" name="attr_software_dice" value="" placeholder="Dice" />
 				<input type="text" name="attr_form_name" value="" placeholder="Editor" />
+				<select name="attr_form_target">
+					<option class="option" value="Device" selected="selected">Device</option>
+					<option class="option" value="File">File</option>
+					<option class="option" value="Host">Host</option>
+					<option class="option" value="IC">IC</option>
+					<option class="option" value="Persona">Persona</option>
+					<option class="option" value="Self">Self</option>
+					<option class="option" value="Sprite">Sprite</option>
+				</select>
 				<input class="spell-input" type="text" name="attr_form_duration" value="" placeholder="P" />
 				<span>L+/- </span>
 				<input type="number" name="attr_form_fade" value="" placeholder="+2" />
@@ -1733,11 +1742,14 @@ on("change:repeating_spell", function() {
 		var ran = (v.repeating_spell_spell_range) + ", ";
 		var dam = "Damage " + (v.repeating_spell_spell_damage) + ", ";
 		var dur = "Duration " + (v.repeating_spell_spell_duration) + ", ";
-		var dra = "F" + (v.repeating_spell_spell_drain) + ", ";
 		var not = (v.repeating_spell_spell_note);
 
+		dra = (v.repeating_spell_spell_drain > 0) ? ("F" + "+" + (v.repeating_spell_spell_drain) + ", ") : 
+			  ((v.repeating_spell_spell_drain < 0) ? ("F" + (v.repeating_spell_spell_drain) + ", ") :
+			  ("F" + ", "));
+
 		display = (com === "Direct, Force ") ? (" (Direct) " + "[" + typ + ran + dam + dur + dra + not + "]") :
-				  ((com === "Indirect, Force ?{Force|}, AP -") ? (" (Indirect) " + "[" + typ + ran + dam + dur + (dra) + not + "]") :
+				  ((com === "Indirect, Force ?{Force|}, AP -") ? (" (Indirect) " + "[" + typ + ran + dam + dur + dra + not + "]") :
 				  (" [" + typ + ran + dur + dra + not + "]"));
 
         setAttrs({
@@ -1748,11 +1760,16 @@ on("change:repeating_spell", function() {
 
 	//Complex Form displays  set into an Array
 on("change:repeating_form", function() {
-    getAttrs(["repeating_form_form_duration", "repeating_form_form_fade", "repeating_form_form_note", ], function(v){
+    getAttrs(["repeating_form_form_duration", "repeating_form_form_target", "repeating_form_form_fade", "repeating_form_form_note", ], function(v){
+    	var tar = "Target " + (v.repeating_form_form_target) + ", ";
 		var dur = "Duration " + (v.repeating_form_form_duration) + ", ";
-		var fad = "L" + (v.repeating_form_form_fade) + ", ";
 		var not = (v.repeating_form_form_note);
-		var display = (" [" + dur + fad + not + "]");
+
+		fad = (v.repeating_form_form_fade > 0) ? ("L" + "+" + (v.repeating_form_form_fade) + ", ") : 
+			  ((v.repeating_form_form_fade < 0) ? ("L" + (v.repeating_form_form_fade) + ", ") :
+			  ("L" + ", "));
+
+		var display = (" [" + tar + dur + fad + not + "]");
 
         setAttrs({
             repeating_form_form: display
@@ -2645,6 +2662,7 @@ on("change:programs", function() {
 		setAttrs({programs_flag: fla});
 	});
 });
+
 on("change:weakness", function() {
 	getAttrs(["weakness"], function(v) {
 		fla = (v.weakness === '') ? 0 : 1;
