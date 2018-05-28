@@ -110,9 +110,9 @@
 				<input type="hidden" name="attr_physical_limit" value="4" />
 				<input type="hidden" name="attr_mental_limit"s value="4" />
 				<input type="hidden" name="attr_social_limit" value="5" />
-				<span>Physical </span><input type="number" name="attr_physical_bonus" value="0" placeholder="0" />,
-				<span>Mental </span><input type="number" name="attr_mental_bonus" value="0" placeholder="0" />,
-				<span>Social </span><input type="number" name="attr_social_bonus" value="0" placeholder="0" />
+				<span>Physical </span><input type="number" name="attr_physical_limit_bonus" value="0" placeholder="0" />,
+				<span>Mental </span><input type="number" name="attr_mental_limit_bonus" value="0" placeholder="0" />,
+				<span>Social </span><input type="number" name="attr_social_limit_bonus" value="0" placeholder="0" />
 				<br />
 				<label>Pain Tolerance: </label>
 				<input type="number" name="attr_pain_tolerance" value="0" placeholder="0" />
@@ -227,7 +227,7 @@
 						<input type="text" name="attr_cybertechnology_spec" placeholder="Specalization" title="@{cybertechnology_spec}">
 						<input type="hidden" name="attr_cybertechnology_spec_display">
 					</li>
-					<li><input type="checkbox" /><span>firstaid</span>
+					<li><input type="checkbox" /><span>First Aid</span>
 						<input type="number" name="attr_firstaid" value="" placeholder="#" />
 						<input type="text" name="attr_firstaid_spec" placeholder="Specalization" title="@{firstaid_spec}">
 						<input type="hidden" name="attr_firstaid_spec_display">
@@ -293,7 +293,7 @@
 						<input type="text" name="attr_cybercombat_spec" placeholder="Specalization" title="@{cybercombat_spec}">
 						<input type="hidden" name="attr_cybercombat_spec_display">
 					</li>
-					<li><input type="checkbox" /><span>electronicwarfare</span>
+					<li><input type="checkbox" /><span>Electronic Warfare</span>
 						<input type="number" name="attr_electronicwarfare" value="" placeholder="#" />
 						<input type="text" name="attr_electronicwarfare_spec" placeholder="Specalization" title="@{electronicwarfare_spec}">
 						<input type="hidden" name="attr_electronicwarfare_spec_display">
@@ -707,15 +707,15 @@
 		<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
 		<div class="goon attribute">
 			<input type="hidden" class="character-type" name="attr_special_flag" />
-			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Body}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Body Roll"><b>B</b></button></label><br /><span name="attr_body"></span></div>
-			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Agility}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{agility}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Agility Roll"><b>A</b></button></label><br /><span name="attr_agility"></span></div>
-			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Reaction}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{reaction}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Reaction Roll"><b>R</b></button></label><br /><span name="attr_reaction"></span></div>
-			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Strength}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{strength}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Strength Roll"><b>S</b></button></label><br /><span name="attr_strength"></span></div>
-			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Willpower}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{willpower}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Willpower Roll"><b>W</b></button></label><br /><span name="attr_willpower"></span></div>
-			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Logic}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{logic}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Logic Roll"><b>L</b></button></label><br /><span name="attr_logic"></span></div>
-			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Intuition}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{intuition}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Intuition Roll"><b>I</b></button></label><br /><span name="attr_intuition"></span></div>
-			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Charisma}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{charisma}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Charisma Roll"><b>C</b></button></label><br /><span name="attr_charisma"></span></div>
-			<div class="attr-header"><label><button type='roll' value="&{template:sGoon}{{header=Edge}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{dice=[[(@{edge}+(?{Attribute|Only Edge,0|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle})d6>5]]}}" title="Edge Roll"><b>E</b></label><br /><span name="attr_edge"></span></div>
+			<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Body}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Body Roll"><b>B</b></button></label><br /><span name="attr_body"></span></div>
+			<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Agility}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{agility}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Agility Roll"><b>A</b></button></label><br /><span name="attr_agility"></span></div>
+			<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Reaction}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{reaction}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Reaction Roll"><b>R</b></button></label><br /><span name="attr_reaction"></span></div>
+			<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Strength}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{strength}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Strength Roll"><b>S</b></button></label><br /><span name="attr_strength"></span></div>
+			<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Willpower}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{willpower}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Willpower Roll"><b>W</b></button></label><br /><span name="attr_willpower"></span></div>
+			<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Logic}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{logic}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Logic Roll"><b>L</b></button></label><br /><span name="attr_logic"></span></div>
+			<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Intuition}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{intuition}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Intuition Roll"><b>I</b></button></label><br /><span name="attr_intuition"></span></div>
+			<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Charisma}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{charisma}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Charisma Roll"><b>C</b></button></label><br /><span name="attr_charisma"></span></div>
+			<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Edge}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{dice=[[(@{edge}+(?{Attribute|Only Edge,0|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle})d6>5]]}}" title="Edge Roll"><b>E</b></label><br /><span name="attr_edge"></span></div>
 			<div class="attr-header"><label>Ess</label><br /><span name="attr_essence"></span></div>
 			<div class="attr-header magic"><label>M</label><br /><span name="attr_magic"></span></div>
 			<div class="attr-header magic"><label>F</label><br /><span name="attr_force"></span></div>
@@ -723,15 +723,15 @@
 			<div class="attr-header resonance"><label>L</label><br /><span name="attr_level"></span></div>
 		</div>
 		<div class="host attribute">
-			<div class="attr-header"><label><button type="roll" value="&{template:sGoon}{{header=Matrix Resistance}}{{base=Host Rating ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{host_rating}+@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Host Rating</b></button></label><br /><span name="attr_host_rating"></span></div>
+			<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Matrix Resistance}}{{base=Host Rating ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{host_rating}+@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Host Rating</b></button></label><br /><span name="attr_host_rating"></span></div>
 			<br />
-			<div class="attr-header"><label><button type="roll" value="&{template:sGoon}{{header=Attack ♦ Host Rating}}{{base=Attack}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Attack</b></button></label><br /><span name="attr_attack"></span></div>
+			<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Attack ♦ Host Rating}}{{base=Attack}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Attack</b></button></label><br /><span name="attr_attack"></span></div>
 			<br />
-			<div class="attr-header"><label><button type="roll" value="&{template:sGoon}{{header=Sleaze}}{{base=Sleaze ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{sleaze}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Sleaze</b></button></label><br /><span name="attr_sleaze"></span></div>
+			<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Sleaze}}{{base=Sleaze ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{sleaze}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Sleaze</b></button></label><br /><span name="attr_sleaze"></span></div>
 			<br />
-			<div class="attr-header"><label><button type="roll" value="&{template:sGoon}{{header=Data Processing}}{{base=Data Processing ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{data_processing}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Data Processing</b></button></label><br /><span name="attr_data_processing"></span></div>
+			<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Data Processing}}{{base=Data Processing ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{data_processing}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Data Processing</b></button></label><br /><span name="attr_data_processing"></span></div>
 			<br />
-			<div class="attr-header"><label><button type="roll" value="&{template:sGoon}{{header=Firewall}}{{base=Firewall ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{firewall}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Firewall</b></button></label><br /><span name="attr_firewall"></span></div>
+			<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Firewall}}{{base=Firewall ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{firewall}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Firewall</b></button></label><br /><span name="attr_firewall"></span></div>
 		</div>
 		<div class="vehicle attribute">
 			<div class="attr-header"><label><b>Hand</b></label><br /><span name="attr_handling"></span></div>
@@ -1204,7 +1204,7 @@
 				<label>Submersion: </label><span name="attr_submersion"></span><br />
 				<label>Echos: </label><span name="attr_echos"></span>
 			</div>
-			<input type="hidden" class="optional-flag0" name="attr_power_flag" value="0" />
+			<input type="hidden" class="optional-flag0" name="attr_powers_flag" value="0" />
 			<div class="textboxes">
 				<label>Powers: </label>
 				<span name="attr_powers"></span>
@@ -1244,7 +1244,7 @@
 				<input type="number" name="attr_weapon_dice" value="" placeholder="Dice" />
 				<input type="text" name="attr_weapon_name" value="" placeholder="Ares Predator" />
 				<input type="text" name="attr_weapon_type" value="" placeholder="Heavy Pistol" />
-				<div class="weapon-melee">
+				<div class="weapon-melee"> 
 					<input type="number" name="attr_weapon_reach" value="0" min="0" placeholder="Reach" />
 				</div>
 				<input type="number" name="attr_weapon_acc" value="" placeholder="ACC" />
@@ -1600,12 +1600,12 @@ on("change:host_rating change:data_processing change:pilot change:intuition chan
 
 
 	//Calculate Mental Limit
-on("change:intuition change:willpower change:logic change:mental_bonus", function() {
+on("change:intuition change:willpower change:logic change:mental_limit_bonus", function() {
 	getAttrs(["intuition", "willpower", "logic", "mental_bonus"], function(v){
 		var int = parseInt(v.intuition) || 0;
 		var wil = parseInt(v.willpower) || 0;
 		var log = parseInt(v.logic) || 0;
-		var bon = parseInt(v.mental_bonus) || 0;
+		var bon = parseInt(v.mental_limit_bonus) || 0;
 		var tot = ((int + wil + (log * 2))/3);
 		var num = Math.ceil(tot) + bon;
 
@@ -1614,12 +1614,12 @@ on("change:intuition change:willpower change:logic change:mental_bonus", functio
 });
 
 	//Calculate Physical Limit
-on("change:body change:reaction change:strength change:physical_bonus", function() {
+on("change:body change:reaction change:strength change:physical_limit_bonus", function() {
 	getAttrs(["body", "reaction", "strength", "physical_bonus"], function(v){
 		var bod = parseInt(v.body) || 0;
 		var rea = parseInt(v.reaction) || 0;
 		var str = parseInt(v.strength) || 0;
-		var bon = parseInt(v.physical_bonus) || 0;
+		var bon = parseInt(v.physical_limit_bonus) || 0;
 		var tot = ((bod + rea + (str * 2))/3);
 		var num = Math.ceil(tot) + bon;
 
@@ -1628,12 +1628,12 @@ on("change:body change:reaction change:strength change:physical_bonus", function
 });
 
 	//Calculate Social Limit
-on("change:charisma change:willpower change:essence change:social_bonus", function() {
+on("change:charisma change:willpower change:essence change:social_limit_bonus", function() {
 	getAttrs(["charisma", "willpower", "essence", "social_bonus"], function(v){
 		var cha = parseInt(v.charisma) || 0;
 		var wil = parseInt(v.willpower) || 0;
 		var ess = parseInt(v.essence) || 0;
-		var bon = parseInt(v.social_bonus) || 0;
+		var bon = parseInt(v.social_limit_bonus) || 0;
 		var tot = ((ess + wil + (cha * 2))/3);
 		var num = Math.ceil(tot) + bon;
 
