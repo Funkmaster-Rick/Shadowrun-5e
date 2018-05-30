@@ -138,9 +138,13 @@ textarea {
 		margin-left: -2px;
 	}
 
-/***** Toggles & the Gear icons *****/
-	.sheet-toggle input[type="checkbox"] {width: 30px;}
+	input.sheet-character-type {
+		width: 90px;
+		left: 90px;
+		margin-left: -80px;
+	}
 
+/***** Toggles & the Gear icons *****/
 	.sheet-toggle input[type="checkbox"] + span {
 	    font-family: pictos;
 	    background: transparent;
@@ -175,10 +179,10 @@ textarea {
 		 color: #FCD116;
 	}
 
-	.sheet-toggle .sheet-2col input {
+	/*.sheet-toggle .sheet-2col input {
 		width: 55px;
 		left: 55px;
-	}
+	} */
 
 	.sheet-skill-col label {
 		font-size: 0.9rem;
@@ -397,12 +401,12 @@ textarea {
 	}
 
 	.sheet-repeating input.sheet-settings-toggle {
-		top: 20px;
+		top: 5px;
 		left: -5px;
 	}
 
 	.sheet-repeating input.sheet-settings-toggle + span {
-		top: 20px;
+		top: 3px;
 		left: -17px;
 		font-size: 0.8rem;
 	}
@@ -415,7 +419,6 @@ textarea {
 /**** Customize Repeating Sections ****/
 	.sheet-repeating {
 		display:inline-block;
-		margin-top: -15px;
 	}
 
 	.sheet-repeating button.sheet-display {text-align: left;} 
@@ -427,6 +430,7 @@ textarea {
 
 	.sheet-repeating .sheet-display {
 		display: inline-flex;
+		margin-top: -15px;
 	}
 
 /**** Weapons Customize ****/
@@ -721,7 +725,7 @@ textarea {
 	}
 
 	.repcontrol .btn {
-		display: inline-block;
+		display: inline-block;s
 		width: 25px;
 	    border: medium none;
 	    color: transparent !important;
