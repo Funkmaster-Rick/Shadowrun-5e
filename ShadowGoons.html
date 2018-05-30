@@ -1,8 +1,6 @@
 <!--- TO Do List
-	Matrix Init Rolls correctly but displays incorrect.
 	Powers need to be rollable. Common Power buttons would be useful
 	Give Display Labels a right margin and remove all spaces
-	Fix IC which is overlapping item control
 ---->
 
 <div class="roll-toggles"><!-- ~~~~~~~~ Roll Buttons & Toggles  ~~~~~~~~ -->
@@ -27,8 +25,7 @@
 		</select>
 	</div>
 </div><!-- ~~~~~~~~ End Roll Toggles  ~~~~~~~~ -->
-<!-- ~~~~~~~~ Start of the Goon Sheet  ~~~~~~~~ -->
-<div class="stats toggle">
+<div class="stats toggle"><!-- ~~~~~~~~ Start of the Goon Sheet  ~~~~~~~~ -->
 	<input type="checkbox" class="settings-toggle" name="attr_stats_toggle" checked="checked" /><span>y</span>
 	<div class="settings">
 		<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
@@ -758,7 +755,7 @@
 			</div>
 		</div>
 	<!-- ~~~~~~~~ Matrix Initiative  ~~~~~~~~ -->
-		<label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Matrix Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{matrix_mod}+@{data_processing}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}"><b>Matrix Initiative: </b></button></label>
+		<label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Matrix Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{matrix_mod}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}"><b>Matrix Initiative: </b></button></label>
 		<span name="attr_matrix_mod"></span><span> + </span><span name="attr_matrix_dice"></span><span>d6</span>
 		<br />
 		<div class="goon">
@@ -1239,25 +1236,27 @@
 		<div class="repeating toggle">
 			<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" /><span>y</span>
 			<div class="settings">
-				<input type="radio" class="range-toggle" name="attr_weapon_range" value="" checked="checked" /><span>Range</span>
-				<input type="radio" class="melee-toggle" name="attr_weapon_range" value="{{rea=[[@{weapon_reach}]]}}" /><span>Melee</span>
-				<input type="number" name="attr_weapon_dice" value="" placeholder="Dice" />
-				<input type="text" name="attr_weapon_name" value="" placeholder="Ares Predator" />
-				<input type="text" name="attr_weapon_type" value="" placeholder="Heavy Pistol" />
-				<div class="weapon-melee"> 
-					<input type="number" name="attr_weapon_reach" value="0" min="0" placeholder="Reach" />
-				</div>
-				<input type="number" name="attr_weapon_acc" value="" placeholder="ACC" />
-				<input type="number" name="attr_weapon_dv" value="" placeholder="9P" />
-				<input type="number" name="attr_weapon_ap" value="" placeholder="AP" />
-				<div class="weapon-range">
-					<input type="text" name="attr_weapon_mode" value="" placeholder="SA/BF/FA" />
-					<input type="number" name="attr_weapon_rc" value="" placeholder="Recoil" />
-					<input type="number" name="attr_weapon_ammo" value="" placeholder="15" /><span>(c)</span>
-				</div>
-				<br />
-				<div class="weapon-note">
-					<input type="text"  name="attr_weapon_note" value="" placeholder="w/ 3 clips of explosive rounds"/>
+				<div class="repeat-section">
+					<input type="radio" class="range-toggle" name="attr_weapon_range" value="" checked="checked" /><span>Range</span>
+					<input type="radio" class="melee-toggle" name="attr_weapon_range" value="{{rea=[[@{weapon_reach}]]}}" /><span>Melee</span>
+					<div class="repeat-row"><h4>Dice</h4><input type="number" name="attr_weapon_dice" value="" placeholder="Dice" /></div>
+					<div class="repeat-row"><h4>Name</h4><input type="text" name="attr_weapon_name" value="" placeholder="Ares Predator" /></div>
+					<div class="repeat-row"><h4>Type</h4><input type="text" name="attr_weapon_type" value="" placeholder="Heavy Pistol" /></div>
+					<div class="weapon-melee"> 
+						<div class="repeat-row"><h4>Reach</h4><input type="number" name="attr_weapon_reach" value="0" min="0" placeholder="Reach" /></div>
+					</div>
+					<div class="repeat-row"><h4>Acc</h4><input type="number" name="attr_weapon_acc" value="" placeholder="ACC" /></div>
+					<div class="repeat-row"><h4>DV</h4><input type="number" name="attr_weapon_dv" value="" placeholder="9P" /></div>
+					<div class="repeat-row"><h4>AP</h4><input type="number" name="attr_weapon_ap" value="" placeholder="AP" /></div>
+					<div class="weapon-range">
+						<div class="repeat-row"><h4>Modes</h4><input type="text" name="attr_weapon_mode" value="" placeholder="SA/BF/FA" /></div>
+						<div class="repeat-row"><h4>Recoil</h4><input type="number" name="attr_weapon_rc" value="" placeholder="Recoil" /></div>
+						<div class="repeat-row"><h4>Ammo</h4><input type="number" name="attr_weapon_ammo" value="" placeholder="15" /><span>(c)</span></div>
+					</div>
+					<br />
+					<div class="weapon-note">
+						<input type="text"  name="attr_weapon_note" value="" placeholder="w/ 3 clips of explosive rounds"/>
+					</div>
 				</div>
 			</div>
 			<div class="display">
@@ -1276,32 +1275,41 @@
 		<div class="repeating toggle">
 			<input type="checkbox" class="settings-toggle" name="attr_spell_toggle" checked="checked" /><span>y</span>
 			<div class="settings">
-				<select name="attr_spell_catagory">
-					<option class="option" value="Combat" selected="selected">Combat</option>
-					<option class="option" value="Detection">Detection</option>
-					<option class="option" value="Health">Health</option>
-					<option class="option" value="Illusion">Illusion</option>
-					<option class="option" value="Manipulation">Manipulation</option>
-				</select>
-				<input type="number" name="attr_spell_dice" value="" placeholder="Dice" />
-				<input type="text" name="attr_spell_name" value="" placeholder="Fireball" />
-				<select name="attr_spell_type">
-					<option class="option" value="M" selected="selected">Mana</option>
-					<option class="option" value="P">Physical</option>
-				</select>
-				<input type="text" name="attr_spell_range" value="" placeholder="LOS (A)" />
-				<input class="spell-input" type="text" name="attr_spell_duration" value="" placeholder="I" />
-				<span>F+/- </span>
-				<input type="number" name="attr_spell_drain" value="" placeholder="-1" />
-				<input class="spell_catagory" name="attr_spell_catagory" type="hidden" value="Combat">
-				<select class="combat-type" name="attr_combat_type">
-					<option class="option" value="Force " selected="selected"></option>
-					<option class="option" value="Direct, Force ">Direct</option>
-					<option class="option" value="Indirect, Force ?{Force|}, AP -">Indirect</option>
-				</select>
-				<input class="spell-input" type="text" name="attr_spell_damage" value="" placeholder="P" />
-				<div class="weapon-note">
-					<input type="text"  name="attr_spell_note" value="" placeholder="Spell notes"/>
+				<div class="repeat-section">
+					<div class="repeat-row"><h4>Spell Type</h4>
+						<select name="attr_spell_catagory">
+							<option class="option" value="Combat" selected="selected">Combat</option>
+							<option class="option" value="Detection">Detection</option>
+							<option class="option" value="Health">Health</option>
+							<option class="option" value="Illusion">Illusion</option>
+							<option class="option" value="Manipulation">Manipulation</option>
+						</select>
+					</div>
+					<div class="repeat-row"><h4>Dice</h4><input type="number" name="attr_spell_dice" value="" placeholder="Dice" /></div>
+					<div class="repeat-row"><h4>Name</h4><input type="text" name="attr_spell_name" value="" placeholder="Fireball" /></div>
+					<div class="repeat-row"><h4>Type</h4>
+						<select name="attr_spell_type">
+							<option class="option" value="M" selected="selected">Mana</option>
+							<option class="option" value="P">Physical</option>
+						</select>
+					</div>
+					<div class="repeat-row"><h4>Range</h4><input type="text" name="attr_spell_range" value="" placeholder="LOS (A)" /></div>
+					<div class="repeat-row"><h4>Dur.</h4><input class="spell-input" type="text" name="attr_spell_duration" value="" placeholder="I" /></div>
+					<div class="repeat-row"><h4>Drain Value</h4><span>F +/-</span><input type="number" name="attr_spell_drain" value="" placeholder="-1" /></div>
+					<input class="spell_catagory" name="attr_spell_catagory" type="hidden" value="Combat">
+					<div class="repeat-row"><h4>Combat</h4>
+						<select class="combat-type" name="attr_combat_type">
+							<option class="option" value="Force " selected="selected"></option>
+							<option class="option" value="Direct, Force ">Direct</option>
+							<option class="option" value="Indirect, Force ?{Force|}, AP -">Indirect</option>
+						</select>
+					</div>
+					<div class="repeat-row"><h4>Damage</h4>
+						<input class="spell-input" type="text" name="attr_spell_damage" value="" placeholder="P" />
+					</div>
+					<div class="weapon-note">
+						<input type="text"  name="attr_spell_note" value="" placeholder="Spell notes"/>
+					</div>
 				</div>
 			</div>
 			<div class="display">
@@ -1320,22 +1328,25 @@
 		<div class="repeating spell toggle">
 			<input type="checkbox" class="settings-toggle" name="attr_form_toggle" checked="checked" /><span>y</span>
 			<div class="settings">
-				<input type="number" name="attr_software_dice" value="" placeholder="Dice" />
-				<input type="text" name="attr_form_name" value="" placeholder="Editor" />
-				<select name="attr_form_target">
-					<option class="option" value="Device" selected="selected">Device</option>
-					<option class="option" value="File">File</option>
-					<option class="option" value="Host">Host</option>
-					<option class="option" value="IC">IC</option>
-					<option class="option" value="Persona">Persona</option>
-					<option class="option" value="Self">Self</option>
-					<option class="option" value="Sprite">Sprite</option>
-				</select>
-				<input class="spell-input" type="text" name="attr_form_duration" value="" placeholder="P" />
-				<span>L+/- </span>
-				<input type="number" name="attr_form_fade" value="" placeholder="+2" />
-				<div class="weapon-note">
-					<input type="text"  name="attr_form_note" value="" placeholder="Form notes"/>
+				<div class="repeat-section">
+					<div class="repeat-row"><h4>Dice</h4><input type="number" name="attr_software_dice" value="" placeholder="Dice" /></div>
+					<div class="repeat-row"><h4>Name</h4><input type="text" name="attr_form_name" value="" placeholder="Editor" /></div>
+					<div class="repeat-row"><h4>Target</h4>
+						<select name="attr_form_target">
+							<option class="option" value="Device" selected="selected">Device</option>
+							<option class="option" value="File">File</option>
+							<option class="option" value="Host">Host</option>
+							<option class="option" value="IC">IC</option>
+							<option class="option" value="Persona">Persona</option>
+							<option class="option" value="Self">Self</option>
+							<option class="option" value="Sprite">Sprite</option>
+						</select>
+					</div>
+					<div class="repeat-row"><h4>Dur.</h4><input class="spell-input" type="text" name="attr_form_duration" value="" placeholder="P" /></div>
+					<div class="repeat-row"><h4>Fade Value</h4><span>L +/-</span><input type="number" name="attr_form_fade" value="" placeholder="+2" /></div>
+					<div class="weapon-note">
+						<input type="text"  name="attr_form_note" value="" placeholder="Form notes"/>
+					</div>
 				</div>
 			</div>
 			<div class="display">
@@ -1354,28 +1365,35 @@
 		<div class="repeating toggle">
 			<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" /><span>y</span>
 			<div class="settings">
-				<input type="text" name="attr_IC_name" value="" placeholder="IC Name" />
-				<span>[</span>
-				<select name="attr_IC_limit" title="Limit">
-					<option class="option" value="@{attack}" selected="selected">Attack</option>
-					<option class="option" value="@{data_processing}">Data Processing</option>
-				</select>
-				<span>]</span>
-				<select name="attr_IC_attribute" title="Mental attribute resistance">
-					<option class="option" value="Willpower" selected="selected">Willpower</option>
-					<option class="option" value="Intuition">Intuition</option>
-					<option class="option" value="Logic">Logic</option>
-				</select>
-				<span> vs. </span>
-				<select name="attr_IC_matrix" title="Matrix attribute resistance">
-					<option class="option" value="Attack">Attack</option>
-					<option class="option" value="Sleaze">Sleaze</option>
-					<option class="option" value="Data Processing" selected="selected">Data Processing</option>
-					<option class="option" value="Firewall">Firewall</option>
-				</select>
-				<br />
-				<div class="weapon-note">
-					<input type="text"  name="attr_IC_note" value="" placeholder="IC notes"/>
+				<div class="repeat-section">
+					<div class="repeat-row"><h4>Name</h4><input type="text" name="attr_IC_name" value="" placeholder="IC Name" /></div>
+					<span>[</span>
+					<div class="repeat-row"><h4>IC Limit</h4>
+						<select name="attr_IC_limit" title="Limit">
+							<option class="option" value="@{attack}" selected="selected">Attack</option>
+							<option class="option" value="@{data_processing}">Data Processing</option>
+						</select>
+					</div>
+					<span>]</span>
+					<div class="repeat-row"><h4>Defense Attribute</h4>
+						<select name="attr_IC_attribute" title="Mental attribute resistance">
+							<option class="option" value="Willpower" selected="selected">Willpower</option>
+							<option class="option" value="Intuition">Intuition</option>
+							<option class="option" value="Logic">Logic</option>
+						</select>
+					</div>
+					<span> vs. </span>
+					<div class="repeat-row"><h4>Defense Matrix Attr.</h4>
+						<select name="attr_IC_matrix" title="Matrix attribute resistance">
+							<option class="option" value="Attack">Attack</option>
+							<option class="option" value="Sleaze">Sleaze</option>
+							<option class="option" value="Data Processing" selected="selected">Data Processing</option>
+							<option class="option" value="Firewall">Firewall</option>
+						</select>
+					</div>
+					<div class="weapon-note">
+						<input type="text"  name="attr_IC_note" value="" placeholder="IC notes"/>
+					</div>
 				</div>
 			</div>
 			<div class="display">
@@ -1391,53 +1409,150 @@
 </div><!-- ~~~~~~~~ End of IC! ~~~~~~~~ -->
 <!-- ~~~~~~~~ Start of Matrix Area ~~~~~~~~ -->
 <input type="hidden" class="character-type" name="attr_matrix_flag" />
-<div class="matrix"><h2>Matrix Device:</h2><input type="text" name="attr_device_name" placeholder="Sony CIY-720" /><br />
+<div class="matrix">
 	<div class="2col">
-		<div class="device-row">
-			<label><button type="roll" value="&{template:sGoon}{{header=Matrix Resistance}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{device_rating}+@{firewall})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Device Rating</button></label>
-			<input type="number" name="attr_device_rating" value="" placeholder="4" />
-			<input type="number" name="attr_device_attribute_1" value="" placeholder="7" />
-			<input type="number" name="attr_device_attribute_2" value="" placeholder="6" />
-			<input type="number" name="attr_device_attribute_3" value="" placeholder="5" />
-			<input type="number" name="attr_device_attribute_4" value="" placeholder="4" />
-			<br/>
-		</div>
-		<div class="device-attr">
-			<label><button type="roll" value="&{template:sGoon}{{header=Attack}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Attack</button></label>
-			<input type="radio" name="attr_attack" value="@{device_attribute_1}" />
-			<input type="radio" name="attr_attack" value="@{device_attribute_2}" />
-			<input type="radio" name="attr_attack" value="@{device_attribute_3}" />
-			<input type="radio" name="attr_attack" value="@{device_attribute_4}" />
-		</div>
-		<div class="device-attr">
-			<label><button type="roll" value="&{template:sGoon}{{header=Sleaze}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{sleaze}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Sleaze</button></label>
-			<input type="radio" name="attr_sleaze" value="@{device_attribute_1}" />
-			<input type="radio" name="attr_sleaze" value="@{device_attribute_2}" />
-			<input type="radio" name="attr_sleaze" value="@{device_attribute_3}" />
-			<input type="radio" name="attr_sleaze" value="@{device_attribute_4}" />
-		</div>
-		<div class="device-attr">
-			<label><button type="roll" value="&{template:sGoon}{{header=Data Processing}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{data_processing}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Data Processing</button></label>
-			<input type="radio" name="attr_data_processing" value="@{device_attribute_1}" />
-			<input type="radio" name="attr_data_processing" value="@{device_attribute_2}" />
-			<input type="radio" name="attr_data_processing" value="@{device_attribute_3}" />
-			<input type="radio" name="attr_data_processing" value="@{device_attribute_4}" />
-		</div>
-		<div class="device-attr">
-			<label><button type="roll" value="&{template:sGoon}{{header=Firewall}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{firewall}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Firewall</button></label>
-			<input type="radio" name="attr_firewall" value="@{device_attribute_1}" />
-			<input type="radio" name="attr_firewall" value="@{device_attribute_2}" />
-			<input type="radio" name="attr_firewall" value="@{device_attribute_3}" />
-			<input type="radio" name="attr_firewall" value="@{device_attribute_4}" />
-		</div>
+		<h2>Matrix Device:</h2><input type="text" name="attr_device_name" placeholder="Sony CIY-720" />
 	</div>
-	<div class="2col program-col">
+	<div class="2col">
+		<label><button type="roll" value="&{template:sGoon}{{header=Matrix Resistance}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{device_rating}+@{firewall})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Device Rating</button></label>
+		<input type="number" name="attr_device_rating" value="" placeholder="4" />
+	</div>
+	<div class="device-attr mat-att">
+		<label><button type="roll" value="&{template:sGoon}{{header=Attack}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Attack</button></label>
+		<div class="5bub">
+			<input type="radio" name="attr_attack" value="1" />
+			<input type="radio" name="attr_attack" value="2" />
+			<input type="radio" name="attr_attack" value="3" />
+			<input type="radio" name="attr_attack" value="4" />
+			<input type="radio" name="attr_attack" value="5" />
+		</div>
+		<div class="5bub">
+			<input type="radio" name="attr_attack" value="6" />
+			<input type="radio" name="attr_attack" value="7" />
+			<input type="radio" name="attr_attack" value="8" />
+			<input type="radio" name="attr_attack" value="9" />
+			<input type="radio" name="attr_attack" value="10" />
+		</div>
+		<div class="5bub">
+			<input type="radio" name="attr_attack" value="11" />
+			<input type="radio" name="attr_attack" value="12" />
+			<input type="radio" name="attr_attack" value="13" />
+			<input type="radio" name="attr_attack" value="14" />
+			<input type="radio" name="attr_attack" value="15" />
+		</div>
+		<div class="5bub">
+			<input type="radio" name="attr_attack" value="16" />
+			<input type="radio" name="attr_attack" value="17" />
+			<input type="radio" name="attr_attack" value="18" />
+			<input type="radio" name="attr_attack" value="19" />
+			<input type="radio" name="attr_attack" value="20" />
+		</div>
+		<input type="number" name="attr_attack" value="" placeholder="4" />
+	</div>
+	<div class="device-attr mat-sle">
+		<label><button type="roll" value="&{template:sGoon}{{header=Sleaze}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{sleaze}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Sleaze</button></label>
+		<div class="5bub">
+			<input type="radio" name="attr_sleaze" value="1" />
+			<input type="radio" name="attr_sleaze" value="2" />
+			<input type="radio" name="attr_sleaze" value="3" />
+			<input type="radio" name="attr_sleaze" value="4" />
+			<input type="radio" name="attr_sleaze" value="5" />
+		</div>
+		<div class="5bub">
+			<input type="radio" name="attr_sleaze" value="6" />
+			<input type="radio" name="attr_sleaze" value="7" />
+			<input type="radio" name="attr_sleaze" value="8" />
+			<input type="radio" name="attr_sleaze" value="9" />
+			<input type="radio" name="attr_sleaze" value="10" />
+		</div>
+		<div class="5bub">
+			<input type="radio" name="attr_sleaze" value="11" />
+			<input type="radio" name="attr_sleaze" value="12" />
+			<input type="radio" name="attr_sleaze" value="13" />
+			<input type="radio" name="attr_sleaze" value="14" />
+			<input type="radio" name="attr_sleaze" value="15" />
+		</div>
+		<div class="5bub">
+			<input type="radio" name="attr_sleaze" value="16" />
+			<input type="radio" name="attr_sleaze" value="17" />
+			<input type="radio" name="attr_sleaze" value="18" />
+			<input type="radio" name="attr_sleaze" value="19" />
+			<input type="radio" name="attr_sleaze" value="20" />
+		</div>
+		<input type="number" name="attr_sleaze" value="" placeholder="4" />
+	</div>
+	<div class="device-attr mat-dat">
+		<label><button type="roll" value="&{template:sGoon}{{header=Data Processing}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{data_processing}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Data Processing</button></label>
+		<div class="5bub">
+			<input type="radio" name="attr_data_processing" value="1" />
+			<input type="radio" name="attr_data_processing" value="2" />
+			<input type="radio" name="attr_data_processing" value="3" />
+			<input type="radio" name="attr_data_processing" value="4" />
+			<input type="radio" name="attr_data_processing" value="5" />
+		</div>
+		<div class="5bub">
+			<input type="radio" name="attr_data_processing" value="6" />
+			<input type="radio" name="attr_data_processing" value="7" />
+			<input type="radio" name="attr_data_processing" value="8" />
+			<input type="radio" name="attr_data_processing" value="9" />
+			<input type="radio" name="attr_data_processing" value="10" />
+		</div>
+		<div class="5bub">
+			<input type="radio" name="attr_data_processing" value="11" />
+			<input type="radio" name="attr_data_processing" value="12" />
+			<input type="radio" name="attr_data_processing" value="13" />
+			<input type="radio" name="attr_data_processing" value="14" />
+			<input type="radio" name="attr_data_processing" value="15" />
+		</div>
+		<div class="5bub">
+			<input type="radio" name="attr_data_processing" value="16" />
+			<input type="radio" name="attr_data_processing" value="17" />
+			<input type="radio" name="attr_data_processing" value="18" />
+			<input type="radio" name="attr_data_processing" value="19" />
+			<input type="radio" name="attr_data_processing" value="20" />
+		</div>
+		<input type="number" name="attr_data_processing" value="" placeholder="4" />
+	</div>
+	<div class="device-attr mat-fir">
+		<label><button type="roll" value="&{template:sGoon}{{header=Firewall}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{firewall}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Firewall</button></label>
+		<div class="5bub">
+			<input type="radio" name="attr_firewall" value="1" />
+			<input type="radio" name="attr_firewall" value="2" />
+			<input type="radio" name="attr_firewall" value="3" />
+			<input type="radio" name="attr_firewall" value="4" />
+			<input type="radio" name="attr_firewall" value="5" />
+		</div>
+		<div class="5bub">
+			<input type="radio" name="attr_firewall" value="6" />
+			<input type="radio" name="attr_firewall" value="7" />
+			<input type="radio" name="attr_firewall" value="8" />
+			<input type="radio" name="attr_firewall" value="9" />
+			<input type="radio" name="attr_firewall" value="10" />
+		</div>
+		<div class="5bub">
+			<input type="radio" name="attr_firewall" value="11" />
+			<input type="radio" name="attr_firewall" value="12" />
+			<input type="radio" name="attr_firewall" value="13" />
+			<input type="radio" name="attr_firewall" value="14" />
+			<input type="radio" name="attr_firewall" value="15" />
+		</div>
+		<div class="5bub">
+			<input type="radio" name="attr_firewall" value="16" />
+			<input type="radio" name="attr_firewall" value="17" />
+			<input type="radio" name="attr_firewall" value="18" />
+			<input type="radio" name="attr_firewall" value="19" />
+			<input type="radio" name="attr_firewall" value="20" />
+		</div>
+		<input type="number" name="attr_firewall" value="" placeholder="4" />
+	</div>
+	<div class="matrix-program">
 		<h3>Programs</h3>
 		<fieldset class="repeating_programs">
-		<div class="repeating spell toggle">
+		<div class="repeating toggle">
 			<input type="checkbox" class="settings-toggle" name="" checked="checked" /><span>y</span>
 			<div class="settings">
 				<input type="text" name="attr_program" value="" placeholder="Program Name" />
+				<br />
 				<div class="weapon-note">
 					<input type="text"  name="attr_program_note" value="" placeholder="Program Description"/>
 				</div>
@@ -1577,8 +1692,8 @@ on("change:astral_dice_bonus change:edge_toggle", function () {
 });
 
 	//Calculate Matrix Initiatve. This is just Initiative for Host & Vehicles
-on("change:host_rating change:data_processing change:pilot change:intuition change:matrix_mod_bonus change:matrix_dice_bonus", function() {
-	getAttrs(["sheet_type", "data_processing", "pilot", "intuition", "matrix_mod_bonus", "matrix_dice_bonus", "host_rating"], function(v) {
+on("change:host_rating change:data_processing change:pilot change:intuition change:matrix_mod_bonus change:matrix_dice_bonus change:edge_toggle", function() {
+	getAttrs(["sheet_type", "data_processing", "pilot", "intuition", "matrix_mod_bonus", "matrix_dice_bonus", "host_rating", "edge_toggle"], function(v) {
 		var dat = parseInt(v.data_processing) || 0;
 		var pil = parseInt(v.pilot) || 0;
 		var int = parseInt(v.intuition) || 0;
@@ -1591,7 +1706,9 @@ on("change:host_rating change:data_processing change:pilot change:intuition chan
 			  ((v.sheet_type === "host") ? dat + hos :
 			  	"Invald sheet type"));
 
-		dice = (v.sheet_type === "goon") ? 4 + dic : 4;
+		dice = (v.sheet_type === "goon" && v.edge_toggle == 0) ? 4 + dic : 
+			   ((v.sheet_type === "goon" && v.edge_toggle != 0) ? 5 :
+			   4);
 
 		setAttrs({matrix_mod: ini});
 		setAttrs({matrix_dice: dice});
@@ -1716,11 +1833,12 @@ on("change:repeating_weapon", function() {
 		var rea = "Reach " + (v.repeating_weapon_weapon_reach) + ", ";
 		var acc = "ACC " + (v.repeating_weapon_weapon_acc) + ", ";
         var dv = "DV " + (v.repeating_weapon_weapon_dv) + ", ";
-        var ap = "AP " + (v.repeating_weapon_weapon_ap) + ", ";
 		var mod = (v.repeating_weapon_weapon_mode) + ", ";
 		var rc = "RC " + (v.repeating_weapon_weapon_rc) + ", ";
         var amm = (v.repeating_weapon_weapon_ammo) + "(c), ";
         var not = (v.repeating_weapon_weapon_note);
+
+		ap = (v.repeating_weapon_weapon_ap > 0) ? ("AP " + "+" + (v.repeating_weapon_weapon_ap) + ", ") : ("AP " + (v.repeating_weapon_weapon_ap) + ", ");
 
 		display = (ran === "range" && mel === "melee") ? (" [" + typ + rea + acc + dv + ap + mod + rc + amm + not + "]") :
 				  ((ran === "range" && mel === "0") ? (" [" + typ + acc + dv + ap + mod + rc + amm + not + "]") :
