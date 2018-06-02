@@ -1,3 +1,4 @@
+/***** Global settings *****/
 * {
     box-sizing: border-box;
     font-family: sans-serif;
@@ -62,13 +63,11 @@ label {
 
 input,
 input[type="number"] {
-	color: white;
 	padding-top: 5px;
 	width: 3em;
 	height: 20px;
 	font-weight: normal;
 	margin: 0;
-	background-color: #555;
 	vertical-align: middle;
 	cursor: auto;
 	text-align: center;
@@ -92,7 +91,6 @@ select {
 
 textarea {
 	resize: vertical;
-	background-color: #333;
 	padding: 2px;
 	height: 50px;
 	font-size: 12px;
@@ -108,6 +106,20 @@ textarea {
 	border-bottom: 1px dotted #FCD116;
 }
 
+
+/***** Start of the PC sheet *****/
+
+.sheet-pc {
+	width: 800px;
+background: linear-gradient(
+	  to bottom,
+	  #e7e6e5,
+	  #edeceb 50%,
+	  #edeceb 50%,
+	  #e7e6e5);
+}
+
+
 /***** Start of the NPC sheet *****/
 .sheet-npc {
 	width: 720px;
@@ -121,6 +133,16 @@ textarea {
 .sheet-host,
 .sheet-vehicle {
 	width: 100%;
+}
+
+.sheet-npc input,
+input[type="number"] {
+	color: white;
+	background-color: #555;
+}
+
+.sheet-npc textarea {
+	background-color: #333;
 }
 
 /***** Customize columns & rows *****/
@@ -810,7 +832,7 @@ textarea {
 		width: 700px;
 	}
 
-/**** Repeating Section buttons ****/
+/**** Repeating Section ****/
 	.repcontainer {
 	}
 
@@ -889,79 +911,79 @@ textarea {
 	}
 
 /**** Roll template ****/
-	.sheet-rolltemplate-sGoon div.sheet-template-body {
-		border: 2px solid #000 !important;
-		border-radius: 3px 3px 3px 3px;
-	}
+.sheet-rolltemplate-sGoon div.sheet-template-body {
+	border: 2px solid #000 !important;
+	border-radius: 3px 3px 3px 3px;
+}
 
-	.sheet-rolltemplate-sGoon .sheet-template-header {
-		font-family: "contrail one";
-		font-size: 20px;
-		font-weight: normal;
-		font-variant: small-caps;
-		letter-spacing: 2px;
-		text-align: center;
-	    text-transform: capitalize;
-		margin: 0px;
-		padding: 4px 0px 3px 0px;
-		color: #fff;
-		background-color: #431714;
-		border: 1px solid #000;
-		border-bottom: 2px solid #000;
+.sheet-rolltemplate-sGoon .sheet-template-header {
+	font-family: "contrail one";
+	font-size: 20px;
+	font-weight: normal;
+	font-variant: small-caps;
+	letter-spacing: 2px;
+	text-align: center;
+    text-transform: capitalize;
+	margin: 0px;
+	padding: 4px 0px 3px 0px;
+	color: #fff;
+	background-color: #431714;
+	border: 1px solid #000;
+	border-bottom: 2px solid #000;
 
-	}
+}
 
-	.sheet-rolltemplate-sGoon .sheet-template-header span {
-		font-family: "tahoma";
-		font-size: 11px;
-		font-weight: normal;
-		font-variant: normal;
-		letter-spacing: 1px;
-	}
+.sheet-rolltemplate-sGoon .sheet-template-header span {
+	font-family: "tahoma";
+	font-size: 11px;
+	font-weight: normal;
+	font-variant: normal;
+	letter-spacing: 1px;
+}
 
-	.sheet-rolltemplate-sGoon .sheet-template-row {
-		color: #fff;
-		text-align: center;
-		font-size: 18px;
-		background-color: #1c1c1c;
-		line-height: 1.1em;
-		vertical-align: middle;
-		font-family: "helvetica";
-		font-weight: normal;
-		padding: 5px 5px 3px 5px;
-		border-radius: 0px;
-	}
+.sheet-rolltemplate-sGoon .sheet-template-row {
+	color: #fff;
+	text-align: center;
+	font-size: 18px;
+	background-color: #1c1c1c;
+	line-height: 1.1em;
+	vertical-align: middle;
+	font-family: "helvetica";
+	font-weight: normal;
+	padding: 5px 5px 3px 5px;
+	border-radius: 0px;
+}
 
-	.sheet-rolltemplate-sGoon .sheet-template-row:last-child {
-		background-color: #2d2d2d;
-	}
+.sheet-rolltemplate-sGoon .sheet-template-row:last-child {
+	background-color: #2d2d2d;
+}
 
-	.sheet-rolltemplate-sGoon .inlinerollresult {
-		display:inline-block;
-		color: #fff;
-		font-size: 25px;
-		background-color: transparent;
-		border: none;
-	}
+.sheet-rolltemplate-sGoon .inlinerollresult {
+	display:inline-block;
+	color: #fff;
+	font-size: 25px;
+	background-color: transparent;
+	border: none;
+}
 
-	.sheet-rolltemplate-sGoon .inlinerollresult.fullfail,
-	.sheet-rolltemplate-sGoon .inlinerollresult.fullcrit,
-	.sheet-rolltemplate-sGoon .inlinerollresult.importantroll {
-		border: none;
-	}
+.sheet-rolltemplate-sGoon .inlinerollresult.fullfail,
+.sheet-rolltemplate-sGoon .inlinerollresult.fullcrit,
+.sheet-rolltemplate-sGoon .inlinerollresult.importantroll {
+	border: none;
+}
 
-	.sheet-rolltemplate-sGoon .inlinerollresult.fullfail {
-		color: #c71307;
-	}
+.sheet-rolltemplate-sGoon .inlinerollresult.fullfail {
+	color: #c71307;
+}
 
-	.sheet-rolltemplate-sGoon .inlinerollresult.fullcrit {
-		color: #fff;
-	}
+.sheet-rolltemplate-sGoon .inlinerollresult.fullcrit {
+	color: #fff;
+}
 
-	.sheet-rolltemplate-sGoon .sheet-template-desc {
-		font-size: 0.8rem;
-	}
+.sheet-rolltemplate-sGoon .sheet-template-desc {
+	font-size: 0.8rem;
+}
 
-	.sheet-rolltemplate-sGoon span.sheet-template-desc .inlinerollresult {
-		font-size: 14px;
-	}
+.sheet-rolltemplate-sGoon span.sheet-template-desc .inlinerollresult {
+	font-size: 14px;
+}
