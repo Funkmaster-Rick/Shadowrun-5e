@@ -63,7 +63,7 @@ label {
 input,
 input[type="number"] {
 	color: white;
-	padding: 2px;
+	padding-top: 5px;
 	width: 3em;
 	height: 20px;
 	font-weight: normal;
@@ -72,6 +72,7 @@ input[type="number"] {
 	vertical-align: middle;
 	cursor: auto;
 	text-align: center;
+	border: none;
 }
 
 input[type="checkbox"],
@@ -107,11 +108,13 @@ textarea {
 	border-bottom: 1px dotted #FCD116;
 }
 
-.charsheet {
-	width: 700px;
+/***** Start of the NPC sheet *****/
+.sheet-npc {
+	width: 720px;
 	min-height: 800px;
 	color: #fff;
-	background-color: #101010; 
+	background-color: #040404;
+	padding: 10px 10px;
 }
 
 .sheet-goon,
@@ -177,11 +180,6 @@ textarea {
 	input.sheet-npc-type:hover + span.sheet-vehicle-flag  {
 		 color: #FCD116;
 	}
-
-	/*.sheet-toggle .sheet-2col input {
-		width: 55px;
-		left: 55px;
-	} */
 
 	.sheet-skill-col label {
 		font-size: 0.9rem;
@@ -296,7 +294,7 @@ textarea {
 	.sheet-character-type[value="magic"] ~ .sheet-attr-header,
 	.sheet-character-type[value="resonance"] ~ .sheet-attr-header {
 		margin-left: 23px;
-		margin-right: 24px;
+		margin-right: 23px;
 	}
 
 	.sheet-settings .sheet-attribute .sheet-character-type[value="magic"] ~ .sheet-attr-header,
@@ -407,7 +405,7 @@ textarea {
 
 	.sheet-repeating input.sheet-settings-toggle + span {
 		top: 3px;
-		left: -17px;
+		left: -9px;
 		font-size: 0.8rem;
 	}
 
@@ -423,6 +421,11 @@ textarea {
 
 	.sheet-repeating button.sheet-display {text-align: left;} 
 
+	.sheet-repeating input[type="checkbox"],
+	.sheet-repeating input[type="checkbox"] + span {
+		position: absolute;
+	}
+
 	.sheet-repeat-indent {
 		padding-left: 2.5rem; 
 		text-indent: -1.5rem;
@@ -430,12 +433,10 @@ textarea {
 
 	.sheet-repeating .sheet-display {
 		display: inline-flex;
-		margin-top: -15px;
 	}
 
 	.sheet-repeat-section {
 		display: inline-block;
-		margin-top: -15px;
 	}
 
 	.sheet-repeat-row {
@@ -513,11 +514,7 @@ textarea {
 
 /**** Matrix row Customizations ****/
 	.sheet-matrix {
-		border: 3px solid #333;
-		border-radius: 5px 5px 5px 5px;
-		box-shadow: 2px 0px 40px 2px #4f7da7;
-		padding: 5px;
-		margin-top: 15px;
+		/* box-shadow: 2px 0px 40px 2px #4f7da7; */
 	}
 
 	.sheet-matrix h2 {
@@ -536,11 +533,6 @@ textarea {
 		width: calc(49% - -2px);
 	}
 
-	.sheet-5bub {
-		display: inline;
-		margin-right: 5px;
-	}
-
 	.sheet-matrix label {
 		width: 18%;
 		text-indent: 10px;
@@ -548,12 +540,6 @@ textarea {
 
 	.sheet-matrix .sheet-2col label {
 		width: fit-content;
-	}
-
-	.sheet-matrix input[type="radio"] {
-		opacity: 1;
-		width: 20px;
-		height: 20px;
 	}
 
 	.sheet-matrix input[type="number"] {
@@ -565,7 +551,91 @@ textarea {
 	.sheet-matrix input[type="text"] {
 		width: 30%;
 		text-align: left;
+		background: none;
+		border-bottom: 1px solid;
+		border-radius: 0px;
 	}
+
+	/**** Matrix Bubbles ****/
+		.sheet-matrix-bubble {
+			display: inline;
+			margin-right: 25px;
+			margin-left: 15px;
+		}
+
+		.sheet-5bub + span {
+			margin-right: 15px;
+		}
+
+		.sheet-matrix-bubble input[type="radio"] {
+			width: 20px;
+			height: 25px;
+		}
+
+		.sheet-matrix-bubble input[type="radio"] + span {
+			display: inline-block;
+			height: 25px;
+			width: 20px;
+			position: relative;
+			margin-left: -25px;
+			top: 5px;
+			left: 5px;
+			border-radius: 5px
+		}
+
+		.sheet-matrix-bubble input[type="radio"]:checked ~ input[type="radio"] + span {
+			opacity: 0.5;
+			height: 14px;
+			margin-bottom: 3px;
+		}
+
+		.sheet-matrixAttack {
+			box-shadow: 0px 0px 29px 8px  #cc0701;
+		}
+
+		.sheet-matrixAttack span {
+			border: 2px solid #3a0000;
+			background-color: #cc0701;
+			-webkit-box-shadow: inset 0px 1px 5px 2px #3a0000;
+			-moz-box-shadow: inset 0px 1px 5px 2px #3a0000;
+			box-shadow: inset 0px 1px 5px 2px #3a0000;
+		}
+
+		.sheet-matrixSleaze {
+			box-shadow: 0px 0px 29px 8px  #007bfc;
+		}
+
+		.sheet-matrixSleaze span {
+			border: 2px solid #000e3b;
+			background-color: #007bfc;
+			-webkit-box-shadow: inset 0px 1px 5px 2px #000e3b;
+			-moz-box-shadow: inset 0px 1px 5px 2px #000e3b;
+			box-shadow: inset 0px 1px 5px 2px #000e3b;
+		}
+
+		.sheet-matrixData {
+			box-shadow: 0px 0px 29px 8px  #88dd04;
+		}
+
+		.sheet-matrixData span {
+			border: 2px solid #074202;
+			background-color: #88dd04;
+			-webkit-box-shadow: inset 0px 1px 5px 2px #074202;
+			-moz-box-shadow: inset 0px 1px 5px 2px #074202;
+			box-shadow: inset 0px 1px 5px 2px #074202;
+		}
+
+		.sheet-matrixFirewall {
+			box-shadow: 0px 0px 29px 8px  #f88703;
+		}
+
+		.sheet-matrixFirewall span {
+			border: 2px solid #470101;
+			background-color: #f88703;
+			-webkit-box-shadow: inset 0px 1px 5px 2px #470101;
+			-moz-box-shadow: inset 0px 1px 5px 2px #470101;
+			box-shadow: inset 0px 1px 5px 2px #470101;
+		}
 
 	/**** Matrix Program Customizations ****/
 		.sheet-matrix .repcontainer {
@@ -577,22 +647,36 @@ textarea {
 			width: 650px;
 		}
 
+		.sheet-matrix .sheet-settings,
+		.sheet-matrix .sheet-display,
+		.sheet-host .sheet-display {
+			margin-left: 10px;
+		}
+
 		.sheet-matrix .sheet-display span {
-			font-size: 12px;
 			margin-right: 5px;
 		}
 
-		.sheet-matrix .sheet-display button {
-			font-size: 14px;
+		.sheet-matrix .sheet-display button + span {
+			font-size: 12px;
+		}
+
+		.sheet-matrix .sheet-repeat-indent,
+		.sheet-host .sheet-repeat-indent {
+			padding-left: 3rem;
+			text-indent: -1.5rem;
 		}
 
 		input.sheet-program-toggle {
-			position: absolute;
 			top: 5px;
 			left: 15px;
 		}
 
-		span.sheet-program-toggle {font-size: 15px !important;}
+		span.sheet-program-toggle {
+			font-size: 15px !important;
+			top: 2px;
+			left: 24px;
+		}
 
 		.sheet-program-toggle[value="0"] + div.sheet-repeat-indent {opacity: 0.3;}
 
@@ -728,11 +812,10 @@ textarea {
 
 /**** Repeating Section buttons ****/
 	.repcontainer {
-		margin-top: -10px;
 	}
 
 	.repcontainer .repitem {
-		height: fit-content;
+		margin-bottom: 5px;
 	}
 
 	.repcontrol {
