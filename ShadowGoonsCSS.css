@@ -5,21 +5,21 @@
 }
 
 button {
+	background-color: transparent;
+	background-image: none;
+	border-color: transparent;
+	border: none;
+	box-shadow: none;
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 0.8rem;
-	border: none;
-	border-color: transparent;
-	background-image: none;
-	background-color: transparent;
 	text-shadow: none;
-	box-shadow: none;
 }
 
 button[type="roll"] {
 	color: #fff;
 	font-size: 0.9rem !important;
-	padding: 0px 0px !important;
 	margin: 0px 0px 0px 0px !important;
+	padding: 0px 0px !important;
 }
 
 button:hover {
@@ -46,7 +46,6 @@ hr {
 
 h1, h2 {
 	font-size: 1.5rem;
-	color: #FCD116;
 }
 
 h2 {
@@ -55,78 +54,180 @@ h2 {
 
 label {
 	display: inline-block;
-	color: #fff;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 	text-transform: capitalize;
 	width: fit-content;
+	padding-right: 5px;
 }
 
 input,
 input[type="number"] {
-	padding-top: 5px;
-	width: 3em;
-	height: 20px;
+	border: none;
+	cursor: auto;
 	font-weight: normal;
 	margin: 0;
-	vertical-align: middle;
-	cursor: auto;
+	padding-top: 5px;
 	text-align: center;
-	border: none;
+	vertical-align: middle;
+	width: 3em;
 }
 
 input[type="checkbox"],
 input[type="radio"] {
 	opacity: 0;
-	z-index: 1;
     position: relative;
+    z-index: 1;
 }
 
 select {
-	width: fit-content;
-	color: #FCD116;
 	background-color: #000;
 	border: none;
+	color: #FCD116;
 	margin-bottom: 0px;
+	width: fit-content;
 }
 
 textarea {
-	resize: vertical;
-	padding: 2px;
-	height: 50px;
-	font-size: 12px;
-	color: white;
-	text-align: left;
-	overflow-wrap: break-word;
-	white-space: pre-line;
-	overflow: hidden;
-	line-height: 18px;
-	font-weight: normal;
-	margin: -35px 0px 0px 0px;
-	vertical-align: top;
 	border-bottom: 1px dotted #FCD116;
+	color: white;
+	font-size: 12px;
+	font-weight: normal;
+	height: 50px;
+	line-height: 18px;
+	margin: -35px 0px 0px 0px;
+	overflow-wrap: break-word;
+	overflow: hidden;
+	padding: 2px;
+	resize: vertical;
+	text-align: left;
+	vertical-align: top;
+	white-space: pre-line;
 }
 
 
 /***** Start of the PC sheet *****/
-
 .sheet-pc {
-	width: 800px;
-background: linear-gradient(
-	  to bottom,
-	  #e7e6e5,
-	  #edeceb 50%,
-	  #edeceb 50%,
-	  #e7e6e5);
+	background-color: linear-gradient(to bottom, #e7e6e5, #edeceb 50%, #edeceb 50%, #e7e6e5);
+	display: inline-block;
+	width: 850px;
 }
 
+.sheet-pc img {
+	height: 50%;
+	width: 50%;
+}
+
+.sheet-pc h1 {
+	background-color: #610b0d;
+	color: #fff;
+	letter-spacing: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: right;
+	text-transform: uppercase;
+	width: fit-content;
+}
+
+.sheet-left-col {
+	display: inline-block;
+	margin-right: 20px;
+	width: calc(49% - 10px);
+}
+
+.sheet-right-col {
+	display: inline-block;
+	vertical-align: top;
+	width: calc(49% - 10px);
+}
+
+.sheet-border-box {
+    background-image: -moz-linear-gradient(#610b0d, transparent), -moz-linear-gradient(#610b0d, transparent);
+    background-image: -o-linear-gradient(#610b0d, transparent), -o-linear-gradient(#610b0d, transparent);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#610b0d), to(transparent));
+    background-image: -webkit-linear-gradient(#610b0d, transparent);
+    background-image: linear-gradient(#610b0d, transparent), linear-gradient(#610b0d, transparent);
+    border-top: 1.5px solid #610b0d;
+    clear: both;
+} 
+
+	/***** Left Headers *****/
+	.sheet-header {
+		display: inline-flex;
+		float: right;
+		height: 30px;
+	}
+
+	.sheet-triangle {
+	 	border-top: 30px solid transparent;
+	 	border-right: 60px solid #610b0d;
+	}
+
+	/***** Right Headers *****/
+	.sheet-right-header {
+		float: left;
+	}
+
+	.sheet-right-tri {
+		border-top: 30px solid transparent;
+	 	border-left: 60px solid #610b0d;
+	}
+
+	/***** Boxes for Inputs *****/
+	.sheet-small-box {
+		background-color: #e7e6e5;
+		height: 180px;
+		margin-left: 1.5px;
+		margin-right: 1.5px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	.sheet-left-box {
+		border-top-left-radius: 10px;
+	}
+
+	.sheet-right-box {
+		border-top-right-radius: 10px;
+	}
+
+	/***** Boxes rows with Inputs *****/
+	.sheet-row-long {
+		border-bottom: 1px solid #000;
+	}
+
+		/***** Personal Data Inputs *****/
+		.sheet-pd-nam input[type="text"]  {
+			width: 61%;
+		}
+
+		.sheet-pd-meta input[type="text"] {
+			width: 33.5%;
+		}
+
+		.sheet-pd-age input[type="text"] {
+			width: 14.5%;
+		}
+
+		.sheet-pd-rep input[type="number"] {
+			width: 11%;
+		}
+
+		.sheet-pd-kar input {
+			width: 19% !important;
+		}
 
 /***** Start of the NPC sheet *****/
 .sheet-npc {
-	width: 720px;
-	min-height: 800px;
-	color: #fff;
 	background-color: #040404;
+	color: #fff;
+	min-height: 800px;
 	padding: 10px 10px;
+	width: 720px;
+}
+
+.sheet-npc h1, .sheet-npc h2 {
+	color: #FCD116;
+	font-size: 1.5rem;
 }
 
 .sheet-goon,
@@ -135,10 +236,14 @@ background: linear-gradient(
 	width: 100%;
 }
 
-.sheet-npc input,
-input[type="number"] {
+.sheet-npc input {
 	color: white;
 	background-color: #555;
+}
+
+.sheet-npc label {
+	color: #fff;
+	font-size: 0.9rem;
 }
 
 .sheet-npc textarea {
@@ -151,8 +256,8 @@ input[type="number"] {
 	.sheet-leftcol,
 	.sheet-2col {
 		display: inline-block;
-		width: calc(40% - 0px);
 		vertical-align: top;
+		width: calc(40% - 0px);
 	}
 
 	.sheet-2col {width:calc(29% - 0px) ;}
@@ -163,19 +268,19 @@ input[type="number"] {
 	}
 
 	input.sheet-character-type {
-		width: 90px;
 		left: 90px;
 		margin-left: -80px;
+		width: 90px;
 	}
 
 /***** Toggles & the Gear icons *****/
 	.sheet-toggle input[type="checkbox"] + span {
-	    font-family: pictos;
 	    background: transparent;
 	    color: #fff;
-	    text-align: center;
+	    font-family: pictos;
 	    font-size: 20px;
 	    height: 20px;
+	    text-align: center;
 	    width: 20px;
 	}
 
@@ -212,10 +317,10 @@ input[type="number"] {
 	}
 
 	.sheet-skill-col input[type="checkbox"] {
+		left: 100px;
+		margin-left: -105px;
 		position: relative;
 		width: 80%;
-		margin-left: -105px;
-		left: 100px;
 	}
 
 	.sheet-skill-col input[type="number"] {
@@ -229,9 +334,9 @@ input[type="number"] {
 
 	.sheet-skill-col input[type="checkbox"]:checked ~ input[type="text"] {
 		display: inline-block;
+		margin-bottom: 3px;
 		text-align: left;
 		width: 133px;
-		margin-bottom: 3px;
 	}
 
 	.sheet-skill-col input[type="checkbox"]:checked ~ input[type="number"] {
@@ -251,21 +356,21 @@ input[type="number"] {
 	.sheet-settings input[type="number"] {width: 25px;}
 
 	.sheet-display {
-		width: calc(100% - 0px) !important;
 		vertical-align: top;
+		width: calc(100% - 0px) !important;
 	}
 
 	.sheet-display span {
 		border: 0px;
-		line-height: 1em;
 		font-size: 14px;
 		letter-spacing: 0.5px;
+		line-height: 1em;
 	}
 
 	.sheet-display .sheet-textrow span {
 		overflow-wrap: break-word;
-		white-space: pre-line;
 		overflow: hidden;
+		white-space: pre-line;
 	}
 
 	.sheet-settings,
@@ -275,10 +380,10 @@ input[type="number"] {
 
 	.sheet-display,
 	input.sheet-settings-toggle:checked ~ div.sheet-settings {
+		background: none;
 		display: inherit;
 		font-size: 1rem;
 		text-align: left;
-		background: none;
 	}
 
 /***** Customize Stats section *****/
@@ -286,16 +391,16 @@ input[type="number"] {
 
 /***** Customize Attribute Section *****/
 	.sheet-attribute {
-		width: 100%;
+		border-bottom: 1px solid #fff;
+		border-top: 1px solid #fff;
 		margin: 0px 0px 10px 0px;
 		text-indent: center;
-		border-top: 1px solid #fff;
-		border-bottom: 1px solid #fff;
+		width: 100%;
 	}
 
 	.sheet-attr-header {
-		text-align: center;
 		margin: 3px 30px 5px 29px;
+		text-align: center;
 	}
 
 	.sheet-host .sheet-attr-header  {
@@ -332,9 +437,9 @@ input[type="number"] {
 	}
 
 	.sheet-con-reset {
-		width: 23.2% !important;
 		margin-left:-165px;
 		margin-right: 5px;
+		width: 23.2% !important;
 	}
 
 	input.sheet-con-reset + label {float: left;}
@@ -344,15 +449,15 @@ input[type="number"] {
 
 	.sheet-skill-col {
 		display: inline-block;
-		width: 19%;
 		margin: 5px 0px 0px 4px;
+		width: 19%;
 	}
 
 	.sheet-skill-col label {text-decoration: underline;}
 
 	.sheet-stats ul {
-		vertical-align: top;
 		list-style-type: none;
+		vertical-align: top;
 	}
 
 	.sheet-stats label {
@@ -366,9 +471,9 @@ input[type="number"] {
 	}
 
 	.sheet-stats div.sheet-settings {
-		width: 100%;
 		font-size: 0.8rem !important;
 		margin: -15px 0px 0px 0px;
+		width: 100%;
 	}
 
 	.sheet-stats div.sheet-spacer {
@@ -404,31 +509,31 @@ input[type="number"] {
 
 	.sheet-stats input.sheet-settings-toggle,
 	.sheet-stats input.sheet-settings-toggle + span {
-		top: -25px;
 		left: 97%;
+		top: -25px;
 	}
 
 	.sheet-stats input.sheet-settings-toggle + span {left: 92%;}
 
 	.sheet-textrow input.sheet-settings-toggle {
-		top: -12px;
 		left: 775px;
+		top: -12px;
 	}
 
 	.sheet-textrow input.sheet-settings-toggle + span {
-		top: -10px;
 		left: 750px;
+		top: -10px;
 	}
 
 	.sheet-repeating input.sheet-settings-toggle {
-		top: 5px;
 		left: -5px;
+		top: 5px;
 	}
 
 	.sheet-repeating input.sheet-settings-toggle + span {
-		top: 3px;
-		left: -9px;
 		font-size: 0.8rem;
+		left: -9px;
+		top: 3px;
 	}
 
 	button.sheet-spec-button {
@@ -468,10 +573,10 @@ input[type="number"] {
 
 	.sheet-repeat-row h4 {
 		color: #fff;
-		text-decoration: underline;
+		font-size: 0.6rem;
 		font-variant: small-caps;
 		text-align: center;
-		font-size: 0.6rem;
+		text-decoration: underline;
 	}
 
 	.sheet-repeat-row span {
@@ -483,12 +588,12 @@ input[type="number"] {
 	.sheet-weapon-dice span {font-size: 12px;}
 
 	.sheet-weapon-settings label {
-	    width: 100%;
-	    margin: auto;
 		font-size: 11px;
 		font-weight: bold;
-	    vertical-align: super;
 	    line-height: 15px;  
+	    margin: auto;
+	    vertical-align: super;
+	    width: 100%;
 	}
 
 	.sheet-repeating input[type="checkbox"] {
@@ -511,16 +616,16 @@ input[type="number"] {
 	.sheet-weapon-note,
 	.sheet-weapon-note input[type="text"] {
 		display: inherit;
+		margin-top: 3px;
 		text-align: left;
 		width: 700px;
-		margin-top: 3px;
 	}
 
 	input.sheet-range-toggle,
 	input.sheet-melee-toggle {
-		position: relative;
-		margin-left: -25px;
 		left: 36px;
+		margin-left: -25px;
+		position: relative;
 	}
 
 	.sheet-repeating .sheet-settings input[type="number"] {width: 35px;}
@@ -540,14 +645,14 @@ input[type="number"] {
 	}
 
 	.sheet-matrix h2 {
-		width: 16.5%;
 		display: inline-block;
+		width: 16.5%;
 	}
 
 	.sheet-matrix h3{
 		color: #000;
-		text-shadow: 0 0 25px #4f7da7, 0 0 5px #4f7da7;
 		text-align: center;
+		text-shadow: 0 0 25px #4f7da7, 0 0 5px #4f7da7;
 	}
 
 	.sheet-matrix .sheet-2col {
@@ -556,8 +661,8 @@ input[type="number"] {
 	}
 
 	.sheet-matrix label {
-		width: 18%;
 		text-indent: 10px;
+		width: 18%;
 	}
 
 	.sheet-matrix .sheet-2col label {
@@ -565,24 +670,24 @@ input[type="number"] {
 	}
 
 	.sheet-matrix input[type="number"] {
-		width: 25px;
-		height: 25px;
 		border-radius: 25px 25px;
+		height: 25px;
+		width: 25px;
 	}
 
 	.sheet-matrix input[type="text"] {
-		width: 30%;
-		text-align: left;
 		background: none;
 		border-bottom: 1px solid;
 		border-radius: 0px;
+		text-align: left;
+		width: 30%;
 	}
 
 	/**** Matrix Bubbles ****/
 		.sheet-matrix-bubble {
 			display: inline;
-			margin-right: 25px;
 			margin-left: 15px;
+			margin-right: 25px;
 		}
 
 		.sheet-5bub + span {
@@ -590,25 +695,25 @@ input[type="number"] {
 		}
 
 		.sheet-matrix-bubble input[type="radio"] {
-			width: 20px;
 			height: 25px;
+			width: 20px;
 		}
 
 		.sheet-matrix-bubble input[type="radio"] + span {
+			border-radius: 5px;
 			display: inline-block;
 			height: 25px;
-			width: 20px;
-			position: relative;
-			margin-left: -25px;
-			top: 5px;
 			left: 5px;
-			border-radius: 5px
+			margin-left: -25px;
+			position: relative;
+			top: 5px;
+			width: 20px;
 		}
 
 		.sheet-matrix-bubble input[type="radio"]:checked ~ input[type="radio"] + span {
-			opacity: 0.5;
 			height: 14px;
 			margin-bottom: 3px;
+			opacity: 0.5;
 		}
 
 		.sheet-matrixAttack {
@@ -690,14 +795,14 @@ input[type="number"] {
 		}
 
 		input.sheet-program-toggle {
-			top: 5px;
 			left: 15px;
+			top: 5px;
 		}
 
 		span.sheet-program-toggle {
 			font-size: 15px !important;
-			top: 2px;
 			left: 24px;
+			top: 2px;
 		}
 
 		.sheet-program-toggle[value="0"] + div.sheet-repeat-indent {opacity: 0.3;}
@@ -763,20 +868,20 @@ input[type="number"] {
 	.sheet-armor-buttons,
 	.sheet-armor-buttons span {
 		display: inline-block;
-		font-size: 1rem;
 		font-family: "pictos";
-		position: relative;
+		font-size: 1rem;
 		padding: 0px;
+		position: relative;
 	}
 
 /**** Roll Toggles ****/
 	.sheet-roll-toggles,
 	.sheet-roll-toggles span {
 		display: inline;
-		font-size: 1.5rem;
 		font-family: "pictos";
-		position: relative;
+		font-size: 1.5rem;
 		margin-bottom: 5px;
+		position: relative;
 	}
 
 	.sheet-roll-toggles input {
@@ -841,34 +946,34 @@ input[type="number"] {
 	}
 
 	.repcontrol {
-		vertical-align: top;
 		display: inline-block;
+		vertical-align: top;
 	    min-height: 27px;
 	}
 
 	.repcontrol .btn {
-		display: inline-block;s
+		display: inline-block;
 		width: 25px;
-	    border: medium none;
-	    color: transparent !important;
 	    background: none;
+	    border: medium none;
 	    box-shadow: none;
-	    text-shadow: none;
+	    color: transparent !important;
 	    margin-left: 10px;
-	    padding: 0px 0px 0px 0px;
 	    outline: 0;
+	    padding: 0px 0px 0px 0px;
+	    text-shadow: none;
 	}
 
 	.repcontrol .repcontrol_edit:after {
-	    content: '(';
-	    visibility: visible;
-	    font-family: pictos;
 	    background-color: none;
+	    color: #fff;
+	    content: '(';
+	    font-family: pictos;
 	    font-size: 16px;
 	    height: 12px;
-	    width: 12px;
 	    padding: 2px 4px 2px 4px;
-	    color: #fff;
+	    visibility: visible;
+	    width: 12px;
 	}
 
 	.editmode ~ .repcontrol .repcontrol_edit:after {
@@ -876,15 +981,15 @@ input[type="number"] {
 	}
 
 	.repcontrol .repcontrol_add:after {
-	    content: '&';
-	    visibility: visible;
-	    font-family: pictos;
 	    background-color: none;
+	    color: #fff;
+	    content: '&';
+	    font-family: pictos;
 	    font-size: 16px;
 	    height: 12px;
-	    width: 12px;
 	    padding: 2px 4px 2px 4px;
-	    color: #fff;
+	    visibility: visible;
+	    width: 12px;
 	}
 
 	.repcontrol .repcontrol_edit:hover:after,
@@ -898,9 +1003,9 @@ input[type="number"] {
 	.itemcontrol .repcontrol_del,
 	.itemcontrol .repcontrol_move {
 	    font-size: 10px;
+	    height: 18px;
 	    margin-top: 3px;
 	    padding: 0px;
-	    height: 18px;
 	    width: 18px;
 	}
 
@@ -917,41 +1022,41 @@ input[type="number"] {
 }
 
 .sheet-rolltemplate-sGoon .sheet-template-header {
+	background-color: #431714;
+	border-bottom: 2px solid #000;
+	border: 1px solid #000;
+	color: #fff;
 	font-family: "contrail one";
 	font-size: 20px;
-	font-weight: normal;
 	font-variant: small-caps;
+	font-weight: normal;
 	letter-spacing: 2px;
-	text-align: center;
-    text-transform: capitalize;
 	margin: 0px;
 	padding: 4px 0px 3px 0px;
-	color: #fff;
-	background-color: #431714;
-	border: 1px solid #000;
-	border-bottom: 2px solid #000;
+	text-align: center;
+    text-transform: capitalize;
 
 }
 
 .sheet-rolltemplate-sGoon .sheet-template-header span {
 	font-family: "tahoma";
 	font-size: 11px;
-	font-weight: normal;
 	font-variant: normal;
+	font-weight: normal;
 	letter-spacing: 1px;
 }
 
 .sheet-rolltemplate-sGoon .sheet-template-row {
-	color: #fff;
-	text-align: center;
-	font-size: 18px;
 	background-color: #1c1c1c;
-	line-height: 1.1em;
-	vertical-align: middle;
-	font-family: "helvetica";
-	font-weight: normal;
-	padding: 5px 5px 3px 5px;
 	border-radius: 0px;
+	color: #fff;
+	font-family: "helvetica";
+	font-size: 18px;
+	font-weight: normal;
+	line-height: 1.1em;
+	padding: 5px 5px 3px 5px;
+	text-align: center;
+	vertical-align: middle;
 }
 
 .sheet-rolltemplate-sGoon .sheet-template-row:last-child {
@@ -959,11 +1064,11 @@ input[type="number"] {
 }
 
 .sheet-rolltemplate-sGoon .inlinerollresult {
-	display:inline-block;
-	color: #fff;
-	font-size: 25px;
 	background-color: transparent;
 	border: none;
+	color: #fff;
+	display:inline-block;
+	font-size: 25px;
 }
 
 .sheet-rolltemplate-sGoon .inlinerollresult.fullfail,
