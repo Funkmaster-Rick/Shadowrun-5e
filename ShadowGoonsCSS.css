@@ -71,6 +71,10 @@ input[type="radio"] {
     z-index: 1;
 }
 
+input[type="checkbox"] + span {
+	font-family: "pictos";
+}
+
 input[type="text"] {
 	height: 25px !important;
 }
@@ -112,9 +116,10 @@ textarea {
 .sheet-pc h1 {
 	background-color: #610b0d;
 	color: #fff;
-	font-size: 0.8rem;
+	font-size: 1rem;
 	font-weight: 800;
 	letter-spacing: 2px;
+	line-height: 20px;
 	padding-left: 5px;
 	padding-right: 5px;
 	text-align: right;
@@ -174,12 +179,12 @@ textarea {
 	.sheet-header {
 		display: inline-flex;
 		float: right;
-		height: 30px;
+		height: 20px;
 	}
 
 	.sheet-triangle {
-	 	border-top: 30px solid transparent;
-	 	border-right: 40px solid #610b0d;
+	 	border-top: 20px solid transparent;
+	 	border-right: 30px solid #610b0d;
 	}
 
 	/***** Right Headers *****/
@@ -188,8 +193,8 @@ textarea {
 	}
 
 	.sheet-right-tri {
-		border-top: 30px solid transparent;
-	 	border-left: 60px solid #610b0d;
+		border-top: 20px solid transparent;
+	 	border-left: 30px solid #610b0d;
 	}
 
 	/***** Boxes for Inputs *****/
@@ -206,7 +211,7 @@ textarea {
 	}
 
 	.sheet-medium-box {
-		height: 350px;
+		height: 310px;
 	}
 
 	.sheet-left-box {
@@ -268,11 +273,6 @@ textarea {
 		}
 
 	/***** Attributes Box *****/
-	.sheet-attr-right,
-	.sheet-attr-left {
-		margin-bottom: 3px;
-	}
-
 	.sheet-attr-right h2,
 	.sheet-attr-left h2 {
 		border-bottom: 1px solid #000;
@@ -284,7 +284,7 @@ textarea {
 	}
 
 	.sheet-attr-left h2 {
-		width: 50%;
+		width: 55%;
 	}
 
 	.sheet-h3-red {
@@ -293,22 +293,59 @@ textarea {
 
 		/***** Attribute Columns *****/
 		.sheet-attr-right {
-			margin-right: -30px;
-		}
-
-		.sheet-attr-left {
+			margin-right: -15px;
 		}
 
 		.sheet-attr-right,
 		.sheet-attr-left {
 			display: inline-block;
-			margin-top: 5px;
+			margin-top: 3.5px;
 			vertical-align: top;
-			width: 53%;
+			width: 50%;
 		}
 
-		.sheet-att-lim {
-			margin-top: 10px;
+		.sheet-att-lim h2 {
+			width: 32%;
+		}
+
+		/***** Attribute Settings *****/
+		.sheet-settings .sheet-attr-right,
+		.sheet-settings .sheet-attr-left,
+		.sheet-settings .sheet-att-lim input[type="number"]  {
+			position: relative;
+			left: 95px;
+		}
+
+		.sheet-settings .sheet-attr-left {
+			left: 125px;
+		}
+
+		.sheet-settings .sheet-attr-right input[type="number"],
+		.sheet-settings .sheet-attr-left input[type="number"] {
+			margin-bottom: 3.5px;
+		}
+
+		.sheet-settings .sheet-att-lim input[type="number"] {
+			left: 90px;
+			margin-right: 82px;
+			top: 8px;
+		}
+
+		.sheet-attr-box .sheet-settings {
+			margin-top: -314px;
+		}
+
+		.sheet-attr-box input.sheet-settings-toggle {
+			left: 260px;
+			top: -320px;
+		}
+
+		.sheet-attr-box input.sheet-settings-toggle + span {
+			color: #fff;
+			font-size: 1rem;
+			left: 233px;
+			position: relative;
+			top: -319px;
 		}
 
 		/***** Attribute Inputs *****/
@@ -317,7 +354,7 @@ textarea {
 			border-bottom: 1px solid #000;
 			border-radius: 0px;
 			height: 22px;
-			width: 20%;
+			width: 22%;
 		}
 
 		.sheet-attr-left input.sheet-att-ini {
@@ -333,12 +370,45 @@ textarea {
 		}
 
 		.sheet-att-lim input[type="number"] {
-			width: 12%;
+			width: 11%;
+		}
+
+		/***** Attribute Display Spans *****/
+		.sheet-attr-und {
+			border-bottom: 1px solid #000;
+			border-radius: 0px;
+			margin-bottom: 6.5px;
+			text-align: center;
+			width: 45%;
+		}
+
+		.sheet-display .sheet-attr-right,
+		.sheet-display .sheet-attr-left {
+			position: relative;
+			left: 95px;
+		}
+
+		.sheet-display .sheet-attr-left {
+			left: 125px;
+		}
+
+		.sheet-attr-box .sheet-display {
+			margin-top: -310px;
+		}
+
+		.sheet-attr-lim  {
+			display: inline-block;
+			margin-left: 90px;
+			position: relative;
+			text-align: center;
+			top: 14px;
+			width: 10%;
 		}
 
 		/***** Edge Hexagons Inputs *****/
 		.sheet-edg-hex {
-			margin-top: 5px;
+			margin-top: 10px;
+			margin-bottom: 5px;
 		}
 
 		.sheet-hexagon {
