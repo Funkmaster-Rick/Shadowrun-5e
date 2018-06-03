@@ -8,10 +8,10 @@ Things to Do:
 <div class="pc">
 	<img src="https://raw.githubusercontent.com/clevett/Shadowrun-5e/master/ShadowrunLogo.png" style="max-height: 200px;" />
 	<div class="pc-row"><!-- ~~~~~~~~ Start of Personal Data & Core Combat Info row  ~~~~~~~~ -->
-		<div class="left-col">
+		<div class="col">
 			<div class="header"><div class="triangle"></div><h1>Personal Data</h1></div>
-			<div class="border-box left-box">
-				<div class="pc-box small-box left-box">
+			<div class="border-box">
+				<div class="pc-box small-box">
 					<div class="row-long pd-nam">
 						<h2>NAME/PRIMARY ALIAS</h2><input type="text" name="attr_character_name" placeholder="name" />
 					</div>
@@ -38,10 +38,10 @@ Things to Do:
 				</div>
 			</div>
 		</div>
-		<div class="right-col">
+		<div class="col">
 			<div class="header right-header"><h1>Core Combat Info</h1><div class="right-tri"></div></div>
-			<div class="border-box right-box">
-				<div class="pc-box small-box right-box">
+			<div class="border-box">
+				<div class="pc-box small-box">
 					<div class="row-long cc-arm">
 						<h2>Primary Armor</h2><input type="text" name="attr_primary_armor" placeholder="Armor Jacker" />
 						<h3>Rating</h3><input type="number" name="attr_primary_armor_rating" placeholder="12" />
@@ -67,11 +67,11 @@ Things to Do:
 		</div>
 	</div><!-- ~~~~~~~~ End of Personal Data & Core Combat Info row  ~~~~~~~~ -->
 	<div class="pc-row"><!-- ~~~~~~~~ Start of Attributes & Condition Monitor Rows  ~~~~~~~~ -->
-		<div class="left-col">
+		<div class="col">
 			<div class="header"><div class="triangle"></div><h1>Attributes</h1></div>
-			<div class="border-box left-box">
+			<div class="border-box">
 				<div class="pc-box medium-box attr-box">
-					<div class="attr-right">
+					<div class="attr-row">
 						<h2 class="h3-red">Body</h2><br />
 						<h2 class="h3-red">Agility</h2><br />
 						<h2 class="h3-red">Reaction</h2><br />
@@ -92,7 +92,7 @@ Things to Do:
 							<span class="hexagon"></span>
 						</div>
 					</div>
-					<div class="attr-left">
+					<div class="attr-row">
 						<h2>Essence</h2><br />
 						<h2>Magic/Resonance</h2><br />
 						<h2 class="h3-red">Initative</h2><br />
@@ -111,7 +111,7 @@ Things to Do:
 					</div>
 					<input type="checkbox" class="settings-toggle" name="attr_attribute_flag" checked="checked" /><span>y</span>
 					<div class="settings">
-						<div class="attr-right">
+						<div class="attr-row">
 							<input type="hidden" name="attr_body" value="3" />
 							<input type="number" name="attr_body_base" placeholder="base" />
 							<input type="number" name="attr_body_bonus" placeholder="bonus" /><br />
@@ -138,7 +138,7 @@ Things to Do:
 							<input type="number" name="attr_charisma_bonus" placeholder="bonus" /><br />
 							<input type="number" name="attr_edge" placeholder="base" />
 						</div>
-						<div class="attr-left">
+						<div class="attr-row">
 							<input type="number" name="attr_essence" placeholder="6" /><br />
 							<input type="hidden" name="attr_magic_resonance" value="3" />
 							<input type="number" name="attr_magic_resonance" placeholder="base" />
@@ -155,19 +155,19 @@ Things to Do:
 							<input type="hidden" name="attr_astral_dice" value="3" max="5" />
 							<input class="att-ini" type="number" name="attr_astral_mod_bonus" value="0" placeholder="0" /><span> + </span>
 							<input class="att-ini" type="number" name="attr_astral_dice_bonus" value="0" min="0" max="3" placeholder="0" /><span> d6</span><br />
-							<input type="hidden" name="attr_composure" value="3" />
+							<input type="hidden" name="attr_composure" value="" />
 							<input type="number" name="attr_composure_bonus" placeholder="bonus" /><br />
-							<input type="hidden" name="attr_judge_intentions" value="3" />
+							<input type="hidden" name="attr_judge_intentions" value="" />
 							<input type="number" name="attr_judge_intentions_bonus" placeholder="bonus" /><br />
-							<input type="hidden" name="attr_memory" value="3" />
+							<input type="hidden" name="attr_memory" value="" />
 							<input type="number" name="attr_memory_bonus" placeholder="bonus" /><br />
-							<input type="hidden" name="attr_lift_carry" value="3" />
+							<input type="hidden" name="attr_lift_carry" value="" />
 							<input type="number" name="attr_lift_carry_bonus" placeholder="bonus" /><br />
 							<input type="hidden" name="attr_walk" value="12" />
 							<input type="hidden" name="attr_run" value="24" />
-							<input class="att-mov" type="number" name="attr_walk_bonus" value="0" placeholder="0" /><span> / </span>
-							<input class="att-mov" type="number" name="attr_run_bonus" value="0" placeholder="0" /><span> / +</span>
-							<input class="att-mov" type="number" name="attr_movement_mod" value="2" placeholder="2" />
+							<input class="att-ini" type="number" name="attr_walk_bonus" value="0" placeholder="0" /><span> / </span>
+							<input class="att-ini" type="number" name="attr_run_bonus" value="0" placeholder="0" /><span> / +</span>
+							<input class="att-ini" type="number" name="attr_movement_mod" value="2" placeholder="2" />
 						</div>
 						<div class="att-lim">
 							<input type="number" name="attr_physical_limit" placeholder="bonus" />
@@ -176,7 +176,7 @@ Things to Do:
 						</div>
 					</div>
 					<div class="display">
-						<div class="attr-right">
+						<div class="attr-row">
 							<div class="attr-und"><span name="attr_body"></span></div>
 							<div class="attr-und"><span name="attr_agility"></span></div>
 							<div class="attr-und"><span name="attr_reaction"></span></div>
@@ -187,7 +187,7 @@ Things to Do:
 							<div class="attr-und"><span name="attr_charisma"></span></div>
 							<div class="attr-und"><span name="attr_edge"></span></div>
 						</div>
-						<div class="attr-left">
+						<div class="attr-row">
 							<div class="attr-und"><span name="attr_essence"></span></div>
 							<div class="attr-und"><span name="attr_magic_resonance"></span></div>
 							<div class="attr-und"><span name="attr_initiative_mod"></span><span> + </span><span name="attr_initiative_dice"></span><span>d6</span></div>
@@ -208,11 +208,26 @@ Things to Do:
 				</div>
 			</div><!-- ~~~~~~~~ End of PC Attributes~~~~~~~~ -->
 		</div>
-		<div class="right-col">
+		<div class="col">
 			<div class="header right-header"><h1>Condition Monitor</h1><div class="right-tri"></div></div>
-			<div class="border-box right-box">
-				<div class="pc-box medium-box right-box">
-					
+			<div class="border-box">
+				<div class="pc-box medium-box">
+					<div class="dmg-track">
+						<h2>Physical Damage Track</h2>
+						<span class="square"></span><span class="square"></span><span class="square"></span><br />
+						<span class="square"></span><span class="square"></span><span class="square"></span><br />
+						<span class="square"></span><span class="square"></span><span class="square"></span><br />
+						<span class="square"></span><span class="square"></span><span class="square"></span><br />
+						<span class="square"></span><span class="square"></span><span class="square"></span><br />
+						<span class="square"></span><span class="square"></span><span class="square"></span><br />
+					</div>
+					<div class="dmg-track">
+						<h2>Stun Damage Track</h2>
+						<span class="square"></span><span class="square"></span><span class="square"></span><br />
+						<span class="square"></span><span class="square"></span><span class="square"></span><br />
+						<span class="square"></span><span class="square"></span><span class="square"></span><br />
+						<span class="square"></span><span class="square"></span><span class="square"></span><br />
+					</div>
 				</div>
 			</div>
 		</div><!-- ~~~~~~~~ End of Condition Monitor ~~~~~~~~ -->

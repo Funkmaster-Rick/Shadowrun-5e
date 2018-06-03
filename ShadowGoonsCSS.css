@@ -151,18 +151,14 @@ textarea {
 	margin-bottom: 10px;
 }
 
-.sheet-left-col,
-.sheet-right-col {
+.sheet-col {
+	vertical-align: top;
 	display: inline-block;
 	width: calc(50% - 10px);
 }
 
-.sheet-left-col {
+.sheet-col:first-child {
 	margin-right: 1.5%;
-}
-
-.sheet-right-col {
-	vertical-align: top;
 }
 
 .sheet-border-box {
@@ -214,11 +210,13 @@ textarea {
 		height: 310px;
 	}
 
-	.sheet-left-box {
+	.sheet-col:first-child .sheet-border-box,
+	.sheet-col:first-child .sheet-border-box .sheet-pc-box {
 		border-top-left-radius: 10px;
 	}
 
-	.sheet-right-box {
+	.sheet-col:last-child .sheet-border-box,
+	.sheet-col:last-child .sheet-border-box .sheet-pc-box {
 		border-top-right-radius: 10px;
 	}
 
@@ -273,18 +271,16 @@ textarea {
 		}
 
 	/***** Attributes Box *****/
-	.sheet-attr-right h2,
-	.sheet-attr-left h2 {
+	.sheet-attr-row h2 {
 		border-bottom: 1px solid #000;
 		display: inline-block;
-		margin-right: 5px;
 		padding-right: 2px;
 		text-align: right;
-		width: 41%;
+		width: 100%;
 	}
 
-	.sheet-attr-left h2 {
-		width: 55%;
+	.sheet-attr-row:first-child h2 {
+		width: 40%;
 	}
 
 	.sheet-h3-red {
@@ -292,16 +288,10 @@ textarea {
 	}
 
 		/***** Attribute Columns *****/
-		.sheet-attr-right {
-			margin-right: -15px;
-		}
-
-		.sheet-attr-right,
-		.sheet-attr-left {
+		.sheet-attr-row {
 			display: inline-block;
 			margin-top: 3.5px;
 			vertical-align: top;
-			width: 50%;
 		}
 
 		.sheet-att-lim h2 {
@@ -309,19 +299,18 @@ textarea {
 		}
 
 		/***** Attribute Settings *****/
-		.sheet-settings .sheet-attr-right,
-		.sheet-settings .sheet-attr-left,
-		.sheet-settings .sheet-att-lim input[type="number"]  {
+		.sheet-settings .sheet-attr-row,
+		.sheet-att-lim input[type="number"]  {
 			position: relative;
-			left: 95px;
+			left: 165px;
+			width: 32%;
 		}
 
-		.sheet-settings .sheet-attr-left {
-			left: 125px;
+		.sheet-settings .sheet-attr-row:first-child {
+			left: 80px;
 		}
 
-		.sheet-settings .sheet-attr-right input[type="number"],
-		.sheet-settings .sheet-attr-left input[type="number"] {
+		.sheet-settings .sheet-attr-row input[type="number"] {
 			margin-bottom: 3.5px;
 		}
 
@@ -348,24 +337,17 @@ textarea {
 			top: -319px;
 		}
 
-		/***** Attribute Inputs *****/
-		.sheet-attr-right input[type="number"],
-		.sheet-attr-left input[type="number"] {
+		.sheet-attr-row input[type="number"] {
 			border-bottom: 1px solid #000;
 			border-radius: 0px;
 			height: 22px;
-			width: 22%;
 		}
 
-		.sheet-attr-left input.sheet-att-ini {
-			width: 15%;
-		}
-		.sheet-attr-left input.sheet-att-mov {
-			width: 10%;
+		.sheet-attr-row input.sheet-att-ini {
+			width: 21%;
 		}
 
-		.sheet-attr-left input.sheet-att-ini + span,
-		.sheet-attr-left input.sheet-att-mov + span {
+		.sheet-attr-row input.sheet-att-ini + span {
 			font-size: 0.8rem;
 		}
 
@@ -377,19 +359,21 @@ textarea {
 		.sheet-attr-und {
 			border-bottom: 1px solid #000;
 			border-radius: 0px;
-			margin-bottom: 6.5px;
+			height: 20px;
+			margin-bottom: 5.4px;
 			text-align: center;
-			width: 45%;
+			width: 95%;
 		}
 
-		.sheet-display .sheet-attr-right,
-		.sheet-display .sheet-attr-left {
+		.sheet-display .sheet-attr-row {
 			position: relative;
-			left: 95px;
+			left: 195px;
+			margin-top: 1.5px;
+			width: 25%;
 		}
 
-		.sheet-display .sheet-attr-left {
-			left: 125px;
+		.sheet-display .sheet-attr-row:first-child {
+			left: 78px;
 		}
 
 		.sheet-attr-box .sheet-display {
@@ -413,20 +397,20 @@ textarea {
 
 		.sheet-hexagon {
 			display: inline-block;
-		 	position: relative;
-  			width: 20px; 
- 			height: 11.55px;
-		  	background-color: #610b0d;
 		 	margin: 5.77px 0;
+		 	position: relative;
+		  	background-color: #610b0d;
+ 			height: 11.55px;
+  			width: 20px; 
 		}
 
 		.sheet-hexagon:before,
 		.sheet-hexagon:after {
+		  border-left: 10px solid transparent;
+		  border-right: 10px solid transparent;
 		  content: "";
 		  position: absolute;
 		  width: 0;
-		  border-left: 10px solid transparent;
-		  border-right: 10px solid transparent;
 		}
 
 		.sheet-hexagon:before {
@@ -439,6 +423,28 @@ textarea {
 		  width: 0;
 		  border-top: 5.77px solid #610b0d;
 		}
+
+/***** Condition Monitor Tracks *****/
+.sheet-dmg-track {
+	width: 45%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.sheet-dmg-track h2 {
+	margin-bottom: 5px;
+	width: 100%;
+}
+
+	/***** Condition Monitor Squares *****/
+	.sheet-square {
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		border: 1px solid #610b0d;
+		border-radius: 0px;
+	}
+
 
 /***** Start of the NPC sheet *****/
 .sheet-npc {
