@@ -425,26 +425,81 @@ textarea {
 		}
 
 /***** Condition Monitor Tracks *****/
-.sheet-dmg-track {
-	width: 45%;
+.sheet-con-box {
+	height: 400px;
+}
+
+.sheet-con-track {
+	width: 47%;
 	display: inline-block;
 	vertical-align: top;
+	margin-top: -15px;
 }
 
-.sheet-dmg-track h2 {
-	margin-bottom: 5px;
+.sheet-con-track h2 {
+	padding-left: 3px;
 	width: 100%;
+	text-align: center;
+	margin-bottom: -5px;
 }
 
-	/***** Condition Monitor Squares *****/
-	.sheet-square {
-		display: inline-block;
-		width: 40px;
-		height: 40px;
-		border: 1px solid #610b0d;
-		border-radius: 0px;
+
+	/***** Condition Track Footers *****/
+	.sheet-con-footer {
+		font-size: 0.6rem;
+		margin-top: 10px;
 	}
 
+	.sheet-con-footer label {
+		margin-right: 5px;
+	}
+
+	.sheet-con-footer input[type="number"] {
+		border-bottom: 1px solid #000;
+		border-radius: 0px;
+		height: 22px;
+		margin-top: -5px;
+	}
+
+	/***** Condition Track Display *****/
+	.sheet-con-box .sheet-display {
+		margin-top: -20px;
+	}
+
+	.sheet-con-footer .sheet-attr-und {
+		display: inline-block;
+		margin-bottom: -5px;
+		width: 60%;
+	}
+
+		/***** Condition Monitor Squares *****/
+		.sheet-squares {
+			width: 67%;
+		}
+
+		.sheet-squares span {
+			border-radius: 0px;
+			border: 1px solid #610b0d;
+			display: inline-block;
+			height: 45px;
+			margin-bottom: -29.5px;
+			width: 45px;
+		}
+
+		.sheet-squares input[type="radio"] {
+			height: 45px;
+			left: 38px;
+			margin-right: -50px;
+			position: relative;
+			top: 10px;
+			width: 45px;
+		}
+
+		.sheet-squares input[type="radio"] + span {
+			position: relative;
+			left: 42px;
+			text-align: right;
+		}
 
 /***** Start of the NPC sheet *****/
 .sheet-npc {
@@ -589,7 +644,7 @@ textarea {
 		width: calc(100% - 0px) !important;
 	}
 
-	.sheet-display span {
+	.sheet-npc .sheet-display span {
 		border: 0px;
 		font-size: 14px;
 		letter-spacing: 0.5px;

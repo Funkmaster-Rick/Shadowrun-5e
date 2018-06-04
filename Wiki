@@ -1,0 +1,13 @@
+
+
+##Pain Tolerance
+
+Use 0 for calculating core wounds for every 3 boxes.
+Use -1 to represent Low Pain Tolerance.
+Use +1-3 for ranks of High Pain Tolerance.
+
+Use 0 for Low Pain Tolerance + High Pain Tolerance (1), Use +1 for Low Pain Tolerance + High Pain Tolerance (2), and use +2 for Low Pain Tolerane + High Pain Tolerance (3)
+
+#NPC Skill
+Click a Skill to adda  Specilaization
+
