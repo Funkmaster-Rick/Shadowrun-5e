@@ -3,6 +3,7 @@ Things to Do:
 	Matrix Intiative is not working again...  
 	Overflow needs to be auto culated with Body..
 	All the Attributes need javascript.
+	Cond_resets needs its first line to be goon or sheet_type so PCs will reset
 ~~~~~~~~ -->
 
 <!-- ~~~~~~~~ Start of PC Sheet  ~~~~~~~~ -->
@@ -213,7 +214,7 @@ Things to Do:
 			<div class="header right-header"><h1>Condition Monitor</h1><div class="right-tri"></div></div>
 			<div class="border-box">
 				<div class="pc-box con-box">
-					<input type="checkbox" class="settings-toggle" name="attr_attribute_flag" checked="checked" /><span>y</span>
+					<input type="checkbox" class="settings-toggle" name="attr_condition_flag" checked="checked" /><span>y</span>
 					<div class="settings">
 						<div class="con-footer">
 							<label>Condition Monitor (P/S): </label>
@@ -231,84 +232,84 @@ Things to Do:
 					</div>
 					<div class="display">
 						<div class="con-track">
-							<input type="radio" class="" name="attr_physcial" value="0" title="@{physical_box}" checked="checked" />
+							<input type="radio" class="" name="attr_cond_reset" value="0" title="@{physical_damage}" checked="checked" />
 							<h2>Physical Damage Track</h2>
 							<div class="squares">
-								<input type="hidden" name="attr_physcial_box_1_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="1" /><span></span>
-								<input type="hidden" name="attr_physcial_box_2_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="2" /><span></span>
-								<input type="hidden" name="attr_physcial_box_3_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="3" /><span>-1</span>
-								<input type="hidden" name="attr_physcial_box_4_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="4" /><span></span>
-								<input type="hidden" name="attr_physcial_box_5_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="5" /><span></span>
-								<input type="hidden" name="attr_physcial_box_6_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="6" /><span>-2</span>
-								<input type="hidden" name="attr_physcial_box_7_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="7" /><span></span>
-								<input type="hidden" name="attr_physcial_box_8_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="8" /><span></span>
-								<input type="hidden" name="attr_physcial_box_9_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="9" /><span>-3</span>
-								<input type="hidden" name="attr_physcial_box_10_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="10" /><span></span>
-								<input type="hidden" name="attr_physcial_box_11_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="11" /><span></span>
-								<input type="hidden" name="attr_physcial_box_12_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="12" /><span>-4</span>
-								<input type="hidden" name="attr_physcial_box_13_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="13" /><span></span>
-								<input type="hidden" name="attr_physcial_box_14_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="14" /><span></span>
-								<input type="hidden" name="attr_physcial_box_15_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="15" /><span>-5</span>
-								<input type="hidden" name="attr_physcial_box_16_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="16" /><span></span>
-								<input type="hidden" name="attr_physcial_box_17_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="17" /><span></span>
-								<input type="hidden" name="attr_physcial_box_18_enabled" value="true"/>
-								<input type="radio" name="attr_physcial" value="18" /><span>-6</span>
+								<input type="hidden" name="attr_physical_box_1_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="1" /><span></span>
+								<input type="hidden" name="attr_physical_box_2_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="2" /><span></span>
+								<input type="hidden" name="attr_physical_box_3_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="3" /><span>-1</span>
+								<input type="hidden" name="attr_physical_box_4_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="4" /><span></span>
+								<input type="hidden" name="attr_physical_box_5_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="5" /><span></span>
+								<input type="hidden" name="attr_physical_box_6_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="6" /><span>-2</span>
+								<input type="hidden" name="attr_physical_box_7_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="7" /><span></span>
+								<input type="hidden" name="attr_physical_box_8_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="8" /><span></span>
+								<input type="hidden" name="attr_physical_box_9_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="9" /><span>-3</span>
+								<input type="hidden" name="attr_physical_box_10_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="10" /><span></span>
+								<input type="hidden" name="attr_physical_box_11_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="11" /><span></span>
+								<input type="hidden" name="attr_physical_box_12_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="12" /><span>-4</span>
+								<input type="hidden" name="attr_physical_box_13_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="13" /><span></span>
+								<input type="hidden" name="attr_physical_box_14_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="14" /><span></span>
+								<input type="hidden" name="attr_physical_box_15_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="15" /><span>-5</span>
+								<input type="hidden" name="attr_physical_box_16_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="16" /><span></span>
+								<input type="hidden" name="attr_physical_box_17_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="17" /><span></span>
+								<input type="hidden" name="attr_physical_box_18_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="18" /><span>-6</span>
 							</div>
 							<div class="con-footer">
 								<span>Characters have 8 + (Body / 2, rounded up) boxes on physical damage track. Extra boxes are blacked out.</span>
 							</div>
 						</div>
 						<div class="con-track">
-							<input type="radio" class="" name="attr_stun" value="0" title="@{stun_box}" checked="checked" />
+							<input type="radio" class="" name="attr_cond_reset" value="@{stun_max}" title="@{stun_box}" checked="checked" />
 							<h2>Stun Damage Track</h2>
 							<div class="squares">
 								<input type="hidden" name="attr_stun_box_1_enabled" value="true"/>
-								<input type="radio" name="attr_stun" value="1" /><span></span>
+								<input type="radio" name="attr_stun_damage" value="1" /><span></span>
 								<input type="hidden" name="attr_stun_box_2_enabled" value="true"/>
-								<input type="radio" name="attr_stun" value="2" /><span></span>
+								<input type="radio" name="attr_stun_damage" value="2" /><span></span>
 								<input type="hidden" name="attr_stun_box_3_enabled" value="true"/>
-								<input type="radio" name="attr_stun" value="3" /><span>-1</span>
+								<input type="radio" name="attr_stun_damage" value="3" /><span>-1</span>
 								<input type="hidden" name="attr_stun_box_4_enabled" value="true"/>
-								<input type="radio" name="attr_stun" value="4" /><span></span>
+								<input type="radio" name="attr_stun_damage" value="4" /><span></span>
 								<input type="hidden" name="attr_stun_box_5_enabled" value="true"/>
-								<input type="radio" name="attr_stun" value="5" /><span></span>
+								<input type="radio" name="attr_stun_damage" value="5" /><span></span>
 								<input type="hidden" name="attr_stun_box_6_enabled" value="true"/>
-								<input type="radio" name="attr_stun" value="6" /><span>-2</span>
+								<input type="radio" name="attr_stun_damage" value="6" /><span>-2</span>
 								<input type="hidden" name="attr_stun_box_7_enabled" value="true"/>
-								<input type="radio" name="attr_stun" value="7" /><span></span>
+								<input type="radio" name="attr_stun_damage" value="7" /><span></span>
 								<input type="hidden" name="attr_stun_box_8_enabled" value="true"/>
-								<input type="radio" name="attr_stun" value="8" /><span></span>
+								<input type="radio" name="attr_stun_damage" value="8" /><span></span>
 								<input type="hidden" name="attr_stun_box_9_enabled" value="true"/>
-								<input type="radio" name="attr_stun" value="9" /><span>-3</span>
+								<input type="radio" name="attr_stun_damage" value="9" /><span>-3</span>
 								<input type="hidden" name="attr_stun_box_10_enabled" value="true"/>
-								<input type="radio" name="attr_stun" value="10" /><span></span>
+								<input type="radio" name="attr_stun_damage" value="10" /><span></span>
 								<input type="hidden" name="attr_stun_box_11_enabled" value="true"/>
-								<input type="radio" name="attr_stun" value="11" /><span></span>
+								<input type="radio" name="attr_stun_damage" value="11" /><span></span>
 								<input type="hidden" name="attr_stun_box_12_enabled" value="true"/>
-								<input type="radio" name="attr_stun" value="12" /><span>-4</span>
+								<input type="radio" name="attr_stun_damage" value="12" /><span>-4</span>
 								<input type="hidden" name="attr_stun_box_13_enabled" value="true"/>
-								<input type="radio" name="attr_stun" value="13" /><span></span>
+								<input type="radio" name="attr_stun_damage" value="13" /><span></span>
 								<input type="hidden" name="attr_stun_box_14_enabled" value="true"/>
-								<input type="radio" name="attr_stun" value="14" /><span></span>
+								<input type="radio" name="attr_stun_damage" value="14" /><span></span>
 								<input type="hidden" name="attr_stun_box_15_enabled" value="true"/>
-								<input type="radio" name="attr_stun" value="15" /><span>-5</span>
+								<input type="radio" name="attr_stun_damage" value="15" /><span>-5</span>
 							</div>
 							<div class="con-footer">
 								<span>Characters have 8 + (Willpower / 2, rounded up) boxes on stun damage track. Extra boxes are blacked out.</span>
@@ -343,7 +344,7 @@ Things to Do:
 			<input type="hidden" name="attr_explode_toggle" value="" />
 		</div>
 		<div class="type-toggles">
-			<select name="attr_npc-type">
+			<select name="attr_npc_type">
 				<option class="option" value="goon" selected="selected">Goon</option>
 				<option class="option" value="host">Host</option>
 				<option class="option" value="vehicle">Vehicle</option>
@@ -1944,19 +1945,19 @@ on("change:body change:physical_bonus", function() {
 	});
 });
 
-	//Calculate Stun Track
-on("change:willpower change:stun_bonus", function() {
-	getAttrs(["willpower","stun_bonus"], function(v){
-		var wil = parseInt(v.willpower) || 0;
-		var bon = parseInt(v.stun_bonus) || 0;
-		var tot = Math.ceil(wil/2) + 8 + bon;
+		//Calculate Stun Track
+	on("change:willpower change:stun_bonus", function() {
+		getAttrs(["willpower","stun_bonus"], function(v){
+			var wil = parseInt(v.willpower) || 0;
+			var bon = parseInt(v.stun_bonus) || 0;
+			var tot = Math.ceil(wil/2) + 8 + bon;
 
-		setAttrs({stun: tot});
-		setAttrs({stun_max: tot});
+			setAttrs({stun: tot});
+			setAttrs({stun_max: tot});
+		});
 	});
-});
 
-//Calculate Device Rating Track Track
+//Calculate Device Rating Track
 on("change:device_rating change:matrix_bonus", function() {
 	getAttrs(["device_rating","matrix_bonus"], function(v){
 		var dev = parseInt(v.device_rating) || 0;
@@ -1980,15 +1981,15 @@ on("change:reaction change:intuition change:initiative_bonus", function() {
 	});
 });
 
- on("change:initiative_dice_bonus change:edge_toggle", function () {
-	getAttrs(["initiative_dice_bonus", "edge_toggle"], function(v){
-		var bon = parseInt(v.initiative_dice_bonus) || 0;
-		var tot = Math.min(bon+1,5);
-		edg = (v.edge_toggle == 0) ? tot : 5;
+	 on("change:initiative_dice_bonus change:edge_toggle", function () {
+		getAttrs(["initiative_dice_bonus", "edge_toggle"], function(v){
+			var bon = parseInt(v.initiative_dice_bonus) || 0;
+			var tot = Math.min(bon+1,5);
+			edg = (v.edge_toggle == 0) ? tot : 5;
 
-		setAttrs({initiative_dice: edg});
+			setAttrs({initiative_dice: edg});
+		});
 	});
-});
 
 	//Calculate Astral Initiatve
 on("change:intuition change:astral_mod_bonus", function() {
@@ -2001,15 +2002,15 @@ on("change:intuition change:astral_mod_bonus", function() {
 	});
 });
 
-on("change:astral_dice_bonus change:edge_toggle", function () {
-	getAttrs(["astral_dice_bonus", "edge_toggle"], function(v){
-		var bon = parseInt(v.astral_dice_bonus) || 0;
-		var tot = Math.min(bon+3,5);
-		edg = (v.edge_toggle == 0) ? tot : 5;
+	on("change:astral_dice_bonus change:edge_toggle", function () {
+		getAttrs(["astral_dice_bonus", "edge_toggle"], function(v){
+			var bon = parseInt(v.astral_dice_bonus) || 0;
+			var tot = Math.min(bon+3,5);
+			edg = (v.edge_toggle == 0) ? tot : 5;
 
-		setAttrs({astral_dice: edg});
+			setAttrs({astral_dice: edg});
+		});
 	});
-});
 
 	//Calculate Matrix Initiatve. This is just Initiative for Host & Vehicles
 on("change:host_rating change:data_processing change:pilot change:intuition change:matrix_mod_bonus change:matrix_dice_bonus change:edge_toggle", function() {
@@ -2050,33 +2051,33 @@ on("change:intuition change:willpower change:logic change:mental_limit_bonus", f
 	});
 });
 
-	//Calculate Physical Limit
-on("change:body change:reaction change:strength change:physical_limit_bonus", function() {
-	getAttrs(["body", "reaction", "strength", "physical_bonus"], function(v){
-		var bod = parseInt(v.body) || 0;
-		var rea = parseInt(v.reaction) || 0;
-		var str = parseInt(v.strength) || 0;
-		var bon = parseInt(v.physical_limit_bonus) || 0;
-		var tot = ((bod + rea + (str * 2))/3);
-		var num = Math.ceil(tot) + bon;
+		//Calculate Physical Limit
+	on("change:body change:reaction change:strength change:physical_limit_bonus", function() {
+		getAttrs(["body", "reaction", "strength", "physical_bonus"], function(v){
+			var bod = parseInt(v.body) || 0;
+			var rea = parseInt(v.reaction) || 0;
+			var str = parseInt(v.strength) || 0;
+			var bon = parseInt(v.physical_limit_bonus) || 0;
+			var tot = ((bod + rea + (str * 2))/3);
+			var num = Math.ceil(tot) + bon;
 
-		setAttrs({physical_limit: num});
+			setAttrs({physical_limit: num});
+		});
 	});
-});
 
-	//Calculate Social Limit
-on("change:charisma change:willpower change:essence change:social_limit_bonus", function() {
-	getAttrs(["charisma", "willpower", "essence", "social_bonus"], function(v){
-		var cha = parseInt(v.charisma) || 0;
-		var wil = parseInt(v.willpower) || 0;
-		var ess = parseInt(v.essence) || 0;
-		var bon = parseInt(v.social_limit_bonus) || 0;
-		var tot = ((ess + wil + (cha * 2))/3);
-		var num = Math.ceil(tot) + bon;
+		//Calculate Social Limit
+	on("change:charisma change:willpower change:essence change:social_limit_bonus", function() {
+		getAttrs(["charisma", "willpower", "essence", "social_bonus"], function(v){
+			var cha = parseInt(v.charisma) || 0;
+			var wil = parseInt(v.willpower) || 0;
+			var ess = parseInt(v.essence) || 0;
+			var bon = parseInt(v.social_limit_bonus) || 0;
+			var tot = ((ess + wil + (cha * 2))/3);
+			var num = Math.ceil(tot) + bon;
 
-		setAttrs({social_limit: num});
+			setAttrs({social_limit: num});
+		});
 	});
-});
 
 	//Calculate Defense Pool
 on("change:reaction change:intuition change:defense_bonus", function() {
@@ -2090,17 +2091,17 @@ on("change:reaction change:intuition change:defense_bonus", function() {
 	});
 });
 
-	//Calculate Soak Pool
-on("change:body change:armor change:soak_bonus", function() {
-	getAttrs(["body", "armor", "soak_bonus"], function(v){
-		var bod = parseInt(v.body) || 0;
-		var arm = parseInt(v.armor) || 0;
-		var bon = parseInt(v.soak_bonus) || 0;
-		var tot = bod + arm + bon;
+		//Calculate Soak Pool
+	on("change:body change:armor change:soak_bonus", function() {
+		getAttrs(["body", "armor", "soak_bonus"], function(v){
+			var bod = parseInt(v.body) || 0;
+			var arm = parseInt(v.armor) || 0;
+			var bon = parseInt(v.soak_bonus) || 0;
+			var tot = bod + arm + bon;
 
-		setAttrs({soak: tot});
+			setAttrs({soak: tot});
+		});
 	});
-});
 
 	//Edge toggle to include ! for exploding dice
 on("change:edge_toggle", function() {
@@ -2110,6 +2111,55 @@ on("change:edge_toggle", function() {
 		setAttrs({explode_toggle: edg});
 	});
 });
+
+	//Convert Physical Damage boxes into Physical track
+on("change:physical_damage", function() {
+	getAttrs(["physical", "physical_damage", "physical_max"], function(v) {
+		var phy = parseInt(v.physical) || 0;
+		var Dam = parseInt(v.physical_damage) || 0;
+		var Max = parseInt(v.physical_max) || 0;
+		var Wou = Max - Dam;
+
+		(phy != Wou) ? setAttrs({physical: Wou}) : console.log(phy + " = " + Wou);
+	});
+});
+
+		//Convert Physical Damage boxes into Physical track
+	on("change:physical", function() {
+		getAttrs(["physical", "physical_damage", "physical_max"], function(v) {
+			var phy = parseInt(v.physical) || 0;
+			var Dam = parseInt(v.physical_damage) || 0;
+			var Max = parseInt(v.physical_max) || 0;
+			var Wou = Max - phy;
+
+			(Dam != Wou) ? setAttrs({physical_damage: Wou}) : console.log(Dam + " = " + Wou);
+		});
+	});
+
+
+	//Convert stun Damage boxes into stun track
+on("change:stun_damage", function() {
+	getAttrs(["stun", "stun_damage", "stun_max"], function(v) {
+		var stu = parseInt(v.stun) || 0;
+		var Dam = parseInt(v.stun_damage) || 0;
+		var Max = parseInt(v.stun_max) || 0;
+		var Wou = Max - Dam;
+
+		(stu != Wou) ? setAttrs({stun: Wou}) : console.log(stu + " = " + Wou);
+	});
+});
+
+		//Convert stun Damage boxes into stun track
+	on("change:stun", function() {
+		getAttrs(["stun", "stun_damage", "stun_max"], function(v) {
+			var stu = parseInt(v.stun) || 0;
+			var Dam = parseInt(v.stun_damage) || 0;
+			var Max = parseInt(v.stun_max) || 0;
+			var Wou = Max - stu;
+
+			(Dam != Wou) ? setAttrs({stun_damage: Wou}) : console.log(Dam + " = " + Wou);
+		});
+	});
 
 	//Add wound modifiers
 on("change:stun change:physical change:pain_tolerance", function() {
@@ -2134,24 +2184,24 @@ on("change:stun change:physical change:pain_tolerance", function() {
 	});
 });
 
-	//Calculate Reset Condition Track
-on("change:cond_reset", function() {
-	getAttrs(["npc_type","physical_max","stun_max", "matrix_max"], function(v){
-		var phy = parseInt(v.physical_max) || 0;
-		var stun = parseInt(v.stun_max) || 0;
-		var mat = parseInt(v.matrix_max) || 0;
+		//Calculate Reset Condition Track
+	on("change:cond_reset", function() {
+		getAttrs(["npc_type","physical_max","stun_max", "matrix_max"], function(v){
+			var phy = parseInt(v.physical_max) || 0;
+			var stun = parseInt(v.stun_max) || 0;
+			var mat = parseInt(v.matrix_max) || 0;
 
-		if (v.npc_type === "goon") {
-			setAttrs({physical: phy});
-			setAttrs({stun: stun});
-		} else if (v.npc_type === "vehicle") {
-			setAttrs({physical: phy});
-			setAttrs({matrix: mat});
-		} else {
-			return "Not a goon or vehicle";
-		};
+			if (v.npc_type === "goon") {
+				setAttrs({physical: phy});
+				setAttrs({stun: stun});
+			} else if (v.npc_type === "vehicle") {
+				setAttrs({physical: phy});
+				setAttrs({matrix: mat});
+			} else {
+				return "Not a goon or vehicle";
+			};
+		});
 	});
-});
 
 	//Weapon displays set into an Array
 on("change:repeating_weapon", function() {
