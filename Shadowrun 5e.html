@@ -4,6 +4,7 @@ Things to Do:
 	Overflow needs to be auto culated with Body..
 	All the Attributes need javascript.
 	Cond_resets needs its first line to be goon or sheet_type so PCs will reset
+	Wounds isn't working with the Damage Boxes.
 ~~~~~~~~ -->
 
 <!-- ~~~~~~~~ Start of PC Sheet  ~~~~~~~~ -->
@@ -143,8 +144,8 @@ Things to Do:
 						<div class="attr-row">
 							<input type="number" name="attr_essence" placeholder="6" /><br />
 							<input type="hidden" name="attr_magic_resonance" value="3" />
-							<input type="number" name="attr_magic_resonance" placeholder="base" />
-							<input type="number" name="attr_magic_resonance" placeholder="bonus" /><br />
+							<input type="number" name="attr_magic_resonance_base" placeholder="base" />
+							<input type="number" name="attr_magic_resonance_bonus" placeholder="bonus" /><br />
 							<input type="hidden" name="attr_initiative_mod" value="6" />
 							<input type="hidden" name="attr_initiative_dice" value="1" min="1" max="5" />
 							<input class="att-ini" type="number" name="attr_initiative_bonus" value="0" placeholder="0" /><span> + </span>
@@ -232,87 +233,89 @@ Things to Do:
 					</div>
 					<div class="display">
 						<div class="con-track">
-							<input type="radio" class="" name="attr_cond_reset" value="0" title="@{physical_damage}" checked="checked" />
+							<input type="checkbox" class="" name="attr_cond_reset" value="0" title="@{physical_damage}" checked="checked" />
 							<h2>Physical Damage Track</h2>
 							<div class="squares">
+								<input type="radio" name="attr_physical_damage" value="0" checked="checked" style="display: none" />
 								<input type="hidden" name="attr_physical_box_1_enabled" value="true"/>
 								<input type="radio" name="attr_physical_damage" value="1" /><span></span>
 								<input type="hidden" name="attr_physical_box_2_enabled" value="true"/>
 								<input type="radio" name="attr_physical_damage" value="2" /><span></span>
 								<input type="hidden" name="attr_physical_box_3_enabled" value="true"/>
-								<input type="radio" name="attr_physical_damage" value="3" /><span>-1</span>
+								<input type="radio" name="attr_physical_damage" value="3" /><span></span><div>-1</div>
 								<input type="hidden" name="attr_physical_box_4_enabled" value="true"/>
 								<input type="radio" name="attr_physical_damage" value="4" /><span></span>
 								<input type="hidden" name="attr_physical_box_5_enabled" value="true"/>
 								<input type="radio" name="attr_physical_damage" value="5" /><span></span>
 								<input type="hidden" name="attr_physical_box_6_enabled" value="true"/>
-								<input type="radio" name="attr_physical_damage" value="6" /><span>-2</span>
+								<input type="radio" name="attr_physical_damage" value="6" /><span></span><div>-2</div>
 								<input type="hidden" name="attr_physical_box_7_enabled" value="true"/>
 								<input type="radio" name="attr_physical_damage" value="7" /><span></span>
 								<input type="hidden" name="attr_physical_box_8_enabled" value="true"/>
 								<input type="radio" name="attr_physical_damage" value="8" /><span></span>
 								<input type="hidden" name="attr_physical_box_9_enabled" value="true"/>
-								<input type="radio" name="attr_physical_damage" value="9" /><span>-3</span>
+								<input type="radio" name="attr_physical_damage" value="9" /><span></span><div>-3</div>
 								<input type="hidden" name="attr_physical_box_10_enabled" value="true"/>
 								<input type="radio" name="attr_physical_damage" value="10" /><span></span>
 								<input type="hidden" name="attr_physical_box_11_enabled" value="true"/>
 								<input type="radio" name="attr_physical_damage" value="11" /><span></span>
 								<input type="hidden" name="attr_physical_box_12_enabled" value="true"/>
-								<input type="radio" name="attr_physical_damage" value="12" /><span>-4</span>
+								<input type="radio" name="attr_physical_damage" value="12" /><span></span><div>-4</div>
 								<input type="hidden" name="attr_physical_box_13_enabled" value="true"/>
 								<input type="radio" name="attr_physical_damage" value="13" /><span></span>
 								<input type="hidden" name="attr_physical_box_14_enabled" value="true"/>
 								<input type="radio" name="attr_physical_damage" value="14" /><span></span>
 								<input type="hidden" name="attr_physical_box_15_enabled" value="true"/>
-								<input type="radio" name="attr_physical_damage" value="15" /><span>-5</span>
+								<input type="radio" name="attr_physical_damage" value="15" /><span></span><div>-5</div>
 								<input type="hidden" name="attr_physical_box_16_enabled" value="true"/>
 								<input type="radio" name="attr_physical_damage" value="16" /><span></span>
 								<input type="hidden" name="attr_physical_box_17_enabled" value="true"/>
 								<input type="radio" name="attr_physical_damage" value="17" /><span></span>
 								<input type="hidden" name="attr_physical_box_18_enabled" value="true"/>
-								<input type="radio" name="attr_physical_damage" value="18" /><span>-6</span>
+								<input type="radio" name="attr_physical_damage" value="18" /><span></span><div>-6</div>
 							</div>
 							<div class="con-footer">
-								<span>Characters have 8 + (Body / 2, rounded up) boxes on physical damage track. Extra boxes are blacked out.</span>
+								<span>Characters have 8 + (Body / 2, rounded up) boxes on physical damage track.</span>
 							</div>
 						</div>
 						<div class="con-track">
-							<input type="radio" class="" name="attr_cond_reset" value="@{stun_max}" title="@{stun_box}" checked="checked" />
+							<input type="checkbox" class="" name="attr_cond_reset" value="0" title="@{stun_damage}" checked="checked" />
 							<h2>Stun Damage Track</h2>
 							<div class="squares">
+								<input type="radio" name="attr_stun_damage" value="0" checked="checked" style="display: none" />
 								<input type="hidden" name="attr_stun_box_1_enabled" value="true"/>
 								<input type="radio" name="attr_stun_damage" value="1" /><span></span>
 								<input type="hidden" name="attr_stun_box_2_enabled" value="true"/>
 								<input type="radio" name="attr_stun_damage" value="2" /><span></span>
 								<input type="hidden" name="attr_stun_box_3_enabled" value="true"/>
-								<input type="radio" name="attr_stun_damage" value="3" /><span>-1</span>
+								<input type="radio" name="attr_stun_damage" value="3" /><span></span><div>-1</div>
 								<input type="hidden" name="attr_stun_box_4_enabled" value="true"/>
 								<input type="radio" name="attr_stun_damage" value="4" /><span></span>
 								<input type="hidden" name="attr_stun_box_5_enabled" value="true"/>
 								<input type="radio" name="attr_stun_damage" value="5" /><span></span>
 								<input type="hidden" name="attr_stun_box_6_enabled" value="true"/>
-								<input type="radio" name="attr_stun_damage" value="6" /><span>-2</span>
+								<input type="radio" name="attr_stun_damage" value="6" /><span></span><div>-2</div>
 								<input type="hidden" name="attr_stun_box_7_enabled" value="true"/>
 								<input type="radio" name="attr_stun_damage" value="7" /><span></span>
 								<input type="hidden" name="attr_stun_box_8_enabled" value="true"/>
 								<input type="radio" name="attr_stun_damage" value="8" /><span></span>
 								<input type="hidden" name="attr_stun_box_9_enabled" value="true"/>
-								<input type="radio" name="attr_stun_damage" value="9" /><span>-3</span>
+								<input type="radio" name="attr_stun_damage" value="9" /><span></span><div>-3</div>
 								<input type="hidden" name="attr_stun_box_10_enabled" value="true"/>
 								<input type="radio" name="attr_stun_damage" value="10" /><span></span>
 								<input type="hidden" name="attr_stun_box_11_enabled" value="true"/>
 								<input type="radio" name="attr_stun_damage" value="11" /><span></span>
 								<input type="hidden" name="attr_stun_box_12_enabled" value="true"/>
-								<input type="radio" name="attr_stun_damage" value="12" /><span>-4</span>
+								<input type="radio" name="attr_stun_damage" value="12" /><span></span><div>-4</div>
 								<input type="hidden" name="attr_stun_box_13_enabled" value="true"/>
 								<input type="radio" name="attr_stun_damage" value="13" /><span></span>
 								<input type="hidden" name="attr_stun_box_14_enabled" value="true"/>
 								<input type="radio" name="attr_stun_damage" value="14" /><span></span>
 								<input type="hidden" name="attr_stun_box_15_enabled" value="true"/>
-								<input type="radio" name="attr_stun_damage" value="15" /><span>-5</span>
+								<input type="radio" name="attr_stun_damage" value="15" /><span></span><div>-5</div>
 							</div>
 							<div class="con-footer">
-								<span>Characters have 8 + (Willpower / 2, rounded up) boxes on stun damage track. Extra boxes are blacked out.</span>
+								<span>Characters have 8 + (Willpower / 2, rounded up) boxes on stun damage track.</span>
 							</div>
 							<div class="con-footer">
 								<label>Overflow</label><div class="attr-und"><span name="attr_overflow"></span></div>
@@ -1915,6 +1918,128 @@ Things to Do:
 
 <!--Sheet Worker-->
 <script type="text/worker">
+	//Calculate Attributes
+on("change:body_base change:body_bonus", function() {
+	getAttrs(["body_base", "body_bonus"], function(v) {
+		var bas = parseInt(v.body_base) || 0;
+		var bon = parseInt(v.body_bonus) || 0;
+
+		setAttrs({body: bas + bon});
+	});
+});
+
+	on("change:agility_base change:agility_bonus", function() {
+		getAttrs(["agility_base", "agility_bonus"], function(v) {
+			var bas = parseInt(v.agility_base) || 0;
+			var bon = parseInt(v.agility_bonus) || 0;
+
+			setAttrs({agility: bas + bon});
+		});
+	});	
+
+	on("change:reaction_base change:reaction_bonus", function() {
+		getAttrs(["reaction_base", "reaction_bonus"], function(v) {
+			var bas = parseInt(v.reaction_base) || 0;
+			var bon = parseInt(v.reaction_bonus) || 0;
+
+			setAttrs({reaction: bas + bon});
+		});
+	});
+
+	on("change:strength_base change:strength_bonus", function() {
+		getAttrs(["strength_base", "strength_bonus"], function(v) {
+			var bas = parseInt(v.strength_base) || 0;
+			var bon = parseInt(v.strength_bonus) || 0;
+
+			setAttrs({strength: bas + bon});
+		});
+	});
+
+	on("change:willpower_base change:willpower_bonus", function() {
+		getAttrs(["willpower_base", "willpower_bonus"], function(v) {
+			var bas = parseInt(v.willpower_base) || 0;
+			var bon = parseInt(v.willpower_bonus) || 0;
+
+			setAttrs({willpower: bas + bon});
+		});
+	});
+
+	on("change:logic_base change:logic_bonus", function() {
+		getAttrs(["logic_base", "logic_bonus"], function(v) {
+			var bas = parseInt(v.logic_base) || 0;
+			var bon = parseInt(v.logic_bonus) || 0;
+
+			setAttrs({logic: bas + bon});
+		});
+	});
+
+	on("change:intuition_base change:intuition_bonus", function() {
+		getAttrs(["intuition_base", "intuition_bonus"], function(v) {
+			var bas = parseInt(v.intuition_base) || 0;
+			var bon = parseInt(v.intuition_bonus) || 0;
+
+			setAttrs({intuition: bas + bon});
+		});
+	});
+
+	on("change:charisma_base change:charisma_bonus", function() {
+		getAttrs(["charisma_base", "charisma_bonus"], function(v) {
+			var bas = parseInt(v.charisma_base) || 0;
+			var bon = parseInt(v.charisma_bonus) || 0;
+
+			setAttrs({charisma: bas + bon});
+		});
+	});
+
+	on("change:magic_resonance_base change:magic_resonance_bonus", function() {
+		getAttrs(["magic_resonance_base", "magic_resonance_bonus"], function(v) {
+			var bas = parseInt(v.magic_resonance_base) || 0;
+			var bon = parseInt(v.magic_resonance_bonus) || 0;
+
+			setAttrs({magic_resonance: bas + bon});
+		});
+	});
+
+	//Calculate Common PC rolls
+on("change:charisma change:willpower change:composure_bonus", function() {
+	getAttrs(["charisma", "willpower", "composure_bonus"], function(v) {
+		var attrOne = parseInt(v.charisma) || 0;
+		var attrTwo = parseInt(v.willpower) || 0;
+		var bon = parseInt(v.composure_bonus) || 0;
+
+		setAttrs({composure: attrOne + attrTwo + bon});
+	});
+});
+
+	on("change:charisma change:intuition change:judge_intentions_bonus", function() {
+		getAttrs(["charisma", "intuition", "judge_intentions_bonus"], function(v) {
+			var attrOne = parseInt(v.charisma) || 0;
+			var attrTwo = parseInt(v.intuition) || 0;
+			var bon = parseInt(v.judge_intentions_bonus) || 0;
+
+			setAttrs({judge_intentions: attrOne + attrTwo + bon});
+		});
+	});
+
+	on("change:logic change:willpower change:memory_bonus", function() {
+		getAttrs(["logic", "willpower", "memory_bonus"], function(v) {
+			var attrOne = parseInt(v.logic) || 0;
+			var attrTwo = parseInt(v.willpower) || 0;
+			var bon = parseInt(v.memory_bonus) || 0;
+
+			setAttrs({memory: attrOne + attrTwo + bon});
+		});
+	});
+
+	on("change:body change:strength change:lift_carry_bonus", function() {
+		getAttrs(["body", "strength", "lift_carry_bonus"], function(v) {
+			var attrOne = parseInt(v.body) || 0;
+			var attrTwo = parseInt(v.strength) || 0;
+			var bon = parseInt(v.lift_carry_bonus) || 0;
+
+			setAttrs({lift_carry: attrOne + attrTwo + bon});
+		});
+	});
 
 	//Calculate Movement Rates
 on("change:agility change:walk_bonus change:run_bonus", function (){

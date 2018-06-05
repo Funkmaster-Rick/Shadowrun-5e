@@ -472,11 +472,13 @@ textarea {
 		width: 60%;
 	}
 
-		/***** Condition Monitor Squares *****/
-		.sheet-squares {
-			width: 67%;
-		}
+	.sheet-con-track input[type="checkbox"]  {
+		left: 25px;
+		top: 20px;
+		width: 150px;
+	}
 
+		/***** Condition Monitor Squares *****/
 		.sheet-squares span {
 			border-radius: 0px;
 			border: 1px solid #610b0d;
@@ -484,6 +486,13 @@ textarea {
 			height: 45px;
 			margin-bottom: -29.5px;
 			width: 45px;
+		}
+
+		.sheet-squares span + div {
+			left: 152px;
+			margin-top: -20px;
+			position: relative;
+			top: 8px;
 		}
 
 		.sheet-squares input[type="radio"] {
@@ -499,7 +508,13 @@ textarea {
 			position: relative;
 			left: 42px;
 			text-align: right;
+			background-color: #9a9a9a;
 		}
+
+		.sheet-squares input[type="radio"]:checked ~ input[type="radio"] + span {
+			background-color: transparent;
+		}
+
 
 /***** Start of the NPC sheet *****/
 .sheet-npc {
