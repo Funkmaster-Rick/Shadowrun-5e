@@ -2065,6 +2065,7 @@ on("change:body change:physical_bonus", function() {
 		tra = (v.sheet_type === "pc" || v.sheet_type === "goon") ? (Math.ceil(bod/2) + 8 + bon) : 
 			  ((v.sheet_type === "vehicle") ? (Math.ceil(bod/2) + 12 + bon) :
 			  "Not a goon or vehicle");
+			  
 		setAttrs({physical: tra});
 		setAttrs({physical_max: tra});
 	});
@@ -2085,16 +2086,27 @@ on("change:body change:physical_bonus", function() {
 	    });
 	});
 
-		//Convert Physical into the physical damage track boxes
+		//Convert physical into the physical damage track boxes
 	on("change:physical", function() {
 		getAttrs(["physical", "physical_damage", "physical_max"], function(v) {
 			var phy = parseInt(v.physical) || 0;
 			var Dam = parseInt(v.physical_damage) || 0;
 			var Max = parseInt(v.physical_max) || 0;
 			var Wou = Max - phy;
-			(phy === Max) ? console.log("No Damage") : 
+			(Dam === Wou) ? console.log("Damage is already tracked") : 
 			((phy < Max && Dam != Wou) ? setAttrs({physical_damage: Wou}) :
-				console.log("Physical Damage already set"));
+			setAttrs({physical_damage: 0}));
+		});
+	});
+
+
+	on("change:physical_damage", function() {
+		getAttrs(["physical", "physical_damage", "physical_max"], function(v) {
+			var phy = parseInt(v.physical) || 0;
+			var Dam = parseInt(v.physical_damage) || 0;
+			var Max = parseInt(v.physical_max) || 0;
+			var Wou = Max - Dam;
+			(phy === Wou) ? console.log("Physical is already tracked") : setAttrs({physical: Wou});
 		});
 	});
 
@@ -2126,7 +2138,7 @@ on("change:willpower change:stun_bonus", function() {
 	    });
 	});
 
-		//Convert stun into the stun damage track boxes
+//Convert stun into the stun damage track boxes
 	on("change:stun", function() {
 		getAttrs(["stun", "stun_damage", "stun_max"], function(v) {
 			var stu = parseInt(v.stun) || 0;
@@ -2138,6 +2150,16 @@ on("change:willpower change:stun_bonus", function() {
 			setAttrs({stun_damage: 0}));
 		});
 	});
+
+		on("change:stun_damage", function() {
+			getAttrs(["stun", "stun_damage", "stun_max"], function(v) {
+				var stu = parseInt(v.stun) || 0;
+				var Dam = parseInt(v.stun_damage) || 0;
+				var Max = parseInt(v.stun_max) || 0;
+				var Wou = Max - Dam;
+				(stu === Wou) ? console.log("stun is already tracked") : setAttrs({stun: Wou});
+			});
+		});
 
 	//Add wounds based on Physical modifiers via Physical or Stun
 on("change:stun_damage change:physical_damage change:pain_tolerance", function() {
