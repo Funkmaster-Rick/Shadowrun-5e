@@ -515,6 +515,12 @@ textarea {
 			background-color: transparent;
 		}
 
+		/***** Condition Monitor Squares Appear & Disappear *****/
+		input[type="hidden"][value="false"] + input[type="radio"],
+		input[type="hidden"][value="false"] + input[type="radio"] + span,
+		input[type="hidden"][value="false"] + input[type="radio"] + span + div {
+			display: none;
+		} 
 
 /***** Start of the NPC sheet *****/
 .sheet-npc {

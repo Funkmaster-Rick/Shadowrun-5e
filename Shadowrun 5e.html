@@ -6,8 +6,9 @@ Things to Do:
 	Cond_resets needs its first line to be goon or sheet_type so PCs will reset
 	Wounds isn't working with the Damage Boxes.
 ~~~~~~~~ -->
-
+<input type="hidden" class="npc-toggle" name="attr_sheet_type" value="pc" />
 <!-- ~~~~~~~~ Start of PC Sheet  ~~~~~~~~ -->
+<input type="checkbox" class="options-flag" name="attr_sheet_type" value="npc" title="NPC toggle" /><span>NPC</span>
 <div class="pc">
 	<img src="https://raw.githubusercontent.com/clevett/Shadowrun-5e/master/ShadowrunLogo.png" style="max-height: 200px;" />
 	<div class="pc-row"><!-- ~~~~~~~~ Start of Personal Data & Core Combat Info row  ~~~~~~~~ -->
@@ -331,6 +332,7 @@ Things to Do:
 	</div><!-- ~~~~~~~~ End of Attributes & Condition Monitor Rows  ~~~~~~~~ -->
 </div>
 <!-- ~~~~~~~~ End of PC Sheet  ~~~~~~~~ -->
+<input type="checkbox" class="options-flag" name="attr_sheet_type" value="pc" title="PC toggle" /><span>PC</span>
 <div class="npc"><!-- ~~~~~~~~ Start of NPC Sheet  ~~~~~~~~ -->
 	<div class="roll-toggles"><!-- ~~~~~~~~ Roll Buttons & Toggles  ~~~~~~~~ -->
 		<div class="toggle-buttons">
@@ -338,7 +340,7 @@ Things to Do:
 			<button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Dice Roll}}{{base=Base}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(?{Base +/-|0}+?{Modifiers +/-|0}+@{wound_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="D6 Roll"><span class="d6">L</span></button>
 		</div>
 		<div class="toggle-toggles">
-			<input type="hidden" class="npc-type" name="attr_npc_type" value="goon" />
+			<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
 			<input type="checkbox" class="whisper-flag" name="attr_gm_toggle" value="/w gm" title="GM Whisper Toggle" /><span class="whisper-flag">w</span>
 			<input type="checkbox" class="wound-flag" name="attr_wound_toggle" value="@{wounds}" title="Wounds Toggle" /><span class="wound-flag">k</span><span class="wound-line">Y</span>
 			<input type="checkbox" class="modifier-flag" name="attr_modifier_toggle" value="?{Modifiers +/-|0}" title="Modifier Toggle" /><span class="modifier-flag">?</span>
@@ -347,7 +349,7 @@ Things to Do:
 			<input type="hidden" name="attr_explode_toggle" value="" />
 		</div>
 		<div class="type-toggles">
-			<select name="attr_npc_type">
+			<select name="attr_sheet_type">
 				<option class="option" value="goon" selected="selected">Goon</option>
 				<option class="option" value="host">Host</option>
 				<option class="option" value="vehicle">Vehicle</option>
@@ -357,7 +359,7 @@ Things to Do:
 	<div class="stats toggle"><!-- ~~~~~~~~ Start of the Goon Sheet  ~~~~~~~~ -->
 		<input type="checkbox" class="settings-toggle" name="attr_stats_toggle" checked="checked" /><span>y</span>
 		<div class="settings">
-			<input type="hidden" class="npc-type" name="attr_npc_type" value="goon" />
+			<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
 		<!-- ~~~~~~~~ Attributes  ~~~~~~~~ -->
 			<div class="goon attribute">
 				<input type="hidden" class="character-type" name="attr_special_flag" />
@@ -397,7 +399,7 @@ Things to Do:
 		<!-- ~~~~~~~~ Bonuses  ~~~~~~~~ -->
 			<h1>Bonuses </h1>
 			<div class="leftcol"><!--Start Left Bonuses-->
-			<input type="hidden" class="npc-type" name="attr_npc_type" value="goon" />
+			<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
 				<div class="goon">
 					<label>Initiative: </label>
 					<input type="hidden" name="attr_initiative_mod" value="6" />
@@ -1029,7 +1031,7 @@ Things to Do:
 		</div><!-- ~~~~~~~~ End of Settings  ~~~~~~~~ -->
 		<div class="display">
 		<!-- ~~~~~~~~ Attributes  ~~~~~~~~ -->
-			<input type="hidden" class="npc-type" name="attr_npc_type" value="goon" />
+			<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
 			<div class="goon attribute">
 				<input type="hidden" class="character-type" name="attr_special_flag" />
 				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Body}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Body Roll"><b>B</b></button></label><br /><span name="attr_body"></span></div>
@@ -1129,7 +1131,7 @@ Things to Do:
 			</div>
 		</div>
 		<!-- ~~~~~~~~ Skills  ~~~~~~~~ -->
-		<input type="hidden" class="npc-type" name="attr_npc_type" value="goon" />
+		<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
 		<div class="goon">
 			<label>Skills (Dice Pools): </label>
 		<!-- ~~~~~~~~ Acting  ~~~~~~~~ -->
@@ -1576,7 +1578,7 @@ Things to Do:
 		</div><!-- ~~~~~~~~ End of Display  ~~~~~~~~ -->
 	</div><!-- ~~~~~~~~ End of Stats area  ~~~~~~~~ -->
 	<!-- ~~~~~~~~ Weapons ~~~~~~~~ -->
-	<input type="hidden" class="npc-type" name="attr_npc_type" value="goon" />
+	<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
 	<div class="goon vehicle">
 		<label>Weapons: </label>
 		<fieldset class="repeating_weapon">
@@ -1706,7 +1708,7 @@ Things to Do:
 		</fieldset>
 	</div><!-- ~~~~~~~~ End of Complex Forms ~~~~~~~~ -->
 	<!-- ~~~~~~~~ IC! ~~~~~~~~ -->
-	<input type="hidden" class="npc-type" name="attr_npc_type" value="goon" />
+	<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
 	<div class="host"><label>Intrusion Countermeasures: </label>
 		<fieldset class="repeating_IC">
 			<div class="repeating toggle">
@@ -2057,12 +2059,12 @@ on("change:agility change:walk_bonus change:run_bonus", function (){
 
 	//Calculate Physical Track
 on("change:body change:physical_bonus", function() {
-	getAttrs(["body","physical_bonus", "npc_type"], function(v){
+	getAttrs(["body","physical_bonus", "sheet_type"], function(v){
 		var bod = parseInt(v.body) || 0;
 		var bon = parseInt(v.physical_bonus) || 0;
 
-		tra = (v.npc_type === "goon") ? (Math.ceil(bod/2) + 8 + bon) : 
-			  ((v.npc_type === "vehicle") ? (Math.ceil(bod/2) + 12 + bon) :
+		tra = (v.sheet_type === "pc" || v.sheet_type === "goon") ? (Math.ceil(bod/2) + 8 + bon) : 
+			  ((v.sheet_type === "vehicle") ? (Math.ceil(bod/2) + 12 + bon) :
 			  "Not a goon or vehicle");
 
 		setAttrs({physical: tra});
@@ -2070,17 +2072,98 @@ on("change:body change:physical_bonus", function() {
 	});
 });
 
-		//Calculate Stun Track
-	on("change:willpower change:stun_bonus", function() {
-		getAttrs(["willpower","stun_bonus"], function(v){
-			var wil = parseInt(v.willpower) || 0;
-			var bon = parseInt(v.stun_bonus) || 0;
-			var tot = Math.ceil(wil/2) + 8 + bon;
+	     //Update physical track when Physical Max changes
+	on("change:physical_max", function (){
+	    getAttrs(["physical_max"], function (v) {
+	        var attrs = {};
+	        var physical = parseInt(v.physical_max) || 0;
+	        for (i = 1; i <= physical; i += 1) {
+	            attrs["physical_box_".concat(i, "_enabled")] = "true";
+	        }
+	        for (i = physical + 1; i <= 18; i += 1) {
+	            attrs["physical_box_".concat(i)] = 0;
+	            attrs["physical_box_".concat(i, "_enabled")] = "false";
+	        }
+	        setAttrs(attrs);
+	    });
+	});
 
-			setAttrs({stun: tot});
-			setAttrs({stun_max: tot});
+
+		//Convert Physical Damage boxes into Physical track
+	on("change:physical", function() {
+		getAttrs(["physical", "physical_damage", "physical_max"], function(v) {
+			var phy = parseInt(v.physical) || 0;
+			var Dam = parseInt(v.physical_damage) || 0;
+			var Max = parseInt(v.physical_max) || 0;
+			var Wou = Max - phy;
+
+			(phy === Max) ? console.log("No Damage") : 
+			((Dam != Wou) ? setAttrs({physical_damage: Wou}) :
+				console.log("Physical Damage already set"));
 		});
 	});
+
+	//Calculate Stun Track
+on("change:willpower change:stun_bonus", function() {
+	getAttrs(["willpower","stun_bonus"], function(v){
+		var wil = parseInt(v.willpower) || 0;
+		var bon = parseInt(v.stun_bonus) || 0;
+		var tot = Math.ceil(wil/2) + 8 + bon;
+
+		setAttrs({stun: tot});
+		setAttrs({stun_max: tot});
+	});
+});
+
+	     //Update stun
+	on("change:stun_max", function (){
+	    getAttrs(["stun_max"], function (v) {
+	        var attrs = {};
+	        var stun = parseInt(v.stun_max) || 0;
+	        for (i = 1; i <= stun; i += 1) {
+	            attrs["stun_box_".concat(i, "_enabled")] = "true";
+	        }
+	        for (i = stun + 1; i <= 18; i += 1) {
+	            attrs["stun_box_".concat(i)] = 0;
+	            attrs["stun_box_".concat(i, "_enabled")] = "false";
+	        }
+	        setAttrs(attrs);
+	    });
+	});
+
+		//Convert stun Damage boxes into stun track
+	on("change:stun", function() {
+		getAttrs(["stun", "stun_damage", "stun_max"], function(v) {
+			var phy = parseInt(v.stun) || 0;
+			var Dam = parseInt(v.stun_damage) || 0;
+			var Max = parseInt(v.stun_max) || 0;
+			var Wou = Max - phy;
+
+			(phy === Max) ? console.log("No Damage") : 
+			((Dam != Wou) ? setAttrs({stun_damage: Wou}) :
+				console.log("Stun Damage already set"));
+		});
+	});
+
+	
+
+	//Add wounds based on Physical modifiers via Physical or Stun
+on("change:stun_damage change:physical_damage change:pain_tolerance", function() {
+	getAttrs(["stun_damage", "physical_damage", "pain_tolerance"], function(v) {
+		var stu = parseInt(v.stun_damage) || 0;
+		var phy = parseInt(v.physical_damage) || 0;
+		var pai = parseInt(v.pain_tolerance) || 0;
+
+		lowP = (pai < 0) ? 2 : 3;
+		highPhy = (pai > 0) ? phy - pai : phy;
+		highStu = (pai > 0) ? stu - pai : stu;
+ 		pMod = (phy > 0) ? (Math.floor(highPhy/lowP)) : 0;
+		sMod = (stu > 0) ? (Math.floor(highStu/lowP)) : 0;
+		wou = Math.floor(-(pMod) + -(sMod));
+		
+		setAttrs({wounds: wou});
+	});
+});
 
 //Calculate Device Rating Track
 on("change:device_rating change:matrix_bonus", function() {
@@ -2139,7 +2222,7 @@ on("change:intuition change:astral_mod_bonus", function() {
 
 	//Calculate Matrix Initiatve. This is just Initiative for Host & Vehicles
 on("change:host_rating change:data_processing change:pilot change:intuition change:matrix_mod_bonus change:matrix_dice_bonus change:edge_toggle", function() {
-	getAttrs(["npc_type", "data_processing", "pilot", "intuition", "matrix_mod_bonus", "matrix_dice_bonus", "host_rating", "edge_toggle"], function(v) {
+	getAttrs(["sheet_type", "data_processing", "pilot", "intuition", "matrix_mod_bonus", "matrix_dice_bonus", "host_rating", "edge_toggle"], function(v) {
 		var dat = parseInt(v.data_processing) || 0;
 		var pil = parseInt(v.pilot) || 0;
 		var int = parseInt(v.intuition) || 0;
@@ -2147,20 +2230,19 @@ on("change:host_rating change:data_processing change:pilot change:intuition chan
 		var dic = parseInt(v.matrix_dice_bonus) || 0;
 		var hos = parseInt(v.host_rating) || 0;
 
-		ini = (v.npc_type === "goon") ? dat + int + mat :
-			  ((v.npc_type === "vehicle") ? dat + pil :
-			  ((v.npc_type === "host") ? dat + hos :
+		ini = (v.sheet_type === "goon") ? dat + int + mat :
+			  ((v.sheet_type === "vehicle") ? dat + pil :
+			  ((v.sheet_type === "host") ? dat + hos :
 			  	"Invald sheet type"));
 
-		dice = (v.npc_type === "goon" && v.edge_toggle == 0) ? 4 + dic : 
-			   ((v.npc_type === "goon" && v.edge_toggle != 0) ? 5 :
+		dice = (v.sheet_type === "goon" && v.edge_toggle == 0) ? 4 + dic : 
+			   ((v.sheet_type === "goon" && v.edge_toggle != 0) ? 5 :
 			   4);
 
 		setAttrs({matrix_mod: ini});
 		setAttrs({matrix_dice: dice});
 	});
 });
-
 
 	//Calculate Mental Limit
 on("change:intuition change:willpower change:logic change:mental_limit_bonus", function() {
@@ -2237,89 +2319,17 @@ on("change:edge_toggle", function() {
 	});
 });
 
-	//Convert Physical Damage boxes into Physical track
-on("change:physical_damage", function() {
-	getAttrs(["physical", "physical_damage", "physical_max"], function(v) {
-		var phy = parseInt(v.physical) || 0;
-		var Dam = parseInt(v.physical_damage) || 0;
-		var Max = parseInt(v.physical_max) || 0;
-		var Wou = Max - Dam;
-
-		(phy != Wou) ? setAttrs({physical: Wou}) : console.log(phy + " = " + Wou);
-	});
-});
-
-		//Convert Physical Damage boxes into Physical track
-	on("change:physical", function() {
-		getAttrs(["physical", "physical_damage", "physical_max"], function(v) {
-			var phy = parseInt(v.physical) || 0;
-			var Dam = parseInt(v.physical_damage) || 0;
-			var Max = parseInt(v.physical_max) || 0;
-			var Wou = Max - phy;
-
-			(Dam != Wou) ? setAttrs({physical_damage: Wou}) : console.log(Dam + " = " + Wou);
-		});
-	});
-
-
-	//Convert stun Damage boxes into stun track
-on("change:stun_damage", function() {
-	getAttrs(["stun", "stun_damage", "stun_max"], function(v) {
-		var stu = parseInt(v.stun) || 0;
-		var Dam = parseInt(v.stun_damage) || 0;
-		var Max = parseInt(v.stun_max) || 0;
-		var Wou = Max - Dam;
-
-		(stu != Wou) ? setAttrs({stun: Wou}) : console.log(stu + " = " + Wou);
-	});
-});
-
-		//Convert stun Damage boxes into stun track
-	on("change:stun", function() {
-		getAttrs(["stun", "stun_damage", "stun_max"], function(v) {
-			var stu = parseInt(v.stun) || 0;
-			var Dam = parseInt(v.stun_damage) || 0;
-			var Max = parseInt(v.stun_max) || 0;
-			var Wou = Max - stu;
-
-			(Dam != Wou) ? setAttrs({stun_damage: Wou}) : console.log(Dam + " = " + Wou);
-		});
-	});
-
-	//Add wound modifiers
-on("change:stun change:physical change:pain_tolerance", function() {
-	getAttrs(["stun", "physical", "physical_max", "stun_max", "pain_tolerance"], function(v) {
-		var stu = parseInt(v.stun) || 0;
-		var phy = parseInt(v.physical) || 0;
-		var pai = parseInt(v.pain_tolerance) || 0;
-		var pMax = parseInt(v.physical_max) || 0;
-		var sMax = parseInt(v.stun_max) || 0;
-		var pWou = pMax - phy;
-		var sWou = sMax - stu;
-
-		lowP = (pai < 0) ? 2 : 3;
-		highPhy = (pai > 0) ? pWou - pai : pWou;
-		highStu = (pai > 0) ? sWou - pai : sWou;
- 		pMod = (pWou > 0) ? (Math.floor(highPhy/lowP)) : 0;
-		sMod = (sWou > 0) ? (Math.floor(highStu/lowP)) : 0;
-		wou = Math.floor(-(pMod) + -(sMod));
-		
-		setAttrs({wounds: wou});
-
-	});
-});
-
 		//Calculate Reset Condition Track
 	on("change:cond_reset", function() {
-		getAttrs(["npc_type","physical_max","stun_max", "matrix_max"], function(v){
+		getAttrs(["sheet_type","physical_max","stun_max", "matrix_max"], function(v){
 			var phy = parseInt(v.physical_max) || 0;
 			var stun = parseInt(v.stun_max) || 0;
 			var mat = parseInt(v.matrix_max) || 0;
 
-			if (v.npc_type === "goon") {
+			if (v.sheet_type === "goon") {
 				setAttrs({physical: phy});
 				setAttrs({stun: stun});
-			} else if (v.npc_type === "vehicle") {
+			} else if (v.sheet_type === "vehicle") {
 				setAttrs({physical: phy});
 				setAttrs({matrix: mat});
 			} else {
