@@ -4,6 +4,10 @@
     font-family: sans-serif;
 }
 
+.charsheet {
+	width: 850px;
+}
+
 button {
 	background-color: transparent;
 	background-image: none;
@@ -73,6 +77,11 @@ input[type="radio"] {
 
 input[type="checkbox"] + span {
 	font-family: "pictos";
+	position: relative;
+}
+
+input[type="radio"] + span {
+	position: relative;
 }
 
 input[type="text"] {
@@ -80,9 +89,7 @@ input[type="text"] {
 }
 
 select {
-	background-color: #000;
 	border: none;
-	color: #FCD116;
 	margin-bottom: 0px;
 	width: fit-content;
 }
@@ -109,7 +116,6 @@ textarea {
 .sheet-pc {
 	background-color: linear-gradient(to bottom, #e7e6e5, #edeceb 50%, #edeceb 50%, #e7e6e5);
 	display: inline-block;
-	width: 900px;
 	margin-left: -20px;
 }
 
@@ -207,7 +213,7 @@ textarea {
 	}
 
 	.sheet-medium-box {
-		height: 310px;
+		height: 330px;
 	}
 
 	.sheet-col:first-child .sheet-border-box,
@@ -311,30 +317,17 @@ textarea {
 		}
 
 		.sheet-settings .sheet-attr-row input[type="number"] {
-			margin-bottom: 3.5px;
+			margin-bottom: 4px;
 		}
 
 		.sheet-settings .sheet-att-lim input[type="number"] {
 			left: 90px;
 			margin-right: 82px;
-			top: 8px;
+			top: 13px;
 		}
 
 		.sheet-attr-box .sheet-settings {
-			margin-top: -314px;
-		}
-
-		.sheet-attr-box input.sheet-settings-toggle {
-			left: 260px;
-			top: -320px;
-		}
-
-		.sheet-attr-box input.sheet-settings-toggle + span {
-			color: #fff;
-			font-size: 1rem;
-			left: 233px;
-			position: relative;
-			top: -319px;
+			margin-top: -325px;
 		}
 
 		.sheet-attr-row input[type="number"] {
@@ -344,7 +337,7 @@ textarea {
 		}
 
 		.sheet-attr-row input.sheet-att-ini {
-			width: 21%;
+			width: 20%;
 		}
 
 		.sheet-attr-row input.sheet-att-ini + span {
@@ -355,12 +348,26 @@ textarea {
 			width: 11%;
 		}
 
+		/***** Attribute Toggles Spans *****/
+		.sheet-attr-box input.sheet-settings-toggle {
+			left: 245px;
+			top: -327px;
+		}
+
+		.sheet-attr-box input.sheet-settings-toggle + span {
+			color: #fff;
+			font-size: 1rem;
+			left: 218px;
+			position: relative;
+			top: -326px;
+		}
+
 		/***** Attribute Display Spans *****/
 		.sheet-attr-und {
 			border-bottom: 1px solid #000;
 			border-radius: 0px;
 			height: 20px;
-			margin-bottom: 5.4px;
+			margin-bottom: 6px;
 			text-align: center;
 			width: 95%;
 		}
@@ -377,7 +384,7 @@ textarea {
 		}
 
 		.sheet-attr-box .sheet-display {
-			margin-top: -310px;
+			margin-top: -320px;
 		}
 
 		.sheet-attr-lim  {
@@ -385,7 +392,7 @@ textarea {
 			margin-left: 90px;
 			position: relative;
 			text-align: center;
-			top: 14px;
+			top: 17px;
 			width: 10%;
 		}
 
@@ -393,13 +400,21 @@ textarea {
 		.sheet-edg-hex {
 			margin-top: 10px;
 			margin-bottom: 5px;
+			width: 180px;
+		}
+
+		.sheet-edg-hex input[type="radio"] {
+			height: 20px;
+			margin-right: -21px;
+			top: -9px;
+			width: 20px;
 		}
 
 		.sheet-hexagon {
 			display: inline-block;
 		 	margin: 5.77px 0;
 		 	position: relative;
-		  	background-color: #610b0d;
+		  	background-color: #222;
  			height: 11.55px;
   			width: 20px; 
 		}
@@ -415,50 +430,93 @@ textarea {
 
 		.sheet-hexagon:before {
 		  bottom: 100%;
-		  border-bottom: 5.77px solid #610b0d;
+		  border-bottom: 5.77px solid #222;
 		}
 
 		.sheet-hexagon:after {
 		  top: 100%;
 		  width: 0;
-		  border-top: 5.77px solid #610b0d;
+		  border-top: 5.77px solid #222;
 		}
 
-/***** Condition Monitor Tracks *****/
-.sheet-con-box {
-	height: 400px;
-}
+		.sheet-edg-hex input[type="radio"]:checked ~ .sheet-hexagon {
+			background-color: #610b0d;
+		}
 
+		.sheet-edg-hex input[type="radio"]:checked ~ .sheet-hexagon:before {
+			border-bottom-color: #610b0d;
+		}
+
+		.sheet-edg-hex input[type="radio"]:checked ~ .sheet-hexagon:after {
+			border-top-color: #610b0d;
+		}
+
+		.sheet-edg-hex input[type="radio"] + .sheet-hexagon,
+		.sheet-edg-hex input[type="radio"]:checked + .sheet-hexagon {
+			background-color: #222;
+		}
+
+		.sheet-edg-hex input[type="radio"]:checked + .sheet-hexagon:before  {
+			border-bottom-color: #222;
+		}
+
+		.sheet-edg-hex input[type="radio"]:checked + .sheet-hexagon:after {
+			border-top-color: #222;
+		}
+
+		/***** Hexes Appear & Disappear *****/
+		input[type="hidden"][value="false"] ~ input[type="radio"],
+		input[type="hidden"][value="false"] ~ input[type="radio"] + span,
+		input[type="hidden"][value="false"] ~ input[type="radio"] + span + div {
+			display: none;
+		} 
+
+
+/***** Condition Monitor Tracks *****/
 .sheet-con-track {
 	width: 47%;
 	display: inline-block;
 	vertical-align: top;
-	margin-top: -15px;
 }
 
 .sheet-con-track h2 {
-	padding-left: 3px;
+	padding-left: 20px;
 	width: 100%;
 	text-align: center;
 	margin-bottom: -5px;
 }
 
+.sheet-con-track input[type="radio"]:first-child:hover ~ h2 {
+	color: #fff;
+	text-shadow: 0 0 25px #000, 0 0 15px #000;
+}
 
-	/***** Condition Track Footers *****/
-	.sheet-con-footer {
-		font-size: 0.6rem;
-		margin-top: 10px;
+	/***** Condition Settings  *****/
+	.sheet-con-box input[type="checkbox"] {
+		left: 215px;
+		top: -18px;
 	}
 
-	.sheet-con-footer label {
-		margin-right: 5px;
+	.sheet-con-box input[type="checkbox"] + span {
+		color: #fff;
+		font-size: 1rem;
+		left: 185px;
+		top: -17px;
 	}
 
-	.sheet-con-footer input[type="number"] {
+	.sheet-con-box .sheet-settings {
+		margin-top:-10px;
+	}
+
+	.sheet-con-box .sheet-settings input {
 		border-bottom: 1px solid #000;
 		border-radius: 0px;
 		height: 22px;
-		margin-top: -5px;
+	}
+
+	.sheet-con-box .sheet-settings .sheet-con-footer {
+		margin-top: -10px;
+		text-indent: 10px;
 	}
 
 	/***** Condition Track Display *****/
@@ -493,9 +551,20 @@ textarea {
 			margin-top: -20px;
 			position: relative;
 			top: 8px;
+			width: auto;
+		}
+
+		.sheet-squares input[type="radio"]:first-child {
+			float: left;
+			height: 20px;
+			left: 31px;
+			margin-right: -147px;
+			top: 3px;
+			width: 146px;
 		}
 
 		.sheet-squares input[type="radio"] {
+			clear: both;
 			height: 45px;
 			left: 38px;
 			margin-right: -50px;
@@ -505,7 +574,6 @@ textarea {
 		}
 
 		.sheet-squares input[type="radio"] + span {
-			position: relative;
 			left: 42px;
 			text-align: right;
 			background-color: #9a9a9a;
@@ -521,6 +589,136 @@ textarea {
 		input[type="hidden"][value="false"] + input[type="radio"] + span + div {
 			display: none;
 		} 
+
+	/***** Condition Track Footers *****/
+	.sheet-con-footer {
+		font-size: 0.6rem;
+		margin-top: 20px;
+	}
+
+	.sheet-con-footer label {
+		margin-right: 5px;
+	}
+
+	.sheet-con-footer input[type="number"] {
+		border-bottom: 1px solid #000;
+		border-radius: 0px;
+		height: 22px;
+		margin-top: -5px;
+	}
+
+/***** Skills *****/
+.sheet-skill-box .sheet-row-long {
+	display: inline-block;
+	width: 48%;
+}
+
+.sheet-skill-box .sheet-row-long:first-child {
+	margin-right: 10px;
+}
+
+.sheet-skill-box h2 {
+	width: 15%;
+	margin-bottom: -3px;
+}
+
+.sheet-skill-box h2:first-child {
+	width: 60%;
+}
+
+.sheet-skill-box h2:last-child {
+	text-align: right;
+	margin-left: 10px;
+}
+
+	/***** Skills Repeating Section *****/
+	fieldset.repeating_skills {
+		display: inline-block;
+		width: 48%;
+	}
+
+	.sheet-skill-box .repcontainer {
+		display: inline-block;
+		margin-left: -10px;
+	}
+
+	.sheet-skill-box .repitem {
+		border-bottom: 1px solid #000;
+		display: inline-block;
+		margin-left: 8px;
+		width: 48%;
+	}
+
+		/***** Skills Repeating Section *****/
+		.sheet-skill-box .sheet-settings {
+			margin-top: -15px;
+			margin-left: 0px;
+		}
+
+		.sheet-skill-box .sheet-settings input {
+			font-size: 0.75rem;
+		}
+
+		.sheet-skill-box input.sheet-settings-toggle {
+			left: -10px;
+			position: absolute;
+			width: 10px
+		}
+
+		.sheet-skill-box input.sheet-settings-toggle + span {
+			left: -10px;
+			top: -2px;
+		}
+
+		.sheet-skill-box .sheet-settings input[type="text"] {
+			padding-left: 2px;
+			padding-right: 2px;
+			width: 60%;
+		}
+
+		.sheet-skill-box .sheet-settings input[type="number"] {
+			margin-left: 3px;
+			margin-right: 10px;
+			width: 15%;
+		}
+
+		.sheet-skill-box .sheet-settings input[type="radio"] {
+			margin-right: -15px;
+			width: 10px;
+		}
+
+		.sheet-skill-box .sheet-settings input[type="radio"]:checked + span {
+			color: #FCD116;
+			font-weight: bold;
+		}
+
+		.sheet-skill-box .sheet-settings input[type="radio"] + span {
+			margin-right: 0px;
+		}
+
+		.sheet-skill-box .sheet-settings input[type="radio"]:last-child + span {
+			margin-left: 2px;
+		}
+
+			/***** Skills Repeating Select *****/
+			.sheet-skill-box select {
+				color: #610b0d;
+				font-weight: bolder;
+				width: 35%;
+			}
+
+			.sheet-skill-box option {
+				padding: 2px;
+				font-weight: bold;
+			}
+
+			.sheet-blk-op {
+				color: #000;
+			}
+
+			.sheet-yel-op {
+				color: #222;
+			}
 
 /***** Start of the NPC sheet *****/
 .sheet-npc {
@@ -554,6 +752,11 @@ textarea {
 
 .sheet-npc textarea {
 	background-color: #333;
+}
+
+.sheet-npc select {
+	background-color: #000;
+	color: #FCD116;
 }
 
 /***** Customize columns & rows *****/
@@ -704,35 +907,9 @@ textarea {
 	}
 
 	.sheet-attr-header {
-		margin: 3px 30px 5px 29px;
+		margin-bottom: 5px;
 		text-align: center;
-	}
-
-	.sheet-host .sheet-attr-header  {
-		margin-left: 33px;
-		margin-right: 33px;
-	}
-
-	.sheet-vehicle .sheet-attr-header  {
-		margin-left: 15px;
-		margin-right: 15px;
-	}
-
-	.sheet-settings .sheet-goon .sheet-attr-header {
-		margin-left: 22px;
-		margin-right: 22px;
-	}
-
-	.sheet-character-type[value="magic"] ~ .sheet-attr-header,
-	.sheet-character-type[value="resonance"] ~ .sheet-attr-header {
-		margin-left: 23px;
-		margin-right: 23px;
-	}
-
-	.sheet-settings .sheet-attribute .sheet-character-type[value="magic"] ~ .sheet-attr-header,
-	.sheet-settings .sheet-attribute .sheet-character-type[value="resonance"] ~ .sheet-attr-header {
-		margin-left: 16px;
-		margin-right: 17px;
+		width: 80%;
 	}
 
 /***** Bonus Row Customization *****/
@@ -1011,7 +1188,6 @@ textarea {
 			height: 25px;
 			left: 5px;
 			margin-left: -25px;
-			position: relative;
 			top: 5px;
 			width: 20px;
 		}
