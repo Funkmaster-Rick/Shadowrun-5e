@@ -1,12 +1,9 @@
-<!-- ~~~~~~~~ 
-Things to Do:
-	Matrix Intiative is not working again...  
-	Cond_resets needs its first line to be goon or sheet_type so PCs will reset
-	PC Edge needs a Reset
-~~~~~~~~ -->
-<input type="hidden" class="npc-toggle" name="attr_sheet_type" value="pc" />
+<!-- ~~~~~~~~ Character Sheet Page, default view ~~~~~~~~ -->    
+<input class="sheet_type" name="attr_sheet_type" type="hidden" value="pc">
+<input class="options_toggle" name="attr_options_toggle" type="hidden" value="off" />
+<input type="checkbox" name="attr_options_toggle" title="Sheet Settings & Notes"/><span>y</span>
+
 <!-- ~~~~~~~~ Start of PC Sheet  ~~~~~~~~ -->
-<input type="checkbox" class="options-flag" name="attr_sheet_type" value="npc" title="NPC toggle" /><span>NPC</span>
 <div class="pc">
 	<img src="https://raw.githubusercontent.com/clevett/Shadowrun-5e/master/ShadowrunLogo.png" style="max-height: 200px;" />
 	<div class="pc-row"><!-- ~~~~~~~~ Start of Personal Data & Core Combat Info row  ~~~~~~~~ -->
@@ -122,30 +119,30 @@ Things to Do:
 					<input type="checkbox" class="settings-toggle" name="attr_flag_attribute" checked="checked" /><span>y</span>
 					<div class="settings">
 						<div class="attr-row">
-							<input type="hidden" name="attr_body" value="3" />
-							<input type="number" name="attr_body_base" placeholder="base" />
-							<input type="number" name="attr_body_bonus" placeholder="bonus" /><br />
-							<input type="hidden" name="attr_agility" value="3" />
-							<input type="number" name="attr_agility_base" placeholder="base" />
-							<input type="number" name="attr_agility_bonus" placeholder="bonus" /><br />
-							<input type="hidden" name="attr_reaction" value="3" />
-							<input type="number" name="attr_reaction_base" placeholder="base" />
-							<input type="number" name="attr_reaction_bonus" placeholder="bonus" /><br />
-							<input type="hidden" name="attr_strength" value="3" />
-							<input type="number" name="attr_strength_base" placeholder="base" />
-							<input type="number" name="attr_strength_bonus" placeholder="bonus" /><br />
-							<input type="hidden" name="attr_willpower" value="3" />
-							<input type="number" name="attr_willpower_base" placeholder="base" />
-							<input type="number" name="attr_willpower_bonus" placeholder="bonus" /><br />
-							<input type="hidden" name="attr_logic" value="3" />
-							<input type="number" name="attr_logic_base" placeholder="base" />
-							<input type="number" name="attr_logic_bonus" placeholder="bonus" /><br />
-							<input type="hidden" name="attr_intuition" value="3" />
-							<input type="number" name="attr_intuition_base" placeholder="base" />
-							<input type="number" name="attr_intuition_bonus" placeholder="bonus" /><br />
-							<input type="hidden" name="attr_charisma" value="3" />
-							<input type="number" name="attr_charisma_base" placeholder="base" />
-							<input type="number" name="attr_charisma_bonus" placeholder="bonus" /><br />
+							<input type="hidden" name="attr_body" value="" />
+							<input type="number" name="attr_body_base" value="" placeholder="base" />
+							<input type="number" name="attr_body_bonus" value="" placeholder="bonus" /><br />
+							<input type="hidden" name="attr_agility" value="" />
+							<input type="number" name="attr_agility_base" value="" placeholder="base" />
+							<input type="number" name="attr_agility_bonus" value="" placeholder="bonus" /><br />
+							<input type="hidden" name="attr_reaction" value="" />
+							<input type="number" name="attr_reaction_base" value="" placeholder="base" />
+							<input type="number" name="attr_reaction_bonus" value="" placeholder="bonus" /><br />
+							<input type="hidden" name="attr_strength" value="" />
+							<input type="number" name="attr_strength_base" value="" placeholder="base" />
+							<input type="number" name="attr_strength_bonus" value="" placeholder="bonus" /><br />
+							<input type="hidden" name="attr_willpower" value="" />
+							<input type="number" name="attr_willpower_base" value="" placeholder="base" />
+							<input type="number" name="attr_willpower_bonus" value="" placeholder="bonus" /><br />
+							<input type="hidden" name="attr_logic" value="" />
+							<input type="number" name="attr_logic_base" value="" placeholder="base" />
+							<input type="number" name="attr_logic_bonus" value="" placeholder="bonus" /><br />
+							<input type="hidden" name="attr_intuition" value="" />
+							<input type="number" name="attr_intuition_base" value="" placeholder="base" />
+							<input type="number" name="attr_intuition_bonus" value="" placeholder="bonus" /><br />
+							<input type="hidden" name="attr_charisma" value="" />
+							<input type="number" name="attr_charisma_base" value="" placeholder="base" />
+							<input type="number" name="attr_charisma_bonus" value="" placeholder="bonus" /><br />
 							<input type="number" name="attr_edge" placeholder="base" />
 						</div>
 						<div class="attr-row">
@@ -383,8 +380,8 @@ Things to Do:
 	</div><!-- ~~~~~~~~ End of Skill & Quality Row  ~~~~~~~~ -->
 </div>
 <!-- ~~~~~~~~ End of PC Sheet  ~~~~~~~~ -->
+
 <!-- ~~~~~~~~ Start of NPC Sheet  ~~~~~~~~ -->
-<input type="checkbox" class="options-flag" name="attr_sheet_type" value="pc" title="PC toggle" /><span>PC</span>
 <div class="npc">
 	<div class="roll-toggles"><!-- ~~~~~~~~ Roll Buttons & Toggles  ~~~~~~~~ -->
 		<div class="toggle-buttons">
@@ -402,9 +399,9 @@ Things to Do:
 		</div>
 		<div class="type-toggles">
 			<select name="attr_sheet_type">
-				<option class="option" value="goon" selected="selected">Goon</option>
-				<option class="option" value="host">Host</option>
-				<option class="option" value="vehicle">Vehicle</option>
+				<option value="goon">Goon</option>
+				<option value="host">Host</option>
+				<option value="vehicle">Vehicle</option>
 			</select>
 		</div>
 	</div><!-- ~~~~~~~~ End Roll Toggles  ~~~~~~~~ -->
@@ -1007,6 +1004,13 @@ Things to Do:
 				<label>Gear: </label>
 				<textarea name="attr_gear" placeholder="Gear"></textarea>
 			</div>
+			<div class="vehicle textrow">
+				<label>Programs: </label>
+				<textarea name="attr_programs" placeholder="Programs"></textarea>
+				<br />
+				<label>Modifications: </label>
+				<textarea name="attr_modifications" placeholder="Modifications"></textarea>
+			</div>
 			<div class="goon textrow">
 				<input type="hidden" class="character-type" name="attr_flag_special" />
 				<div class="magic textrow">
@@ -1073,19 +1077,19 @@ Things to Do:
 			</div>
 		<!-- ~~~~~~~~ Initiative  ~~~~~~~~ -->
 			<div class="goon">
-				<label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{initiative_mod}+@{wound_toggle}+@{modifier_toggle})+(@{initiative_dice})d6cf0 &{tracker}]]}}"><b>Initiative:</b> </button></label>
+				<label><button class="yButton" type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{initiative_mod}+@{wound_toggle}+@{modifier_toggle})+(@{initiative_dice})d6cf0 &{tracker}]]}}"><b>Initiative:</b> </button></label>
 				<span name="attr_display_initiative_mod"></span><span> + </span><span name="attr_initiative_dice"></span><span>d6</span>
 				<br />
 		<!-- ~~~~~~~~ Astral Initiative  ~~~~~~~~ -->
 				<input type="hidden" class="character-type" name="attr_flag_special" />
 				<div class="magic">
-					<label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Astral Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{astral_mod}+@{wound_toggle}+@{modifier_toggle})+(@{astral_dice})d6cf0 &{tracker}]]}}"><b>Astral Initiative:</b> </button></label>
+					<label><button class="yButton" type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Astral Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{astral_mod}+@{wound_toggle}+@{modifier_toggle})+(@{astral_dice})d6cf0 &{tracker}]]}}"><b>Astral Initiative:</b> </button></label>
 					<span name="attr_display_astral_mod"></span><span> + </span><span name="attr_astral_dice"></span><span>d6</span>
 					<br />
 				</div>
 			</div>
 		<!-- ~~~~~~~~ Matrix Initiative  ~~~~~~~~ -->
-			<label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Matrix Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{matrix_mod}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}"><b>Matrix Initiative: </b></button></label>
+			<label><button class="yButton" type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Matrix Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{matrix_mod}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}"><b>Matrix Initiative: </b></button></label>
 			<span name="attr_display_matrix_mod"></span><span> + </span><span name="attr_matrix_dice"></span><span>d6</span>
 			<br />
 			<div class="goon">
@@ -1120,7 +1124,7 @@ Things to Do:
 			</div>
 		<!-- ~~~~~~~~ Armor  ~~~~~~~~ -->
 		<div class="goon vehicle">
-			<label><button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Armor Roll}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{armor}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Armor Roll"><b>Armor: </b></button></label><span name="attr_armor"></span>
+			<label><button class="yButton" type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Armor Roll}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{armor}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Armor Roll"><b>Armor: </b></button></label><span name="attr_armor"></span>
 			<div class="armor-buttons">
 				<button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Soak}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Soak"><span class="pictos3">b</span></button>
 				<button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Acid Protection}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{soak_acid}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Acid Protection"><span class="pictos3">d</span></button>
@@ -1535,7 +1539,7 @@ Things to Do:
 					<label>Qualities: </label>
 					<span name="attr_quality"></span>
 				</div>
-				<input type="hidden" class="optional-flag0" name="attr_flag_augmentation" value="0" />
+				<input type="hidden" class="optional-flag0" name="attr_flag_augmentations" value="0" />
 				<div class="textboxes">
 					<label>Augmentations: </label>
 					<span name="attr_augmentations"></span>
@@ -1567,6 +1571,11 @@ Things to Do:
 					<label>Programs: </label>
 					<span name="attr_programs"></span>
 				</div>
+				<input type="hidden" class="optional-flag0" name="attr_flag_modifications" value="0" />
+				<div class="textboxes">
+					<label>Modifications: </label>
+					<span name="attr_modifications"></span>
+				</div>
 			</div>
 			<div class="goon">
 				<input type="hidden" class="optional-flag0" name="attr_flag_weakness" value="0" />
@@ -1586,8 +1595,8 @@ Things to Do:
 				<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" /><span>y</span>
 				<div class="settings">
 					<div class="repeat-section">
-						<input type="radio" class="range-toggle" name="attr_weapon_range" value="" checked="checked" /><span>Range</span>
-						<input type="radio" class="melee-toggle" name="attr_weapon_range" value="{{rea=[[@{weapon_reach}]]}}" /><span>Melee</span>
+						<input type="radio" class="range-toggle" name="attr_weapon_range" value="0" checked="checked" /><span>Range</span>
+						<input type="radio" class="melee-toggle" name="attr_weapon_range" value="1" /><span>Melee</span>
 						<div class="repeat-row"><h4>Dice</h4><input type="number" name="attr_weapon_dice" value="" placeholder="Dice" /></div>
 						<div class="repeat-row"><h4>Name</h4><input type="text" name="attr_weapon_name" value="" placeholder="Ares Predator" /></div>
 						<div class="repeat-row"><h4>Type</h4><input type="text" name="attr_weapon_type" value="" placeholder="Heavy Pistol" /></div>
@@ -1595,7 +1604,7 @@ Things to Do:
 							<div class="repeat-row"><h4>Reach</h4><input type="number" name="attr_weapon_reach" value="0" min="0" placeholder="Reach" /></div>
 						</div>
 						<div class="repeat-row"><h4>Acc</h4><input type="number" name="attr_weapon_acc" value="" placeholder="ACC" /></div>
-						<div class="repeat-row"><h4>DV</h4><input type="number" name="attr_weapon_dv" value="" placeholder="9P" /></div>
+						<div class="repeat-row"><h4>DV</h4><input type="text" class="wea-dv" name="attr_weapon_dv" value="" placeholder="9P" /></div>
 						<div class="repeat-row"><h4>AP</h4><input type="number" name="attr_weapon_ap" value="" placeholder="AP" /></div>
 						<div class="weapon-range">
 							<div class="repeat-row"><h4>Modes</h4><input type="text" name="attr_weapon_mode" value="" placeholder="SA/BF/FA" /></div>
@@ -1611,7 +1620,7 @@ Things to Do:
 				<div class="display">
 					<input type="hidden" name="attr_weapon" value="" />
 					<div class="repeat-indent">
-						<span class="weapon-dice">(<span name="attr_weapon_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=@{weapon_type}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{weapon_dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{weapon_acc}, DV @{weapon_dv}, AP @{weapon_ap}}}@{weapon_range}"><span name="attr_weapon_name"></span></button><span name="attr_weapon"></span>
+						<span class="weapon-dice">(<span name="attr_weapon_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=@{weapon_type}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{weapon_dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{weapon_acc}, DV @{weapon_dv}, AP @{weapon_ap}}}{{rea=[[@{weapon_reach}]]}}"><span name="attr_weapon_name"></span></button><span name="attr_weapon"></span>
 					</div>
 				</div>
 			</div>
@@ -1895,6 +1904,16 @@ Things to Do:
 	</div><!-- ~~~~~~~~ End of Matrix Area ~~~~~~~~ -->
 </div><!-- ~~~~~~~~ End of the NPC sheet ~~~~~~~~ -->
 
+<!-- ~~~~~~~~ Start of the Settings Page ~~~~~~~~ -->
+<div class="options">
+	<select name="attr_sheet_type">
+		<option value="pc">PC</option>
+		<option value="goon">Goon</option>
+		<option value="host">Host</option>
+		<option value="vehicle">Vehicle</option>
+	</select>
+</div><!-- ~~~~~~~~ End of the Settings Page ~~~~~~~~ -->
+
 <div class="footer">The Topps Company, Inc. has sole ownership of the names, logo, artwork, marks, photographs, sounds, audio, video and/or any proprietary material used in connection with the game Shadowrun. The Topps Company, Inc. has granted permission to use such names, logos, artwork, marks and/or any proprietary materials for promotional and informational purposes on its website but does not endorse, and is not affiliated with any official capacity whatsoever.</div>
 
 <div class="rolltemplates">
@@ -1911,7 +1930,7 @@ Things to Do:
 	    		{{#rollGreater() edge 0}}<span> ♦ Edge</span>{{/rollGreater() edge 0}}
 	    	</div>
 	    		{{#dice}}<div class="sheet-template-row">{{dice}}</div>{{/dice}}
-	    		{{#desc}}<div class="sheet-template-row"><span class="sheet-template-desc">{{desc}} {{#rollGreater() rea 0}}Reach {{rea}}{{/rollGreater() rea 0}} </span></div>{{/desc}}
+	    		{{#desc}}<div class="sheet-template-row"><span class="sheet-template-desc">{{desc}} {{#rollGreater() rea 0}}, Reach {{rea}}{{/rollGreater() rea 0}} </span></div>{{/desc}}
 	    		{{#opp}}<div class="sheet-template-row">{{opp}}</div>{{/opp}}
 	    </div>
     </rolltemplate>
@@ -2405,30 +2424,37 @@ on("change:cond_reset", function() {
 	//Weapon displays set into an Array
 on("change:repeating_weapon", function() {
     getAttrs(["repeating_weapon_weapon_range", "repeating_weapon_weapon_melee", "repeating_weapon_weapon_type", "repeating_weapon_weapon_reach", "repeating_weapon_weapon_acc", "repeating_weapon_weapon_dv", "repeating_weapon_weapon_ap", "repeating_weapon_weapon_mode", "repeating_weapon_weapon_rc", "repeating_weapon_weapon_ammo", "repeating_weapon_weapon_note"], function(v){
-        var ran = (v.repeating_weapon_weapon_range);
-        var mel = (v.repeating_weapon_weapon_melee);
-        var typ = (v.repeating_weapon_weapon_type) + ", ";
-		var rea = "Reach " + (v.repeating_weapon_weapon_reach) + ", ";
-		var acc = "ACC " + (v.repeating_weapon_weapon_acc) + ", ";
-        var dv = "DV " + (v.repeating_weapon_weapon_dv) + ", ";
-		var mod = (v.repeating_weapon_weapon_mode) + ", ";
-		var rc = "RC " + (v.repeating_weapon_weapon_rc) + ", ";
-        var amm = (v.repeating_weapon_weapon_ammo) + "(c), ";
-        var not = (v.repeating_weapon_weapon_note);
+      	amm = (v.repeating_weapon_weapon_ammo === "") ? ("") : (v.repeating_weapon_weapon_ammo) + " (c), ";
 
-		ap = (v.repeating_weapon_weapon_ap > 0) ? ("AP " + "+" + (v.repeating_weapon_weapon_ap) + ", ") : ("AP " + (v.repeating_weapon_weapon_ap) + ", ");
+       	acc = (v.repeating_weapon_weapon_acc > 0) ? "ACC " + (v.repeating_weapon_weapon_acc) + ", " : ("");
 
-		display = (ran === "range" && mel === "melee") ? (" [" + typ + rea + acc + dv + ap + mod + rc + amm + not + "]") :
-				  ((ran === "range" && mel === "0") ? (" [" + typ + acc + dv + ap + mod + rc + amm + not + "]") :
-				  ((ran === "0" && mel === "melee") ? (" [" + typ + rea + acc + dv + ap + not + "]") :
-				  (" [" + typ + acc + dv + ap + not + "]")));
+	    ap = (v.repeating_weapon_weapon_ap > 0) ? ("AP " + "+" + (v.repeating_weapon_weapon_ap) + ", ") :
+			 ((v.repeating_weapon_weapon_ap < 0) ? ("AP " + (v.repeating_weapon_weapon_ap) + ", ") :
+			 (""));
+
+		dv = (v.repeating_weapon_weapon_dv === "") ? ("") : "DV " + (v.repeating_weapon_weapon_dv) + ", ";	 
+
+		mod = (v.repeating_weapon_weapon_mode === "") ? ("") : (v.repeating_weapon_weapon_mode) + ", ";
+
+		not = (v.repeating_weapon_weapon_note === "") ? ("") : (v.repeating_weapon_weapon_note);
+
+		rc = (v.repeating_weapon_weapon_rc === "") ? ("") : "RC " + (v.repeating_weapon_weapon_rc) + ", ";
+
+        rea = (v.repeating_weapon_weapon_reach > 0) ? ("Reach " + (v.repeating_weapon_weapon_reach) + ", ") :
+        	  ((v.repeating_weapon_weapon_reach < 0) ? ("Reach " + (v.repeating_weapon_weapon_reach) + ", ") :
+			  (""));
+
+        typ = (v.repeating_weapon_weapon_type === "") ? ("") : (v.repeating_weapon_weapon_type) + ", ";
+
+		display = (v.repeating_weapon_weapon_range === "0") ? (" [" + typ + acc + dv + ap + mod + rc + amm + not + "]") :
+				  ((v.repeating_weapon_weapon_range === "1") ? (" [" + typ + rea + acc + dv + ap + not + "]") :
+				  (" [" + typ + acc + dv + ap + not + "]"));
 
         setAttrs({
             repeating_weapon_weapon: display
         });
     });
 });
-
 
 	//Spell displays set into an Array
 on("change:repeating_spell", function() {
@@ -3356,6 +3382,13 @@ on("change:programs", function() {
 	getAttrs(["programs"], function(v) {
 		fla = (v.programs === '') ? 0 : 1;
 		setAttrs({flag_programs: fla});
+	});
+});
+
+on("change:modifications", function() {
+	getAttrs(["modifications"], function(v) {
+		fla = (v.modifications === '') ? 0 : 1;
+		setAttrs({flag_modifications: fla});
 	});
 });
 

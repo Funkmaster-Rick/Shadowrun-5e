@@ -68,6 +68,9 @@ input[type="number"] {
 	width: 3em;
 }
 
+input[type="number"] {
+}
+
 input[type="checkbox"],
 input[type="radio"] {
 	opacity: 0;
@@ -111,11 +114,30 @@ textarea {
 	white-space: pre-line;
 }
 
+/* Hide & show pages */
+.sheet-pc, 
+.sheet-npc, 
+.sheet-options {
+    display: none;
+} 
+
+.sheet-sheet_type[value="pc"] ~ .sheet-pc,
+.sheet-sheet_type[value="goon"] ~ .sheet-npc,
+.sheet-sheet_type[value="host"] ~ .sheet-npc,
+.sheet-sheet_type[value="vehicle"] ~ .sheet-npc,
+.sheet-options_toggle[value="on"] ~ .sheet-options {
+    display: block;
+}
+
+.sheet-options_toggle[value="on"] ~ .sheet-pc,
+.sheet-options_toggle[value="on"] ~ .sheet-npc {
+    display: none;
+}
+
 
 /***** Start of the PC sheet *****/
 .sheet-pc {
 	background-color: linear-gradient(to bottom, #e7e6e5, #edeceb 50%, #edeceb 50%, #e7e6e5);
-	display: inline-block;
 	margin-left: -20px;
 }
 
@@ -741,14 +763,21 @@ textarea {
 }
 
 .sheet-npc input {
-	color: white;
 	background-color: #555;
+	color: white;
 }
 
 .sheet-npc label {
 	color: #fff;
 	font-size: 0.9rem;
 }
+
+.sheet-npc .sheet-display label {color: #FCD116;} 
+
+.sheet-npc .sheet-display .sheet-yButton {color: #FCD116;}
+
+.sheet-npc .sheet-display .sheet-attr-header button:hover,
+.sheet-npc .sheet-display .sheet-yButton:hover {color: #fff;} 
 
 .sheet-npc textarea {
 	background-color: #333;
@@ -758,6 +787,10 @@ textarea {
 	background-color: #000;
 	color: #FCD116;
 }
+
+.sheet-npc .sheet-display .sheet-attr-header button {color: #FCD116;}
+
+.sheet-npc hr {color: #FCD116;}
 
 /***** Customize columns & rows *****/
 	.sheet-row {margin: 0px 0px 0px 0px;}
@@ -870,7 +903,7 @@ textarea {
 
 	.sheet-npc .sheet-display span {
 		border: 0px;
-		font-size: 14px;
+		font-size: 12px;
 		letter-spacing: 0.5px;
 		line-height: 1em;
 	}
@@ -899,8 +932,8 @@ textarea {
 
 /***** Customize Attribute Section *****/
 	.sheet-attribute {
-		border-bottom: 1px solid #fff;
-		border-top: 1px solid #fff;
+		border-bottom: 1px solid #FCD116;
+		border-top: 1px solid #FCD116;
 		margin: 0px 0px 10px 0px;
 		text-indent: center;
 		width: 100%;
@@ -1048,6 +1081,13 @@ textarea {
 		display: inline-block;
 	}
 
+	.sheet-repeat-section input {
+		height: 25px;
+		background-color: transparent;
+		border-bottom: 1px solid #fff;
+		border-radius: 0px;
+	}
+
 	.sheet-repeat-row {
 		display: inherit;
 		width: fit-content;
@@ -1095,10 +1135,12 @@ textarea {
 		margin-right: -9px;
 	} 
 
-	.sheet-weapon-note,
-	.sheet-weapon-note input[type="text"] {
+	.sheet-weapon-note {
 		display: inherit;
 		margin-top: 3px;
+	}
+
+	.sheet-npc .sheet-settings .sheet-weapon-note input[type="text"] {
 		text-align: left;
 		width: 700px;
 	}
@@ -1110,7 +1152,10 @@ textarea {
 		position: relative;
 	}
 
-	.sheet-repeating .sheet-settings input[type="number"] {width: 35px;}
+	.sheet-repeating .sheet-settings input[type="number"],
+	input.sheet-wea-dv {
+		width: 35px !important;
+	}
 
 	input.sheet-melee-toggle + span {margin-right: 0px !important;}
 
