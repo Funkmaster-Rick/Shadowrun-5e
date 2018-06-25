@@ -327,27 +327,28 @@
 	</div><!-- ~~~~~~~~ End of Attributes & Condition Monitor Rows  ~~~~~~~~ -->
 	<div class="pc-row"><!-- ~~~~~~~~ Start of Skill & Quality Row  ~~~~~~~~ -->
 		<div class="col">
-			<div class="header"><div class="triangle"></div><h1>Skills</h1></div>
+			<div class="header">
+				<div class="triangle"></div><h1>Active Skills</h1><h1>Knowledge</h1><h1>Language</h1></div>
 			<div class="border-box skill-box">
 				<div class="pc-box medium-box">
 					<div class="row-long">
 						<h2>Skill</h2>
 						<h2>RTG</h2>
-						<h2>Type</h2>
-					</div>
-					<div class="row-long">
-						<h2>Skill</h2>
-						<h2>RTG</h2>
-						<h2>Type</h2>
+						<h2>Attribute</h2>
 					</div>
 					<fieldset class="repeating_skills">
 						<input type="checkbox" class="settings-toggle" name="attr_flag_skill" checked="checked" /><span>y</span>
 						<div class="settings">
 							<input type="text" name="attr_skill" placeholder="Skill name" />
+							<input type="text" name="attr_skill_spec" placeholder="Specalizations" />
 							<input type="number" name="attr_skill_rank" placeholder="0" />
-							<input type="radio" name="skill_type" value="active" /><span>A</span><span>/</span>
-							<input type="radio" name="skill_type" value="knowledge" /><span>K</span><br />
-							<input type="text" name="attr_skill_spec" placeholder="Specalization" />
+						</div>
+						<div class="display">
+							<div class="skill-name">
+								<button type="roll" ><span name="attr_skill_display"></span></button>
+								<button class="spec-button" type="roll" value=""><span name="attr_skill_spec_display"></span></button>
+							</div>
+							<div class="skill-rank"><span name="attr_skill_rank"></span></div>
 							<select name="attr_skill_attribute">
 								<option value="@{body}" selected="selected">Body</option>
 								<option value="@{agility}">Agility</option>
@@ -360,9 +361,6 @@
 								<option class="yel-op" value="@{magic}">Magic</option>
 								<option class="yel-op" value="@{resonance}">Resonance</option>
 							</select>
-						</div>
-						<div class="display">
-							<div class="attr-und"><span name="attr_display_skill"></span></div>
 						</div>
 					</fieldset>
 				</div>
@@ -3398,4 +3396,33 @@ on("change:weakness", function() {
 		setAttrs({flag_weakness: fla});
 	});
 });
+
+on("change:repeating_skills", function() {
+	getAttrs(["repeating_skills_skill", "repeating_skills_skill_spec"], function(v) {
+		var skill = (v.repeating_skills_skill);
+		var spec = (v.repeating_skills_skill_spec);
+
+		console.log(skill); console.log(spec); console.log(rank);
+
+		if (skill.length > 0 && skill.length <= 25) {
+			setAttrs({repeating_skills_skill_display: skill});
+		} else if (skill.length > 25) {
+			setAttrs({repeating_skills_skill_display: skill.slice(0, 25) + "..."});
+		} else {
+			setAttrs({repeating_skills_skill_display: ""});
+		};
+
+
+		if (spec.length > 0 && spec.length <= 25) {
+			setAttrs({repeating_skills_skill_spec_display: "(" + spec + ")"});
+		} else if (spec.length > 25) {
+			setAttrs({repeating_skills_skill_spec_display: "(" + spec.slice(0, 25) + "..." + ")"});
+		} else {
+			setAttrs({repeating_skills_skill_spec_display: ""});
+		};
+	});
+});
+
+
+
 </script>

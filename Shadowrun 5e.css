@@ -632,7 +632,7 @@ textarea {
 /***** Skills *****/
 .sheet-skill-box .sheet-row-long {
 	display: inline-block;
-	width: 48%;
+	width: 100%;
 }
 
 .sheet-skill-box .sheet-row-long:first-child {
@@ -640,12 +640,13 @@ textarea {
 }
 
 .sheet-skill-box h2 {
-	width: 15%;
+	font-size: 10px;
 	margin-bottom: -3px;
+	width: 8%;
 }
 
 .sheet-skill-box h2:first-child {
-	width: 60%;
+	width: 70%;
 }
 
 .sheet-skill-box h2:last-child {
@@ -656,29 +657,32 @@ textarea {
 	/***** Skills Repeating Section *****/
 	fieldset.repeating_skills {
 		display: inline-block;
-		width: 48%;
+		font-size: 12px;
 	}
 
 	.sheet-skill-box .repcontainer {
 		display: inline-block;
 		margin-left: -10px;
+		width: 100%;
 	}
 
 	.sheet-skill-box .repitem {
 		border-bottom: 1px solid #000;
-		display: inline-block;
+		display: inline-flex;
 		margin-left: 8px;
-		width: 48%;
+		width: 100%;
 	}
 
 		/***** Skills Repeating Section *****/
 		.sheet-skill-box .sheet-settings {
-			margin-top: -15px;
 			margin-left: 0px;
 		}
 
 		.sheet-skill-box .sheet-settings input {
+			border-bottom: : 1px dotted #FCD116;
+			border: 1px solid #4f7da7;
 			font-size: 0.75rem;
+			margin-top: 2px;
 		}
 
 		.sheet-skill-box input.sheet-settings-toggle {
@@ -695,13 +699,15 @@ textarea {
 		.sheet-skill-box .sheet-settings input[type="text"] {
 			padding-left: 2px;
 			padding-right: 2px;
-			width: 60%;
+			width: 43%;
 		}
 
 		.sheet-skill-box .sheet-settings input[type="number"] {
+			height: 25px;
 			margin-left: 3px;
 			margin-right: 10px;
-			width: 15%;
+			margin-bottom: 2px;
+			width: 8%;
 		}
 
 		.sheet-skill-box .sheet-settings input[type="radio"] {
@@ -725,8 +731,11 @@ textarea {
 			/***** Skills Repeating Select *****/
 			.sheet-skill-box select {
 				color: #610b0d;
+				font-size: 12px;
 				font-weight: bolder;
-				width: 35%;
+				height: 20px;
+				padding: 0px;
+				width: 22%;
 			}
 
 			.sheet-skill-box option {
@@ -741,6 +750,35 @@ textarea {
 			.sheet-yel-op {
 				color: #222;
 			}
+
+		/***** Skills Display *****/
+		.sheet-skill-box .sheet-display {
+			font-size: 12px;
+		}
+
+		.sheet-skill-box .sheet-display button {
+			font-size: 0.75rem !important;
+			color: #000;
+		}
+
+		.sheet-skill-box .sheet-attr-und {
+			display: inline-block;
+			text-align: left;
+			width: 100%;
+		}
+
+		.sheet-skill-name {
+			display: inline-block;
+			text-align: left;
+			width: 68%;
+		}
+
+		.sheet-skill-rank {
+			display: inline-block;
+			width: 10%;
+			text-align: center;
+		}
+
 
 /***** Start of the NPC sheet *****/
 .sheet-npc {
