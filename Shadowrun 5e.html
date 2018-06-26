@@ -71,10 +71,10 @@
 			<div class="border-box">
 				<div class="pc-box medium-box attr-box">
 					<div class="attr-row">
-						<h2 class="h3-red">Body</h2><br />
-						<h2 class="h3-red">Agility</h2><br />
-						<h2 class="h3-red">Reaction</h2><br />
-						<h2 class="h3-red">Strength</h2><br />
+						<h2 class="h2Red">Body</h2><br />
+						<h2 class="h2Red">Agility</h2><br />
+						<h2 class="h2Red">Reaction</h2><br />
+						<h2 class="h2Red">Strength</h2><br />
 						<h2>Willpower</h2><br />
 						<h2>Logic</h2><br />
 						<h2>Intuition</h2><br />
@@ -102,9 +102,9 @@
 					<div class="attr-row">
 						<h2>Essence</h2><br />
 						<h2>Magic/Resonance</h2><br />
-						<h2 class="h3-red">Initative</h2><br />
-						<h2 class="h3-red">Matrix Initative</h2><br />
-						<h2 class="h3-red">Astral Initative</h2><br />
+						<h2 class="h2Red">Initative</h2><br />
+						<h2 class="h2Red">Matrix Initative</h2><br />
+						<h2 class="h2Red">Astral Initative</h2><br />
 						<h2>Composure</h2><br />
 						<h2>Judge Intentions</h2><br />
 						<h2>Memory</h2><br />
@@ -328,60 +328,125 @@
 	<div class="pc-row"><!-- ~~~~~~~~ Start of Skill & Quality Row  ~~~~~~~~ -->
 		<div class="col">
 			<div class="header">
-				<div class="header heaBack">
-					<div class="triangle"></div>
-					<h1>Know..</h1>
+				<div class="header htab">
+					<div class="triangle"></div><h1>Active</h1><div class="right-tri"></div>
 				</div>
-				<div class="header heaBack">
-					<div class="triangle"></div>
-					<h1>Lang..</h1>
+				<div class="header htab">
+					<div class="triangle"></div><h1>Know..</h1><div class="right-tri"></div>
 				</div>
-				<div class="triangle"></div>
-					<h1>Skills</h1>
+				<div class="header htab">
+					<div class="triangle"></div><h1>Lang..</h1><div class="right-tri"></div>
 				</div>
-			<div class="border-box skill-box">
+				<div class="triangle"></div><h1>Skills</h1></div>
+			<div class="border-box repeat-box skill-box">
 				<div class="pc-box medium-box">
 					<div class="row-long">
-						<h3>Skill</h3>
-						<h3>RTG</h3>
-						<h3>Attribute</h3>
+						<h3>Skill</h3><h3>RTG</h3><h3>Attribute</h3>
 					</div>
-					<fieldset class="repeating_skills">
-						<input type="checkbox" class="settings-toggle" name="attr_flag_skill" checked="checked" /><span>y</span>
-						<div class="settings">
-							<input type="text" name="attr_skill" placeholder="Skill name" />
-							<input type="text" name="attr_skill_spec" placeholder="Specalizations" />
-							<input type="number" name="attr_skill_rank" placeholder="0" />
-						</div>
-						<div class="display">
-							<div class="skill-name">
-								<button type="roll" ><span name="attr_skill_display"></span></button>
-								<button class="spec-button" type="roll" value=""><span name="attr_skill_spec_display"></span></button>
+					<input class="skill-toggle" type="radio" name="attr_skill_toggle" value="active" checked="checked" />
+					<div class="skills-active">
+						<fieldset class="repeating_active">
+							<input type="checkbox" class="settings-toggle" name="attr_flag_skill" checked="checked" /><span>y</span>
+							<div class="settings">
+								<input type="text" name="attr_skill" placeholder="Skill name" />
+								<input type="text" name="attr_skill_spec" placeholder="Specalizations" />
+								<input type="number" name="attr_skill_rank" placeholder="0" />
 							</div>
-							<div class="skill-rank"><span name="attr_skill_rank"></span></div>
-							<select name="attr_skill_attribute">
-								<option value="@{body}" selected="selected">Body</option>
-								<option value="@{agility}">Agility</option>
-								<option value="@{reaction}">Reaction</option>
-								<option value="@{strength}">Strength</option>
-								<option class="blk-op" value="@{willpower}">Willpower</option>
-								<option class="blk-op" value="@{logic}">Logic</option>
-								<option class="blk-op" value="@{intuition}">Intuition</option>
-								<option class="blk-op" value="@{charisma}">Charisma</option>
-								<option class="yel-op" value="@{magic}">Magic</option>
-								<option class="yel-op" value="@{resonance}">Resonance</option>
-							</select>
-						</div>
-					</fieldset>
+							<div class="display">
+								<div class="name">
+									<button type="roll" ><span name="attr_skill_display"></span></button>
+									<button class="spec-button" type="roll" value=""><span name="attr_skill_spec_display"></span></button>
+								</div>
+								<div class="rank"><span name="attr_skill_rank"></span></div>
+								<select name="attr_skill_attribute">
+									<option value="@{body}" selected="selected">Body</option>
+									<option value="@{agility}">Agility</option>
+									<option value="@{reaction}">Reaction</option>
+									<option value="@{strength}">Strength</option>
+									<option class="blk-op" value="@{willpower}">Willpower</option>
+									<option class="blk-op" value="@{logic}">Logic</option>
+									<option class="blk-op" value="@{intuition}">Intuition</option>
+									<option class="blk-op" value="@{charisma}">Charisma</option>
+									<option class="yel-op" value="@{magic}">Magic</option>
+									<option class="yel-op" value="@{resonance}">Resonance</option>
+								</select>
+							</div>
+						</fieldset>
+					</div>
+					<input class="skill-toggle" type="radio" name="attr_skill_toggle" value="knowledge" />
+					<div class="skills-know">
+						<fieldset class="repeating_knowledge">
+							<input type="checkbox" class="settings-toggle" name="attr_flag_skill" checked="checked" /><span>y</span>
+							<div class="settings">
+								<input type="text" name="attr_skill" placeholder="Skill name" />
+								<input type="text" name="attr_skill_spec" placeholder="Specalizations" />
+								<input type="number" name="attr_skill_rank" placeholder="0" />
+							</div>
+							<div class="display">
+								<div class="name">
+									<button type="roll" ><span name="attr_skill_display"></span></button>
+									<button class="spec-button" type="roll" value=""><span name="attr_skill_spec_display"></span></button>
+								</div>
+								<div class="rank"><span name="attr_skill_rank"></span></div>
+								<select name="attr_skill_attribute">
+									<option class="blk-op" value="@{willpower}">Willpower</option>
+									<option class="blk-op" value="@{logic}" selected="selected">Logic</option>
+									<option class="blk-op" value="@{intuition}">Intuition</option>
+									<option class="blk-op" value="@{charisma}">Charisma</option>
+								</select>
+							</div>
+						</fieldset>
+					</div>
+					<input class="skill-toggle" type="radio" name="attr_skill_toggle" value="language" />
+					<div class="skills-lang">
+						<fieldset class="repeating_language">
+							<input type="checkbox" class="settings-toggle" name="attr_flag_skill" checked="checked" /><span>y</span>
+							<div class="settings">
+								<input type="text" name="attr_skill" placeholder="Skill name" />
+								<input type="text" name="attr_skill_spec" placeholder="Specalizations" />
+								<input type="number" name="attr_skill_rank" placeholder="0" />
+							</div>
+							<div class="display">
+								<div class="name">
+									<button type="roll" ><span name="attr_skill_display"></span></button>
+									<button class="spec-button" type="roll" value=""><span name="attr_skill_spec_display"></span></button>
+								</div>
+								<div class="rank"><span name="attr_skill_rank"></span></div>
+								<select name="attr_skill_attribute">
+									<option class="blk-op" value="@{willpower}">Willpower</option>
+									<option class="blk-op" value="@{logic}">Logic</option>
+									<option class="blk-op" value="@{intuition}" selected="selected">Intuition</option>
+									<option class="blk-op" value="@{charisma}">Charisma</option>
+								</select>
+							</div>
+						</fieldset>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col">
 			<div class="header right-header"><h1>Qualities</h1><div class="right-tri"></div></div>
-			<div class="border-box">
+			<div class="border-box repeat-box qual-box">
 				<div class="pc-box medium-box">
 					<div class="row-long">
+						<h3>Quality</h3><h3>Notes</h3><h3>Type</h3>
 					</div>
+					<fieldset class="repeating_quality">
+						<input type="checkbox" class="settings-toggle" name="attr_flag_quality" checked="checked" /><span>y</span>
+						<div class="settings">
+							<input type="text" name="attr_quality" placeholder="Quality name" />
+							<input type="text" name="attr_quality_notes" placeholder="Notes" />
+							<input type="radio" name="attr_quality_type" value="P" /><span>P</span><span>/</span>
+							<input type="radio" name="attr_quality_type" value="N" /><span>N</span>
+						</div>
+						<div class="display">
+							<div class="name">
+								<button type="roll" ><span name="attr_quality"></span></button>
+								<span name="attr_quality_notes"></span>
+								<span name="attr_quality_type"></span>
+							</div>
+						</div>
+					</fieldset>
 				</div>
 			</div>
 		</div>
@@ -3407,32 +3472,80 @@ on("change:weakness", function() {
 	});
 });
 
-on("change:repeating_skills", function() {
-	getAttrs(["repeating_skills_skill", "repeating_skills_skill_spec"], function(v) {
-		var skill = (v.repeating_skills_skill);
-		var spec = (v.repeating_skills_skill_spec);
+	//Repeating active for PC sheet
+on("change:repeating_active", function() {
+	getAttrs(["repeating_active_skill", "repeating_active_skill_spec"], function(v) {
+		var skill = (v.repeating_active_skill != '') ? (v.repeating_active_skill) : "";
+		var spec = (v.repeating_active_skill_spec != '') ? (v.repeating_active_skill_spec) : "";
 
-		console.log(skill); console.log(spec); console.log(rank);
-
-		if (skill.length > 0 && skill.length <= 25) {
-			setAttrs({repeating_skills_skill_display: skill});
-		} else if (skill.length > 25) {
-			setAttrs({repeating_skills_skill_display: skill.slice(0, 25) + "..."});
+		if (skill.length > 0 && skill.length <= 20) {
+			setAttrs({repeating_active_skill_display: skill});
+		} else if (skill.length > 20) {
+			setAttrs({repeating_active_skill_display: skill.slice(0, 20) + "..."});
 		} else {
-			setAttrs({repeating_skills_skill_display: ""});
+			setAttrs({repeating_active_skill_display: skill});
 		};
 
 
-		if (spec.length > 0 && spec.length <= 25) {
-			setAttrs({repeating_skills_skill_spec_display: "(" + spec + ")"});
-		} else if (spec.length > 25) {
-			setAttrs({repeating_skills_skill_spec_display: "(" + spec.slice(0, 25) + "..." + ")"});
+		if (spec.length > 0 && spec.length <= 20) {
+			setAttrs({repeating_active_skill_spec_display: "(" + spec + ")"});
+		} else if (spec.length > 20) {
+			setAttrs({repeating_active_skill_spec_display: "(" + spec.slice(0, 20) + "..." + ")"});
 		} else {
-			setAttrs({repeating_skills_skill_spec_display: ""});
+			setAttrs({repeating_active_skill_spec_display: spec});
 		};
 	});
 });
 
+	//Repeating knowledge for PC sheet
+on("change:repeating_knowledge", function() {
+	getAttrs(["repeating_knowledge_skill", "repeating_knowledge_skill_spec"], function(v) {
+		var skill = (v.repeating_knowledge_skill != '') ? (v.repeating_knowledge_skill) : "";
+		var spec = (v.repeating_knowledge_skill_spec != '') ? (v.repeating_knowledge_skill_spec) : "";
+
+		if (skill.length > 0 && skill.length <= 20) {
+			setAttrs({repeating_knowledge_skill_display: skill});
+		} else if (skill.length > 20) {
+			setAttrs({repeating_knowledge_skill_display: skill.slice(0, 20) + "..."});
+		} else {
+			setAttrs({repeating_knowledge_skill_display: skill});
+		};
+
+
+		if (spec.length > 0 && spec.length <= 20) {
+			setAttrs({repeating_knowledge_skill_spec_display: "(" + spec + ")"});
+		} else if (spec.length > 20) {
+			setAttrs({repeating_knowledge_skill_spec_display: "(" + spec.slice(0, 20) + "..." + ")"});
+		} else {
+			setAttrs({repeating_knowledge_skill_spec_display: spec});
+		};
+	});
+});
+
+	//Repeating language for PC sheet
+on("change:repeating_language", function() {
+	getAttrs(["repeating_language_skill", "repeating_language_skill_spec"], function(v) {
+		var skill = (v.repeating_language_skill != '') ? (v.repeating_language_skill) : "";
+		var spec = (v.repeating_language_skill_spec != '') ? (v.repeating_language_skill_spec) : "";
+
+		if (skill.length > 0 && skill.length <= 20) {
+			setAttrs({repeating_language_skill_display: skill});
+		} else if (skill.length > 20) {
+			setAttrs({repeating_language_skill_display: skill.slice(0, 20) + "..."});
+		} else {
+			setAttrs({repeating_language_skill_display: skill});
+		};
+
+
+		if (spec.length > 0 && spec.length <= 20) {
+			setAttrs({repeating_language_skill_spec_display: "(" + spec + ")"});
+		} else if (spec.length > 20) {
+			setAttrs({repeating_language_skill_spec_display: "(" + spec.slice(0, 20) + "..." + ")"});
+		} else {
+			setAttrs({repeating_language_skill_spec_display: spec});
+		};
+	});
+});
 
 
 </script>

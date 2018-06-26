@@ -311,7 +311,7 @@ textarea {
 		width: 40%;
 	}
 
-	.sheet-h3-red {
+	.sheet-h2Red {
 		color: #610b0d;
 	}
 
@@ -629,168 +629,139 @@ textarea {
 		margin-top: -5px;
 	}
 
-/***** Skills *****/
-.sheet-skill-box .sheet-row-long {
-	display: inline-block;
-	width: 100%;
-}
-
-.sheet-skill-box .sheet-row-long:first-child {
-	margin-right: 10px;
-}
-
-.sheet-skill-box h3 {
+/***** PC Sections with Repeating fields *****/
+.sheet-repeat-box h3 {
 	color: #000;
 	margin-bottom: -3px;
-	width: 8%;
+	width: fit-content;
 }
 
-.sheet-skill-box h3:first-child {
-	width: 70%;
+.sheet-repeat-box input {
+	opacity: 1 !important; 
 }
 
-.sheet-skill-box h3:last-child {
-	text-align: right;
-	margin-left: 10px;
-}
-
-.sheet-heaBack {
-	left: 30px;
-	opacity: 0.7;
-	position: relative;
-	z-index: -1;
-}
-
-.sheet-heaBack:first-child  {
-	left: 60px;
-	z-index: -2;
-}
-
-	/***** Skills Repeating Section *****/
-	fieldset.repeating_skills {
-		display: inline-block;
-		font-size: 12px;
+	/***** Secondary tabs *****/
+	.sheet-htab {
+		z-index: -1;
+		margin-right: -47px;
 	}
 
-	.sheet-skill-box .repcontainer {
-		display: inline-block;
-		margin-left: -10px;
-		width: 100%;
+	.sheet-htab:first-child {
+		z-index: 0;
 	}
 
-	.sheet-skill-box .repitem {
-		border-bottom: 1px solid #000;
+	/***** Repeating Section *****/
+	.sheet-repeat-box .repitem {
 		display: inline-flex;
-		margin-left: 8px;
+		border-bottom: 1px solid #000;
 		width: 100%;
 	}
 
-		/***** Skills Repeating Section *****/
-		.sheet-skill-box .sheet-settings {
-			margin-left: 0px;
-		}
-
-		.sheet-skill-box .sheet-settings input {
-			border-bottom: : 1px dotted #FCD116;
-			border: 1px solid #4f7da7;
-			font-size: 0.75rem;
-			margin-top: 2px;
-		}
-
-		.sheet-skill-box input.sheet-settings-toggle {
-			left: -10px;
+		/***** Repeating Section Toggles *****/
+		.sheet-repeat-box input.sheet-settings-toggle {
 			position: absolute;
 			width: 10px
 		}
 
-		.sheet-skill-box input.sheet-settings-toggle + span {
-			left: -10px;
-			top: -2px;
+		.sheet-repeat-box input.sheet-settings-toggle,
+		.sheet-repeat-box input.sheet-settings-toggle + span {
+				left: -10px;
 		}
 
-		.sheet-skill-box .sheet-settings input[type="text"] {
-			padding-left: 2px;
-			padding-right: 2px;
-			width: 43%;
+		.sheet-repeat-box input.sheet-settings-toggle + span {
+				top: -2px;
 		}
 
-		.sheet-skill-box .sheet-settings input[type="number"] {
+		/***** Repeating Box Settings Inputs *****/
+		.sheet-repeat-box .sheet-settings input {
+			border: 1px dotted #4f7da7;
+		}
+
+		.sheet-repeat-box .sheet-settings input[type="number"] {
 			height: 25px;
-			margin-left: 3px;
-			margin-right: 10px;
-			margin-bottom: 2px;
 			width: 8%;
 		}
 
-		.sheet-skill-box .sheet-settings input[type="radio"] {
-			margin-right: -15px;
-			width: 10px;
-		}
-
-		.sheet-skill-box .sheet-settings input[type="radio"]:checked + span {
-			color: #FCD116;
-			font-weight: bold;
-		}
-
-		.sheet-skill-box .sheet-settings input[type="radio"] + span {
-			margin-right: 0px;
-		}
-
-		.sheet-skill-box .sheet-settings input[type="radio"]:last-child + span {
-			margin-left: 2px;
-		}
-
-			/***** Skills Repeating Select *****/
-			.sheet-skill-box select {
-				color: #610b0d;
-				font-size: 12px;
-				font-weight: bolder;
-				height: 20px;
-				padding: 0px;
-				width: 22%;
-			}
-
-			.sheet-skill-box option {
-				padding: 2px;
-				font-weight: bold;
-			}
-
-			.sheet-blk-op {
-				color: #000;
-			}
-
-			.sheet-yel-op {
-				color: #222;
-			}
-
-		/***** Skills Display *****/
-		.sheet-skill-box .sheet-display {
-			font-size: 12px;
-		}
-
-		.sheet-skill-box .sheet-display button {
+		/***** Repeating Box Display Customizations *****/
+		.sheet-repeat-box button {
 			font-size: 0.75rem !important;
 			color: #000;
 		}
 
-		.sheet-skill-box .sheet-attr-und {
-			display: inline-block;
-			text-align: left;
-			width: 100%;
-		}
-
-		.sheet-skill-name {
-			display: inline-block;
-			text-align: left;
-			width: 68%;
-		}
-
-		.sheet-skill-rank {
-			display: inline-block;
+		.sheet-rank {
 			width: 10%;
 			text-align: center;
 		}
 
+		/***** Repeating Selects *****/
+		.sheet-repeat-box select {
+			color: #610b0d;
+			font-size: 0.75rem;
+			font-weight: bolder;
+			height: 20px;
+			padding: 0px;
+			width: 22%;
+		}
+
+		.sheet-repeat-box option {
+			padding: 2px;
+			font-weight: bold;
+		}
+
+		.sheet-blk-op {
+			color: #000;
+		}
+
+		.sheet-yel-op {
+			color: #222;
+		}
+
+/***** Skills *****/
+.sheet-skill-box h3:first-child {
+	width: 71%;
+}
+
+.sheet-skill-box h3:last-child {
+	margin-left: 30px;
+}
+
+	/***** Skills Repeating Section *****/
+	.sheet-skill-box .sheet-settings input[type="text"] {
+		width: 43%;
+	}
+
+	.sheet-skill-box .sheet-settings input[type="text"]:first-child {
+		margin-right: 3px;
+	}
+
+	.sheet-skill-box .sheet-settings input[type="number"] {
+		margin-left: 3px;
+		margin-right: 10px;
+		margin-bottom: 2px;
+	}
+
+		/***** Skills Display *****/
+		.sheet-skill-box .sheet-name {
+			width: 68%;
+		}
+
+		/***** Skills repeating sections on toggles *****/
+		.sheet-skills-active,
+		.sheet-skills-know,
+		.sheet-skills-lang {
+			display: none;
+		}
+
+		.sheet-skill-toggle:checked + div {
+			display: inline;
+		}
+
+/***** Qualities *****/
+.sheet-qua-box h3 {
+	color: #000;
+	margin-bottom: -3px;
+	width: 8%;
+}
 
 /***** Start of the NPC sheet *****/
 .sheet-npc {
@@ -1585,87 +1556,3 @@ textarea {
 	    padding: 0px;
 	    width: 18px;
 	}
-
-	.itemcontrol .repcontrol_del {
-		color: #4f7da7;
-		font-family: pictos;
-	    font-size: 15px;
-	}
-
-/**** Roll template ****/
-.sheet-rolltemplate-sGoon div.sheet-template-body {
-	border: 2px solid #000 !important;
-	border-radius: 3px 3px 3px 3px;
-}
-
-.sheet-rolltemplate-sGoon .sheet-template-header {
-	background-color: #431714;
-	border-bottom: 2px solid #000;
-	border: 1px solid #000;
-	color: #fff;
-	font-family: "contrail one";
-	font-size: 20px;
-	font-variant: small-caps;
-	font-weight: normal;
-	letter-spacing: 2px;
-	margin: 0px;
-	padding: 4px 0px 3px 0px;
-	text-align: center;
-    text-transform: capitalize;
-
-}
-
-.sheet-rolltemplate-sGoon .sheet-template-header span {
-	font-family: "tahoma";
-	font-size: 11px;
-	font-variant: normal;
-	font-weight: normal;
-	letter-spacing: 1px;
-}
-
-.sheet-rolltemplate-sGoon .sheet-template-row {
-	background-color: #1c1c1c;
-	border-radius: 0px;
-	color: #fff;
-	font-family: "helvetica";
-	font-size: 18px;
-	font-weight: normal;
-	line-height: 1.1em;
-	padding: 5px 5px 3px 5px;
-	text-align: center;
-	vertical-align: middle;
-}
-
-.sheet-rolltemplate-sGoon .sheet-template-row:last-child {
-	background-color: #2d2d2d;
-}
-
-.sheet-rolltemplate-sGoon .inlinerollresult {
-	background-color: transparent;
-	border: none;
-	color: #fff;
-	display:inline-block;
-	font-size: 25px;
-}
-
-.sheet-rolltemplate-sGoon .inlinerollresult.fullfail,
-.sheet-rolltemplate-sGoon .inlinerollresult.fullcrit,
-.sheet-rolltemplate-sGoon .inlinerollresult.importantroll {
-	border: none;
-}
-
-.sheet-rolltemplate-sGoon .inlinerollresult.fullfail {
-	color: #c71307;
-}
-
-.sheet-rolltemplate-sGoon .inlinerollresult.fullcrit {
-	color: #fff;
-}
-
-.sheet-rolltemplate-sGoon .sheet-template-desc {
-	font-size: 0.8rem;
-}
-
-.sheet-rolltemplate-sGoon span.sheet-template-desc .inlinerollresult {
-	font-size: 14px;
-}
