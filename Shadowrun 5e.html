@@ -349,19 +349,19 @@
 					<input class="skill_toggle" type="hidden" name="attr_skill_toggle" value="active">
 					<div class="skills-active">
 						<fieldset class="repeating_active">
-							<input type="checkbox" class="settings-toggle" name="attr_flag_skill" checked="checked" /><span>y</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 							<div class="settings">
 								<input type="text" name="attr_skill" placeholder="Active skill name" />
-								<input type="text" name="attr_skill_spec" placeholder="Specalizations" />
-								<input type="number" name="attr_skill_rank" placeholder="0" />
+								<input type="text" name="attr_specialization" placeholder="Specalizations" />
+								<input type="number" name="attr_rank" placeholder="0" />
 							</div>
 							<div class="display">
 								<div class="name">
-									<button type="roll" ><span name="attr_skill_display"></span></button>
-									<button class="spec-button" type="roll" value=""><span name="attr_skill_spec_display"></span></button>
+									<button type="roll" ><span name="attr_display"></span></button>
+									<button class="spec-button" type="roll" value=""><span name="attr_specialization_display"></span></button>
 								</div>
-								<div class="rank"><span name="attr_skill_rank"></span></div>
-								<select name="attr_skill_attribute">
+								<div class="rank"><span name="attr_rank"></span></div>
+								<select name="attr_attribute">
 									<option class="Red" value="@{body}" selected="selected">Body</option>
 									<option class="Red" value="@{agility}">Agility</option>
 									<option class="Red" value="@{reaction}">Reaction</option>
@@ -378,19 +378,19 @@
 					</div>
 					<div class="skills-know">
 						<fieldset class="repeating_knowledge">
-							<input type="checkbox" class="settings-toggle" name="attr_flag_skill" checked="checked" /><span>y</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 							<div class="settings">
 								<input type="text" name="attr_skill" placeholder="Knowledge skill name" />
-								<input type="text" name="attr_skill_spec" placeholder="Specalizations" />
-								<input type="number" name="attr_skill_rank" placeholder="0" />
+								<input type="text" name="attr_specialization" placeholder="Specalizations" />
+								<input type="number" name="attr_rank" placeholder="0" />
 							</div>
 							<div class="display">
 								<div class="name">
-									<button type="roll" ><span name="attr_skill_display"></span></button>
-									<button class="spec-button" type="roll" value=""><span name="attr_skill_spec_display"></span></button>
+									<button type="roll" ><span name="attr_display"></span></button>
+									<button class="spec-button" type="roll" value=""><span name="attr_specialization_display"></span></button>
 								</div>
-								<div class="rank"><span name="attr_skill_rank"></span></div>
-								<select name="attr_skill_attribute">
+								<div class="rank"><span name="attr_rank"></span></div>
+								<select name="attr_attribute">
 									<option class="blk-op" value="@{willpower}">Willpower</option>
 									<option class="blk-op" value="@{logic}" selected="selected">Logic</option>
 									<option class="blk-op" value="@{intuition}">Intuition</option>
@@ -401,19 +401,19 @@
 					</div>
 					<div class="skills-lang">
 						<fieldset class="repeating_language">
-							<input type="checkbox" class="settings-toggle" name="attr_flag_skill" checked="checked" /><span>y</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 							<div class="settings">
 								<input type="text" name="attr_skill" placeholder="Language skill name" />
-								<input type="text" name="attr_skill_spec" placeholder="Specalizations" />
-								<input type="number" name="attr_skill_rank" placeholder="0" />
+								<input type="text" name="attr_specialization" placeholder="Specalizations" />
+								<input type="number" name="attr_rank" placeholder="0" />
 							</div>
 							<div class="display">
 								<div class="name">
-									<button type="roll" ><span name="attr_skill_display"></span></button>
-									<button class="spec-button" type="roll" value=""><span name="attr_skill_spec_display"></span></button>
+									<button type="roll" ><span name="attr_display"></span></button>
+									<button class="spec-button" type="roll" value=""><span name="attr_specialization_display"></span></button>
 								</div>
-								<div class="rank"><span name="attr_skill_rank"></span></div>
-								<select name="attr_skill_attribute">
+								<div class="rank"><span name="attr_rank"></span></div>
+								<select name="attr_attribute">
 									<option class="blk-op" value="@{willpower}">Willpower</option>
 									<option class="blk-op" value="@{logic}">Logic</option>
 									<option class="blk-op" value="@{intuition}" selected="selected">Intuition</option>
@@ -3481,78 +3481,76 @@ on("change:weakness", function() {
 
 	//Repeating active for PC sheet
 on("change:repeating_active", function() {
-	getAttrs(["repeating_active_skill", "repeating_active_skill_spec"], function(v) {
+	getAttrs(["repeating_active_skill", "repeating_active_specialization"], function(v) {
 		var skill = (v.repeating_active_skill != '') ? (v.repeating_active_skill) : "";
-		var spec = (v.repeating_active_skill_spec != '') ? (v.repeating_active_skill_spec) : "";
+		var spec = (v.repeating_active_specialization != '') ? (v.repeating_active_specialization) : "";
 
 		if (skill.length > 0 && skill.length <= 20) {
-			setAttrs({repeating_active_skill_display: skill});
+			setAttrs({repeating_active_display: skill});
 		} else if (skill.length > 20) {
-			setAttrs({repeating_active_skill_display: skill.slice(0, 20) + "..."});
+			setAttrs({repeating_active_display: skill.slice(0, 20) + "..."});
 		} else {
-			setAttrs({repeating_active_skill_display: skill});
+			setAttrs({repeating_active_display: skill});
 		};
 
-
 		if (spec.length > 0 && spec.length <= 20) {
-			setAttrs({repeating_active_skill_spec_display: "(" + spec + ")"});
+			setAttrs({repeating_active_specialization_display: "(" + spec + ")"});
 		} else if (spec.length > 20) {
-			setAttrs({repeating_active_skill_spec_display: "(" + spec.slice(0, 20) + "..." + ")"});
+			setAttrs({repeating_active_specialization_display: "(" + spec.slice(0, 20) + "..." + ")"});
 		} else {
-			setAttrs({repeating_active_skill_spec_display: spec});
+			setAttrs({repeating_active_specialization_display: spec});
 		};
 	});
 });
 
 	//Repeating knowledge for PC sheet
 on("change:repeating_knowledge", function() {
-	getAttrs(["repeating_knowledge_skill", "repeating_knowledge_skill_spec"], function(v) {
+	getAttrs(["repeating_knowledge_skill", "repeating_knowledge_specialization"], function(v) {
 		var skill = (v.repeating_knowledge_skill != '') ? (v.repeating_knowledge_skill) : "";
-		var spec = (v.repeating_knowledge_skill_spec != '') ? (v.repeating_knowledge_skill_spec) : "";
+		var spec = (v.repeating_knowledge_specialization != '') ? (v.repeating_knowledge_specialization) : "";
 
 		if (skill.length > 0 && skill.length <= 20) {
-			setAttrs({repeating_knowledge_skill_display: skill});
+			setAttrs({repeating_knowledge_display: skill});
 		} else if (skill.length > 20) {
-			setAttrs({repeating_knowledge_skill_display: skill.slice(0, 20) + "..."});
+			setAttrs({repeating_knowledge_display: skill.slice(0, 20) + "..."});
 		} else {
-			setAttrs({repeating_knowledge_skill_display: skill});
+			setAttrs({repeating_knowledge_display: skill});
 		};
 
 
 		if (spec.length > 0 && spec.length <= 20) {
-			setAttrs({repeating_knowledge_skill_spec_display: "(" + spec + ")"});
+			setAttrs({repeating_knowledge_specialization_display: "(" + spec + ")"});
 		} else if (spec.length > 20) {
-			setAttrs({repeating_knowledge_skill_spec_display: "(" + spec.slice(0, 20) + "..." + ")"});
+			setAttrs({repeating_knowledge_specialization_display: "(" + spec.slice(0, 20) + "..." + ")"});
 		} else {
-			setAttrs({repeating_knowledge_skill_spec_display: spec});
+			setAttrs({repeating_knowledge_specialization_display: spec});
 		};
 	});
 });
 
 	//Repeating language for PC sheet
 on("change:repeating_language", function() {
-	getAttrs(["repeating_language_skill", "repeating_language_skill_spec"], function(v) {
+	getAttrs(["repeating_language_skill", "repeating_language_specialization"], function(v) {
 		var skill = (v.repeating_language_skill != '') ? (v.repeating_language_skill) : "";
-		var spec = (v.repeating_language_skill_spec != '') ? (v.repeating_language_skill_spec) : "";
+		var spec = (v.repeating_language_specialization != '') ? (v.repeating_language_specialization) : "";
 
 		if (skill.length > 0 && skill.length <= 20) {
-			setAttrs({repeating_language_skill_display: skill});
+			setAttrs({repeating_language_display: skill});
 		} else if (skill.length > 20) {
-			setAttrs({repeating_language_skill_display: skill.slice(0, 20) + "..."});
+			setAttrs({repeating_language_display: skill.slice(0, 20) + "..."});
 		} else {
-			setAttrs({repeating_language_skill_display: skill});
+			setAttrs({repeating_language_display: skill});
 		};
 
 
 		if (spec.length > 0 && spec.length <= 20) {
-			setAttrs({repeating_language_skill_spec_display: "(" + spec + ")"});
+			setAttrs({repeating_language_specialization_display: "(" + spec + ")"});
 		} else if (spec.length > 20) {
-			setAttrs({repeating_language_skill_spec_display: "(" + spec.slice(0, 20) + "..." + ")"});
+			setAttrs({repeating_language_specialization_display: "(" + spec.slice(0, 20) + "..." + ")"});
 		} else {
-			setAttrs({repeating_language_skill_spec_display: spec});
+			setAttrs({repeating_language_specialization_display: spec});
 		};
 	});
 });
-
 
 </script>
