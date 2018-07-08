@@ -71,10 +71,10 @@
 			<div class="border-box">
 				<div class="pc-box medium-box attr-box">
 					<div class="attr-row">
-						<h2 class="h2Red">Body</h2><br />
-						<h2 class="h2Red">Agility</h2><br />
-						<h2 class="h2Red">Reaction</h2><br />
-						<h2 class="h2Red">Strength</h2><br />
+						<h2 class="Red">Body</h2><br />
+						<h2 class="Red">Agility</h2><br />
+						<h2 class="Red">Reaction</h2><br />
+						<h2 class="Red">Strength</h2><br />
 						<h2>Willpower</h2><br />
 						<h2>Logic</h2><br />
 						<h2>Intuition</h2><br />
@@ -102,9 +102,9 @@
 					<div class="attr-row">
 						<h2>Essence</h2><br />
 						<h2>Magic/Resonance</h2><br />
-						<h2 class="h2Red">Initative</h2><br />
-						<h2 class="h2Red">Matrix Initative</h2><br />
-						<h2 class="h2Red">Astral Initative</h2><br />
+						<h2 class="Red">Initative</h2><br />
+						<h2 class="Red">Matrix Initative</h2><br />
+						<h2 class="Red">Astral Initative</h2><br />
 						<h2>Composure</h2><br />
 						<h2>Judge Intentions</h2><br />
 						<h2>Memory</h2><br />
@@ -339,16 +339,19 @@
 				</div>
 				<div class="triangle"></div><h1>Skills</h1></div>
 			<div class="border-box repeat-box skill-box">
+				<input class="skill_toggle" type="radio" name="attr_skill_toggle" value="active" checked="checked" />
+				<input class="skill_toggle" type="radio" name="attr_skill_toggle" value="knowledge" />
+				<input class="skill_toggle" type="radio" name="attr_skill_toggle" value="language" />
 				<div class="pc-box medium-box">
 					<div class="row-long">
 						<h3>Skill</h3><h3>RTG</h3><h3>Attribute</h3>
 					</div>
-					<input class="skill-toggle" type="radio" name="attr_skill_toggle" value="active" checked="checked" />
+					<input class="skill_toggle" type="hidden" name="attr_skill_toggle" value="active">
 					<div class="skills-active">
 						<fieldset class="repeating_active">
 							<input type="checkbox" class="settings-toggle" name="attr_flag_skill" checked="checked" /><span>y</span>
 							<div class="settings">
-								<input type="text" name="attr_skill" placeholder="Skill name" />
+								<input type="text" name="attr_skill" placeholder="Active skill name" />
 								<input type="text" name="attr_skill_spec" placeholder="Specalizations" />
 								<input type="number" name="attr_skill_rank" placeholder="0" />
 							</div>
@@ -359,26 +362,25 @@
 								</div>
 								<div class="rank"><span name="attr_skill_rank"></span></div>
 								<select name="attr_skill_attribute">
-									<option value="@{body}" selected="selected">Body</option>
-									<option value="@{agility}">Agility</option>
-									<option value="@{reaction}">Reaction</option>
-									<option value="@{strength}">Strength</option>
-									<option class="blk-op" value="@{willpower}">Willpower</option>
-									<option class="blk-op" value="@{logic}">Logic</option>
-									<option class="blk-op" value="@{intuition}">Intuition</option>
-									<option class="blk-op" value="@{charisma}">Charisma</option>
-									<option class="yel-op" value="@{magic}">Magic</option>
-									<option class="yel-op" value="@{resonance}">Resonance</option>
+									<option class="Red" value="@{body}" selected="selected">Body</option>
+									<option class="Red" value="@{agility}">Agility</option>
+									<option class="Red" value="@{reaction}">Reaction</option>
+									<option class="Red" value="@{strength}">Strength</option>
+									<option value="@{willpower}">Willpower</option>
+									<option value="@{logic}">Logic</option>
+									<option value="@{intuition}">Intuition</option>
+									<option value="@{charisma}">Charisma</option>
+									<option value="@{magic}">Magic</option>
+									<option value="@{resonance}">Resonance</option>
 								</select>
 							</div>
 						</fieldset>
 					</div>
-					<input class="skill-toggle" type="radio" name="attr_skill_toggle" value="knowledge" />
 					<div class="skills-know">
 						<fieldset class="repeating_knowledge">
 							<input type="checkbox" class="settings-toggle" name="attr_flag_skill" checked="checked" /><span>y</span>
 							<div class="settings">
-								<input type="text" name="attr_skill" placeholder="Skill name" />
+								<input type="text" name="attr_skill" placeholder="Knowledge skill name" />
 								<input type="text" name="attr_skill_spec" placeholder="Specalizations" />
 								<input type="number" name="attr_skill_rank" placeholder="0" />
 							</div>
@@ -397,12 +399,11 @@
 							</div>
 						</fieldset>
 					</div>
-					<input class="skill-toggle" type="radio" name="attr_skill_toggle" value="language" />
 					<div class="skills-lang">
 						<fieldset class="repeating_language">
 							<input type="checkbox" class="settings-toggle" name="attr_flag_skill" checked="checked" /><span>y</span>
 							<div class="settings">
-								<input type="text" name="attr_skill" placeholder="Skill name" />
+								<input type="text" name="attr_skill" placeholder="Language skill name" />
 								<input type="text" name="attr_skill_spec" placeholder="Specalizations" />
 								<input type="number" name="attr_skill_rank" placeholder="0" />
 							</div>
@@ -434,26 +435,32 @@
 					<fieldset class="repeating_quality">
 						<input type="checkbox" class="settings-toggle" name="attr_flag_quality" checked="checked" /><span>y</span>
 						<div class="settings">
-							<input type="text" name="attr_quality" placeholder="Quality name" />
-							<input type="text" name="attr_quality_notes" placeholder="Notes" />
-							<input type="radio" name="attr_quality_type" value="P" /><span>P</span><span>/</span>
-							<input type="radio" name="attr_quality_type" value="N" /><span>N</span>
+							<div>
+								<input type="text" name="attr_quality" placeholder="Quality name" />
+								<input type="text" name="attr_notes" placeholder="Quality notes" />
+								<select name="attr_type">
+									<option value="P" selected="selected">P</option>
+									<option value="N" selected="selected">N</option>
+								</select>
+								<h3>Description</h3>
+								<textarea name="attr_desc" value="" placeholder="Quality description"></textarea>
+							</div>
 						</div>
 						<div class="display">
-							<div class="name">
+							<input class="display-flag" type="checkbox" name="attr_display_flag">
+							<div class="name repeat-indent">
 								<button type="roll" ><span name="attr_quality"></span></button>
-								<span name="attr_quality_notes"></span>
-								<span name="attr_quality_type"></span>
+								<span class="notes" name="attr_notes"></span><br />
+								<span class="desc" name="attr_desc"></span>
 							</div>
+							<div class="rank"><span name="attr_type"></span></div>
 						</div>
 					</fieldset>
 				</div>
 			</div>
 		</div>
 	</div><!-- ~~~~~~~~ End of Skill & Quality Row  ~~~~~~~~ -->
-</div>
-<!-- ~~~~~~~~ End of PC Sheet  ~~~~~~~~ -->
-
+</div><!-- ~~~~~~~~ End of PC Sheet  ~~~~~~~~ -->
 <!-- ~~~~~~~~ Start of NPC Sheet  ~~~~~~~~ -->
 <div class="npc">
 	<div class="roll-toggles"><!-- ~~~~~~~~ Roll Buttons & Toggles  ~~~~~~~~ -->

@@ -99,7 +99,6 @@ select {
 
 textarea {
 	border-bottom: 1px dotted #FCD116;
-	color: white;
 	font-size: 12px;
 	font-weight: normal;
 	height: 50px;
@@ -134,6 +133,9 @@ textarea {
     display: none;
 }
 
+.sheet-Red {
+	color: #610b0d;
+}
 
 /***** Start of the PC sheet *****/
 .sheet-pc {
@@ -309,10 +311,6 @@ textarea {
 
 	.sheet-attr-row:first-child h2 {
 		width: 40%;
-	}
-
-	.sheet-h2Red {
-		color: #610b0d;
 	}
 
 		/***** Attribute Columns *****/
@@ -630,14 +628,19 @@ textarea {
 	}
 
 /***** PC Sections with Repeating fields *****/
+.sheet-repeat-box .sheet-medium-box {
+	height: fit-content;
+	min-height: 200px;
+}
+
 .sheet-repeat-box h3 {
 	color: #000;
 	margin-bottom: -3px;
-	width: fit-content;
 }
 
-.sheet-repeat-box input {
+.sheet-repeat-box input[type="radio"] {
 	opacity: 1 !important; 
+	position: relative;
 }
 
 	/***** Secondary tabs *****/
@@ -682,7 +685,15 @@ textarea {
 			width: 8%;
 		}
 
+		.sheet-repeat-box .sheet-settings {
+			margin-left: -10px;
+		}
+
 		/***** Repeating Box Display Customizations *****/
+		.sheet-repeat-box .sheet-display {
+			margin-left: -10px;
+		}
+
 		.sheet-repeat-box button {
 			font-size: 0.75rem !important;
 			color: #000;
@@ -695,12 +706,12 @@ textarea {
 
 		/***** Repeating Selects *****/
 		.sheet-repeat-box select {
-			color: #610b0d;
+			color:  #000;
 			font-size: 0.75rem;
 			font-weight: bolder;
 			height: 20px;
 			padding: 0px;
-			width: 22%;
+			width: fit-content;
 		}
 
 		.sheet-repeat-box option {
@@ -708,37 +719,47 @@ textarea {
 			font-weight: bold;
 		}
 
-		.sheet-blk-op {
-			color: #000;
-		}
-
-		.sheet-yel-op {
-			color: #222;
-		}
-
 /***** Skills *****/
+.sheet-skill-box .sheet-medium-box {
+	margin-top: -17px;
+}
+
 .sheet-skill-box h3:first-child {
-	width: 71%;
+	margin-right: 67%;
 }
 
 .sheet-skill-box h3:last-child {
 	margin-left: 30px;
 }
 
+	/***** Skills Radio Toggles for Switching Tabs*****/
+	.sheet-skill-box input[type="radio"] {
+		left: 55px;
+		margin-right: 15px;
+		top: -20px;
+		width: 75px;
+	}
+
+	.sheet-skill-box input[type="radio"]:first-child {
+		left: 47px;
+	}
+
 	/***** Skills Repeating Section *****/
-	.sheet-skill-box .sheet-settings input[type="text"] {
-		width: 43%;
-	}
+		/***** Skills Settings *****/
+		.sheet-skill-box .sheet-settings input[type="text"] {
+			width: 43%;
+		}
 
-	.sheet-skill-box .sheet-settings input[type="text"]:first-child {
-		margin-right: 3px;
-	}
+		.sheet-skill-box .sheet-settings input[type="text"]:first-child {
+			margin-right: 3px;
+			width: 40%;
+		}
 
-	.sheet-skill-box .sheet-settings input[type="number"] {
-		margin-left: 3px;
-		margin-right: 10px;
-		margin-bottom: 2px;
-	}
+		.sheet-skill-box .sheet-settings input[type="number"] {
+			margin-left: 3px;
+			margin-right: 10px;
+			margin-bottom: 2px;
+		}
 
 		/***** Skills Display *****/
 		.sheet-skill-box .sheet-name {
@@ -752,15 +773,70 @@ textarea {
 			display: none;
 		}
 
-		.sheet-skill-toggle:checked + div {
+		.sheet-skill_toggle[value="active"] ~ .sheet-skills-active,
+		.sheet-skill_toggle[value="knowledge"] ~ .sheet-skills-know,
+		.sheet-skill_toggle[value="language"] ~ .sheet-skills-lang {
 			display: inline;
 		}
 
 /***** Qualities *****/
-.sheet-qua-box h3 {
-	color: #000;
-	margin-bottom: -3px;
-	width: 8%;
+.sheet-qual-box h3:first-child {
+	margin-right: 35%;
+}
+
+.sheet-qual-box h3:last-child {
+	margin-left: 43%;
+}
+
+	/***** Qualities Repeating Section *****/
+
+	/***** Qualities Settings *****/
+	.sheet-qual-box .sheet-settings {
+		width: 100%;
+	}
+
+	.sheet-qual-box .sheet-settings div {
+		display: inline-block;
+	}
+
+	.sheet-qual-box .sheet-settings input[type="text"] {
+		width: 40%;
+		margin-right: 5px;
+	}
+
+	.sheet-qual-box select {
+		margin-left: 30px;
+	}
+
+	.sheet-qual-box textarea {
+		margin-top: 0px;
+	}
+
+	/***** Qualities Displays *****/
+	.sheet-qual-box .sheet-name {
+		width: 100%;
+	}
+
+	.sheet-qual-box .sheet-repeat-indent {
+		padding-left: 1.5rem;
+	}
+
+	.sheet-qual-box .sheet-name button  {
+		font-weight: bolder;
+	}
+
+/***** Display Flags used in Qualities... *****/
+.sheet-qual-box .sheet-display-flag {
+	opacity: 0;    
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.sheet-qual-box .sheet-display-flag:checked ~ .sheet-name .sheet-desc {
+    display: none;
 }
 
 /***** Start of the NPC sheet *****/
@@ -791,6 +867,10 @@ textarea {
 .sheet-npc label {
 	color: #fff;
 	font-size: 0.9rem;
+}
+
+.sheet-npc textarea {
+	color: #fff;
 }
 
 .sheet-npc .sheet-display label {color: #FCD116;} 
@@ -944,7 +1024,7 @@ textarea {
 	input.sheet-settings-toggle:checked ~ div.sheet-settings {
 		background: none;
 		display: inherit;
-		font-size: 1rem;
+		font-size: 0.75rem;
 		text-align: left;
 	}
 
