@@ -1,18 +1,29 @@
 <!-- ~~~~~~~~ Character Sheet Page, default view ~~~~~~~~ -->    
 <input class="sheet_type" name="attr_sheet_type" type="hidden" value="pc">
-<input class="options_toggle" name="attr_options_toggle" type="hidden" value="off" />
-<input type="checkbox" name="attr_options_toggle" title="Sheet Settings & Notes"/><span>y</span>
+
+<div class="tabs">
+	<input type="checkbox" name="attr_tab" value="core" title="Core sheet" checked="checked" /><span>Core</span>
+	<input type="checkbox" name="attr_tab" value="gear" title="Gear"/><span>Gear</span>
+	<input type="checkbox" name="attr_tab" value="special" title="Special"/><span>Special</span>
+	<input type="checkbox" name="attr_tab" value="options" title="Sheet Settings & Notes"/><span>y</span>
+</div>
 
 <!-- ~~~~~~~~ Start of PC Sheet  ~~~~~~~~ -->
 <div class="pc">
+	<input class="options_toggle" name="attr_tab" type="hidden" value="core" />
 	<img src="https://raw.githubusercontent.com/clevett/Shadowrun-5e/master/ShadowrunLogo.png" style="max-height: 200px;" />
-	<div class="pc-row"><!-- ~~~~~~~~ Start of Personal Data & Core Combat Info row  ~~~~~~~~ -->
+	<div class="info-box">
+		<h1>Character</h1><input type="text" name="attr_character_name" placeholder="Character name" /><br />
+		<h1>Player</h1><input type="text" name="attr_player_name" placeholder="Player name" /><br />
+		<h1>Notes</h1><input type="text" name="attr_player_notes" placeholder="Notes" />
+	</div>
+	<div class="core pc-row"><!-- ~~~~~~~~ Start of Personal Data & Core Combat Info row  ~~~~~~~~ -->
 		<div class="col">
 			<div class="header"><div class="triangle"></div><h1>Personal Data</h1></div>
 			<div class="border-box">
 				<div class="pc-box small-box">
 					<div class="row-long pd-nam">
-						<h2>NAME/PRIMARY ALIAS</h2><input type="text" name="attr_character_name" placeholder="name" />
+						<h2>NAME/PRIMARY ALIAS</h2><input type="text" name="attr_name" placeholder="name" />
 					</div>
 					<div class="row-long pd-meta">
 						<h2>Metatype</h2><input type="text" name="attr_metatype" placeholder="metatype" />
@@ -65,7 +76,7 @@
 			</div>
 		</div>
 	</div><!-- ~~~~~~~~ End of Personal Data & Core Combat Info row  ~~~~~~~~ -->
-	<div class="pc-row"><!-- ~~~~~~~~ Start of Attributes & Condition Monitor Rows  ~~~~~~~~ -->
+	<div class="core pc-row"><!-- ~~~~~~~~ Start of Attributes & Condition Monitor Rows  ~~~~~~~~ -->
 		<div class="col">
 			<div class="header"><div class="triangle"></div><h1>Attributes</h1></div>
 			<div class="border-box">
@@ -325,7 +336,7 @@
 			</div>
 		</div><!-- ~~~~~~~~ End of Condition Monitor ~~~~~~~~ -->
 	</div><!-- ~~~~~~~~ End of Attributes & Condition Monitor Rows  ~~~~~~~~ -->
-	<div class="pc-row"><!-- ~~~~~~~~ Start of Skill & Quality Row  ~~~~~~~~ -->
+	<div class="core pc-row"><!-- ~~~~~~~~ Start of Skill & Quality Row  ~~~~~~~~ -->
 		<div class="col">
 			<div class="header">
 				<div class="header htab">
@@ -337,7 +348,8 @@
 				<div class="header htab">
 					<div class="triangle"></div><h1>Lang..</h1><div class="right-tri"></div>
 				</div>
-				<div class="triangle"></div><h1>Skills</h1></div>
+				<div class="triangle"></div><h1>Skills</h1>
+			</div>
 			<div class="border-box repeat-box skill-box">
 				<input class="skill_toggle" type="radio" name="attr_skill_toggle" value="active" checked="checked" />
 				<input class="skill_toggle" type="radio" name="attr_skill_toggle" value="knowledge" />
@@ -361,19 +373,19 @@
 									<button class="spec-button" type="roll" value=""><span name="attr_specialization_display"></span></button>
 								</div>
 								<div class="rank"><span name="attr_rank"></span></div>
-								<select name="attr_attribute">
-									<option class="Red" value="@{body}" selected="selected">Body</option>
-									<option class="Red" value="@{agility}">Agility</option>
-									<option class="Red" value="@{reaction}">Reaction</option>
-									<option class="Red" value="@{strength}">Strength</option>
-									<option value="@{willpower}">Willpower</option>
-									<option value="@{logic}">Logic</option>
-									<option value="@{intuition}">Intuition</option>
-									<option value="@{charisma}">Charisma</option>
-									<option value="@{magic}">Magic</option>
-									<option value="@{resonance}">Resonance</option>
-								</select>
 							</div>
+							<select name="attr_attribute">
+								<option class="Red" value="@{body}" selected="selected">Body</option>
+								<option class="Red" value="@{agility}">Agility</option>
+								<option class="Red" value="@{reaction}">Reaction</option>
+								<option class="Red" value="@{strength}">Strength</option>
+								<option value="@{willpower}">Willpower</option>
+								<option value="@{logic}">Logic</option>
+								<option value="@{intuition}">Intuition</option>
+								<option value="@{charisma}">Charisma</option>
+								<option value="@{magic}">Magic</option>
+								<option value="@{resonance}">Resonance</option>
+							</select>
 						</fieldset>
 					</div>
 					<div class="skills-know">
@@ -390,13 +402,13 @@
 									<button class="spec-button" type="roll" value=""><span name="attr_specialization_display"></span></button>
 								</div>
 								<div class="rank"><span name="attr_rank"></span></div>
-								<select name="attr_attribute">
-									<option class="blk-op" value="@{willpower}">Willpower</option>
-									<option class="blk-op" value="@{logic}" selected="selected">Logic</option>
-									<option class="blk-op" value="@{intuition}">Intuition</option>
-									<option class="blk-op" value="@{charisma}">Charisma</option>
-								</select>
 							</div>
+							<select name="attr_attribute">
+								<option class="blk-op" value="@{willpower}">Willpower</option>
+								<option class="blk-op" value="@{logic}" selected="selected">Logic</option>
+								<option class="blk-op" value="@{intuition}">Intuition</option>
+								<option class="blk-op" value="@{charisma}">Charisma</option>
+							</select>
 						</fieldset>
 					</div>
 					<div class="skills-lang">
@@ -413,13 +425,13 @@
 									<button class="spec-button" type="roll" value=""><span name="attr_specialization_display"></span></button>
 								</div>
 								<div class="rank"><span name="attr_rank"></span></div>
-								<select name="attr_attribute">
-									<option class="blk-op" value="@{willpower}">Willpower</option>
-									<option class="blk-op" value="@{logic}">Logic</option>
-									<option class="blk-op" value="@{intuition}" selected="selected">Intuition</option>
-									<option class="blk-op" value="@{charisma}">Charisma</option>
-								</select>
 							</div>
+							<select name="attr_attribute">
+								<option class="blk-op" value="@{willpower}">Willpower</option>
+								<option class="blk-op" value="@{logic}">Logic</option>
+								<option class="blk-op" value="@{intuition}" selected="selected">Intuition</option>
+								<option class="blk-op" value="@{charisma}">Charisma</option>
+							</select>
 						</fieldset>
 					</div>
 				</div>
@@ -460,6 +472,133 @@
 			</div>
 		</div>
 	</div><!-- ~~~~~~~~ End of Skill & Quality Row  ~~~~~~~~ -->
+	<div class="core pc-row"><!-- ~~~~~~~~ Start of IDs/Lifestyle & Contacts  ~~~~~~~~ -->
+		<div class="col">
+			<div class="header"><div class="triangle"></div><h1>IDs/Lifestyles/Currency</h1></div>
+			<div class="border-box repeat-box lifestyle-box">
+				<div class="pc-box small-box">
+					<div class="row-long">
+						<h3>Primary Lifestyle</h3><input type="text" name="attr_lifestyle" placeholder="John Doe" />
+					</div>
+					<div class="row-long">
+						<h3>Nuyen</h3><input type="number" name="attr_nuyen" placeholder="1,000¥" />
+						<h3>Licenses</h3><input type="text" name="attr_licenses" placeholder="R4: Technomancer" />
+					</div>
+					<div class="row-long">
+						<h3>Fake IDs / Related Lifestyles / Funds / Licenses</h3>
+					</div>
+					<fieldset class="repeating_lifestyle">
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+						<div class="settings">
+							<input type="text" name="attr_name" placeholder="John Doe" />
+							<input type="text" name="attr_lifestyle" placeholder="Middle" />
+							<input type="text" name="attr_funds" placeholder="$1,000 UCAS" />
+							<input type="text" name="attr_licenses" placeholder="R4: Technomancer" />
+						</div>
+						<div class="display">
+							<button type="roll" ><span name="attr_display"></span></button>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="header right-header"><h1>Contacts</h1><div class="right-tri"></div></div>
+			<div class="border-box repeat-box contacts-box">
+				<div class="pc-box small-box">
+					<div class="row-long"><h3>Name</h3><h3>Loyalty</h3><h3>Connection</h3><h3>Favor</h3></div>
+					<fieldset class="repeating_contacts">
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+						<div class="settings">
+							<input type="text" name="attr_name" placeholder="Old Crow" />
+							<input type="text" name="attr_loyalty" placeholder="3" />
+							<input type="text" name="attr_connection" placeholder="8" />
+							<input type="text" name="attr_favors" placeholder="2 Chips" />
+						</div>
+						<div class="display">
+							<button type="roll" ><span name="attr_display"></span></button>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+	</div><!-- ~~~~~~~~ End of IDs/Lifestyle & Contacts  ~~~~~~~~ -->
+	<div class="gear pc-row">
+		<div class="col">
+			<div class="header">
+				<div class="header htab">
+					<div class="triangle"></div><h1>Ranged</h1><div class="right-tri"></div>
+				</div>
+				<div class="header htab">
+					<div class="triangle"></div><h1>Melee</h1><div class="right-tri"></div>
+				</div>
+				<div class="triangle"></div><h1>Weapons</h1>
+			</div>
+			<div class="border-box repeat-box skill-box">
+				<input class="weapon_toggle" type="radio" name="attr_weapon_toggle" value="range" checked="checked" />
+				<input class="weapon_toggle" type="radio" name="attr_weapon_toggle" value="melee" />
+				<div class="pc-box medium-box">
+					<input class="weapon_toggle" type="hidden" name="attr_weapon_toggle" value="range">
+					<div class="weapon-range row-long">
+						<h3>Weapon</h3><h3>Dam</h3><h3>Acc</h3><h3>AP</h3><h3>Mode</h3><h3>RC</h3><h3>Ammo</h3>
+					</div>
+					<div class="weapon-range">
+						<fieldset class="repeating_range">
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+							<div class="settings">
+								<input type="text" name="attr_weapon" placeholder="Ares Predator V" />
+								<input type="text" name="attr_damage" placeholder="8P" />
+								<input type="number" name="attr_acc" placeholder="5" />
+								<input type="number" name="attr_ap" placeholder="-1" />
+								<input type="text" name="attr_mode" placeholder="SA" />
+								<input type="text" name="attr_recoil" placeholder="2" />
+								<input type="number" name="attr_ammo" placeholder="15" />
+							</div>
+							<div class="display">
+								<div class="name">
+									<button type="roll" ><span name="attr_weapon"></span></button>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+					<div class="weapon-melee row-long">
+						<h3>Weapon</h3><h3>Reach</h3><h3>Dam</h3><h3>Acc</h3><h3>AP</h3>
+					</div>
+					<div class="weapon-melee">
+						<fieldset class="repeating_melee">
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+							<div class="settings">
+								<input type="text" name="attr_weapon" placeholder="Ares Predator V" />
+								<input type="number" name="attr_reach" placeholder="5" />
+								<input type="text" name="attr_damage" placeholder="8P" />
+								<input type="number" name="attr_acc" placeholder="5" />
+								<input type="number" name="attr_ap" placeholder="-1" />
+							</div>
+							<div class="display">
+								<div class="name">
+									<button type="roll" ><span name="attr_weapon"></span></button>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ~~~~~~~~ Start of the PC Options Page ~~~~~~~~ -->
+	<div class="options">
+		<select name="attr_sheet_type">
+			<option value="pc">PC</option>
+			<option value="goon">Goon</option>
+			<option value="host">Host</option>
+			<option value="vehicle">Vehicle</option>
+		</select>
+		Cyberdeck <input type="checkbox" name="attr_cyberdeck">
+		Augmentations <input type="checkbox" name="attr_augmentations">
+		Vehicle <input type="checkbox" name="attr_vehicle">
+		Spells / Preperations / Rituals / Complex Forms <input type="checkbox" name="attr_special">
+		Adept Powers or Other Abilities <input type="checkbox" name="attr_powers">
+	</div><!-- ~~~~~~~~ End of the Options Page ~~~~~~~~ -->
 </div><!-- ~~~~~~~~ End of PC Sheet  ~~~~~~~~ -->
 <!-- ~~~~~~~~ Start of NPC Sheet  ~~~~~~~~ -->
 <div class="npc">
@@ -1983,16 +2122,6 @@
 		</div>
 	</div><!-- ~~~~~~~~ End of Matrix Area ~~~~~~~~ -->
 </div><!-- ~~~~~~~~ End of the NPC sheet ~~~~~~~~ -->
-
-<!-- ~~~~~~~~ Start of the Settings Page ~~~~~~~~ -->
-<div class="options">
-	<select name="attr_sheet_type">
-		<option value="pc">PC</option>
-		<option value="goon">Goon</option>
-		<option value="host">Host</option>
-		<option value="vehicle">Vehicle</option>
-	</select>
-</div><!-- ~~~~~~~~ End of the Settings Page ~~~~~~~~ -->
 
 <div class="footer">The Topps Company, Inc. has sole ownership of the names, logo, artwork, marks, photographs, sounds, audio, video and/or any proprietary material used in connection with the game Shadowrun. The Topps Company, Inc. has granted permission to use such names, logos, artwork, marks and/or any proprietary materials for promotional and informational purposes on its website but does not endorse, and is not affiliated with any official capacity whatsoever.</div>
 

@@ -91,6 +91,10 @@ input[type="text"] {
 	height: 25px !important;
 }
 
+input[type="number"] {
+	text-align: center;
+}
+
 select {
 	border: none;
 	margin-bottom: 0px;
@@ -114,9 +118,12 @@ textarea {
 }
 
 /* Hide & show pages */
+.sheet-core,
+.sheet-gear,
+.sheet-npc,
+.sheet-options,
 .sheet-pc, 
-.sheet-npc, 
-.sheet-options {
+.sheet-special {
     display: none;
 } 
 
@@ -124,12 +131,14 @@ textarea {
 .sheet-sheet_type[value="goon"] ~ .sheet-npc,
 .sheet-sheet_type[value="host"] ~ .sheet-npc,
 .sheet-sheet_type[value="vehicle"] ~ .sheet-npc,
-.sheet-options_toggle[value="on"] ~ .sheet-options {
+.sheet-options_toggle[value="options"] ~ .sheet-options,
+.sheet-options_toggle[value="core"] ~ .sheet-core,
+.sheet-options_toggle[value="gear"] ~ .sheet-gear {
     display: block;
 }
 
-.sheet-options_toggle[value="on"] ~ .sheet-pc,
-.sheet-options_toggle[value="on"] ~ .sheet-npc {
+.sheet-options_toggle[value="options"] ~ .sheet-pc,
+.sheet-options_toggle[value="options"] ~ .sheet-npc {
     display: none;
 }
 
@@ -137,10 +146,56 @@ textarea {
 	color: #610b0d;
 }
 
+/***** Tabs for sheets *****/
+.sheet-tabs {
+	left: 80%;
+	position: relative;
+	top: 75px;
+	width: fit-content;
+}
+
+.sheet-tabs input[type="checkbox"] {
+	height: 18px;
+	position: absolute;
+}
+
+.sheet-tabs input[type="checkbox"]:nth-of-type(3) {
+	width: 50px;
+}
+
+.sheet-tabs input[type="checkbox"]:nth-of-type(4) {
+	width: 20px;
+}
+
+.sheet-tabs input[type="checkbox"] + span {
+	border-radius: 5px;
+	border: 1px solid #000;
+	font-family: sans-serif;
+	font-weight: bolder;
+	padding: 3px;
+}
+
+.sheet-tabs input[type="checkbox"] + span:last-child {
+	font-family: pictos;
+}
+
+.sheet-tabs input[type="checkbox"]:checked + span {
+	background-color: #610b0d;
+	color: #fff;
+}
+
+.sheet-sheet_type[value="goon"] ~ .sheet-tabs,
+.sheet-sheet_type[value="host"] ~ .sheet-tabs,
+.sheet-sheet_type[value="vehicle"] ~ .sheet-tabs {
+	display: none;
+}
+
+
 /***** Start of the PC sheet *****/
 .sheet-pc {
 	background-color: linear-gradient(to bottom, #e7e6e5, #edeceb 50%, #edeceb 50%, #e7e6e5);
 	margin-left: -20px;
+	margin-top: -35px;
 }
 
 .sheet-pc h1 {
@@ -174,7 +229,7 @@ textarea {
 
 .sheet-pc img {
 	height: 50%;
-	width: 50%;
+	width: 55%;
 }
 
 .sheet-pc-row {
@@ -233,7 +288,7 @@ textarea {
 	}
 
 	.sheet-small-box {
-		height: 150px;
+		min-height: 150px;
 	}
 
 	.sheet-medium-box {
@@ -250,7 +305,38 @@ textarea {
 		border-top-right-radius: 10px;
 	}
 
-	/***** Boxes rows with Inputs *****/
+	/***** Player Data Inputs *****/
+	.sheet-info-box {
+		display: inline-block;
+		margin-bottom: 25px;
+		width: 40%;
+	}
+
+	.sheet-info-box h1 {
+		background-color: transparent;
+		color: #000;
+		display: inline-block;
+		margin-right: 3px;
+	}
+
+	.sheet-info-box input[type="text"] {
+		border-bottom: 1px solid #000;
+		border-radius: 0px;
+	}
+
+	.sheet-info-box input[type="text"] {
+		width: 58%;
+	}
+
+	.sheet-info-box input[type="text"]:nth-of-type(2) {
+		width: 72%;
+	}
+
+	.sheet-info-box input[type="text"]:last-child {
+		width: 75%;
+	}
+
+	/***** Personal Data rows with Inputs *****/
 	.sheet-row-long {
 		border-bottom: 1px solid #000;
 	}
@@ -685,6 +771,10 @@ textarea {
 			width: 8%;
 		}
 
+		.sheet-repeat-box .sheet-settings input[type="text"] {
+			text-align: left;
+		}
+
 		.sheet-repeat-box .sheet-settings {
 			margin-left: -10px;
 		}
@@ -747,23 +837,22 @@ textarea {
 	/***** Skills Repeating Section *****/
 		/***** Skills Settings *****/
 		.sheet-skill-box .sheet-settings input[type="text"] {
-			width: 43%;
+			width: 45%;
 		}
 
 		.sheet-skill-box .sheet-settings input[type="text"]:first-child {
 			margin-right: 3px;
-			width: 40%;
 		}
 
 		.sheet-skill-box .sheet-settings input[type="number"] {
 			margin-left: 3px;
-			margin-right: 10px;
+			margin-right: 5px;
 			margin-bottom: 2px;
 		}
 
 		/***** Skills Display *****/
 		.sheet-skill-box .sheet-name {
-			width: 68%;
+			width: 90%;
 		}
 
 		/***** Skills repeating sections on toggles *****/
@@ -825,19 +914,53 @@ textarea {
 		font-weight: bolder;
 	}
 
-/***** Display Flags used in Qualities... *****/
-.sheet-qual-box .sheet-display-flag {
-	opacity: 0;    
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    width: 100%;
-    height: 100%;
+	.sheet-qual-box .sheet-notes {
+		font-style: italic;
+	}
+
+	/***** Display Flags used in Qualities... *****/
+	.sheet-qual-box .sheet-display-flag {
+		opacity: 0;    
+	    position: absolute;
+	    top: 0px;
+	    right: 0px;
+	    width: 100%;
+	    height: 100%;
+	}
+
+	.sheet-qual-box .sheet-display-flag:checked ~ .sheet-name .sheet-desc {
+	    display: none;
+	}
+
+/***** Lifestyle for PC sheet *****/
+.sheet-lifestyle-box h3 {
+	margin-right: 3px;
 }
 
-.sheet-qual-box .sheet-display-flag:checked ~ .sheet-name .sheet-desc {
-    display: none;
+.sheet-lifestyle-box input[type="number"] {
+	width: 40%;
 }
+
+.sheet-lifestyle-box input[type="text"] {
+	width: 80%;
+}
+
+.sheet-lifestyle-box .sheet-row-long:nth-of-type(2) input[type="text"] {
+	width: 40%;
+}
+
+/***** Contact for PC sheet *****/
+
+/***** Weapons for PC sheet *****/
+.sheet-weapon-range {
+	display: none;
+}
+
+.sheet-weapon_toggle[value="range"] ~ .sheet-weapon-range,
+.sheet-weapon_toggle[value="melee"] ~ .sheet-weapon-melee  {
+	display: inherit;
+}
+
 
 /***** Start of the NPC sheet *****/
 .sheet-npc {
