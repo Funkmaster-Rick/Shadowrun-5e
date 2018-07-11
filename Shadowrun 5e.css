@@ -919,7 +919,8 @@ textarea {
 	}
 
 	/***** Display Flags used in Qualities... *****/
-	.sheet-qual-box .sheet-display-flag {
+	.sheet-qual-box .sheet-display-flag,
+	.sheet-lifestyle-box .sheet-display-flag {
 		opacity: 0;    
 	    position: absolute;
 	    top: 0px;
@@ -933,21 +934,47 @@ textarea {
 	}
 
 /***** Lifestyle for PC sheet *****/
-.sheet-lifestyle-box h3 {
+.sheet-lifestyle-box h3:nth-of-type(2) {
 	margin-right: 3px;
 }
 
-.sheet-lifestyle-box input[type="number"] {
-	width: 40%;
-}
+	/***** Settings for Lifestyle *****/
+	.sheet-lifestyle-box .sheet-settings div {
+		display: inline-block;
+	}
 
-.sheet-lifestyle-box input[type="text"] {
-	width: 80%;
-}
+	.sheet-lifestyle-box input[type="number"] {
+		width: 40%;
+	}
 
-.sheet-lifestyle-box .sheet-row-long:nth-of-type(2) input[type="text"] {
-	width: 40%;
-}
+	.sheet-lifestyle-box input[type="text"] {
+		width: 80%;
+	}
+
+	.sheet-lifestyle-box textarea {
+		min-height: 30px;
+		margin: 0px 0px 0px 0px;
+	}
+
+	/***** Displays for Lifestyle *****/
+	.sheet-lifestyle-box .sheet-display span {
+		display: inline-block;
+		font-family: sans-serif;
+		width: 24%;
+	}
+
+	.sheet-lifestyle-box .sheet-row-long:nth-of-type(2) input[type="text"] {
+		width: 40%;
+	}
+
+	.sheet-lifestyle-box .sheet-display-flag:checked ~ span:nth-of-type(1),
+	.sheet-lifestyle-box .sheet-display-flag ~ span:nth-of-type(1n+2) {
+		display: none;
+	}
+
+	.sheet-lifestyle-box .sheet-display-flag:checked ~ span:nth-of-type(1n+2) {
+		display: inherit;
+	}
 
 /***** Contact for PC sheet *****/
 

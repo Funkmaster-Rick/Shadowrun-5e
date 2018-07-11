@@ -478,7 +478,7 @@
 			<div class="border-box repeat-box lifestyle-box">
 				<div class="pc-box small-box">
 					<div class="row-long">
-						<h3>Primary Lifestyle</h3><input type="text" name="attr_lifestyle" placeholder="John Doe" />
+						<h3>Primary Lifestyle</h3><input type="text" name="attr_lifestyle" placeholder="High: Belleuve (Inglewood), Seattle" />
 					</div>
 					<div class="row-long">
 						<h3>Nuyen</h3><input type="number" name="attr_nuyen" placeholder="1,000¥" />
@@ -490,13 +490,20 @@
 					<fieldset class="repeating_lifestyle">
 						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 						<div class="settings">
-							<input type="text" name="attr_name" placeholder="John Doe" />
-							<input type="text" name="attr_lifestyle" placeholder="Middle" />
-							<input type="text" name="attr_funds" placeholder="$1,000 UCAS" />
-							<input type="text" name="attr_licenses" placeholder="R4: Technomancer" />
+							<div>
+								<h3>Fake ID</h3><textarea name="attr_name" placeholder="John Doe"></textarea>
+								<h3>Related Lifestyle</h3><textarea name="attr_lifestyle" placeholder="Middle"></textarea>
+								<h3>Funds</h3><textarea name="attr_funds" placeholder="$1,000 UCAS"></textarea>
+								<h3>Licenses</h3><textarea name="attr_licenses" placeholder="Technomancer, Pistols"></textarea>
+							</div>
 						</div>
 						<div class="display">
-							<button type="roll" ><span name="attr_display"></span></button>
+							<input class="display-flag" type="checkbox" name="attr_display_flag" />
+							<span name="attr_display" style="width: 100%;"></span>
+							<span name="attr_name"></span>
+							<span name="attr_lifestyle"></span>
+							<span name="attr_funds"></span>
+							<span name="attr_licenses"></span>
 						</div>
 					</fieldset>
 				</div>
@@ -2659,9 +2666,7 @@ on("change:repeating_weapon", function() {
 				  ((v.repeating_weapon_weapon_range === "1") ? (" [" + typ + rea + acc + dv + ap + not + "]") :
 				  (" [" + typ + acc + dv + ap + not + "]"));
 
-        setAttrs({
-            repeating_weapon_weapon: display
-        });
+        setAttrs({repeating_weapon_weapon: display});
     });
 });
 
@@ -2683,9 +2688,7 @@ on("change:repeating_spell", function() {
 				  ((com === "Indirect, Force ?{Force|}, AP -") ? (" (Indirect) " + "[" + typ + ran + dam + dur + dra + not + "]") :
 				  (" [" + typ + ran + dur + dra + not + "]"));
 
-        setAttrs({
-            repeating_spell_spell: display
-        });
+        setAttrs({repeating_spell_spell: display});
     });
 });
 
@@ -2702,9 +2705,7 @@ on("change:repeating_form", function() {
 
 		var display = (" [" + tar + dur + fad + not + "]");
 
-        setAttrs({
-            repeating_form_form: display
-        });
+        setAttrs({repeating_form_form: display});
     });
 });
 
@@ -2719,9 +2720,7 @@ on("change:repeating_IC", function() {
 
 		display = (v.repeating_IC_IC_limit === "@{data_processing}") ? (" (" + "[" + data + "]" + " vs. " + attr + " + " + mat + ", " + not + ")") : (" (" + "[" + att + "]" + " vs. " + attr + " + " + mat + ", " + not + ")");
 
-        setAttrs({
-            repeating_IC_IC: display
-        });
+        setAttrs({repeating_IC_IC: display});
     });
 });
 
@@ -3608,78 +3607,72 @@ on("change:weakness", function() {
 	});
 });
 
+
 	//Repeating active for PC sheet
 on("change:repeating_active", function() {
-	getAttrs(["repeating_active_skill", "repeating_active_specialization"], function(v) {
-		var skill = (v.repeating_active_skill != '') ? (v.repeating_active_skill) : "";
-		var spec = (v.repeating_active_specialization != '') ? (v.repeating_active_specialization) : "";
+	getAttrs(["repeating_active_skill", "repeating_active_specialization", "repeating_active_display", "repeating_active_specialization_display"], function(v) {
+		((v.repeating_active_skill).length > 0 && (v.repeating_active_skill).length <= 20) ? setAttrs({repeating_active_display: (v.repeating_active_skill)}) : 
+			((v.repeating_active_skill).length > 20 ) ? setAttrs({repeating_active_display: (v.repeating_active_skill).slice(0, 20) + "..."}) :
+			setAttrs({repeating_active_display: " "});
 
-		if (skill.length > 0 && skill.length <= 20) {
-			setAttrs({repeating_active_display: skill});
-		} else if (skill.length > 20) {
-			setAttrs({repeating_active_display: skill.slice(0, 20) + "..."});
-		} else {
-			setAttrs({repeating_active_display: skill});
-		};
-
-		if (spec.length > 0 && spec.length <= 20) {
-			setAttrs({repeating_active_specialization_display: "(" + spec + ")"});
-		} else if (spec.length > 20) {
-			setAttrs({repeating_active_specialization_display: "(" + spec.slice(0, 20) + "..." + ")"});
-		} else {
-			setAttrs({repeating_active_specialization_display: spec});
-		};
+		((v.repeating_active_specialization).length > 0 && (v.repeating_active_specialization).length <= 20) ? setAttrs({repeating_active_specialization_display: "(" + v.repeating_active_specialization + ")"}) : 
+			((v.repeating_active_specialization).length > 20 ) ? setAttrs({repeating_active_specialization_display: "(" + (v.repeating_active_specialization).slice(0, 20) + "..." + ")"}) :
+			setAttrs({repeating_active_specialization_display: " "});	
 	});
 });
 
 	//Repeating knowledge for PC sheet
 on("change:repeating_knowledge", function() {
-	getAttrs(["repeating_knowledge_skill", "repeating_knowledge_specialization"], function(v) {
-		var skill = (v.repeating_knowledge_skill != '') ? (v.repeating_knowledge_skill) : "";
-		var spec = (v.repeating_knowledge_specialization != '') ? (v.repeating_knowledge_specialization) : "";
+	getAttrs(["repeating_knowledge_skill", "repeating_knowledge_specialization", "repeating_knowledge_display", "repeating_knowledge_specialization_display"], function(v) {
+		((v.repeating_knowledge_skill).length > 0 && (v.repeating_knowledge_skill).length <= 20) ? setAttrs({repeating_knowledge_display: (v.repeating_knowledge_skill)}) : 
+			((v.repeating_knowledge_skill).length > 20 ) ? setAttrs({repeating_knowledge_display: (v.repeating_knowledge_skill).slice(0, 20) + "..."}) :
+			setAttrs({repeating_knowledge_display: " "});
 
-		if (skill.length > 0 && skill.length <= 20) {
-			setAttrs({repeating_knowledge_display: skill});
-		} else if (skill.length > 20) {
-			setAttrs({repeating_knowledge_display: skill.slice(0, 20) + "..."});
-		} else {
-			setAttrs({repeating_knowledge_display: skill});
-		};
-
-
-		if (spec.length > 0 && spec.length <= 20) {
-			setAttrs({repeating_knowledge_specialization_display: "(" + spec + ")"});
-		} else if (spec.length > 20) {
-			setAttrs({repeating_knowledge_specialization_display: "(" + spec.slice(0, 20) + "..." + ")"});
-		} else {
-			setAttrs({repeating_knowledge_specialization_display: spec});
-		};
+		((v.repeating_knowledge_specialization).length > 0 && (v.repeating_knowledge_specialization).length <= 20) ? setAttrs({repeating_knowledge_specialization_display: "(" + v.repeating_knowledge_specialization + ")"}) : 
+			((v.repeating_knowledge_specialization).length > 20 ) ? setAttrs({repeating_knowledge_specialization_display: "(" + (v.repeating_knowledge_specialization).slice(0, 20) + "..." + ")"}) :
+			setAttrs({repeating_knowledge_specialization_display: " "});	
 	});
 });
 
 	//Repeating language for PC sheet
 on("change:repeating_language", function() {
-	getAttrs(["repeating_language_skill", "repeating_language_specialization"], function(v) {
-		var skill = (v.repeating_language_skill != '') ? (v.repeating_language_skill) : "";
-		var spec = (v.repeating_language_specialization != '') ? (v.repeating_language_specialization) : "";
+	getAttrs(["repeating_language_skill", "repeating_language_specialization", "repeating_language_display", "repeating_language_specialization_display"], function(v) {
+		((v.repeating_language_skill).length > 0 && (v.repeating_language_skill).length <= 20) ? setAttrs({repeating_language_display: (v.repeating_language_skill)}) : 
+			((v.repeating_language_skill).length > 20 ) ? setAttrs({repeating_language_display: (v.repeating_language_skill).slice(0, 20) + "..."}) :
+			setAttrs({repeating_language_display: " "});
 
-		if (skill.length > 0 && skill.length <= 20) {
-			setAttrs({repeating_language_display: skill});
-		} else if (skill.length > 20) {
-			setAttrs({repeating_language_display: skill.slice(0, 20) + "..."});
-		} else {
-			setAttrs({repeating_language_display: skill});
-		};
-
-
-		if (spec.length > 0 && spec.length <= 20) {
-			setAttrs({repeating_language_specialization_display: "(" + spec + ")"});
-		} else if (spec.length > 20) {
-			setAttrs({repeating_language_specialization_display: "(" + spec.slice(0, 20) + "..." + ")"});
-		} else {
-			setAttrs({repeating_language_specialization_display: spec});
-		};
+		((v.repeating_language_specialization).length > 0 && (v.repeating_language_specialization).length <= 20) ? setAttrs({repeating_language_specialization_display: "(" + v.repeating_language_specialization + ")"}) : 
+			((v.repeating_language_specialization).length > 20 ) ? setAttrs({repeating_language_specialization_display: "(" + (v.repeating_language_specialization).slice(0, 20) + "..." + ")"}) :
+			setAttrs({repeating_language_specialization_display: " "});	
 	});
 });
+
+
+//Repeating IDs & Lifestyles Section Display
+on("change:repeating_lifestyle", function() {
+	getAttrs(["repeating_lifestyle_name", "repeating_lifestyle_lifestyle", "repeating_lifestyle_funds", "repeating_lifestyle_licenses", "repeating_lifestyle_display"], function(v) {
+		var name = ((v.repeating_lifestyle_name).length > 0 && (v.repeating_lifestyle_name).length <= 14) ? (v.repeating_lifestyle_name) : 
+				   ((v.repeating_lifestyle_name).length > 14 ) ? (v.repeating_lifestyle_name).slice(0,14) + "..." :
+				   "";
+
+		var life = ((v.repeating_lifestyle_lifestyle).length > 0 && (v.repeating_lifestyle_lifestyle).length <= 14) ? (v.repeating_lifestyle_lifestyle) : 
+		  			((v.repeating_lifestyle_lifestyle).length > 14 ) ? (v.repeating_lifestyle_lifestyle).slice(0,14) + "..." :
+		   			"";
+
+		var funds = ((v.repeating_lifestyle_funds).length > 0 && (v.repeating_lifestyle_funds).length <= 14) ? (v.repeating_lifestyle_funds) : 
+		   			((v.repeating_lifestyle_funds).length > 14 ) ? (v.repeating_lifestyle_funds).slice(0,14) + "..." :
+		   			"";
+
+		var lice = ((v.repeating_lifestyle_licenses).length > 0 && (v.repeating_lifestyle_licenses).length <= 14) ? (v.repeating_lifestyle_licenses) : 
+		  			((v.repeating_lifestyle_licenses).length > 14 ) ? (v.repeating_lifestyle_licenses).slice(0,14) + "..." :
+		  			"";
+
+		var display = name + " / " + life + " / " + funds + " / " + lice;
+
+		setAttrs({repeating_lifestyle_display: display})
+
+	});
+});
+
 
 </script>
