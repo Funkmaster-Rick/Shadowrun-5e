@@ -17,6 +17,7 @@
 		<h1>Player</h1><input type="text" name="attr_player_name" placeholder="Player name" /><br />
 		<h1>Notes</h1><input type="text" name="attr_player_notes" placeholder="Notes" />
 	</div>
+	<!-- ~~~~~~~~ Start of Personal Data & Core Combat Info row  ~~~~~~~~ -->
 	<div class="core pc-row"><!-- ~~~~~~~~ Start of Personal Data & Core Combat Info row  ~~~~~~~~ -->
 		<div class="col">
 			<div class="header"><div class="triangle"></div><h1>Personal Data</h1></div>
@@ -76,160 +77,166 @@
 			</div>
 		</div>
 	</div><!-- ~~~~~~~~ End of Personal Data & Core Combat Info row  ~~~~~~~~ -->
-	<div class="core pc-row"><!-- ~~~~~~~~ Start of Attributes & Condition Monitor Rows  ~~~~~~~~ -->
+	<!-- ~~~~~~~~ Start of Attributes & Condition Monitor Rows  ~~~~~~~~ -->
+	<div class="core pc-row">
 		<div class="col">
 			<div class="header"><div class="triangle"></div><h1>Attributes</h1></div>
 			<div class="border-box">
 				<div class="pc-box medium-box attr-box">
-					<div class="attr-row">
-						<h2 class="Red">Body</h2><br />
-						<h2 class="Red">Agility</h2><br />
-						<h2 class="Red">Reaction</h2><br />
-						<h2 class="Red">Strength</h2><br />
-						<h2>Willpower</h2><br />
-						<h2>Logic</h2><br />
-						<h2>Intuition</h2><br />
-						<h2>Charisma</h2><br />
-						<h2>Edge</h2>
-						<div class="edg-hex">
-							<input type="hidden" name="attr_edge_1_enabled" value="true"/>
-								<input type="radio" name="attr_edge_hex" value="1" /><span class="hexagon"></span>
-							<input type="hidden" name="attr_edge_2_enabled" value="true"/>
-								<input type="radio" name="attr_edge_hex" value="2" /><span class="hexagon"></span>
-							<input type="hidden" name="attr_edge_3_enabled" value="true"/>
-								<input type="radio" name="attr_edge_hex" value="3" /><span class="hexagon"></span>
-							<input type="hidden" name="attr_edge_4_enabled" value="true"/>
-								<input type="radio" name="attr_edge_hex" value="4" /><span class="hexagon"></span>
-							<input type="hidden" name="attr_edge_5_enabled" value="true"/>
-								<input type="radio" name="attr_edge_hex" value="5" /><span class="hexagon"></span>
-							<input type="hidden" name="attr_edge_6_enabled" value="true"/>
-								<input type="radio" name="attr_edge_hex" value="6" /><span class="hexagon"></span>
-							<input type="hidden" name="attr_edge_7_enabled" value="true"/>
-								<input type="radio" name="attr_edge_hex" value="7" /><span class="hexagon"></span>
-							<input type="hidden" name="attr_edge_8_enabled" value="true"/>
-								<input type="radio" name="attr_edge_hex" value="8" /><span class="hexagon"></span>
-						</div>
-					</div>
-					<div class="attr-row">
-						<h2>Essence</h2><br />
-						<h2>Magic/Resonance</h2><br />
-						<h2 class="Red">Initative</h2><br />
-						<h2 class="Red">Matrix Initative</h2><br />
-						<h2 class="Red">Astral Initative</h2><br />
-						<h2>Composure</h2><br />
-						<h2>Judge Intentions</h2><br />
-						<h2>Memory</h2><br />
-						<h2>Lift/Carry</h2><br />
-						<h2>Movement</h2>
-					</div>
-					<div class="row-long att-lim">
-						<h2>Physical Limit:</h2>
-						<h2>Mental Limit:</h2>
-						<h2>Social Limit:</h2>
-					</div>
 					<input type="checkbox" class="settings-toggle" name="attr_flag_attribute" checked="checked" /><span>y</span>
 					<div class="settings">
-						<div class="attr-row">
+						<div class="attr-col">
+							<!-- ~~:+: Body :+:~~ -->
 							<input type="hidden" name="attr_body" value="" />
-							<input type="number" name="attr_body_base" value="" placeholder="base" />
-							<input type="number" name="attr_body_bonus" value="" placeholder="bonus" /><br />
+							<label>Body</label>
+								<input type="number" name="attr_body_base" value="" placeholder="base" />
+								<input type="number" name="attr_body_bonus" value="" placeholder="bonus" /><br />
+							<!-- ~~:+: Agility :+:~~ -->
 							<input type="hidden" name="attr_agility" value="" />
-							<input type="number" name="attr_agility_base" value="" placeholder="base" />
-							<input type="number" name="attr_agility_bonus" value="" placeholder="bonus" /><br />
+							<label>Agility</label>
+								<input type="number" name="attr_agility_base" value="" placeholder="base" />
+								<input type="number" name="attr_agility_bonus" value="" placeholder="bonus" /><br />
+							<!-- ~~:+: Reaction :+:~~ -->
 							<input type="hidden" name="attr_reaction" value="" />
-							<input type="number" name="attr_reaction_base" value="" placeholder="base" />
-							<input type="number" name="attr_reaction_bonus" value="" placeholder="bonus" /><br />
+							<label>Reaction</label>
+								<input type="number" name="attr_reaction_base" value="" placeholder="base" />
+								<input type="number" name="attr_reaction_bonus" value="" placeholder="bonus" /><br />
+							<!-- ~~:+: Strength :+:~~ -->
 							<input type="hidden" name="attr_strength" value="" />
-							<input type="number" name="attr_strength_base" value="" placeholder="base" />
-							<input type="number" name="attr_strength_bonus" value="" placeholder="bonus" /><br />
+							<label>Strength</label>
+								<input type="number" name="attr_strength_base" value="" placeholder="base" />
+								<input type="number" name="attr_strength_bonus" value="" placeholder="bonus" /><br />
+							<!-- ~~:+: Willpower :+:~~ -->
 							<input type="hidden" name="attr_willpower" value="" />
-							<input type="number" name="attr_willpower_base" value="" placeholder="base" />
-							<input type="number" name="attr_willpower_bonus" value="" placeholder="bonus" /><br />
+							<label>Willpower</label>
+								<input type="number" name="attr_willpower_base" value="" placeholder="base" />
+								<input type="number" name="attr_willpower_bonus" value="" placeholder="bonus" /><br />
+							<!-- ~~:+: Logic :+:~~ -->
 							<input type="hidden" name="attr_logic" value="" />
-							<input type="number" name="attr_logic_base" value="" placeholder="base" />
-							<input type="number" name="attr_logic_bonus" value="" placeholder="bonus" /><br />
+							<label>Logic</label>
+								<input type="number" name="attr_logic_base" value="" placeholder="base" />
+								<input type="number" name="attr_logic_bonus" value="" placeholder="bonus" /><br />
+							<!-- ~~:+: Intuition :+:~~ -->
 							<input type="hidden" name="attr_intuition" value="" />
-							<input type="number" name="attr_intuition_base" value="" placeholder="base" />
-							<input type="number" name="attr_intuition_bonus" value="" placeholder="bonus" /><br />
+							<label>Intuition</label>
+								<input type="number" name="attr_intuition_base" value="" placeholder="base" />
+								<input type="number" name="attr_intuition_bonus" value="" placeholder="bonus" /><br />
+							<!-- ~~:+: Charisma :+:~~ -->
 							<input type="hidden" name="attr_charisma" value="" />
-							<input type="number" name="attr_charisma_base" value="" placeholder="base" />
-							<input type="number" name="attr_charisma_bonus" value="" placeholder="bonus" /><br />
+							<label>Charisma</label>
+								<input type="number" name="attr_charisma_base" value="" placeholder="base" />
+								<input type="number" name="attr_charisma_bonus" value="" placeholder="bonus" /><br />
+							<!-- ~~:+: Edge :+:~~ -->
+							<label>Edge</label>
 							<input type="number" name="attr_edge" placeholder="base" />
 						</div>
-						<div class="attr-row">
-							<input type="number" name="attr_essence" placeholder="6" /><br />
+						<div class="attr-col">
+							<!-- ~~:+: Essence :+:~~ -->
+							<label>Essence</label><input type="number" name="attr_essence" placeholder="6" /><br />
+							<!-- ~~:+: Magic/Resonance :+:~~ -->
 							<input type="hidden" name="attr_magic_resonance" value="3" />
-							<input type="number" name="attr_magic_resonance_base" placeholder="base" />
-							<input type="number" name="attr_magic_resonance_bonus" placeholder="bonus" /><br />
+							<label>Magic/Resonance</label>
+								<input type="number" name="attr_magic_resonance_base" placeholder="base" />
+								<input type="number" name="attr_magic_resonance_bonus" placeholder="bonus" /><br />
+							<!-- ~~:+: Initiative :+:~~ -->
 							<input type="hidden" name="attr_initiative_mod" value="6" />
 							<input type="hidden" name="attr_initiative_dice" value="1" min="1" max="5" />
-							<input class="att-ini" type="number" name="attr_initiative_bonus" value="0" placeholder="bonus" /><span> + </span>
-							<input class="att-ini" type="number" name="attr_initiative_dice_bonus" value="0" min="0" max="4" placeholder="bonus" /><span> d6</span><br />
+							<label>Initative</label>
+								<input class="att-ini" type="number" name="attr_initiative_bonus" value="0" placeholder="0" /><span> + </span>
+								<input class="att-ini" type="number" name="attr_initiative_dice_bonus" value="0" min="0" max="4" placeholder="bonus" /><span> d6</span><br />
+							<!-- ~~:+: Matrix Initaitve :+:~~ -->
 							<input type="hidden" name="attr_matrix_mod" value="0" />
 							<input type="hidden" name="attr_matrix_dice" max="5" />
-							<input class="att-ini" type="number" name="attr_matrix_mod_bonus" value="0" placeholder="bonus" /><span> + </span>
-							<input class="att-ini" type="number" name="attr_matrix_dice_bonus" value="0" min="0" max="4" placeholder="bonus" /><span> d6</span><br />
+							<label>Matrix Intiative</label>
+								<input class="att-ini" type="number" name="attr_matrix_mod_bonus" value="0" placeholder="0" /><span> + </span>
+								<input class="att-ini" type="number" name="attr_matrix_dice_bonus" value="0" min="0" max="4" placeholder="bonus" /><span> d6</span><br />
+							<!-- ~~:+: Astral Initative :+:~~ -->
 							<input type="hidden" name="attr_astral_mod" value="6" />
 							<input type="hidden" name="attr_astral_dice" value="3" max="5" />
-							<input class="att-ini" type="number" name="attr_astral_mod_bonus" value="0" placeholder="bonus" /><span> + </span>
-							<input class="att-ini" type="number" name="attr_astral_dice_bonus" value="0" min="0" max="3" placeholder="bonus" /><span> d6</span><br />
+							<label>Astral Intiative</label>
+								<input class="att-ini" type="number" name="attr_astral_mod_bonus" value="0" placeholder="bonus" /><span> + </span>
+								<input class="att-ini" type="number" name="attr_astral_dice_bonus" value="0" min="0" max="3" placeholder="bonus" /><span> d6</span><br />
+							<!-- ~~:+: Composure :+:~~ -->
 							<input type="hidden" name="attr_composure" value="" />
-							<input type="number" name="attr_composure_bonus" placeholder="bonus" /><br />
+							<label>Composure</label><input type="number" name="attr_composure_bonus" placeholder="bonus" /><br />
+							<!-- ~~:+: Judge Intentions :+:~~ -->
 							<input type="hidden" name="attr_judge_intentions" value="" />
-							<input type="number" name="attr_judge_intentions_bonus" placeholder="bonus" /><br />
+							<label>Judge Intentions</label><input type="number" name="attr_judge_intentions_bonus" placeholder="bonus" /><br />
+							<!-- ~~:+: Memory :+:~~ -->
 							<input type="hidden" name="attr_memory" value="" />
-							<input type="number" name="attr_memory_bonus" placeholder="bonus" /><br />
+							<label>Memory</label><input type="number" name="attr_memory_bonus" placeholder="bonus" /><br />
+							<!-- ~~:+: Lift & Carry :+:~~ -->
 							<input type="hidden" name="attr_lift_carry" value="" />
-							<input type="number" name="attr_lift_carry_bonus" placeholder="bonus" /><br />
+							<label>Lift & Carry</label><input type="number" name="attr_lift_carry_bonus" placeholder="bonus" /><br />
+							<!-- ~~:+: Walk & Run :+:~~ -->
 							<input type="hidden" name="attr_walk" value="12" />
 							<input type="hidden" name="attr_run" value="24" />
-							<input class="att-ini" type="number" name="attr_walk_bonus" value="0" placeholder="bonus" /><span> / </span>
-							<input class="att-ini" type="number" name="attr_run_bonus" value="0" placeholder="bonus" /><span> / +</span>
-							<input class="att-ini" type="number" name="attr_movement_mod" value="2" placeholder="2" />
+							<label>Movement</label>
+								<input class="att-ini" type="number" name="attr_walk_bonus" value="0" placeholder="bonus" /><span> / </span>
+								<input class="att-ini" type="number" name="attr_run_bonus" value="0" placeholder="bonus" /><span> / +</span>
+								<input class="att-ini" type="number" name="attr_movement_mod" value="2" placeholder="2" />
 						</div>
 						<div class="att-lim">
-							<input type="number" name="attr_physical_limit" placeholder="bonus" />
-							<input type="number" name="attr_mental_limit" placeholder="bonus" />
-							<input type="number" name="attr_social_limit" placeholder="bonus" />
+							<label>Physcial Limit: </label><input type="number" name="attr_physical_limit" placeholder="bonus" />
+							<label>Mental Limit: </label><input type="number" name="attr_mental_limit" placeholder="bonus" />
+							<label>Social Limit: </label><input type="number" name="attr_social_limit" placeholder="bonus" />
 						</div>
 					</div>
 					<div class="display">
-						<div class="attr-row">
-							<div class="attr-und"><span name="attr_display_body"></span></div>
-							<div class="attr-und"><span name="attr_display_agility"></span></div>
-							<div class="attr-und"><span name="attr_display_reaction"></span></div>
-							<div class="attr-und"><span name="attr_display_strength"></span></div>
-							<div class="attr-und"><span name="attr_display_willpower"></span></div>
-							<div class="attr-und"><span name="attr_display_logic"></span></div>
-							<div class="attr-und"><span name="attr_display_intuition"></span></div>
-							<div class="attr-und"><span name="attr_display_charisma"></span></div>
-							<div class="attr-und"><span name="attr_edge"></span></div>
+						<div class="attr-col">
+							<h2>Body</h2><div class="attr-und"><span name="attr_display_body"></span></div>
+							<h2>Agility</h2><div class="attr-und"><span name="attr_display_agility"></span></div>
+							<h2>Reaction</h2><div class="attr-und"><span name="attr_display_reaction"></span></div>
+							<h2>Strength</h2><div class="attr-und"><span name="attr_display_strength"></span></div>
+							<h2>Willpower</h2><div class="attr-und"><span name="attr_display_willpower"></span></div>
+							<h2>Logic</h2><div class="attr-und"><span name="attr_display_logic"></span></div>
+							<h2>Intuition</h2><div class="attr-und"><span name="attr_display_intuition"></span></div>
+							<h2>Charisma</h2><div class="attr-und"><span name="attr_display_charisma"></span></div>
+							<h2>Edge</h2><div class="attr-und"><span name="attr_edge"></span></div>
 						</div>
-						<div class="attr-row">
-							<div class="attr-und"><span name="attr_essence"></span></div>
-							<div class="attr-und"><span name="attr_display_magic_resonance"></span></div>
-							<div class="attr-und"><span name="attr_display_initiative_mod"></span><span> + </span><span name="attr_initiative_dice"></span><span>d6</span></div>
-							<div class="attr-und"><span name="attr_display_matrix_mod"></span><span> + </span><span name="attr_matrix_dice"></span><span>d6</span></div>
-							<div class="attr-und"><span name="attr_display_astral_mod"></span><span> + </span><span name="attr_astral_dice"></span><span>d6</span></div>
-							<div class="attr-und"><span name="attr_composure"></span></div>
-							<div class="attr-und"><span name="attr_judge_intentions"></span></div>
-							<div class="attr-und"><span name="attr_memory"></span></div>
-							<div class="attr-und"><span name="attr_lift_carry"></span></div>
-							<div class="attr-und"><span name="attr_walk" title="Walk Rate"></span><span> / </span><span name="attr_run" title="Run Tate"></span><span> / +</span><span name="attr_movement_mod"></span></div>
+						<div class="attr-col">
+							<h2>Essence</h2><div class="attr-und"><span name="attr_essence"></span></div>
+							<h2>Magic/Resonance</h2><div class="attr-und"><span name="attr_display_magic_resonance"></span></div>
+							<h2>Initative</h2><div class="attr-und"><span name="attr_display_initiative_mod"></span><span> + </span><span name="attr_initiative_dice"></span><span>d6</span></div>
+							<h2>Matrix Initative</h2><div class="attr-und"><span name="attr_display_matrix_mod"></span><span> + </span><span name="attr_matrix_dice"></span><span>d6</span></div>
+							<h2>Astral Initative</h2><div class="attr-und"><span name="attr_display_astral_mod"></span><span> + </span><span name="attr_astral_dice"></span><span>d6</span></div>
+							<h2>Composure</h2><div class="attr-und"><span name="attr_composure"></span></div>
+							<h2>Judge Intentions</h2><div class="attr-und"><span name="attr_judge_intentions"></span></div>
+							<h2>Memory</h2><div class="attr-und"><span name="attr_memory"></span></div>
+							<h2>Lift/Carry</h2><div class="attr-und"><span name="attr_lift_carry"></span></div>
+							<h2>Movement</h2><div class="attr-und"><span name="attr_walk" title="Walk Rate"></span><span> / </span><span name="attr_run" title="Run Tate"></span><span> / +</span><span name="attr_movement_mod"></span></div>
 						</div>
 						<div class="att-lim">
-							<div class="attr-lim"><span name="attr_physical_limit"></span></div>
-							<div class="attr-lim"><span name="attr_mental_limit"></span></div>
-							<div class="attr-lim"><span name="attr_social_limit"></span></div>
+							<h2>Physical Limit:</h2><div><span name="attr_physical_limit"></span></div>
+							<h2>Mental Limit:</h2><div><span name="attr_mental_limit"></span></div>
+							<h2>Social Limit:</h2><div><span name="attr_social_limit"></span></div>
 						</div>
 					</div><!-- ~~~~~~~~ End of PC Display Attributes ~~~~~~~~ -->
+					<div class="edg-hex">
+						<input type="hidden" name="attr_edge_1_enabled" value="true"/>
+							<input type="radio" name="attr_edge_hex" value="1" /><span class="hexagon"></span>
+						<input type="hidden" name="attr_edge_2_enabled" value="true"/>
+							<input type="radio" name="attr_edge_hex" value="2" /><span class="hexagon"></span>
+						<input type="hidden" name="attr_edge_3_enabled" value="true"/>
+							<input type="radio" name="attr_edge_hex" value="3" /><span class="hexagon"></span>
+						<input type="hidden" name="attr_edge_4_enabled" value="true"/>
+							<input type="radio" name="attr_edge_hex" value="4" /><span class="hexagon"></span>
+						<input type="hidden" name="attr_edge_5_enabled" value="true"/>
+							<input type="radio" name="attr_edge_hex" value="5" /><span class="hexagon"></span>
+						<input type="hidden" name="attr_edge_6_enabled" value="true"/>
+							<input type="radio" name="attr_edge_hex" value="6" /><span class="hexagon"></span>
+						<input type="hidden" name="attr_edge_7_enabled" value="true"/>
+							<input type="radio" name="attr_edge_hex" value="7" /><span class="hexagon"></span>
+						<input type="hidden" name="attr_edge_8_enabled" value="true"/>
+							<input type="radio" name="attr_edge_hex" value="8" /><span class="hexagon"></span>
+					</div>
 				</div>
 			</div><!-- ~~~~~~~~ End of PC Attributes~~~~~~~~ -->
 		</div>
 		<div class="col">
 			<div class="header right-header"><h1>Condition Monitor</h1><div class="right-tri"></div></div>
 			<div class="border-box">
-				<div class="pc-box medium-box con-box">
+				<div class="pc-box medium-box condition-box">
 					<input type="checkbox" class="settings-toggle" name="attr_flag_condition" checked="checked" /><span>y</span>
 					<div class="settings">
 						<label>Condition Monitor (P/S): </label>
@@ -336,7 +343,8 @@
 			</div>
 		</div><!-- ~~~~~~~~ End of Condition Monitor ~~~~~~~~ -->
 	</div><!-- ~~~~~~~~ End of Attributes & Condition Monitor Rows  ~~~~~~~~ -->
-	<div class="core pc-row"><!-- ~~~~~~~~ Start of Skill & Quality Row  ~~~~~~~~ -->
+	<!-- ~~~~~~~~ Start of Skill & Quality Row  ~~~~~~~~ -->
+	<div class="core pc-row">
 		<div class="col">
 			<div class="header">
 				<div class="header htab">
@@ -363,22 +371,27 @@
 						<fieldset class="repeating_active">
 							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 							<div class="settings">
-								<input type="text" name="attr_skill" placeholder="Active skill name" />
-								<input type="text" name="attr_specialization" placeholder="Specalizations" />
-								<input type="number" name="attr_rank" placeholder="0" />
+								<div class="skills-row">
+									<input type="text" name="attr_skill" placeholder="Active skill name" />
+									<input type="number" name="attr_rank" min="0" placeholder="0" />
+									<div><label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" /></div>
+									<div><label>Skill Bonus</label><br /><input type="number" name="attr_rank_bonus" min="0" placeholder="0" /></div>
+									<label>Notes</label>
+									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+								</div>
 							</div>
 							<div class="display">
 								<div class="name">
 									<button type="roll" ><span name="attr_display"></span></button>
 									<button class="spec-button" type="roll" value=""><span name="attr_specialization_display"></span></button>
 								</div>
-								<div class="rank"><span name="attr_rank"></span></div>
+								<div class="rank"><span name="attr_rank_display"></span></div>
 							</div>
 							<select name="attr_attribute">
-								<option class="Red" value="@{body}" selected="selected">Body</option>
-								<option class="Red" value="@{agility}">Agility</option>
-								<option class="Red" value="@{reaction}">Reaction</option>
-								<option class="Red" value="@{strength}">Strength</option>
+								<option value="@{body}" selected="selected">Body</option>
+								<option value="@{agility}">Agility</option>
+								<option value="@{reaction}">Reaction</option>
+								<option value="@{strength}">Strength</option>
 								<option value="@{willpower}">Willpower</option>
 								<option value="@{logic}">Logic</option>
 								<option value="@{intuition}">Intuition</option>
@@ -392,16 +405,21 @@
 						<fieldset class="repeating_knowledge">
 							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 							<div class="settings">
-								<input type="text" name="attr_skill" placeholder="Knowledge skill name" />
-								<input type="text" name="attr_specialization" placeholder="Specalizations" />
-								<input type="number" name="attr_rank" placeholder="0" />
+								<div class="skills-row">
+									<input type="text" name="attr_skill" placeholder="Knowledge skill name" />
+									<input type="number" name="attr_rank" placeholder="0" />
+									<div><label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" /></div>
+									<div><label>Skill Bonus</label><br /><input type="number" name="attr_rank_bonus" placeholder="0" /></div>
+									<label>Notes</label>
+									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+								</div>
 							</div>
 							<div class="display">
 								<div class="name">
 									<button type="roll" ><span name="attr_display"></span></button>
 									<button class="spec-button" type="roll" value=""><span name="attr_specialization_display"></span></button>
 								</div>
-								<div class="rank"><span name="attr_rank"></span></div>
+								<div class="rank"><span name="attr_rank_display"></span></div>
 							</div>
 							<select name="attr_attribute">
 								<option class="blk-op" value="@{willpower}">Willpower</option>
@@ -415,16 +433,21 @@
 						<fieldset class="repeating_language">
 							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 							<div class="settings">
-								<input type="text" name="attr_skill" placeholder="Language skill name" />
-								<input type="text" name="attr_specialization" placeholder="Specalizations" />
-								<input type="number" name="attr_rank" placeholder="0" />
+								<div class="skills-row">
+									<input type="text" name="attr_skill" placeholder="Language" />
+									<input type="number" name="attr_rank" placeholder="0" />
+									<div><label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" /></div>
+									<div><label>Skill Bonus</label><br /><input type="number" name="attr_rank_bonus" placeholder="0" /></div>
+									<label>Notes</label>
+									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+								</div>
 							</div>
 							<div class="display">
 								<div class="name">
 									<button type="roll" ><span name="attr_display"></span></button>
 									<button class="spec-button" type="roll" value=""><span name="attr_specialization_display"></span></button>
 								</div>
-								<div class="rank"><span name="attr_rank"></span></div>
+								<div class="rank"><span name="attr_rank_display"></span></div>
 							</div>
 							<select name="attr_attribute">
 								<option class="blk-op" value="@{willpower}">Willpower</option>
@@ -439,7 +462,7 @@
 		</div>
 		<div class="col">
 			<div class="header right-header"><h1>Qualities</h1><div class="right-tri"></div></div>
-			<div class="border-box repeat-box qual-box">
+			<div class="border-box repeat-box quality">
 				<div class="pc-box medium-box">
 					<div class="row-long">
 						<h3>Quality</h3><h3>Notes</h3><h3>Type</h3>
@@ -475,7 +498,7 @@
 	<div class="core pc-row"><!-- ~~~~~~~~ Start of IDs/Lifestyle & Contacts  ~~~~~~~~ -->
 		<div class="col">
 			<div class="header"><div class="triangle"></div><h1>IDs/Lifestyles/Currency</h1></div>
-			<div class="border-box repeat-box lifestyle-box">
+			<div class="border-box repeat-box lifestyle">
 				<div class="pc-box small-box">
 					<div class="row-long">
 						<h3>Primary Lifestyle</h3><input type="text" name="attr_lifestyle" placeholder="High: Belleuve (Inglewood), Seattle" />
@@ -511,26 +534,37 @@
 		</div>
 		<div class="col">
 			<div class="header right-header"><h1>Contacts</h1><div class="right-tri"></div></div>
-			<div class="border-box repeat-box contacts-box">
+			<div class="border-box repeat-box contacts">
 				<div class="pc-box small-box">
 					<div class="row-long"><h3>Name</h3><h3>Loyalty</h3><h3>Connection</h3><h3>Favor</h3></div>
 					<fieldset class="repeating_contacts">
 						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 						<div class="settings">
-							<input type="text" name="attr_name" placeholder="Old Crow" />
-							<input type="text" name="attr_loyalty" placeholder="3" />
-							<input type="text" name="attr_connection" placeholder="8" />
-							<input type="text" name="attr_favors" placeholder="2 Chips" />
+							<div>
+								<input type="text" name="attr_name" placeholder="Old Crow" />
+								<input type="number" name="attr_loyalty" placeholder="3" />
+								<input type="number" name="attr_connection" placeholder="8" />
+								<input type="text" name="attr_favors" placeholder="+2 chips" />
+								<h3>Notes</h3>
+								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+							</div>
 						</div>
 						<div class="display">
-							<button type="roll" ><span name="attr_display"></span></button>
+							<input class="display-flag" type="checkbox" name="attr_display_flag" />
+							<b><span name="attr_display"></span></b>
+							<span name="attr_loyalty"></span>
+							<span name="attr_connection"></span>
+							<span name="attr_favors"></span>
+							<div class="desc"><span name="attr_notes"></span></div>
 						</div>
 					</fieldset>
 				</div>
 			</div>
 		</div>
 	</div><!-- ~~~~~~~~ End of IDs/Lifestyle & Contacts  ~~~~~~~~ -->
+	<!-- ~~~~~~~~ Start of the Gear page  ~~~~~~~~ -->
 	<div class="gear pc-row">
+		<!-- ~~~~~~~~ Start of the Weapon Section  ~~~~~~~~ -->
 		<div class="col">
 			<div class="header">
 				<div class="header htab">
@@ -541,11 +575,11 @@
 				</div>
 				<div class="triangle"></div><h1>Weapons</h1>
 			</div>
-			<div class="border-box repeat-box skill-box">
-				<input class="weapon_toggle" type="radio" name="attr_weapon_toggle" value="range" checked="checked" />
-				<input class="weapon_toggle" type="radio" name="attr_weapon_toggle" value="melee" />
+			<div class="border-box repeat-box weapon-box">
+				<input class="weapon-toggle" type="radio" name="attr_weapon_type_toggle" value="range" />
+				<input class="weapon-toggle" type="radio" name="attr_weapon_type_toggle" value="melee" />
 				<div class="pc-box medium-box">
-					<input class="weapon_toggle" type="hidden" name="attr_weapon_toggle" value="range">
+					<input class="weapon-toggle" type="hidden" name="attr_weapon_type_toggle" value="range" />
 					<div class="weapon-range row-long">
 						<h3>Weapon</h3><h3>Dam</h3><h3>Acc</h3><h3>AP</h3><h3>Mode</h3><h3>RC</h3><h3>Ammo</h3>
 					</div>
@@ -553,18 +587,26 @@
 						<fieldset class="repeating_range">
 							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 							<div class="settings">
-								<input type="text" name="attr_weapon" placeholder="Ares Predator V" />
-								<input type="text" name="attr_damage" placeholder="8P" />
-								<input type="number" name="attr_acc" placeholder="5" />
-								<input type="number" name="attr_ap" placeholder="-1" />
-								<input type="text" name="attr_mode" placeholder="SA" />
-								<input type="text" name="attr_recoil" placeholder="2" />
-								<input type="number" name="attr_ammo" placeholder="15" />
+								<div>
+									<input type="text" name="attr_weapon" placeholder="Ares Predator V" />
+									<input type="text" name="attr_damage" placeholder="8P" />
+									<input type="number" name="attr_acc" placeholder="5" />
+									<input type="number" name="attr_ap" placeholder="-1" />
+									<input type="text" name="attr_mode" placeholder="SA" />
+									<input type="number" name="attr_recoil" placeholder="2" />
+									<input type="number" name="attr_ammo" placeholder="15" />
+									<h3>Notes</h3>
+									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+								</div>
 							</div>
 							<div class="display">
-								<div class="name">
-									<button type="roll" ><span name="attr_weapon"></span></button>
-								</div>
+								<div><button type="roll" ><span name="attr_weapon"></span></button></div>
+								<div><span name="attr_damage"></span></div>
+								<div><span name="attr_acc"></span></div>
+								<div><span name="attr_ap"></span></div>
+								<div><span name="attr_mode"></span></div>
+								<div><span name="attr_recoil"></span></div>
+								<div><span name="attr_ammo"></span></div>
 							</div>
 						</fieldset>
 					</div>
@@ -575,21 +617,27 @@
 						<fieldset class="repeating_melee">
 							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 							<div class="settings">
-								<input type="text" name="attr_weapon" placeholder="Ares Predator V" />
-								<input type="number" name="attr_reach" placeholder="5" />
-								<input type="text" name="attr_damage" placeholder="8P" />
-								<input type="number" name="attr_acc" placeholder="5" />
-								<input type="number" name="attr_ap" placeholder="-1" />
+								<input type="text" name="attr_weapon" placeholder="Katana" />
+								<input type="number" name="attr_reach" placeholder="1" />
+								<input type="text" name="attr_damage" placeholder="6P" />
+								<input type="number" name="attr_acc" placeholder="-7" />
+								<input type="number" name="attr_ap" placeholder="-3" />
 							</div>
 							<div class="display">
-								<div class="name">
-									<button type="roll" ><span name="attr_weapon"></span></button>
+								<div>
+									<div><button type="roll" ><span name="attr_weapon"></span></button></div>
+									<div><span name="attr_reach"></span></div>
+									<div><span name="attr_damage"></span></div>
+									<div><span name="attr_acc"></span></div>
+									<div><span name="attr_ap"></span></div>
 								</div>
 							</div>
 						</fieldset>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="col">
 		</div>
 	</div>
 	<!-- ~~~~~~~~ Start of the PC Options Page ~~~~~~~~ -->
@@ -1303,19 +1351,19 @@
 			</div>
 		<!-- ~~~~~~~~ Initiative  ~~~~~~~~ -->
 			<div class="goon">
-				<label><button class="yButton" type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{initiative_mod}+@{wound_toggle}+@{modifier_toggle})+(@{initiative_dice})d6cf0 &{tracker}]]}}"><b>Initiative:</b> </button></label>
+				<label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{initiative_mod}+@{wound_toggle}+@{modifier_toggle})+(@{initiative_dice})d6cf0 &{tracker}]]}}"><b>Initiative:</b> </button></label>
 				<span name="attr_display_initiative_mod"></span><span> + </span><span name="attr_initiative_dice"></span><span>d6</span>
 				<br />
 		<!-- ~~~~~~~~ Astral Initiative  ~~~~~~~~ -->
 				<input type="hidden" class="character-type" name="attr_flag_special" />
 				<div class="magic">
-					<label><button class="yButton" type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Astral Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{astral_mod}+@{wound_toggle}+@{modifier_toggle})+(@{astral_dice})d6cf0 &{tracker}]]}}"><b>Astral Initiative:</b> </button></label>
+					<label><button  type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Astral Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{astral_mod}+@{wound_toggle}+@{modifier_toggle})+(@{astral_dice})d6cf0 &{tracker}]]}}"><b>Astral Initiative:</b> </button></label>
 					<span name="attr_display_astral_mod"></span><span> + </span><span name="attr_astral_dice"></span><span>d6</span>
 					<br />
 				</div>
 			</div>
 		<!-- ~~~~~~~~ Matrix Initiative  ~~~~~~~~ -->
-			<label><button class="yButton" type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Matrix Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{matrix_mod}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}"><b>Matrix Initiative: </b></button></label>
+			<label><button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=Matrix Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{matrix_mod}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}"><b>Matrix Initiative: </b></button></label>
 			<span name="attr_display_matrix_mod"></span><span> + </span><span name="attr_matrix_dice"></span><span>d6</span>
 			<br />
 			<div class="goon">
@@ -1350,7 +1398,7 @@
 			</div>
 		<!-- ~~~~~~~~ Armor  ~~~~~~~~ -->
 		<div class="goon vehicle">
-			<label><button class="yButton" type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Armor Roll}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{armor}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Armor Roll"><b>Armor: </b></button></label><span name="attr_armor"></span>
+			<label><button  type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Armor Roll}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{armor}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Armor Roll"><b>Armor: </b></button></label><span name="attr_armor"></span>
 			<div class="armor-buttons">
 				<button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Soak}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Soak"><span class="pictos3">b</span></button>
 				<button type='roll' value="@{gm_toggle} &{template:sGoon}{{header=Acid Protection}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{soak_acid}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Acid Protection"><span class="pictos3">d</span></button>
@@ -1362,7 +1410,7 @@
 		</div>
 		<!-- ~~~~~~~~ Skills  ~~~~~~~~ -->
 		<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
-		<div class="goon">
+		<div class="goon skills">
 			<label>Skills (Dice Pools): </label>
 		<!-- ~~~~~~~~ Acting  ~~~~~~~~ -->
 			<input type="hidden" class="optional-flag0" name="attr_flag_acting" value="0">
@@ -3610,40 +3658,92 @@ on("change:weakness", function() {
 
 	//Repeating active for PC sheet
 on("change:repeating_active", function() {
-	getAttrs(["repeating_active_skill", "repeating_active_specialization", "repeating_active_display", "repeating_active_specialization_display"], function(v) {
-		((v.repeating_active_skill).length > 0 && (v.repeating_active_skill).length <= 20) ? setAttrs({repeating_active_display: (v.repeating_active_skill)}) : 
-			((v.repeating_active_skill).length > 20 ) ? setAttrs({repeating_active_display: (v.repeating_active_skill).slice(0, 20) + "..."}) :
-			setAttrs({repeating_active_display: " "});
+	getAttrs(["repeating_active_skill", "repeating_active_specialization", "repeating_active_display", "repeating_active_specialization_display", "repeating_active_rank", "repeating_active_rank_bonus", "repeating_active_rank_display"], function(v) {
+		const skill = (v.repeating_active_skill);
+		const specialization = (v.repeating_active_specialization);
+		const rank = parseInt(v.repeating_active_rank) || 0;
+		const rankBonus = parseInt(v.repeating_active_rank_bonus) || 0;;
 
-		((v.repeating_active_specialization).length > 0 && (v.repeating_active_specialization).length <= 20) ? setAttrs({repeating_active_specialization_display: "(" + v.repeating_active_specialization + ")"}) : 
-			((v.repeating_active_specialization).length > 20 ) ? setAttrs({repeating_active_specialization_display: "(" + (v.repeating_active_specialization).slice(0, 20) + "..." + ")"}) :
-			setAttrs({repeating_active_specialization_display: " "});	
+		let displayOld = (v.repeating_active_display);
+		let specDisplayOld = (v.repeating_active_specialization_display);
+		let rankDisplayOld = (v.repeating_active_rank_display);
+
+		let displayNew = ((skill).length > 0 && (skill).length <= 20) ? skill : ((skill).length > 20 ) ? (skill).slice(0, 20) + "..." : " ";
+		if (displayNew != displayOld) {
+			setAttrs({repeating_active_display: displayNew});
+		};
+
+		console.log(displayNew);
+		console.log(displayOld + " =? " + displayNew);
+
+		let specDisplayNew = ((specialization).length > 0 && (specialization).length <= 20) ? "(" + specialization + ")" : ((specialization).length > 20 ) ? "(" + (specialization).slice(0, 20) + "..." + ")" : " ";	
+		if (specDisplayNew != specDisplayOld) {
+			setAttrs({repeating_active_specialization_display: specDisplayNew});
+		};
+
+		console.log(specDisplayNew);
+		console.log(specDisplayOld + " =? " + specDisplayNew);
+
+		let rankDisplayNew = (rankBonus != "" || rankBonus > 0) ? rank + " (" + (rank + rankBonus) + ")" : rank;
+		if (rankDisplayOld != rankDisplayNew) {
+			setAttrs({repeating_active_rank_display: rankDisplayNew});
+		};
+
+		console.log(rankDisplayNew);
+		console.log(rankDisplayOld + " =? " + rankDisplayNew);
+
 	});
 });
 
 	//Repeating knowledge for PC sheet
 on("change:repeating_knowledge", function() {
-	getAttrs(["repeating_knowledge_skill", "repeating_knowledge_specialization", "repeating_knowledge_display", "repeating_knowledge_specialization_display"], function(v) {
-		((v.repeating_knowledge_skill).length > 0 && (v.repeating_knowledge_skill).length <= 20) ? setAttrs({repeating_knowledge_display: (v.repeating_knowledge_skill)}) : 
-			((v.repeating_knowledge_skill).length > 20 ) ? setAttrs({repeating_knowledge_display: (v.repeating_knowledge_skill).slice(0, 20) + "..."}) :
-			setAttrs({repeating_knowledge_display: " "});
+	getAttrs(["repeating_knowledge_skill", "repeating_knowledge_specialization", "repeating_knowledge_display", "repeating_knowledge_specialization_display", "repeating_knowledge_rank", "repeating_knowledge_rank_bonus", "repeating_knowledge_rank_display"], function(v) {
+		const skill = (v.repeating_knowledge_skill);
+		const specialization = (v.repeating_knowledge_specialization);
+		const rank = parseInt(v.repeating_knowledge_rank) || 0;
+		const rankBonus = parseInt(v.repeating_knowledge_rank_bonus) || 0;;
 
-		((v.repeating_knowledge_specialization).length > 0 && (v.repeating_knowledge_specialization).length <= 20) ? setAttrs({repeating_knowledge_specialization_display: "(" + v.repeating_knowledge_specialization + ")"}) : 
-			((v.repeating_knowledge_specialization).length > 20 ) ? setAttrs({repeating_knowledge_specialization_display: "(" + (v.repeating_knowledge_specialization).slice(0, 20) + "..." + ")"}) :
-			setAttrs({repeating_knowledge_specialization_display: " "});	
+		let displayOld = (v.repeating_knowledge_display);
+		let specDisplayOld = (v.repeating_knowledge_specialization_display);
+		let rankDisplayOld = (v.repeating_knowledge_rank_display);
+
+		let displayNew = ((skill).length > 0 && (skill).length <= 20) ? skill : ((skill).length > 20 ) ? (skill).slice(0, 20) + "..." : " ";
+		if (displayNew != displayOld) {
+			setAttrs({repeating_knowledge_display: displayNew});
+		};
+
+		let specDisplayNew = ((specialization).length > 0 && (specialization).length <= 20) ? "(" + specialization + ")" : ((specialization).length > 20 ) ? "(" + (specialization).slice(0, 20) + "..." + ")" : " ";	
+		if (specDisplayNew != specDisplayOld) {
+			setAttrs({repeating_knowledge_specialization_display: specDisplayNew});
+		};
+
+		let rankDisplayNew = (rankBonus != "" || rankBonus > 0) ? rank + " (" + (rank + rankBonus) + ")" : rank;
+		if (rankDisplayOld != rankDisplayNew) {
+			setAttrs({repeating_knowledge_rank_display: rankDisplayNew});
+		};
 	});
 });
 
 	//Repeating language for PC sheet
 on("change:repeating_language", function() {
-	getAttrs(["repeating_language_skill", "repeating_language_specialization", "repeating_language_display", "repeating_language_specialization_display"], function(v) {
-		((v.repeating_language_skill).length > 0 && (v.repeating_language_skill).length <= 20) ? setAttrs({repeating_language_display: (v.repeating_language_skill)}) : 
-			((v.repeating_language_skill).length > 20 ) ? setAttrs({repeating_language_display: (v.repeating_language_skill).slice(0, 20) + "..."}) :
-			setAttrs({repeating_language_display: " "});
+	getAttrs(["repeating_language_skill", "repeating_language_specialization", "repeating_language_display", "repeating_language_specialization_display", "repeating_language_rank", "repeating_language_rank_bonus", "repeating_language_rank_display"], function(v) {
+		const skill = (v.repeating_language_skill);
+		const specialization = (v.repeating_language_specialization);
+		const rank = parseInt(v.repeating_language_rank) || 0;
+		const rankBonus = parseInt(v.repeating_language_rank_bonus) || 0;;
 
-		((v.repeating_language_specialization).length > 0 && (v.repeating_language_specialization).length <= 20) ? setAttrs({repeating_language_specialization_display: "(" + v.repeating_language_specialization + ")"}) : 
-			((v.repeating_language_specialization).length > 20 ) ? setAttrs({repeating_language_specialization_display: "(" + (v.repeating_language_specialization).slice(0, 20) + "..." + ")"}) :
-			setAttrs({repeating_language_specialization_display: " "});	
+		let displayOld = (v.repeating_language_display);
+		let specDisplayOld = (v.repeating_language_specialization_display);
+		let rankDisplayOld = (v.repeating_language_rank_display);
+
+		let displayNew = ((skill).length > 0 && (skill).length <= 20) ? skill : ((skill).length > 20 ) ? (skill).slice(0, 20) + "..." : " ";
+		if (displayNew != displayOld) {setAttrs({repeating_language_display: displayNew});};
+
+		let specDisplayNew = ((specialization).length > 0 && (specialization).length <= 20) ? "(" + specialization + ")" : ((specialization).length > 20 ) ? "(" + (specialization).slice(0, 20) + "..." + ")" : " ";	
+		if (specDisplayNew != specDisplayOld) {setAttrs({repeating_language_specialization_display: specDisplayNew});};
+
+		let rankDisplayNew = (rankBonus != "" || rankBonus > 0) ? rank + " (" + (rank + rankBonus) + ")" : rank;
+		if (rankDisplayOld != rankDisplayNew) {setAttrs({repeating_language_rank_display: rankDisplayNew});};
 	});
 });
 
@@ -3674,5 +3774,13 @@ on("change:repeating_lifestyle", function() {
 	});
 });
 
+	//Repeating contacts for PC sheet
+on("change:repeating_contacts", function() {
+	getAttrs(["repeating_contacts_name"], function(v) {
+		((v.repeating_contacts_name).length > 0 && (v.repeating_contacts_name).length <= 30) ? setAttrs({repeating_contacts_display: (v.repeating_contacts_name)}) : 
+			((v.repeating_contacts_name).length > 30) ? setAttrs({repeating_contacts_display: (v.repeating_contacts_name).slice(0, 30) + "..."}) :
+			setAttrs({repeating_contacts_display: " "});
+	});
+});
 
 </script>

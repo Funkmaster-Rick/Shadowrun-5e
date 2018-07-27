@@ -15,15 +15,14 @@ button {
 	border: none;
 	box-shadow: none;
 	font-family: Helvetica, Arial, sans-serif;
-	font-size: 0.8rem;
+	font-size: 0.8em;
 	text-shadow: none;
 }
 
 button[type="roll"] {
-	color: #fff;
-	font-size: 0.9rem !important;
-	margin: 0px 0px 0px 0px !important;
-	padding: 0px 0px !important;
+	font-size: 1em;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px;
 }
 
 button:hover {
@@ -35,6 +34,7 @@ button:before {display: none;}
 
 div {
 	background-color: transparent;
+	border:1px dashed green;
 }
 
 fieldset {
@@ -50,7 +50,7 @@ hr {
 
 label {
 	display: inline-block;
-	font-size: 0.8rem;
+	font-size: 1em;
 	text-transform: capitalize;
 	width: fit-content;
 	padding-right: 5px;
@@ -88,7 +88,7 @@ input[type="radio"] + span {
 }
 
 input[type="text"] {
-	height: 25px !important;
+	height: 25px;
 }
 
 input[type="number"] {
@@ -107,7 +107,6 @@ textarea {
 	font-weight: normal;
 	height: 50px;
 	line-height: 18px;
-	margin: -35px 0px 0px 0px;
 	overflow-wrap: break-word;
 	overflow: hidden;
 	padding: 2px;
@@ -201,7 +200,7 @@ textarea {
 .sheet-pc h1 {
 	background-color: #610b0d;
 	color: #fff;
-	font-size: 1rem;
+	font-size: 1em;
 	font-weight: 800;
 	letter-spacing: 2px;
 	line-height: 20px;
@@ -214,7 +213,7 @@ textarea {
 
 .sheet-pc h2 {
 	display: inline-block;
-	font-size: 0.8rem;
+	font-size: 0.9em;
 	line-height: 25px;
 	padding-right: 2px;
 	text-transform: capitalize;
@@ -223,7 +222,7 @@ textarea {
 .sheet-pc h3 {
 	color: #b8b7b6;
 	display: inline-block;
-	font-size: 0.6rem;
+	font-size: 0.8em;
 	text-transform: capitalize;
 }
 
@@ -256,6 +255,11 @@ textarea {
     clear: both;
 } 
 
+.sheet-pc .sheet-repeat-indent {
+	padding-left: 4em;
+	text-indent: -1.5em;
+}
+
 	/***** Left Headers *****/
 	.sheet-header {
 		display: inline-flex;
@@ -283,7 +287,7 @@ textarea {
 		background-color: #e7e6e5;
 		margin-left: 1.5px;
 		margin-right: 1.5px;
-		padding-left: 10px;
+		padding-left: 5px;
 		padding-right: 5px;
 	}
 
@@ -378,134 +382,130 @@ textarea {
 
 		.sheet-cc-ran + .sheet-cc-row input[type="text"],
 		.sheet-cc-ran + .sheet-cc-row input[type="number"] {
-			width: 10.8%;
+			width: 10%;
 		}
 
 		.sheet-cc-mel + .sheet-cc-row input[type="text"],
 		.sheet-cc-mel + .sheet-cc-row input[type="number"] {
-			width: 19%;
+			width: 18%;
 		}
 
 	/***** Attributes Box *****/
-	.sheet-attr-row h2 {
-		border-bottom: 1px solid #000;
-		display: inline-block;
-		padding-right: 2px;
-		text-align: right;
-		width: 100%;
+	.sheet-attr-box {
+		margin-top: -20px;
 	}
 
-	.sheet-attr-row:first-child h2 {
+	.sheet-attr-col {
+		width: 54%;
+	}
+
+	.sheet-attr-col:first-child {
+		width: 45%;
+	}
+
+	.sheet-attr-col {
+		display: inline-block;
+		margin-top: 3.5px;
+		vertical-align: top;
+	}
+
+	.sheet-attr-col h2,
+	.sheet-attr-col label {
+		border-bottom: 1px solid #000;
+		display: inline-block;
+		font-size: 0.9em;
+		line-height: 18px;
+		margin-bottom: 0px;
+		margin-right: 5px;
+		padding-right: 2px;
+		text-align: right;
+		width: 47%;
+	}
+
+	.sheet-attr-col:first-child h2 {
 		width: 40%;
 	}
 
-		/***** Attribute Columns *****/
-		.sheet-attr-row {
-			display: inline-block;
-			margin-top: 3.5px;
-			vertical-align: top;
+	.sheet-attr-col:first-child label {
+		width: 40%;
+	}
+
+	.sheet-att-lim {
+		font-size: 0.9em;
+		margin-top: 10px;
+		width: 100%;
+	}
+
+	.sheet-att-lim h2 {
+		font-size: 11.7px;
+		width: 22%;
+	}
+
+		/***** Attribute Toggles Spans *****/
+		.sheet-attr-box input.sheet-settings-toggle {
+			left: 65%;
 		}
 
-		.sheet-att-lim h2 {
-			width: 32%;
+		.sheet-attr-box input.sheet-settings-toggle + span {
+			color: #fff;
+			font-size: 1em;
+			left: 59%;
+			position: relative;
 		}
 
 		/***** Attribute Settings *****/
-		.sheet-settings .sheet-attr-row,
-		.sheet-att-lim input[type="number"]  {
-			position: relative;
-			left: 165px;
-			width: 32%;
-		}
-
-		.sheet-settings .sheet-attr-row:first-child {
-			left: 80px;
-		}
-
-		.sheet-settings .sheet-attr-row input[type="number"] {
+		.sheet-settings .sheet-attr-col input[type="number"] {
 			margin-bottom: 4px;
 		}
 
 		.sheet-settings .sheet-att-lim input[type="number"] {
-			left: 90px;
-			margin-right: 82px;
-			top: 13px;
+			margin-right: 1%;
 		}
 
-		.sheet-attr-box .sheet-settings {
-			margin-top: -325px;
-		}
-
-		.sheet-attr-row input[type="number"] {
+		.sheet-attr-col input[type="number"] {
 			border-bottom: 1px solid #000;
 			border-radius: 0px;
 			height: 22px;
 		}
 
-		.sheet-attr-row input.sheet-att-ini {
-			width: 20%;
+		.sheet-attr-col input.sheet-att-ini {
+			width: 12%;
 		}
 
-		.sheet-attr-row input.sheet-att-ini + span {
-			font-size: 0.8rem;
+		.sheet-attr-col input.sheet-att-ini + span {
+			font-size: 0.8em;
 		}
 
 		.sheet-att-lim input[type="number"] {
 			width: 11%;
 		}
 
-		/***** Attribute Toggles Spans *****/
-		.sheet-attr-box input.sheet-settings-toggle {
-			left: 245px;
-			top: -327px;
-		}
-
-		.sheet-attr-box input.sheet-settings-toggle + span {
-			color: #fff;
-			font-size: 1rem;
-			left: 218px;
-			position: relative;
-			top: -326px;
-		}
-
 		/***** Attribute Display Spans *****/
 		.sheet-attr-und {
 			border-bottom: 1px solid #000;
-			border-radius: 0px;
-			height: 20px;
-			margin-bottom: 6px;
-			text-align: center;
-			width: 95%;
-		}
-
-		.sheet-display .sheet-attr-row {
-			position: relative;
-			left: 195px;
-			margin-top: 1.5px;
-			width: 25%;
-		}
-
-		.sheet-display .sheet-attr-row:first-child {
-			left: 78px;
-		}
-
-		.sheet-attr-box .sheet-display {
-			margin-top: -320px;
-		}
-
-		.sheet-attr-lim  {
 			display: inline-block;
-			margin-left: 90px;
-			position: relative;
+			height: 22px;
+			margin-bottom: 4px;
 			text-align: center;
-			top: 17px;
+			vertical-align: top;
+			width: 50%;
+		}
+
+		.sheet-display .sheet-attr-col h2 {
+			padding-top: 3px;
+		}
+
+		.sheet-att-lim  div {
+			display: inline-block;
+			height: 22px;
+			text-align: center;
 			width: 10%;
 		}
 
 		/***** Edge Hexagons Inputs *****/
 		.sheet-edg-hex {
-			margin-top: 10px;
-			margin-bottom: 5px;
+			position: relative;
+			top: -60px;
 			width: 180px;
 		}
 
@@ -580,16 +580,16 @@ textarea {
 
 /***** Condition Monitor Tracks *****/
 .sheet-con-track {
-	width: 47%;
 	display: inline-block;
 	vertical-align: top;
+	width: 47%;
 }
 
 .sheet-con-track h2 {
-	padding-left: 20px;
-	width: 100%;
-	text-align: center;
 	margin-bottom: -5px;
+	padding-left: 20px;
+	text-align: center;
+	width: 100%;
 }
 
 .sheet-con-track input[type="radio"]:first-child:hover ~ h2 {
@@ -598,35 +598,35 @@ textarea {
 }
 
 	/***** Condition Settings  *****/
-	.sheet-con-box input[type="checkbox"] {
-		left: 215px;
-		top: -18px;
+	.sheet-condition-box input[type="checkbox"] {
+		left: 175px;
+		top: -20px;
 	}
 
-	.sheet-con-box input[type="checkbox"] + span {
+	.sheet-condition-box input[type="checkbox"] + span {
 		color: #fff;
-		font-size: 1rem;
-		left: 185px;
-		top: -17px;
+		font-size: 1em;
+		left: 175px;
+		top: -20px;
 	}
 
-	.sheet-con-box .sheet-settings {
+	.sheet-condition-box .sheet-settings {
 		margin-top:-10px;
 	}
 
-	.sheet-con-box .sheet-settings input {
+	.sheet-condition-box .sheet-settings input {
 		border-bottom: 1px solid #000;
 		border-radius: 0px;
 		height: 22px;
 	}
 
-	.sheet-con-box .sheet-settings .sheet-con-footer {
+	.sheet-condition-box .sheet-settings .sheet-con-footer {
 		margin-top: -10px;
 		text-indent: 10px;
 	}
 
 	/***** Condition Track Display *****/
-	.sheet-con-box .sheet-display {
+	.sheet-condition-box .sheet-display {
 		margin-top: -20px;
 	}
 
@@ -657,7 +657,7 @@ textarea {
 			margin-top: -20px;
 			position: relative;
 			top: 8px;
-			width: auto;
+			width: fit-content;
 		}
 
 		.sheet-squares input[type="radio"]:first-child {
@@ -698,7 +698,7 @@ textarea {
 
 	/***** Condition Track Footers *****/
 	.sheet-con-footer {
-		font-size: 0.6rem;
+		font-size: 0.8em;
 		margin-top: 20px;
 	}
 
@@ -728,7 +728,6 @@ textarea {
 	opacity: 1 !important; 
 	position: relative;
 }
-
 	/***** Secondary tabs *****/
 	.sheet-htab {
 		z-index: -1;
@@ -768,7 +767,7 @@ textarea {
 
 		.sheet-repeat-box .sheet-settings input[type="number"] {
 			height: 25px;
-			width: 8%;
+			width: 35px;
 		}
 
 		.sheet-repeat-box .sheet-settings input[type="text"] {
@@ -784,8 +783,8 @@ textarea {
 			margin-left: -10px;
 		}
 
-		.sheet-repeat-box button {
-			font-size: 0.75rem !important;
+		.sheet-repeat-box button[type="roll"] {
+			font-size: 0.9em;
 			color: #000;
 		}
 
@@ -797,7 +796,7 @@ textarea {
 		/***** Repeating Selects *****/
 		.sheet-repeat-box select {
 			color:  #000;
-			font-size: 0.75rem;
+			font-size: 0.75em;
 			font-weight: bolder;
 			height: 20px;
 			padding: 0px;
@@ -822,26 +821,38 @@ textarea {
 	margin-left: 30px;
 }
 
+.sheet-skill-box label {
+	display: inline-block;
+	font-size: 0.8em;
+	text-transform: capitalize;
+}
+
+.sheet-skill-box select {
+	position: absolute;
+	left: 82%;
+}
+
+.sheet-skill-box option:nth-of-type(1n+5) {
+	color: #610b0d;
+}
+
+.sheet-skill-box option:nth-of-type(1n+9) {
+	color: #7a2593;
+}
+
 	/***** Skills Radio Toggles for Switching Tabs*****/
 	.sheet-skill-box input[type="radio"] {
-		left: 55px;
+		left: 65px;
 		margin-right: 15px;
 		top: -20px;
-		width: 75px;
-	}
-
-	.sheet-skill-box input[type="radio"]:first-child {
-		left: 47px;
+		width: 80px;
 	}
 
 	/***** Skills Repeating Section *****/
 		/***** Skills Settings *****/
-		.sheet-skill-box .sheet-settings input[type="text"] {
-			width: 45%;
-		}
-
 		.sheet-skill-box .sheet-settings input[type="text"]:first-child {
 			margin-right: 3px;
+			width: 69%;
 		}
 
 		.sheet-skill-box .sheet-settings input[type="number"] {
@@ -850,9 +861,40 @@ textarea {
 			margin-bottom: 2px;
 		}
 
+		/***** Skills Row in Settings *****/
+			.sheet-skills-row {
+				display: inline-block;
+			}
+
+			.sheet-skills-row div {
+				display: inline-block;
+				margin-right: 5px;
+				vertical-align: top;
+				width: 69%;
+			}
+
+			.sheet-skills-row div:nth-of-type(2) {
+				width: 25%;
+			}
+
+			.sheet-skills-row label {
+				font-size: 0.8em;
+				font-weight: 700;
+				margin-bottom: -3px;
+			}
+
+			.sheet-skills-row input[type="text"] {
+				width: 100%;
+			}
+
+			.sheet-skills-row input[type="number"] {
+
+			}
+
 		/***** Skills Display *****/
 		.sheet-skill-box .sheet-name {
-			width: 90%;
+			min-height: 25px;
+			width: 72%;
 		}
 
 		/***** Skills repeating sections on toggles *****/
@@ -869,58 +911,56 @@ textarea {
 		}
 
 /***** Qualities *****/
-.sheet-qual-box h3:first-child {
+.sheet-quality h3:first-child {
 	margin-right: 35%;
 }
 
-.sheet-qual-box h3:last-child {
+.sheet-quality h3:last-child {
 	margin-left: 43%;
 }
 
 	/***** Qualities Repeating Section *****/
 
 	/***** Qualities Settings *****/
-	.sheet-qual-box .sheet-settings {
+	.sheet-quality .sheet-settings {
 		width: 100%;
 	}
 
-	.sheet-qual-box .sheet-settings div {
+	.sheet-quality .sheet-settings div {
 		display: inline-block;
 	}
 
-	.sheet-qual-box .sheet-settings input[type="text"] {
+	.sheet-quality .sheet-settings input[type="text"] {
 		width: 40%;
 		margin-right: 5px;
 	}
 
-	.sheet-qual-box select {
+	.sheet-quality select {
 		margin-left: 30px;
 	}
 
-	.sheet-qual-box textarea {
-		margin-top: 0px;
-	}
-
 	/***** Qualities Displays *****/
-	.sheet-qual-box .sheet-name {
+	.sheet-quality .sheet-name {
 		width: 100%;
+		word-break: break-word;
 	}
 
-	.sheet-qual-box .sheet-repeat-indent {
-		padding-left: 1.5rem;
+	.sheet-quality .sheet-repeat-indent {
+		padding-left: 1.5em;
 	}
 
-	.sheet-qual-box .sheet-name button  {
+	.sheet-quality .sheet-name button  {
 		font-weight: bolder;
 	}
 
-	.sheet-qual-box .sheet-notes {
+	.sheet-quality .sheet-notes {
 		font-style: italic;
 	}
 
 	/***** Display Flags used in Qualities... *****/
-	.sheet-qual-box .sheet-display-flag,
-	.sheet-lifestyle-box .sheet-display-flag {
+	.sheet-quality .sheet-display-flag,
+	.sheet-lifestyle .sheet-display-flag,
+	.sheet-contacts .sheet-display-flag {
 		opacity: 0;    
 	    position: absolute;
 	    top: 0px;
@@ -929,65 +969,195 @@ textarea {
 	    height: 100%;
 	}
 
-	.sheet-qual-box .sheet-display-flag:checked ~ .sheet-name .sheet-desc {
+	.sheet-quality .sheet-display-flag:checked ~ .sheet-name .sheet-desc {
 	    display: none;
 	}
 
 /***** Lifestyle for PC sheet *****/
-.sheet-lifestyle-box h3:nth-of-type(2) {
+.sheet-lifestyle h3:nth-of-type(2) {
 	margin-right: 3px;
 }
 
 	/***** Settings for Lifestyle *****/
-	.sheet-lifestyle-box .sheet-settings div {
+	.sheet-lifestyle .sheet-settings div {
 		display: inline-block;
 	}
 
-	.sheet-lifestyle-box input[type="number"] {
-		width: 40%;
+	.sheet-lifestyle input[type="number"] {
+		width: 39%;
 	}
 
-	.sheet-lifestyle-box input[type="text"] {
-		width: 80%;
+	.sheet-lifestyle input[type="text"] {
+		width: 79%;
 	}
 
-	.sheet-lifestyle-box textarea {
+	.sheet-lifestyle textarea {
 		min-height: 30px;
 		margin: 0px 0px 0px 0px;
 	}
 
 	/***** Displays for Lifestyle *****/
-	.sheet-lifestyle-box .sheet-display span {
+	.sheet-lifestyle .sheet-display span {
 		display: inline-block;
 		font-family: sans-serif;
 		width: 24%;
 	}
 
-	.sheet-lifestyle-box .sheet-row-long:nth-of-type(2) input[type="text"] {
+	.sheet-lifestyle .sheet-row-long:nth-of-type(2) input[type="text"] {
 		width: 40%;
 	}
 
-	.sheet-lifestyle-box .sheet-display-flag:checked ~ span:nth-of-type(1),
-	.sheet-lifestyle-box .sheet-display-flag ~ span:nth-of-type(1n+2) {
+	.sheet-lifestyle .sheet-display-flag:checked ~ span:nth-of-type(1),
+	.sheet-lifestyle .sheet-display-flag ~ span:nth-of-type(1n+2) {
 		display: none;
 	}
 
-	.sheet-lifestyle-box .sheet-display-flag:checked ~ span:nth-of-type(1n+2) {
+	.sheet-lifestyle .sheet-display-flag:checked ~ span:nth-of-type(1n+2) {
 		display: inherit;
 	}
 
 /***** Contact for PC sheet *****/
+.sheet-contacts h3 {
+	margin-right: 10px;
+	width: fit-content;
+}
+
+.sheet-contacts h3:nth-of-type(1) {
+	width: 50%;
+}
+
+.sheet-contacts h3:nth-of-type(3) {
+	margin-right: 20px;
+}
+
+	/***** Contacts Settings for PC sheet *****/
+	.sheet-contacts .sheet-settings div {
+		display: inline-block;
+	}
+
+	.sheet-contacts input[type="text"]:nth-of-type(1) {
+		margin-right: 5px;
+		width: 51%;
+	}
+
+	.sheet-contacts input[type="number"] {
+		margin-right: 12px;
+	}
+
+	.sheet-contacts input[type="text"]:nth-of-type(4) {
+		margin-left: -1px;
+		width: 22%;
+	}
+
+	/***** Contacts Displays for PC sheet *****/
+	.sheet-contacts .sheet-display {
+		display: inline-block;
+	}
+
+	.sheet-contacts .sheet-display span {
+		display: inline-block;
+		font-family: sans-serif;
+	}
+
+	.sheet-contacts .sheet-display span:nth-of-type(1) {
+		margin-right: -1px;
+		width: 51%;
+	}
+
+	.sheet-contacts .sheet-display span:nth-of-type(2) {
+		margin-right: 15px;
+	}
+
+	.sheet-contacts .sheet-display span:nth-of-type(2),
+	.sheet-contacts .sheet-display span:nth-of-type(3) {
+		width: 8%;
+		text-align: center;
+	}
+
+	.sheet-contacts .sheet-display span:nth-of-type(4) {
+		margin-left: 19px;
+		width: 22%;
+	}
+
+	.sheet-contacts .sheet-display .sheet-desc {
+		display: none;
+	}
+
+	.sheet-contacts .sheet-display .sheet-desc span {
+		width: 100%;
+	}
+
+	.sheet-contacts .sheet-display-flag:checked ~ .sheet-desc {
+		display: inline-block;
+		padding-left: 1em;
+		width: 100%;
+		word-break: break-word;
+	}
+
 
 /***** Weapons for PC sheet *****/
-.sheet-weapon-range {
+.sheet-weapon-range,
+.sheet-weapon-melee {
 	display: none;
+	width: 100%;
 }
 
-.sheet-weapon_toggle[value="range"] ~ .sheet-weapon-range,
-.sheet-weapon_toggle[value="melee"] ~ .sheet-weapon-melee  {
-	display: inherit;
+.sheet-weapon-toggle[value="range"] ~ .sheet-weapon-range,
+.sheet-weapon-toggle[value="melee"] ~ .sheet-weapon-melee  {
+	display: inline-block;
 }
 
+	/***** Weapon Radio Toggles for Switching Tabs*****/
+	.sheet-weapon-box input[type="radio"] {
+		left: 140px;
+		margin-right: 15px;
+		top: -20px;
+		width: 75px;
+	}
+
+	/***** Weapon Headers *****/
+	.sheet-weapon-box .sheet-medium-box {
+		margin-top: -17px;
+	}
+
+	.sheet-weapon-box h3 {
+		text-align: center;
+		width: 10%;
+	}
+
+	.sheet-weapon-box h3:nth-child(1) {
+		text-align: left;
+		width: 40%;
+	}
+
+	/***** Weapon Settings Inputs *****/
+	.sheet-weapon-box input[type="text"],
+	.sheet-weapon-box input[type="number"] {
+		text-align: center;
+		width: 9%;
+	}
+
+	.sheet-weapon-box input[type="text"]:nth-child(1) {
+		text-align: left;
+		width: 40%;
+	}
+
+	.sheet-weapon-range input[type="text"],
+	.sheet-weapon-melee input[type="text"] {
+		text-align: center;
+	}
+
+	/***** Weapon Display *****/
+	.sheet-weapon-box .sheet-display div {
+		display: inline-block;
+		margin-right: 7px;
+		text-align: center;
+		width: 8%;
+	}
+
+	.sheet-weapon-box .sheet-display div:first-child {
+		width: 40%;
+	}
 
 /***** Start of the NPC sheet *****/
 .sheet-npc {
@@ -998,9 +1168,25 @@ textarea {
 	width: 720px;
 }
 
+.sheet-npc button[type="roll"] {
+	color: #FCD116;
+	font-size: 14px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.sheet-npc button[type="roll"]:hover,
+.sheet-npc button[type="roll"]:focus {
+	color: #fff;
+}
+
+.sheet-npc .sheet-toggle-buttons button {
+	color: #fff;
+}
+
 .sheet-npc h1, .sheet-npc h2 {
 	color: #FCD116;
-	font-size: 1.5rem;
+	font-size: 1.5em;
 }
 
 .sheet-goon,
@@ -1016,19 +1202,17 @@ textarea {
 
 .sheet-npc label {
 	color: #fff;
-	font-size: 0.9rem;
+	font-size: 14px;
 }
 
 .sheet-npc textarea {
 	color: #fff;
+	margin-top: -35px;
 }
 
 .sheet-npc .sheet-display label {color: #FCD116;} 
 
-.sheet-npc .sheet-display .sheet-yButton {color: #FCD116;}
-
 .sheet-npc .sheet-display .sheet-attr-header button:hover,
-.sheet-npc .sheet-display .sheet-yButton:hover {color: #fff;} 
 
 .sheet-npc textarea {
 	background-color: #333;
@@ -1039,9 +1223,7 @@ textarea {
 	color: #FCD116;
 }
 
-.sheet-npc .sheet-display .sheet-attr-header button {color: #FCD116;}
-
-.sheet-npc hr {color: #FCD116;}
+.sheet-npc hr {color: #fff;}
 
 /***** Customize columns & rows *****/
 	.sheet-row {margin: 0px 0px 0px 0px;}
@@ -1065,6 +1247,8 @@ textarea {
 		margin-left: -80px;
 		width: 90px;
 	}
+
+
 
 /***** Toggles & the Gear icons *****/
 	.sheet-toggle input[type="checkbox"] + span {
@@ -1101,8 +1285,18 @@ textarea {
 		 color: #FCD116;
 	}
 
+	.sheet-skills button[type="roll"] {
+		color: #fff;
+	}
+
+	.sheet-skills button:hover,
+	.sheet-skills button:focus {
+		color: #FCD116;
+	}
+
+
 	.sheet-skill-col label {
-		font-size: 0.9rem;
+		font-size: 0.9em;
 	}
 
 	.sheet-skill-col span {
@@ -1174,8 +1368,9 @@ textarea {
 	input.sheet-settings-toggle:checked ~ div.sheet-settings {
 		background: none;
 		display: inherit;
-		font-size: 0.75rem;
+		font-size: 1em;
 		text-align: left;
+		width: 100%;
 	}
 
 /***** Customize Stats section *****/
@@ -1183,11 +1378,20 @@ textarea {
 
 /***** Customize Attribute Section *****/
 	.sheet-attribute {
-		border-bottom: 1px solid #FCD116;
-		border-top: 1px solid #FCD116;
-		margin: 0px 0px 10px 0px;
+		border-bottom: 1px solid #fff;
+		border-top: 1px solid #fff;
+		margin: 10px 0px;
 		text-indent: center;
 		width: 100%;
+	}
+
+	.sheet-attribute button {
+		color: #FCD116;
+	}
+
+	.sheet-attribute button:hover,
+	.sheet-attribute button:focus {
+		color: #fff;
 	}
 
 	.sheet-attr-header {
@@ -1211,7 +1415,7 @@ textarea {
 	input.sheet-con-reset + label {float: left;}
 
 /***** Customizations to skills section *****/
-	.sheet-skill-row {margin: 5px 0px 0px 0px;}
+	.sheet-npc .sheet-skill-row {margin: 5px 0px 0px 0px;}
 
 	.sheet-skill-col {
 		display: inline-block;
@@ -1237,7 +1441,7 @@ textarea {
 	}
 
 	.sheet-stats div.sheet-settings {
-		font-size: 0.8rem !important;
+		font-size: 0.8em !important;
 		margin: -15px 0px 0px 0px;
 		width: 100%;
 	}
@@ -1257,14 +1461,14 @@ textarea {
 
 	.sheet-settings .sheet-textrow label {margin-bottom: 36px;}
 
-	.sheet-quality div.sheet-display,
-	.sheet-weakness div.sheet-display {text-indent: 78px;}
+	.sheet-npc .sheet-quality div.sheet-display,
+	.sheet-npc .sheet-weakness div.sheet-display {text-indent: 78px;}
 
 	.sheet-augmentation div.sheet-display {text-indent: 125px;}
 
 	.sheet-power div.sheet-display {text-indent: 65px;}
 
-	.sheet-gear div.sheet-display {text-indent: 45px;}
+	.sheet-npc .sheet-gear div.sheet-display {text-indent: 45px;}
 
 /**** Customize all the cogs Toggle Settings ****/
 	.sheet-stats input.sheet-settings-toggle + span,
@@ -1275,11 +1479,12 @@ textarea {
 
 	.sheet-stats input.sheet-settings-toggle,
 	.sheet-stats input.sheet-settings-toggle + span {
-		left: 97%;
-		top: -25px;
+		
 	}
 
-	.sheet-stats input.sheet-settings-toggle + span {left: 92%;}
+	.sheet-stats input.sheet-settings-toggle + span {
+		left: -4%;
+	}
 
 	.sheet-textrow input.sheet-settings-toggle {
 		left: 775px;
@@ -1297,7 +1502,7 @@ textarea {
 	}
 
 	.sheet-repeating input.sheet-settings-toggle + span {
-		font-size: 0.8rem;
+		font-size: 0.8em;
 		left: -9px;
 		top: 3px;
 	}
@@ -1312,7 +1517,9 @@ textarea {
 		display:inline-block;
 	}
 
-	.sheet-repeating button.sheet-display {text-align: left;} 
+	.sheet-repeating button.sheet-display {
+		text-align: left;
+	} 
 
 	.sheet-repeating input[type="checkbox"],
 	.sheet-repeating input[type="checkbox"] + span {
@@ -1320,9 +1527,19 @@ textarea {
 	}
 
 	.sheet-repeat-indent {
-		padding-left: 2.5rem; 
-		text-indent: -1.5rem;
+		padding-left: 2.5em; 
+		text-indent: -1.5em;
 	}
+
+	.sheet-npc .sheet-repeat-indent button[type="roll"] {
+		color: #fff;
+	}
+
+	.sheet-repeat-indent button[type="roll"]:hover,
+	.sheet-repeat-indent button[type="roll"]:focus  {
+		color: #FCD116;
+	}
+
 
 	.sheet-repeating .sheet-display {
 		display: inline-flex;
@@ -1346,14 +1563,14 @@ textarea {
 
 	.sheet-repeat-row h4 {
 		color: #fff;
-		font-size: 0.6rem;
+		font-size: 0.6em;
 		font-variant: small-caps;
 		text-align: center;
 		text-decoration: underline;
 	}
 
 	.sheet-repeat-row span {
-		font-size: 0.8rem;
+		font-size: 0.8em;
 	}
 
 /**** Weapons Customize ****/
@@ -1424,7 +1641,7 @@ textarea {
 
 	.sheet-matrix h2 {
 		display: inline-block;
-		font-size: 1rem;
+		font-size: 1em;
 		width: 16.5%;
 	}
 
@@ -1568,8 +1785,8 @@ textarea {
 
 		.sheet-matrix .sheet-repeat-indent,
 		.sheet-host .sheet-repeat-indent {
-			padding-left: 3rem;
-			text-indent: -1.5rem;
+			padding-left: 3em;
+			text-indent: -1.5em;
 		}
 
 		input.sheet-program-toggle {
@@ -1633,7 +1850,7 @@ textarea {
 	.sheet-character-type[value="resonance"] ~ .sheet-resonance,
 	.sheet-character-type[value="resonance"] ~ .sheet-resonance + .sheet-resonance {display: inline-block;} 
 
-/**** Removes the arrows for increase numbers ****/
+/**** emoves the arrows for increase numbers ****/
 	input::-webkit-outer-spin-button,
 	input::-webkit-inner-spin-button {
 	  -webkit-appearance: none;
@@ -1647,7 +1864,7 @@ textarea {
 	.sheet-armor-buttons span {
 		display: inline-block;
 		font-family: "pictos";
-		font-size: 1rem;
+		font-size: 1em;
 		padding: 0px;
 		position: relative;
 	}
@@ -1657,7 +1874,7 @@ textarea {
 	.sheet-roll-toggles span {
 		display: inline;
 		font-family: "pictos";
-		font-size: 1.5rem;
+		font-size: 1.5em;
 		margin-bottom: 5px;
 		position: relative;
 	}
@@ -1679,7 +1896,7 @@ textarea {
 
 	.sheet-type-toggles {
 		display: inline-block;
-		margin-left: 55%;
+		margin-left: 45%;
 	}
 
 	.sheet-type-toggles input[type="radio"] {left: 23px;}
@@ -1700,7 +1917,7 @@ textarea {
 
 	span.sheet-wound-line {
 		color: #000;
-		font-size: 1rem;
+		font-size: 1em;
 		left: -7%;
 		top: -1px;
 	}
@@ -1708,7 +1925,7 @@ textarea {
 /**** Footer ****/
 	.sheet-footer {
 		border: none;
-		font-size: 0.55rem;
+		font-size: 0.55em;
 		line-height: 15px;
 		margin-top: 15px;
 		text-align: left;
