@@ -4,7 +4,8 @@
 <div class="tabs">
 	<input type="checkbox" name="attr_tab" value="core" title="Core sheet" checked="checked" /><span>Core</span>
 	<input type="checkbox" name="attr_tab" value="gear" title="Gear"/><span>Gear</span>
-	<input type="checkbox" name="attr_tab" value="special" title="Special"/><span>Special</span>
+	<input type="checkbox" name="attr_tab" value="social" title="social"/><span>Social</span>
+	<input type="checkbox" name="attr_tab" value="optional" title="Optional"/><span>Optional</span>
 	<input type="checkbox" name="attr_tab" value="options" title="Sheet Settings & Notes"/><span>y</span>
 </div>
 
@@ -17,9 +18,8 @@
 		<h1>Player</h1><input type="text" name="attr_player_name" placeholder="Player name" /><br />
 		<h1>Notes</h1><input type="text" name="attr_player_notes" placeholder="Notes" />
 	</div>
-	<!-- ~~~~~~~~ Start of Personal Data & Core Combat Info row  ~~~~~~~~ -->
-	<div class="core pc-row"><!-- ~~~~~~~~ Start of Personal Data & Core Combat Info row  ~~~~~~~~ -->
-		<div class="col">
+	<div class="static pc-col">
+		<div class="pc-row">
 			<div class="header"><div class="triangle"></div><h1>Personal Data</h1></div>
 			<div class="border-box">
 				<div class="pc-box small-box">
@@ -49,37 +49,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="col">
-			<div class="header right-header"><h1>Core Combat Info</h1><div class="right-tri"></div></div>
-			<div class="border-box">
-				<div class="pc-box small-box">
-					<div class="row-long cc-arm">
-						<h2>Primary Armor</h2><input type="text" name="attr_primary_armor" placeholder="Armor Jacker" />
-						<h3>Rating</h3><input type="number" name="attr_primary_armor_rating" placeholder="12" />
-					</div>
-					<div class="row-long cc-ran"><h2>Primary Range Weapon</h2><input type="text" name="attr_primary_range_weapon" placeholder="Ares Predator V" /></div>
-					<div class="cc-row">
-						<h3>Dam</h3><input type="text" name="attr_primary_range_weapon_dam" placeholder="8P" />
-						<h3>ACC</h3><input type="number" name="attr_primary_range_weapon_acc" placeholder="5" />
-						<h3>AP</h3><input type="number" name="attr_primary_range_weapon_ap" placeholder="-1" />
-						<h3>Mode</h3><input type="text" name="attr_primary_range_weapon_mode" placeholder="SA" />
-						<h3>RC</h3><input type="number" name="attr_primary_range_weapon_rc" placeholder="0" />
-						<h3>Ammo</h3><input type="number" name="attr_primary_range_weapon_ammo" placeholder="15" />
-					</div>
-					<div class="row-long cc-mel"><h2>Primary Melee Weapon</h2><input type="text" name="attr_primary_melee_weapon" placeholder="Katana" /></div>
-					<div class="cc-row">
-						<h3>Reach</h3><input type="number" name="attr_primary_range_weapon_reach" placeholder="1" />
-						<h3>Dam</h3><input type="text" name="attr_primary_range_weapon_dam" placeholder="3P" />
-						<h3>ACC</h3><input type="number" name="attr_primary_range_weapon_acc" placeholder="7" />
-						<h3>AP</h3><input type="number" name="attr_primary_range_weapon_ap" placeholder="-3" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</div><!-- ~~~~~~~~ End of Personal Data & Core Combat Info row  ~~~~~~~~ -->
-	<!-- ~~~~~~~~ Start of Attributes & Condition Monitor Rows  ~~~~~~~~ -->
-	<div class="core pc-row">
-		<div class="col">
+		<!-- ~~~~~~~~ Start of Attributes Row  ~~~~~~~~ -->
+		<div class="pc-row">
 			<div class="header"><div class="triangle"></div><h1>Attributes</h1></div>
 			<div class="border-box">
 				<div class="pc-box medium-box attr-box">
@@ -231,121 +202,10 @@
 							<input type="radio" name="attr_edge_hex" value="8" /><span class="hexagon"></span>
 					</div>
 				</div>
-			</div><!-- ~~~~~~~~ End of PC Attributes~~~~~~~~ -->
-		</div>
-		<div class="col">
-			<div class="header right-header"><h1>Condition Monitor</h1><div class="right-tri"></div></div>
-			<div class="border-box">
-				<div class="pc-box medium-box condition-box">
-					<input type="checkbox" class="settings-toggle" name="attr_flag_condition" checked="checked" /><span>y</span>
-					<div class="settings">
-						<label>Condition Monitor (P/S): </label>
-						<input type="hidden" name="attr_physical" value="10" />
-						<input type="hidden" name="attr_stun" value="10" />
-						<input type="hidden" name="attr_physical_max" min="0" value="10" />
-						<input type="hidden" name="attr_stun_max" min="0" value="10" />
-						<input type="number" name="attr_physical_bonus" value="" placeholder="bonus" /><span> / </span>
-						<input type="number" name="attr_stun_bonus" value="" placeholder="bonus" /><br />
-						<input type="hidden" name="attr_overflow" value="3" />
-						<label>Overflow</label><input type="number" name="attr_overflow_bonus" value="" placeholder="bonus" /><br />
-						<label>Pain Tolerance</label><input type="number" name="attr_pain_tolerance" value="0" placeholder="#" />
-						<div class="con-footer">
-							<span>Low Pain Tolernace adds a -1 and High Pain Tolerance adds a +1 per rank.</span>
-						</div>
-					</div>
-					<div class="display">
-						<div class="con-track">
-							<div class="squares">
-								<input type="radio" name="attr_physical_damage" value="0" checked="checked" />
-								<h2>Physical Damage Track</h2>
-								<input type="hidden" name="attr_physical_box_1_enabled" value="true"/>
-								<input type="radio" name="attr_physical_damage" value="1" /><span></span>
-								<input type="hidden" name="attr_physical_box_2_enabled" value="true"/>
-								<input type="radio" name="attr_physical_damage" value="2" /><span></span>
-								<input type="hidden" name="attr_physical_box_3_enabled" value="true"/>
-								<input type="radio" name="attr_physical_damage" value="3" /><span></span><div>-1</div>
-								<input type="hidden" name="attr_physical_box_4_enabled" value="true"/>
-								<input type="radio" name="attr_physical_damage" value="4" /><span></span>
-								<input type="hidden" name="attr_physical_box_5_enabled" value="true"/>
-								<input type="radio" name="attr_physical_damage" value="5" /><span></span>
-								<input type="hidden" name="attr_physical_box_6_enabled" value="true"/>
-								<input type="radio" name="attr_physical_damage" value="6" /><span></span><div>-2</div>
-								<input type="hidden" name="attr_physical_box_7_enabled" value="true"/>
-								<input type="radio" name="attr_physical_damage" value="7" /><span></span>
-								<input type="hidden" name="attr_physical_box_8_enabled" value="true"/>
-								<input type="radio" name="attr_physical_damage" value="8" /><span></span>
-								<input type="hidden" name="attr_physical_box_9_enabled" value="false"/>
-								<input type="radio" name="attr_physical_damage" value="9" /><span></span><div>-3</div>
-								<input type="hidden" name="attr_physical_box_10_enabled" value="false"/>
-								<input type="radio" name="attr_physical_damage" value="10" /><span></span>
-								<input type="hidden" name="attr_physical_box_11_enabled" value="false"/>
-								<input type="radio" name="attr_physical_damage" value="11" /><span></span>
-								<input type="hidden" name="attr_physical_box_12_enabled" value="false"/>
-								<input type="radio" name="attr_physical_damage" value="12" /><span></span><div>-4</div>
-								<input type="hidden" name="attr_physical_box_13_enabled" value="false"/>
-								<input type="radio" name="attr_physical_damage" value="13" /><span></span>
-								<input type="hidden" name="attr_physical_box_14_enabled" value="false"/>
-								<input type="radio" name="attr_physical_damage" value="14" /><span></span>
-								<input type="hidden" name="attr_physical_box_15_enabled" value="false"/>
-								<input type="radio" name="attr_physical_damage" value="15" /><span></span><div>-5</div>
-								<input type="hidden" name="attr_physical_box_16_enabled" value="false"/>
-								<input type="radio" name="attr_physical_damage" value="16" /><span></span>
-								<input type="hidden" name="attr_physical_box_17_enabled" value="false"/>
-								<input type="radio" name="attr_physical_damage" value="17" /><span></span>
-								<input type="hidden" name="attr_physical_box_18_enabled" value="false"/>
-								<input type="radio" name="attr_physical_damage" value="18" /><span></span><div>-6</div>
-							</div>
-							<div class="con-footer">
-								<label>Overflow</label><div class="attr-und"><span name="attr_overflow"></span></div>
-							</div>
-						</div>
-						<div class="con-track">
-							<div class="squares">
-								<input type="radio" name="attr_stun_damage" value="0" checked="checked" />
-								<h2>Stun Damage Track</h2>
-								<input type="hidden" name="attr_stun_box_1_enabled" value="true"/>
-								<input type="radio" name="attr_stun_damage" value="1" /><span></span>
-								<input type="hidden" name="attr_stun_box_2_enabled" value="true"/>
-								<input type="radio" name="attr_stun_damage" value="2" /><span></span>
-								<input type="hidden" name="attr_stun_box_3_enabled" value="true"/>
-								<input type="radio" name="attr_stun_damage" value="3" /><span></span><div>-1</div>
-								<input type="hidden" name="attr_stun_box_4_enabled" value="true"/>
-								<input type="radio" name="attr_stun_damage" value="4" /><span></span>
-								<input type="hidden" name="attr_stun_box_5_enabled" value="true"/>
-								<input type="radio" name="attr_stun_damage" value="5" /><span></span>
-								<input type="hidden" name="attr_stun_box_6_enabled" value="true"/>
-								<input type="radio" name="attr_stun_damage" value="6" /><span></span><div>-2</div>
-								<input type="hidden" name="attr_stun_box_7_enabled" value="true"/>
-								<input type="radio" name="attr_stun_damage" value="7" /><span></span>
-								<input type="hidden" name="attr_stun_box_8_enabled" value="true"/>
-								<input type="radio" name="attr_stun_damage" value="8" /><span></span>
-								<input type="hidden" name="attr_stun_box_9_enabled" value="false"/>
-								<input type="radio" name="attr_stun_damage" value="9" /><span></span><div>-3</div>
-								<input type="hidden" name="attr_stun_box_10_enabled" value="false"/>
-								<input type="radio" name="attr_stun_damage" value="10" /><span></span>
-								<input type="hidden" name="attr_stun_box_11_enabled" value="false"/>
-								<input type="radio" name="attr_stun_damage" value="11" /><span></span>
-								<input type="hidden" name="attr_stun_box_12_enabled" value="false"/>
-								<input type="radio" name="attr_stun_damage" value="12" /><span></span><div>-4</div>
-								<input type="hidden" name="attr_stun_box_13_enabled" value="false"/>
-								<input type="radio" name="attr_stun_damage" value="13" /><span></span>
-								<input type="hidden" name="attr_stun_box_14_enabled" value="false"/>
-								<input type="radio" name="attr_stun_damage" value="14" /><span></span>
-								<input type="hidden" name="attr_stun_box_15_enabled" value="false"/>
-								<input type="radio" name="attr_stun_damage" value="15" /><span></span><div>-5</div>
-							</div>
-							<div class="con-footer">
-								<span>For every 3 boxes of damage on any one damage track, the character takes a -1 Dice Pool modifier on tests; these modifiers are cumulative within and across damage tracks.</span>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
-		</div><!-- ~~~~~~~~ End of Condition Monitor ~~~~~~~~ -->
-	</div><!-- ~~~~~~~~ End of Attributes & Condition Monitor Rows  ~~~~~~~~ -->
-	<!-- ~~~~~~~~ Start of Skill & Quality Row  ~~~~~~~~ -->
-	<div class="core pc-row">
-		<div class="col">
+		</div><!-- ~~~~~~~~ End of PC Attributes~~~~~~~~ -->
+		<!-- ~~~~~~~~ Start of Skills Row  ~~~~~~~~ -->
+		<div class="pc-row">
 			<div class="header">
 				<div class="header htab">
 					<div class="triangle"></div><h1>Active</h1><div class="right-tri"></div>
@@ -459,8 +319,149 @@
 					</div>
 				</div>
 			</div>
+		</div><!-- ~~~~~~~~ End of PC Skills ~~~~~~~~ -->
+	</div><!-- ~~~~~~~~ End of left column with the core data  ~~~~~~~~ -->
+	<!-- ~~~~~~~~Start of right column that contains core info ~~~~~~~~ -->
+	<div class="core pc-col">
+		<div class="pc-row">
+			<div class="header right-header"><h1>Core Combat Info</h1><div class="right-tri"></div></div>
+			<div class="border-box">
+				<div class="pc-box small-box">
+					<div class="row-long cc-arm">
+						<h2>Primary Armor</h2><input type="text" name="attr_primary_armor" placeholder="Armor Jacker" />
+						<h3>Rating</h3><input type="number" name="attr_primary_armor_rating" placeholder="12" />
+					</div>
+					<div class="row-long cc-ran"><h2>Primary Range Weapon</h2><input type="text" name="attr_primary_range_weapon" placeholder="Ares Predator V" /></div>
+					<div class="cc-row">
+						<h3>Dam</h3><input type="text" name="attr_primary_range_weapon_dam" placeholder="8P" />
+						<h3>ACC</h3><input type="number" name="attr_primary_range_weapon_acc" placeholder="5" />
+						<h3>AP</h3><input type="number" name="attr_primary_range_weapon_ap" placeholder="-1" />
+						<h3>Mode</h3><input type="text" name="attr_primary_range_weapon_mode" placeholder="SA" />
+						<h3>RC</h3><input type="number" name="attr_primary_range_weapon_rc" placeholder="0" />
+						<h3>Ammo</h3><input type="number" name="attr_primary_range_weapon_ammo" placeholder="15" />
+					</div>
+					<div class="row-long cc-mel"><h2>Primary Melee Weapon</h2><input type="text" name="attr_primary_melee_weapon" placeholder="Katana" /></div>
+					<div class="cc-row">
+						<h3>Reach</h3><input type="number" name="attr_primary_range_weapon_reach" placeholder="1" />
+						<h3>Dam</h3><input type="text" name="attr_primary_range_weapon_dam" placeholder="3P" />
+						<h3>ACC</h3><input type="number" name="attr_primary_range_weapon_acc" placeholder="7" />
+						<h3>AP</h3><input type="number" name="attr_primary_range_weapon_ap" placeholder="-3" />
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="col">
+		<!-- ~~~~~~~~ Start Condition Monitor Row  ~~~~~~~~ -->
+		<div class="pc-row">
+			<div class="header right-header"><h1>Condition Monitor</h1><div class="right-tri"></div></div>
+			<div class="border-box">
+				<div class="pc-box medium-box condition-box">
+					<input type="checkbox" class="settings-toggle" name="attr_flag_condition" checked="checked" /><span>y</span>
+					<div class="settings">
+						<label>Condition Monitor (P/S): </label>
+						<input type="hidden" name="attr_physical" value="10" />
+						<input type="hidden" name="attr_stun" value="10" />
+						<input type="hidden" name="attr_physical_max" min="0" value="10" />
+						<input type="hidden" name="attr_stun_max" min="0" value="10" />
+						<input type="number" name="attr_physical_bonus" value="" placeholder="bonus" /><span> / </span>
+						<input type="number" name="attr_stun_bonus" value="" placeholder="bonus" /><br />
+						<input type="hidden" name="attr_overflow" value="3" />
+						<label>Overflow</label><input type="number" name="attr_overflow_bonus" value="" placeholder="bonus" /><br />
+						<label>Pain Tolerance</label><input type="number" name="attr_pain_tolerance" value="0" placeholder="#" />
+						<div class="con-footer">
+							<span>Low Pain Tolernace adds a -1 and High Pain Tolerance adds a +1 per rank.</span>
+						</div>
+					</div>
+					<div class="display">
+						<div class="con-track">
+							<div class="squares">
+								<input type="radio" name="attr_physical_damage" value="0" checked="checked" />
+								<h2>Physical Damage Track</h2>
+								<input type="hidden" name="attr_physical_box_1_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="1" /><span></span>
+								<input type="hidden" name="attr_physical_box_2_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="2" /><span></span>
+								<input type="hidden" name="attr_physical_box_3_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="3" /><span></span><div>-1</div>
+								<input type="hidden" name="attr_physical_box_4_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="4" /><span></span>
+								<input type="hidden" name="attr_physical_box_5_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="5" /><span></span>
+								<input type="hidden" name="attr_physical_box_6_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="6" /><span></span><div>-2</div>
+								<input type="hidden" name="attr_physical_box_7_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="7" /><span></span>
+								<input type="hidden" name="attr_physical_box_8_enabled" value="true"/>
+								<input type="radio" name="attr_physical_damage" value="8" /><span></span>
+								<input type="hidden" name="attr_physical_box_9_enabled" value="false"/>
+								<input type="radio" name="attr_physical_damage" value="9" /><span></span><div>-3</div>
+								<input type="hidden" name="attr_physical_box_10_enabled" value="false"/>
+								<input type="radio" name="attr_physical_damage" value="10" /><span></span>
+								<input type="hidden" name="attr_physical_box_11_enabled" value="false"/>
+								<input type="radio" name="attr_physical_damage" value="11" /><span></span>
+								<input type="hidden" name="attr_physical_box_12_enabled" value="false"/>
+								<input type="radio" name="attr_physical_damage" value="12" /><span></span><div>-4</div>
+								<input type="hidden" name="attr_physical_box_13_enabled" value="false"/>
+								<input type="radio" name="attr_physical_damage" value="13" /><span></span>
+								<input type="hidden" name="attr_physical_box_14_enabled" value="false"/>
+								<input type="radio" name="attr_physical_damage" value="14" /><span></span>
+								<input type="hidden" name="attr_physical_box_15_enabled" value="false"/>
+								<input type="radio" name="attr_physical_damage" value="15" /><span></span><div>-5</div>
+								<input type="hidden" name="attr_physical_box_16_enabled" value="false"/>
+								<input type="radio" name="attr_physical_damage" value="16" /><span></span>
+								<input type="hidden" name="attr_physical_box_17_enabled" value="false"/>
+								<input type="radio" name="attr_physical_damage" value="17" /><span></span>
+								<input type="hidden" name="attr_physical_box_18_enabled" value="false"/>
+								<input type="radio" name="attr_physical_damage" value="18" /><span></span><div>-6</div>
+							</div>
+							<div class="con-footer">
+								<label>Overflow</label><div class="attr-und"><span name="attr_overflow"></span></div>
+							</div>
+						</div>
+						<div class="con-track">
+							<div class="squares">
+								<input type="radio" name="attr_stun_damage" value="0" checked="checked" />
+								<h2>Stun Damage Track</h2>
+								<input type="hidden" name="attr_stun_box_1_enabled" value="true"/>
+								<input type="radio" name="attr_stun_damage" value="1" /><span></span>
+								<input type="hidden" name="attr_stun_box_2_enabled" value="true"/>
+								<input type="radio" name="attr_stun_damage" value="2" /><span></span>
+								<input type="hidden" name="attr_stun_box_3_enabled" value="true"/>
+								<input type="radio" name="attr_stun_damage" value="3" /><span></span><div>-1</div>
+								<input type="hidden" name="attr_stun_box_4_enabled" value="true"/>
+								<input type="radio" name="attr_stun_damage" value="4" /><span></span>
+								<input type="hidden" name="attr_stun_box_5_enabled" value="true"/>
+								<input type="radio" name="attr_stun_damage" value="5" /><span></span>
+								<input type="hidden" name="attr_stun_box_6_enabled" value="true"/>
+								<input type="radio" name="attr_stun_damage" value="6" /><span></span><div>-2</div>
+								<input type="hidden" name="attr_stun_box_7_enabled" value="true"/>
+								<input type="radio" name="attr_stun_damage" value="7" /><span></span>
+								<input type="hidden" name="attr_stun_box_8_enabled" value="true"/>
+								<input type="radio" name="attr_stun_damage" value="8" /><span></span>
+								<input type="hidden" name="attr_stun_box_9_enabled" value="false"/>
+								<input type="radio" name="attr_stun_damage" value="9" /><span></span><div>-3</div>
+								<input type="hidden" name="attr_stun_box_10_enabled" value="false"/>
+								<input type="radio" name="attr_stun_damage" value="10" /><span></span>
+								<input type="hidden" name="attr_stun_box_11_enabled" value="false"/>
+								<input type="radio" name="attr_stun_damage" value="11" /><span></span>
+								<input type="hidden" name="attr_stun_box_12_enabled" value="false"/>
+								<input type="radio" name="attr_stun_damage" value="12" /><span></span><div>-4</div>
+								<input type="hidden" name="attr_stun_box_13_enabled" value="false"/>
+								<input type="radio" name="attr_stun_damage" value="13" /><span></span>
+								<input type="hidden" name="attr_stun_box_14_enabled" value="false"/>
+								<input type="radio" name="attr_stun_damage" value="14" /><span></span>
+								<input type="hidden" name="attr_stun_box_15_enabled" value="false"/>
+								<input type="radio" name="attr_stun_damage" value="15" /><span></span><div>-5</div>
+							</div>
+							<div class="con-footer">
+								<span>For every 3 boxes of damage on any one damage track, the character takes a -1 Dice Pool modifier on tests; these modifiers are cumulative within and across damage tracks.</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- ~~~~~~~~ End of Condition Monitor ~~~~~~~~ -->
+		<!-- ~~~~~~~~ Start Quality Row  ~~~~~~~~ -->
+		<div class="pc-row">
 			<div class="header right-header"><h1>Qualities</h1><div class="right-tri"></div></div>
 			<div class="border-box repeat-box quality">
 				<div class="pc-box medium-box">
@@ -493,11 +494,12 @@
 					</fieldset>
 				</div>
 			</div>
-		</div>
-	</div><!-- ~~~~~~~~ End of Skill & Quality Row  ~~~~~~~~ -->
-	<div class="core pc-row"><!-- ~~~~~~~~ Start of IDs/Lifestyle & Contacts  ~~~~~~~~ -->
-		<div class="col">
-			<div class="header"><div class="triangle"></div><h1>IDs/Lifestyles/Currency</h1></div>
+		</div><!-- ~~~~~~~~ End of Quality row ~~~~~~~~ -->
+	</div><!-- ~~~~~~~~ End of right column that contains core info ~~~~~~~~ -->
+	<div class="social pc-col">
+		<!-- ~~~~~~~~ Start of Lifestyles Row  ~~~~~~~~ -->
+		<div class="pc-row">
+			<div class="header right-header"><h1>IDs/Lifestyles/Currency</h1><div class="right-tri"></div></div>
 			<div class="border-box repeat-box lifestyle">
 				<div class="pc-box small-box">
 					<div class="row-long">
@@ -531,8 +533,9 @@
 					</fieldset>
 				</div>
 			</div>
-		</div>
-		<div class="col">
+		</div><!-- ~~~~~~~~ End of Lifestyle Row ~~~~~~~~ -->
+		<!-- ~~~~~~~~ Start Contacts Row  ~~~~~~~~ -->
+		<div class="pc-row">
 			<div class="header right-header"><h1>Contacts</h1><div class="right-tri"></div></div>
 			<div class="border-box repeat-box contacts">
 				<div class="pc-box small-box">
@@ -551,7 +554,7 @@
 						</div>
 						<div class="display">
 							<input class="display-flag" type="checkbox" name="attr_display_flag" />
-							<b><span name="attr_display"></span></b>
+							<span name="attr_display"></span>
 							<span name="attr_loyalty"></span>
 							<span name="attr_connection"></span>
 							<span name="attr_favors"></span>
@@ -560,12 +563,13 @@
 					</fieldset>
 				</div>
 			</div>
-		</div>
-	</div><!-- ~~~~~~~~ End of IDs/Lifestyle & Contacts  ~~~~~~~~ -->
+		</div><!-- ~~~~~~~~ End of Contacts row ~~~~~~~~ -->
+	</div>
 	<!-- ~~~~~~~~ Start of the Gear page  ~~~~~~~~ -->
-	<div class="gear pc-row">
+	<div class="gear pc-col">
 		<!-- ~~~~~~~~ Start of the Weapon Section  ~~~~~~~~ -->
-		<div class="col">
+		<div class="pc-row">
+			<div class="header right-header"><h1>Weapons</h1><div class="right-tri"></div></div>
 			<div class="header">
 				<div class="header htab">
 					<div class="triangle"></div><h1>Ranged</h1><div class="right-tri"></div>
@@ -573,7 +577,6 @@
 				<div class="header htab">
 					<div class="triangle"></div><h1>Melee</h1><div class="right-tri"></div>
 				</div>
-				<div class="triangle"></div><h1>Weapons</h1>
 			</div>
 			<div class="border-box repeat-box weapon-box">
 				<input class="weapon-toggle" type="radio" name="attr_weapon_type_toggle" value="range" />
@@ -608,6 +611,7 @@
 								<div><span name="attr_recoil"></span></div>
 								<div><span name="attr_ammo"></span></div>
 							</div>
+							<input type="checkbox" class="primary-flag" name="attr_primary_range_flag" checked="checked" /><span>S</span>
 						</fieldset>
 					</div>
 					<div class="weapon-melee row-long">
@@ -617,43 +621,222 @@
 						<fieldset class="repeating_melee">
 							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 							<div class="settings">
-								<input type="text" name="attr_weapon" placeholder="Katana" />
-								<input type="number" name="attr_reach" placeholder="1" />
-								<input type="text" name="attr_damage" placeholder="6P" />
-								<input type="number" name="attr_acc" placeholder="-7" />
-								<input type="number" name="attr_ap" placeholder="-3" />
-							</div>
-							<div class="display">
 								<div>
-									<div><button type="roll" ><span name="attr_weapon"></span></button></div>
-									<div><span name="attr_reach"></span></div>
-									<div><span name="attr_damage"></span></div>
-									<div><span name="attr_acc"></span></div>
-									<div><span name="attr_ap"></span></div>
+									<input type="text" name="attr_weapon" placeholder="Katana" />
+									<input type="number" name="attr_reach" placeholder="1" />
+									<input type="text" name="attr_damage" placeholder="6P" />
+									<input type="number" name="attr_acc" placeholder="-7" />
+									<input type="number" name="attr_ap" placeholder="-3" />
+									<h3>Notes</h3>
+									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 								</div>
 							</div>
+							<div class="display">
+								<div><button type="roll"><span name="attr_weapon"></span></button></div>
+								<div><span name="attr_reach"></span></div>
+								<div><span name="attr_damage"></span></div>
+								<div><span name="attr_acc"></span></div>
+								<div><span name="attr_ap"></span></div>
+							</div>
+							<input type="checkbox" class="primary-flag" name="attr_primary_melee_flag" checked="checked" /><span>S</span>
 						</fieldset>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col">
+		<div class="pc-row">
+			<div class="header right-header"><h1>Armor</h1><div class="right-tri"></div></div>
+			<div class="border-box repeat-box armor-box">
+				<div class="pc-box medium-box">
+					<h3>Armor</h3><h3>Rating</h3><h3>Acid</h3><h3>Cold</h3><h3>Elec.</h3><h3>Fire</h3><h3>Radi.</h3>
+					<fieldset class="repeating_armor">
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+						<div class="settings">
+							<div>
+								<input type="text" name="attr_armor" placeholder="Armor Jacket" />
+								<input type="number" name="attr_armor_value" placeholder="12" />
+								<input type="number" name="attr_acid_bonus" placeholder="+5" />
+								<input type="number" name="attr_cold_bonus" placeholder="0" />
+								<input type="number" name="attr_electricity_bonus" placeholder="+5" />
+								<input type="number" name="attr_fire_bonus" placeholder="0" />
+								<input type="number" name="attr_radiation_bonus" placeholder="0" />
+								<h3>Notes</h3>
+								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+							</div>
+						</div>
+						<input type="hidden" name="attr_acid_protection" value="0" />
+						<input type="hidden" name="attr_cold_protection" value="0" />
+						<input type="hidden" name="attr_electricity_protection" value="0" />
+						<input type="hidden" name="attr_fire_protection" value="0" />
+						<input type="hidden" name="attr_radiation_protection" value="0" />
+						<div class="display">
+							<div><span name="attr_armor"></span></div>
+							<div><button type="roll"><span name="attr_armor_value"></span></button></div>
+							<div><button type="roll"><span name="attr_acid_protection"></span></button></div>
+							<div><button type="roll"><span name="attr_cold_protection"></span></button></div>
+							<div><button type="roll"><span name="attr_electricity_protection"></button></span></div>
+							<div><button type="roll"><span name="attr_fire_protection"></span></button></div>
+							<div><button type="roll"><span name="attr_radiation_protection"></button></span></div>
+						</div>
+						<input type="checkbox" class="primary-flag" name="attr_primary_armor_flag" checked="checked" /><span>S</span>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		<div class="pc-row">
+			<div class="header right-header"><h1>Gear</h1><div class="right-tri"></div></div>
+			<div class="border-box repeat-box item-box">
+				<div class="pc-box medium-box">
+					<h3>Item</h3><h3>Rating</h3>
+					<fieldset class="repeating_items">
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+						<div class="settings">
+							<div>
+								<input type="text" name="attr_item" placeholder="Item name" />
+								<input type="number" name="attr_rating" placeholder="#" />
+								<h3>Notes</h3>
+								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+							</div>
+						</div>
+						<div class="display">
+							<input class="display-flag" type="checkbox" name="attr_display_flag" />
+							<div><span name="attr_item"></span></div>
+							<div><span name="attr_rating"></span></div>
+							<div class="repeat-indent">
+								<div class="desc"><span name="attr_notes"></span></div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="optional pc-col">
+		<div class="pc-row">
+			<div class="header right-header"><h1>Augmentations</h1><div class="right-tri"></div></div>
+			<div class="border-box repeat-box aug-box">
+				<div class="pc-box medium-box">
+					<h3>Augementation</h3><h3>Rating</h3><h3>Essence</h3>
+					<fieldset class="repeating_augementations">
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+						<div class="settings">
+							<input type="text" name="attr_augmentation" placeholder="Augementation" />
+							<input type="number" name="attr_rating" placeholder="#" />
+							<input type="number" name="attr_essence" placeholder="Essence" />
+							<h3>Notes</h3>
+							<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+						</div>
+						<div class="display">
+							<input class="display-flag" type="checkbox" name="attr_display_flag" />
+							<span name="attr_augmentation"></span>
+							<span name="attr_rating"></span>
+							<span name="attr_essence"></span>
+							<div class="repeat-indent">
+								<div class="desc"><span name="attr_notes"></span></div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		<div class="pc-row">
+			<div class="header right-header"><h1>Vehicle</h1><div class="right-tri"></div></div>
+			<div class="border-box repeat-box vehicle-box">
+				<div class="pc-box medium-box">
+					<fieldset>
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+						<div class="settings">
+						</div>
+						<div class="display">
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		<div class="pc-row">
+			<div class="header">
+				<div class="header htab">
+					<div class="triangle"></div><h1>Spells</h1><div class="right-tri"></div>
+				</div>
+				<div class="header htab">
+					<div class="triangle"></div><h1>Preparations</h1><div class="right-tri"></div>
+				</div>
+				<div class="header htab">
+					<div class="triangle"></div><h1>Rituals</h1><div class="right-tri"></div>
+				</div>
+			</div>
+			<div class="border-box repeat-box spell-box">
+				<div class="pc-box medium-box">
+					<fieldset>
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+						<div class="settings">
+						</div>
+						<div class="display">
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		<div class="pc-row">
+			<div class="header right-header"><h1>Cyberdeck \ Living Persona</h1><div class="right-tri"></div></div>
+			<div class="border-box repeat-box deck-box">
+				<div class="pc-box medium-box">
+					<fieldset>
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+						<div class="settings">
+						</div>
+						<div class="display">
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		<div class="pc-row">
+			<div class="header right-header"><h1>Complex Forms</h1><div class="right-tri"></div></div>
+			<div class="border-box repeat-box form-box">
+				<div class="pc-box medium-box">
+					<fieldset>
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+						<div class="settings">
+						</div>
+						<div class="display">
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		<div class="pc-row">
+			<div class="header right-header"><h1>Adept Powers or Other Abilities</h1><div class="right-tri"></div></div>
+			</div>
+			<div class="border-box repeat-box powers-box">
+				<div class="pc-box medium-box">
+					<fieldset>
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+						<div class="settings">
+						</div>
+						<div class="display">
+						</div>
+					</fieldset>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- ~~~~~~~~ Start of the PC Options Page ~~~~~~~~ -->
-	<div class="options">
-		<select name="attr_sheet_type">
-			<option value="pc">PC</option>
-			<option value="goon">Goon</option>
-			<option value="host">Host</option>
-			<option value="vehicle">Vehicle</option>
-		</select>
-		Cyberdeck <input type="checkbox" name="attr_cyberdeck">
-		Augmentations <input type="checkbox" name="attr_augmentations">
-		Vehicle <input type="checkbox" name="attr_vehicle">
-		Spells / Preperations / Rituals / Complex Forms <input type="checkbox" name="attr_special">
-		Adept Powers or Other Abilities <input type="checkbox" name="attr_powers">
-	</div><!-- ~~~~~~~~ End of the Options Page ~~~~~~~~ -->
+	<div class="options col">
+		<div class="options">
+			<select name="attr_sheet_type">
+				<option value="pc">PC</option>
+				<option value="goon">Goon</option>
+				<option value="host">Host</option>
+				<option value="vehicle">Vehicle</option>
+			</select>
+			Cyberdeck / Living Persona <input type="checkbox" name="attr_cyberdeck">
+			Augmentations <input type="checkbox" name="attr_augmentations">
+			Vehicle <input type="checkbox" name="attr_vehicle">
+			Spells / Preperations / Rituals / Complex Forms <input type="checkbox" name="attr_special">
+			Adept Powers or Other Abilities <input type="checkbox" name="attr_powers">
+		</div><!-- ~~~~~~~~ End of the Options Page ~~~~~~~~ -->
+	</div>
 </div><!-- ~~~~~~~~ End of PC Sheet  ~~~~~~~~ -->
 <!-- ~~~~~~~~ Start of NPC Sheet  ~~~~~~~~ -->
 <div class="npc">
@@ -3673,25 +3856,15 @@ on("change:repeating_active", function() {
 			setAttrs({repeating_active_display: displayNew});
 		};
 
-		console.log(displayNew);
-		console.log(displayOld + " =? " + displayNew);
-
 		let specDisplayNew = ((specialization).length > 0 && (specialization).length <= 20) ? "(" + specialization + ")" : ((specialization).length > 20 ) ? "(" + (specialization).slice(0, 20) + "..." + ")" : " ";	
 		if (specDisplayNew != specDisplayOld) {
 			setAttrs({repeating_active_specialization_display: specDisplayNew});
 		};
 
-		console.log(specDisplayNew);
-		console.log(specDisplayOld + " =? " + specDisplayNew);
-
 		let rankDisplayNew = (rankBonus != "" || rankBonus > 0) ? rank + " (" + (rank + rankBonus) + ")" : rank;
 		if (rankDisplayOld != rankDisplayNew) {
 			setAttrs({repeating_active_rank_display: rankDisplayNew});
 		};
-
-		console.log(rankDisplayNew);
-		console.log(rankDisplayOld + " =? " + rankDisplayNew);
-
 	});
 });
 
@@ -3782,5 +3955,39 @@ on("change:repeating_contacts", function() {
 			setAttrs({repeating_contacts_display: " "});
 	});
 });
+
+//Calculate all the Armor Ratings
+on("change:repeating_armor", function() {
+	getAttrs(["repeating_armor_armor_value", "repeating_armor_acid_bonus", "repeating_armor_cold_bonus", "repeating_armor_electricity_bonus", "repeating_armor_fire_bonus", "repeating_armor_radiation_bonus", "repeating_armor_acid_protection",
+		"repeating_armor_cold_protection", "repeating_armor_fire_protection", "repeating_armor_electricity_protection", "repeating_armor_radiation_protection"], function(v) {
+		const armor = parseInt(v.repeating_armor_armor_value) || 0;
+		const acid = parseInt(v.repeating_armor_acid_bonus) || 0;
+		const fire = parseInt(v.repeating_armor_fire_bonus) || 0;
+		const cold = parseInt(v.repeating_armor_cold_bonus) || 0;
+		const elec = parseInt(v.repeating_armor_electricity_bonus) || 0;
+		const rad = parseInt(v.repeating_armor_radiation_bonus) || 0;
+
+		const oldAcidProtection = (v.repeating_armor_acid_protection);
+		const oldFireProtection = (v.repeating_armor_fire_protection);
+		const oldColdProtection = (v.repeating_armor_cold_protection);
+		const oldElecProtection = (v.repeating_armor_electricity_protection);
+		const oldRadProtection = (v.repeating_armor_radiation_protection);
+
+		let newAcidProtection = armor + acid;
+		let newFireProtection = armor + fire;
+		let newColdProtection = armor + cold;
+		let newElecProtection = armor + elec;
+		let newRadProtection = armor + rad;
+
+		if (newAcidProtection != oldAcidProtection) {setAttrs({repeating_armor_acid_protection: newAcidProtection});};
+		if (newFireProtection != oldFireProtection) {setAttrs({repeating_armor_fire_protection: newFireProtection});};
+		if (newColdProtection != oldAcidProtection) {setAttrs({repeating_armor_cold_protection: newColdProtection});};
+		if (newElecProtection != oldElecProtection) {setAttrs({repeating_armor_electricity_protection: newElecProtection});};
+		if (newRadProtection != oldRadProtection) {setAttrs({repeating_armor_radiation_protection: newRadProtection});};
+	});
+});
+
+
+
 
 </script>
