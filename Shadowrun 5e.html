@@ -478,15 +478,15 @@
 									<option value="P" selected="selected">P</option>
 									<option value="N" selected="selected">N</option>
 								</select>
-								<h3>Description</h3>
+								<label>Notes</label>
 								<textarea name="attr_desc" value="" placeholder="Quality description"></textarea>
 							</div>
 						</div>
 						<div class="display">
 							<input class="display-flag" type="checkbox" name="attr_display_flag">
-							<div class="name repeat-indent">
-								<button type="roll" ><span name="attr_quality"></span></button>
-								<span class="notes" name="attr_notes"></span><br />
+							<div class="display-row"><b><span name="attr_quality"></span></b></div>
+							<div class="display-row"><i><span class="notes" name="attr_notes"></span></i></div>
+							<div class="collapsable">
 								<span class="desc" name="attr_desc"></span>
 							</div>
 							<div class="rank"><span name="attr_type"></span></div>
@@ -545,20 +545,22 @@
 						<div class="settings">
 							<div>
 								<input type="text" name="attr_name" placeholder="Old Crow" />
-								<input type="number" name="attr_loyalty" placeholder="3" />
-								<input type="number" name="attr_connection" placeholder="8" />
-								<input type="text" name="attr_favors" placeholder="+2 chips" />
+								<input type="number" name="attr_loyalty" min="1"placeholder="3" />
+								<input type="number" name="attr_connection" min="1" placeholder="8" />
+								<input type="number" name="attr_favors" placeholder="+2" />
 								<h3>Notes</h3>
 								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 							</div>
 						</div>
 						<div class="display">
 							<input class="display-flag" type="checkbox" name="attr_display_flag" />
-							<span name="attr_display"></span>
-							<span name="attr_loyalty"></span>
-							<span name="attr_connection"></span>
-							<span name="attr_favors"></span>
-							<div class="desc"><span name="attr_notes"></span></div>
+							<div class="display-row"><b><span name="attr_display"></span></b></div>
+							<div class="display-row"><span name="attr_loyalty"></span></div>
+							<div class="display-row"><span name="attr_connection"></span></div>
+							<div class="display-row"><span name="attr_favors"></span></div>
+							<div class="collapsable">
+								<div class="desc"><span name="attr_notes"></span></div>
+							</div>
 						</div>
 					</fieldset>
 				</div>
@@ -649,6 +651,11 @@
 			<div class="border-box repeat-box armor-box">
 				<div class="pc-box medium-box">
 					<h3>Armor</h3><h3>Rating</h3><h3>Acid</h3><h3>Cold</h3><h3>Elec.</h3><h3>Fire</h3><h3>Radi.</h3>
+					<input type="hidden" name="attr_acid_protection" value="0" />
+					<input type="hidden" name="attr_cold_protection" value="0" />
+					<input type="hidden" name="attr_electricity_protection" value="0" />
+					<input type="hidden" name="attr_fire_protection" value="0" />
+					<input type="hidden" name="attr_radiation_protection" value="0" />
 					<fieldset class="repeating_armor">
 						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 						<div class="settings">
@@ -660,15 +667,10 @@
 								<input type="number" name="attr_electricity_bonus" placeholder="+5" />
 								<input type="number" name="attr_fire_bonus" placeholder="0" />
 								<input type="number" name="attr_radiation_bonus" placeholder="0" />
-								<h3>Notes</h3>
+								<label>Notes</label>
 								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 							</div>
 						</div>
-						<input type="hidden" name="attr_acid_protection" value="0" />
-						<input type="hidden" name="attr_cold_protection" value="0" />
-						<input type="hidden" name="attr_electricity_protection" value="0" />
-						<input type="hidden" name="attr_fire_protection" value="0" />
-						<input type="hidden" name="attr_radiation_protection" value="0" />
 						<div class="display">
 							<div><span name="attr_armor"></span></div>
 							<div><button type="roll"><span name="attr_armor_value"></span></button></div>
@@ -694,7 +696,7 @@
 							<div>
 								<input type="text" name="attr_item" placeholder="Item name" />
 								<input type="number" name="attr_rating" placeholder="#" />
-								<h3>Notes</h3>
+								<label>Notes</label>
 								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 							</div>
 						</div>
@@ -720,19 +722,22 @@
 					<fieldset class="repeating_augementations">
 						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 						<div class="settings">
-							<input type="text" name="attr_augmentation" placeholder="Augementation" />
-							<input type="number" name="attr_rating" placeholder="#" />
-							<input type="number" name="attr_essence" placeholder="Essence" />
-							<h3>Notes</h3>
-							<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+							<div> 
+								<input type="text" name="attr_augmentation" placeholder="Augementation" />
+								<input type="number" name="attr_rating" placeholder="#" />
+								<input type="number" name="attr_essence" placeholder="Essence" />
+								<label>Notes</label>
+								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+							</div>
 						</div>
 						<div class="display">
 							<input class="display-flag" type="checkbox" name="attr_display_flag" />
-							<span name="attr_augmentation"></span>
-							<span name="attr_rating"></span>
-							<span name="attr_essence"></span>
 							<div class="repeat-indent">
-								<div class="desc"><span name="attr_notes"></span></div>
+								<div><span name="attr_augmentation"></span></div>
+								<div><span name="attr_rating"></span></div>
+								<div><span name="attr_essence"></span></div>
+								<br />
+								<span class="desc" name="attr_notes"></span>
 							</div>
 						</div>
 					</fieldset>

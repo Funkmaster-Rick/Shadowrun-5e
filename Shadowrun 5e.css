@@ -262,11 +262,6 @@ textarea {
     clear: both;
 } 
 
-.sheet-pc .sheet-repeat-indent {
-	padding-left: 4em;
-	text-indent: -1.5em;
-}
-
 	/***** Left Headers *****/
 	.sheet-header {
 		display: inline-flex;
@@ -807,6 +802,11 @@ textarea {
 			margin-left: -10px;
 		}
 
+		.sheet-repeat-box .sheet-settings label {
+			font-size: 0.8em;
+			margin-bottom: 0px;
+		}
+
 		/***** Repeating Box Display Customizations *****/
 		.sheet-repeat-box .sheet-display {
 			margin-left: -10px;
@@ -939,6 +939,45 @@ textarea {
 			display: inline;
 		}
 
+
+/***** Collapsable Pieces *****/
+.sheet-collapsable {
+	padding-left: 1.5em;
+	width: 100%;
+	word-break: break-word;
+}
+
+	/***** Display Flags used in Collapsable areas... *****/
+	.sheet-quality .sheet-display-flag,
+	.sheet-contacts .sheet-display-flag {
+		opacity: 0;    
+	    position: absolute;
+	    top: 0px;
+	    right: 0px;
+	    width: 100%;
+	    height: 100%;
+	}
+
+	.sheet-collapsable .sheet-desc {
+		display: none;
+	}
+
+	.sheet-display-flag:checked ~ .sheet-collapsable .sheet-desc {
+	    display: inline;
+	}
+
+/***** Display Rows *****/
+.sheet-display-row {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	word-break: break-word;
+}
+
+.sheet-display-row:nth-of-type(1) {
+	text-align: left;
+}
+
 /***** Qualities *****/
 .sheet-quality h3:first-child {
 	margin-right: 35%;
@@ -948,13 +987,7 @@ textarea {
 	margin-left: 43%;
 }
 
-	/***** Qualities Repeating Section *****/
-
 	/***** Qualities Settings *****/
-	.sheet-quality .sheet-settings {
-		width: 100%;
-	}
-
 	.sheet-quality .sheet-settings div {
 		display: inline-block;
 	}
@@ -968,39 +1001,9 @@ textarea {
 		margin-left: 30px;
 	}
 
-	/***** Qualities Displays *****/
-	.sheet-quality .sheet-name {
-		width: 100%;
-		word-break: break-word;
-	}
-
-	.sheet-quality .sheet-repeat-indent {
-		padding-left: 1.5em;
-	}
-
-	.sheet-quality .sheet-name button  {
-		font-weight: bolder;
-	}
-
-	.sheet-quality .sheet-notes {
-		font-style: italic;
-	}
-
-	/***** Display Flags used in Qualities... *****/
-	.sheet-quality .sheet-display-flag,
-	.sheet-lifestyle .sheet-display-flag,
-	.sheet-contacts .sheet-display-flag,
-	.sheet-item-box .sheet-display-flag {
-		opacity: 0;    
-	    position: absolute;
-	    top: 0px;
-	    right: 0px;
-	    width: 100%;
-	    height: 100%;
-	}
-
-	.sheet-quality .sheet-display-flag:checked ~ .sheet-name .sheet-desc {
-	    display: none;
+	/***** Qualities Display *****/
+	.sheet-quality .sheet-display-row:nth-of-type(1) {
+		width: 45%;
 	}
 
 /***** Lifestyle for PC sheet *****/
@@ -1047,17 +1050,13 @@ textarea {
 	}
 
 /***** Contact for PC sheet *****/
-.sheet-contacts h3 {
-	margin-right: 10px;
-	width: fit-content;
-}
-
 .sheet-contacts h3:nth-of-type(1) {
-	width: 50%;
+	margin-right: 52%;
 }
 
+.sheet-contacts h3:nth-of-type(2),
 .sheet-contacts h3:nth-of-type(3) {
-	margin-right: 20px;
+	margin-right: 5%;
 }
 
 	/***** Contacts Settings for PC sheet *****/
@@ -1082,45 +1081,16 @@ textarea {
 	/***** Contacts Displays for PC sheet *****/
 	.sheet-contacts .sheet-display {
 		display: inline-block;
+		vertical-align: top;
 	}
 
-	.sheet-contacts .sheet-display span {
-		display: inline-block;
-		font-family: sans-serif;
-		text-align: center;
+	.sheet-contacts .sheet-display-row {
+		width: 14%;
 	}
 
-	.sheet-contacts .sheet-display span:nth-of-type(1) {
-		font-weight: bold;
-		margin-right: -1px;
-		text-align: left;
-		width: 51%;
-	}
-
-	.sheet-contacts .sheet-display span:nth-of-type(2),
-	.sheet-contacts .sheet-display span:nth-of-type(3) {
-		margin-right: 3%;
-		width: 8%;
-	}
-
-	.sheet-contacts .sheet-display span:nth-of-type(4) {
-		width: 22%;
-	}
-
-	.sheet-contacts .sheet-display .sheet-desc {
-		display: none;
-	}
-
-	.sheet-contacts .sheet-display .sheet-desc span {
-		font-weight: normal;
-		width: 100%;
-	}
-
-	.sheet-contacts .sheet-display-flag:checked ~ .sheet-desc {
-		display: inline-block;
-		padding-left: 1em;
-		width: 100%;
-		word-break: break-word;
+	.sheet-contacts .sheet-display-row:nth-of-type(1) {
+		margin-right: 2%;
+		width: 52%;
 	}
 
 
@@ -1163,7 +1133,6 @@ textarea {
 	.sheet-weapon-box input[type="text"],
 	.sheet-weapon-box input[type="number"] {
 		text-align: center;
-
 		width: 9%;
 	}
 
@@ -1229,7 +1198,7 @@ textarea {
 
 /***** Gear/Items for PC Sheet *****/
 .sheet-item-box h3:first-child{
-	width: 88%;
+	margin-right: 85%;
 }
 
 	/***** Item Settings *****/
@@ -1254,9 +1223,27 @@ textarea {
 		display: none;
 	}
 
-	.sheet-display-flag:checked ~ .sheet-repeat-indent .sheet-desc {
-		display: inline-block;
+/***** Augementations section *****/
+.sheet-aug-box h3:nth-of-type(1) {
+	margin-right: 59%;
+}
+
+.sheet-aug-box h3:nth-of-type(2) {
+	margin-right: 3%;
+}
+
+	/***** Augementations Settings *****/
+	.sheet-aug-box .sheet-settings input[type="text"] {
+		width: 75%;
 	}
+
+	.sheet-aug-box .sheet-settings input[type="number"] {
+		margin-right: 1%;
+		width: 10%;
+	}
+
+	/***** Augementations Display *****/
+
 
 /***** Start of the NPC sheet *****/
 .sheet-npc {
