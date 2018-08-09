@@ -161,20 +161,20 @@ textarea {
 	z-index: 1;
 }
 
-.sheet-tabs input[type="checkbox"] {
+.sheet-tabs input[type="radio"] {
 	height: 18px;
 	position: absolute;
 }
 
-.sheet-tabs input[type="checkbox"]:nth-of-type(3) {
+.sheet-tabs input[type="radio"]:nth-of-type(3) {
 	width: 50px;
 }
 
-.sheet-tabs input[type="checkbox"]:nth-of-type(4) {
+.sheet-tabs input[type="radio"]:nth-of-type(4) {
 	width: 60px;
 }
 
-.sheet-tabs input[type="checkbox"] + span {
+.sheet-tabs input[type="radio"] + span {
 	border-radius: 5px;
 	border: 1px solid #000;
 	font-family: sans-serif;
@@ -182,11 +182,11 @@ textarea {
 	padding: 3px;
 }
 
-.sheet-tabs input[type="checkbox"] + span:last-child {
+.sheet-tabs input[type="radio"] + span:last-child {
 	font-family: pictos;
 }
 
-.sheet-tabs input[type="checkbox"]:checked + span {
+.sheet-tabs input[type="radio"]:checked + span {
 	background-color: #610b0d;
 	color: #fff;
 }
@@ -818,8 +818,9 @@ textarea {
 		}
 
 		.sheet-rank {
-			width: 10%;
+			display: inline-block;
 			text-align: center;
+			width: 10%;
 		}
 
 		/***** Repeating Selects *****/
@@ -949,7 +950,8 @@ textarea {
 
 	/***** Display Flags used in Collapsable areas... *****/
 	.sheet-quality .sheet-display-flag,
-	.sheet-contacts .sheet-display-flag {
+	.sheet-contacts .sheet-display-flag,
+	.sheet-item-box .sheet-display-flag {
 		opacity: 0;    
 	    position: absolute;
 	    top: 0px;
@@ -984,7 +986,7 @@ textarea {
 }
 
 .sheet-quality h3:last-child {
-	margin-left: 43%;
+	margin-left: 42%;
 }
 
 	/***** Qualities Settings *****/
@@ -1002,7 +1004,17 @@ textarea {
 	}
 
 	/***** Qualities Display *****/
+	.sheet-quality .sheet-display {
+		display: inline-block;
+	}
+
 	.sheet-quality .sheet-display-row:nth-of-type(1) {
+		margin-right: 2%;
+		width: 40%;
+	}
+
+	.sheet-quality .sheet-display-row:nth-of-type(2) {
+		text-align: left;
 		width: 45%;
 	}
 
@@ -1090,7 +1102,7 @@ textarea {
 
 	.sheet-contacts .sheet-display-row:nth-of-type(1) {
 		margin-right: 2%;
-		width: 52%;
+		width: 53%;
 	}
 
 
@@ -1160,6 +1172,7 @@ textarea {
 	}
 
 	.sheet-weapon-box .sheet-display div:first-child {
+		text-align: left;
 		width: 40%;
 	}
 
@@ -1197,6 +1210,18 @@ textarea {
 	}
 
 /***** Gear/Items for PC Sheet *****/
+.sheet-gear .sheet-htab {
+	margin-right: -40px;
+}
+
+.sheet-gear .sheet-htab:first-child {
+	margin-left: -35px;
+}
+
+.sheet-gear .sheet-weapon-box input[type="radio"] {
+	left: 125px;
+}
+
 .sheet-item-box h3:first-child{
 	margin-right: 85%;
 }
@@ -1207,20 +1232,17 @@ textarea {
 	}
 
 	/***** Item Display *****/
-	.sheet-item-box .sheet-display div {
-		width: 88%;
+	.sheet-item-box .sheet-display {
+		display: inline-block;
 	}
 
-	.sheet-item-box .sheet-display div:nth-of-type(2) {
+	.sheet-item-box .sheet-display-row {
 		width: 10%;
 	}
 
-	.sheet-item-box .sheet-display div:nth-of-type(3){
-		width: 100%;
-	}
-
-	.sheet-item-box .sheet-desc {
-		display: none;
+	.sheet-item-box .sheet-display-row:nth-of-type(1) {
+		margin-right: 2%;
+		width: 86%;
 	}
 
 /***** Augementations section *****/
@@ -2089,3 +2111,81 @@ textarea {
 	    padding: 0px;
 	    width: 18px;
 	}
+
+	/**** Roll template ****/
+.sheet-rolltemplate-sGoon div.sheet-template-body {
+	border: 2px solid #000 !important;
+	border-radius: 3px 3px 3px 3px;
+}
+
+.sheet-rolltemplate-sGoon .sheet-template-header {
+	font-family: "contrail one";
+	font-size: 20px;
+	font-weight: normal;
+	font-variant: small-caps;
+	letter-spacing: 2px;
+	text-align: center;
+    text-transform: capitalize;
+	margin: 0px;
+	padding: 4px 0px 3px 0px;
+	color: #fff;
+	background-color: #431714;
+	border: 1px solid #000;
+	border-bottom: 2px solid #000;
+
+}
+
+.sheet-rolltemplate-sGoon .sheet-template-header span {
+	font-family: "tahoma";
+	font-size: 11px;
+	font-weight: normal;
+	font-variant: normal;
+	letter-spacing: 1px;
+}
+
+.sheet-rolltemplate-sGoon .sheet-template-row {
+	color: #fff;
+	text-align: center;
+	font-size: 18px;
+	background-color: #1c1c1c;
+	line-height: 1.1em;
+	vertical-align: middle;
+	font-family: "helvetica";
+	font-weight: normal;
+	padding: 5px 5px 3px 5px;
+	border-radius: 0px;
+}
+
+.sheet-rolltemplate-sGoon .sheet-template-row:last-child {
+	background-color: #2d2d2d;
+}
+
+.sheet-rolltemplate-sGoon .inlinerollresult {
+	display:inline-block;
+	color: #fff;
+	font-size: 25px;
+	background-color: transparent;
+	border: none;
+}
+
+.sheet-rolltemplate-sGoon .inlinerollresult.fullfail,
+.sheet-rolltemplate-sGoon .inlinerollresult.fullcrit,
+.sheet-rolltemplate-sGoon .inlinerollresult.importantroll {
+	border: none;
+}
+
+.sheet-rolltemplate-sGoon .inlinerollresult.fullfail {
+	color: #c71307;
+}
+
+.sheet-rolltemplate-sGoon .inlinerollresult.fullcrit {
+	color: #fff;
+}
+
+.sheet-rolltemplate-sGoon .sheet-template-desc {
+	font-size: 0.8rem;
+}
+
+.sheet-rolltemplate-sGoon span.sheet-template-desc .inlinerollresult {
+	font-size: 14px;
+}
