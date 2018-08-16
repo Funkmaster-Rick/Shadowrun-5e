@@ -5,6 +5,7 @@
 	<input type="radio" name="attr_tab" value="core" title="Core sheet" checked="checked" /><span>Core</span>
 	<input type="radio" name="attr_tab" value="gear" title="Gear"/><span>Gear</span>
 	<input type="radio" name="attr_tab" value="social" title="social"/><span>Social</span>
+	<input type="radio" name="attr_tab" value="magic" title="Magic"/><span>Magic</span>
 	<input type="radio" name="attr_tab" value="optional" title="Optional"/><span>Optional</span>
 	<input type="radio" name="attr_tab" value="options" title="Sheet Settings & Notes"/><span>y</span>
 </div>
@@ -219,14 +220,14 @@
 				<div class="triangle"></div><h1>Skills</h1>
 			</div>
 			<div class="border-box repeat-box skill-box">
-				<input class="skill_toggle" type="radio" name="attr_skill_toggle" value="active" checked="checked" />
-				<input class="skill_toggle" type="radio" name="attr_skill_toggle" value="knowledge" />
-				<input class="skill_toggle" type="radio" name="attr_skill_toggle" value="language" />
+				<input class="skill-toggle" type="radio" name="attr_skill_toggle" value="active" checked="checked" />
+				<input class="skill-toggle" type="radio" name="attr_skill_toggle" value="knowledge" />
+				<input class="skill-toggle" type="radio" name="attr_skill_toggle" value="language" />
 				<div class="pc-box medium-box">
 					<div class="row-long">
 						<h3>Skill</h3><h3>RTG</h3><h3>Attribute</h3>
 					</div>
-					<input class="skill_toggle" type="hidden" name="attr_skill_toggle" value="active">
+					<input class="skill-toggle" type="hidden" name="attr_skill_toggle" value="active">
 					<div class="skills-active">
 						<fieldset class="repeating_active">
 							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
@@ -496,6 +497,7 @@
 			</div>
 		</div><!-- ~~~~~~~~ End of Quality row ~~~~~~~~ -->
 	</div><!-- ~~~~~~~~ End of right column that contains core info ~~~~~~~~ -->
+	<!-- ~~~~~~~~ Start of the Social Column  ~~~~~~~~ -->
 	<div class="social pc-col">
 		<!-- ~~~~~~~~ Start of Lifestyles Row  ~~~~~~~~ -->
 		<div class="pc-row">
@@ -566,8 +568,8 @@
 				</div>
 			</div>
 		</div><!-- ~~~~~~~~ End of Contacts row ~~~~~~~~ -->
-	</div>
-	<!-- ~~~~~~~~ Start of the Gear page  ~~~~~~~~ -->
+	</div><!-- ~~~~~~~~ End of the Social Column  ~~~~~~~~ -->
+	<!-- ~~~~~~~~ Start of the Gear Column  ~~~~~~~~ -->
 	<div class="gear pc-col">
 		<!-- ~~~~~~~~ Start of the Weapon Section  ~~~~~~~~ -->
 		<div class="pc-row">
@@ -650,7 +652,9 @@
 			<div class="header right-header"><h1>Armor</h1><div class="right-tri"></div></div>
 			<div class="border-box repeat-box armor-box">
 				<div class="pc-box medium-box">
-					<h3>Armor</h3><h3>Rating</h3><h3>Acid</h3><h3>Cold</h3><h3>Elec.</h3><h3>Fire</h3><h3>Radi.</h3>
+					<div class="row-long">
+						<h3>Armor</h3><h3>Rating</h3><h3>Acid</h3><h3>Cold</h3><h3>Elec.</h3><h3>Fire</h3><h3>Radi.</h3>
+					</div>
 					<input type="hidden" name="attr_acid_protection" value="0" />
 					<input type="hidden" name="attr_cold_protection" value="0" />
 					<input type="hidden" name="attr_electricity_protection" value="0" />
@@ -672,13 +676,17 @@
 							</div>
 						</div>
 						<div class="display">
-							<div><b><span name="attr_armor"></span></b></div>
-							<div><button type="roll"><span name="attr_armor_value"></span></button></div>
-							<div><button type="roll"><span name="attr_acid_protection"></span></button></div>
-							<div><button type="roll"><span name="attr_cold_protection"></span></button></div>
-							<div><button type="roll"><span name="attr_electricity_protection"></button></span></div>
-							<div><button type="roll"><span name="attr_fire_protection"></span></button></div>
-							<div><button type="roll"><span name="attr_radiation_protection"></button></span></div>
+							<input class="display-flag" type="checkbox" name="attr_display_flag" />
+							<div class="display-row"><b><span name="attr_armor"></span></b></div>
+							<div class="display-row"><button type="roll"><span name="attr_armor_value"></span></button></div>
+							<div class="display-row"><button type="roll"><span name="attr_acid_protection"></span></button></div>
+							<div class="display-row"><button type="roll"><span name="attr_cold_protection"></span></button></div>
+							<div class="display-row"><button type="roll"><span name="attr_electricity_protection"></button></span></div>
+							<div class="display-row"><button type="roll"><span name="attr_fire_protection"></span></button></div>
+							<div class="display-row"><button type="roll"><span name="attr_radiation_protection"></button></span></div>
+							<div class="collapsable">
+								<div class="desc"><span name="attr_notes"></span></div>
+							</div>
 						</div>
 						<input type="checkbox" class="primary-flag" name="attr_primary_armor_flag" checked="checked" /><span>S</span>
 					</fieldset>
@@ -689,7 +697,9 @@
 			<div class="header right-header"><h1>Gear</h1><div class="right-tri"></div></div>
 			<div class="border-box repeat-box item-box">
 				<div class="pc-box medium-box">
-					<h3>Item</h3><h3>Rating</h3>
+					<div class="row-long">
+						<h3>Item</h3><h3>Rating</h3>
+					</div>
 					<fieldset class="repeating_items">
 						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 						<div class="settings">
@@ -712,13 +722,108 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div><!-- ~~~~~~~~ End of the Gear Column  ~~~~~~~~ -->
+	<!-- ~~~~~~~~ Start of the Magic Column  ~~~~~~~~ -->
+	<div class="magic pc-col">
+		<div class="pc-row">
+			<div class="header right-header"><h1>Magic</h1><div class="right-tri"></div></div>
+			<div class="header right-header">
+				<div class="header htab">
+					<div class="triangle"></div><h1>Spells</h1><div class="right-tri"></div>
+				</div>
+				<div class="header htab">
+					<div class="triangle"></div><h1>Prep...</h1><div class="right-tri"></div>
+				</div>
+				<div class="header htab">
+					<div class="triangle"></div><h1>Rituals</h1><div class="right-tri"></div>
+				</div>
+			</div>
+			<div class="border-box repeat-box spell-box">
+				<input class="magic-toggle" type="radio" name="attr_magic_toggle" value="spells" checked="checked" />
+				<input class="magic-toggle" type="radio" name="attr_magic_toggle" value="preps" />
+				<input class="magic-toggle" type="radio" name="attr_magic_toggle" value="rituals" />
+				<div class="pc-box medium-box">
+					<div class="row-long">
+						<h3>Spells</h3><h3>Type</h3><h3>Range</h3><h3>Duration</h3><h3>Drain</h3>
+					</div>
+					<input class="magic-toggle" type="hidden" name="attr_magic_toggle" value="spells">
+					<div class="magic-spells">
+						<fieldset class="repeating_spell">
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+							<div class="settings">
+								<div>
+									<input type="text" name="attr_name" placeholder="Fireball" />
+									<select name="attr_type">
+										<option value="Physcial" selected="selected">Physical</option>
+										<option value="Mana" selected="selected">Mana</option>
+									</select>
+									<input type="text" name="attr_range" value="" placeholder="LOS (A)" style="text-align: center;" />
+									<input type="text" name="attr_duration" value="" placeholder="Instant" style="text-align: center;" />
+									<input type="number" name="attr_drain" value="" placeholder="-1" />
+									<label>Notes</label>
+									<textarea name="attr_notes" value="" placeholder="Spell notes"></textarea>
+								</div>
+							</div>
+							<div class="display">
+								<input class="display-flag" type="checkbox" name="attr_display_flag" />
+								<div class="display-row"><b><span name="attr_name"></span></b></div>
+								<div class="display-row"><span name="attr_type"></span></div>
+								<div class="display-row"><span name="attr_range"></span></div>
+								<div class="display-row" style="text-align: center;"><span name="attr_duration"></span></div>
+								<div class="display-row" style="text-align: center;"><span name="attr_drain"></span></div>
+								<div class="collapsable">
+									<div class="desc"><span name="attr_notes"></span></div>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+					<div class="magic-preps">
+						<fieldset class="repeating_preps">
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+							<div class="settings">
+							</div>
+							<div class="display">
+							</div>
+						</fieldset>
+					</div>
+					<div class="magic-rituals">
+						<fieldset class="repeating_rituals">
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+							<div class="settings">
+							</div>
+							<div class="display">
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="pc-row">
+			<div class="header right-header"><h1>Adept Powers or Other Abilities</h1><div class="right-tri"></div></div>
+			<div class="border-box repeat-box powers-box">
+				<div class="pc-box medium-box">
+					<div class="row-long">
+					</div>
+					<fieldset>
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+						<div class="settings">
+						</div>
+						<div class="display">
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+	</div><!-- ~~~~~~~~ Start of the Gear Column  ~~~~~~~~ -->
+	<!-- ~~~~~~~~ End of the Optional Column  ~~~~~~~~ -->
 	<div class="optional pc-col">
 		<div class="pc-row">
 			<div class="header right-header"><h1>Augmentations</h1><div class="right-tri"></div></div>
 			<div class="border-box repeat-box aug-box">
 				<div class="pc-box medium-box">
-					<h3>Augementation</h3><h3>Rating</h3><h3>Essence</h3>
+					<div class="row-long">
+						<h3>Augementation</h3><h3>Rating</h3><h3>Essence</h3>
+					</div>
 					<fieldset class="repeating_augementations">
 						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 						<div class="settings">
@@ -732,12 +837,11 @@
 						</div>
 						<div class="display">
 							<input class="display-flag" type="checkbox" name="attr_display_flag" />
-							<div class="repeat-indent">
-								<div><span name="attr_augmentation"></span></div>
-								<div><span name="attr_rating"></span></div>
-								<div><span name="attr_essence"></span></div>
-								<br />
-								<span class="desc" name="attr_notes"></span>
+							<div class="display-row"><b><span name="attr_augmentation"></span></b></div>
+							<div class="display-row"><span name="attr_rating"></span></div>
+							<div class="display-row"><span name="attr_essence"></span></div>
+							<div class="collapsable">
+								<div class="desc"><span name="attr_notes"></span></div>
 							</div>
 						</div>
 					</fieldset>
@@ -748,30 +852,8 @@
 			<div class="header right-header"><h1>Vehicle</h1><div class="right-tri"></div></div>
 			<div class="border-box repeat-box vehicle-box">
 				<div class="pc-box medium-box">
-					<fieldset>
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
-						<div class="settings">
-						</div>
-						<div class="display">
-						</div>
-					</fieldset>
-				</div>
-			</div>
-		</div>
-		<div class="pc-row">
-			<div class="header">
-				<div class="header htab">
-					<div class="triangle"></div><h1>Spells</h1><div class="right-tri"></div>
-				</div>
-				<div class="header htab">
-					<div class="triangle"></div><h1>Preparations</h1><div class="right-tri"></div>
-				</div>
-				<div class="header htab">
-					<div class="triangle"></div><h1>Rituals</h1><div class="right-tri"></div>
-				</div>
-			</div>
-			<div class="border-box repeat-box spell-box">
-				<div class="pc-box medium-box">
+					<div class="row-long">
+					</div>
 					<fieldset>
 						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 						<div class="settings">
@@ -786,6 +868,8 @@
 			<div class="header right-header"><h1>Cyberdeck \ Living Persona</h1><div class="right-tri"></div></div>
 			<div class="border-box repeat-box deck-box">
 				<div class="pc-box medium-box">
+					<div class="row-long">
+					</div>
 					<fieldset>
 						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 						<div class="settings">
@@ -800,6 +884,8 @@
 			<div class="header right-header"><h1>Complex Forms</h1><div class="right-tri"></div></div>
 			<div class="border-box repeat-box form-box">
 				<div class="pc-box medium-box">
+					<div class="row-long">
+					</div>
 					<fieldset>
 						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 						<div class="settings">
@@ -810,22 +896,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="pc-row">
-			<div class="header right-header"><h1>Adept Powers or Other Abilities</h1><div class="right-tri"></div></div>
-			</div>
-			<div class="border-box repeat-box powers-box">
-				<div class="pc-box medium-box">
-					<fieldset>
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
-						<div class="settings">
-						</div>
-						<div class="display">
-						</div>
-					</fieldset>
-				</div>
-			</div>
-		</div>
-	</div>
+	</div><!-- ~~~~~~~~ End of the Optional Column  ~~~~~~~~ -->
 	<!-- ~~~~~~~~ Start of the PC Options Page ~~~~~~~~ -->
 	<div class="options col">
 		<div class="options">
@@ -840,8 +911,8 @@
 			Vehicle <input type="checkbox" name="attr_vehicle">
 			Spells / Preperations / Rituals / Complex Forms <input type="checkbox" name="attr_special">
 			Adept Powers or Other Abilities <input type="checkbox" name="attr_powers">
-		</div><!-- ~~~~~~~~ End of the Options Page ~~~~~~~~ -->
-	</div>
+		</div>
+	</div><!-- ~~~~~~~~ End of the Options Page ~~~~~~~~ -->
 </div><!-- ~~~~~~~~ End of PC Sheet  ~~~~~~~~ -->
 <!-- ~~~~~~~~ Start of NPC Sheet  ~~~~~~~~ -->
 <div class="npc">
@@ -2091,13 +2162,13 @@
 	<!-- ~~~~~~~~ Spells ~~~~~~~~ -->
 	<input type="hidden" class="character-type" name="attr_flag_special" />
 	<div class="magic"><label>Spells: </label>
-		<fieldset class="repeating_spell">
+		<fieldset class="repeating_NPCspell">
 			<div class="repeating toggle">
-				<input type="checkbox" class="settings-toggle" name="attr_spell_toggle" checked="checked" /><span>y</span>
+				<input type="checkbox" class="settings-toggle" name="attr_toggle" checked="checked" /><span>y</span>
 				<div class="settings">
 					<div class="repeat-section">
 						<div class="repeat-row"><h4>Spell Type</h4>
-							<select name="attr_spell_catagory">
+							<select name="attr_catagory">
 								<option class="option" value="Combat" selected="selected">Combat</option>
 								<option class="option" value="Detection">Detection</option>
 								<option class="option" value="Health">Health</option>
@@ -2105,18 +2176,18 @@
 								<option class="option" value="Manipulation">Manipulation</option>
 							</select>
 						</div>
-						<div class="repeat-row"><h4>Dice</h4><input type="number" name="attr_spell_dice" value="" placeholder="Dice" /></div>
-						<div class="repeat-row"><h4>Name</h4><input type="text" name="attr_spell_name" value="" placeholder="Fireball" /></div>
+						<div class="repeat-row"><h4>Dice</h4><input type="number" name="attr_dice" value="" placeholder="Dice" /></div>
+						<div class="repeat-row"><h4>Name</h4><input type="text" name="attr_name" value="" placeholder="Fireball" /></div>
 						<div class="repeat-row"><h4>Type</h4>
-							<select name="attr_spell_type">
+							<select name="attr_type">
 								<option class="option" value="M" selected="selected">Mana</option>
 								<option class="option" value="P">Physical</option>
 							</select>
 						</div>
-						<div class="repeat-row"><h4>Range</h4><input type="text" name="attr_spell_range" value="" placeholder="LOS (A)" /></div>
-						<div class="repeat-row"><h4>Dur.</h4><input class="spell-input" type="text" name="attr_spell_duration" value="" placeholder="I" /></div>
-						<div class="repeat-row"><h4>Drain Value</h4><span>F +/- </span><input type="number" name="attr_spell_drain" value="" placeholder="-1" /></div>
-						<input class="spell_catagory" name="attr_spell_catagory" type="hidden" value="Combat">
+						<div class="repeat-row"><h4>Range</h4><input type="text" name="attr_range" value="" placeholder="LOS (A)" /></div>
+						<div class="repeat-row"><h4>Dur.</h4><input class="spell-input" type="text" name="attr_duration" value="" placeholder="I" /></div>
+						<div class="repeat-row"><h4>Drain Value</h4><span>F +/- </span><input type="number" name="attr_drain" value="" placeholder="-1" /></div>
+						<input class="catagory" name="attr_catagory" type="hidden" value="Combat">
 						<div class="repeat-row"><h4>Combat</h4>
 							<select class="combat-type" name="attr_combat_type">
 								<option class="option" value="Force " selected="selected"></option>
@@ -2125,17 +2196,17 @@
 							</select>
 						</div>
 						<div class="repeat-row"><h4>Damage</h4>
-							<input class="spell-input" type="text" name="attr_spell_damage" value="" placeholder="P" />
+							<input class="spell-input" type="text" name="attr_damage" value="" placeholder="P" />
 						</div>
 						<div class="weapon-note">
-							<input type="text"  name="attr_spell_note" value="" placeholder="Spell notes"/>
+							<input type="text"  name="attr_note" value="" placeholder="Spell notes"/>
 						</div>
 					</div>
 				</div>
 				<div class="display">
 					<input type="hidden" name="attr_spell" value="" />
 					<div class="repeat-indent">
-						<span class="weapon-dice">(<span name="attr_spell_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=@{spell_name}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{spell_dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{spell_drain})]]}}"><span name="attr_spell_name"></span></button><span name="attr_spell"></span>
+						<span class="weapon-dice">(<span name="attr_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=@{name}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{drain})]]}}"><span name="attr_name"></span></button><span name="attr_spell"></span>
 					</div>
 				</div>
 			</div>
@@ -2907,24 +2978,21 @@ on("change:repeating_weapon", function() {
 });
 
 	//Spell displays set into an Array
-on("change:repeating_spell", function() {
-    getAttrs(["repeating_spell_combat_type", "repeating_spell_spell_type", "repeating_spell_spell_range", "repeating_spell_spell_damage", "repeating_spell_spell_duration", "repeating_spell_spell_drain", "repeating_spell_spell_note", ], function(v){
-        var com = (v.repeating_spell_combat_type);
-        var typ = "Type " + (v.repeating_spell_spell_type) + ", ";
-		var ran = (v.repeating_spell_spell_range) + ", ";
-		var dam = "Damage " + (v.repeating_spell_spell_damage) + ", ";
-		var dur = "Duration " + (v.repeating_spell_spell_duration) + ", ";
-		var not = (v.repeating_spell_spell_note);
-
-		dra = (v.repeating_spell_spell_drain > 0) ? ("F" + "+" + (v.repeating_spell_spell_drain) + ", ") : 
-			  ((v.repeating_spell_spell_drain < 0) ? ("F" + (v.repeating_spell_spell_drain) + ", ") :
+on("change:repeating_NPCspell", function() {
+    getAttrs(["repeating_NPCspell_combat_type", "repeating_NPCspell_type", "repeating_NPCspell_range", "repeating_NPCspell_damage", "repeating_NPCspell_duration", "repeating_NPCspell_drain", "repeating_NPCspell_note", ], function(v){
+        var com = (v.repeating_NPCspell_combat_type);
+        var typ = "Type " + (v.repeating_NPCspell_type) + ", ";
+		var ran = (v.repeating_NPCspell_range) + ", ";
+		var dam = "Damage " + (v.repeating_NPCspell_damage) + ", ";
+		var dur = "Duration " + (v.repeating_NPCspell_duration) + ", ";
+		var not = (v.repeating_NPCspell_note);
+		dra = (v.repeating_NPCspell_drain > 0) ? ("F" + "+" + (v.repeating_NPCspell_drain) + ", ") : 
+			  ((v.repeating_NPCspell_drain < 0) ? ("F" + (v.repeating_NPCspell_drain) + ", ") :
 			  ("F" + ", "));
-
 		display = (com === "Direct, Force ") ? (" (Direct) " + "[" + typ + ran + dam + dur + dra + not + "]") :
 				  ((com === "Indirect, Force ?{Force|}, AP -") ? (" (Indirect) " + "[" + typ + ran + dam + dur + dra + not + "]") :
 				  (" [" + typ + ran + dur + dra + not + "]"));
-
-        setAttrs({repeating_spell_spell: display});
+        setAttrs({repeating_NPCspell_spell: display});
     });
 });
 

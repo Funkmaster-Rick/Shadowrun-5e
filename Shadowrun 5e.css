@@ -127,7 +127,8 @@ textarea {
 .sheet-optional, 
 .sheet-options,
 .sheet-pc,
-.sheet-social {
+.sheet-social,
+.sheet-magic {
     display: none;
 } 
 
@@ -139,7 +140,8 @@ textarea {
 .sheet-options_toggle[value="core"] ~ .sheet-core,
 .sheet-options_toggle[value="gear"] ~ .sheet-gear,
 .sheet-options_toggle[value="social"] ~ .sheet-social,
-.sheet-options_toggle[value="optional"] ~ .sheet-optional {
+.sheet-options_toggle[value="optional"] ~ .sheet-optional,
+.sheet-options_toggle[value="magic"] ~ .sheet-magic {
     display: inline-block;
 }
 
@@ -934,9 +936,9 @@ textarea {
 			display: none;
 		}
 
-		.sheet-skill_toggle[value="active"] ~ .sheet-skills-active,
-		.sheet-skill_toggle[value="knowledge"] ~ .sheet-skills-know,
-		.sheet-skill_toggle[value="language"] ~ .sheet-skills-lang {
+		.sheet-skill-toggle[value="active"] ~ .sheet-skills-active,
+		.sheet-skill-toggle[value="knowledge"] ~ .sheet-skills-know,
+		.sheet-skill-toggle[value="language"] ~ .sheet-skills-lang {
 			display: inline;
 		}
 
@@ -951,7 +953,8 @@ textarea {
 	/***** Display Flags used in Collapsable areas... *****/
 	.sheet-quality .sheet-display-flag,
 	.sheet-contacts .sheet-display-flag,
-	.sheet-item-box .sheet-display-flag {
+	.sheet-item-box .sheet-display-flag,
+	.sheet-spell-box .sheet-display-flag {
 		opacity: 0;    
 	    position: absolute;
 	    top: 0px;
@@ -1198,16 +1201,28 @@ textarea {
 	}
 
 	/***** Armor Display *****/
-	.sheet-armor-box .sheet-display div {
-		margin-right: 2px;
-		text-align: center;
-		width: 9%;
+	.sheet-armor-box .sheet-display {
+		display: inline-block;
 	}
 
-	.sheet-armor-box .sheet-display div:first-child {
+	.sheet-armor-box .sheet-display-flag {
+		opacity: 0;    
+	    position: absolute;
+	    top: 1px;
+	    width: 40%;
+	}
+
+	.sheet-armor-box .sheet-display .sheet-display-row {
+		margin-right: 3px;
+		text-align: center;
+		width: 8%;
+	}
+
+	.sheet-armor-box .sheet-display .sheet-display-row:nth-of-type(1) {
 		text-align: left;
 		width: 40%;
 	}
+
 
 /***** Gear/Items for PC Sheet *****/
 .sheet-gear .sheet-htab {
@@ -1265,6 +1280,106 @@ textarea {
 	}
 
 	/***** Augementations Display *****/
+	.sheet-aug-box .sheet-display {
+		display: inline-block;
+	}
+
+	.sheet-aug-box .sheet-display-flag {
+		opacity: 0;    
+	    position: absolute;
+	    top: 1px;
+	    width: 75%;
+	}
+
+	.sheet-aug-box .sheet-display-row {
+		margin-right: 2%;
+		text-align: center;
+		width: 8%;
+	}
+
+	.sheet-aug-box .sheet-display-row:nth-of-type(1) {
+		margin-right: 2%;
+		text-align: left;
+		width: 75%; 
+	}
+
+/***** Magic Section *****/
+	.sheet-magic-spells,
+	.sheet-magic-preps,
+	.sheet-magic-rituals {
+		display: none;
+	}
+
+	.sheet-magic-toggle[value="spells"] ~ .sheet-magic-spells,
+	.sheet-magic-toggle[value="preps"] ~ .sheet-magic-preps,
+	.sheet-magic-toggle[value="rituals"] ~ .sheet-magic-rituals {
+		display: inline;
+	}
+
+	.sheet-magic .sheet-htab {
+		margin-right: -45px;
+	}
+
+	.sheet-magic .sheet-htab:first-child {
+		margin-left: -45px;
+	}
+
+	.sheet-spell-box .sheet-medium-box {
+		margin-top: -17px;
+	}
+
+	.sheet-spell-box input[type="radio"] {
+		left: 80px;
+		margin-right: 10px;
+		top: -20px;
+		width: 80px;
+	}
+
+	.sheet-spell-box h3 {
+		margin-right: 3px;
+		width: 24%;
+	}
+
+	.sheet-spell-box h3:nth-of-type(2) {
+		width: 16%;
+	}
+
+	.sheet-spell-box h3:nth-of-type(5) {
+		margin-right: 0px;
+		width: 7%;
+	}
+
+		/***** Magic Settings Section *****/
+		.sheet-magic .sheet-settings {
+			width: 100%;
+		}
+
+		.sheet-spell-box input[type="text"] {
+			width: 24%;
+		}
+
+		.sheet-spell-box input[type="number"] {
+			width: 19%;
+		}
+
+		/***** Magic Display Section *****/
+		.sheet-spell-box .sheet-display {
+			display: inline-block;
+		}
+
+		.sheet-spell-box .sheet-display .sheet-display-row {
+			margin-right: 3px;
+			text-align: left;
+			width: 23%;
+		}
+
+		.sheet-spell-box .sheet-display .sheet-display-row:nth-of-type(2) {
+			width: 15%;
+		}
+
+		.sheet-spell-box .sheet-display .sheet-display-row:nth-of-type(5) {
+			width: 7%;
+		}
 
 
 /***** Start of the NPC sheet *****/
@@ -1470,7 +1585,9 @@ textarea {
 	.sheet-settings,
 	.sheet-weapon-melee,
 	.sheet-weapon-range,
-	input.sheet-settings-toggle:checked ~ div.sheet-display {display: none;}
+	input.sheet-settings-toggle:checked ~ div.sheet-display {
+		display: none;
+	}
 
 	.sheet-display,
 	input.sheet-settings-toggle:checked ~ div.sheet-settings {
