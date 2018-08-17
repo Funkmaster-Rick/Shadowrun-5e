@@ -121,14 +121,16 @@ textarea {
 }
 
 /* Hide & show pages */
+.sheet-augs,
 .sheet-core,
 .sheet-gear,
 .sheet-npc,
-.sheet-optional, 
 .sheet-options,
 .sheet-pc,
 .sheet-social,
-.sheet-magic {
+.sheet-magic,
+.sheet-matrix,
+.sheet-vehicle {
     display: none;
 } 
 
@@ -136,12 +138,14 @@ textarea {
 .sheet-sheet_type[value="goon"] ~ .sheet-npc,
 .sheet-sheet_type[value="host"] ~ .sheet-npc,
 .sheet-sheet_type[value="vehicle"] ~ .sheet-npc,
+.sheet-options_toggle[value="augs"] ~ .sheet-augs,
 .sheet-options_toggle[value="options"] ~ .sheet-options,
 .sheet-options_toggle[value="core"] ~ .sheet-core,
 .sheet-options_toggle[value="gear"] ~ .sheet-gear,
 .sheet-options_toggle[value="social"] ~ .sheet-social,
-.sheet-options_toggle[value="optional"] ~ .sheet-optional,
-.sheet-options_toggle[value="magic"] ~ .sheet-magic {
+.sheet-options_toggle[value="magic"] ~ .sheet-magic,
+.sheet-options_toggle[value="matrix"] ~ .sheet-matrix,
+.sheet-options_toggle[value="vehicle"] ~ .sheet-vehicle {
     display: inline-block;
 }
 
@@ -156,7 +160,7 @@ textarea {
 
 /***** Tabs for sheets *****/
 .sheet-tabs {
-	left: 72%;
+	left: 58%;
 	position: relative;
 	top: 60px;
 	width: fit-content;
@@ -589,798 +593,866 @@ textarea {
 		} 
 
 
-/***** Condition Monitor Tracks *****/
-.sheet-con-track {
-	display: inline-block;
-	vertical-align: top;
-	width: 47%;
-}
-
-.sheet-con-track h2 {
-	margin-bottom: -5px;
-	padding-left: 20px;
-	text-align: center;
-	width: 100%;
-}
-
-.sheet-con-track input[type="radio"]:first-child:hover ~ h2 {
-	color: #fff;
-	text-shadow: 0 0 25px #000, 0 0 15px #000;
-}
-
-	/***** Condition Settings  *****/
-	.sheet-condition-box input[type="checkbox"] {
-		left: 175px;
-		top: -20px;
-	}
-
-	.sheet-condition-box input[type="checkbox"] + span {
-		color: #fff;
-		font-size: 1em;
-		left: 175px;
-		top: -20px;
-	}
-
-	.sheet-condition-box .sheet-settings {
-		margin-top:-10px;
-	}
-
-	.sheet-condition-box .sheet-settings input {
-		border-bottom: 1px solid #000;
-		border-radius: 0px;
-		height: 22px;
-	}
-
-	.sheet-condition-box .sheet-settings .sheet-con-footer {
-		margin-top: -10px;
-		text-indent: 10px;
-	}
-
-	/***** Condition Track Display *****/
-	.sheet-condition-box .sheet-display {
-		margin-top: -20px;
-	}
-
-	.sheet-con-footer .sheet-attr-und {
+	/***** Condition Monitor Tracks *****/
+	.sheet-con-track {
 		display: inline-block;
+		vertical-align: top;
+		width: 47%;
+	}
+
+	.sheet-con-track h2 {
 		margin-bottom: -5px;
-		width: 60%;
-	}
-
-	.sheet-con-track input[type="checkbox"]  {
-		left: 25px;
-		top: 20px;
-		width: 150px;
-	}
-
-		/***** Condition Monitor Squares *****/
-		.sheet-squares span {
-			border-radius: 0px;
-			border: 1px solid #610b0d;
-			display: inline-block;
-			height: 45px;
-			margin-bottom: -29.5px;
-			width: 45px;
-		}
-
-		.sheet-squares span + div {
-			left: 152px;
-			margin-top: -20px;
-			position: relative;
-			top: 8px;
-			width: fit-content;
-		}
-
-		.sheet-squares input[type="radio"]:first-child {
-			float: left;
-			height: 20px;
-			left: 31px;
-			margin-right: -147px;
-			top: 3px;
-			width: 146px;
-		}
-
-		.sheet-squares input[type="radio"] {
-			clear: both;
-			height: 45px;
-			left: 38px;
-			margin-right: -50px;
-			position: relative;
-			top: 10px;
-			width: 45px;
-		}
-
-		.sheet-squares input[type="radio"] + span {
-			left: 42px;
-			text-align: right;
-			background-color: #9a9a9a;
-		}
-
-		.sheet-squares input[type="radio"]:checked ~ input[type="radio"] + span {
-			background-color: transparent;
-		}
-
-		/***** Condition Monitor Squares Appear & Disappear *****/
-		input[type="hidden"][value="false"] + input[type="radio"],
-		input[type="hidden"][value="false"] + input[type="radio"] + span,
-		input[type="hidden"][value="false"] + input[type="radio"] + span + div {
-			display: none;
-		} 
-
-	/***** Condition Track Footers *****/
-	.sheet-con-footer {
-		font-size: 0.8em;
-		margin-top: 20px;
-	}
-
-	.sheet-con-footer label {
-		margin-right: 5px;
-	}
-
-	.sheet-con-footer input[type="number"] {
-		border-bottom: 1px solid #000;
-		border-radius: 0px;
-		height: 22px;
-		margin-top: -5px;
-	}
-
-/***** PC Sections with Repeating fields *****/
-.sheet-repeat-box .sheet-medium-box {
-	height: fit-content;
-	min-height: 200px;
-}
-
-.sheet-repeat-box h3 {
-	color: #000;
-	margin-bottom: -3px;
-}
-
-.sheet-repeat-box input[type="radio"] {
-	opacity: 1 !important; 
-	position: relative;
-}
-	/***** Secondary tabs *****/
-	.sheet-htab {
-		z-index: -1;
-		margin-right: -47px;
-	}
-
-	.sheet-htab:first-child {
-		z-index: 0;
-	}
-
-	/***** Repeating Section *****/
-	.sheet-repeat-box .repitem {
-		display: inline-flex;
-		border-bottom: 1px solid #000;
+		padding-left: 20px;
+		text-align: center;
 		width: 100%;
 	}
 
-		/***** Repeating Section Toggles *****/
-		.sheet-repeat-box input.sheet-settings-toggle,
-		.sheet-repeat-box input.sheet-primary-flag {
-			position: absolute;
-			width: 10px
+	.sheet-con-track input[type="radio"]:first-child:hover ~ h2 {
+		color: #fff;
+		text-shadow: 0 0 25px #000, 0 0 15px #000;
+	}
+
+		/***** Condition Settings  *****/
+		.sheet-condition-box input[type="checkbox"] {
+			left: 175px;
+			top: -20px;
 		}
 
-		.sheet-repeat-box input.sheet-settings-toggle,
-		.sheet-repeat-box input.sheet-settings-toggle + span {
-			left: -10px;
+		.sheet-condition-box input[type="checkbox"] + span {
+			color: #fff;
+			font-size: 1em;
+			left: 175px;
+			top: -20px;
 		}
 
-		.sheet-repeat-box input.sheet-settings-toggle + span {
-			top: -2px;
+		.sheet-condition-box .sheet-settings {
+			margin-top:-10px;
 		}
 
-		.sheet-repeat-box input.sheet-primary-flag {
-			left: 98%;
+		.sheet-condition-box .sheet-settings input {
+			border-bottom: 1px solid #000;
+			border-radius: 0px;
+			height: 22px;
 		}
 
-		.sheet-repeat-box input.sheet-primary-flag + span {
-			left: 1px;
-			top: -2px;
+		.sheet-condition-box .sheet-settings .sheet-con-footer {
+			margin-top: -10px;
+			text-indent: 10px;
 		}
 
-		.sheet-repeat-box input.sheet-primary-flag:checked + span {
-			color: #FCD116;
+		/***** Condition Track Display *****/
+		.sheet-condition-box .sheet-display {
+			margin-top: -20px;
 		}
 
-
-		/***** Repeating Box Settings Inputs *****/
-		.sheet-repeat-box .sheet-settings input {
-			border: 1px dotted #4f7da7;
-		}
-
-		.sheet-repeat-box .sheet-settings input[type="number"] {
-			height: 25px;
-			width: 35px;
-		}
-
-		.sheet-repeat-box .sheet-settings input[type="text"] {
-			text-align: left;
-		}
-
-		.sheet-repeat-box .sheet-settings {
-			margin-left: -10px;
-		}
-
-		.sheet-repeat-box .sheet-settings label {
-			font-size: 0.8em;
-			margin-bottom: 0px;
-		}
-
-		/***** Repeating Box Display Customizations *****/
-		.sheet-repeat-box .sheet-display {
-			margin-left: -10px;
-		}
-
-		.sheet-repeat-box button[type="roll"] {
-			font-size: 0.9em;
-			color: #000;
-		}
-
-		.sheet-rank {
+		.sheet-con-footer .sheet-attr-und {
 			display: inline-block;
+			margin-bottom: -5px;
+			width: 60%;
+		}
+
+		.sheet-con-track input[type="checkbox"]  {
+			left: 25px;
+			top: 20px;
+			width: 150px;
+		}
+
+			/***** Condition Monitor Squares *****/
+			.sheet-squares span {
+				border-radius: 0px;
+				border: 1px solid #610b0d;
+				display: inline-block;
+				height: 45px;
+				margin-bottom: -29.5px;
+				width: 45px;
+			}
+
+			.sheet-squares span + div {
+				left: 152px;
+				margin-top: -20px;
+				position: relative;
+				top: 8px;
+				width: fit-content;
+			}
+
+			.sheet-squares input[type="radio"]:first-child {
+				float: left;
+				height: 20px;
+				left: 31px;
+				margin-right: -147px;
+				top: 3px;
+				width: 146px;
+			}
+
+			.sheet-squares input[type="radio"] {
+				clear: both;
+				height: 45px;
+				left: 38px;
+				margin-right: -50px;
+				position: relative;
+				top: 10px;
+				width: 45px;
+			}
+
+			.sheet-squares input[type="radio"] + span {
+				left: 42px;
+				text-align: right;
+				background-color: #9a9a9a;
+			}
+
+			.sheet-squares input[type="radio"]:checked ~ input[type="radio"] + span {
+				background-color: transparent;
+			}
+
+			/***** Condition Monitor Squares Appear & Disappear *****/
+			input[type="hidden"][value="false"] + input[type="radio"],
+			input[type="hidden"][value="false"] + input[type="radio"] + span,
+			input[type="hidden"][value="false"] + input[type="radio"] + span + div {
+				display: none;
+			} 
+
+		/***** Condition Track Footers *****/
+		.sheet-con-footer {
+			font-size: 0.8em;
+			margin-top: 20px;
+		}
+
+		.sheet-con-footer label {
+			margin-right: 5px;
+		}
+
+		.sheet-con-footer input[type="number"] {
+			border-bottom: 1px solid #000;
+			border-radius: 0px;
+			height: 22px;
+			margin-top: -5px;
+		}
+
+	/***** PC Sections with Repeating fields *****/
+	.sheet-repeat-box .sheet-medium-box {
+		height: fit-content;
+		min-height: 200px;
+	}
+
+	.sheet-repeat-box h3 {
+		color: #000;
+		margin-bottom: -3px;
+	}
+
+	.sheet-repeat-box input[type="radio"] {
+		opacity: 1 !important; 
+		position: relative;
+	}
+		/***** Secondary tabs *****/
+		.sheet-htab {
+			z-index: -1;
+			margin-right: -47px;
+		}
+
+		.sheet-htab:first-child {
+			z-index: 0;
+		}
+
+		/***** Repeating Section *****/
+		.sheet-repeat-box .repitem {
+			display: inline-flex;
+			border-bottom: 1px solid #000;
+			width: 100%;
+		}
+
+			/***** Repeating Section Toggles *****/
+			.sheet-repeat-box input.sheet-settings-toggle,
+			.sheet-repeat-box input.sheet-primary-flag {
+				position: absolute;
+				width: 10px
+			}
+
+			.sheet-repeat-box input.sheet-settings-toggle,
+			.sheet-repeat-box input.sheet-settings-toggle + span {
+				left: -10px;
+			}
+
+			.sheet-repeat-box input.sheet-settings-toggle + span {
+				top: -2px;
+			}
+
+			.sheet-repeat-box input.sheet-primary-flag {
+				left: 98%;
+			}
+
+			.sheet-repeat-box input.sheet-primary-flag + span {
+				left: 1px;
+				top: -2px;
+			}
+
+			.sheet-repeat-box input.sheet-primary-flag:checked + span {
+				color: #FCD116;
+			}
+
+
+			/***** Repeating Box Settings Inputs *****/
+			.sheet-repeat-box .sheet-settings input {
+				border: 1px dotted #4f7da7;
+			}
+
+			.sheet-repeat-box .sheet-settings input[type="number"] {
+				height: 25px;
+				width: 35px;
+			}
+
+			.sheet-repeat-box .sheet-settings input[type="text"] {
+				text-align: left;
+			}
+
+			.sheet-repeat-box .sheet-settings {
+				margin-left: -10px;
+			}
+
+			.sheet-repeat-box .sheet-settings label {
+				font-size: 0.8em;
+				margin-bottom: 0px;
+			}
+
+			/***** Repeating Box Display Customizations *****/
+			.sheet-repeat-box .sheet-display {
+				margin-left: -10px;
+			}
+
+			.sheet-repeat-box button[type="roll"] {
+				font-size: 0.9em;
+				color: #000;
+			}
+
+			.sheet-rank {
+				display: inline-block;
+				text-align: center;
+				width: 10%;
+			}
+
+			/***** Repeating Selects *****/
+			.sheet-repeat-box select {
+				color:  #000;
+				font-size: 0.75em;
+				font-weight: bolder;
+				height: 20px;
+				padding: 0px;
+				width: fit-content;
+			}
+
+			.sheet-repeat-box option {
+				padding: 2px;
+				font-weight: bold;
+			}
+
+	/***** Skills *****/
+	.sheet-skill-box .sheet-medium-box {
+		margin-top: -17px;
+	}
+
+	.sheet-skill-box h3:first-child {
+		margin-right: 67%;
+	}
+
+	.sheet-skill-box h3:last-child {
+		margin-left: 30px;
+	}
+
+	.sheet-skill-box label {
+		display: inline-block;
+		font-size: 0.8em;
+		text-transform: capitalize;
+	}
+
+	.sheet-skill-box select {
+		position: absolute;
+		left: 82%;
+	}
+
+	.sheet-skill-box option:nth-of-type(1n+5) {
+		color: #610b0d;
+	}
+
+	.sheet-skill-box option:nth-of-type(1n+9) {
+		color: #7a2593;
+	}
+
+		/***** Skills Radio Toggles for Switching Tabs*****/
+		.sheet-skill-box input[type="radio"] {
+			left: 65px;
+			margin-right: 15px;
+			top: -20px;
+			width: 80px;
+		}
+
+		/***** Skills Repeating Section *****/
+			/***** Skills Settings *****/
+			.sheet-skill-box .sheet-settings input[type="text"]:first-child {
+				margin-right: 3px;
+				width: 69%;
+			}
+
+			.sheet-skill-box .sheet-settings input[type="number"] {
+				margin-left: 3px;
+				margin-right: 5px;
+				margin-bottom: 2px;
+			}
+
+			/***** Skills Row in Settings *****/
+				.sheet-skills-row {
+					display: inline-block;
+				}
+
+				.sheet-skills-row div {
+					display: inline-block;
+					margin-right: 5px;
+					vertical-align: top;
+					width: 69%;
+				}
+
+				.sheet-skills-row div:nth-of-type(2) {
+					width: 25%;
+				}
+
+				.sheet-skills-row label {
+					font-size: 0.8em;
+					font-weight: 700;
+					margin-bottom: -3px;
+				}
+
+				.sheet-skills-row input[type="text"] {
+					width: 100%;
+				}
+
+				.sheet-skills-row input[type="number"] {
+
+				}
+
+			/***** Skills Display *****/
+			.sheet-skill-box .sheet-name {
+				min-height: 25px;
+				width: 72%;
+			}
+
+			/***** Skills repeating sections on toggles *****/
+			.sheet-skills-active,
+			.sheet-skills-know,
+			.sheet-skills-lang {
+				display: none;
+			}
+
+			.sheet-skill-toggle[value="active"] ~ .sheet-skills-active,
+			.sheet-skill-toggle[value="knowledge"] ~ .sheet-skills-know,
+			.sheet-skill-toggle[value="language"] ~ .sheet-skills-lang {
+				display: inline;
+			}
+
+
+	/***** Collapsable Pieces *****/
+	.sheet-collapsable {
+		padding-left: 1.5em;
+		width: 100%;
+		word-break: break-word;
+	}
+
+		/***** Display Flags used in Collapsable areas... *****/
+		.sheet-quality .sheet-display-flag,
+		.sheet-contacts .sheet-display-flag,
+		.sheet-item-box .sheet-display-flag,
+		.sheet-spell-box .sheet-display-flag,
+		.sheet-powers-box .sheet-display-flag {
+			opacity: 0;    
+		    position: absolute;
+		    top: 0px;
+		    right: 0px;
+		    width: 100%;
+		    height: 100%;
+		}
+
+		.sheet-collapsable .sheet-desc {
+			display: none;
+		}
+
+		.sheet-display-flag:checked ~ .sheet-collapsable .sheet-desc {
+		    display: inline;
+		}
+
+	/***** Display Rows *****/
+	.sheet-display-row {
+		display: inline-block;
+		text-align: center;
+		vertical-align: top;
+		word-break: break-word;
+	}
+
+	.sheet-display-row:nth-of-type(1) {
+		text-align: left;
+	}
+
+	/***** Qualities *****/
+	.sheet-quality h3:first-child {
+		margin-right: 35%;
+	}
+
+	.sheet-quality h3:last-child {
+		margin-left: 42%;
+	}
+
+		/***** Qualities Settings *****/
+		.sheet-quality .sheet-settings div {
+			display: inline-block;
+		}
+
+		.sheet-quality .sheet-settings input[type="text"] {
+			width: 40%;
+			margin-right: 5px;
+		}
+
+		.sheet-quality select {
+			margin-left: 30px;
+		}
+
+		/***** Qualities Display *****/
+		.sheet-quality .sheet-display {
+			display: inline-block;
+		}
+
+		.sheet-quality .sheet-display-row:nth-of-type(1) {
+			margin-right: 2%;
+			width: 40%;
+		}
+
+		.sheet-quality .sheet-display-row:nth-of-type(2) {
+			text-align: left;
+			width: 45%;
+		}
+
+	/***** Lifestyle for PC sheet *****/
+	.sheet-lifestyle h3:nth-of-type(2) {
+		margin-right: 3px;
+	}
+
+		/***** Settings for Lifestyle *****/
+		.sheet-lifestyle .sheet-settings div {
+			display: inline-block;
+		}
+
+		.sheet-lifestyle input[type="number"] {
+			width: 39%;
+		}
+
+		.sheet-lifestyle input[type="text"] {
+			width: 79%;
+		}
+
+		.sheet-lifestyle textarea {
+			min-height: 30px;
+			margin: 0px 0px 0px 0px;
+		}
+
+		/***** Displays for Lifestyle *****/
+		.sheet-lifestyle .sheet-display span {
+			display: inline-block;
+			font-family: sans-serif;
+			width: 24%;
+		}
+
+		.sheet-lifestyle .sheet-row-long:nth-of-type(2) input[type="text"] {
+			width: 40%;
+		}
+
+		.sheet-lifestyle .sheet-display-flag:checked ~ span:nth-of-type(1),
+		.sheet-lifestyle .sheet-display-flag ~ span:nth-of-type(1n+2) {
+			display: none;
+		}
+
+		.sheet-lifestyle .sheet-display-flag:checked ~ span:nth-of-type(1n+2) {
+			display: inherit;
+		}
+
+	/***** Contact for PC sheet *****/
+	.sheet-contacts h3:nth-of-type(1) {
+		margin-right: 52%;
+	}
+
+	.sheet-contacts h3:nth-of-type(2),
+	.sheet-contacts h3:nth-of-type(3) {
+		margin-right: 5%;
+	}
+
+		/***** Contacts Settings for PC sheet *****/
+		.sheet-contacts .sheet-settings div {
+			display: inline-block;
+		}
+
+		.sheet-contacts input[type="text"]:nth-of-type(1) {
+			margin-right: 5px;
+			width: 51%;
+		}
+
+		.sheet-contacts input[type="number"] {
+			margin-right: 12px;
+		}
+
+		.sheet-contacts input[type="text"]:nth-of-type(4) {
+			margin-left: -1px;
+			width: 22%;
+		}
+
+		/***** Contacts Displays for PC sheet *****/
+		.sheet-contacts .sheet-display {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.sheet-contacts .sheet-display-row {
+			width: 14%;
+		}
+
+		.sheet-contacts .sheet-display-row:nth-of-type(1) {
+			margin-right: 2%;
+			width: 53%;
+		}
+
+
+	/***** Weapons for PC sheet *****/
+	.sheet-weapon-range,
+	.sheet-weapon-melee {
+		display: none;
+		width: 100%;
+	}
+
+	.sheet-weapon-toggle[value="range"] ~ .sheet-weapon-range,
+	.sheet-weapon-toggle[value="melee"] ~ .sheet-weapon-melee  {
+		display: inline-block;
+	}
+
+		/***** Weapon Radio Toggles for Switching Tabs*****/
+		.sheet-weapon-box input[type="radio"] {
+			left: 140px;
+			margin-right: 15px;
+			top: -20px;
+			width: 75px;
+		}
+
+		/***** Weapon Headers *****/
+		.sheet-weapon-box .sheet-medium-box {
+			margin-top: -17px;
+		}
+
+		.sheet-weapon-box h3 {
 			text-align: center;
 			width: 10%;
 		}
 
-		/***** Repeating Selects *****/
-		.sheet-repeat-box select {
-			color:  #000;
-			font-size: 0.75em;
-			font-weight: bolder;
-			height: 20px;
-			padding: 0px;
-			width: fit-content;
+		.sheet-weapon-box h3:nth-child(1) {
+			text-align: left;
+			width: 38%;
 		}
 
-		.sheet-repeat-box option {
-			padding: 2px;
-			font-weight: bold;
+		/***** Weapon Settings Inputs *****/
+		.sheet-weapon-box input[type="text"],
+		.sheet-weapon-box input[type="number"] {
+			text-align: center;
+			width: 9%;
 		}
 
-/***** Skills *****/
-.sheet-skill-box .sheet-medium-box {
-	margin-top: -17px;
-}
-
-.sheet-skill-box h3:first-child {
-	margin-right: 67%;
-}
-
-.sheet-skill-box h3:last-child {
-	margin-left: 30px;
-}
-
-.sheet-skill-box label {
-	display: inline-block;
-	font-size: 0.8em;
-	text-transform: capitalize;
-}
-
-.sheet-skill-box select {
-	position: absolute;
-	left: 82%;
-}
-
-.sheet-skill-box option:nth-of-type(1n+5) {
-	color: #610b0d;
-}
-
-.sheet-skill-box option:nth-of-type(1n+9) {
-	color: #7a2593;
-}
-
-	/***** Skills Radio Toggles for Switching Tabs*****/
-	.sheet-skill-box input[type="radio"] {
-		left: 65px;
-		margin-right: 15px;
-		top: -20px;
-		width: 80px;
-	}
-
-	/***** Skills Repeating Section *****/
-		/***** Skills Settings *****/
-		.sheet-skill-box .sheet-settings input[type="text"]:first-child {
-			margin-right: 3px;
-			width: 69%;
-		}
-
-		.sheet-skill-box .sheet-settings input[type="number"] {
-			margin-left: 3px;
+		.sheet-weapon-box input[type="text"]:nth-child(1) {
+			text-align: left;
+			width: 38%;
 			margin-right: 5px;
-			margin-bottom: 2px;
 		}
 
-		/***** Skills Row in Settings *****/
-			.sheet-skills-row {
-				display: inline-block;
-			}
-
-			.sheet-skills-row div {
-				display: inline-block;
-				margin-right: 5px;
-				vertical-align: top;
-				width: 69%;
-			}
-
-			.sheet-skills-row div:nth-of-type(2) {
-				width: 25%;
-			}
-
-			.sheet-skills-row label {
-				font-size: 0.8em;
-				font-weight: 700;
-				margin-bottom: -3px;
-			}
-
-			.sheet-skills-row input[type="text"] {
-				width: 100%;
-			}
-
-			.sheet-skills-row input[type="number"] {
-
-			}
-
-		/***** Skills Display *****/
-		.sheet-skill-box .sheet-name {
-			min-height: 25px;
-			width: 72%;
+		.sheet-weapon-range input[type="text"],
+		.sheet-weapon-melee input[type="text"] {
+			text-align: center;
 		}
 
-		/***** Skills repeating sections on toggles *****/
-		.sheet-skills-active,
-		.sheet-skills-know,
-		.sheet-skills-lang {
-			display: none;
+		.sheet-weapon-box .sheet-weapon-melee input {
+			margin-right: 5px;
 		}
 
-		.sheet-skill-toggle[value="active"] ~ .sheet-skills-active,
-		.sheet-skill-toggle[value="knowledge"] ~ .sheet-skills-know,
-		.sheet-skill-toggle[value="language"] ~ .sheet-skills-lang {
-			display: inline;
+		/***** Weapon Display *****/
+		.sheet-weapon-box .sheet-display div {
+			display: inline-block;
+			margin-right: 7px;
+			text-align: center;
+			width: 8%;
 		}
 
+		.sheet-weapon-box .sheet-display div:first-child {
+			text-align: left;
+			width: 40%;
+		}
 
-/***** Collapsable Pieces *****/
-.sheet-collapsable {
-	padding-left: 1.5em;
-	width: 100%;
-	word-break: break-word;
-}
-
-	/***** Display Flags used in Collapsable areas... *****/
-	.sheet-quality .sheet-display-flag,
-	.sheet-contacts .sheet-display-flag,
-	.sheet-item-box .sheet-display-flag,
-	.sheet-spell-box .sheet-display-flag {
-		opacity: 0;    
-	    position: absolute;
-	    top: 0px;
-	    right: 0px;
-	    width: 100%;
-	    height: 100%;
-	}
-
-	.sheet-collapsable .sheet-desc {
-		display: none;
-	}
-
-	.sheet-display-flag:checked ~ .sheet-collapsable .sheet-desc {
-	    display: inline;
-	}
-
-/***** Display Rows *****/
-.sheet-display-row {
-	display: inline-block;
-	text-align: center;
-	vertical-align: top;
-	word-break: break-word;
-}
-
-.sheet-display-row:nth-of-type(1) {
-	text-align: left;
-}
-
-/***** Qualities *****/
-.sheet-quality h3:first-child {
-	margin-right: 35%;
-}
-
-.sheet-quality h3:last-child {
-	margin-left: 42%;
-}
-
-	/***** Qualities Settings *****/
-	.sheet-quality .sheet-settings div {
-		display: inline-block;
-	}
-
-	.sheet-quality .sheet-settings input[type="text"] {
-		width: 40%;
-		margin-right: 5px;
-	}
-
-	.sheet-quality select {
-		margin-left: 30px;
-	}
-
-	/***** Qualities Display *****/
-	.sheet-quality .sheet-display {
-		display: inline-block;
-	}
-
-	.sheet-quality .sheet-display-row:nth-of-type(1) {
-		margin-right: 2%;
-		width: 40%;
-	}
-
-	.sheet-quality .sheet-display-row:nth-of-type(2) {
-		text-align: left;
-		width: 45%;
-	}
-
-/***** Lifestyle for PC sheet *****/
-.sheet-lifestyle h3:nth-of-type(2) {
-	margin-right: 3px;
-}
-
-	/***** Settings for Lifestyle *****/
-	.sheet-lifestyle .sheet-settings div {
-		display: inline-block;
-	}
-
-	.sheet-lifestyle input[type="number"] {
-		width: 39%;
-	}
-
-	.sheet-lifestyle input[type="text"] {
-		width: 79%;
-	}
-
-	.sheet-lifestyle textarea {
-		min-height: 30px;
-		margin: 0px 0px 0px 0px;
-	}
-
-	/***** Displays for Lifestyle *****/
-	.sheet-lifestyle .sheet-display span {
-		display: inline-block;
-		font-family: sans-serif;
-		width: 24%;
-	}
-
-	.sheet-lifestyle .sheet-row-long:nth-of-type(2) input[type="text"] {
-		width: 40%;
-	}
-
-	.sheet-lifestyle .sheet-display-flag:checked ~ span:nth-of-type(1),
-	.sheet-lifestyle .sheet-display-flag ~ span:nth-of-type(1n+2) {
-		display: none;
-	}
-
-	.sheet-lifestyle .sheet-display-flag:checked ~ span:nth-of-type(1n+2) {
-		display: inherit;
-	}
-
-/***** Contact for PC sheet *****/
-.sheet-contacts h3:nth-of-type(1) {
-	margin-right: 52%;
-}
-
-.sheet-contacts h3:nth-of-type(2),
-.sheet-contacts h3:nth-of-type(3) {
-	margin-right: 5%;
-}
-
-	/***** Contacts Settings for PC sheet *****/
-	.sheet-contacts .sheet-settings div {
-		display: inline-block;
-	}
-
-	.sheet-contacts input[type="text"]:nth-of-type(1) {
-		margin-right: 5px;
-		width: 51%;
-	}
-
-	.sheet-contacts input[type="number"] {
-		margin-right: 12px;
-	}
-
-	.sheet-contacts input[type="text"]:nth-of-type(4) {
-		margin-left: -1px;
-		width: 22%;
-	}
-
-	/***** Contacts Displays for PC sheet *****/
-	.sheet-contacts .sheet-display {
-		display: inline-block;
-		vertical-align: top;
-	}
-
-	.sheet-contacts .sheet-display-row {
-		width: 14%;
-	}
-
-	.sheet-contacts .sheet-display-row:nth-of-type(1) {
-		margin-right: 2%;
-		width: 53%;
-	}
-
-
-/***** Weapons for PC sheet *****/
-.sheet-weapon-range,
-.sheet-weapon-melee {
-	display: none;
-	width: 100%;
-}
-
-.sheet-weapon-toggle[value="range"] ~ .sheet-weapon-range,
-.sheet-weapon-toggle[value="melee"] ~ .sheet-weapon-melee  {
-	display: inline-block;
-}
-
-	/***** Weapon Radio Toggles for Switching Tabs*****/
-	.sheet-weapon-box input[type="radio"] {
-		left: 140px;
-		margin-right: 15px;
-		top: -20px;
-		width: 75px;
-	}
-
-	/***** Weapon Headers *****/
-	.sheet-weapon-box .sheet-medium-box {
-		margin-top: -17px;
-	}
-
-	.sheet-weapon-box h3 {
-		text-align: center;
-		width: 10%;
-	}
-
-	.sheet-weapon-box h3:nth-child(1) {
-		text-align: left;
-		width: 38%;
-	}
-
-	/***** Weapon Settings Inputs *****/
-	.sheet-weapon-box input[type="text"],
-	.sheet-weapon-box input[type="number"] {
+	/***** Armor for PC Sheet *****/
+	.sheet-armor-box h3 {
+		margin-right: 2px;
 		text-align: center;
 		width: 9%;
 	}
 
-	.sheet-weapon-box input[type="text"]:nth-child(1) {
-		text-align: left;
-		width: 38%;
-		margin-right: 5px;
-	}
-
-	.sheet-weapon-range input[type="text"],
-	.sheet-weapon-melee input[type="text"] {
-		text-align: center;
-	}
-
-	.sheet-weapon-box .sheet-weapon-melee input {
-		margin-right: 5px;
-	}
-
-	/***** Weapon Display *****/
-	.sheet-weapon-box .sheet-display div {
-		display: inline-block;
-		margin-right: 7px;
-		text-align: center;
-		width: 8%;
-	}
-
-	.sheet-weapon-box .sheet-display div:first-child {
+	.sheet-armor-box h3:first-child {
 		text-align: left;
 		width: 40%;
 	}
 
-/***** Armor for PC Sheet *****/
-.sheet-armor-box h3 {
-	margin-right: 2px;
-	text-align: center;
-	width: 9%;
-}
-
-.sheet-armor-box h3:first-child {
-	text-align: left;
-	width: 40%;
-}
-
-	/***** Armor Settings Inputs *****/
-	.sheet-armor-box input {
-		margin-right: 1px;
-	}
-
-	.sheet-armor-box input[type="text"]:first-child {
-		width: 40%;
-	}
-
-	/***** Armor Display *****/
-	.sheet-armor-box .sheet-display {
-		display: inline-block;
-	}
-
-	.sheet-armor-box .sheet-display-flag {
-		opacity: 0;    
-	    position: absolute;
-	    top: 1px;
-	    width: 40%;
-	}
-
-	.sheet-armor-box .sheet-display .sheet-display-row {
-		margin-right: 3px;
-		text-align: center;
-		width: 8%;
-	}
-
-	.sheet-armor-box .sheet-display .sheet-display-row:nth-of-type(1) {
-		text-align: left;
-		width: 40%;
-	}
-
-
-/***** Gear/Items for PC Sheet *****/
-.sheet-gear .sheet-htab {
-	margin-right: -40px;
-}
-
-.sheet-gear .sheet-htab:first-child {
-	margin-left: -35px;
-}
-
-.sheet-gear .sheet-weapon-box input[type="radio"] {
-	left: 125px;
-}
-
-.sheet-item-box h3:first-child{
-	margin-right: 85%;
-}
-
-	/***** Item Settings *****/
-	.sheet-item-box input[type="text"] {
-		width: 90%;
-	}
-
-	/***** Item Display *****/
-	.sheet-item-box .sheet-display {
-		display: inline-block;
-	}
-
-	.sheet-item-box .sheet-display-row {
-		width: 10%;
-	}
-
-	.sheet-item-box .sheet-display-row:nth-of-type(1) {
-		margin-right: 2%;
-		width: 86%;
-	}
-
-/***** Augementations section *****/
-.sheet-aug-box h3:nth-of-type(1) {
-	margin-right: 59%;
-}
-
-.sheet-aug-box h3:nth-of-type(2) {
-	margin-right: 3%;
-}
-
-	/***** Augementations Settings *****/
-	.sheet-aug-box .sheet-settings input[type="text"] {
-		width: 75%;
-	}
-
-	.sheet-aug-box .sheet-settings input[type="number"] {
-		margin-right: 1%;
-		width: 10%;
-	}
-
-	/***** Augementations Display *****/
-	.sheet-aug-box .sheet-display {
-		display: inline-block;
-	}
-
-	.sheet-aug-box .sheet-display-flag {
-		opacity: 0;    
-	    position: absolute;
-	    top: 1px;
-	    width: 75%;
-	}
-
-	.sheet-aug-box .sheet-display-row {
-		margin-right: 2%;
-		text-align: center;
-		width: 8%;
-	}
-
-	.sheet-aug-box .sheet-display-row:nth-of-type(1) {
-		margin-right: 2%;
-		text-align: left;
-		width: 75%; 
-	}
-
-/***** Magic Section *****/
-	.sheet-magic-spells,
-	.sheet-magic-preps,
-	.sheet-magic-rituals {
-		display: none;
-	}
-
-	.sheet-magic-toggle[value="spells"] ~ .sheet-magic-spells,
-	.sheet-magic-toggle[value="preps"] ~ .sheet-magic-preps,
-	.sheet-magic-toggle[value="rituals"] ~ .sheet-magic-rituals {
-		display: inline;
-	}
-
-	.sheet-magic .sheet-htab {
-		margin-right: -45px;
-	}
-
-	.sheet-magic .sheet-htab:first-child {
-		margin-left: -45px;
-	}
-
-	.sheet-spell-box .sheet-medium-box {
-		margin-top: -17px;
-	}
-
-	.sheet-spell-box input[type="radio"] {
-		left: 80px;
-		margin-right: 10px;
-		top: -20px;
-		width: 80px;
-	}
-
-	.sheet-spell-box h3 {
-		margin-right: 3px;
-		width: 24%;
-	}
-
-	.sheet-spell-box h3:nth-of-type(2) {
-		width: 16%;
-	}
-
-	.sheet-spell-box h3:nth-of-type(5) {
-		margin-right: 0px;
-		width: 7%;
-	}
-
-		/***** Magic Settings Section *****/
-		.sheet-magic .sheet-settings {
-			width: 100%;
+		/***** Armor Settings Inputs *****/
+		.sheet-armor-box input {
+			margin-right: 1px;
 		}
 
-		.sheet-spell-box input[type="text"] {
-			width: 24%;
+		.sheet-armor-box input[type="text"]:first-child {
+			width: 40%;
 		}
 
-		.sheet-spell-box input[type="number"] {
-			width: 19%;
-		}
-
-		/***** Magic Display Section *****/
-		.sheet-spell-box .sheet-display {
+		/***** Armor Display *****/
+		.sheet-armor-box .sheet-display {
 			display: inline-block;
 		}
 
-		.sheet-spell-box .sheet-display .sheet-display-row {
-			margin-right: 3px;
-			text-align: left;
-			width: 23%;
+		.sheet-armor-box .sheet-display-flag {
+			opacity: 0;    
+		    position: absolute;
+		    top: 1px;
+		    width: 40%;
 		}
 
-		.sheet-spell-box .sheet-display .sheet-display-row:nth-of-type(2) {
+		.sheet-armor-box .sheet-display .sheet-display-row {
+			margin-right: 3px;
+			text-align: center;
+			width: 8%;
+		}
+
+		.sheet-armor-box .sheet-display .sheet-display-row:nth-of-type(1) {
+			text-align: left;
+			width: 40%;
+		}
+
+
+	/***** Gear/Items for PC Sheet *****/
+	.sheet-gear .sheet-htab {
+		margin-right: -40px;
+	}
+
+	.sheet-gear .sheet-htab:first-child {
+		margin-left: -35px;
+	}
+
+	.sheet-gear .sheet-weapon-box input[type="radio"] {
+		left: 125px;
+	}
+
+	.sheet-item-box h3:first-child{
+		margin-right: 85%;
+	}
+
+		/***** Item Settings *****/
+		.sheet-item-box input[type="text"] {
+			width: 90%;
+		}
+
+		/***** Item Display *****/
+		.sheet-item-box .sheet-display {
+			display: inline-block;
+		}
+
+		.sheet-item-box .sheet-display-row {
+			width: 10%;
+		}
+
+		.sheet-item-box .sheet-display-row:nth-of-type(1) {
+			margin-right: 2%;
+			width: 86%;
+		}
+
+	/***** Augementations section *****/
+	.sheet-aug-box h3:nth-of-type(1) {
+		margin-right: 59%;
+	}
+
+	.sheet-aug-box h3:nth-of-type(2) {
+		margin-right: 3%;
+	}
+
+		/***** Augementations Settings *****/
+		.sheet-aug-box .sheet-settings input[type="text"] {
+			width: 75%;
+		}
+
+		.sheet-aug-box .sheet-settings input[type="number"] {
+			margin-right: 1%;
+			width: 10%;
+		}
+
+		/***** Augementations Display *****/
+		.sheet-aug-box .sheet-display {
+			display: inline-block;
+		}
+
+		.sheet-aug-box .sheet-display-flag {
+			opacity: 0;    
+		    position: absolute;
+		    top: 1px;
+		    width: 75%;
+		}
+
+		.sheet-aug-box .sheet-display-row {
+			margin-right: 2%;
+			text-align: center;
+			width: 8%;
+		}
+
+		.sheet-aug-box .sheet-display-row:nth-of-type(1) {
+			margin-right: 2%;
+			text-align: left;
+			width: 75%; 
+		}
+
+	/***** Magic Section *****/
+		.sheet-magic-spells,
+		.sheet-magic-preps,
+		.sheet-magic-rituals {
+			display: none;
+		}
+
+		.sheet-magic-toggle[value="spells"] ~ .sheet-magic-spells,
+		.sheet-magic-toggle[value="preps"] ~ .sheet-magic-preps,
+		.sheet-magic-toggle[value="rituals"] ~ .sheet-magic-rituals {
+			display: inline;
+		}
+
+		.sheet-magic .sheet-htab {
+			margin-right: -45px;
+		}
+
+		.sheet-magic .sheet-htab:first-child {
+			margin-left: -45px;
+		}
+
+		.sheet-spell-box .sheet-medium-box {
+			margin-top: -17px;
+		}
+
+		.sheet-spell-box input[type="radio"] {
+			left: 80px;
+			margin-right: 10px;
+			top: -20px;
+			width: 80px;
+		}
+
+		.sheet-spell-box h3 {
+			margin-right: 3px;
+			width: 16%;
+		}
+
+		.sheet-spell-box h3:nth-of-type(1) {
+			width: 40%;
+		}
+
+		.sheet-spell-box h3:nth-of-type(3) {
 			width: 15%;
 		}
 
-		.sheet-spell-box .sheet-display .sheet-display-row:nth-of-type(5) {
+		.sheet-spell-box h3:nth-of-type(4) {
+			width: 18%;
+		}
+
+		.sheet-spell-box h3:nth-of-type(5) {
+			margin-right: 0px;
 			width: 7%;
 		}
 
+			/***** Magic Settings Section *****/
+			.sheet-magic .sheet-settings {
+				width: 100%;
+			}
+
+			.sheet-spell-box input[type="text"] {
+				width: 40%;
+			}
+
+			.sheet-spell-box input[type="number"] {
+				width: 19%;
+			}
+
+				/***** Ritual Settings Section *****/
+				.sheet-magic-rituals input[type="text"] {
+					width: 99%;
+				}
+
+			/***** Magic Display Section *****/
+			.sheet-spell-box .sheet-display {
+				display: inline-block;
+			}
+
+			.sheet-spell-box .sheet-display .sheet-display-row {
+				margin-right: 3px;
+				text-align: left;
+				width: 15%;
+			}
+
+			.sheet-spell-box .sheet-display-row:nth-of-type(1) {
+				width: 39%;
+			}
+
+			.sheet-spell-box .sheet-display .sheet-display-row:nth-of-type(4) {
+				width: 16%;
+			}
+
+			.sheet-spell-box .sheet-display .sheet-display-row:nth-of-type(5) {
+				width: 7%;
+			}
+
+				/***** Ritual Display Section *****/
+				.sheet-magic-rituals .sheet-display .sheet-display-row {
+					width: 99%;
+				}
+
+	/***** Powers Section *****/
+	.sheet-powers-box {
+		display: inline;
+	}
+
+	.sheet-powers-box h3 {
+		margin-right: 3px;
+		width: 8%;
+	}
+
+	.sheet-powers-box h3:nth-of-type(1) {
+		width: 85%;
+	}
+
+	.sheet-powers-box h3:nth-of-type(3) {
+		margin-right: 0px;
+		width: 8%;
+	}
+
+		/***** Powers Settings Section *****/
+		.sheet-powers-box .sheet-settings {
+			width: 100%;
+		}
+
+		.sheet-powers-box .sheet-settings input[type="text"] {
+			margin-right: 3px;
+			width: 85%;
+		}
+
+		.sheet-powers-box input[type="number"] {
+			width: 8%;
+		}
+
+		/***** Powers Display Section *****/
+		.sheet-powers-box .sheet-display {
+			display: inline-block;
+		}
+
+		.sheet-powers-box .sheet-display .sheet-display-row:nth-of-type(1) {
+			margin-right: 3px;
+			width: 85%;
+		}
+		.sheet-powers-box .sheet-display .sheet-display-row:nth-of-type(2) {
+			width: 8%;
+		}
 
 /***** Start of the NPC sheet *****/
 .sheet-npc {
@@ -1412,9 +1484,9 @@ textarea {
 	font-size: 1.5em;
 }
 
-.sheet-goon,
-.sheet-host,
-.sheet-vehicle {
+.sheet-npc .sheet-goon,
+.sheet-npc .sheet-host,
+.sheet-npc .sheet-vehicle {
 	width: 100%;
 }
 
@@ -2028,7 +2100,6 @@ textarea {
 		.sheet-program-toggle[value="0"] + div.sheet-repeat-indent {opacity: 0.3;}
 
 /**** Hide Sections that are not used ****/
-	.sheet-optional-flag0[value="1"] + .sheet-optional {display: inline-block;}
 
 	.sheet-optional-flag0[value="1"] + .sheet-textboxes {
 		display: inherit;
@@ -2038,7 +2109,6 @@ textarea {
 	.sheet-matrix,
 	.sheet-magic,
 	.sheet-resonance,
-	.sheet-optional,
 	.sheet-optional-flag0[value="0"] + .sheet-textboxes,
 	.sheet-optional-flag0[value="0"] + .sheet-attr-header,
 	.sheet-spell_catagory + div,
