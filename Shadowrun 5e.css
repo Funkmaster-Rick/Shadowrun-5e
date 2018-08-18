@@ -2154,6 +2154,7 @@ textarea {
 		.sheet-program-toggle[value="0"] + div.sheet-repeat-indent {opacity: 0.3;}
 
 /**** Hide Sections that are not used ****/
+	.sheet-optional-flag0[value="1"] + .sheet-optional {display: inline-block;}
 
 	.sheet-optional-flag0[value="1"] + .sheet-textboxes {
 		display: inherit;
@@ -2163,6 +2164,7 @@ textarea {
 	.sheet-matrix,
 	.sheet-magic,
 	.sheet-resonance,
+	.sheet-optional,
 	.sheet-optional-flag0[value="0"] + .sheet-textboxes,
 	.sheet-optional-flag0[value="0"] + .sheet-attr-header,
 	.sheet-spell_catagory + div,
