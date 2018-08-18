@@ -55,9 +55,10 @@ hr {
 label {
 	display: inline-block;
 	font-size: 1em;
+	margin-bottom: 0px;
+	padding-right: 5px;
 	text-transform: capitalize;
 	width: fit-content;
-	padding-right: 5px;
 }
 
 input,
@@ -1115,8 +1116,8 @@ textarea {
 
 
 	/***** Weapons for PC sheet *****/
-	.sheet-weapon-range,
-	.sheet-weapon-melee {
+	.sheet-pc .sheet-weapon-range,
+	.sheet-pc .sheet-weapon-melee {
 		display: none;
 		width: 100%;
 	}
@@ -1454,6 +1455,59 @@ textarea {
 			width: 8%;
 		}
 
+	/***** Matrix Section *****/
+	.sheet-matrix .sheet-edg-hex {
+		margin-right: 0px;
+		top: 0px;
+		width: 100%;
+	}
+
+	.sheet-matrix .sheet-edg-hex input[type="radio"]:checked ~.sheet-hexagon {
+		background-color: #fff;
+	}
+
+	.sheet-matrix .sheet-edg-hex input[type="radio"]:checked ~ .sheet-hexagon:before {
+		border-bottom-color: #fff;
+	}
+
+	.sheet-matrix .sheet-edg-hex input[type="radio"]:checked ~ .sheet-hexagon:after {
+		border-top-color: #fff;
+	}
+
+		/***** Matrix Programs section *****/
+		.sheet-matrix-program {
+			margin-left: 10px;
+		}
+
+			/***** Matrix Programs Settings *****/
+			.sheet-matrix-program  input[type="text"] {
+				width: 90%;
+			}
+
+			.sheet-matrix-program  input[type="text"]:first-child {
+				width: 50%;
+			}
+
+			/***** Matrix Programs Display *****/
+			.sheet-matrix-program .sheet-display {
+				margin-left: 20px.
+			}
+
+	/***** Options Section *****/
+	.sheet-options .sheet-pc-box {
+		min-height: 800px;
+	}
+
+	.sheet-options .sheet-pc-box div {
+		widows: 48%;
+	}
+
+	.sheet-options input[type="checkbox"] {
+		opacity: 1;
+	}
+
+
+
 /***** Start of the NPC sheet *****/
 .sheet-npc {
 	background-color: #040404;
@@ -1484,11 +1538,11 @@ textarea {
 	font-size: 1.5em;
 }
 
-.sheet-npc .sheet-goon,
+/*.sheet-npc .sheet-goon,
 .sheet-npc .sheet-host,
 .sheet-npc .sheet-vehicle {
 	width: 100%;
-}
+}*/
 
 .sheet-npc input {
 	background-color: #555;
@@ -1932,43 +1986,43 @@ textarea {
 	input.sheet-spell-input {width: 35px !important;}
 
 /**** Matrix row Customizations ****/
-	.sheet-matrix {
+	.sheet-npc .sheet-matrix {
 		/* box-shadow: 2px 0px 40px 2px #4f7da7; */
 	}
 
-	.sheet-matrix h2 {
+	.sheet-npc .sheet-matrix h2 {
 		display: inline-block;
 		font-size: 1em;
 		width: 16.5%;
 	}
 
-	.sheet-matrix h3{
+	.sheet-npc .sheet-matrix h3{
 		color: #000;
 		text-align: center;
 		text-shadow: 0 0 25px #4f7da7, 0 0 5px #4f7da7;
 	}
 
-	.sheet-matrix .sheet-2col {
+	.sheet-npc .sheet-matrix .sheet-2col {
 		display: inline;
 		width: calc(49% - -2px);
 	}
 
-	.sheet-matrix label {
+	.sheet-npc .sheet-matrix label {
 		text-indent: 10px;
 		width: 18%;
 	}
 
-	.sheet-matrix .sheet-2col label {
+	.sheet-npc .sheet-matrix .sheet-2col label {
 		width: fit-content;
 	}
 
-	.sheet-matrix input[type="number"] {
+	.sheet-npc .sheet-matrix input[type="number"] {
 		border-radius: 25px 25px;
 		height: 25px;
 		width: 25px;
 	}
 
-	.sheet-matrix input[type="text"] {
+	.sheet-npc .sheet-matrix input[type="text"] {
 		background: none;
 		border-bottom: 1px solid;
 		border-radius: 0px;
@@ -1977,7 +2031,7 @@ textarea {
 	}
 
 	/**** Matrix Bubbles ****/
-		.sheet-matrix-bubble {
+		.sheet-npc .sheet-matrix-bubble {
 			display: inline;
 			margin-left: 15px;
 			margin-right: 25px;
@@ -1987,12 +2041,12 @@ textarea {
 			margin-right: 15px;
 		}
 
-		.sheet-matrix-bubble input[type="radio"] {
+		.sheet-npc .sheet-matrix-bubble input[type="radio"] {
 			height: 25px;
 			width: 20px;
 		}
 
-		.sheet-matrix-bubble input[type="radio"] + span {
+		.sheet-npc .sheet-matrix-bubble input[type="radio"] + span {
 			border-radius: 5px;
 			display: inline-block;
 			height: 25px;
@@ -2002,17 +2056,17 @@ textarea {
 			width: 20px;
 		}
 
-		.sheet-matrix-bubble input[type="radio"]:checked ~ input[type="radio"] + span {
+		.sheet-npc .sheet-matrix-bubble input[type="radio"]:checked ~ input[type="radio"] + span {
 			height: 14px;
 			margin-bottom: 3px;
 			opacity: 0.5;
 		}
 
-		.sheet-matrixAttack {
+		.sheet-npc .sheet-matrixAttack {
 			box-shadow: 0px 0px 29px 8px  #cc0701;
 		}
 
-		.sheet-matrixAttack span {
+		.sheet-npc .sheet-matrixAttack span {
 			border: 2px solid #3a0000;
 			background-color: #cc0701;
 			-webkit-box-shadow: inset 0px 1px 5px 2px #3a0000;
@@ -2020,11 +2074,11 @@ textarea {
 			box-shadow: inset 0px 1px 5px 2px #3a0000;
 		}
 
-		.sheet-matrixSleaze {
+		.sheet-npc .sheet-matrixSleaze {
 			box-shadow: 0px 0px 29px 8px  #007bfc;
 		}
 
-		.sheet-matrixSleaze span {
+		.sheet-npc .sheet-matrixSleaze span {
 			border: 2px solid #000e3b;
 			background-color: #007bfc;
 			-webkit-box-shadow: inset 0px 1px 5px 2px #000e3b;
@@ -2032,11 +2086,11 @@ textarea {
 			box-shadow: inset 0px 1px 5px 2px #000e3b;
 		}
 
-		.sheet-matrixData {
+		.sheet-npc .sheet-matrixData {
 			box-shadow: 0px 0px 29px 8px  #88dd04;
 		}
 
-		.sheet-matrixData span {
+		.sheet-npc .sheet-matrixData span {
 			border: 2px solid #074202;
 			background-color: #88dd04;
 			-webkit-box-shadow: inset 0px 1px 5px 2px #074202;
@@ -2044,11 +2098,11 @@ textarea {
 			box-shadow: inset 0px 1px 5px 2px #074202;
 		}
 
-		.sheet-matrixFirewall {
+		.sheet-npc .sheet-matrixFirewall {
 			box-shadow: 0px 0px 29px 8px  #f88703;
 		}
 
-		.sheet-matrixFirewall span {
+		.sheet-npc .sheet-matrixFirewall span {
 			border: 2px solid #470101;
 			background-color: #f88703;
 			-webkit-box-shadow: inset 0px 1px 5px 2px #470101;
@@ -2057,30 +2111,30 @@ textarea {
 		}
 
 	/**** Matrix Program Customizations ****/
-		.sheet-matrix .repcontainer {
+		.sheet-npc .sheet-matrix .repcontainer {
 			margin-top: 0px;
 		}
 
-		.sheet-matrix .sheet-weapon-note input[type="text"] {
+		.sheet-npc .sheet-matrix .sheet-weapon-note input[type="text"] {
 			margin-top: 5px;
 			width: 650px;
 		}
 
-		.sheet-matrix .sheet-settings,
-		.sheet-matrix .sheet-display,
-		.sheet-host .sheet-display {
+		.sheet-npc .sheet-matrix .sheet-settings,
+		.sheet-npc .sheet-matrix .sheet-display,
+		.sheet-npc .sheet-host .sheet-display {
 			margin-left: 10px;
 		}
 
-		.sheet-matrix .sheet-display span {
+		.sheet-npc .sheet-matrix .sheet-display span {
 			margin-right: 5px;
 		}
 
-		.sheet-matrix .sheet-display button + span {
+		.sheet-npc .sheet-matrix .sheet-display button + span {
 			font-size: 12px;
 		}
 
-		.sheet-matrix .sheet-repeat-indent,
+		.sheet-npc .sheet-matrix .sheet-repeat-indent,
 		.sheet-host .sheet-repeat-indent {
 			padding-left: 3em;
 			text-indent: -1.5em;
@@ -2143,7 +2197,10 @@ textarea {
 	.sheet-character-type[value="magic"] ~ .sheet-magic,
 	.sheet-character-type[value="magic"] ~ .sheet-magic + .sheet-magic,
 	.sheet-character-type[value="resonance"] ~ .sheet-resonance,
-	.sheet-character-type[value="resonance"] ~ .sheet-resonance + .sheet-resonance {display: inline-block;} 
+	.sheet-character-type[value="resonance"] ~ .sheet-resonance + .sheet-resonance {
+		display: inline-block;
+		width: 100%;
+	} 
 
 /**** emoves the arrows for increase numbers ****/
 	input::-webkit-outer-spin-button,

@@ -938,18 +938,71 @@
 	</div><!-- ~~~~~~~~ End of the VEHICLE Column  ~~~~~~~~ -->
 	<div class="matrix pc-col"><!-- ~~~~~~~~ Start of the MATRIX Column  ~~~~~~~~ -->
 		<div class="pc-row">
-			<div class="header right-header"><h1>Cyberdeck \ Living Persona</h1><div class="right-tri"></div></div>
-			<div class="border-box repeat-box deck-box">
+			<div class="header right-header"><h1>Cyberdeck</h1><div class="right-tri"></div></div>
+			<div class="border-box deck-box">
 				<div class="pc-box medium-box">
-					<div class="row-long">
+					<input type="checkbox" class="settings-toggle" name="attr_flag_cyberdeck" checked="checked" /><span>y</span>
+					<div class="settings">
+						<div class="row-long">
+							<label>Model</label><input type="text" name="attr_cyberdeck" value="" placeholder="Sony CYI-720" />
+							<label>Attack</label><input type="number" name="attr_attack" value="" placeholder="7" />
+							<label>Sleaze</label><input type="number" name="attr_sleaze" value="" placeholder="6" />
+						</div>
+						<div class="row-long">
+							<label>Device Rating</label><input type="number" name="attr_device_rating" value="" placeholder="4" />
+							<label>Data Processing</label><input type="number" name="attr_data_processing" value="" placeholder="5" />
+							<label>Firewall</label><input type="number" name="attr_firewall" value="" placeholder="4" />
+						</div>
 					</div>
-					<fieldset>
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
-						<div class="settings">
+					<div class="display">
+						<div class="row-long">
+							<h3>Model</h3><span name="attr_cyberdeck"></span>
+							<h3>Attack</h3><span name="attr_attack"></span>
+							<h3>Sleaze</h3><span name="attr_sleaze"></span>
 						</div>
-						<div class="display">
+						<div class="row-long">
+							<h3>Device Rating</h3><span name="attr_device_rating"></span>
+							<h3>Data Processing</h3><span name="attr_data_processing"></span>
+							<h3>Firewall</h3><span name="attr_firewall"></span>
 						</div>
-					</fieldset>
+					</div>
+					<div class="matrix-program repeat-box">
+						<h2>Programs</h2>
+						<fieldset class="repeating_programs">
+						<div class="repeating toggle">
+							<input type="checkbox" class="settings-toggle" name="attr_program_toggle" checked="checked" /><span>y</span>
+							<div class="settings">
+								<input type="text" name="attr_program" value="" placeholder="Program Name" />
+								<br />
+								<div class="weapon-note">
+									<input type="text"  name="attr_program_note" value="" placeholder="Program Description"/>
+								</div>
+							</div>
+							<div class="display">
+							<input type="hidden" class="program-toggle" name="attr_program_on" value="" />
+								<div class="repeat-indent">
+									<input type="checkbox" class="program-toggle" name="attr_program_on" checked="checked" /><span class="program-toggle">Q</span>
+									<button type="roll" value="@{gm_toggle} &{template:sGoon}{{header=@{program}}}{{desc=@{program_note}}}"><span name="attr_program"></span></button><span name="attr_program_note"></span>
+								</div>
+							</div>
+						</div>
+						</fieldset>
+					</div>
+					<div class="edg-hex">
+						<h2>Matrix Condition Monitor</h2>
+						<input type="radio" name="attr_matrix_con" value="1" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="2" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="3" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="4" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="5" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="6" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="7" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="8" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="9" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="10" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="11" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="12" /><span class="hexagon"></span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -970,23 +1023,36 @@
 			</div>
 		</div>
 	</div><!-- ~~~~~~~~ End of the MATRIX Column  ~~~~~~~~ -->
-	<div class="options col"><!-- ~~~~~~~~ Start of the PC Options Page ~~~~~~~~ -->
-		<div class="options">
-			<select name="attr_sheet_type">
-				<option value="pc">PC</option>
-				<option value="goon">Goon</option>
-				<option value="host">Host</option>
-				<option value="vehicle">Vehicle</option>
-			</select>
-			Cyberdeck / Living Persona <input type="checkbox" name="attr_cyberdeck">
-			Augmentations <input type="checkbox" name="attr_augmentations">
-			Vehicle <input type="checkbox" name="attr_vehicle">
-			Spells / Preperations / Rituals / Complex Forms <input type="checkbox" name="attr_special">
-			Adept Powers or Other Abilities <input type="checkbox" name="attr_powers">
+	<div class="options pc-col"><!-- ~~~~~~~~ Start of the PC Options Page ~~~~~~~~ -->
+		<div class="pc-row">
+			<div class="header right-header"><h1>Options</h1><div class="right-tri"></div></div>
+			<div class="border-box repeat-box deck-box">
+				<div class="pc-box">
+					<div>
+						<h2>Hide Tabs:</h2><br />
+						<label>Matrix</label><input type="checkbox" name="attr_tab_cyberdeck"><br />
+						<label>Augmentations (Augs)</labe><input type="checkbox" name="attr_tab_augmentations"><br />
+						<label>Vehicle</label><input type="checkbox" name="attr_tab_vehicle"><br />
+						<label>Magic</label> <input type="checkbox" name="attr_tab_special"><br />
+					</div>
+					<div>
+						<h2>NPC Select: </h2><br />
+						<select name="attr_sheet_type">
+							<option value="pc">PC</option>
+							<option value="goon">Goon</option>
+							<option value="host">Host</option>
+							<option value="vehicle">Vehicle</option>
+						</select>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div><!-- ~~~~~~~~ End of the Options Page ~~~~~~~~ -->
+	</div>
 </div><!-- ~~~~~~~~ End of PC Sheet  ~~~~~~~~ -->
-<!-- ~~~~~~~~ Start of NPC Sheet  ~~~~~~~~ -->
+
+<!-- ~~~:+:+:::::+:+::+:+:::::+:+::+:+:::::+:+:~~~~ 
+~~~:+:+:::::+:+: Start of NPC Sheet :+:+:::::+:+:~~~~ 
+~~~:+:+:::::+:+::+:+:::::+:+::+:+:::::+:+:~~~~ -->
 <div class="npc">
 	<div class="roll-toggles"><!-- ~~~~~~~~ Roll Buttons & Toggles  ~~~~~~~~ -->
 		<div class="toggle-buttons">
@@ -2194,7 +2260,7 @@
 	<!-- ~~~~~~~~ Weapons ~~~~~~~~ -->
 	<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
 	<div class="goon vehicle">
-		<label>Weapons: </label>
+		<label style="margin-bottom: 10px;">Weapons: </label>
 		<fieldset class="repeating_weapon">
 			<div class="repeating toggle">
 				<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" /><span>y</span>
@@ -2233,7 +2299,7 @@
 	</div><!-- ~~~~~~~~ End Weapons ~~~~~~~~ -->
 	<!-- ~~~~~~~~ Spells ~~~~~~~~ -->
 	<input type="hidden" class="character-type" name="attr_flag_special" />
-	<div class="magic"><label>Spells: </label>
+	<div class="magic"><label style="margin-bottom: 10px;">Spells: </label>
 		<fieldset class="repeating_NPCspell">
 			<div class="repeating toggle">
 				<input type="checkbox" class="settings-toggle" name="attr_toggle" checked="checked" /><span>y</span>
