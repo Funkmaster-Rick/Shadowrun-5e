@@ -1459,6 +1459,7 @@ span {
 	/***** Matrix Section *****/
 	.sheet-matrix .sheet-edg-hex {
 		margin-right: 0px;
+		position: unset;
 		top: 0px;
 		width: 100%;
 	}
@@ -1476,6 +1477,9 @@ span {
 	}
 
 		/***** Matrix Settings *****/
+		.sheet-matrix .sheet-repeat-box .sheet-settings {
+			margin-left: 0px;
+		}
 
 
 		/***** Matrix Programs section *****/
@@ -1485,14 +1489,14 @@ span {
 		}
 
 		.sheet-program-box input.sheet-program-toggle {
-			left: 20px;
-			top: -3px;
+			left: 5px;
+			top: 2px;
 			width: 15px;
 		}
 
 		.sheet-program-box span.sheet-program-toggle {
-			left: 5px;
-			top: 0px;
+			left: 6px;
+			top: -3px;
 		}
 
 			/***** Matrix Programs Settings *****/
@@ -1504,13 +1508,42 @@ span {
 			.sheet-program-box  input[type="text"] {
 				border-radius: 0px;
 				border-bottom: 1px solid #000;
-				margin-left: 5px;
-				width: 90%;
+				width: 98%;
 			}
 
 			/***** Matrix Programs Display *****/
-			.sheet-program-box .sheet-display {
-				margin-left: 20px.
+			.sheet-matrix-box .sheet-display {
+				display: inline-block;
+			}
+
+			.sheet-program-box .sheet-repeat-box .sheet-display {
+				margin-left: 0px;
+			}
+
+			.sheet-program-box .sheet-display-row {
+				margin-left: 25px;
+				width: 95%;
+			}
+
+			.sheet-program-box .sheet-program-toggle {
+				position: absolute;
+			}
+
+			.sheet-program-box .sheet-program-toggle:checked span {
+				opacity: 0.3;
+			}
+
+			.sheet-program-box .sheet-display-flag {
+				width: 95%;
+			}
+
+			.sheet-program-box .sheet-collapsable {
+				padding-left: 0em;
+			}
+
+			.sheet-program-box .sheet-program-toggle:checked ~ .sheet-display-row,
+			.sheet-program-box .sheet-program-toggle:checked ~ .sheet-collapsable {
+				opacity: 0.3;
 			}
 
 	/***** Options Section *****/
@@ -1527,8 +1560,9 @@ span {
 	}
 
 
-
+/***********************************/
 /***** Start of the NPC sheet *****/
+/***********************************/
 .sheet-npc {
 	background-color: #040404;
 	color: #fff;
@@ -1582,9 +1616,11 @@ span {
 .sheet-npc .sheet-display label {color: #FCD116;} 
 
 .sheet-npc .sheet-display .sheet-attr-header button:hover,
-
 .sheet-npc textarea {
 	background-color: #333;
+}
+.sheet-npc .sheet-display div {
+	width: 100%;
 }
 
 .sheet-npc select {

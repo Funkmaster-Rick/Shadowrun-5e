@@ -939,7 +939,7 @@
 	<div class="matrix pc-col"><!-- ~~~~~~~~ Start of the MATRIX Column  ~~~~~~~~ -->
 		<div class="pc-row">
 			<div class="header right-header"><h1>Cyberdeck</h1><div class="right-tri"></div></div>
-			<div class="border-box matrix-box">
+			<div class="border-box repeat-box matrix-box">
 				<div class="pc-box medium-box">
 					<input type="checkbox" class="settings-toggle" name="attr_flag_cyberdeck" checked="checked" /><span>y</span>
 					<div class="settings">
@@ -949,7 +949,7 @@
 							<label>Sleaze</label><input type="number" name="attr_sleaze" value="" placeholder="6" />
 						</div>
 						<div class="row-long">
-							<label>Device Rating</label><input type="number" name="attr_device_rating" value="" placeholder="4" style="width: 14%;" />
+							<label>Device Rating</label><input type="number" name="attr_device_rating" value="" placeholder="4" style="margin-right: 10%;" />
 							<label>Data Processing</label><input type="number" name="attr_data_processing" value="" placeholder="5" />
 							<label>Firewall</label><input type="number" name="attr_firewall" value="" placeholder="4" />
 						</div>
@@ -966,29 +966,23 @@
 							<h2>Firewall</h2><span name="attr_firewall"></span>
 						</div>
 					</div>
-					<div class="program-box repeat-box">
-						<h2>Programs</h2>
+					<h3>Programs</h3>
+					<div class="program-box">
 						<fieldset class="repeating_programs">
-							<input type="checkbox" class="settings-toggle" name="attr_toggle" checked="checked" /><span style="color: #000;">y</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 							<div class="settings">
 								<div>
 									<input type="text" name="attr_program" value="" placeholder="Program name" />
-									<br />
-									<div class="weapon-note">
-										<!--<input type="text"  name="attr_program_note" value="" placeholder="Program description" style="width: 98%;" />-->
-										<textarea name="attr_notes" placeholder="Program description"></textarea>
-									</div>
+									<label>Notes</label>
+									<textarea name="attr_notes" placeholder="Program description"></textarea>
 								</div>
 							</div>
 							<div class="display">
-							<input type="hidden" class="program-toggle" name="attr_program_on" value="" />
-								<div class="repeat-indent">
-									<input type="checkbox" class="program-toggle" name="attr_program_on" checked="checked" /><span class="program-toggle" style="color: #000;">Q</span>
-									<input class="display-flag" type="checkbox" name="attr_display_flag" />
-									<div class="display-row"><b><span name="attr_program"></span></b></div>
-									<div class="collapsable">
-										<div class="desc"><span name="attr_notes"></span></div>
-									</div>
+								<input type="checkbox" class="program-toggle" name="attr_program_on" checked="checked" /><span class="program-toggle" style="color: #000;">Q</span>
+								<input class="display-flag" type="checkbox" name="attr_display_flag" />
+								<div class="display-row"><b><span name="attr_program"></span></b></div>
+								<div class="collapsable">
+									<div class="desc"><span name="attr_notes"></span></div>
 								</div>
 							</div>
 						</fieldset>
