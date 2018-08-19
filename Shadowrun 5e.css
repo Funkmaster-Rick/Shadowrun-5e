@@ -121,6 +121,10 @@ textarea {
 	white-space: pre-line;
 }
 
+span {
+	word-break: break-all;
+}
+
 /* Hide & show pages */
 .sheet-augs,
 .sheet-core,
@@ -960,7 +964,8 @@ textarea {
 		.sheet-contacts .sheet-display-flag,
 		.sheet-item-box .sheet-display-flag,
 		.sheet-spell-box .sheet-display-flag,
-		.sheet-powers-box .sheet-display-flag {
+		.sheet-powers-box .sheet-display-flag,
+		.sheet-program-box .sheet-display-flag {
 			opacity: 0;    
 		    position: absolute;
 		    top: 0px;
@@ -1364,10 +1369,6 @@ textarea {
 		}
 
 			/***** Magic Settings Section *****/
-			.sheet-magic .sheet-settings {
-				width: 100%;
-			}
-
 			.sheet-spell-box input[type="text"] {
 				width: 40%;
 			}
@@ -1474,22 +1475,41 @@ textarea {
 		border-top-color: #fff;
 	}
 
+		/***** Matrix Settings *****/
+
+
 		/***** Matrix Programs section *****/
-		.sheet-matrix-program {
-			margin-left: 10px;
+		.sheet-program-box .sheet-repeating-indent {
+			padding-left: 0em;
+			text-indent: -1em;
+		}
+
+		.sheet-program-box input.sheet-program-toggle {
+			left: 20px;
+			top: -3px;
+			width: 15px;
+		}
+
+		.sheet-program-box span.sheet-program-toggle {
+			left: 5px;
+			top: 0px;
 		}
 
 			/***** Matrix Programs Settings *****/
-			.sheet-matrix-program  input[type="text"] {
+			.sheet-program-box .sheet-settings div {
+				display: inline-block;
+				width: 100%;
+			}
+
+			.sheet-program-box  input[type="text"] {
+				border-radius: 0px;
+				border-bottom: 1px solid #000;
+				margin-left: 5px;
 				width: 90%;
 			}
 
-			.sheet-matrix-program  input[type="text"]:first-child {
-				width: 50%;
-			}
-
 			/***** Matrix Programs Display *****/
-			.sheet-matrix-program .sheet-display {
+			.sheet-program-box .sheet-display {
 				margin-left: 20px.
 			}
 
