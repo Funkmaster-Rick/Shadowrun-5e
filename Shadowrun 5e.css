@@ -44,7 +44,6 @@ div {
 fieldset {
 	background: transparent;
 	display: inline-flex;
-	width: 40%;
 }
 
 hr {
@@ -779,6 +778,7 @@ span {
 
 			.sheet-repeat-box input.sheet-settings-toggle + span {
 				top: -2px;
+				width: 2%;
 			}
 
 			.sheet-repeat-box input.sheet-primary-flag {
@@ -1464,19 +1464,11 @@ span {
 		width: 100%;
 	}
 
-	.sheet-matrix .sheet-edg-hex input[type="radio"]:checked ~.sheet-hexagon {
-		background-color: #fff;
+	.sheet-matrix-box label:nth-of-type(1n+2) {
+		margin-left: 5px;
 	}
 
-	.sheet-matrix .sheet-edg-hex input[type="radio"]:checked ~ .sheet-hexagon:before {
-		border-bottom-color: #fff;
-	}
-
-	.sheet-matrix .sheet-edg-hex input[type="radio"]:checked ~ .sheet-hexagon:after {
-		border-top-color: #fff;
-	}
-
-		/***** Matrix Settings *****/
+		/***** Cyberdeck Settings *****/
 		.sheet-matrix .sheet-repeat-box .sheet-settings {
 			margin-left: 0px;
 		}
@@ -1546,6 +1538,70 @@ span {
 				opacity: 0.3;
 			}
 
+		/***** Complex Forms Section *****/
+		.sheet-form-box {
+			display: inline-block;
+		}
+
+		.sheet-form-box h3 {
+			margin-right: 3px;
+			width: 16%;
+		}
+
+		.sheet-form-box h3:nth-of-type(1) {
+			width: 40%;
+		}
+
+		.sheet-form-box h3:nth-of-type(3) {
+			width: 15%;
+		}
+
+		.sheet-form-box h3:nth-of-type(4) {
+			width: 18%;
+		}
+
+		.sheet-form-box h3:nth-of-type(5) {
+			margin-right: 0px;
+			width: 7%;
+		}
+
+			/***** Complex Form Settings Section *****/
+			.sheet-form-box .sheet-settings div {
+				display: inline-block;
+			}
+
+			.sheet-form-box input[type="text"] {
+				width: 40%;
+			}
+
+			.sheet-form-box input[type="number"] {
+				width: 19%;
+			}
+
+			/***** Complex Form Display Section *****/
+			.sheet-form-box .sheet-display {
+				display: inline-block;
+			}
+
+			.sheet-form-box .sheet-display .sheet-display-row {
+				margin-right: 3px;
+				text-align: left;
+				width: 15%;
+			}
+
+			.sheet-form-box .sheet-display-row:nth-of-type(1) {
+				width: 39%;
+			}
+
+			.sheet-form-box .sheet-display .sheet-display-row:nth-of-type(4) {
+				width: 16%;
+			}
+
+			.sheet-form-box .sheet-display .sheet-display-row:nth-of-type(5) {
+				width: 7%;
+			}
+
+
 	/***** Options Section *****/
 	.sheet-options .sheet-pc-box {
 		min-height: 800px;
@@ -1560,9 +1616,9 @@ span {
 	}
 
 
-/***********************************/
-/***** Start of the NPC sheet *****/
-/***********************************/
+/**********************************************************/
+/************* Start of the NPC sheet ********************/
+/********************************************************/
 .sheet-npc {
 	background-color: #040404;
 	color: #fff;
