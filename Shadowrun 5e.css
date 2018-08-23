@@ -1,5 +1,6 @@
 /**** Colors 
 	Gold: #FCD116;
+	Red: #610b0d;
 */
 
 /***** Global settings *****/
@@ -53,7 +54,7 @@ hr {
 
 label {
 	display: inline-block;
-	font-size: 1em;
+	font-size: 0.9em;
 	margin-bottom: 0px;
 	padding-right: 5px;
 	text-transform: capitalize;
@@ -797,7 +798,7 @@ span {
 
 			/***** Repeating Box Settings Inputs *****/
 			.sheet-repeat-box .sheet-settings input {
-				border: 1px dotted #4f7da7;
+				
 			}
 
 			.sheet-repeat-box .sheet-settings input[type="number"] {
@@ -965,7 +966,9 @@ span {
 		.sheet-item-box .sheet-display-flag,
 		.sheet-spell-box .sheet-display-flag,
 		.sheet-powers-box .sheet-display-flag,
-		.sheet-program-box .sheet-display-flag {
+		.sheet-program-box .sheet-display-flag,
+		.sheet-aug-box .sheet-display-flag,
+		.sheet-form-box .sheet-display-flag {
 			opacity: 0;    
 		    position: absolute;
 		    top: 0px;
@@ -1296,8 +1299,6 @@ span {
 		}
 
 		.sheet-aug-box .sheet-display-flag {
-			opacity: 0;    
-		    position: absolute;
 		    top: 1px;
 		    width: 75%;
 		}
@@ -1464,15 +1465,22 @@ span {
 		width: 100%;
 	}
 
-	.sheet-matrix-box label:nth-of-type(1n+2) {
-		margin-left: 5px;
-	}
-
 		/***** Cyberdeck Settings *****/
-		.sheet-matrix .sheet-repeat-box .sheet-settings {
+		/*.sheet-matrix .sheet-repeat-box {
 			margin-left: 0px;
+		}*/
+
+		.sheet-cyberdeck h3 + h3 {
+			margin-left: 2%;
 		}
 
+		.sheet-cyberdeck input[type="number"] {
+			width: 25px;
+		}
+
+		.sheet-cyberdeck input[type="number"] + input[type="number"] {
+			margin-left: 5px;
+		}
 
 		/***** Matrix Programs section *****/
 		.sheet-program-box .sheet-repeating-indent {
@@ -1487,7 +1495,7 @@ span {
 		}
 
 		.sheet-program-box span.sheet-program-toggle {
-			left: 6px;
+			left: 5px;
 			top: -3px;
 		}
 
@@ -1539,25 +1547,21 @@ span {
 			}
 
 		/***** Complex Forms Section *****/
-		.sheet-form-box {
-			display: inline-block;
-		}
-
 		.sheet-form-box h3 {
 			margin-right: 3px;
-			width: 16%;
-		}
-
-		.sheet-form-box h3:nth-of-type(1) {
-			width: 40%;
-		}
-
-		.sheet-form-box h3:nth-of-type(3) {
 			width: 15%;
 		}
 
-		.sheet-form-box h3:nth-of-type(4) {
+		.sheet-form-box h3:nth-of-type(1) {
+			width: 50%;
+		}
+
+		.sheet-form-box h3:nth-of-type(3) {
 			width: 18%;
+		}
+
+		.sheet-form-box h3:nth-of-type(4) {
+			width: 10%;
 		}
 
 		.sheet-form-box h3:nth-of-type(5) {
@@ -1565,20 +1569,16 @@ span {
 			width: 7%;
 		}
 
-			/***** Complex Form Settings Section *****/
-			.sheet-form-box .sheet-settings div {
-				display: inline-block;
-			}
-
+			/***** Augementations Settings *****/
 			.sheet-form-box input[type="text"] {
-				width: 40%;
+				width: 50%;
 			}
 
 			.sheet-form-box input[type="number"] {
 				width: 19%;
 			}
 
-			/***** Complex Form Display Section *****/
+			/***** Augementations Display *****/
 			.sheet-form-box .sheet-display {
 				display: inline-block;
 			}
@@ -1586,15 +1586,15 @@ span {
 			.sheet-form-box .sheet-display .sheet-display-row {
 				margin-right: 3px;
 				text-align: left;
-				width: 15%;
+				width: 14%;
 			}
 
 			.sheet-form-box .sheet-display-row:nth-of-type(1) {
-				width: 39%;
+				width: 50%;
 			}
 
 			.sheet-form-box .sheet-display .sheet-display-row:nth-of-type(4) {
-				width: 16%;
+				width: 10%;
 			}
 
 			.sheet-form-box .sheet-display .sheet-display-row:nth-of-type(5) {

@@ -122,13 +122,13 @@
 							<!-- ~~:+: Matrix Initaitve :+:~~ -->
 							<input type="hidden" name="attr_matrix_mod" value="0" />
 							<input type="hidden" name="attr_matrix_dice" max="5" />
-							<label>Matrix Intiative</label>
+							<label>Matrix Initative</label>
 								<input class="att-ini" type="number" name="attr_matrix_mod_bonus" value="0" placeholder="0" /><span> + </span>
 								<input class="att-ini" type="number" name="attr_matrix_dice_bonus" value="0" min="0" max="4" placeholder="bonus" /><span> d6</span><br />
 							<!-- ~~:+: Astral Initative :+:~~ -->
 							<input type="hidden" name="attr_astral_mod" value="6" />
 							<input type="hidden" name="attr_astral_dice" value="3" max="5" />
-							<label>Astral Intiative</label>
+							<label>Astral Initative</label>
 								<input class="att-ini" type="number" name="attr_astral_mod_bonus" value="0" placeholder="bonus" /><span> + </span>
 								<input class="att-ini" type="number" name="attr_astral_dice_bonus" value="0" min="0" max="3" placeholder="bonus" /><span> d6</span><br />
 							<!-- ~~:+: Composure :+:~~ -->
@@ -898,7 +898,7 @@
 							<div> 
 								<input type="text" name="attr_augmentation" placeholder="Augementation" />
 								<input type="number" name="attr_rating" placeholder="#" />
-								<input type="number" name="attr_essence" placeholder="Essence" />
+								<input type="number" name="attr_essence" placeholder="6" />
 								<label>Notes</label>
 								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 							</div>
@@ -945,30 +945,19 @@
 			<div class="header right-header"><h1>Cyberdeck</h1><div class="right-tri"></div></div>
 			<div class="border-box repeat-box matrix-box">
 				<div class="pc-box medium-box">
-					<input type="checkbox" class="settings-toggle" name="attr_flag_cyberdeck" checked="checked" /><span>y</span>
-					<div class="settings">
-						<div class="row-long">
-							<label>Model</label><input type="text" name="attr_cyberdeck" value="" placeholder="Sony CYI-720" style="width: 45%;" />
-							<label>Attack</label><input type="number" name="attr_attack" value="" placeholder="7" />
-							<label>Sleaze</label><input type="number" name="attr_sleaze" value="" placeholder="6" />
-						</div>
-						<div class="row-long">
-							<label>Device Rating</label><input type="number" name="attr_device_rating" value="" placeholder="4" style="margin-right: 15%;" />
-							<label>Data Processing</label><input type="number" name="attr_data_processing" value="" placeholder="5" />
-							<label>Firewall</label><input type="number" name="attr_firewall" value="" placeholder="4" />
-						</div>
+					<div class="row-long cyberdeck">
+						<h3 style="margin-left: 60%">Base</h3><h3>Temp</h3>
+						<h3 style="margin-left: 8%">Base</h3><h3>Temp</h3>
 					</div>
-					<div class="display">
-						<div class="row-long">
-							<h2>Model</h2><span name="attr_cyberdeck"></span>
-							<h2>Attack</h2><span name="attr_attack"></span>
-							<h2>Sleaze</h2><span name="attr_sleaze"></span>
-						</div>
-						<div class="row-long">
-							<h2>Device Rating</h2><span name="attr_device_rating"></span>
-							<h2>Data Processing</h2><span name="attr_data_processing"></span>
-							<h2>Firewall</h2><span name="attr_firewall"></span>
-						</div>
+					<div class="row-long cyberdeck">
+						<label>Model</label><input type="text" name="attr_cyberdeck" value="" placeholder="Sony CYI-720" style="width: 40%;" />
+						<label>Attack</label><input type="number" name="attr_attack" value="" placeholder="7" /><input type="number" name="attr_attack_bonus" value="" placeholder="7" />
+						<label style="margin-right: 2%;" >Sleaze</label><input type="number" name="attr_sleaze" value="" placeholder="6"/><input type="number" name="attr_sleaze_bonus" value="" placeholder="7" />
+					</div>
+					<div class="row-long cyberdeck">
+						<label>Device Rating</label><input type="number" name="attr_device_rating" value="" placeholder="4" style="margin-right: 10%;" />
+						<label>Data Processing</label><input type="number" name="attr_data_processing" value="" placeholder="5" /><input type="number" name="attr_data_processing_bonus" value="" placeholder="7" />
+						<label>Firewall</label><input type="number" name="attr_firewall" value="" placeholder="4" /><input type="number" name="attr_firewall_bonus" value="" placeholder="7" />
 					</div>
 					<h3>Programs</h3>
 					<div class="program-box">
@@ -1009,17 +998,17 @@
 				</div>
 			</div>
 		</div><!-- ~~~~~~~~ End of the Cyberdeck Row  ~~~~~~~~ -->
-		<div class="pc-row"><!-- ~~~~~~~~ Start of the Complex Forms Row  ~~~~~~~~ -->
+		<div class="pc-row">
 			<div class="header right-header"><h1>Complex Forms</h1><div class="right-tri"></div></div>
-			<div class="border-box repeat-box spell-box form-box">
+			<div class="border-box repeat-box form-box">
 				<div class="pc-box medium-box">
 					<div class="row-long">
 						<h3>Complex Form</h3><h3>Target</h3><h3>Duration</h3><h3>Fade</h3>
 					</div>
-					<fieldset class="reapeating_forms">
+					<fieldset class="repeating_forms">
 						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
 						<div class="settings">
-							<div>
+							<div> 
 								<input type="text" name="attr_name" placeholder="Editor" />
 								<select name="attr_target">
 									<option class="option" value="Device" selected="selected">Device</option>
@@ -1032,15 +1021,15 @@
 									<option class="option" value="Sprite">Sprite</option>
 								</select>
 								<select name="attr_duration">
-									<option value="extended">Extended</option>
-									<option value="instant">Instant</option>
-									<option value="permanent">Permanent</option>
-									<option value="special">Other</option>
-									<option value="sustained">Sustained</option>
+									<option value="Extended">Extended</option>
+									<option value="Instant">Instant</option>
+									<option value="Permanent">Permanent</option>
+									<option value="Special">Other</option>
+									<option value="Sustained">Sustained</option>
 								</select>
 								<input type="number" name="attr_fade" value="" placeholder="-1" />
 								<label>Notes</label>
-								<textarea name="attr_notes" value="" placeholder="Complex form notes"></textarea>
+								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 							</div>
 						</div>
 						<div class="display">
@@ -1056,7 +1045,7 @@
 					</fieldset>
 				</div>
 			</div>
-		</div><!-- ~~~~~~~~ End of the Complex Forms Row  ~~~~~~~~ -->
+		</div>
 	</div><!-- ~~~~~~~~ End of the MATRIX Column  ~~~~~~~~ -->
 	<div class="options pc-col"><!-- ~~~~~~~~ Start of the PC Options Page ~~~~~~~~ -->
 		<div class="pc-row">
