@@ -126,6 +126,7 @@ span {
 }
 
 /* Hide & show pages */
+.sheet-arms,
 .sheet-augs,
 .sheet-core,
 .sheet-gear,
@@ -143,6 +144,7 @@ span {
 .sheet-sheet_type[value="goon"] ~ .sheet-npc,
 .sheet-sheet_type[value="host"] ~ .sheet-npc,
 .sheet-sheet_type[value="vehicle"] ~ .sheet-npc,
+.sheet-options_toggle[value="arms"] ~ .sheet-arms,
 .sheet-options_toggle[value="augs"] ~ .sheet-augs,
 .sheet-options_toggle[value="options"] ~ .sheet-options,
 .sheet-options_toggle[value="core"] ~ .sheet-core,
@@ -165,14 +167,24 @@ span {
 
 /***** Tabs for sheets *****/
 .sheet-tabs {
-	left: 58%;
+	left: 50%;
 	position: relative;
 	top: 60px;
-	width: fit-content;
 	z-index: 1;
 }
 
-.sheet-tabs input[type="radio"] {
+.sheet-tab-whisper {
+	left: 3%;
+	top: 97px;
+}
+
+.sheet-tab-toggles {
+	left: 23%;
+	top: 79px;
+}
+
+.sheet-tabs input[type="radio"],
+.sheet-tabs input[type="checkbox"] {
 	height: 18px;
 	position: absolute;
 }
@@ -185,7 +197,8 @@ span {
 	width: 60px;
 }
 
-.sheet-tabs input[type="radio"] + span {
+.sheet-tabs input[type="radio"] + span,
+.sheet-tabs input[type="checkbox"] + span  {
 	border-radius: 5px;
 	border: 1px solid #000;
 	font-family: sans-serif;
@@ -193,11 +206,12 @@ span {
 	padding: 3px;
 }
 
-.sheet-tabs input[type="radio"] + span:last-child {
+.sheet-tab-col input[type="radio"] + span:last-child {
 	font-family: pictos;
 }
 
-.sheet-tabs input[type="radio"]:checked + span {
+.sheet-tabs input[type="radio"]:checked + span,
+.sheet-tabs input[type="checkbox"]:checked + span  {
 	background-color: #610b0d;
 	color: #fff;
 }
@@ -247,6 +261,7 @@ span {
 
 .sheet-pc img {
 	height: 50%;
+	vertical-align: top;
 	width: 55%;
 }
 
@@ -1122,135 +1137,135 @@ span {
 			width: 53%;
 		}
 
-
-	/***** Weapons for PC sheet *****/
-	.sheet-pc .sheet-weapon-range,
-	.sheet-pc .sheet-weapon-melee {
-		display: none;
-		width: 100%;
+	/***** Arms Column *****/
+	.sheet-arms .sheet-htab {
+		margin-right: -40px;
 	}
 
-	.sheet-weapon-toggle[value="range"] ~ .sheet-weapon-range,
-	.sheet-weapon-toggle[value="melee"] ~ .sheet-weapon-melee  {
-		display: inline-block;
+	.sheet-arms .sheet-htab:first-child {
+		margin-left: -35px;
 	}
 
-		/***** Weapon Radio Toggles for Switching Tabs*****/
-		.sheet-weapon-box input[type="radio"] {
-			left: 140px;
-			margin-right: 15px;
-			top: -20px;
-			width: 75px;
+	.sheet-arms .sheet-weapon-box input[type="radio"] {
+		left: 125px;
+	}
+
+
+		/***** Weapons for PC sheet *****/
+		.sheet-pc .sheet-weapon-range,
+		.sheet-pc .sheet-weapon-melee {
+			display: none;
+			width: 100%;
 		}
 
-		/***** Weapon Headers *****/
-		.sheet-weapon-box .sheet-medium-box {
-			margin-top: -17px;
+		.sheet-weapon-toggle[value="range"] ~ .sheet-weapon-range,
+		.sheet-weapon-toggle[value="melee"] ~ .sheet-weapon-melee  {
+			display: inline-block;
 		}
 
-		.sheet-weapon-box h3 {
-			text-align: center;
-			width: 10%;
-		}
+			/***** Weapon Radio Toggles for Switching Tabs*****/
+			.sheet-weapon-box input[type="radio"] {
+				left: 140px;
+				margin-right: 15px;
+				top: -20px;
+				width: 75px;
+			}
 
-		.sheet-weapon-box h3:nth-child(1) {
-			text-align: left;
-			width: 38%;
-		}
+			/***** Weapon Headers *****/
+			.sheet-weapon-box .sheet-medium-box {
+				margin-top: -17px;
+			}
 
-		/***** Weapon Settings Inputs *****/
-		.sheet-weapon-box input[type="text"],
-		.sheet-weapon-box input[type="number"] {
+			.sheet-weapon-box h3 {
+				text-align: center;
+				width: 10%;
+			}
+
+			.sheet-weapon-box h3:nth-child(1) {
+				text-align: left;
+				width: 38%;
+			}
+
+			/***** Weapon Settings Inputs *****/
+			.sheet-weapon-box input[type="text"],
+			.sheet-weapon-box input[type="number"] {
+				text-align: center;
+				width: 9%;
+			}
+
+			.sheet-weapon-box input[type="text"]:nth-child(1) {
+				text-align: left;
+				width: 38%;
+				margin-right: 5px;
+			}
+
+			.sheet-weapon-range input[type="text"],
+			.sheet-weapon-melee input[type="text"] {
+				text-align: center;
+			}
+
+			.sheet-weapon-box .sheet-weapon-melee input {
+				margin-right: 5px;
+			}
+
+			/***** Weapon Display *****/
+			.sheet-weapon-box .sheet-display div {
+				display: inline-block;
+				margin-right: 7px;
+				text-align: center;
+				width: 8%;
+			}
+
+			.sheet-weapon-box .sheet-display div:first-child {
+				text-align: left;
+				width: 40%;
+			}
+
+		/***** Armor for PC Sheet *****/
+		.sheet-armor-box h3 {
+			margin-right: 2px;
 			text-align: center;
 			width: 9%;
 		}
 
-		.sheet-weapon-box input[type="text"]:nth-child(1) {
-			text-align: left;
-			width: 38%;
-			margin-right: 5px;
-		}
-
-		.sheet-weapon-range input[type="text"],
-		.sheet-weapon-melee input[type="text"] {
-			text-align: center;
-		}
-
-		.sheet-weapon-box .sheet-weapon-melee input {
-			margin-right: 5px;
-		}
-
-		/***** Weapon Display *****/
-		.sheet-weapon-box .sheet-display div {
-			display: inline-block;
-			margin-right: 7px;
-			text-align: center;
-			width: 8%;
-		}
-
-		.sheet-weapon-box .sheet-display div:first-child {
+		.sheet-armor-box h3:first-child {
 			text-align: left;
 			width: 40%;
 		}
 
-	/***** Armor for PC Sheet *****/
-	.sheet-armor-box h3 {
-		margin-right: 2px;
-		text-align: center;
-		width: 9%;
-	}
+			/***** Armor Settings Inputs *****/
+			.sheet-armor-box input {
+				margin-right: 1px;
+			}
 
-	.sheet-armor-box h3:first-child {
-		text-align: left;
-		width: 40%;
-	}
+			.sheet-armor-box input[type="text"]:first-child {
+				width: 40%;
+			}
 
-		/***** Armor Settings Inputs *****/
-		.sheet-armor-box input {
-			margin-right: 1px;
-		}
+			/***** Armor Display *****/
+			.sheet-armor-box .sheet-display {
+				display: inline-block;
+			}
 
-		.sheet-armor-box input[type="text"]:first-child {
-			width: 40%;
-		}
+			.sheet-armor-box .sheet-display-flag {
+				opacity: 0;    
+			    position: absolute;
+			    top: 1px;
+			    width: 40%;
+			}
 
-		/***** Armor Display *****/
-		.sheet-armor-box .sheet-display {
-			display: inline-block;
-		}
+			.sheet-armor-box .sheet-display .sheet-display-row {
+				margin-right: 3px;
+				text-align: center;
+				width: 8%;
+			}
 
-		.sheet-armor-box .sheet-display-flag {
-			opacity: 0;    
-		    position: absolute;
-		    top: 1px;
-		    width: 40%;
-		}
-
-		.sheet-armor-box .sheet-display .sheet-display-row {
-			margin-right: 3px;
-			text-align: center;
-			width: 8%;
-		}
-
-		.sheet-armor-box .sheet-display .sheet-display-row:nth-of-type(1) {
-			text-align: left;
-			width: 40%;
-		}
-
+			.sheet-armor-box .sheet-display .sheet-display-row:nth-of-type(1) {
+				text-align: left;
+				width: 40%;
+			}
 
 	/***** Gear/Items for PC Sheet *****/
-	.sheet-gear .sheet-htab {
-		margin-right: -40px;
-	}
-
-	.sheet-gear .sheet-htab:first-child {
-		margin-left: -35px;
-	}
-
-	.sheet-gear .sheet-weapon-box input[type="radio"] {
-		left: 125px;
-	}
-
 	.sheet-item-box h3:first-child{
 		margin-right: 85%;
 	}
@@ -1274,7 +1289,7 @@ span {
 			width: 86%;
 		}
 
-	/***** Augementations section *****/
+	/***** Augementations Column *****/
 	.sheet-aug-box h3:nth-of-type(1) {
 		margin-right: 59%;
 	}
@@ -1300,7 +1315,6 @@ span {
 
 		.sheet-aug-box .sheet-display-flag {
 		    top: 1px;
-		    width: 75%;
 		}
 
 		.sheet-aug-box .sheet-display-row {
@@ -1470,16 +1484,39 @@ span {
 			margin-left: 0px;
 		}*/
 
+		.sheet-cyberdeck h3 {
+			line-height: 20px;
+		}
+
 		.sheet-cyberdeck h3 + h3 {
+			margin-left: 8%;
+		}
+
+		.sheet-cyberdeck h3 + h3 + h3 {
+			margin-left: 3%;
+		}
+
+		.sheet-cyberdeck h3 + h3 + h3 + h3 {
 			margin-left: 2%;
 		}
 
+		.sheet-cyberdeck .sheet-row-long h3:first-child {
+			margin-left: 26%;
+		}
+
 		.sheet-cyberdeck input[type="number"] {
+			height: 20px;
 			width: 25px;
 		}
 
-		.sheet-cyberdeck input[type="number"] + input[type="number"] {
-			margin-left: 5px;
+		.sheet-cyberdeck .sheet-row-long:nth-of-type(1n+3) label {
+			width: 25%;
+			padding-bottom: 5px;
+		}
+
+		.sheet-cyberdeck .sheet-row-long span {
+			margin-left: 2%;
+			margin-right: 2%;
 		}
 
 		/***** Matrix Programs section *****/
@@ -1569,7 +1606,7 @@ span {
 			width: 7%;
 		}
 
-			/***** Augementations Settings *****/
+			/***** Complex Forms Settings *****/
 			.sheet-form-box input[type="text"] {
 				width: 50%;
 			}
@@ -1578,7 +1615,7 @@ span {
 				width: 19%;
 			}
 
-			/***** Augementations Display *****/
+			/***** Complex Forms Display *****/
 			.sheet-form-box .sheet-display {
 				display: inline-block;
 			}

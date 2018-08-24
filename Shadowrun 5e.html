@@ -1,9 +1,23 @@
 <!-- ~~~~~~~~ Character Sheet Page, default view ~~~~~~~~ -->    
 <input class="sheet_type" name="attr_sheet_type" type="hidden" value="pc">
 
-<div class="tabs">
+<div class="tabs tab-whisper">
+	<input type="radio" name="attr_gm_toggle" value="" checked="checked" /><span>Public</span>
+	<input type="radio" name="attr_gm_toggle" value="/w gm" /><span>To GM</span>
+</div>
+
+<div class="tabs tab-toggles">
+	<input type="checkbox" name="attr_wound_toggle" value="@{wounds}" checked="checked" /><span>Wounds</span>
+	<input type="checkbox" name="attr_wound_toggle" value="?{Modifiers +/-|0}" /><span>Modifiers</span>
+	<input type="checkbox" name="attr_wound_toggle" value="@{edge}" /><span>Edge</span>
+	<input type="hidden" name="attr_wounds" value="0" />
+	<input type="hidden" name="attr_explode_toggle" value="" />
+</div>
+
+<div class="tabs tab-col">
 	<input type="radio" name="attr_tab" value="core" title="Core sheet" checked="checked" /><span>Core</span>
-	<input type="radio" name="attr_tab" value="augs" title="Gear"/><span>Augs</span>
+	<input type="radio" name="attr_tab" value="arms" title="Arms"/><span>Arms</span>
+	<input type="radio" name="attr_tab" value="augs" title="Augs"/><span>Augs</span>
 	<input type="radio" name="attr_tab" value="gear" title="Gear"/><span>Gear</span>
 	<input type="radio" name="attr_tab" value="magic" title="Magic"/><span>Magic</span>
 	<input type="radio" name="attr_tab" value="matrix" title="Matrix"/><span>Matrix</span>
@@ -571,8 +585,38 @@
 			</div>
 		</div><!-- ~~~~~~~~ End of Contacts row ~~~~~~~~ -->
 	</div><!-- ~~~~~~~~ End of the Social Column  ~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the Gear Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the Gear Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<div class="gear pc-col">
+		<div class="header right-header"><h1>Gear</h1><div class="right-tri"></div></div>
+		<div class="border-box repeat-box item-box">
+			<div class="pc-box medium-box">
+				<div class="row-long">
+					<h3>Item</h3><h3>Rating</h3>
+				</div>
+				<fieldset class="repeating_items">
+					<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
+					<div class="settings">
+						<div>
+							<input type="text" name="attr_item" placeholder="Item name" />
+							<input type="number" name="attr_rating" placeholder="#" />
+							<label>Notes</label>
+							<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+						</div>
+					</div>
+					<div class="display">
+						<input class="display-flag" type="checkbox" name="attr_display_flag" />
+						<div class="display-row"><b><span name="attr_item"></span></b></div>
+						<div class="display-row"><span name="attr_rating"></span></div>
+						<div class="collapsable">
+							<div class="desc"><span name="attr_notes"></span></div>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</div><!-- ~~~~~~~~ End of the GEAR Column  ~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the Arms Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<div class="arms pc-col">
 		<div class="pc-row"><!-- ~~~~~~~~ Start of the Weapon Section  ~~~~~~~~ -->
 			<div class="header right-header"><h1>Weapons</h1><div class="right-tri"></div></div>
 			<div class="header right-header">
@@ -648,7 +692,7 @@
 					</div>
 				</div>
 			</div>
-		</div><!-- ~~~~~~~~ End of the WEAPON Section  ~~~~~~~~ -->>
+		</div><!-- ~~~~~~~~ End of the WEAPON Section  ~~~~~~~~ -->
 		<div class="pc-row"><!-- ~~~~~~~~ Start of the ARMOR Section  ~~~~~~~~ -->
 			<div class="header right-header"><h1>Armor</h1><div class="right-tri"></div></div>
 			<div class="border-box repeat-box armor-box">
@@ -694,36 +738,7 @@
 				</div>
 			</div>
 		</div><!-- ~~~~~~~~ End of the ARMOR Section  ~~~~~~~~ -->
-		<div class="pc-row"><!-- ~~~~~~~~ Start of the GEAR Section  ~~~~~~~~ -->
-			<div class="header right-header"><h1>Gear</h1><div class="right-tri"></div></div>
-			<div class="border-box repeat-box item-box">
-				<div class="pc-box medium-box">
-					<div class="row-long">
-						<h3>Item</h3><h3>Rating</h3>
-					</div>
-					<fieldset class="repeating_items">
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>y</span>
-						<div class="settings">
-							<div>
-								<input type="text" name="attr_item" placeholder="Item name" />
-								<input type="number" name="attr_rating" placeholder="#" />
-								<label>Notes</label>
-								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
-							</div>
-						</div>
-						<div class="display">
-							<input class="display-flag" type="checkbox" name="attr_display_flag" />
-							<div class="display-row"><b><span name="attr_item"></span></b></div>
-							<div class="display-row"><span name="attr_rating"></span></div>
-							<div class="collapsable">
-								<div class="desc"><span name="attr_notes"></span></div>
-							</div>
-						</div>
-					</fieldset>
-				</div>
-			</div>
-		</div><!-- ~~~~~~~~ End of the GEAR Section  ~~~~~~~~ -->
-	</div><!-- ~~~~~~~~ End of the GEAR Column  ~~~~~~~~ -->
+	</div>
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the MAGIC Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<div class="magic pc-col">
 		<div class="pc-row">
@@ -944,20 +959,46 @@
 		<div class="pc-row"><!-- ~~~~~~~~ Start of the Cyberdeck Row  ~~~~~~~~ -->
 			<div class="header right-header"><h1>Cyberdeck</h1><div class="right-tri"></div></div>
 			<div class="border-box repeat-box matrix-box">
-				<div class="pc-box medium-box">
-					<div class="row-long cyberdeck">
-						<h3 style="margin-left: 60%">Base</h3><h3>Temp</h3>
-						<h3 style="margin-left: 8%">Base</h3><h3>Temp</h3>
+				<div class="pc-box medium-box cyberdeck">
+					<div class="row-long">
+						<label>Model</label><input type="text" name="attr_cyberdeck" value="" placeholder="Sony CYI-720" style="width: 90%;" />
 					</div>
-					<div class="row-long cyberdeck">
-						<label>Model</label><input type="text" name="attr_cyberdeck" value="" placeholder="Sony CYI-720" style="width: 40%;" />
-						<label>Attack</label><input type="number" name="attr_attack" value="" placeholder="7" /><input type="number" name="attr_attack_bonus" value="" placeholder="7" />
-						<label style="margin-right: 2%;" >Sleaze</label><input type="number" name="attr_sleaze" value="" placeholder="6"/><input type="number" name="attr_sleaze_bonus" value="" placeholder="7" />
+					<div class="row-long">
+						<label>Device Rating</label><input type="number" name="attr_device_rating" min="0" value="" placeholder="4" style="margin-right: 23%;" />
+						<label>Attribute Array</label>
+							<input type="number" name="attr_attribute_1" min="0" value="" placeholder="7" />
+							<input type="number" name="attr_attribute_2" min="0" value="" placeholder="6" />
+							<input type="number" name="attr_attribute_3" min="0" value="" placeholder="5" />
+							<input type="number" name="attr_attribute_4" min="0" value="" placeholder="4" />
 					</div>
-					<div class="row-long cyberdeck">
-						<label>Device Rating</label><input type="number" name="attr_device_rating" value="" placeholder="4" style="margin-right: 10%;" />
-						<label>Data Processing</label><input type="number" name="attr_data_processing" value="" placeholder="5" /><input type="number" name="attr_data_processing_bonus" value="" placeholder="7" />
-						<label>Firewall</label><input type="number" name="attr_firewall" value="" placeholder="4" /><input type="number" name="attr_firewall_bonus" value="" placeholder="7" />
+					<div class="row-long">
+						<h3>Total</h3><h3>Base</h3><h3>Bonus</h3><h3>Temp</h3><br />
+						<label>Attack</label>
+						<input type="number" name="attr_attack" value="" placeholder="7" disabled="true" /><span> = </span>
+						<input type="number" name="attr_attack_base" min="0" value="" placeholder="7" /><spam> + </spam>
+						<input type="number" name="attr_attack_bonus" min="0" value="" placeholder="0" /><spam> + </spam>
+						<input type="number" name="attr_attack_temp" min="0" value="" placeholder="0" />
+					</div>
+					<div class="row-long">
+						<label>Sleaze</label>
+						<input type="number" name="attr_sleaze" value="" placeholder="6" disabled="true"/><span> = </span>
+						<input type="number" name="attr_sleaze_base" min="0" value="" placeholder="6" /><spam> + </spam>
+						<input type="number" name="attr_sleaze_bonus" min="0" value="" placeholder="0" /><spam> + </spam>
+						<input type="number" name="attr_sleaze_temp" min="0" value="" placeholder="0" />
+					</div>
+					<div class="row-long">
+						<label>Data Processing</label>
+						<input type="number" name="attr_data_processing" value="" placeholder="5" disabled="true" /><span> = </span>
+						<input type="number" name="attr_data_processing_base" vmin="0" alue="" placeholder="5" /><spam> + </spam>
+						<input type="number" name="attr_data_processing_bonus" min="0" value="" placeholder="0" /><spam> + </spam>
+						<input type="number" name="attr_data_processing_temp" min="0" value="" placeholder="0" />
+					</div>
+					<div class="row-long">
+						<label>Firewall</label>
+						<input type="number" name="attr_firewall" value="" placeholder="4" disabled="true" /><span> = </span>
+						<input type="number" name="attr_firewall_base" min="0" value="" placeholder="4" /><spam> + </spam>
+						<input type="number" name="attr_firewall_bonus" min="0" value="" placeholder="0" /><spam> + </spam>
+						<input type="number" name="attr_firewall_temp" min="0" value="" placeholder="0" />
 					</div>
 					<h3>Programs</h3>
 					<div class="program-box">
