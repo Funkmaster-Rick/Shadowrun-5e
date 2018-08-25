@@ -591,108 +591,7 @@
 			</div>
 		</div><!-- ~~~~~~~~ End of Quality row ~~~~~~~~ -->
 	</div><!-- ~~~~~~~~ End of right column that contains core info ~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the Social Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<div class="social pc-col">
-		<div class="pc-row"><!-- ~~~~~~~~ Start of Lifestyles Row  ~~~~~~~~ -->
-			<div class="header right-header"><h1>IDs/Lifestyles/Currency</h1><div class="right-tri"></div></div>
-			<div class="border-box repeat-box lifestyle">
-				<div class="pc-box small-box social-box">
-					<div class="row-long">
-						<h3>Primary Lifestyle</h3><input type="text" name="attr_lifestyle" placeholder="High: Belleuve (Inglewood), Seattle" />
-					</div>
-					<div class="row-long">
-						<h3>Nuyen</h3><input type="number" name="attr_nuyen" placeholder="1,000¥" />
-						<h3>Licenses</h3><input type="text" name="attr_licenses" placeholder="R4: Technomancer" />
-					</div>
-					<div class="row-long">
-						<h3>Fake IDs / Related Lifestyles / Funds / Licenses</h3>
-					</div>
-					<fieldset class="repeating_lifestyle">
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
-						<div class="settings">
-							<div>
-								<h3>Fake ID</h3><textarea name="attr_name" placeholder="John Doe"></textarea>
-								<h3>Related Lifestyle</h3><textarea name="attr_lifestyle" placeholder="Middle"></textarea>
-								<h3>Funds</h3><textarea name="attr_funds" placeholder="$1,000 UCAS"></textarea>
-								<h3>Licenses</h3><textarea name="attr_licenses" placeholder="Technomancer, Pistols"></textarea>
-							</div>
-						</div>
-						<div class="display">
-							<input class="display-flag" type="checkbox" name="attr_display_flag" />
-							<span name="attr_display" style="width: 100%;"></span>
-							<span name="attr_name"></span>
-							<span name="attr_lifestyle"></span>
-							<span name="attr_funds"></span>
-							<span name="attr_licenses"></span>
-						</div>
-					</fieldset>
-				</div>
-			</div>
-		</div><!-- ~~~~~~~~ End of Lifestyle Row ~~~~~~~~ -->
-		<!-- ~~~~~~~~ Start Contacts Row  ~~~~~~~~ -->
-		<div class="pc-row">
-			<div class="header right-header"><h1>Contacts</h1><div class="right-tri"></div></div>
-			<div class="border-box repeat-box contacts">
-				<div class="pc-box small-box">
-					<div class="row-long"><h3>Name</h3><h3>Loyalty</h3><h3>Connection</h3><h3>Favor</h3></div>
-					<fieldset class="repeating_contacts">
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
-						<div class="settings">
-							<div>
-								<input type="text" name="attr_name" placeholder="Old Crow" />
-								<input type="number" name="attr_loyalty" min="1"placeholder="3" />
-								<input type="number" name="attr_connection" min="1" placeholder="8" />
-								<input type="number" name="attr_favors" placeholder="+2" />
-								<h3>Notes</h3>
-								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
-							</div>
-						</div>
-						<div class="display">
-							<input class="display-flag" type="checkbox" name="attr_display_flag" />
-							<div class="display-row"><b><span name="attr_display"></span></b></div>
-							<div class="display-row"><span name="attr_loyalty"></span></div>
-							<div class="display-row"><span name="attr_connection"></span></div>
-							<div class="display-row"><span name="attr_favors"></span></div>
-							<div class="collapsable">
-								<div class="desc"><span name="attr_notes"></span></div>
-							</div>
-						</div>
-					</fieldset>
-				</div>
-			</div>
-		</div><!-- ~~~~~~~~ End of Contacts row ~~~~~~~~ -->
-	</div><!-- ~~~~~~~~ End of the Social Column  ~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the Gear Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<div class="gear pc-col">
-		<div class="header right-header"><h1>Gear</h1><div class="right-tri"></div></div>
-		<div class="border-box repeat-box item-box">
-			<div class="pc-box medium-box">
-				<div class="row-long">
-					<h3>Item</h3><h3>Rating</h3>
-				</div>
-				<fieldset class="repeating_items">
-					<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
-					<div class="settings">
-						<div>
-							<input type="text" name="attr_item" placeholder="Item name" />
-							<input type="number" name="attr_rating" placeholder="#" />
-							<label>Notes</label>
-							<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
-						</div>
-					</div>
-					<div class="display">
-						<input class="display-flag" type="checkbox" name="attr_display_flag" />
-						<div class="display-row"><b><span name="attr_item"></span></b></div>
-						<div class="display-row"><span name="attr_rating"></span></div>
-						<div class="collapsable">
-							<div class="desc"><span name="attr_notes"></span></div>
-						</div>
-					</div>
-				</fieldset>
-			</div>
-		</div>
-	</div><!-- ~~~~~~~~ End of the GEAR Column  ~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the Arms Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the ARMS Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<div class="arms pc-col">
 		<div class="pc-row"><!-- ~~~~~~~~ Start of the Weapon Section  ~~~~~~~~ -->
 			<div class="header right-header"><h1>Weapons</h1><div class="right-tri"></div></div>
@@ -842,7 +741,71 @@
 				</div>
 			</div>
 		</div><!-- ~~~~~~~~ End of the ARMOR Section  ~~~~~~~~ -->
-	</div>
+	</div><!-- ~~~~~~~~ End of the ARMS Column  ~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the AUGEMENTATIONS Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<div class="augs pc-col">
+		<div class="pc-row">
+			<div class="header right-header"><h1>Augmentations</h1><div class="right-tri"></div></div>
+			<div class="border-box repeat-box aug-box">
+				<div class="pc-box medium-box">
+					<div class="row-long">
+						<h3>Augementation</h3><h3>Rating</h3><h3>Essence</h3>
+					</div>
+					<fieldset class="repeating_augementations">
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+						<div class="settings">
+							<div> 
+								<input type="text" name="attr_augmentation" placeholder="Augementation" />
+								<input type="number" name="attr_rating" placeholder="#" />
+								<input type="number" name="attr_essence" placeholder="6" />
+								<label>Notes</label>
+								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+							</div>
+						</div>
+						<div class="display">
+							<input class="display-flag" type="checkbox" name="attr_display_flag" />
+							<div class="display-row"><b><span name="attr_augmentation"></span></b></div>
+							<div class="display-row"><span name="attr_rating"></span></div>
+							<div class="display-row"><span name="attr_essence"></span></div>
+							<div class="collapsable">
+								<div class="desc"><span name="attr_notes"></span></div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+	</div><!-- ~~~~~~~~ End of the AUGMENTATIONS Column  ~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the GEARS Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<div class="gear pc-col">
+		<div class="header right-header"><h1>Gear</h1><div class="right-tri"></div></div>
+		<div class="border-box repeat-box item-box">
+			<div class="pc-box medium-box">
+				<div class="row-long">
+					<h3>Item</h3><h3>Rating</h3>
+				</div>
+				<fieldset class="repeating_items">
+					<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+					<div class="settings">
+						<div>
+							<input type="text" name="attr_item" placeholder="Item name" />
+							<input type="number" name="attr_rating" placeholder="#" />
+							<label>Notes</label>
+							<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+						</div>
+					</div>
+					<div class="display">
+						<input class="display-flag" type="checkbox" name="attr_display_flag" />
+						<div class="display-row"><b><span name="attr_item"></span></b></div>
+						<div class="display-row"><span name="attr_rating"></span></div>
+						<div class="collapsable">
+							<div class="desc"><span name="attr_notes"></span></div>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</div><!-- ~~~~~~~~ End of the GEAR Column  ~~~~~~~~ -->
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the MAGIC Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<div class="magic pc-col">
 		<div class="pc-row">
@@ -1039,62 +1002,6 @@
 			</div>
 		</div>
 	</div><!-- ~~~~~~~~ End of the Magic Column  ~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the AUGEMENTATIONS Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<div class="augs pc-col">
-		<div class="pc-row">
-			<div class="header right-header"><h1>Augmentations</h1><div class="right-tri"></div></div>
-			<div class="border-box repeat-box aug-box">
-				<div class="pc-box medium-box">
-					<div class="row-long">
-						<h3>Augementation</h3><h3>Rating</h3><h3>Essence</h3>
-					</div>
-					<fieldset class="repeating_augementations">
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
-						<div class="settings">
-							<div> 
-								<input type="text" name="attr_augmentation" placeholder="Augementation" />
-								<input type="number" name="attr_rating" placeholder="#" />
-								<input type="number" name="attr_essence" placeholder="6" />
-								<label>Notes</label>
-								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
-							</div>
-						</div>
-						<div class="display">
-							<input class="display-flag" type="checkbox" name="attr_display_flag" />
-							<div class="display-row"><b><span name="attr_augmentation"></span></b></div>
-							<div class="display-row"><span name="attr_rating"></span></div>
-							<div class="display-row"><span name="attr_essence"></span></div>
-							<div class="collapsable">
-								<div class="desc"><span name="attr_notes"></span></div>
-							</div>
-						</div>
-					</fieldset>
-				</div>
-			</div>
-		</div>
-	</div><!-- ~~~~~~~~ End of the AUGMENTATIONS Column  ~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the VEHICLE Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<div class="vehicle pc-col">
-		<div class="pc-row">
-			<div class="header right-header"><h1>Vehicle</h1><div class="right-tri"></div></div>
-			<div class="border-box repeat-box vehicle-box">
-				<div class="pc-box medium-box">
-					<div class="row-long">
-
-					</div>
-					<fieldset>
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
-						<div class="settings">
-
-						</div>
-						<div class="display">
-							
-						</div>
-					</fieldset>
-				</div>
-			</div>
-		</div>
-	</div><!-- ~~~~~~~~ End of the VEHICLE Column  ~~~~~~~~ -->
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the MATRIX Column  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<div class="matrix pc-col">
 		<div class="pc-row"><!-- ~~~~~~~~ Start of the Cyberdeck Row  ~~~~~~~~ -->
@@ -1229,6 +1136,99 @@
 			</div>
 		</div>
 	</div><!-- ~~~~~~~~ End of the MATRIX Column  ~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the SOCIAL Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<div class="social pc-col">
+		<div class="pc-row"><!-- ~~~~~~~~ Start of Lifestyles Row  ~~~~~~~~ -->
+			<div class="header right-header"><h1>IDs/Lifestyles/Currency</h1><div class="right-tri"></div></div>
+			<div class="border-box repeat-box lifestyle">
+				<div class="pc-box small-box social-box">
+					<div class="row-long">
+						<h3>Primary Lifestyle</h3><input type="text" name="attr_lifestyle" placeholder="High: Belleuve (Inglewood), Seattle" />
+					</div>
+					<div class="row-long">
+						<h3>Nuyen</h3><input type="number" name="attr_nuyen" placeholder="1,000¥" />
+						<h3>Licenses</h3><input type="text" name="attr_licenses" placeholder="R4: Technomancer" />
+					</div>
+					<div class="row-long">
+						<h3>Fake IDs / Related Lifestyles / Funds / Licenses</h3>
+					</div>
+					<fieldset class="repeating_lifestyle">
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+						<div class="settings">
+							<div>
+								<h3>Fake ID</h3><textarea name="attr_name" placeholder="John Doe"></textarea>
+								<h3>Related Lifestyle</h3><textarea name="attr_lifestyle" placeholder="Middle"></textarea>
+								<h3>Funds</h3><textarea name="attr_funds" placeholder="$1,000 UCAS"></textarea>
+								<h3>Licenses</h3><textarea name="attr_licenses" placeholder="Technomancer, Pistols"></textarea>
+							</div>
+						</div>
+						<div class="display">
+							<input class="display-flag" type="checkbox" name="attr_display_flag" />
+							<span name="attr_display" style="width: 100%;"></span>
+							<span name="attr_name"></span>
+							<span name="attr_lifestyle"></span>
+							<span name="attr_funds"></span>
+							<span name="attr_licenses"></span>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div><!-- ~~~~~~~~ End of Lifestyle Row ~~~~~~~~ -->
+		<!-- ~~~~~~~~ Start Contacts Row  ~~~~~~~~ -->
+		<div class="pc-row">
+			<div class="header right-header"><h1>Contacts</h1><div class="right-tri"></div></div>
+			<div class="border-box repeat-box contacts">
+				<div class="pc-box small-box">
+					<div class="row-long"><h3>Name</h3><h3>Loyalty</h3><h3>Connection</h3><h3>Favor</h3></div>
+					<fieldset class="repeating_contacts">
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+						<div class="settings">
+							<div>
+								<input type="text" name="attr_name" placeholder="Old Crow" />
+								<input type="number" name="attr_loyalty" min="1"placeholder="3" />
+								<input type="number" name="attr_connection" min="1" placeholder="8" />
+								<input type="number" name="attr_favors" placeholder="+2" />
+								<h3>Notes</h3>
+								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+							</div>
+						</div>
+						<div class="display">
+							<input class="display-flag" type="checkbox" name="attr_display_flag" />
+							<div class="display-row"><b><span name="attr_display"></span></b></div>
+							<div class="display-row"><span name="attr_loyalty"></span></div>
+							<div class="display-row"><span name="attr_connection"></span></div>
+							<div class="display-row"><span name="attr_favors"></span></div>
+							<div class="collapsable">
+								<div class="desc"><span name="attr_notes"></span></div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div><!-- ~~~~~~~~ End of Contacts row ~~~~~~~~ -->
+	</div><!-- ~~~~~~~~ End of the Social Column  ~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the VEHICLE Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<div class="vehicle pc-col">
+		<div class="pc-row">
+			<div class="header right-header"><h1>Vehicle</h1><div class="right-tri"></div></div>
+			<div class="border-box repeat-box vehicle-box">
+				<div class="pc-box medium-box">
+					<div class="row-long">
+
+					</div>
+					<fieldset>
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+						<div class="settings">
+
+						</div>
+						<div class="display">
+							
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+	</div><!-- ~~~~~~~~ End of the VEHICLE Column  ~~~~~~~~ -->
 	<div class="options pc-col"><!-- ~~~~~~~~ Start of the PC Options Page ~~~~~~~~ -->
 		<div class="pc-row">
 			<div class="header right-header"><h1>Options</h1><div class="right-tri"></div></div>
