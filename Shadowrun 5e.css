@@ -866,7 +866,7 @@ span {
 				font-weight: bolder;
 				height: 20px;
 				padding: 0px;
-				width: fit-content;
+				width: 15%;
 			}
 
 			.sheet-repeat-box option {
@@ -916,9 +916,9 @@ span {
 
 		/***** Skills Repeating Section *****/
 			/***** Skills Settings *****/
-			.sheet-skill-box .sheet-settings input[type="text"]:first-child {
-				margin-right: 3px;
-				width: 69%;
+			.sheet-skill-box .sheet-settings input[type="text"] {
+				text-align: left;
+				width: 70%;
 			}
 
 			.sheet-skill-box .sheet-settings input[type="number"] {
@@ -930,13 +930,7 @@ span {
 			/***** Skills Row in Settings *****/
 				.sheet-skills-row {
 					display: inline-block;
-				}
-
-				.sheet-skills-row div {
-					display: inline-block;
-					margin-right: 5px;
-					vertical-align: top;
-					width: 69%;
+					width: 100%;
 				}
 
 				.sheet-skills-row div:nth-of-type(2) {
@@ -949,12 +943,17 @@ span {
 					margin-bottom: -3px;
 				}
 
-				.sheet-skills-row input[type="text"] {
+				.sheet-skills-row .sheet-settings-row input[type="text"] {
 					width: 100%;
 				}
 
-				.sheet-skills-row input[type="number"] {
+				.sheet-skills-row .sheet-settings-row div {
+					display: inline-block;
+					width: 70%;
+				}
 
+				.sheet-skills-row .sheet-settings-row div:last-child {
+					width: 20%;
 				}
 
 			/***** Skills Display *****/
@@ -1409,6 +1408,10 @@ span {
 
 			.sheet-spell-box .sheet-display .sheet-display-row:nth-of-type(5) {
 				width: 7%;
+			}
+
+			.sheet-combat-type[value*="irect"] ~ .sheet-display .sheet-collapsable span.sheet-combat-type-hide {
+				display: none;
 			}
 
 				/***** Ritual Display Section *****/
@@ -2305,14 +2308,14 @@ span {
 	.sheet-optional,
 	.sheet-optional-flag0[value="0"] + .sheet-textboxes,
 	.sheet-optional-flag0[value="0"] + .sheet-attr-header,
-	.sheet-spell_catagory + div,
-	.sheet-spell_catagory + div + div,
+	.sheet-spell_category + div,
+	.sheet-spell_category + div + div,
 	.sheet-goon,
 	.sheet-host,
 	.sheet-vehicle  {display: none;}
 
-	.sheet-spell_catagory[value="Combat"] + div,
-	.sheet-spell_catagory[value="Combat"] + div + div,
+	.sheet-spell_category[value="Combat"] + div,
+	.sheet-spell_category[value="Combat"] + div + div,
 	.sheet-character-type[value="matrix"] + .sheet-matrix {display: inherit;}
 
 	.sheet-npc-type[value="goon"] ~ .sheet-goon,
@@ -2517,12 +2520,12 @@ span {
 	}
 
 	/**** Roll template ****/
-.sheet-rolltemplate-sGoon div.sheet-template-body {
+.sheet-rolltemplate-sRun div.sheet-template-body {
 	border: 2px solid #000 !important;
 	border-radius: 3px 3px 3px 3px;
 }
 
-.sheet-rolltemplate-sGoon .sheet-template-header {
+.sheet-rolltemplate-sRun .sheet-template-header {
 	font-family: "contrail one";
 	font-size: 20px;
 	font-weight: normal;
@@ -2539,15 +2542,15 @@ span {
 
 }
 
-.sheet-rolltemplate-sGoon .sheet-template-header span {
+.sheet-rolltemplate-sRun .sheet-template-header span {
 	font-family: "tahoma";
-	font-size: 11px;
+	font-size: 0.5em;
 	font-weight: normal;
 	font-variant: normal;
 	letter-spacing: 1px;
 }
 
-.sheet-rolltemplate-sGoon .sheet-template-row {
+.sheet-rolltemplate-sRun .sheet-template-row {
 	color: #fff;
 	text-align: center;
 	font-size: 18px;
@@ -2560,11 +2563,11 @@ span {
 	border-radius: 0px;
 }
 
-.sheet-rolltemplate-sGoon .sheet-template-row:last-child {
+.sheet-rolltemplate-sRun .sheet-template-row:last-child {
 	background-color: #2d2d2d;
 }
 
-.sheet-rolltemplate-sGoon .inlinerollresult {
+.sheet-rolltemplate-sRun .inlinerollresult {
 	display:inline-block;
 	color: #fff;
 	font-size: 25px;
@@ -2572,24 +2575,24 @@ span {
 	border: none;
 }
 
-.sheet-rolltemplate-sGoon .inlinerollresult.fullfail,
-.sheet-rolltemplate-sGoon .inlinerollresult.fullcrit,
-.sheet-rolltemplate-sGoon .inlinerollresult.importantroll {
+.sheet-rolltemplate-sRun .inlinerollresult.fullfail,
+.sheet-rolltemplate-sRun .inlinerollresult.fullcrit,
+.sheet-rolltemplate-sRun .inlinerollresult.importantroll {
 	border: none;
 }
 
-.sheet-rolltemplate-sGoon .inlinerollresult.fullfail {
+.sheet-rolltemplate-sRun .inlinerollresult.fullfail {
 	color: #c71307;
 }
 
-.sheet-rolltemplate-sGoon .inlinerollresult.fullcrit {
+.sheet-rolltemplate-sRun .inlinerollresult.fullcrit {
 	color: #fff;
 }
 
-.sheet-rolltemplate-sGoon .sheet-template-desc {
-	font-size: 0.8rem;
+.sheet-rolltemplate-sRun .sheet-template-desc {
+	font-size: 0.8em;
 }
 
-.sheet-rolltemplate-sGoon span.sheet-template-desc .inlinerollresult {
+.sheet-rolltemplate-sRun span.sheet-template-desc .inlinerollresult {
 	font-size: 14px;
 }
