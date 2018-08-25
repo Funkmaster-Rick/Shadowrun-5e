@@ -97,6 +97,10 @@ input[type="number"] {
 	text-align: center;
 }
 
+input::placeholder {
+	color: #b8b7b6;
+}
+
 select {
 	border: none;
 	margin-bottom: 0px;
@@ -417,22 +421,15 @@ span {
 		}
 
 	/***** Attributes Box *****/
-	.sheet-attr-box {
-		
-	}
-
 	.sheet-attr-col {
+		display: inline-block;
+		margin-top: 3.5px;
+		vertical-align: top;
 		width: 54%;
 	}
 
 	.sheet-attr-col:first-child {
 		width: 45%;
-	}
-
-	.sheet-attr-col {
-		display: inline-block;
-		margin-top: 3.5px;
-		vertical-align: top;
 	}
 
 	.sheet-attr-col h2,
@@ -445,26 +442,38 @@ span {
 		margin-right: 5px;
 		padding-right: 2px;
 		text-align: right;
-		width: 47%;
+		width: 43%;
 	}
 
 	.sheet-attr-col:first-child h2 {
 		width: 40%;
 	}
 
+	.sheet-attr-col h3 {
+		color: #000;
+		margin-bottom: -3px;
+	}
+
 	.sheet-attr-col:first-child label {
 		width: 40%;
 	}
 
-	.sheet-att-lim {
-		font-size: 0.9em;
-		margin-top: 10px;
-		width: 100%;
+	.sheet-attr-lim {
+		margin-top: 20px;
 	}
 
-	.sheet-att-lim h2 {
+	.sheet-attr-lim h2 {
 		font-size: 11.7px;
 		width: 22%;
+	}
+
+	.sheet-attr-und {
+		border-bottom: 1px solid #000;
+		display: inline-block;
+		height: 22px;
+		margin-bottom: 4px;
+		vertical-align: top;
+		width: 53%;
 	}
 
 		/***** Attribute Toggles Spans *****/
@@ -488,47 +497,59 @@ span {
 		}
 
 		.sheet-settings .sheet-attr-col input[type="number"] {
-			margin-bottom: 4px;
+			margin-bottom: 8px;
+			padding: 0px 2px;
 		}
 
-		.sheet-settings .sheet-att-lim input[type="number"] {
-			margin-right: 1%;
-		}
-
-		.sheet-attr-col input[type="number"] {
-			border-bottom: 1px solid #000;
+		.sheet-attr-col input[type="number"],
+		.sheet-attr-col .sheet-totals {
 			border-radius: 0px;
-			height: 22px;
+			display: inline-block;
+			height: 20px;
+			text-align: center;
+			width: 20%;
 		}
 
-		.sheet-attr-col input.sheet-att-ini {
-			width: 12%;
-		}
-
-		.sheet-attr-col input.sheet-att-ini + span {
+		.sheet-tiny-span {
 			font-size: 0.8em;
 		}
 
-		.sheet-att-lim input[type="number"] {
-			width: 11%;
+		.sheet-attr-col .sheet-totals {
+			display: inline;
+			font-size: 0.8em;
+			width: 20%;
+		}
+
+		label.sheet-attr-ini {
+			width: 24%;
+		}
+
+		.sheet-attr-ini {
+			width: 72%;
+		}
+
+		.sheet-attr-ini input[type="number"] {
+			width: 15%;
+		}
+
+		.sheet-attr-lim input[type="number"] {
+			width: 6%;
+		}
+
+		.sheet-attr-lim span + span {
+			margin-right: 1%;
 		}
 
 		/***** Attribute Display Spans *****/
-		.sheet-attr-und {
-			border-bottom: 1px solid #000;
-			display: inline-block;
-			height: 22px;
-			margin-bottom: 4px;
+		.sheet-display .sheet-attr-und {
 			text-align: center;
-			vertical-align: top;
-			width: 50%;
 		}
 
 		.sheet-display .sheet-attr-col h2 {
 			padding-top: 3px;
 		}
 
-		.sheet-att-lim  div {
+		.sheet-attr-lim  div {
 			display: inline-block;
 			height: 22px;
 			text-align: center;
@@ -654,7 +675,7 @@ span {
 		}
 
 		.sheet-condition-box .sheet-settings .sheet-con-footer {
-			margin-top: -10px;
+			margin-top: 0px;
 			text-indent: 10px;
 		}
 
@@ -2454,6 +2475,10 @@ span {
 	    width: 12px;
 	}
 
+	.sheet-pc .repcontrol .repcontrol_edit:after {
+		color: #000;
+	}
+
 	.editmode ~ .repcontrol .repcontrol_edit:after {
 		content: ')';
 	}
@@ -2468,6 +2493,10 @@ span {
 	    padding: 2px 4px 2px 4px;
 	    visibility: visible;
 	    width: 12px;
+	}
+
+	.sheet-pc .repcontrol .repcontrol_add:after { 
+		color: #000;
 	}
 
 	.repcontrol .repcontrol_edit:hover:after,
