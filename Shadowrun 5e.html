@@ -1,5 +1,7 @@
 <!-- ~~~~~~~~ Character Sheet Page, default view ~~~~~~~~ -->    
 <input class="sheet_type" name="attr_sheet_type" type="hidden" value="pc">
+<!-- ~~~~~~~~ Show & hide optional Magic & Resonance areas ~~~~~~~~ --> 
+<input class="character-type" name="attr_flag_special" type="hidden" value="mundane">
 
 <div class="tabs tab-whisper">
 	<input type="radio" name="attr_gm_toggle" value="" checked="checked" /><span>Public</span>
@@ -13,7 +15,7 @@
 </div>
 
 <div class="tabs tab-col">
-	<input type="radio" name="attr_tab" value="core" title="Core sheet" checked="checked" /><span>Core</span>
+	<input type="radio" name="attr_tab" value="core" title="Core sheet" /><span>Core</span>
 	<input type="radio" name="attr_tab" value="arms" title="Arms"/><span>Arms</span>
 	<input type="radio" name="attr_tab" value="augs" title="Augs"/><span>Augs</span>
 	<input type="radio" name="attr_tab" value="gear" title="Gear"/><span>Gear</span>
@@ -21,7 +23,7 @@
 	<input type="radio" name="attr_tab" value="matrix" title="Matrix"/><span>Matrix</span>
 	<input type="radio" name="attr_tab" value="social" title="Social"/><span>Social</span>
 	<input type="radio" name="attr_tab" value="vehicle" title="Vehicle"/><span>Vehicle</span>
-	<input type="radio" name="attr_tab" value="options" title="Sheet Settings & Notes"/><span>y</span>
+	<input type="radio" name="attr_tab" value="options" title="Sheet Options"  checked="checked"/><span>y</span>
 </div>
 <!-- ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~  ~~~~~~~~  ~~~~~~~~ ~~~~~~~~ -->
 <!-- ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ Start of PC Sheet ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  -->
@@ -149,13 +151,21 @@
 							<div class="attr-und">
 								<input type="number" name="attr_essence" placeholder="6" />
 							</div>
-							<!-- ~~:+: Magic/Resonance :+:~~ -->
-							<input type="hidden" name="attr_magic_resonance" value="3" />
+							<!-- ~~:+: Magic or Resonance :+:~~ -->
+							<input type="hidden" name="attr_magic" value="3" />
+							<input type="hidden" name="attr_resonance" value="3" />
 							<label>Magic/Resonance</label>
 							<div class="attr-und">
-								<input type="number" name="attr_magic_resonance_base" placeholder="0" /><span class="tiny-span"> + </span>
-								<input type="number" name="attr_magic_resonance_bonus" placeholder="0" /><span class="tiny-span"> = </span>
-								<span class="totals" name="attr_display_magic_resonance" /></span>
+								<div class="hide-magic">
+									<input type="number" name="attr_magic_base" placeholder="0" /><span class="tiny-span"> + </span>
+									<input type="number" name="attr_magic_bonus" placeholder="0" /><span class="tiny-span"> = </span>
+									<span class="totals" name="attr_display_magic" /></span>
+								</div>
+								<div class="hide-resonance">
+									<input type="number" name="attr_resonance_base" placeholder="0" /><span class="tiny-span"> + </span>
+									<input type="number" name="attr_resonance_bonus" placeholder="0" /><span class="tiny-span"> = </span>
+									<span class="totals" name="attr_display_resonance" /></span>
+								</div>
 							</div>
 							<!-- ~~:+: Initiative :+:~~ -->
 							<input type="hidden" name="attr_initiative_mod" value="6" />
@@ -182,10 +192,12 @@
 							<input type="hidden" name="attr_astral_dice" value="3" max="5" />
 							<label class="attr-ini">Astral Ini</label>
 							<div class="attr-und attr-ini">
-								<input type="number" name="attr_astral_mod_bonus" value="0" placeholder="bonus" /><span class="tiny-span"> + </span>
-								<input type="number" name="attr_astral_dice_bonus" value="0" min="0" max="3" placeholder="bonus" /><span class="tiny-span"> d6</span><span class="tiny-span"> = </span>
-								<span name="attr_display_astral_mod"></span><span class="tiny-span"> + </span>
-								<span name="attr_astral_dice"></span><span class="tiny-span"> d6</span>
+								<div class="hide-magic">
+									<input type="number" name="attr_astral_mod_bonus" value="0" placeholder="bonus" /><span class="tiny-span"> + </span>
+									<input type="number" name="attr_astral_dice_bonus" value="0" min="0" max="3" placeholder="bonus" /><span class="tiny-span"> d6</span><span class="tiny-span"> = </span>
+									<span name="attr_display_astral_mod"></span><span class="tiny-span"> + </span>
+									<span name="attr_astral_dice"></span><span class="tiny-span"> d6</span>
+								</div>
 							</div>
 							<!-- ~~:+: Composure :+:~~ -->
 							<input type="hidden" name="attr_composure" value="" />
@@ -245,7 +257,13 @@
 						</div>
 						<div class="attr-col">
 							<h2>Essence</h2><div class="attr-und"><span name="attr_essence"></span></div>
-							<h2>Magic/Resonance</h2><div class="attr-und"><span name="attr_display_magic_resonance"></span></div>
+							<h2>Magic/Resonance</h2>
+								<div class="attr-und">
+									<div class="hide-magic"><span name="attr_display_magic"></span>
+									<div class="hide-resonance"><span name="attr_display_resonance"></span>
+								</div>
+							</div>
+							</div>
 							<h2>Initative</h2>
 							<div class="attr-und">
 								<span name="attr_display_initiative_mod"></span><span class="tiny-span"> + </span><span name="attr_initiative_dice"></span><span class="tiny-span"> d6</span>
@@ -320,7 +338,102 @@
 							<div class="settings">
 								<div class="skills-row">
 									<input type="hidden" name="attr_dicepool" />
-									<input type="text" name="attr_skill" placeholder="Active skill name" />
+									<select class="skill-select" name="attr_skill">
+										<option class="option-headers" disabled="true">Combat Skills</option>
+										<option class="option-groups" value="Close Combat Group">Close Combat Group</option>
+										<option class="option-groups" value="Firearms Group">Firearms Group</option>
+										<option value="Archery">Archery</option>
+										<option value="Automatics">Automatics</option>
+										<option value="Blades">Blades</option>
+										<option value="Clubs">Clubs</option>
+										<option value="Exotic Melee">Exotic Melee</option>
+										<option value="Exotic Range">Exotic Range</option>
+										<option value="Heavy Weapons">Heavy Weapons</option>
+										<option value="Longarms">Longarms</option>
+										<option value="Pistols">Pistols</option>
+										<option value="Throwing Weapons">Throwing Weapons</option>
+										<option value="Unarmed Combat" >Unarmed Combat</option>
+										<option class="option-headers" disabled="true">Physical Skills</option>
+										<option class="option-groups" value="Athletics Group">Athletics Group</option>
+										<option class="option-groups" value="Outdoors Group">Outdoors Group</option>
+										<option class="option-groups" value="Stealth Group">Stealth Group</option>
+										<option value="Disguise">Disguise</option>
+										<option value="Diving">Diving</option>
+										<option value="Escape Artist">Escape Artist</option>
+										<option value="Flight">Flight</option>
+										<option value="Free Fall">Free Fall</option>
+										<option value="Gymnastics">Gymnastics</option>
+										<option value="Palming">Palming</option>
+										<option value="Perception">Perception</option>
+										<option value="Running">Running</option>
+										<option value="Sneaking">Sneaking</option>
+										<option value="Survival">Survival</option>
+										<option value="Swimming">Swimming</option>
+										<option value="Tracking">Tracking</option>
+										<option class="option-headers" disabled="true">Social Skills</option>
+										<option class="option-groups" value="Acting Group">Acting Group</option>
+										<option class="option-groups" value="Influence Group">Influence Group</option>
+										<option value="Con">Con</option>
+										<option value="Etiquette">Etiquette</option>
+										<option value="Impersonation">Impersonation</option>
+										<option value="Instruction">Instruction</option>
+										<option value="Intimidation">Intimidation</option>
+										<option value="Leadership">Leadership</option>
+										<option value="Negotiation">Negotiation</option>
+										<option value="Performance">Performance</option>
+										<option class="option-headers" disabled="true">Magical Skills</option>
+										<option class="option-groups" value="Conjuring Group">Conjuring Group</option>
+										<option class="option-groups" value="Enchanting Group">Enchanting Group</option>
+										<option class="option-groups" value="Sorcery Group">Sorcery Group</option>
+										<option value="Alchemy">Alchemy</option>
+										<option value="Arcana">Arcana</option>
+										<option value="Assensing">Assensing</option>
+										<option value="Astral Combat">Astral Combat</option>
+										<option value="Banishing">Banishing</option>
+										<option value="Binding">Binding</option>
+										<option value="Counterspelling">Counterspelling</option>
+										<option value="Disenchanting">Disenchanting</option>
+										<option value="Ritual Spellcasting">Ritual Spellcasting</option>
+										<option value="Spellcasting">Spellcasting</option>
+										<option value="Summoning">Summoning</option>
+										<option class="option-headers" disabled="true">Resonance Skills</option>
+										<option class="option-groups" value="Tasking Group">Tasking Group</option>
+										<option value="Compiling">Compiling</option>
+										<option value="Decompiling">Decompiling</option>
+										<option value="Registering">Registering</option>
+										<option class="option-headers" disabled="true">Technical Skills</option>
+										<option class="option-groups" value="Biotech Group">Biotech Group</option>
+										<option class="option-groups" value="Cracking Group">Cracking Group</option>
+										<option class="option-groups" value="Electronics Group">Electronics Group</option>
+										<option class="option-groups" value="Engineering Group">Engineering Group</option>
+										<option value="Aeronautics Mechanic">Aeronautics Mechanic</option>
+										<option value="Animal Handling">Animal Handling</option>
+										<option value="Armorer">Armorer</option>
+										<option value="Automotive Mechanic">Automotive Mechanic</option>
+										<option value="Biotechnology">Biotechnology</option>
+										<option value="Chemistry">Chemistry</option>
+										<option value="Computer">Computer</option>
+										<option value="Cybercombat">Cybercombat</option>
+										<option value="Demolitions">Demolitions</option>
+										<option value="Cybertechnology">Cybertechnology</option>
+										<option value="Demolitions">Demolitions</option>
+										<option value="Electronic Warfare">Electronic Warfare</option>
+										<option value="First Aid">First Aid</option>
+										<option value="Hacking">Hacking</option>
+										<option value="Hardware">Hardware</option>
+										<option value="Industrial Mechanic">Industrial Mechanic</option>
+										<option value="Locksmith">Locksmith</option>
+										<option value="Medicine">Medicine</option>
+										<option value="Nautical Mechanic">Nautical Mechanic</option>
+										<option value="Navigation">Navigation</option>
+										<option value="Gunnery">Gunnery</option>
+										<option value="Pilot Aerospace">Pilot Aerospace</option>
+										<option value="Pilot Aircraft">Pilot Aircraft</option>
+										<option value="Pilot Exotic Vehicle">Pilot Exotic Vehicle</option>
+										<option value="Pilot Ground Craft">Pilot Ground Craft</option>
+										<option value="Pilot Walker">Pilot Walker</option>
+										<option value="Pilot Watercraft">Pilot Watercraft</option>
+									</select>
 									<input type="number" name="attr_rank" min="0" placeholder="0" />
 									<div class="settings-row">
 										<div><label>Specializations</label><br /><input type="text" name="attr_specialization" placeholder="Specalizations" /></div>
@@ -332,13 +445,13 @@
 							</div>
 							<div class="display">
 								<div class="name">
-									<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5]]}}" ><span name="attr_display"></span></button>
+									<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" ><span name="attr_display"></span></button>
 									<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}"><span name="attr_display_specialization"></span></button>
 								</div>
 								<div class="rank"><span name="attr_display_rank"></span></div>
 							</div>
 							<input type="hidden" name="attr_display_attribute" />
-							<select name="attr_attribute">
+							<select class="attr-select" name="attr_attribute">
 								<option value="@{body}">Body</option>
 								<option value="@{agility}" selected="selected">Agility</option>
 								<option value="@{reaction}">Reaction</option>
@@ -374,11 +487,17 @@
 								<div class="rank"><span name="attr_display_rank"></span></div>
 							</div>
 							<input type="hidden" name="attr_display_attribute" />
-							<select name="attr_attribute">
-								<option class="blk-op" value="@{willpower}">Willpower</option>
-								<option class="blk-op" value="@{logic}" selected="selected">Logic</option>
-								<option class="blk-op" value="@{intuition}">Intuition</option>
-								<option class="blk-op" value="@{charisma}">Charisma</option>
+							<select class="attr-select" name="attr_attribute">
+								<option value="@{body}">Body</option>
+								<option value="@{agility}">Agility</option>
+								<option value="@{reaction}">Reaction</option>
+								<option value="@{strength}">Strength</option>
+								<option value="@{willpower}">Willpower</option>
+								<option value="@{logic}" selected="selected">Logic</option>
+								<option value="@{intuition}">Intuition</option>
+								<option value="@{charisma}">Charisma</option>
+								<option value="@{magic}">Magic</option>
+								<option value="@{resonance}">Resonance</option>
 							</select>
 						</fieldset>
 					</div>
@@ -404,11 +523,17 @@
 								<div class="rank"><span name="attr_display_rank"></span></div>
 							</div>
 							<input type="hidden" name="attr_display_attribute" />
-							<select name="attr_attribute">
-								<option class="blk-op" value="@{willpower}">Willpower</option>
-								<option class="blk-op" value="@{logic}">Logic</option>
-								<option class="blk-op" value="@{intuition}" selected="selected">Intuition</option>
-								<option class="blk-op" value="@{charisma}">Charisma</option>
+							<select class="attr-select" name="attr_attribute">
+								<option value="@{body}">Body</option>
+								<option value="@{agility}">Agility</option>
+								<option value="@{reaction}">Reaction</option>
+								<option value="@{strength}">Strength</option>
+								<option value="@{willpower}">Willpower</option>
+								<option value="@{logic}">Logic</option>
+								<option value="@{intuition}" selected="selected">Intuition</option>
+								<option value="@{charisma}">Charisma</option>
+								<option value="@{magic}">Magic</option>
+								<option value="@{resonance}">Resonance</option>
 							</select>
 						</fieldset>
 					</div>
@@ -635,13 +760,36 @@
 										<label>Range</label><input type="text" name="attr_range" placeholder="5/20/40/60" />
 									</div>
 									<div class="settings-row">
+										<input type="hidden" name="attr_dicepool" value="0" />
+										<label>Combat Skill</label>
+										<select class="skill-select" name="attr_skill">
+											<option class="option-headers" disabled="true">Combat Skills</option>
+											<option class="option-groups" value="@{firearms}">Firearms Group</option>
+											<option value="@{archery}">Archery</option>
+											<option value="@{automatics}">Automatics</option>
+											<option value="0">Exotic Range</option>
+											<option value="@{heavyweapons}">Heavy Weapons</option>
+											<option value="@{longarms}">Longarms</option>
+											<option value="@{pistols}">Pistols</option>
+											<option value="@{throwingweapons}">Throwing Weapons</option>
+											<option class="option-headers" disabled="true">Vehicle Skills</option>
+											<option value="@{gunnery}" >Gunnery</option>
+										</select>
+										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" />
+										<label>Bonus Dice</label><input type="number" name="attr_dicepool_bonus" />
+										<input class="skill-select" type="hidden" name="attr_skill" /><br />
+										<div class="exotic-warning">
+											<span><i>Exotics are not linked to skills. Use Bonus Dice input to set skill dice.</i></span>
+										</div>
+									</div>
+									<div class="settings-row">
 										<label>Notes</label>
 										<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 									</div>
 								</div>
 							</div>
 							<div class="display">
-								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{weapon}}}{{base=}}{{desc=ACC @{acc}, DV @{damage}, AP @{ap}}}"><b><span name="attr_weapon"></span></b></button></div>
+								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{weapon}}}{{base=Agility}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill}+@{dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Mode @{mode}, ACC @{acc}, DV @{damage}, AP @{ap}}}"><b><span name="attr_weapon"></span></b></button></div>
 								<div class="display-row"><span name="attr_damage"></span></div>
 								<div class="display-row"><span name="attr_acc"></span></div>
 								<div class="display-row"><span name="attr_ap"></span></div>
@@ -674,9 +822,28 @@
 									<input type="text" name="attr_weapon" placeholder="Katana" />
 									<input type="number" name="attr_reach" placeholder="1" />
 									<input type="text" name="attr_damage" placeholder="6P" />
-									<input type="number" name="attr_acc" placeholder="-7" />
+									<input type="number" name="attr_acc" placeholder="7" />
 									<input type="number" name="attr_ap" placeholder="-3" />
 									<input type="checkbox" class="primary-flag" name="attr_primary_melee_flag" checked="checked" /><span>S</span>
+									<div class="settings-row">
+										<input type="hidden" name="attr_dicepool" value="0" />
+										<label>Combat Skill</label>
+										<select class="skill-select" name="attr_skill">
+											<option class="option-headers" disabled="true">Combat Skills</option>
+											<option class="option-groups" value="@{closecombat}">Close Combat Group</option>
+											<option value="@{blades}">Blades</option>
+											<option value="@{clubs}">Clubs</option>
+											<option value="0">Exotic Melee</option>
+											<option value="@{unarmedcombat}" >Unarmed Combat</option>
+											<option class="option-headers" disabled="true">Vehicle Skills</option>
+											<option value="@{gunnery}" >Gunnery</option>
+										</select>
+										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="+2" />
+										<label>Bonus Dice</label><input type="number" name="attr_dicepool_bonus" />
+										<div class="exotic-warning">
+											<span><i>Exotic weapons are currently not linked to the skills section. Use Bonus Dice input to set dicepool.</i></span>
+										</div>
+									</div>
 									<div class="settings-row">
 										<label>Notes</label>
 										<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
@@ -684,7 +851,7 @@
 								</div>
 							</div>
 							<div class="display">
-								<div class="display-row"><button type="roll"><b><span name="attr_weapon"></span></b></button></div>
+								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{weapon}}}{{base=Agility}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill} +@{dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{acc}, DV @{damage}, AP @{ap}, Reach @{reach}}}"><b><span name="attr_weapon"></span></b></button></div>
 								<div class="display-row"><span name="attr_reach"></span></div>
 								<div class="display-row"><span name="attr_damage"></span></div>
 								<div class="display-row"><span name="attr_acc"></span></div>
@@ -872,13 +1039,24 @@
 										</select>
 									</div>
 									<div class="settings-row">
+										<input type="hidden" name="attr_dicepool" value="0" />
+										<label>Magic Skill</label>
+										<select class="skill-select" name="attr_skill">
+											<option class="option-headers" disabled="true">Magic Skills</option>
+											<option class="option-groups" value="@{sorcery}">Sorcery Group</option>
+											<option value="@{spellcasting}" selected="selected">Spellcasting</option>
+										</select>
+										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" />
+										<label>Bonus Dice</label><input type="number" name="attr_dicepool_bonus" />
+									</div>
+									<div class="settings-row">
 										<label>Notes</label>
 										<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 									</div>
 								</div>
 							</div>
 							<div class="display">
-								<div class="display-row"><b><span name="attr_name"></span></b></div>
+								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Magic}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill} +@{dicepool})+@{magic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{drain})]]}}"><b><span name="attr_name"></span></b></button></div>
 								<div class="display-row"><span name="attr_type"></span></div>
 								<div class="display-row"><span name="attr_range"></span></div>
 								<div class="display-row"><span name="attr_duration"></span></div>
@@ -886,7 +1064,7 @@
 								<input class="display-flag" type="checkbox" name="attr_display_flag" /><span>i</span>
 								<div class="collapsable">
 									<div class="desc"><i><span name="attr_category"></span></i></div>
-									<div class="desc"><i><span class="combat-type-hide" name="attr_combat_type"></span></i></div>
+									<div class="desc"><i><input class="combat-type" type="hidden" name="attr_combat_type"/><span></span></i></div>
 									<div class="desc"><span name="attr_notes"></span></div>
 								</div>
 							</div>
@@ -933,18 +1111,32 @@
 											<option class="option" value="Indirect, Force ?{Force|}, AP -">Indirect</option>
 										</select>
 									</div>
+									<div class="settings-row">
+										<input type="hidden" name="attr_dicepool" value="0" />
+										<label>Magic Skill</label>
+										<select class="skill-select" name="attr_skill">
+											<option class="option-headers" disabled="true">Magic Skills</option>
+											<option class="option-groups" value="@{enchanting}">Enchanting Group</option>
+											<option value="@{alchemy}" selected="selected">Alchemy</option>
+										</select>
+										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" />
+										<label>Bonus Dice</label><input type="number" name="attr_dicepool_bonus" />
+									</div>
 									<label>Notes</label>
-									<textarea name="attr_notes" value="" placeholder="Spell notes"></textarea>
+									<textarea name="attr_notes" value="" placeholder="Alchemy notes"></textarea>
 								</div>
 							</div>
 							<div class="display">
 								<input class="display-flag" type="checkbox" name="attr_display_flag" />
-								<div class="display-row"><b><span name="attr_name"></span></b></div>
+								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Magic}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill} +@{dicepool})+@{magic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{drain})]]}}"><b><span name="attr_name"></span></b></button></div>
 								<div class="display-row"><span name="attr_type"></span></div>
 								<div class="display-row"><span name="attr_range"></span></div>
 								<div class="display-row"><span name="attr_duration"></span></div>
 								<div class="display-row" style="text-align: center;"><span name="attr_drain"></span></div>
+								<input class="display-flag" type="checkbox" name="attr_display_flag" /><span>i</span>
 								<div class="collapsable">
+									<div class="desc"><i><span name="attr_category"></span></i></div>
+									<div class="desc"><i><input class="combat-type" type="hidden" name="attr_combat_type"/><span></span></i></div>
 									<div class="desc"><span name="attr_notes"></span></div>
 								</div>
 							</div>
@@ -956,13 +1148,25 @@
 							<div class="settings">
 								<div>
 									<input type="text" name="attr_name" placeholder="Curse (MATERIAL LINK, SPELL)" />
+									<div class="settings-row">
+										<input type="hidden" name="attr_dicepool" value="0" />
+										<label>Magic Skill</label>
+										<select class="skill-select" name="attr_skill">
+											<option class="option-headers" disabled="true">Magic Skills</option>
+											<option class="option-groups" value="@{sorcery}">Sorcery Group</option>
+											<option value="@{ritualspell}" selected="selected">Ritual Spellcasting</option>
+										</select>
+										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" />
+										<label>Bonus Dice</label><input type="number" name="attr_dicepool_bonus" />
+									</div>
 									<label>Notes</label>
 									<textarea name="attr_notes" value="" placeholder="Ritual notes"></textarea>
 								</div>
 							</div>
 							<div class="display">
 								<input class="display-flag" type="checkbox" name="attr_display_flag" />
-								<div class="display-row"><b><span name="attr_name"></span></b></div>
+								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Magic}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill} +@{dicepool})+@{magic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Force ?{Force|}]]}}"><b><span name="attr_name"></span></b></button></div>
+								<input class="display-flag" type="checkbox" name="attr_display_flag" /><span>i</span>
 								<div class="collapsable">
 									<div class="desc"><span name="attr_notes"></span></div>
 								</div>
@@ -1117,16 +1321,28 @@
 									<option value="Sustained">Sustained</option>
 								</select>
 								<input type="number" name="attr_fade" value="" placeholder="-1" />
+								<div class="settings-row">
+									<input type="hidden" name="attr_dicepool" value="0" />
+									<label>Technical Skill</label>
+									<select class="skill-select" name="attr_skill">
+										<option class="option-headers" disabled="true">Technical Skills</option>
+										<option class="option-groups" value="@{electronics}">Electronics Group</option>
+										<option value="@{software}" selected="selected">Software</option>
+									</select>
+									<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" />
+									<label>Bonus Dice</label><input type="number" name="attr_dicepool_bonus" />
+								</div>
 								<label>Notes</label>
 								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 							</div>
 						</div>
 						<div class="display">
 							<input class="display-flag" type="checkbox" name="attr_display_flag" />
-							<div class="display-row"><b><span name="attr_name"></span></b></div>
+							<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Resonance}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill} +@{dicepool})+@{resonance}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Level ?{Level|}, Fade [[?{Level|}+(@{fade})]]}}"><b><span name="attr_name"></span></b></button></div>
 							<div class="display-row"><span name="attr_target"></span></div>
 							<div class="display-row"><span name="attr_duration"></span></div>
 							<div class="display-row" style="text-align: center;"><span name="attr_fade"></span></div>
+							<input class="display-flag" type="checkbox" name="attr_display_flag" /><span>i</span>
 							<div class="collapsable">
 								<div class="desc"><span name="attr_notes"></span></div>
 							</div>
@@ -1242,6 +1458,12 @@
 						<label>Magic</label> <input type="checkbox" name="attr_tab_special"><br />
 					</div>
 					<div>
+						<h2>Character:</h2><br />
+						<label>Mundane</label><input class="character-type" type="checkbox" name="attr_flag_special" value="mundane" title="Mundane" checked="checked" /><br />
+						<label>Awakened</label><input class="character-type" type="checkbox" name="attr_flag_special" value="magic" title="Magic" /><br />
+						<label>Emerged</label><input class="character-type" type="checkbox" name="attr_flag_special" value="resonance" title="Resonance" />
+					</div>
+					<div>
 						<h2>NPC Select: </h2><br />
 						<select name="attr_sheet_type">
 							<option value="pc">PC</option>
@@ -1252,10 +1474,10 @@
 					</div>
 					<div>
 						<h2>Global Modifiers</h2>
-						<label>Soak</label><input type="number" name="attr_global_modifier_soak">
-						<label>Defense</label><input type="number" name="attr_global_modifier_defense">
-						<label>Range Defense</label><input type="number" name="attr_global_modifier_defense">
-						<label>Melee Defense</label><input type="number" name="attr_global_modifier_defense">
+						<label>Soak</label><input type="number" name="attr_global_modifier_soak"><br />
+						<label>Defense</label><input type="number" name="attr_global_modifier_defense"><br />
+						<label>Range Defense</label><input type="number" name="attr_global_modifier_defense_range"><br />
+						<label>Melee Defense</label><input type="number" name="attr_global_modifier_defense_melee">
 					</div>
 				</div>
 			</div>
@@ -1451,8 +1673,8 @@
 			</div>
 			<div class="goon 2col"><!--Start Right Checkboxes -->
 				<input class="character-type" type="radio" name="attr_flag_special" value="mundane" title="Mundane" checked="checked" /><label>Mundane</label><br />
-				<input class="character-type" type="radio" name="attr_flag_special" value="magic" title="Magic" /><label>Magic</label><br />
-				<input class="character-type" type="radio" name="attr_flag_special" value="resonance" title="Resonance" /><label>Resonance</label><br />
+				<input class="character-type" type="radio" name="attr_flag_special" value="magic" title="Magic" /><label>Awakened</label><br />
+				<input class="character-type" type="radio" name="attr_flag_special" value="resonance" title="Resonance" /><label>Emerged</label><br />
 				<input class="character-type" type="checkbox" name="attr_flag_matrix" value="matrix" title="Matrix" /><label>Matrix Device</label><br />
 			</div>
 		<!-- ~~~~~~~~ Skills  ~~~~~~~~ -->
@@ -1461,268 +1683,268 @@
 				<div class="skill-row">
 					<ul class="skill-col">
 						<li><label>Acting</label>
-							<input type="number" name="attr_acting" value="" placeholder="#" />
+							<input type="number" name="attr_acting" min="0" value="0" placeholder="#" />
 						</li>
 						<li><input type="checkbox" /><label>Con</label>
-							<input type="number" name="attr_con" value="" placeholder="#" />
+							<input type="number" name="attr_con" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_con_spec" placeholder="Specalization" title="@{con_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Impersonation</label>
-							<input type="number" name="attr_impersonation" value="" placeholder="#" />
+							<input type="number" name="attr_impersonation" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_impersonation_spec" placeholder="Specalization" title="@{impersonation_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Performance</label>
-							<input type="number" name="attr_performance" value="" placeholder="#" />
+							<input type="number" name="attr_performance" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_performance_spec" placeholder="Specalization" title="@{performance_spec}">
 						</li>
 					</ul>
 					<ul class="skill-col">
 						<li><label>Athletics</label>
-							<input type="number" name="attr_athletics" value="" placeholder="#" />
+							<input type="number" name="attr_athletics" min="0" value="0" placeholder="#" />
 						</li>
 						<li><input type="checkbox" /><label>gymnastics</label>
-							<input type="number" name="attr_gymnastics" value="" placeholder="#" />
+							<input type="number" name="attr_gymnastics" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_gymnastics_spec" placeholder="Specalization" title="@{gymnastics_spec}">
 						</li>
 						<li><input type="checkbox" /><label>running</label>
-							<input type="number" name="attr_running" value="" placeholder="#" />
+							<input type="number" name="attr_running" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_running_spec" placeholder="Specalization" title="@{running_spec}">
 						</li>
 						<li><input type="checkbox" /><label>swimming</label>
-							<input type="number" name="attr_swimming" value="" placeholder="#" />
+							<input type="number" name="attr_swimming" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_swimming_spec" placeholder="Specalization" title="@{swimming_spec}">
 						</li>
 					</ul>
 					<ul class="skill-col">
 						<li><label>biotech</label>
-							<input type="number" name="attr_biotech" value="" placeholder="#" />
+							<input type="number" name="attr_biotech" min="0" value="0" placeholder="#" />
 						</li>
 						<li><input type="checkbox" /><label>cybertechnology</label>
-							<input type="number" name="attr_cybertechnology" value="" placeholder="#" />
+							<input type="number" name="attr_cybertechnology" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_cybertechnology_spec" placeholder="Specalization" title="@{cybertechnology_spec}">
 						</li>
 						<li><input type="checkbox" /><label>First Aid</label>
-							<input type="number" name="attr_firstaid" value="" placeholder="#" />
+							<input type="number" name="attr_firstaid" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_firstaid_spec" placeholder="Specalization" title="@{firstaid_spec}">
 						</li>
 						<li><input type="checkbox" /><label>medicine</label>
-							<input type="number" name="attr_medicine" value="" placeholder="#" />
+							<input type="number" name="attr_medicine" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_medicine_spec" placeholder="Specalization" title="@{medicine_spec}">
 						</li>
 						<li><input type="checkbox" /><label>biotechnology</label>
-							<input type="number" name="attr_biotechnology" value="" placeholder="#" />
+							<input type="number" name="attr_biotechnology" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_biotechnology_spec" placeholder="Specalization" title="@{biotechnology_spec}">
 						</li>
 					</ul>
 					<ul class="skill-col">
 						<li><label>Close Combat</label>
-							<input type="number" name="attr_closecombat" value="" placeholder="#" />
+							<input type="number" name="attr_closecombat" min="0" value="0" placeholder="#" />
 						</li>
 						<li><input type="checkbox" /><label>blades</label>
-							<input type="number" name="attr_blades" value="" placeholder="#" />
+							<input type="number" name="attr_blades" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_blades_spec" placeholder="Specalization" title="@{blades_spec}">
 						</li>
 						<li><input type="checkbox" /><label>clubs</label>
-							<input type="number" name="attr_clubs" value="" placeholder="#" />
+							<input type="number" name="attr_clubs" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_clubs_spec" placeholder="Specalization" title="@{clubs_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Unarmed Combat</label>
-							<input type="number" name="attr_unarmedcombat" value="" placeholder="#" />
+							<input type="number" name="attr_unarmedcombat" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_unarmedcombat_spec" placeholder="Specalization" title="@{unarmedcombat_spec}">
 						</li>
 					</ul>
 					<input type="hidden" class="character-type" name="attr_flag_special" />
 					<ul class="skill-col magic-skill">
 						<li><label>conjuring</label>
-							<input type="number" name="attr_conjuring" value="" placeholder="#" />
+							<input type="number" name="attr_conjuring" min="0" value="0" placeholder="#" />
 						</li>
 						<li><input type="checkbox" /><label>banishing</label>
-							<input type="number" name="attr_banishing" value="" placeholder="#" />
+							<input type="number" name="attr_banishing" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_banishing_spec" placeholder="Specalization" title="@{banishing_spec}">
 						</li>
 						<li><input type="checkbox" /><label>binding</label>
-							<input type="number" name="attr_binding" value="" placeholder="#" />
+							<input type="number" name="attr_binding" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_binding_spec" placeholder="Specalization" title="@{binding_spec}">
 						</li>
 						<li><input type="checkbox" /><label>summoning</label>
-							<input type="number" name="attr_summoning" value="" placeholder="#" />
+							<input type="number" name="attr_summoning" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_summoning_spec" placeholder="Specalization" title="@{summoning_spec}">
 						</li>
 					</ul>
 					<ul class="skill-col">
 						<li><label>cracking</label>
-							<input type="number" name="attr_cracking" value="" placeholder="#" />
+							<input type="number" name="attr_cracking" min="0" value="0" placeholder="#" />
 						</li>
 						<li><input type="checkbox" /><label>cybercombat</label>
-							<input type="number" name="attr_cybercombat" value="" placeholder="#" />
+							<input type="number" name="attr_cybercombat" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_cybercombat_spec" placeholder="Specalization" title="@{cybercombat_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Electronic Warfare</label>
-							<input type="number" name="attr_electronicwarfare" value="" placeholder="#" />
+							<input type="number" name="attr_electronicwarfare" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_electronicwarfare_spec" placeholder="Specalization" title="@{electronicwarfare_spec}">
 						</li>
 						<li><input type="checkbox" /><label>hacking</label>
-							<input type="number" name="attr_hacking" value="" placeholder="#" />
+							<input type="number" name="attr_hacking" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_hacking_spec" placeholder="Specalization" title="@{hacking_spec}">
 						</li>
 					</ul>
 					<ul class="skill-col">
 						<li><label>electronics</label>
-							<input type="number" name="attr_electronics" value="" placeholder="#" />
+							<input type="number" name="attr_electronics" min="0" value="0" placeholder="#" />
 						</li>
 						<li><input type="checkbox" /><label>computer</label>
-							<input type="number" name="attr_computer" value="" placeholder="#" />
+							<input type="number" name="attr_computer" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_computer_spec" placeholder="Specalization" title="@{computer_spec}">
 						</li>
 						<li><input type="checkbox" /><label>hardware</label>
-							<input type="number" name="attr_hardware" value="" placeholder="#" />
+							<input type="number" name="attr_hardware" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_hardware_spec" placeholder="Specalization" title="@{hardware_spec}">
 						</li>
 						<li><input type="checkbox" /><label>software</label>
-							<input type="number" name="attr_software" value="" placeholder="#" />
+							<input type="number" name="attr_software" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_software_spec" placeholder="Specalization" title="@{software_spec}">
 						</li>
 					</ul>
 					<input type="hidden" class="character-type" name="attr_flag_special" />
 					<ul class="skill-col magic-skill">
 						<li><label>enchanting</label>
-							<input type="number" name="attr_enchanting" value="" placeholder="#" />
+							<input type="number" name="attr_enchanting" min="0" value="0" placeholder="#" />
 						</li>
 						<li><input type="checkbox" /><label>alchemy</label>
-							<input type="number" name="attr_alchemy" value="" placeholder="#" />
+							<input type="number" name="attr_alchemy" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_alchemy_spec" placeholder="Specalization" title="@{alchemy_spec}">
 						</li>
 						<li><input type="checkbox" /><label>artificing</label>
-							<input type="number" name="attr_artificing" value="" placeholder="#" />
+							<input type="number" name="attr_artificing" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_artificing_spec" placeholder="Specalization" title="@{artificing_spec}">
 						</li>
 						<li><input type="checkbox" /><label>disenchanting</label>
-							<input type="number" name="attr_disenchanting" value="" placeholder="#" />
+							<input type="number" name="attr_disenchanting" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_disenchanting_spec" placeholder="Specalization" title="@{disenchanting_spec}">
 						</li>
 					</ul>
 					<ul class="skill-col">
 						<li><label>engineering</label>
-							<input type="number" name="attr_engineering" value="" placeholder="#" />
+							<input type="number" name="attr_engineering" min="0" value="0" placeholder="#" />
 						</li>
 						<li><input type="checkbox" /><label>Aeronautics Mech.</label>
-							<input type="number" name="attr_aeromech" value="" placeholder="#" />
-							<input type="text" name="attr_aeromech_spec" placeholder="Specalization" title="@{aeromech_spec}">
+							<input type="number" name="attr_aeronauticsmechanic" min="0" value="0" placeholder="#" />
+							<input type="text" name="attr_aeronauticsmechanic_spec" placeholder="Specalization" title="@{aeromech_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Automotive Mech.</label>
-							<input type="number" name="attr_automech" value="" placeholder="#" />
-							<input type="text" name="attr_automech_spec" placeholder="Specalization" title="@{automech_spec}">
+							<input type="number" name="attr_automotivemechanic" min="0" value="0" placeholder="#" />
+							<input type="text" name="attr_automotivemechanic_spec" placeholder="Specalization" title="@{automech_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Industrial Mech.</label>
-							<input type="number" name="attr_indusmech" value="" placeholder="#" />
-							<input type="text" name="attr_indusmech_spec" placeholder="Specalization" title="@{indusmech_spec}">
+							<input type="number" name="attr_industrialmechanic" min="0" value="0" placeholder="#" />
+							<input type="text" name="attr_industrialmechanic_spec" placeholder="Specalization" title="@{indusmech_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Nautical Mech.</label>
-							<input type="number" name="attr_nautmech" value="" placeholder="#" />
-							<input type="text" name="attr_nautmech_spec" placeholder="Specalization" title="@{nautmech_spec}">
+							<input type="number" name="attr_nauticalmechanic" min="0" value="0" placeholder="#" />
+							<input type="text" name="attr_nauticalmechanic_spec" placeholder="Specalization" title="@{nautmech_spec}">
 						</li>
 					</ul>
 					<ul class="skill-col">
 						<li><label>firearms</label>
-							<input type="number" name="attr_firearms" value="" placeholder="#" />
+							<input type="number" name="attr_firearms" min="0" value="0" placeholder="#" />
 						</li>
 						<li><input type="checkbox" /><label>automatics</label>
-							<input type="number" name="attr_automatics" value="" placeholder="#" />
+							<input type="number" name="attr_automatics" min="0" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_automatics_spec" placeholder="Specalization" title="@{automatics_spec}">
 						</li>
 						<li><input type="checkbox" /><label>longarms</label>
-							<input type="number" name="attr_longarms" value="" placeholder="#" />
+							<input type="number" name="attr_longarms" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_longarms_spec" placeholder="Specalization" title="@{longarms_spec}">
 						</li>
 						<li><input type="checkbox" /><label>pistols</label>
-							<input type="number" name="attr_pistols" value="" placeholder="#" />
+							<input type="number" name="attr_pistols" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_pistols_spec" placeholder="Specalization" title="@{pistols_spec}">
 						</li>
 					</ul>
 					<ul class="skill-col">
 						<li><label>influence</label>
-							<input type="number" name="attr_influence" value="" placeholder="#" />
+							<input type="number" name="attr_influence" min="0" value="0" placeholder="#" />
 						</li>
 						<li><input type="checkbox" /><label>etiquette</label>
-							<input type="number" name="attr_etiquette" value="" placeholder="#" />
+							<input type="number" name="attr_etiquette" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_etiquette_spec" placeholder="Specalization" title="@{etiquette_spec}">
 						</li>
 						<li><input type="checkbox" /><label>leadership</label>
-							<input type="number" name="attr_leadership" value="" placeholder="#" />
+							<input type="number" name="attr_leadership" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_leadership_spec" placeholder="Specalization" title="@{leadership_spec}">
 						</li>
 						<li><input type="checkbox" /><label>negotiation</label>
-							<input type="number" name="attr_negotiation" value="" placeholder="#" />
+							<input type="number" name="attr_negotiation" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_negotiation_spec" placeholder="Specalization" title="@{negotiation_spec}">
 						</li>
 					</ul>
 					<ul class="skill-col">
 						<li><label>outdoors</label>
-							<input type="number" name="attr_outdoors" value="" placeholder="#" />
+							<input type="number" name="attr_outdoors" min="0" value="0" placeholder="#" />
 						</li>
 						<li><input type="checkbox" /><label>navigation</label>
-							<input type="number" name="attr_navigation" value="" placeholder="#" />
+							<input type="number" name="attr_navigation" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_navigation_spec" placeholder="Specalization" title="@{navigation_spec}">
 						</li>
 						<li><input type="checkbox" /><label>survival</label>
-							<input type="number" name="attr_survival" value="" placeholder="#" />
+							<input type="number" name="attr_survival" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_survival_spec" placeholder="Specalization" title="@{survival_spec}">
 						</li>
 						<li><input type="checkbox" /><label>tracking</label>
-							<input type="number" name="attr_tracking" value="" placeholder="#" />
+							<input type="number" name="attr_tracking" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_tracking_spec" placeholder="Specalization" title="@{tracking_spec}">
 						</li>
 					</ul>
 					<input type="hidden" class="character-type" name="attr_flag_special" />
 					<ul class="skill-col magic-skill">
 						<li><label>sorcery</label>
-							<input type="number" name="attr_sorcery" value="" placeholder="#" />
+							<input type="number" name="attr_sorcery" min="0" value="0" placeholder="#" />
 						</li>
 						<li><input type="checkbox" /><label>counterspelling</label>
-							<input type="number" name="attr_counterspelling" value="" placeholder="#" />
+							<input type="number" name="attr_counterspelling" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_counterspelling_spec" placeholder="Specalization" title="@{counterspelling_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Ritual Spell.</label>
-							<input type="number" name="attr_ritualspell" value="" placeholder="#" />
+							<input type="number" name="attr_ritualspellcasting" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_ritualspell_spec" placeholder="Specalization" title="@{ritualspell_spec}">
 						</li>
 						<li><input type="checkbox" /><label>spellcasting</label>
-							<input type="number" name="attr_spellcasting" value="" placeholder="#" />
+							<input type="number" name="attr_spellcasting" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_spellcasting_spec" placeholder="Specalization" title="@{spellcasting_spec}">
 						</li>
 					</ul>
 					<ul class="skill-col">
 						<li><label>stealth</label>
-							<input type="number" name="attr_stealth" value="" placeholder="#" />
+							<input type="number" name="attr_stealth" min="0" value="0" placeholder="#" />
 						</li>
 						<li><input type="checkbox" /><label>disguise</label>
-							<input type="number" name="attr_disguise" value="" placeholder="#" />
+							<input type="number" name="attr_disguise" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_disguise_spec" placeholder="Specalization" title="@{disguise_spec}">
 						</li>
 						<li><input type="checkbox" /><label>palming</label>
-							<input type="number" name="attr_palming" value="" placeholder="#" />
+							<input type="number" name="attr_palming" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_palming_spec" placeholder="Specalization" title="@{palming_spec}">
 						</li>
 						<li><input type="checkbox" /><label>sneaking</label>
-							<input type="number" name="attr_sneaking" value="" placeholder="#" />
+							<input type="number" name="attr_sneaking" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_sneaking_spec" placeholder="Specalization" title="@{sneaking_spec}">
 						</li>
 					</ul>
 					<input type="hidden" class="character-type" name="attr_flag_special" />
 					<ul class="skill-col resonance-skill">
 						<li><label>tasking</label>
-							<input type="number" name="attr_tasking" value="" placeholder="#" />
+							<input type="number" name="attr_tasking" min="0" value="0" placeholder="#" />
 						</li>
 						<li><input type="checkbox" /><label>compiling</label>
-							<input type="number" name="attr_compiling" value="" placeholder="#" />
+							<input type="number" name="attr_compiling" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_compiling_spec" placeholder="Specalization" title="@{compiling_spec}">
 						</li>
 						<li><input type="checkbox" /><label>decompiling</label>
-							<input type="number" name="attr_decompiling" value="" placeholder="#" />
+							<input type="number" name="attr_decompiling" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_decompiling_spec" placeholder="Specalization" title="@{decompiling_spec}">
 						</li>
 						<li><input type="checkbox" /><label>registering</label>
-							<input type="number" name="attr_registering" value="" placeholder="#" />
+							<input type="number" name="attr_registering" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_registering_spec" placeholder="Specalization" title="@{registering_spec}">
 						</li>
 					</ul>
@@ -1733,133 +1955,133 @@
 						<li><label>Combat Skills</label>
 						</li>
 						<li><input type="checkbox" /><label>archery</label>
-							<input type="number" name="attr_archery" value="" placeholder="#" />
+							<input type="number" name="attr_archery" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_archery_spec" placeholder="Specalization" title="@{archery_spec}">
 						</li>
 						<li><input type="checkbox" /><label>exotic melee</label>
-							<input type="number" name="attr_exoticmelee" value="" placeholder="#" />
+							<input type="number" name="attr_exoticmelee" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_exoticmelee_spec" placeholder="Specalization" title="@{exoticmelee_spec}">
 						</li>
 						<li><input type="checkbox" /><label>exotic range</label>
-							<input type="number" name="attr_exoticrange" value="" placeholder="#" />
+							<input type="number" name="attr_exoticrange" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_exoticrange_spec" placeholder="Specalization" title="@{exoticrange_spec}">
 						</li>
 						<li><input type="checkbox" /><label>heavy weapons</label>
-							<input type="number" name="attr_heavyweapons" value="" placeholder="#" />
+							<input type="number" name="attr_heavyweapons" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_heavyweapons_spec" placeholder="Specalization" title="@{heavyweapons_spec}">
 						</li>
 						<li><input type="checkbox" /><label>throwing Weapons</label>
-							<input type="number" name="attr_throwingweapons" value="" placeholder="#" />
+							<input type="number" name="attr_throwingweapons" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_throwingweapons_spec" placeholder="Specalization" title="@{throwingweapons_spec}">
 						</li>
 					</ul>
 					<ul class="skill-col">
 						<li><label>Magical Skills</label></li>
 						<li><input type="checkbox" /><label>arcana</label>
-							<input type="number" name="attr_arcana" value="" placeholder="#" />
+							<input type="number" name="attr_arcana" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_arcana_spec" placeholder="Specalization" title="@{arcana_spec}">
 						</li>
 						<input type="hidden" class="character-type" name="attr_flag_special" />
 						<li class="magic-skill"><input type="checkbox" /><label>assensing</label>
-							<input type="number" name="attr_assensing" value="" placeholder="#" />
+							<input type="number" name="attr_assensing" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_assensing_spec" placeholder="Specalization" title="@{assensing_spec}">
 						</li>
 						<li class="magic-skill"><input type="checkbox" /><label>astral combat</label>
-							<input type="number" name="attr_astralcombat" value="" placeholder="#" />
+							<input type="number" name="attr_astralcombat" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_astralcombat_spec" placeholder="Specalization" title="@{astralcombat_spec}">
 						</li>
 						<li><label>Social Skill</label></li>
 						<li><input type="checkbox" /><label>instruction</label>
-							<input type="number" name="attr_instruction" value="" placeholder="#" />
+							<input type="number" name="attr_instruction" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_instruction_spec" placeholder="Specalization" title="@{instruction_spec}">
 						</li>
 						<li><input type="checkbox" /><label>intimidation</label>
-							<input type="number" name="attr_intimidation" value="" placeholder="#" />
+							<input type="number" name="attr_intimidation" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_intimidation_spec" placeholder="Specalization" title="@{intimidation_spec}">
 						</li>
 					</ul>
 					<ul class="skill-col">
 						<li><label>Physical Skills</label></li>
 						<li><input type="checkbox" /><label>diving</label>
-							<input type="number" name="attr_diving" value="" placeholder="#" />
+							<input type="number" name="attr_diving" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_diving_spec" placeholder="Specalization" title="@{diving_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Escape Artist</label>
-							<input type="number" name="attr_escapeartist" value="" placeholder="#" />
+							<input type="number" name="attr_escapeartist" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_escapeartist_spec" placeholder="Specalization" title="@{escapeartist_spec}">
 						</li>
 						<li><input type="checkbox" /><label>flight</label>
-							<input type="number" name="attr_flight" value="" placeholder="#" />
+							<input type="number" name="attr_flight" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_flight_spec" placeholder="Specalization" title="@{flight_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Free Fall</label>
-							<input type="number" name="attr_freefall" value="" placeholder="#" />
+							<input type="number" name="attr_freefall" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_freefall_spec" placeholder="Specalization" title="@{freefall_spec}">
 						</li>
 						<li><input type="checkbox" /><label>perception</label>
-							<input type="number" name="attr_perception" value="" placeholder="#" />
+							<input type="number" name="attr_perception" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_perception_spec" placeholder="Specalization" title="@{perception_spec}">
 						</li>
 					</ul>
 					<ul class="skill-col">
 						<li><label>Technical Skills</label></li>
 						<li><input type="checkbox" /><label>Animal Handling</label>
-							<input type="number" name="attr_animalhandling" value="" placeholder="#" />
+							<input type="number" name="attr_animalhandling" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_animalhandling_spec" placeholder="Specalization" title="@{animalhandling_spec}">
 						</li>
 						<li><input type="checkbox" /><label>armorer</label>
-							<input type="number" name="attr_armorer" value="" placeholder="#" />
+							<input type="number" name="attr_armorer" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_armorer_spec" placeholder="Specalization" title="@{armorer_spec}">
 						</li>
 						<li><input type="checkbox" /><label>artisan</label>
-							<input type="number" name="attr_artisan" value="" placeholder="#" />
+							<input type="number" name="attr_artisan" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_artisan_spec" placeholder="Specalization" title="@{artisan_spec}">
 						</li>
 						<li><input type="checkbox" /><label>chemistry</label>
-							<input type="number" name="attr_chemistry" value="" placeholder="#" />
+							<input type="number" name="attr_chemistry" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_chemistry_spec" placeholder="Specalization" title="@{chemistry_spec}">
 						</li>
 						<li><input type="checkbox" /><label>demolitions</label>
-							<input type="number" name="attr_demolitions" value="" placeholder="#" />
+							<input type="number" name="attr_demolitions" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_demolitions_spec" placeholder="Specalization" title="@{demolitions_spec}">
 						</li>
 						<li><input type="checkbox" /><label>forgery</label>
-							<input type="number" name="attr_forgery" value="" placeholder="#" />
+							<input type="number" name="attr_forgery" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_forgery_spec" placeholder="Specalization" title="@{forgery_spec}">
 						</li>
 						<li><input type="checkbox" /><label>locksmith</label>
-							<input type="number" name="attr_locksmith" value="" placeholder="#" />
+							<input type="number" name="attr_locksmith" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_locksmith_spec" placeholder="Specalization" title="@{locksmith_spec}">
 						</li>
 					</ul>
 					<ul class="skill-col">
 						<li><label>Vehicle Skills</label></li>
 						<li><input type="checkbox" /><label>gunnery</label>
-							<input type="number" name="attr_gunnery" value="" placeholder="#" />
+							<input type="number" name="attr_gunnery" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_gunnery_spec" placeholder="Specalization" title="@{gunnery_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Pilot Aerospace</label>
-							<input type="number" name="attr_pilotaerospace" value="" placeholder="#" />
+							<input type="number" name="attr_pilotaerospace" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_pilotaerospace_spec" placeholder="Specalization" title="@{pilotaerospace_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Pilot Aircraft</label>
-							<input type="number" name="attr_pilotaircraft" value="" placeholder="#" />
+							<input type="number" name="attr_pilotaircraft" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_pilotaircraft_spec" placeholder="Specalization" title="@{pilotaircraft_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Pilot Exotic Veh.</label>
-							<input type="number" name="attr_pilotexotic" value="" placeholder="#" />
+							<input type="number" name="attr_pilotexoticvehicle" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_pilotexotic_spec" placeholder="Specalization" title="@{pilotexotic_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Pilot Ground Craft</label>
-							<input type="number" name="attr_pilotground" value="" placeholder="#" />
+							<input type="number" name="attr_pilotgroundcraft" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_pilotground_spec" placeholder="Specalization" title="@{pilotground_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Pilot Walker</label>
-							<input type="number" name="attr_pilotwalker" value="" placeholder="#" />
+							<input type="number" name="attr_pilotwalker" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_pilotwalker_spec" placeholder="Specalization" title="@{pilotwalker_spec}">
 						</li>
 						<li><input type="checkbox" /><label>Pilot Watercraft</label>
-							<input type="number" name="attr_pilotwatercraft" value="" placeholder="#" />
+							<input type="number" name="attr_pilotwatercraft" min="0" value="0" placeholder="#" />
 							<input type="text" name="attr_pilotwatercraft_spec" placeholder="Specalization" title="@{pilotwatercraft_spec}">
 						</li>
 					</ul>
@@ -2936,14 +3158,25 @@ on("change:body_base change:body_bonus", function() {
 		});
 	});
 
-	on("change:magic_resonance_base change:magic_resonance_bonus", function() {
-		getAttrs(["magic_resonance_base", "magic_resonance_bonus"], function(v) {
-			var bas = parseInt(v.magic_resonance_base) || 0;
-			var bon = parseInt(v.magic_resonance_bonus) || 0;
+	on("change:magic_base change:magic_bonus", function() {
+		getAttrs(["magic_base", "magic_bonus"], function(v) {
+			var bas = parseInt(v.magic_base) || 0;
+			var bon = parseInt(v.magic_bonus) || 0;
 			var stat = bas + bon;
 
-			setAttrs({magic_resonance: stat});
-			(bon != 0) ? setAttrs({display_magic_resonance: bas + " (" + stat + ")"}) : setAttrs({display_magic_resonance: bas});
+			setAttrs({magic: stat});
+			(bon != 0) ? setAttrs({display_magic: bas + " (" + stat + ")"}) : setAttrs({display_magic: bas});
+		});
+	});
+
+	on("change:resonance_base change:resonance_bonus", function() {
+		getAttrs(["resonance_base", "resonance_bonus"], function(v) {
+			var bas = parseInt(v.resonance_base) || 0;
+			var bon = parseInt(v.resonance_bonus) || 0;
+			var stat = bas + bon;
+
+			setAttrs({resonance: stat});
+			(bon != 0) ? setAttrs({display_resonance: bas + " (" + stat + ")"}) : setAttrs({display_resonance: bas});
 		});
 	});
 
@@ -4309,19 +4542,19 @@ on("change:repeating_active", function() {
 		let dicepoolNew = rank + rankBonus;
 		if (dicepoolNew != v.repeating_active_dicepool) {update["repeating_active_dicepool"] = dicepoolNew;};
 
-		let attributeNew = 
-				(attribute === "@{body}") ? "Body" :
-				(attribute === "@{agility}") ? "Agility" :
-				(attribute === "@{reaction}") ? "Reaction" :
-				(attribute === "@{strength}") ? "Strength" :
-				(attribute === "@{willpower}") ? "Willpower" :
-				(attribute === "@{logic}") ? "Logic" :
-				(attribute === "@{intuition}") ? "Intuition" :
-				(attribute === "@{charisma}") ? "Charisma" :
-				(attribute === "@{magic}") ? "Magic" :
-				(attribute === "@{resonance}") ? "Resonance" :
-				"Null";
+		//This sets a hidden input with the appropraite Attribute name so the roll template can use it to indicate what attribute was rolled
+		let attributeNew = attribute.slice(2, -1);
 		if (attributeNew != v.repeating_active_display_attribute) {update["repeating_active_display_attribute"] = attributeNew;};
+
+		//This will take the dice pool calculated for the repeating active skills and will set static skill attribute located in the NPC section. 
+		if (skill) {
+			let lowercase = skill.toLowerCase();
+			let removeGroup = (lowercase.includes("group")) ? lowercase.slice(0, -6) : lowercase;
+			let skillSet = (removeGroup.includes(" ")) ? removeGroup.replace(/ /g,"") : removeGroup;
+
+			{update[skillSet] = dicepoolNew;};
+			console.log("New SKILL!! " + skillSet);
+		};
 
 		setAttrs(update);
 	});
@@ -4350,18 +4583,19 @@ on("change:repeating_knowledge", function() {
 		let dicepoolNew = rank + rankBonus;
 		if (dicepoolNew != v.repeating_knowledge_dicepool) {update["repeating_knowledge_dicepool"] = dicepoolNew;};
 
-		let attributeNew = 
-				(attribute === "@{body}") ? "Body" :
-				(attribute === "@{agility}") ? "Agility" :
-				(attribute === "@{reaction}") ? "Reaction" :
-				(attribute === "@{strength}") ? "Strength" :
-				(attribute === "@{willpower}") ? "Willpower" :
-				(attribute === "@{logic}") ? "Logic" :
-				(attribute === "@{intuition}") ? "Intuition" :
-				(attribute === "@{charisma}") ? "Charisma" :
-				(attribute === "@{magic}") ? "Magic" :
-				(attribute === "@{resonance}") ? "Resonance" :
-				"Null";
+		switch (attribute) {
+			case '@{body}': attributeNew = "Body"; break;
+			case '@{agility}': attributeNew = "Agility"; break;
+			case '@{reaction}': attributeNew = "Reaction"; break;
+			case '@{strength}': attributeNew = "Strength"; break;
+			case '@{willpower}': attributeNew = "Willpower"; break;
+			case '@{logic}': attributeNew = "Logic"; break;
+			case '@{intuition}': attributeNew = "Intuition"; break;
+			case '@{charisma}': attributeNew = "Charisma"; break;
+			case '@{magic}': attributeNew = "Magic"; break;
+			case '@{resonance}': attributeNew = "Resonance"; break;
+			default: attributeNew = "Invalid";
+		}
 		if (attributeNew != v.repeating_knowledge_display_attribute) {update["repeating_knowledge_display_attribute"] = attributeNew;};
 
 		setAttrs(update);
@@ -4391,25 +4625,48 @@ on("change:repeating_language", function() {
 		let dicepoolNew = rank + rankBonus;
 		if (dicepoolNew != v.repeating_language_dicepool) {update["repeating_language_dicepool"] = dicepoolNew;};
 
-		let attributeNew = 
-				(attribute === "@{body}") ? "Body" :
-				(attribute === "@{agility}") ? "Agility" :
-				(attribute === "@{reaction}") ? "Reaction" :
-				(attribute === "@{strength}") ? "Strength" :
-				(attribute === "@{willpower}") ? "Willpower" :
-				(attribute === "@{logic}") ? "Logic" :
-				(attribute === "@{intuition}") ? "Intuition" :
-				(attribute === "@{charisma}") ? "Charisma" :
-				(attribute === "@{magic}") ? "Magic" :
-				(attribute === "@{resonance}") ? "Resonance" :
-				"Null";
+		switch (attribute) {
+			case '@{body}': attributeNew = "Body"; break;
+			case '@{agility}': attributeNew = "Agility"; break;
+			case '@{reaction}': attributeNew = "Reaction"; break;
+			case '@{strength}': attributeNew = "Strength"; break;
+			case '@{willpower}': attributeNew = "Willpower"; break;
+			case '@{logic}': attributeNew = "Logic"; break;
+			case '@{intuition}': attributeNew = "Intuition"; break;
+			case '@{charisma}': attributeNew = "Charisma"; break;
+			case '@{magic}': attributeNew = "Magic"; break;
+			case '@{resonance}': attributeNew = "Resonance"; break;
+			default: attributeNew = "Invalid";
+		}
 		if (attributeNew != v.repeating_language_display_attribute) {update["repeating_language_display_attribute"] = attributeNew;};
 
 		setAttrs(update);
 	});
 });
 
-//Repeating IDs & Lifestyles Section Display
+
+	//Repeating Range & Melee weapons dicepools
+on("change:repeating_range", function(){
+	getAttrs(["repeating_range_dicepool_bonus", "repeating_range_spec"], function(v){
+		const bon = parseInt(v.repeating_range_dicepool_bonus) || 0;
+		const spec = parseInt(v.repeating_range_spec) || 0;
+		let tot = bon + spec;
+
+		setAttrs({repeating_range_dicepool: tot});
+	});
+});
+
+on("change:repeating_melee", function(){
+	getAttrs(["repeating_melee_dicepool_bonus", "repeating_melee_spec"], function(v){
+		const bon = parseInt(v.repeating_melee_dicepool_bonus) || 0;
+		const spec = parseInt(v.repeating_melee_spec) || 0;
+		let tot = bon + spec;
+
+		setAttrs({repeating_melee_dicepool: tot});
+	});
+});
+
+	//Repeating IDs & Lifestyles Section Display
 on("change:repeating_lifestyle", function() {
 	getAttrs(["repeating_lifestyle_name", "repeating_lifestyle_lifestyle", "repeating_lifestyle_funds", "repeating_lifestyle_licenses", "repeating_lifestyle_display"], function(v) {
 		var name = ((v.repeating_lifestyle_name).length > 0 && (v.repeating_lifestyle_name).length <= 14) ? (v.repeating_lifestyle_name) : 

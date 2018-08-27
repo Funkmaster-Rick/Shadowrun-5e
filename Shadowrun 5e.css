@@ -137,10 +137,15 @@ span {
 .sheet-social,
 .sheet-magic,
 .sheet-matrix,
-.sheet-vehicle {
+.sheet-vehicle,
+.sheet-hide-magic,
+.sheet-hide-resonance,
+.sheet-options_toggle[value="options"] ~ .sheet-pc,
+.sheet-options_toggle[value="options"] ~ .sheet-npc {
     display: none;
 } 
 
+.sheet-static,
 .sheet-sheet_type[value="pc"] ~ .sheet-pc,
 .sheet-sheet_type[value="goon"] ~ .sheet-npc,
 .sheet-sheet_type[value="host"] ~ .sheet-npc,
@@ -153,17 +158,10 @@ span {
 .sheet-options_toggle[value="social"] ~ .sheet-social,
 .sheet-options_toggle[value="magic"] ~ .sheet-magic,
 .sheet-options_toggle[value="matrix"] ~ .sheet-matrix,
-.sheet-options_toggle[value="vehicle"] ~ .sheet-vehicle {
+.sheet-options_toggle[value="vehicle"] ~ .sheet-vehicle,
+.sheet-character-type[value="magic"] ~ .sheet-pc .sheet-pc-row .sheet-attr-col .sheet-hide-magic,
+.sheet-character-type[value="resonance"] ~ .sheet-pc .sheet-pc-row .sheet-attr-col .sheet-hide-resonance {
     display: inline-block;
-}
-
-.sheet-options_toggle[value="options"] ~ .sheet-pc,
-.sheet-options_toggle[value="options"] ~ .sheet-npc {
-    display: none;
-}
-
-.sheet-static {
-	display: inline-block;
 }
 
 /***** Tabs for sheets *****/
@@ -862,7 +860,7 @@ span {
 			/***** Repeating Selects *****/
 			.sheet-repeat-box select {
 				color:  #000;
-				font-size: 0.75em;
+				font-size: 0.8em;
 				font-weight: bolder;
 				height: 20px;
 				padding: 0px;
@@ -873,6 +871,16 @@ span {
 				padding: 2px;
 				font-weight: bold;
 			}
+
+
+	/***** PC Settings Rows *****/
+	.sheet-settings-row {
+		margin-top: 5px;
+	}
+
+	.sheet-settings-row select.sheet-skill-select {
+		width: 34%;
+	}
 
 	/***** Skills *****/
 	.sheet-skill-box .sheet-medium-box {
@@ -893,16 +901,16 @@ span {
 		text-transform: capitalize;
 	}
 
-	.sheet-skill-box select {
+	select.sheet-attr-select {
 		position: absolute;
 		left: 82%;
 	}
 
-	.sheet-skill-box option:nth-of-type(1n+5) {
+	.sheet-attr-select option:nth-of-type(1n+5) {
 		color: #610b0d;
 	}
 
-	.sheet-skill-box option:nth-of-type(1n+9) {
+	.sheet-attr-select option:nth-of-type(1n+9) {
 		color: #7a2593;
 	}
 
@@ -925,6 +933,24 @@ span {
 				margin-left: 3px;
 				margin-right: 5px;
 				margin-bottom: 2px;
+			}
+
+			.sheet-skill-box select.sheet-skill-select {
+				width: 70%;
+			}
+
+			option.sheet-option-headers {
+				opacity: 0.2;
+			}
+
+			option.sheet-option-groups {
+				font-size: 1em;
+				font-style: italic;
+			}
+
+			input.sheet-skill-select {
+				opacity: 1;
+				width: 3%;
 			}
 
 			/***** Skills Row in Settings *****/
@@ -1012,7 +1038,9 @@ span {
 		.sheet-arms input.sheet-display-flag,
 		.sheet-arms input.sheet-display-flag + span,
 		.sheet-magic input.sheet-display-flag,
-		.sheet-magic input.sheet-display-flag + span {
+		.sheet-magic input.sheet-display-flag + span,
+		.sheet-matrix input.sheet-display-flag,
+		.sheet-matrix input.sheet-display-flag + span  {
 			height: 12px;
 			left: 95.5%;
 			position: absolute;
@@ -1021,7 +1049,9 @@ span {
 		}
 
 		.sheet-arms input.sheet-display-flag + span,
-		.sheet-magic input.sheet-display-flag + span  {
+		.sheet-magic input.sheet-display-flag + span,
+		.sheet-matrix input.sheet-display-flag + span,
+		.sheet-matrix input.sheet-display-flag + span   {
 			top: -2px;
 		}
 
@@ -1236,6 +1266,15 @@ span {
 				margin-right: 5px;
 			}
 
+			.sheet-exotic-warning {
+				display: none;
+				font-size: 0.8em;
+			}
+
+			.sheet-skill-select[value="0"] ~ .sheet-exotic-warning {
+				display: inline;
+			}
+
 		/***** Armor for PC Sheet *****/
 		.sheet-armor-box h3 {
 			margin-right: 5.5px;
@@ -1410,8 +1449,18 @@ span {
 				width: 7%;
 			}
 
-			.sheet-combat-type[value*="irect"] ~ .sheet-display .sheet-collapsable span.sheet-combat-type-hide {
+			.sheet-combat-type-hide {
 				display: none;
+			}
+
+			.sheet-combat-type[value*="Direct"] + span:after {
+				content: "(Direct)";
+				display: inline;
+			}
+
+			.sheet-combat-type[value*="Indirect"] + span:after   {
+				content: "(Indirect)";
+				display: inline;
 			}
 
 				/***** Ritual Display Section *****/
@@ -1734,7 +1783,7 @@ span {
 		margin-left: -2px;
 	}
 
-	input.sheet-character-type {
+	.sheet-npc input.sheet-character-type {
 		left: 90px;
 		margin-left: -80px;
 		width: 90px;
