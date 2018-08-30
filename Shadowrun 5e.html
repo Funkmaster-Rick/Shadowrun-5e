@@ -3,28 +3,29 @@
 <!-- ~~~~~~~~ Show & hide optional Magic & Resonance areas ~~~~~~~~ --> 
 <input class="character-type" name="attr_flag_special" type="hidden" value="mundane">
 
-<div class="tabs tab-whisper">
-	<input type="radio" name="attr_gm_toggle" value="" checked="checked" /><span>Public</span>
-	<input type="radio" name="attr_gm_toggle" value="/w gm" /><span>To GM</span>
+<div class="tabs">
+	<div class="tab-whisper">
+		<input type="radio" name="attr_gm_toggle" value="" checked="checked" /><span>Public</span>
+		<input type="radio" name="attr_gm_toggle" value="/w gm" /><span>To GM</span>
+	</div>
+	<div class="tab-toggles">
+		<input type="checkbox" name="attr_wound_toggle" value="@{wounds}" checked="checked" /><span>Wounds</span>
+		<input type="checkbox" name="attr_modifier_toggle" value="?{Modifiers +/-|0}" /><span>Modifiers</span>
+		<input type="checkbox" name="attr_edge_toggle" value="@{edge}" /><span>Edge</span>
+	</div>
+	<div class="tab-col">
+		<input type="radio" name="attr_tab" value="core" title="Core sheet" /><span>Core</span>
+		<input type="radio" name="attr_tab" value="arms" title="Arms"/><span>Arms</span>
+		<input type="radio" name="attr_tab" value="augs" title="Augs"/><span>Augs</span>
+		<input type="radio" name="attr_tab" value="gear" title="Gear"/><span>Gear</span>
+		<input type="radio" name="attr_tab" value="magic" title="Magic"/><span>Magic</span>
+		<input type="radio" name="attr_tab" value="matrix" title="Matrix"/><span>Matrix</span>
+		<input type="radio" name="attr_tab" value="social" title="Social"/><span>Social</span>
+		<input type="radio" name="attr_tab" value="vehicle" title="Vehicle"/><span>Vehicle</span>
+		<input type="radio" name="attr_tab" value="options" title="Sheet Options"  checked="checked"/><span>y</span>
+	</div>
 </div>
 
-<div class="tabs tab-toggles">
-	<input type="checkbox" name="attr_wound_toggle" value="@{wounds}" checked="checked" /><span>Wounds</span>
-	<input type="checkbox" name="attr_modifier_toggle" value="?{Modifiers +/-|0}" /><span>Modifiers</span>
-	<input type="checkbox" name="attr_edge_toggle" value="@{edge}" /><span>Edge</span>
-</div>
-
-<div class="tabs tab-col">
-	<input type="radio" name="attr_tab" value="core" title="Core sheet" /><span>Core</span>
-	<input type="radio" name="attr_tab" value="arms" title="Arms"/><span>Arms</span>
-	<input type="radio" name="attr_tab" value="augs" title="Augs"/><span>Augs</span>
-	<input type="radio" name="attr_tab" value="gear" title="Gear"/><span>Gear</span>
-	<input type="radio" name="attr_tab" value="magic" title="Magic"/><span>Magic</span>
-	<input type="radio" name="attr_tab" value="matrix" title="Matrix"/><span>Matrix</span>
-	<input type="radio" name="attr_tab" value="social" title="Social"/><span>Social</span>
-	<input type="radio" name="attr_tab" value="vehicle" title="Vehicle"/><span>Vehicle</span>
-	<input type="radio" name="attr_tab" value="options" title="Sheet Options"  checked="checked"/><span>y</span>
-</div>
 <!-- ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~  ~~~~~~~~  ~~~~~~~~ ~~~~~~~~ -->
 <!-- ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ Start of PC Sheet ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  -->
 <!-- ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  ~~~~~~~~  ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  -->
@@ -77,7 +78,7 @@
 						<div class="attr-col">
 							<!-- ~~:+: Body :+:~~ -->
 							<input type="hidden" name="attr_body" value="" />
-							<label>Body</label>
+							<label class="red">Body</label>
 								<div class="attr-und">
 									<input type="number" name="attr_body_base" value="" placeholder="3" /><span class="tiny-span"> + </span>
 									<input type="number" name="attr_body_bonus" value="" placeholder="0" /><span class="tiny-span"> = </span>
@@ -85,7 +86,7 @@
 								</div>
 							<!-- ~~:+: Agility :+:~~ -->
 							<input type="hidden" name="attr_agility" value="" />
-							<label>Agility</label>
+							<label class="red">Agility</label>
 								<div class="attr-und">
 									<input type="number" name="attr_agility_base" value="" placeholder="3" /><span class="tiny-span"> + </span>
 									<input type="number" name="attr_agility_bonus" value="" placeholder="0" /><span class="tiny-span"> = </span>
@@ -93,7 +94,7 @@
 								</div>
 							<!-- ~~:+: Reaction :+:~~ -->
 							<input type="hidden" name="attr_reaction" value="" />
-							<label>Reaction</label>
+							<label class="red">Reaction</label>
 								<div class="attr-und">
 									<input type="number" name="attr_reaction_base" value="" placeholder="3" /><span class="tiny-span"> + </span>
 									<input type="number" name="attr_reaction_bonus" value="" placeholder="0" /><span class="tiny-span"> = </span>
@@ -101,7 +102,7 @@
 								</div>
 							<!-- ~~:+: Strength :+:~~ -->
 							<input type="hidden" name="attr_strength" value="" />
-							<label>Strength</label>
+							<label class="red">Strength</label>
 							<div class="attr-und">
 								<input type="number" name="attr_strength_base" value="" placeholder="3" /><span class="tiny-span"> + </span>
 								<input type="number" name="attr_strength_bonus" value="" placeholder="0" /><span class="tiny-span"> = </span>
@@ -170,7 +171,7 @@
 							<!-- ~~:+: Initiative :+:~~ -->
 							<input type="hidden" name="attr_initiative_mod" value="6" />
 							<input type="hidden" name="attr_initiative_dice" value="1" min="1" max="5" />
-							<label class="attr-ini">Initative</label>
+							<label class="attr-ini red">Initative</label>
 							<div class="attr-und attr-ini">
 								<input type="number" name="attr_initiative_bonus" value="0" placeholder="0" /><span class="tiny-span"> + </span>
 								<input type="number" name="attr_initiative_dice_bonus" value="0" min="0" max="4" placeholder="bonus" /><span class="tiny-span"> d6</span><span class="tiny-span"> = </span>
@@ -180,7 +181,7 @@
 							<!-- ~~:+: Matrix Initaitve :+:~~ -->
 							<input type="hidden" name="attr_matrix_mod" value="0" />
 							<input type="hidden" name="attr_matrix_dice" max="5" />
-							<label class="attr-ini">Matrix Ini</label>
+							<label class="attr-ini red">Matrix Ini</label>
 							<div class="attr-und attr-ini">
 								<input type="number" name="attr_matrix_mod_bonus" value="0" placeholder="0" /><span class="tiny-span"> + </span>
 								<input type="number" name="attr_matrix_dice_bonus" value="0" min="0" max="4" placeholder="bonus" /><span class="tiny-span"> d6</span><span class="tiny-span"> = </span>
@@ -190,7 +191,7 @@
 							<!-- ~~:+: Astral Initative :+:~~ -->
 							<input type="hidden" name="attr_astral_mod" value="6" />
 							<input type="hidden" name="attr_astral_dice" value="3" max="5" />
-							<label class="attr-ini">Astral Ini</label>
+							<label class="attr-ini red">Astral Ini</label>
 							<div class="attr-und attr-ini">
 								<div class="hide-magic">
 									<input type="number" name="attr_astral_mod_bonus" value="0" placeholder="bonus" /><span class="tiny-span"> + </span>
@@ -245,15 +246,15 @@
 					</div>
 					<div class="display">
 						<div class="attr-col">
-							<h2>Body</h2><div class="attr-und"><span name="attr_display_body"></span></div>
-							<h2>Agility</h2><div class="attr-und"><span name="attr_display_agility"></span></div>
-							<h2>Reaction</h2><div class="attr-und"><span name="attr_display_reaction"></span></div>
-							<h2>Strength</h2><div class="attr-und"><span name="attr_display_strength"></span></div>
-							<h2>Willpower</h2><div class="attr-und"><span name="attr_display_willpower"></span></div>
-							<h2>Logic</h2><div class="attr-und"><span name="attr_display_logic"></span></div>
-							<h2>Intuition</h2><div class="attr-und"><span name="attr_display_intuition"></span></div>
-							<h2>Charisma</h2><div class="attr-und"><span name="attr_display_charisma"></span></div>
-							<h2>Edge</h2><div class="attr-und"><span name="attr_edge"></span></div>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Body}}{{base=Attributes}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{2nd Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}|None,0})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><h2 class="red">Body</h2></button><div class="attr-und"><span name="attr_display_body"></span></div>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Agility}}{{base=Attributes}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{2nd Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}|None,0})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><h2 class="red">Agility</h2></button><div class="attr-und"><span name="attr_display_agility"></span></div>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Reaction}}{{base=Attributes}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{2nd Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}|None,0})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><h2 class="red">Reaction</h2></button><div class="attr-und"><span name="attr_display_reaction"></span></div>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Strength}}{{base=Attributes}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{2nd Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}|None,0})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><h2 class="red">Strength</h2></button><div class="attr-und"><span name="attr_display_strength"></span></div>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Willpower}}{{base=Attributes}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{2nd Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}|None,0})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><h2>Willpower</h2></button><div class="attr-und"><span name="attr_display_willpower"></span></div>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Logic}}{{base=Attributes}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{2nd Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}|None,0})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><h2>Logic</h2></button><div class="attr-und"><span name="attr_display_logic"></span></div>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Intuition}}{{base=Attributes}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{2nd Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}|None,0})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><h2>Intuition</h2></button><div class="attr-und"><span name="attr_display_intuition"></span></div>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Charisma}}{{base=Attributes}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{2nd Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}|None,0})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><h2>Charisma</h2></button><div class="attr-und"><span name="attr_display_charisma"></span></div>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Edge}}{{base=Attributes}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{2nd Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}|None,0})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><h2 class="red">Edge</h2></button><div class="attr-und"><span name="attr_edge"></span></div>
 						</div>
 						<div class="attr-col">
 							<h2>Essence</h2><div class="attr-und"><span name="attr_essence"></span></div>
@@ -264,22 +265,22 @@
 								</div>
 							</div>
 							</div>
-							<h2>Initative</h2>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{initiative_mod}+@{wound_toggle}+@{modifier_toggle})+(@{initiative_dice})d6cf0 &{tracker}]]}}"><h2 class="red">Initative</h2></button>
 							<div class="attr-und">
 								<span name="attr_display_initiative_mod"></span><span class="tiny-span"> + </span><span name="attr_initiative_dice"></span><span class="tiny-span"> d6</span>
 							</div>
-							<h2>Matrix Initative</h2>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Matrix Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{matrix_mod}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}"><h2 class="red">Matrix Initative</h2></button>
 							<div class="attr-und">
 								<span name="attr_display_matrix_mod"></span><span class="tiny-span"> + </span><span name="attr_matrix_dice"></span><span class="tiny-span"> d6</span>
 							</div>
-							<h2>Astral Initative</h2>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Astral Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{astral_mod}+@{wound_toggle}+@{modifier_toggle})+(@{astral_dice})d6cf0 &{tracker}]]}}"><h2 class="red">Astral Initative</h2></button>
 							<div class="attr-und">
 								<span name="attr_display_astral_mod"></span><span class="tiny-span"> + </span><span name="attr_astral_dice"></span><span class="tiny-span"> d6</span>
 							</div>
-							<h2>Composure</h2><div class="attr-und"><span name="attr_composure"></span></div>
-							<h2>Judge Intentions</h2><div class="attr-und"><span name="attr_judge_intentions"></span></div>
-							<h2>Memory</h2><div class="attr-und"><span name="attr_memory"></span></div>
-							<h2>Lift/Carry</h2><div class="attr-und"><span name="attr_lift_carry"></span></div>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Composure}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{composure}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><h2>Composure</h2></button><div class="attr-und"><span name="attr_composure"></span></div>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Judge Intentions}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{judge_intentions}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><h2>Judge Intentions</h2></button><div class="attr-und"><span name="attr_judge_intentions"></span></div>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Memory}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{memory}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><h2>Memory</h2></button><div class="attr-und"><span name="attr_memory"></span></div>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Life & Carry}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{lift_carry}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><h2>Lift & Carry</h2></button><div class="attr-und"><span name="attr_lift_carry"></span></div>
 							<h2>Movement</h2><div class="attr-und"><span name="attr_walk" title="Walk Rate"></span><span> / </span><span name="attr_run" title="Run Tate"></span><span> / +</span><span name="attr_movement_mod"></span></div>
 						</div>
 						<div class="attr-lim">
@@ -551,7 +552,7 @@
 						<h2>Primary Armor</h2><input type="text" name="attr_primary_armor" placeholder="Armor Jacker" />
 						<h3>Rating</h3><input type="number" name="attr_primary_armor_rating" placeholder="12" />
 					</div>
-					<div class="row-long cc-ran"><h2>Primary Range Weapon</h2><input type="text" name="attr_primary_range_weapon" placeholder="Ares Predator V" /></div>
+					<div class="row-long cc-ran"><h2>Primary Ranged Weapon</h2><input type="text" name="attr_primary_range_weapon" placeholder="Ares Predator V" /></div>
 					<div class="cc-row">
 						<h3>Dam</h3><input type="text" name="attr_primary_range_weapon_dam" placeholder="8P" />
 						<h3>ACC</h3><input type="number" name="attr_primary_range_weapon_acc" placeholder="5" />
@@ -705,7 +706,7 @@
 						</div>
 						<div class="display">
 							<input class="display-flag" type="checkbox" name="attr_display_flag">
-							<div class="display-row"><b><span name="attr_quality"></span></b></div>
+							<div class="display-row"><span name="attr_quality"></span></div>
 							<div class="display-row"><span name="attr_type"></span></div>
 							<div class="collapsable">
 								<span class="desc" name="attr_notes"></span>
@@ -789,7 +790,7 @@
 								</div>
 							</div>
 							<div class="display">
-								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{weapon}}}{{base=Agility}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill}+@{dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Mode @{mode}, ACC @{acc}, DV @{damage}, AP @{ap}}}"><b><span name="attr_weapon"></span></b></button></div>
+								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{weapon}}}{{base=Agility}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill}+@{dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Mode @{mode}, ACC @{acc}, DV @{damage}, AP @{ap}}}"><span name="attr_weapon"></span></button></div>
 								<div class="display-row"><span name="attr_damage"></span></div>
 								<div class="display-row"><span name="attr_acc"></span></div>
 								<div class="display-row"><span name="attr_ap"></span></div>
@@ -851,7 +852,7 @@
 								</div>
 							</div>
 							<div class="display">
-								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{weapon}}}{{base=Agility}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill} +@{dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{acc}, DV @{damage}, AP @{ap}, Reach @{reach}}}"><b><span name="attr_weapon"></span></b></button></div>
+								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{weapon}}}{{base=Agility}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill} +@{dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{acc}, DV @{damage}, AP @{ap}, Reach @{reach}}}"><span name="attr_weapon"></span></button></div>
 								<div class="display-row"><span name="attr_reach"></span></div>
 								<div class="display-row"><span name="attr_damage"></span></div>
 								<div class="display-row"><span name="attr_acc"></span></div>
@@ -892,7 +893,7 @@
 							</div>
 						</div>
 						<div class="display">
-							<div class="display-row"><button type="roll"><b><span name="attr_armor"></span></b></button></div>
+							<div class="display-row"><button type="roll"><span name="attr_armor"></span></button></div>
 							<div class="display-row hoverswitch"><button type="roll"><span class="default" name="attr_armor_value"></span><span class="hover" name="attr_soak"></span></button></div>
 							<div class="display-row hoverswitch"><button type="roll"><span class="default" name="attr_acid_bonus"></span><span class="hover" name="attr_acid_protection"></span></button></div>
 							<div class="display-row hoverswitch"><button type="roll"><span class="default" name="attr_cold_bonus"></span><span class="hover" name="attr_cold_protection"></span></button></div>
@@ -931,7 +932,7 @@
 						</div>
 						<div class="display">
 							<input class="display-flag" type="checkbox" name="attr_display_flag" />
-							<div class="display-row"><b><span name="attr_augmentation"></span></b></div>
+							<div class="display-row"><span name="attr_augmentation"></span></div>
 							<div class="display-row"><span name="attr_rating"></span></div>
 							<div class="display-row"><span name="attr_essence"></span></div>
 							<div class="collapsable">
@@ -963,7 +964,7 @@
 					</div>
 					<div class="display">
 						<input class="display-flag" type="checkbox" name="attr_display_flag" />
-						<div class="display-row"><b><span name="attr_item"></span></b></div>
+						<div class="display-row"><span name="attr_item"></span></div>
 						<div class="display-row"><span name="attr_rating"></span></div>
 						<div class="collapsable">
 							<div class="desc"><span name="attr_notes"></span></div>
@@ -1056,7 +1057,7 @@
 								</div>
 							</div>
 							<div class="display">
-								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Magic}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill} +@{dicepool})+@{magic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{drain})]]}}"><b><span name="attr_name"></span></b></button></div>
+								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Magic}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill} +@{dicepool})+@{magic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{drain})]]}}"><span name="attr_name"></span></button></div>
 								<div class="display-row"><span name="attr_type"></span></div>
 								<div class="display-row"><span name="attr_range"></span></div>
 								<div class="display-row"><span name="attr_duration"></span></div>
@@ -1128,7 +1129,7 @@
 							</div>
 							<div class="display">
 								<input class="display-flag" type="checkbox" name="attr_display_flag" />
-								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Magic}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill} +@{dicepool})+@{magic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{drain})]]}}"><b><span name="attr_name"></span></b></button></div>
+								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Magic}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill} +@{dicepool})+@{magic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{drain})]]}}"><span name="attr_name"></span></button></div>
 								<div class="display-row"><span name="attr_type"></span></div>
 								<div class="display-row"><span name="attr_range"></span></div>
 								<div class="display-row"><span name="attr_duration"></span></div>
@@ -1165,7 +1166,7 @@
 							</div>
 							<div class="display">
 								<input class="display-flag" type="checkbox" name="attr_display_flag" />
-								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Magic}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill} +@{dicepool})+@{magic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Force ?{Force|}]]}}"><b><span name="attr_name"></span></b></button></div>
+								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Magic}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill} +@{dicepool})+@{magic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Force ?{Force|}]]}}"><span name="attr_name"></span></button></div>
 								<input class="display-flag" type="checkbox" name="attr_display_flag" /><span>i</span>
 								<div class="collapsable">
 									<div class="desc"><span name="attr_notes"></span></div>
@@ -1176,6 +1177,7 @@
 				</div>
 			</div>
 		</div>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the Powers Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<div class="pc-row">
 			<div class="header right-header"><h1>Adept Powers or Other Abilities</h1><div class="right-tri"></div></div>
 			<div class="border-box repeat-box powers-box">
@@ -1195,7 +1197,7 @@
 						</div>
 						<div class="display">
 							<input class="display-flag" type="checkbox" name="attr_display_flag" />
-							<div class="display-row"><b><span name="attr_name"></span></b></div>
+							<div class="display-row"><span name="attr_name"></span></div>
 							<div class="display-row"><span name="attr_rating"></span></div>
 							<div class="collapsable">
 								<div class="desc"><span name="attr_notes"></span></div>
@@ -1266,7 +1268,7 @@
 							<div class="display">
 								<input type="checkbox" class="program-toggle" name="attr_program_on" checked="checked" /><span class="program-toggle" style="color: #000;">Q</span>
 								<input class="display-flag" type="checkbox" name="attr_display_flag" />
-								<div class="display-row"><b><span name="attr_program"></span></b></div>
+								<div class="display-row"><span name="attr_program"></span></div>
 								<div class="collapsable">
 									<div class="desc"><span name="attr_notes"></span></div>
 								</div>
@@ -1338,7 +1340,7 @@
 						</div>
 						<div class="display">
 							<input class="display-flag" type="checkbox" name="attr_display_flag" />
-							<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Resonance}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill} +@{dicepool})+@{resonance}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Level ?{Level|}, Fade [[?{Level|}+(@{fade})]]}}"><b><span name="attr_name"></span></b></button></div>
+							<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Resonance}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{skill} +@{dicepool})+@{resonance}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Level ?{Level|}, Fade [[?{Level|}+(@{fade})]]}}"><span name="attr_name"></span></button></div>
 							<div class="display-row"><span name="attr_target"></span></div>
 							<div class="display-row"><span name="attr_duration"></span></div>
 							<div class="display-row" style="text-align: center;"><span name="attr_fade"></span></div>
@@ -1410,7 +1412,7 @@
 						</div>
 						<div class="display">
 							<input class="display-flag" type="checkbox" name="attr_display_flag" />
-							<div class="display-row"><b><span name="attr_display"></span></b></div>
+							<div class="display-row"><span name="attr_display"></span></div>
 							<div class="display-row"><span name="attr_loyalty"></span></div>
 							<div class="display-row"><span name="attr_connection"></span></div>
 							<div class="display-row"><span name="attr_favors"></span></div>
@@ -2141,15 +2143,15 @@
 			<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
 			<div class="goon attribute">
 				<input type="hidden" class="character-type" name="attr_flag_special" />
-				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Body}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Body Roll"><b>B</b></button></label><br /><span name="attr_display_body"></span></div>
-				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Agility}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{agility}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Agility Roll"><b>A</b></button></label><br /><span name="attr_display_agility"></span></div>
-				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Reaction}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{reaction}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Reaction Roll"><b>R</b></button></label><br /><span name="attr_display_reaction"></span></div>
-				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Strength}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{strength}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Strength Roll"><b>S</b></button></label><br /><span name="attr_display_strength"></span></div>
-				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Willpower}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{willpower}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Willpower Roll"><b>W</b></button></label><br /><span name="attr_display_willpower"></span></div>
-				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Logic}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{logic}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Logic Roll"><b>L</b></button></label><br /><span name="attr_display_logic"></span></div>
-				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Intuition}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{intuition}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Intuition Roll"><b>I</b></button></label><br /><span name="attr_display_intuition"></span></div>
-				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Charisma}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{charisma}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Charisma Roll"><b>C</b></button></label><br /><span name="attr_display_charisma"></span></div>
-				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Edge}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{dice=[[(@{edge}+(?{Attribute|Only Edge,0|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle})d6>5]]}}" title="Edge Roll"><b>E</b></label><br /><span name="attr_edge"></span></div>
+				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Body}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Body Roll">B</button></label><br /><span name="attr_display_body"></span></div>
+				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Agility}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{agility}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Agility Roll">A</button></label><br /><span name="attr_display_agility"></span></div>
+				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Reaction}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{reaction}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Reaction Roll">R</button></label><br /><span name="attr_display_reaction"></span></div>
+				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Strength}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{strength}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Strength Roll">S</button></label><br /><span name="attr_display_strength"></span></div>
+				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Willpower}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{willpower}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Willpower Roll">W</button></label><br /><span name="attr_display_willpower"></span></div>
+				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Logic}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{logic}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Logic Roll">L</button></label><br /><span name="attr_display_logic"></span></div>
+				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Intuition}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{intuition}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Intuition Roll">I</button></label><br /><span name="attr_display_intuition"></span></div>
+				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Charisma}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{charisma}+(?{Attribute|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Charisma Roll">C</button></label><br /><span name="attr_display_charisma"></span></div>
+				<div class="attr-header"><label><button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Edge}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{dice=[[(@{edge}+(?{Attribute|Only Edge,0|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}})+@{wound_toggle}+@{modifier_toggle})d6>5]]}}" title="Edge Roll">E</label><br /><span name="attr_edge"></span></div>
 				<div class="attr-header"><label>Ess</label><br /><span name="attr_essence"></span></div>
 				<div class="attr-header magic"><label>M</label><br /><span name="attr_magic"></span></div>
 				<div class="attr-header magic"><label>F</label><br /><span name="attr_force"></span></div>
@@ -2157,42 +2159,42 @@
 				<div class="attr-header resonance"><label>L</label><br /><span name="attr_level"></span></div>
 			</div>
 			<div class="host attribute">
-				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Matrix Resistance}}{{base=Host Rating ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{host_rating}+@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Host Rating</b></button></label><br /><span name="attr_host_rating"></span></div>
+				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Matrix Resistance}}{{base=Host Rating ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{host_rating}+@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Host Rating</button></label><br /><span name="attr_host_rating"></span></div>
 				<br />
-				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Attack ♦ Host Rating}}{{base=Attack}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Attack</b></button></label><br /><span name="attr_attack"></span></div>
+				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Attack ♦ Host Rating}}{{base=Attack}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Attack</button></label><br /><span name="attr_attack"></span></div>
 				<br />
-				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Sleaze}}{{base=Sleaze ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{sleaze}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Sleaze</b></button></label><br /><span name="attr_sleaze"></span></div>
+				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Sleaze}}{{base=Sleaze ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{sleaze}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Sleaze</button></label><br /><span name="attr_sleaze"></span></div>
 				<br />
-				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Data Processing}}{{base=Data Processing ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{data_processing}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Data Processing</b></button></label><br /><span name="attr_data_processing"></span></div>
+				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Data Processing}}{{base=Data Processing ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{data_processing}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Data Processing</button></label><br /><span name="attr_data_processing"></span></div>
 				<br />
-				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Firewall}}{{base=Firewall ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{firewall}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><b>Firewall</b></button></label><br /><span name="attr_firewall"></span></div>
+				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Firewall}}{{base=Firewall ♦ Host Rating}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{firewall}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Firewall</button></label><br /><span name="attr_firewall"></span></div>
 			</div>
 			<div class="vehicle attribute">
-				<div class="attr-header"><label><b>Hand</b></label><br /><span name="attr_handling"></span></div>
-				<div class="attr-header"><label><b>Hand (Off)</b></label><br /><span name="attr_handling_offroad"></span></div>
-				<div class="attr-header"><label><b>Speed</b></label><br /><span name="attr_speed"></span></div>
-				<div class="attr-header"><label><b>Speed (Off)</b></label><br /><span name="attr_speed_offroad"></span></div>
-				<div class="attr-header"><label><b>Accel</b></label><br /><span name="attr_acceleration"></span></div>
-				<div class="attr-header"><label><b>Body</b></label><br /><span name="attr_body"></span></div>
-				<div class="attr-header"><label><b>Pilot</b></label><br /><span name="attr_pilot"></span></div>
-				<div class="attr-header"><label><b>Sensor</b></label><br /><span name="attr_sensor"></span></div>
-				<div class="attr-header"><label><b>Seat</b></label><br /><span name="attr_seating"></span></div>
+				<div class="attr-header"><label>Hand</label><br /><span name="attr_handling"></span></div>
+				<div class="attr-header"><label>Hand (Off)</label><br /><span name="attr_handling_offroad"></span></div>
+				<div class="attr-header"><label>Speed</label><br /><span name="attr_speed"></span></div>
+				<div class="attr-header"><label>Speed (Off)</label><br /><span name="attr_speed_offroad"></span></div>
+				<div class="attr-header"><label>Accel</label><br /><span name="attr_acceleration"></span></div>
+				<div class="attr-header"><label>Body</label><br /><span name="attr_body"></span></div>
+				<div class="attr-header"><label>Pilot</label><br /><span name="attr_pilot"></span></div>
+				<div class="attr-header"><label>Sensor</label><br /><span name="attr_sensor"></span></div>
+				<div class="attr-header"><label>Seat</label><br /><span name="attr_seating"></span></div>
 			</div>
 		<!-- ~~~~~~~~ Initiative  ~~~~~~~~ -->
 			<div class="goon">
-				<label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{initiative_mod}+@{wound_toggle}+@{modifier_toggle})+(@{initiative_dice})d6cf0 &{tracker}]]}}"><b>Initiative:</b> </button></label>
+				<label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{initiative_mod}+@{wound_toggle}+@{modifier_toggle})+(@{initiative_dice})d6cf0 &{tracker}]]}}">Initiative: </button></label>
 				<span name="attr_display_initiative_mod"></span><span> + </span><span name="attr_initiative_dice"></span><span>d6</span>
 				<br />
 		<!-- ~~~~~~~~ Astral Initiative  ~~~~~~~~ -->
 				<input type="hidden" class="character-type" name="attr_flag_special" />
 				<div class="magic">
-					<label><button  type="roll" value="@{gm_toggle} &{template:sRun}{{header=Astral Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{astral_mod}+@{wound_toggle}+@{modifier_toggle})+(@{astral_dice})d6cf0 &{tracker}]]}}"><b>Astral Initiative:</b> </button></label>
+					<label><button  type="roll" value="@{gm_toggle} &{template:sRun}{{header=Astral Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{astral_mod}+@{wound_toggle}+@{modifier_toggle})+(@{astral_dice})d6cf0 &{tracker}]]}}">Astral Initiative: </button></label>
 					<span name="attr_display_astral_mod"></span><span> + </span><span name="attr_astral_dice"></span><span>d6</span>
 					<br />
 				</div>
 			</div>
 		<!-- ~~~~~~~~ Matrix Initiative  ~~~~~~~~ -->
-			<label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Matrix Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{matrix_mod}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}"><b>Matrix Initiative: </b></button></label>
+			<label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Matrix Initiative}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{matrix_mod}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}">Matrix Initiative: </button></label>
 			<span name="attr_display_matrix_mod"></span><span> + </span><span name="attr_matrix_dice"></span><span>d6</span>
 			<br />
 			<div class="goon">
@@ -2227,7 +2229,7 @@
 			</div>
 		<!-- ~~~~~~~~ Armor  ~~~~~~~~ -->
 		<div class="goon vehicle">
-			<label><button  type='roll' value="@{gm_toggle} &{template:sRun}{{header=Armor Roll}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{armor}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Armor Roll"><b>Armor: </b></button></label><span name="attr_armor"></span>
+			<label><button  type='roll' value="@{gm_toggle} &{template:sRun}{{header=Armor Roll}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{armor}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Armor Roll">Armor: </button></label><span name="attr_armor"></span>
 			<div class="armor-buttons">
 				<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Soak}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Soak"><span class="pictos3">b</span></button>
 				<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Acid Protection}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{soak_acid}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Acid Protection"><span class="pictos3">d</span></button>

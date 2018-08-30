@@ -35,6 +35,12 @@ button:hover {
 	color: #FCD116;
 }
 
+button > h2:hover,
+button > span:hover {
+	color: #fff;
+	text-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px #610b0d;
+}
+
 button:before {display: none;}
 
 div {
@@ -123,7 +129,11 @@ textarea {
 }
 
 span {
-	word-break: break-all;
+	word-break: break-word;
+}
+
+.sheet-red {
+	color: #610b0d;
 }
 
 /* Hide & show pages */
@@ -166,20 +176,19 @@ span {
 
 /***** Tabs for sheets *****/
 .sheet-tabs {
-	left: 50%;
+	display: inline;
 	position: relative;
 	top: 60px;
 	z-index: 1;
 }
 
-.sheet-tab-whisper {
-	left: 3%;
-	top: 97px;
+.sheet-tabs div {
+	display: inline;
 }
 
+.sheet-tab-whisper,
 .sheet-tab-toggles {
-	left: 23%;
-	top: 79px;
+	margin-right: 10%;
 }
 
 .sheet-tabs input[type="radio"],
@@ -431,10 +440,11 @@ span {
 	}
 
 	.sheet-attr-col h2,
-	.sheet-attr-col label {
+	.sheet-attr-col label,
+	.sheet-attr-col button[type="roll"] {
 		border-bottom: 1px solid #000;
 		display: inline-block;
-		font-size: 0.9em;
+		font-size: 11.75px;
 		line-height: 18px;
 		margin-bottom: 0px;
 		margin-right: 5px;
@@ -443,8 +453,14 @@ span {
 		width: 43%;
 	}
 
-	.sheet-attr-col:first-child h2 {
-		width: 40%;
+	.sheet-attr-col button[type="roll"] {
+		border-radius: 0px;
+		margin-left: 0px;
+	}
+
+	.sheet-attr-col button > h2 {
+		border-bottom: none;
+		width: auto;
 	}
 
 	.sheet-attr-col h3 {
@@ -519,11 +535,11 @@ span {
 		}
 
 		label.sheet-attr-ini {
-			width: 24%;
+			width: 25%;
 		}
 
 		.sheet-attr-ini {
-			width: 72%;
+			width: 71%;
 		}
 
 		.sheet-attr-ini input[type="number"] {
@@ -541,10 +557,6 @@ span {
 		/***** Attribute Display Spans *****/
 		.sheet-display .sheet-attr-und {
 			text-align: center;
-		}
-
-		.sheet-display .sheet-attr-col h2 {
-			padding-top: 3px;
 		}
 
 		.sheet-attr-lim  div {
@@ -646,7 +658,7 @@ span {
 
 	.sheet-con-track input[type="radio"]:first-child:hover ~ h2 {
 		color: #fff;
-		text-shadow: 0 0 25px #000, 0 0 15px #000;
+		text-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px #610b0d;
 	}
 
 		/***** Condition Settings  *****/
@@ -1065,7 +1077,12 @@ span {
 	}
 
 	.sheet-display-row:nth-of-type(1) {
+		font-weight: bold;
 		text-align: left;
+	}
+
+	.sheet-display-row:nth-of-type(1) button {
+		font-weight: bold;
 	}
 
 	/***** Qualities *****/
@@ -1469,10 +1486,6 @@ span {
 				}
 
 	/***** Powers Section *****/
-	.sheet-powers-box {
-		display: inline;
-	}
-
 	.sheet-powers-box h3 {
 		margin-right: 3px;
 		width: 8%;
