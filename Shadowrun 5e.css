@@ -256,7 +256,7 @@ span {
 	display: inline-block;
 	font-size: 0.9em;
 	line-height: 25px;
-	padding-right: 2px;
+	margin-right: 5px;
 	text-transform: capitalize;
 }
 
@@ -264,11 +264,13 @@ span {
 	color: #b8b7b6;
 	display: inline-block;
 	font-size: 0.8em;
+	margin-right: 5px;
 	text-transform: capitalize;
 }
 
 .sheet-pc img {
 	height: 50%;
+	margin-bottom: 30px;
 	vertical-align: top;
 	width: 55%;
 }
@@ -478,7 +480,7 @@ span {
 
 	.sheet-attr-lim h2 {
 		font-size: 11.7px;
-		width: 22%;
+		width: 20%;
 	}
 
 	.sheet-attr-und {
@@ -2357,24 +2359,26 @@ span {
 		.sheet-program-toggle[value="0"] + div.sheet-repeat-indent {opacity: 0.3;}
 
 /**** Hide Sections that are not used ****/
-	.sheet-optional-flag0[value="1"] + .sheet-optional {display: inline-block;}
-
-	.sheet-optional-flag0[value="1"] + .sheet-textboxes {
-		display: inherit;
-		width: 100%;
-	}
-
 	.sheet-matrix,
 	.sheet-magic,
 	.sheet-resonance,
 	.sheet-optional,
-	.sheet-optional-flag0[value="0"] + .sheet-textboxes,
-	.sheet-optional-flag0[value="0"] + .sheet-attr-header,
+	.sheet-textboxes,
+	.sheet-optional-flag[value="0"] + .sheet-attr-header,
 	.sheet-spell_category + div,
 	.sheet-spell_category + div + div,
 	.sheet-goon,
 	.sheet-host,
 	.sheet-vehicle  {display: none;}
+
+	.sheet-optional-flag:not([value="0"]) + .sheet-optional {
+		display: inline-block;
+	}
+
+	.sheet-optional-flag:not([value="0"]) + .sheet-textboxes {
+		display: inherit;
+		width: 100%;
+	}
 
 	.sheet-spell_category[value="Combat"] + div,
 	.sheet-spell_category[value="Combat"] + div + div,
