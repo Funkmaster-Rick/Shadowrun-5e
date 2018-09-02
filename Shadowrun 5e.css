@@ -637,12 +637,22 @@ span {
 		}
 
 		/***** Hexes Appear & Disappear *****/
-		input[type="hidden"][value="false"] ~ input[type="radio"],
-		input[type="hidden"][value="false"] ~ input[type="radio"] + span,
-		input[type="hidden"][value="false"] ~ input[type="radio"] + span + div {
-			display: none;
-		} 
-
+		.sheet-hex-hider[value="1"] ~ input[type="radio"]:nth-child(1n+3),
+		.sheet-hex-hider[value="1"] ~ input[type="radio"]:nth-child(1n+3) + span,
+		.sheet-hex-hider[value="2"] ~ input[type="radio"]:nth-child(1n+5),
+		.sheet-hex-hider[value="2"] ~ input[type="radio"]:nth-child(1n+5) + span,
+		.sheet-hex-hider[value="3"] ~ input[type="radio"]:nth-child(1n+7),
+		.sheet-hex-hider[value="3"] ~ input[type="radio"]:nth-child(1n+7) + span,
+		.sheet-hex-hider[value="4"] ~ input[type="radio"]:nth-child(1n+9),
+		.sheet-hex-hider[value="4"] ~ input[type="radio"]:nth-child(1n+9) + span,
+		.sheet-hex-hider[value="5"] ~ input[type="radio"]:nth-child(1n+11),
+		.sheet-hex-hider[value="5"] ~ input[type="radio"]:nth-child(1n+11) + span,
+		.sheet-hex-hider[value="6"] ~ input[type="radio"]:nth-child(1n+13),
+		.sheet-hex-hider[value="6"] ~ input[type="radio"]:nth-child(1n+13) + span,		
+		.sheet-hex-hider[value="7"] ~ input[type="radio"]:nth-child(1n+15),
+		.sheet-hex-hider[value="7"] ~ input[type="radio"]:nth-child(1n+15) + span {
+			display: none; 
+		}
 
 	/***** Condition Monitor Tracks *****/
 	.sheet-con-track {
@@ -658,7 +668,7 @@ span {
 		width: 100%;
 	}
 
-	.sheet-con-track input[type="radio"]:first-child:hover ~ h2 {
+	.sheet-con-track input[type="radio"]:hover ~ h2{
 		color: #fff;
 		text-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px #610b0d;
 	}
@@ -708,59 +718,98 @@ span {
 			width: 150px;
 		}
 
+		.sheet-con-track input[type="radio"]:first-child {
+			float: left;
+			height: 20px;
+			left: 31px;
+			margin-right: -147px;
+			top: 3px;
+			width: 146px;
+		}
+
 			/***** Condition Monitor Squares *****/
+			.sheet-squares {
+				margin-left: 20%;
+				width: 70%;
+			}
+
 			.sheet-squares span {
+				background-color: #9a9a9a;
 				border-radius: 0px;
-				border: 1px solid #610b0d;
+				border: 2px solid #610b0d;
 				display: inline-block;
 				height: 45px;
-				margin-bottom: -29.5px;
+				margin-bottom: -25px;
+				margin-right: -7px;
 				width: 45px;
-			}
-
-			.sheet-squares span + div {
-				left: 152px;
-				margin-top: -20px;
-				position: relative;
-				top: 8px;
-				width: fit-content;
-			}
-
-			.sheet-squares input[type="radio"]:first-child {
-				float: left;
-				height: 20px;
-				left: 31px;
-				margin-right: -147px;
-				top: 3px;
-				width: 146px;
 			}
 
 			.sheet-squares input[type="radio"] {
 				clear: both;
 				height: 45px;
-				left: 38px;
-				margin-right: -50px;
+				left: 2px;
+				margin-right: -43px;
 				position: relative;
-				top: 10px;
+				top: 6px;
 				width: 45px;
 			}
 
-			.sheet-squares input[type="radio"] + span {
-				left: 42px;
-				text-align: right;
-				background-color: #9a9a9a;
+			.sheet-squares div {
+				background-color: transparent;
+				border-right: none;
+				left: 85%;
+				margin-bottom: -20px;
+				position: relative;
+				top: -15px;
 			}
 
-			.sheet-squares input[type="radio"]:checked ~ input[type="radio"] + span {
+			.sheet-squares input[type="radio"]:checked ~ input[type="radio"] + span,
+			.sheet-con-track input[type="radio"]:checked ~ .sheet-squares span {
 				background-color: transparent;
 			}
 
-			/***** Condition Monitor Squares Appear & Disappear *****/
-			input[type="hidden"][value="false"] + input[type="radio"],
-			input[type="hidden"][value="false"] + input[type="radio"] + span,
-			input[type="hidden"][value="false"] + input[type="radio"] + span + div {
+			/***** Hexes Appear & Disappear *****/
+			.sheet-hex-hider[value="8"] ~ input[type="radio"]:nth-child(1n+19),
+			.sheet-hex-hider[value="9"] ~ input[type="radio"]:nth-child(1n+21),
+			.sheet-hex-hider[value="10"] ~ input[type="radio"]:nth-child(1n+24),
+			.sheet-hex-hider[value="11"] ~ input[type="radio"]:nth-child(1n+26),
+			.sheet-hex-hider[value="12"] ~ input[type="radio"]:nth-child(1n+28),
+			.sheet-hex-hider[value="13"] ~ input[type="radio"]:nth-child(1n+32),
+			.sheet-hex-hider[value="14"] ~ input[type="radio"]:nth-child(1n+34),
+			.sheet-hex-hider[value="15"] ~ input[type="radio"]:nth-child(1n+36),
+			.sheet-hex-hider[value="16"] ~ input[type="radio"]:nth-child(1n+38),
+			.sheet-hex-hider[value="17"] ~ input[type="radio"]:nth-child(1n+40),
+			.sheet-hex-hider[value="18"] ~ input[type="radio"]:nth-child(1n+42) {
+				display: none; 
+			}
+
+			.sheet-hex-hider[value="8"] ~ input[type="radio"]:nth-child(1n+19) + span,
+			.sheet-hex-hider[value="9"] ~ input[type="radio"]:nth-child(1n+21) + span,
+			.sheet-hex-hider[value="10"] ~ input[type="radio"]:nth-child(1n+24) + span,
+			.sheet-hex-hider[value="11"] ~ input[type="radio"]:nth-child(1n+26) + span,
+			.sheet-hex-hider[value="12"] ~ input[type="radio"]:nth-child(1n+28) + span,
+			.sheet-hex-hider[value="13"] ~ input[type="radio"]:nth-child(1n+32) + span,
+			.sheet-hex-hider[value="14"] ~ input[type="radio"]:nth-child(1n+34) + span,
+			.sheet-hex-hider[value="15"] ~ input[type="radio"]:nth-child(1n+36) + span,
+			.sheet-hex-hider[value="16"] ~ input[type="radio"]:nth-child(1n+38) + span,
+			.sheet-hex-hider[value="17"] ~ input[type="radio"]:nth-child(1n+40) + span,
+			.sheet-hex-hider[value="18"] ~ input[type="radio"]:nth-child(1n+42) + span {
+				opacity: 0;
+			}
+
+			.sheet-hex-hider[value="8"] ~ div:nth-child(1n+19),
+			.sheet-hex-hider[value="9"] ~ div:nth-child(1n+24),
+			.sheet-hex-hider[value="10"] ~ div:nth-child(1n+24),
+			.sheet-hex-hider[value="11"] ~ div:nth-child(1n+24),
+			.sheet-hex-hider[value="12"] ~ div:nth-child(1n+30),
+			.sheet-hex-hider[value="13"] ~ div:nth-child(1n+30),
+			.sheet-hex-hider[value="14"] ~ div:nth-child(1n+30),
+			.sheet-hex-hider[value="15"] ~ div:nth-child(1n+38),
+			.sheet-hex-hider[value="16"] ~ div:nth-child(1n+38),
+			.sheet-hex-hider[value="17"] ~ div:nth-child(1n+38),
+			.sheet-hex-hider[value="18"] ~ div:nth-child(1n+48) {
 				display: none;
-			} 
+			}
 
 		/***** Condition Track Footers *****/
 		.sheet-con-footer {
@@ -1108,7 +1157,8 @@ span {
 			width: 87%;
 		}
 
-		.sheet-quality .sheet-display-row:nth-of-type(2) {
+		.sheet-quality .sheet-display-row:nth-of-type(2),
+		.sheet-quality .sheet-settings select  {
 			width: 8%;
 		}
 
