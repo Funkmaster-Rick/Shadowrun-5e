@@ -428,8 +428,8 @@
 									</select>
 									<input type="number" name="attr_rank" min="0" placeholder="0" />
 									<div class="settings-row">
-										<div><label>Specializations</label><br /><input type="text" name="attr_specialization" placeholder="Specalizations" /></div>
-										<div><label>Skill modifier</label><br /><input type="number" name="attr_rank_modifier" min="0" placeholder="0" /></div>
+										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
+										<label>Skill Modifier</label><input type="number" name="attr_rank_modifier" min="0" placeholder="0" />
 									</div>
 									<label>Notes</label>
 									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
@@ -465,8 +465,10 @@
 									<input type="hidden" name="attr_dicepool" />
 									<input type="text" name="attr_skill" placeholder="Knowledge skill name" />
 									<input type="number" name="attr_rank" placeholder="0" />
-									<div><label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" /></div>
-									<div><label>Skill modifier</label><br /><input type="number" name="attr_rank_modifier" placeholder="0" /></div>
+									<div class="settings-row">
+										<div><label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" /></div>
+										<div><label>Modifier</label><br /><input type="number" name="attr_rank_modifier" placeholder="0" /></div>
+									</div>
 									<label>Notes</label>
 									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 								</div>
@@ -501,8 +503,10 @@
 									<input type="hidden" name="attr_dicepool" />
 									<input type="text" name="attr_skill" placeholder="Language" />
 									<input type="number" name="attr_rank" placeholder="0" />
-									<div><label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" /></div>
-									<div><label>Skill modifier</label><br /><input type="number" name="attr_rank_modifier" placeholder="0" /></div>
+									<div class="settings-row">
+										<div><label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" /></div>
+										<div><label>Modifier</label><br /><input class="language-native" type="number" min="0" name="attr_rank_modifier" placeholder="0" /></div>
+									</div>
 									<label>Notes</label>
 									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 								</div>
@@ -541,7 +545,7 @@
 				<div class="pc-box small-box">
 					<div class="row-long cc-arm">
 						<h2>Primary Armor</h2>
-						<div style="overflow: hidden; width: 20%;">
+						<div>
 							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Soak}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Soak"><span name="attr_armor_name"></span></button>
 						</div>
 						<h3>Rating</h3>
@@ -748,10 +752,10 @@
 							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
 							<div class="settings">
 								<div>
-									<input type="text" name="attr_weapon" placeholder="Ares Predator V" />
-									<input type="text" name="attr_damage" placeholder="8P" />
+									<input type="text" name="attr_weapon" placeholder="Ares Alpha" />
+									<input type="text" name="attr_damage" placeholder="11P" style="width: 11%;" />
 									<input type="number" name="attr_acc" placeholder="5" />
-									<input type="number" name="attr_ap" placeholder="-1" />
+									<input type="number" name="attr_ap" placeholder="-2" />
 									<select name="attr_mode">
 										<option value="BF">BF</option>
 										<option value="FA">FA</option>
@@ -760,11 +764,11 @@
 										<option value="SS">SS</option>
 									</select>
 									<input type="number" name="attr_recoil" placeholder="2" />
-									<input type="number" name="attr_ammo" placeholder="15" />
-									<input type="checkbox" class="primary-flag" name="attr_primary_flag" checked="checked" /><span>S</span>
+									<input type="number" name="attr_ammo" placeholder="42" />
 									<div class="settings-row">
-										<label>Mode Options</label><input type="text" name="attr_mode_options" placeholder="SA" />
-										<label>Range</label><input type="text" name="attr_range" placeholder="5/20/40/60" />
+										<label>Mode Options</label><input type="text" name="attr_mode_options" placeholder="SA/BF/FA" />
+										<label>Range</label><input type="text" name="attr_range" placeholder="25/150/350/550" />
+										<label>Primary</label><input type="checkbox" class="skill-select" name="attr_primary_flag" checked="checked" />
 									</div>
 									<div class="settings-row">
 										<input type="hidden" name="attr_dicepool" value="0" />
@@ -783,7 +787,7 @@
 											<option value="@{gunnery}" >Gunnery</option>
 										</select>
 										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" />
-										<label>modifier Dice</label><input type="number" name="attr_dicepool_modifier" />
+										<label>modifier dice</label><input type="number" name="attr_dicepool_modifier" />
 										<input class="skill-select" type="hidden" name="attr_skill" /><br />
 										<div class="exotic-warning">
 											<span><i>Exotics are not linked to skills. Use modifier Dice input to set skill dice.</i></span>
@@ -1436,11 +1440,11 @@
 			<div class="border-box repeat-box lifestyle">
 				<div class="pc-box small-box social-box">
 					<div class="row-long">
-						<h3>Primary Lifestyle</h3><input type="text" name="attr_lifestyle" placeholder="High: Belleuve (Inglewood), Seattle" />
+						<h3>Primary Lifestyle</h3><div><span name="attr_lifestyle_display"></span></div>
 					</div>
 					<div class="row-long">
-						<h3>Nuyen</h3><input type="number" name="attr_nuyen" placeholder="1,000¥" />
-						<h3>Licenses</h3><input type="text" name="attr_licenses" placeholder="R4: Technomancer" />
+						<h3>Nuyen</h3><div><span name="attr_primary_nuyen"></span></div>
+						<h3>Licenses</h3><div><span name="attr_primary_licenses"></span></div>
 					</div>
 					<div class="row-long">
 						<h3>Fake IDs / Related Lifestyles / Funds / Licenses</h3>
@@ -3115,6 +3119,9 @@
 <input type="hidden" name="attr_fire_protection" min="0" value="0" />
 <input type="hidden" name="attr_radiation_protection" min="0" value="0" />
 
+<input type="hidden" name="attr_lifestyle_display" />
+<input type="hidden" name="attr_primary_nuyen" />
+<input type="hidden" name="attr_primary_licenses" />
 
 <!--Sheet Worker-->
 <script type="text/worker">
@@ -3394,11 +3401,11 @@
 			getAttrs(["charisma", "willpower", "essence", "social_limit_modifier"], function(v){
 				var cha = parseInt(v.charisma) || 0;
 				var wil = parseInt(v.willpower) || 0;
-				var ess = parseInt(v.essence) || 0;
+				var ess = Math.ceil(v.essence) || 0;
 				var bon = parseInt(v.social_limit_modifier) || 0;
 				var tot = ((ess + wil + (cha * 2))/3);
 				var num = Math.ceil(tot) + bon;
-
+				
 				setAttrs({social_limit: num});
 			});
 		};
@@ -3911,7 +3918,8 @@ on("change:device_rating change:matrix_modifier", function() {
 			let specDisplayNew = ((specialization).length > 0 && (specialization).length <= 20) ? "(" + specialization + ")" : ((specialization).length > 20 ) ? "(" + (specialization).slice(0, 20) + "..." + ")" : " ";	
 			if (specDisplayNew != v.repeating_language_display_specialization) {update["repeating_language_display_specialization"] = specDisplayNew;};
 
-			let rankDisplayNew = (rankmodifier != "" || rankmodifier > 0) ? rank + " (" + (rank + rankmodifier) + ")" : rank;
+			let rankNew = (rank != "" || rank != 0) ? rank : "N";
+			let rankDisplayNew = (rankmodifier != "" || rankmodifier > 0) ? rankNew + " (" + (rankNew + rankmodifier) + ")" : rankNew;
 			if (rankDisplayNew != v.repeating_language_display_rank) {update["repeating_language_display_rank"] = rankDisplayNew;};
 
 			let dicepoolNew = rank + rankmodifier;
