@@ -316,14 +316,14 @@
 				<div class="triangle"></div><h1>Skills</h1>
 			</div>
 			<div class="border-box repeat-box skill-box">
-				<input class="skill-toggle" type="radio" name="attr_skill_toggle" value="active" checked="checked" />
-				<input class="skill-toggle" type="radio" name="attr_skill_toggle" value="knowledge" />
-				<input class="skill-toggle" type="radio" name="attr_skill_toggle" value="language" />
+				<input class="tab-switch" type="radio" name="attr_skill_toggle" value="active" checked="checked" />
+				<input class="tab-switch" type="radio" name="attr_skill_toggle" value="knowledge" />
+				<input class="tab-switch" type="radio" name="attr_skill_toggle" value="language" />
 				<div class="pc-box medium-box">
 					<div class="row-long">
 						<h3>Skill</h3><h3>RTG</h3><h3>Attribute</h3>
 					</div>
-					<input class="skill-toggle" type="hidden" name="attr_skill_toggle" value="active">
+					<input class="tab-switch" type="hidden" name="attr_skill_toggle" value="active">
 					<div class="skills-active">
 						<fieldset class="repeating_active">
 							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
@@ -540,8 +540,20 @@
 			<div class="border-box">
 				<div class="pc-box small-box">
 					<div class="row-long cc-arm">
-						<h2>Primary Armor</h2><span name="attr_armor_name"></span>
-						<h3>Rating</h3><span name="attr_armor_rating"></span>
+						<h2>Primary Armor</h2>
+						<div style="overflow: hidden; width: 20%;">
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Soak}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Soak"><span name="attr_armor_name"></span></button>
+						</div>
+						<h3>Rating</h3>
+						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{armor}}}{{base= Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{armor_rating}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><span name="attr_armor_rating"></span></button>
+						<div class="armor-buttons">
+							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Defense}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{defense}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Defense Roll"><span class="pictosC">e</span></button>
+							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Acid Protection}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{acid_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Acid Protection"><span class="pictos3">d</span></button>
+							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Cold Protection}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{cold_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Cold Protection"><span>b</span></button>
+							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Electricity Protection}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{electrical_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Electrical Protection"><span>e</span></button>
+							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Fire Protection}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{fire_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Fire Protection"><span class="pictos3">j</span></button>
+							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Radiation Protection}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{radiation_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Radiation Protection"><span class="pictos3">l</span></button>
+						</div>
 					</div>
 					<div class="row-long cc-ran"><h2>Primary Ranged Weapon</h2><span name="attr_primary_range_weapon"></span></div>
 					<div class="cc-row">
@@ -642,35 +654,71 @@
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start Quality Row ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<div class="pc-row">
 			<div class="header right-header"><h1>Qualities</h1><div class="right-tri"></div></div>
-			<div class="border-box repeat-box quality">
+			<div class="header right-header">
+				<div class="header htab">
+					<div class="triangle"></div><h1>Martial Arts</h1><div class="right-tri"></div>
+				</div>
+			</div>
+			<div class="border-box repeat-box quality-box">
+				<input class="tab-switch" type="radio" name="attr_quality_toggle" value="quality" checked="checked" />
+				<input class="tab-switch" type="radio" name="attr_quality_toggle" value="martial" />
 				<div class="pc-box medium-box">
-					<div class="row-long">
-						<h3>Quality</h3><h3>Type</h3>
-					</div>
-					<fieldset class="repeating_quality">
-						<input type="checkbox" class="settings-toggle" name="attr_flag_quality" checked="checked" /><span>x</span>
-						<div class="settings">
-							<div>
-								<input type="text" name="attr_quality" placeholder="Quality name" />
-								<select name="attr_type">
-									<option value="P" selected="selected">P</option>
-									<option value="N" selected="selected">N</option>
-								</select>
-								<div class="settings-row">
-									<label>Notes</label>
-									<textarea name="attr_notes" value="" placeholder="Quality description"></textarea>
+					<input class="tab-switch" type="hidden" name="attr_quality_toggle" value="quality">
+					<div class="quality">
+						<div class="row-long">
+							<h3>Quality</h3><h3>Type</h3>
+						</div>
+						<fieldset class="repeating_quality">
+							<input type="checkbox" class="settings-toggle" name="attr_flag_quality" checked="checked" /><span>x</span>
+							<div class="settings">
+								<div>
+									<input type="text" name="attr_quality" placeholder="Quality name" />
+									<select name="attr_type">
+										<option value="P" selected="selected">P</option>
+										<option value="N" selected="selected">N</option>
+									</select>
+									<div class="settings-row">
+										<label>Notes</label>
+										<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="display">
-							<input class="display-flag" type="checkbox" name="attr_display_flag">
-							<div class="display-row"><span name="attr_quality"></span></div>
-							<div class="display-row"><span name="attr_type"></span></div>
-							<div class="collapsable">
-								<span class="desc" name="attr_notes"></span>
+							<div class="display">
+								<input class="display-flag" type="checkbox" name="attr_display_flag">
+								<div class="display-row"><span name="attr_quality"></span></div>
+								<div class="display-row"><span name="attr_type"></span></div>
+								<div class="collapsable">
+									<span class="desc" name="attr_notes"></span>
+								</div>
 							</div>
+						</fieldset>
+					</div>
+					<div class="martial">
+						<div class="row-long">
+							<h3>Technique</h3><h3>Style</h3>
 						</div>
-					</fieldset>
+						<fieldset class="repeating_martial">
+							<input type="checkbox" class="settings-toggle" name="attr_flag_martial" checked="checked" /><span>x</span>
+							<div class="settings">
+								<div>
+									<input type="text" name="attr_technique" placeholder="Clinch" />
+									<input type="text" name="attr_style" placeholder="Krav Maga" />
+									<div class="settings-row">
+										<label>Notes</label>
+										<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="display">
+								<input class="display-flag" type="checkbox" name="attr_display_flag">
+								<div class="display-row"><span name="attr_technique"></span></div>
+								<div class="display-row"><span name="attr_style"></span></div>
+								<div class="collapsable">
+									<span class="desc" name="attr_notes"></span>
+								</div>
+							</div>
+						</fieldset>
+					</div>
 				</div>
 			</div>
 		</div><!-- ~~~~~~~~ End of Quality row ~~~~~~~~ -->
@@ -688,10 +736,10 @@
 				</div>
 			</div>
 			<div class="border-box repeat-box weapon-box">
-				<input class="weapon-toggle" type="radio" name="attr_weapon_type_toggle" value="range" />
-				<input class="weapon-toggle" type="radio" name="attr_weapon_type_toggle" value="melee" />
+				<input class="tab-switch" type="radio" name="attr_weapon_type_toggle" value="range" />
+				<input class="tab-switch" type="radio" name="attr_weapon_type_toggle" value="melee" />
 				<div class="pc-box medium-box">
-					<input class="weapon-toggle" type="hidden" name="attr_weapon_type_toggle" value="range" />
+					<input class="tab-switch" type="hidden" name="attr_weapon_type_toggle" value="range" />
 					<div class="weapon-range row-long">
 						<h3>Weapon</h3><h3>Dam</h3><h3>Acc</h3><h3>AP</h3><h3>Mode</h3><h3>RC</h3><h3>Ammo</h3>
 					</div>
@@ -713,7 +761,7 @@
 									</select>
 									<input type="number" name="attr_recoil" placeholder="2" />
 									<input type="number" name="attr_ammo" placeholder="15" />
-									<input type="checkbox" class="primary-flag" name="attr_primary_range_flag" checked="checked" /><span>S</span>
+									<input type="checkbox" class="primary-flag" name="attr_primary_flag" checked="checked" /><span>S</span>
 									<div class="settings-row">
 										<label>Mode Options</label><input type="text" name="attr_mode_options" placeholder="SA" />
 										<label>Range</label><input type="text" name="attr_range" placeholder="5/20/40/60" />
@@ -783,7 +831,7 @@
 									<input type="text" name="attr_damage" placeholder="6P" />
 									<input type="number" name="attr_acc" placeholder="7" />
 									<input type="number" name="attr_ap" placeholder="-3" />
-									<input type="checkbox" class="primary-flag" name="attr_primary_melee_flag" checked="checked" /><span>S</span>
+									<input type="checkbox" class="primary-flag" name="attr_primary_flag" checked="checked" /><span>S</span>
 									<div class="settings-row">
 										<input type="hidden" name="attr_dicepool" value="0" />
 										<label>Combat Skill</label>
@@ -837,13 +885,13 @@
 						<div class="settings">
 							<div>
 								<input type="text" name="attr_armor" placeholder="Armor Jacket" />
-								<input type="number" name="attr_armor_value" min="0" value="0" placeholder="12" />
+								<input type="number" name="attr_rating" min="0" value="0" placeholder="12" />
 								<input type="number" name="attr_acid_modifier" min="0" value="0" placeholder="+5" />
 								<input type="number" name="attr_cold_modifier" min="0" value="0" placeholder="0" />
 								<input type="number" name="attr_electrical_modifier" min="0" value="0" placeholder="+5" />
 								<input type="number" name="attr_fire_modifier" min="0" value="0" placeholder="0" />
 								<input type="number" name="attr_radiation_modifier" min="0" value="0" placeholder="0" />
-								<input type="checkbox" class="primary-flag" name="attr_primary_armor_flag" checked="checked" value="primary" /><span>S</span>
+								<input type="checkbox" class="primary-flag" name="attr_primary" value="primary" /><span>S</span>
 								<div class="settings-row">
 									<label>Notes</label>
 									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
@@ -851,14 +899,26 @@
 							</div>
 						</div>
 						<div class="display">
-							<div class="display-row"><butto
-							n type="roll"><span name="attr_armor"></span></button></div>
-							<div class="display-row hoverswitch"><button type="roll"><span class="default" name="attr_armor_value"></span><span class="hover" name="attr_soak"></span></button></div>
-							<div class="display-row hoverswitch"><button type="roll"><span class="default" name="attr_acid_modifier"></span><span class="hover" name="attr_acid_protection"></span></button></div>
-							<div class="display-row hoverswitch"><button type="roll"><span class="default" name="attr_cold_modifier"></span><span class="hover" name="attr_cold_protection"></span></button></div>
-							<div class="display-row hoverswitch"><button type="roll"><span class="default" name="attr_electrical_modifier"></span><span class="hover" name="attr_electrical_protection"></span></button></div>
-							<div class="display-row hoverswitch"><button type="roll"><span class="default" name="attr_fire_modifier"></span><span class="hover" name="attr_fire_protection"></span></button></div>
-							<div class="display-row hoverswitch"><button type="roll"><span class="default" name="attr_radiation_modifier"></span><span class="hover" name="attr_radiation_protection"></span></button></div>
+							<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Soak}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><span name="attr_armor"></span></button></div>
+							<div class="display-row hoverswitch">
+								<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{armor}}}{{base= Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{rating}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+								<span class="default" name="attr_rating"></span><!--<span class="hover" name="attr_soak"></span>--></button>
+							</div>
+							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Acid Protection}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{acid_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+								<span class="default" name="attr_acid_modifier"></span><!--<span class="hover" name="attr_acid_protection"></span>--></button>
+							</div>
+							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Cold Protection}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{cold_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+								<span class="default" name="attr_cold_modifier"></span><!--<span class="hover" name="attr_cold_protection"></span>--></button>
+							</div>
+							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Electrical Protection}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{electrical_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+								<span class="default" name="attr_electrical_modifier"></span><!--<span class="hover" name="attr_electrical_protection"></span>--></button>
+							</div>
+							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Fire Protection}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{fire_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+								<span class="default" name="attr_fire_modifier"></span><!--<span class="hover" name="attr_fire_protection"></span>--></button>
+							</div>
+							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Radiation Protection}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{radiation_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+								<span class="default" name="attr_radiation_modifier"></span><!--<span class="hover" name="attr_radiation_protection"></span>--></button>
+							</div>
 							<input class="display-flag" type="checkbox" name="attr_display_flag" /><span>i</span>
 							<div class="collapsable">
 								<div class="desc"><span name="attr_notes"></span></div>
@@ -1179,39 +1239,95 @@
 					<div class="row-long">
 						<label>Device Rating</label><input type="number" name="attr_device_rating" min="0" value="" placeholder="4" style="margin-right: 23%;" />
 						<label>Attribute Array</label>
-							<input type="number" name="attr_attribute_1" min="0" value="" placeholder="7" />
-							<input type="number" name="attr_attribute_2" min="0" value="" placeholder="6" />
-							<input type="number" name="attr_attribute_3" min="0" value="" placeholder="5" />
-							<input type="number" name="attr_attribute_4" min="0" value="" placeholder="4" />
+						<input type="number" name="attr_attribute_1" min="0" value="" placeholder="7" />
+						<input type="number" name="attr_attribute_2" min="0" value="" placeholder="6" />
+						<input type="number" name="attr_attribute_3" min="0" value="" placeholder="5" />
+						<input type="number" name="attr_attribute_4" min="0" value="" placeholder="4" />
 					</div>
 					<div class="row-long">
-						<h3>Total</h3><h3>Base</h3><h3>modifier</h3><h3>Temp</h3><br />
-						<label>Attack</label>
-						<input type="number" name="attr_attack" value="" placeholder="7" disabled="true" /><span> = </span>
-						<input type="number" name="attr_attack_base" min="0" value="" placeholder="7" /><spam> + </spam>
+						<h3>Total</h3><h3>Temp</h3><h3>modifier</h3><h3>Base</h3><h3>Base slider</h3><br />
+						<label><button type="roll" value="&{template:sRun}{{header=Attack}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Attack</button></label>
+						<div class="matrix-tot"><span name="attr_attack"></span></div><span> = </span>
+						<input type="number" name="attr_attack_temp" min="0" value="" placeholder="7" /><spam> + </spam>
 						<input type="number" name="attr_attack_modifier" min="0" value="" placeholder="0" /><spam> + </spam>
-						<input type="number" name="attr_attack_temp" min="0" value="" placeholder="0" />
+						<input type="number" name="attr_attack_base" min="0" value="" placeholder="0" />
+						<div class="device-attr">
+							<div class="matrix-bubble matrixAttack">
+								<input type="radio" name="attr_attack_base" value="1" /><span></span>
+								<input type="radio" name="attr_attack_base" value="2" /><span></span>
+								<input type="radio" name="attr_attack_base" value="3" /><span></span>
+								<input type="radio" name="attr_attack_base" value="4" /><span></span>
+								<input type="radio" name="attr_attack_base" value="5" /><span></span>
+								<input type="radio" name="attr_attack_base" value="6" /><span></span>
+								<input type="radio" name="attr_attack_base" value="7" /><span></span>
+								<input type="radio" name="attr_attack_base" value="8" /><span></span>
+								<input type="radio" name="attr_attack_base" value="9" /><span></span>
+								<input type="radio" name="attr_attack_base" value="10" /><span></span>
+							</div>
+						</div>
 					</div>
 					<div class="row-long">
-						<label>Sleaze</label>
-						<input type="number" name="attr_sleaze" value="" placeholder="6" disabled="true"/><span> = </span>
-						<input type="number" name="attr_sleaze_base" min="0" value="" placeholder="6" /><spam> + </spam>
+						<label><button type="roll" value="&{template:sRun}{{header=Sleaze}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{sleaze}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Sleaze</button></label>
+						<div class="matrix-tot"><span name="attr_sleaze"></span></div><span> = </span>
+						<input type="number" name="attr_sleaze_temp" min="0" value="" placeholder="6" /><spam> + </spam>
 						<input type="number" name="attr_sleaze_modifier" min="0" value="" placeholder="0" /><spam> + </spam>
-						<input type="number" name="attr_sleaze_temp" min="0" value="" placeholder="0" />
+						<input type="number" name="attr_sleaze_base" min="0" value="" placeholder="0" />
+						<div class="device-attr">
+							<div class="matrix-bubble matrixSleaze">
+								<input type="radio" name="attr_sleaze_base" value="1" /><span></span>
+								<input type="radio" name="attr_sleaze_base" value="2" /><span></span>
+								<input type="radio" name="attr_sleaze_base" value="3" /><span></span>
+								<input type="radio" name="attr_sleaze_base" value="4" /><span></span>
+								<input type="radio" name="attr_sleaze_base" value="5" /><span></span>
+								<input type="radio" name="attr_sleaze_base" value="6" /><span></span>
+								<input type="radio" name="attr_sleaze_base" value="7" /><span></span>
+								<input type="radio" name="attr_sleaze_base" value="8" /><span></span>
+								<input type="radio" name="attr_sleaze_base" value="9" /><span></span>
+								<input type="radio" name="attr_sleaze_base" value="10" /><span></span>
+							</div>
+						</div>
 					</div>
 					<div class="row-long">
-						<label>Data Processing</label>
-						<input type="number" name="attr_data_processing" value="" placeholder="5" disabled="true" /><span> = </span>
-						<input type="number" name="attr_data_processing_base" vmin="0" alue="" placeholder="5" /><spam> + </spam>
+						<label><button type="roll" value="&{template:sRun}{{header=Data Processing}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{data_processing}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Data Proc.</button></label>
+						<div class="matrix-tot"><span name="attr_data_processing"></span></div><span> = </span>
+						<input type="number" name="attr_data_processing_temp" min="0" alue="" placeholder="5" /><spam> + </spam>
 						<input type="number" name="attr_data_processing_modifier" min="0" value="" placeholder="0" /><spam> + </spam>
-						<input type="number" name="attr_data_processing_temp" min="0" value="" placeholder="0" />
+						<input type="number" name="attr_data_processing_base" min="0" value="" placeholder="0" />
+						<div class="device-attr">
+							<div class="matrix-bubble matrixData">
+								<input type="radio" name="attr_data_processing_base" value="1" /><span></span>
+								<input type="radio" name="attr_data_processing_base" value="2" /><span></span>
+								<input type="radio" name="attr_data_processing_base" value="3" /><span></span>
+								<input type="radio" name="attr_data_processing_base" value="4" /><span></span>
+								<input type="radio" name="attr_data_processing_base" value="5" /><span></span>
+								<input type="radio" name="attr_data_processing_base" value="6" /><span></span>
+								<input type="radio" name="attr_data_processing_base" value="7" /><span></span>
+								<input type="radio" name="attr_data_processing_base" value="8" /><span></span>
+								<input type="radio" name="attr_data_processing_base" value="9" /><span></span>
+								<input type="radio" name="attr_data_processing_base" value="10" /><span></span>
+							</div>
+						</div>
 					</div>
 					<div class="row-long">
-						<label>Firewall</label>
-						<input type="number" name="attr_firewall" value="" placeholder="4" disabled="true" /><span> = </span>
-						<input type="number" name="attr_firewall_base" min="0" value="" placeholder="4" /><spam> + </spam>
+						<label><button type="roll" value="&{template:sRun}{{header=Firewall}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{firewall}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Firewall</button></label>
+						<div class="matrix-tot"><span name="attr_firewall"></span></div><span> = </span>
+						<input type="number" name="attr_firewall_temp" min="0" value="" placeholder="4" /><spam> + </spam>
 						<input type="number" name="attr_firewall_modifier" min="0" value="" placeholder="0" /><spam> + </spam>
-						<input type="number" name="attr_firewall_temp" min="0" value="" placeholder="0" />
+						<input type="number" name="attr_firewall_base" min="0" value="" placeholder="0" />
+						<div class="device-attr">
+							<div class="matrix-bubble matrixFirewall">
+								<input type="radio" name="attr_firewall_base" value="1" /><span></span>
+								<input type="radio" name="attr_firewall_base" value="2" /><span></span>
+								<input type="radio" name="attr_firewall_base" value="3" /><span></span>
+								<input type="radio" name="attr_firewall_base" value="4" /><span></span>
+								<input type="radio" name="attr_firewall_base" value="5" /><span></span>
+								<input type="radio" name="attr_firewall_base" value="6" /><span></span>
+								<input type="radio" name="attr_firewall_base" value="7" /><span></span>
+								<input type="radio" name="attr_firewall_base" value="8" /><span></span>
+								<input type="radio" name="attr_firewall_base" value="9" /><span></span>
+								<input type="radio" name="attr_firewall_base" value="10" /><span></span>
+							</div>
+						</div>
 					</div>
 					<h3>Programs</h3>
 					<div class="program-box">
@@ -1535,7 +1651,7 @@
 				<div class="attr-header"><label>Seat</label><br /><input type="number" name="attr_seating" value="" placeholder="3" /></div>
 			</div>
 		<!-- ~~~~~~~~ modifieres  ~~~~~~~~ -->
-			<h1>modifieres </h1>
+			<h1>Bonuses </h1>
 			<div class="leftcol"><!--Start Left modifieres-->
 			<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
 				<div class="goon">
@@ -2843,17 +2959,17 @@
 				<input type="radio" name="attr_attack" value="2" /><span></span>
 				<input type="radio" name="attr_attack" value="3" /><span></span>
 				<input type="radio" name="attr_attack" value="4" /><span></span>
-				<input type="radio" class="5bub" name="attr_attack" value="5" /><span></span>
+				<input type="radio"  name="attr_attack" value="5" /><span></span>
 				<input type="radio" name="attr_attack" value="6" /><span></span>
 				<input type="radio" name="attr_attack" value="7" /><span></span>
 				<input type="radio" name="attr_attack" value="8" /><span></span>
 				<input type="radio" name="attr_attack" value="9" /><span></span>
-				<input type="radio" class="5bub" name="attr_attack" value="10" /><span></span>
+				<input type="radio"  name="attr_attack" value="10" /><span></span>
 				<input type="radio" name="attr_attack" value="11" /><span></span>
 				<input type="radio" name="attr_attack" value="12" /><span></span>
 				<input type="radio" name="attr_attack" value="13" /><span></span>
 				<input type="radio" name="attr_attack" value="14" /><span></span>
-				<input type="radio" class="5bub" name="attr_attack" value="15" /><span></span>
+				<input type="radio"  name="attr_attack" value="15" /><span></span>
 				<input type="radio" name="attr_attack" value="16" /><span></span>
 				<input type="radio" name="attr_attack" value="17" /><span></span>
 				<input type="radio" name="attr_attack" value="18" /><span></span>
@@ -2869,17 +2985,17 @@
 				<input type="radio" name="attr_sleaze" value="2" /><span></span>
 				<input type="radio" name="attr_sleaze" value="3" /><span></span>
 				<input type="radio" name="attr_sleaze" value="4" /><span></span>
-				<input type="radio" class="5bub" name="attr_sleaze" value="5" /><span></span>
+				<input type="radio" name="attr_sleaze" value="5" /><span></span>
 				<input type="radio" name="attr_sleaze" value="6" /><span></span>
 				<input type="radio" name="attr_sleaze" value="7" /><span></span>
 				<input type="radio" name="attr_sleaze" value="8" /><span></span>
 				<input type="radio" name="attr_sleaze" value="9" /><span></span>
-				<input type="radio" class="5bub" name="attr_sleaze" value="10" /><span></span>
+				<input type="radio" name="attr_sleaze" value="10" /><span></span>
 				<input type="radio" name="attr_sleaze" value="11" /><span></span>
 				<input type="radio" name="attr_sleaze" value="12" /><span></span>
 				<input type="radio" name="attr_sleaze" value="13" /><span></span>
 				<input type="radio" name="attr_sleaze" value="14" /><span></span>
-				<input type="radio" class="5bub" name="attr_sleaze" value="15" /><span></span>
+				<input type="radio" name="attr_sleaze" value="15" /><span></span>
 				<input type="radio" name="attr_sleaze" value="16" /><span></span>
 				<input type="radio" name="attr_sleaze" value="17" /><span></span>
 				<input type="radio" name="attr_sleaze" value="18" /><span></span>
@@ -2895,17 +3011,17 @@
 				<input type="radio" name="attr_data_processing" value="2" /><span></span>
 				<input type="radio" name="attr_data_processing" value="3" /><span></span>
 				<input type="radio" name="attr_data_processing" value="4" /><span></span>
-				<input type="radio" class="5bub" name="attr_data_processing" value="5" /><span></span>
+				<input type="radio" name="attr_data_processing" value="5" /><span></span>
 				<input type="radio" name="attr_data_processing" value="6" /><span></span>
 				<input type="radio" name="attr_data_processing" value="7" /><span></span>
 				<input type="radio" name="attr_data_processing" value="8" /><span></span>
 				<input type="radio" name="attr_data_processing" value="9" /><span></span>
-				<input type="radio" class="5bub" name="attr_data_processing" value="10" /><span></span>
+				<input type="radio" name="attr_data_processing" value="10" /><span></span>
 				<input type="radio" name="attr_data_processing" value="11" /><span></span>
 				<input type="radio" name="attr_data_processing" value="12" /><span></span>
 				<input type="radio" name="attr_data_processing" value="13" /><span></span>
 				<input type="radio" name="attr_data_processing" value="14" /><span></span>
-				<input type="radio" class="5bub" name="attr_data_processing" value="15" /><span></span>
+				<input type="radio" name="attr_data_processing" value="15" /><span></span>
 				<input type="radio" name="attr_data_processing" value="16" /><span></span>
 				<input type="radio" name="attr_data_processing" value="17" /><span></span>
 				<input type="radio" name="attr_data_processing" value="18" /><span></span>
@@ -2921,17 +3037,17 @@
 				<input type="radio" name="attr_firewall" value="2" /><span></span>
 				<input type="radio" name="attr_firewall" value="3" /><span></span>
 				<input type="radio" name="attr_firewall" value="4" /><span></span>
-				<input type="radio" class="5bub" name="attr_firewall" value="5" /><span></span>
+				<input type="radio" name="attr_firewall" value="5" /><span></span>
 				<input type="radio" name="attr_firewall" value="6" /><span></span>
 				<input type="radio" name="attr_firewall" value="7" /><span></span>
 				<input type="radio" name="attr_firewall" value="8" /><span></span>
 				<input type="radio" name="attr_firewall" value="9" /><span></span>
-				<input type="radio" class="5bub" name="attr_firewall" value="10" /><span></span>
+				<input type="radio" name="attr_firewall" value="10" /><span></span>
 				<input type="radio" name="attr_firewall" value="11" /><span></span>
 				<input type="radio" name="attr_firewall" value="12" /><span></span>
 				<input type="radio" name="attr_firewall" value="13" /><span></span>
 				<input type="radio" name="attr_firewall" value="14" /><span></span>
-				<input type="radio" class="5bub" name="attr_firewall" value="15" /><span></span>
+				<input type="radio" name="attr_firewall" value="15" /><span></span>
 				<input type="radio" name="attr_firewall" value="16" /><span></span>
 				<input type="radio" name="attr_firewall" value="17" /><span></span>
 				<input type="radio" name="attr_firewall" value="18" /><span></span>
@@ -2990,8 +3106,8 @@
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Hidden Attributes ~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <input type="hidden" name="attr_wounds" value="0" />
 <input type="hidden" name="attr_explode_toggle" value="" />
-<input type="hidden" name="attr_soak" value="3" />
 
+<input type="hidden" name="attr_armor_name" value="" />
 <input type="hidden" name="attr_soak" min="0" value="0" />
 <input type="hidden" name="attr_acid_protection" min="0" value="0" />
 <input type="hidden" name="attr_cold_protection" min="0" value="0" />
@@ -3004,10 +3120,11 @@
 <script type="text/worker">
 //Watch for Updates and Run the needed functions
 	on("change:body", function() {
-		update_overflow();
 		update_liftCarry();
-		update_physicalTrack();
+		update_overflow();
 		update_physicalLimit();
+		update_physicalTrack();
+		update_soak();
 	});
 
 	on("change:agility", function() {
@@ -3020,35 +3137,35 @@
 	});
 
 	on("change:reaction", function() {
-		update_physicalLimit();
-		update_initiative();
 		update_defense();
+		update_initiative();
+		update_physicalLimit();
 	});
 
 	on("change:intuition", function() {
-		update_initiative();
 		update_defense();
-		update_mentalLimit();
+		update_initiative();
 		update_judgeIntentions();
+		update_mentalLimit();
 	});
 
 	on("change:willpower", function() {
-		update_mentalLimit();
-		update_socialLimit();
 		update_composure();
 		update_memory();
+		update_mentalLimit();
+		update_socialLimit();
 		update_stunTrack();
 	});
 	
 	on("change:logic", function() {
-		update_mentalLimit();
 		update_memory();
+		update_mentalLimit();
 	});
 
 	on("change:charisma", function() {
-		update_socialLimit();
 		update_composure();
 		update_judgeIntentions();
+		update_socialLimit();
 	});
 
 	on("change:lift_carry_modifier", function() {
@@ -3073,6 +3190,10 @@
 
 	on("change:defense_modifier", function () {
 		update_defense();
+	});
+
+	on("change:armor_rating", function () {
+		update_soak();
 	});
 
 	on("change:mental_limit_modifier", function () {
@@ -3283,16 +3404,49 @@
 		};
 
 //Calculate Common Rolls
-	var update_defense = function () {
-		getAttrs(["reaction", "intuition", "defense_modifier"], function(v){
-			var rea = parseInt(v.reaction) || 0;
-			var int = parseInt(v.intuition) || 0;
-			var bon = parseInt(v.defense_modifier) || 0;
-			var tot = rea + int + bon;
+	//DEFENSE POOL
+		var update_defense = function () {
+			getAttrs(["reaction", "intuition", "defense_modifier"], function(v){
+				var rea = parseInt(v.reaction) || 0;
+				var int = parseInt(v.intuition) || 0;
+				var bon = parseInt(v.defense_modifier) || 0;
+				var tot = rea + int + bon;
 
-			setAttrs({defense: tot});
-		});
-	};
+				setAttrs({defense: tot});
+			});
+		};
+
+	//SOAK POOLS
+		var update_soak = function () {
+			getAttrs(["body", "armor_rating", "soak_modifier"], function(v){
+				const body = parseInt(v.body) || 0;
+				const armor = parseInt(v.armor_rating) || 0;
+				const mod = parseInt(v.soak_modifier) || 0;
+				let tot = body + armor;
+
+				setAttrs({soak: tot});
+			});
+		};
+
+		//Set Primary Armor when the star is selected
+			on("change:repeating_armor", function() {
+				getAttrs(["repeating_armor_armor", "repeating_armor_rating", "repeating_armor_acid_modifier", "repeating_armor_cold_modifier", "repeating_armor_electrical_modifier", "repeating_armor_fire_modifier", "repeating_armor_radiation_modifier", "repeating_armor_primary"], function(v) {
+					let update = {};
+
+					if (v.repeating_armor_primary === "primary") {
+						update["armor_name"] = v.repeating_armor_armor;
+						if (v.repeating_armor_rating) {update["armor_rating"] = v.repeating_armor_rating};
+						if (v.repeating_armor_acid_modifier) {update["acid_modifier"] = v.repeating_armor_acid_modifier};
+						if (v.repeating_armor_cold_modifier) {update["cold_modifier"] = v.repeating_armor_cold_modifier};
+						if (v.repeating_armor_electrical_modifier) {update["electrical_modifier"] = v.repeating_armor_electrical_modifier};
+						if (v.repeating_armor_fire_modifier) {update["fire_modifier"] = v.repeating_armor_fire_modifier};
+						if (v.repeating_armor_radiation_modifier) {update["radiation_modifier"] = v.repeating_armor_radiation_modifier};
+
+					};
+
+					setAttrs(update);
+				});
+			});
 
 	var update_liftCarry = function () {
 		getAttrs(["body", "strength", "lift_carry_modifier"], function(v) {
@@ -3337,10 +3491,10 @@
 
 //Calculate Movement Rates
 	var update_movement = function () {
-		getAttrs(["agility", "walk_bonus", "run_bonus"], function(v) {
+		getAttrs(["agility", "walk_modifier", "run_modifier"], function(v) {
 			var agi = parseInt(v.agility) || 0;
-			var wbon = parseInt(v.walk_bonus) || 0;
-			var rbon = parseInt(v.run_bonus) || 0;
+			var wbon = parseInt(v.walk_modifier) || 0;
+			var rbon = parseInt(v.run_modifier) || 0;
 			var walk = (agi * 2) + wbon;
 			var run = (agi * 4) + rbon;
 			let update = {};
@@ -3367,17 +3521,18 @@
 		};
 
 	//STUN TRACK
-	var update_stunTrack = function () {
-		getAttrs(["willpower","stun_modifier"], function(v){
-			var wil = parseInt(v.willpower) || 0;
-			var bon = parseInt(v.stun_modifier) || 0;
-			var tot = Math.ceil(wil/2) + 8 + bon;
-			let update = {};
-			update["stun"] = tot;
-			update["stun_max"] = tot;
-			setAttrs(update);
-		});
-	};
+		var update_stunTrack = function () {
+			getAttrs(["willpower","stun_modifier"], function(v){
+				var wil = parseInt(v.willpower) || 0;
+				var bon = parseInt(v.stun_modifier) || 0;
+				var tot = Math.ceil(wil/2) + 8 + bon;
+				let update = {};
+				update["stun"] = tot;
+				update["stun_max"] = tot;
+				setAttrs(update);
+			});
+		};
+
 
 //Convert physical into the physical damage track boxes
 	on("change:physical", function() {
@@ -3465,7 +3620,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			var tot = rea + int + bon;
 			let update = {};
 			update["initiative_mod"] = tot;
-			(bon != 0) ? update["display_initiative_mod"] = bas + " (" + stat + ")" : update["display_initiative_mod"] = bas;
+			(bon != 0) ? update["display_initiative_mod"] = bas + " (" + tot + ")" : update["display_initiative_mod"] = bas;
 			setAttrs(update);
 		});
 	};
@@ -3533,7 +3688,7 @@ on("change:device_rating change:matrix_modifier", function() {
 //Edge toggle to include ! for exploding dice
 	on("change:edge_toggle", function() {
 		getAttrs(["edge_toggle"], function(v){
-			edg = (v.edge_toggle > 0) ? "!" : "";
+			edg = (v.edge_toggle != 0) ? "!" : "";
 
 			setAttrs({explode_toggle: edg});
 		});
@@ -3645,7 +3800,6 @@ on("change:device_rating change:matrix_modifier", function() {
 	    });
 	});
 
-
 //IC  Attack Dice & Condition Track
 	on("change:host_rating", function() {
 		getAttrs(["host_rating"], function(v) {
@@ -3657,84 +3811,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			setAttrs({ic_attack: atk});
 		});
 	});
-
-//Individual Spec Display Toggles
-	on("change:con_spec", function() {getAttrs(["con_spec"], function(v){spe = (v.con_spec === '') ? "" : "(" + (v.con_spec) + ")"; setAttrs({con_spec_display: spe});});});
-	on("change:impersonation_spec", function() {getAttrs(["impersonation_spec"], function(v) {spe = (v.impersonation_spec === '') ? "" : "(" + (v.impersonation_spec) + ")"; setAttrs({impersonation_spec_display: spe});});});
-	on("change:performance_spec", function() {getAttrs(["performance_spec"], function(v){spe = (v.performance_spec === '') ? "" : "(" + (v.performance_spec) + ")"; setAttrs({performance_spec_display: spe});});});
-	on("change:gymnastics_spec", function() {getAttrs(["gymnastics_spec"], function(v){spe = (v.gymnastics_spec === '') ? "" : "(" + (v.gymnastics_spec) + ")"; setAttrs({gymnastics_spec_display: spe});});});
-	on("change:running_spec", function() {getAttrs(["running_spec"], function(v) {spe = (v.running_spec === '') ? "" : "(" + (v.running_spec) + ")"; setAttrs({running_spec_display: spe});});});
-	on("change:swimming_spec", function() {getAttrs(["swimming_spec"], function(v){spe = (v.swimming_spec === '') ? "" : "(" + (v.swimming_spec) + ")"; setAttrs({swimming_spec_display: spe});});});
-	on("change:cybertechnology_spec", function() {getAttrs(["cybertechnology_spec"], function(v){ spe = (v.cybertechnology_spec === '') ? "" : "(" + (v.cybertechnology_spec) + ")"; setAttrs({cybertechnology_spec_display: spe});});});
-	on("change:firstaid_spec", function() {getAttrs(["firstaid_spec"], function(v) {spe = (v.firstaid_spec === '') ? "" : "(" + (v.firstaid_spec) + ")"; setAttrs({firstaid_spec_display: spe});});});
-	on("change:medicine_spec", function() {getAttrs(["medicine_spec"], function(v){spe = (v.medicine_spec === '') ? "" : "(" + (v.medicine_spec) + ")"; setAttrs({medicine_spec_display: spe});});});
-	on("change:biotechnology_spec", function() {getAttrs(["biotechnology_spec"], function(v) {spe = (v.biotechnology_spec === '') ? "" : "(" + (v.biotechnology_spec) + ")"; setAttrs({biotechnology_spec_display: spe});});});
-	on("change:blades_spec", function() {getAttrs(["blades_spec"], function(v){spe = (v.blades_spec === '') ? "" : "(" + (v.blades_spec) + ")";setAttrs({blades_spec_display: spe});});});
-	on("change:clubs_spec", function() {getAttrs(["clubs_spec"], function(v) {spe = (v.clubs_spec === '') ? "" : "(" + (v.clubs_spec) + ")"; setAttrs({clubs_spec_display: spe});});});
-	on("change:unarmedcombat_spec", function() {getAttrs(["unarmedcombat_spec"], function(v){spe = (v.unarmedcombat_spec === '') ? "" : "(" + (v.unarmedcombat_spec) + ")"; setAttrs({unarmedcombat_spec_display: spe});});});
-	on("change:banishing_spec", function() {getAttrs(["banishing_spec"], function(v) {spe = (v.banishing_spec === '') ? "" : "(" + (v.banishing_spec) + ")"; setAttrs({banishing_spec_display: spe});});});
-	on("change:binding_spec", function() {getAttrs(["binding_spec"], function(v){spe = (v.binding_spec === '') ? "" : "(" + (v.binding_spec) + ")"; setAttrs({binding_spec_display: spe});});});
-	on("change:summoning_spec", function() {getAttrs(["summoning_spec"], function(v) {spe = (v.summoning_spec === '') ? "" : "(" + (v.summoning_spec) + ")"; setAttrs({summoning_spec_display: spe});});});
-	on("change:cybercombat_spec", function() {getAttrs(["cybercombat_spec"], function(v){spe = (v.cybercombat_spec === '') ? "" : "(" + (v.cybercombat_spec) + ")"; setAttrs({cybercombat_spec_display: spe});});});
-	on("change:electronicwarfare_spec", function() {getAttrs(["electronicwarfare_spec"], function(v) {spe = (v.electronicwarfare_spec === '') ? "" : "(" + (v.electronicwarfare_spec) + ")"; setAttrs({electronicwarfare_spec_display: spe});});});
-	on("change:hacking_spec", function() {getAttrs(["hacking", "hacking_spec"], function(v){spe = (v.hacking_spec === '') ? "" : "(" + (v.hacking_spec) + ")"; setAttrs({hacking_spec_display: spe});});});
-	on("change:computer_spec", function() {getAttrs(["computer_spec"], function(v) {spe = (v.computer_spec === '') ? "" : "(" + (v.computer_spec) + ")"; setAttrs({computer_spec_display: spe});});});
-	on("change:hardware_spec", function() {getAttrs(["hardware_spec"], function(v){spe = (v.hardware_spec === '') ? "" : "(" + (v.hardware_spec) + ")"; setAttrs({hardware_spec_display: spe});});});
-	on("change:software_spec", function() {getAttrs(["software_spec"], function(v) {spe = (v.software_spec === '') ? "" : "(" + (v.software_spec) + ")"; setAttrs({software_spec_display: spe});});});
-	on("change:alchemy_spec", function() {getAttrs(["alchemy_spec"], function(v){spe = (v.alchemy_spec === '') ? "" : "(" + (v.alchemy_spec) + ")"; setAttrs({alchemy_spec_display: spe});});});
-	on("change:artificing_spec", function() {getAttrs(["artificing_spec"], function(v) {spe = (v.artificing_spec === '') ? "" : "(" + (v.artificing_spec) + ")"; setAttrs({artificing_spec_display: spe});});});
-	on("change:disenchanting_spec", function() {getAttrs(["disenchanting_spec"], function(v){spe = (v.disenchanting_spec === '') ? "" : "(" + (v.disenchanting_spec) + ")"; setAttrs({disenchanting_spec_display: spe});});});
-	on("change:aeromech_spec", function() {getAttrs([ "aeromech_spec"], function(v) {spe = (v.aeromech_spec === '') ? "" : "(" + (v.aeromech_spec) + ")"; setAttrs({aeromech_spec_display: spe});});});
-	on("change:automech_spec", function() {getAttrs(["automech_spec"], function(v){spe = (v.automech_spec === '') ? "" : "(" + (v.automech_spec) + ")"; setAttrs({automech_spec_display: spe});});});
-	on("change:indusmech_spec", function() {getAttrs(["indusmech_spec"], function(v) {spe = (v.indusmech_spec === '') ? "" : "(" + (v.indusmech_spec) + ")"; setAttrs({indusmech_spec_display: spe});});});
-	on("change:nautmech_spec", function() {getAttrs(["nautmech_spec"], function(v){spe = (v.nautmech_spec === '') ? "" : "(" + (v.nautmech_spec) + ")"; setAttrs({nautmech_spec_display: spe});});});
-	on("change:automatics_spec", function() {getAttrs(["automatics_spec"], function(v) {spe = (v.automatics_spec === '') ? "" : "(" + (v.automatics_spec) + ")"; setAttrs({automatics_spec_display: spe});});});
-	on("change:longarms_spec", function() {getAttrs(["longarms_spec"], function(v){spe = (v.longarms_spec === '') ? "" : "(" + (v.longarms_spec) + ")"; setAttrs({longarms_spec_display: spe});});});
-	on("change:pistols_spec", function() {getAttrs(["pistols_spec"], function(v) {spe = (v.pistols_spec === '') ? "" : "(" + (v.pistols_spec) + ")"; setAttrs({pistols_spec_display: spe});});});
-	on("change:etiquette_spec", function() {getAttrs(["etiquette_spec"], function(v){spe = (v.etiquette_spec === '') ? "" : "(" + (v.etiquette_spec) + ")"; setAttrs({etiquette_spec_display: spe});});});
-	on("change:leadership_spec", function() {getAttrs(["leadership_spec"], function(v) {spe = (v.leadership_spec === '') ? "" : "(" + (v.leadership_spec) + ")"; setAttrs({leadership_spec_display: spe});});});
-	on("change:negotiation_spec", function() {getAttrs(["negotiation_spec"], function(v){spe = (v.negotiation_spec === '') ? "" : "(" + (v.negotiation_spec) + ")"; setAttrs({negotiation_spec_display: spe});});});
-	on("change:navigation_spec", function() {getAttrs(["navigation_spec"], function(v) {spe = (v.navigation_spec === '') ? "" : "(" + (v.navigation_spec) + ")"; setAttrs({navigation_spec_display: spe});});});
-	on("change:survival_spec", function() {getAttrs(["survival_spec"], function(v){spe = (v.survival_spec === '') ? "" : "(" + (v.survival_spec) + ")";setAttrs({survival_spec_display: spe});});});
-	on("change:tracking_spec", function() {getAttrs(["tracking_spec"], function(v) {spe = (v.tracking_spec === '') ? "" : "(" + (v.tracking_spec) + ")";setAttrs({tracking_spec_display: spe});});});
-	on("change:counterspelling_spec", function() {getAttrs(["counterspelling_spec"], function(v){spe = (v.counterspelling_spec === '') ? "" : "(" + (v.counterspelling_spec) + ")";setAttrs({counterspelling_spec_display: spe});});});
-	on("change:ritualspell_spec", function() {getAttrs(["ritualspell_spec"], function(v) {spe = (v.ritualspell_spec === '') ? "" : "(" + (v.ritualspell_spec) + ")";setAttrs({ritualspell_spec_display: spe});});});
-	on("change:spellcasting_spec", function() {getAttrs(["spellcasting_spec"], function(v){spe = (v.spellcasting_spec === '') ? "" : "(" + (v.spellcasting_spec) + ")";setAttrs({spellcasting_spec_display: spe});});});
-	on("change:disguise_spec", function() {getAttrs(["disguise_spec"], function(v) {spe = (v.disguise_spec === '') ? "" : "(" + (v.disguise_spec) + ")";setAttrs({disguise_spec_display: spe});});});
-	on("change:palming_spec", function() {getAttrs(["palming_spec"], function(v){spe = (v.palming_spec === '') ? "" : "(" + (v.palming_spec) + ")";setAttrs({palming_spec_display: spe});});});
-	on("change:sneaking_spec", function() {getAttrs(["sneaking_spec"], function(v) {spe = (v.sneaking_spec === '') ? "" : "(" + (v.sneaking_spec) + ")";setAttrs({sneaking_spec_display: spe});});});
-	on("change:compiling_spec", function() {getAttrs(["compiling_spec"], function(v){spe = (v.compiling_spec === '') ? "" : "(" + (v.compiling_spec) + ")";setAttrs({compiling_spec_display: spe});});});
-	on("change:decompiling_spec", function() {getAttrs(["decompiling_spec"], function(v) {spe = (v.decompiling_spec === '') ? "" : "(" + (v.decompiling_spec) + ")";setAttrs({decompiling_spec_display: spe});});});
-	on("change:registering_spec", function() {getAttrs(["registering_spec"], function(v){spe = (v.registering_spec === '') ? "" : "(" + (v.registering_spec) + ")";;setAttrs({registering_spec_display: spe});});});
-	on("change:archery_spec", function() {getAttrs(["archery_spec"], function(v) {spe = (v.archery_spec === '') ? "" : "(" + (v.archery_spec) + ")";setAttrs({archery_spec_display: spe});});});
-	on("change:exoticmelee_spec", function() {getAttrs(["exoticmelee_spec"], function(v){spe = (v.exoticmelee_spec === '') ? "" : "(" + (v.exoticmelee_spec) + ")";setAttrs({exoticmelee_spec_display: spe});});});
-	on("change:exoticrange_spec", function() {getAttrs(["exoticrange_spec"], function(v) {spe = (v.exoticrange_spec === '') ? "" : "(" + (v.exoticrange_spec) + ")";setAttrs({exoticrange_spec_display: spe});});});
-	on("change:heavyweapons_spec", function() {getAttrs(["heavyweapons_spec"], function(v){spe = (v.heavyweapons_spec === '') ? "" : "(" + (v.heavyweapons_spec) + ")";setAttrs({heavyweapons_spec_display: spe});});});
-	on("change:throwingweapons_spec", function() {getAttrs(["throwingweapons_spec"], function(v) {spe = (v.throwingweapons_spec === '') ? "" : "(" + (v.throwingweapons_spec) + ")";setAttrs({throwingweapons_spec_display: spe});});});
-	on("change:arcana_spec", function() {getAttrs(["arcana_spec"], function(v){spe = (v.arcana_spec === '') ? "" : "(" + (v.arcana_spec) + ")";;setAttrs({arcana_spec_display: spe});});});
-	on("change:assensing_spec", function() {getAttrs(["assensing_spec"], function(v) {spe = (v.assensing_spec === '') ? "" : "(" + (v.assensing_spec) + ")";setAttrs({assensing_spec_display: spe});});});
-	on("change:astralcombat_spec", function() {getAttrs(["astralcombat", "astralcombat_spec"], function(v){spe = (v.astralcombat_spec === '') ? "" : "(" + (v.astralcombat_spec) + ")";setAttrs({astralcombat_spec_display: spe});});});
-	on("change:instruction_spec", function() {getAttrs(["instruction_spec"], function(v) {spe = (v.instruction_spec === '') ? "" : "(" + (v.instruction_spec) + ")";setAttrs({instruction_spec_display: spe});});});
-	on("change:intimidation_spec", function() {getAttrs(["intimidation_spec"], function(v){spe = (v.intimidation_spec === '') ? "" : "(" + (v.intimidation_spec) + ")";setAttrs({intimidation_spec_display: spe});});});
-	on("change:diving_spec", function() {getAttrs(["diving_spec"], function(v) {spe = (v.diving_spec === '') ? "" : "(" + (v.diving_spec) + ")";setAttrs({diving_spec_display: spe});});});
-	on("change:escapeartist_spec", function() {getAttrs(["escapeartist_spec"], function(v){spe = (v.escapeartist_spec === '') ? "" : "(" + (v.escapeartist_spec) + ")";setAttrs({escapeartist_spec_display: spe});});});
-	on("change:flight_spec", function() {getAttrs(["flight_spec"], function(v) {spe = (v.flight_spec === '') ? "" : "(" + (v.flight_spec) + ")";setAttrs({flight_spec_display: spe});});});
-	on("change:freefall_spec", function() {getAttrs(["freefall_spec"], function(v){spe = (v.freefall_spec === '') ? "" : "(" + (v.freefall_spec) + ")";setAttrs({freefall_spec_display: spe});});});
-	on("change:animalhandling_spec", function() {getAttrs(["animalhandling_spec"], function(v) {spe = (v.animalhandling_spec === '') ? "" : "(" + (v.animalhandling_spec) + ")";setAttrs({animalhandling_spec_display: spe});});});
-	on("change:armorer_spec", function() {getAttrs(["armorer_spec"], function(v){spe = (v.armorer_spec === '') ? "" : "(" + (v.armorer_spec) + ")";setAttrs({armorer_spec_display: spe});});});
-	on("change:artisan_spec", function() {getAttrs(["artisan_spec"], function(v) {spe = (v.artisan_spec === '') ? "" : "(" + (v.artisan_spec) + ")";setAttrs({artisan_spec_display: spe});});});
-	on("change:chemistry_spec", function() {getAttrs(["chemistry_spec"], function(v){spe = (v.chemistry_spec === '') ? "" : "(" + (v.chemistry_spec) + ")";setAttrs({chemistry_spec_display: spe});});});
-	on("change:demolitions_spec", function() {getAttrs(["demolitions_spec"], function(v) {spe = (v.demolitions_spec === '') ? "" : "(" + (v.demolitions_spec) + ")";setAttrs({demolitions_spec_display: spe});});});
-	on("change:forgery_spec", function() {getAttrs(["forgery_spec"], function(v){spe = (v.forgery_spec === '') ? "" : "(" + (v.forgery_spec) + ")";;setAttrs({forgery_spec_display: spe});});});
-	on("change:locksmith_spec", function() {getAttrs(["locksmith_spec"], function(v) {spe = (v.locksmith_spec === '') ? "" : "(" + (v.locksmith_spec) + ")";setAttrs({locksmith_spec_display: spe});});});
-	on("change:gunnery_spec", function() {getAttrs(["gunnery_spec"], function(v){spe = (v.gunnery_spec === '') ? "" : "(" + (v.gunnery_spec) + ")";setAttrs({gunnery_spec_display: spe});});});
-	on("change:pilotaerospace_spec", function() {getAttrs([ "pilotaerospace_spec"], function(v) {spe = (v.pilotaerospace_spec === '') ? "" : "(" + (v.pilotaerospace_spec) + ")";setAttrs({pilotaerospace_spec_display: spe});});});
-	on("change:pilotaircraft_spec", function() {getAttrs(["pilotaircraft_spec"], function(v){spe = (v.pilotaircraft_spec === '') ? "" : "(" + (v.pilotaircraft_spec) + ")";setAttrs({pilotaircraft_spec_display: spe});});});
-	on("change:pilotexotic_spec", function() {getAttrs(["pilotexotic_spec"], function(v) {spe = (v.pilotexotic_spec === '') ? "" : "(" + (v.pilotexotic_spec) + ")";setAttrs({pilotexotic_spec_display: spe});});});
-	on("change:pilotground_spec", function() {getAttrs(["pilotground_spec"], function(v){spe = (v.pilotground_spec === '') ? "" : "(" + (v.pilotground_spec) + ")";setAttrs({pilotground_spec_display: spe});});});
-	on("change:pilotwalker_spec", function() {getAttrs(["pilotwalker_spec"], function(v) {spe = (v.pilotwalker_spec === '') ? "" : "(" + (v.pilotwalker_spec) + ")";setAttrs({pilotwalker_spec_display: spe});});});
-	on("change:pilotwatercraft_spec", function() {getAttrs(["pilotwatercraft_spec"], function(v){spe = (v.pilotwatercraft_spec === '') ? "" : "(" + (v.pilotwatercraft_spec) + ")";setAttrs({pilotwatercraft_spec_display: spe});});});s
-	on("change:perception_spec", function() {getAttrs(["perception_spec"], function(v) {spe = (v.perception_spec === '') ? "" : "(" + (v.perception_spec) + ")";setAttrs({perception_spec_display: spe});});});
 
 //Repeating active skills for PC sheet
 	on("change:repeating_active", function() {
@@ -3871,15 +3947,15 @@ on("change:device_rating change:matrix_modifier", function() {
 		});
 	});
 
-on("change:repeating_melee", function(){
-	getAttrs(["repeating_melee_dicepool_modifier", "repeating_melee_spec"], function(v){
-		const bon = parseInt(v.repeating_melee_dicepool_modifier) || 0;
-		const spec = parseInt(v.repeating_melee_spec) || 0;
-		let tot = bon + spec;
+	on("change:repeating_melee", function(){
+		getAttrs(["repeating_melee_dicepool_modifier", "repeating_melee_spec"], function(v){
+			const bon = parseInt(v.repeating_melee_dicepool_modifier) || 0;
+			const spec = parseInt(v.repeating_melee_spec) || 0;
+			let tot = bon + spec;
 
-		setAttrs({repeating_melee_dicepool: tot});
+			setAttrs({repeating_melee_dicepool: tot});
+		});
 	});
-});
 
 //Repeating IDs & Lifestyles Section Display
 	on("change:repeating_lifestyle", function() {
@@ -3919,58 +3995,127 @@ on("change:repeating_melee", function(){
 	});
 
 
-//Calculate ALL THE THINGS! Related to Soak & Armor Pools
-	//Calculate Soak Pool
-	on("change:body change:armor_rating change:soak_modifier change:acid_modifier change:cold_modifier change:fire_modifier change:electrical_modifier change:radiation_modifier", function() {
-		getAttrs(["body", "armor_rating", "soak_modifier", "acid_modifier", "cold_modifier", "fire_modifier", "electrical_modifier", "radiation_modifier"], function(v){
-			var bod = parseInt(v.body) || 0;
-			var arm = parseInt(v.armor) || 0;
-			var bon = parseInt(v.soak_modifier) || 0;
-			var soak = bod + arm + bon;
+//Cyberdeck Calculations
+	on("change:attack_temp change:attack_base change:attack_modifier", function() {
+		getAttrs(["attack_temp", "attack_base", "attack_modifier"], function(v) {
+			const temp = parseInt(v.attack_temp) || 0;
+			const base = parseInt(v.attack_base) || 0;
+			const mod = parseInt(v.attack_modifier) || 0;
+			let tot = temp + base + mod;
 
-			setAttrs({soak: soak});
+			setAttrs({attack: tot});
 		});
 	});
 
-//This is for armor changes on PCs
-	on("change:repeating_armor", function() {
-		getAttrs(["body", "repeating_armor_soak", "repeating_armor_armor_value", "repeating_armor_acid_modifier", "repeating_armor_cold_modifier", "repeating_armor_electrical_modifier", "repeating_armor_fire_modifier", "repeating_armor_radiation_modifier", "repeating_armor_acid_protection",
-			"repeating_armor_cold_protection", "repeating_armor_fire_protection", "repeating_armor_electrical_protection", "repeating_armor_radiation_protection", "repeating_armor_primary_armor_flag"], function(v) {
-			const body = parseInt(v.body) || 0;
-			const armor = parseInt(v.repeating_armor_armor_value) || 0;
-			const acid = parseInt(v.repeating_armor_acid_modifier) || 0;
-			const fire = parseInt(v.repeating_armor_fire_modifier) || 0;
-			const cold = parseInt(v.repeating_armor_cold_modifier) || 0;
-			const elec = parseInt(v.repeating_armor_electrical_modifier) || 0;
-			const rad = parseInt(v.repeating_armor_radiation_modifier) || 0;
-			let soak = body + armor;
-			let newAcidProtection = soak + acid;
-			let newFireProtection = soak + fire;
-			let newColdProtection = soak + cold;
-			let newElecProtection = soak + elec;
-			let newRadProtection = soak + rad;
-			let update = {};
+	on("change:sleaze_temp change:sleaze_base change:sleaze_modifier", function() {
+		getAttrs(["sleaze_temp", "sleaze_base", "sleaze_modifier"], function(v) {
+			const temp = parseInt(v.sleaze_temp) || 0;
+			const base = parseInt(v.sleaze_base) || 0;
+			const mod = parseInt(v.sleaze_modifier) || 0;
+			let tot = temp + base + mod;
 
-			if (newAcidProtection != v.repeating_armor_acid_protection) {update["repeating_armor_acid_protection"] = newAcidProtection;};
-			if (newFireProtection != v.repeating_armor_fire_protection) {update["repeating_armor_fire_protection"] = newFireProtection;};
-			if (newColdProtection != v.repeating_armor_cold_protection) {update["repeating_armor_cold_protection"] = newColdProtection;};
-			if (newElecProtection != v.repeating_armor_electrical_protection) {update["repeating_armor_electrical_protection"] = newElecProtection;};
-			if (newRadProtection != v.repeating_armor_radiation_protection) {update["repeating_armor_radiation_protection"] = newRadProtection;};
-			if (soak != v.repeating_armor_soak) {update["repeating_armor_soak"] = soak;};
-
-			if (v.repeating_armor_primary_armor_flag === "primary") {
-				update["acid_protection"] === newAcidProtection;
-				update["cold_protection"] === newColdProtection;
-				update["electrical_protection"] === newElecProtection;
-				update["fire_protection"] === newFireProtection;
-				update["radiation_protection"] === newRadProtection;
-				update["soak"] === soak;
-			};
-
-			setAttrs(update);
+			setAttrs({sleaze: tot});
 		});
 	});
 
+	on("change:data_processing_temp change:data_processing_base change:data_processing_modifier", function() {
+		getAttrs(["data_processing_temp", "data_processing_base", "data_processing_modifier"], function(v) {
+			const temp = parseInt(v.data_processing_temp) || 0;
+			const base = parseInt(v.data_processing_base) || 0;
+			const mod = parseInt(v.data_processing_modifier) || 0;
+			let tot = temp + base + mod;
 
+			setAttrs({data_processing: tot});
+		});
+	});
+
+	on("change:firewall_temp change:firewall_base change:firewall_modifier", function() {
+		getAttrs(["firewall_temp", "firewall_base", "firewall_modifier"], function(v) {
+			const temp = parseInt(v.firewall_temp) || 0;
+			const base = parseInt(v.firewall_base) || 0;
+			const mod = parseInt(v.firewall_modifier) || 0;
+			let tot = temp + base + mod;
+
+			setAttrs({firewall: tot});
+		});
+	});
+
+//Individual Spec Display Toggles
+	on("change:con_spec", function() {getAttrs(["con_spec"], function(v){spe = (v.con_spec === '') ? "" : "(" + (v.con_spec) + ")"; setAttrs({con_spec_display: spe});});});
+	on("change:impersonation_spec", function() {getAttrs(["impersonation_spec"], function(v) {spe = (v.impersonation_spec === '') ? "" : "(" + (v.impersonation_spec) + ")"; setAttrs({impersonation_spec_display: spe});});});
+	on("change:performance_spec", function() {getAttrs(["performance_spec"], function(v){spe = (v.performance_spec === '') ? "" : "(" + (v.performance_spec) + ")"; setAttrs({performance_spec_display: spe});});});
+	on("change:gymnastics_spec", function() {getAttrs(["gymnastics_spec"], function(v){spe = (v.gymnastics_spec === '') ? "" : "(" + (v.gymnastics_spec) + ")"; setAttrs({gymnastics_spec_display: spe});});});
+	on("change:running_spec", function() {getAttrs(["running_spec"], function(v) {spe = (v.running_spec === '') ? "" : "(" + (v.running_spec) + ")"; setAttrs({running_spec_display: spe});});});
+	on("change:swimming_spec", function() {getAttrs(["swimming_spec"], function(v){spe = (v.swimming_spec === '') ? "" : "(" + (v.swimming_spec) + ")"; setAttrs({swimming_spec_display: spe});});});
+	on("change:cybertechnology_spec", function() {getAttrs(["cybertechnology_spec"], function(v){ spe = (v.cybertechnology_spec === '') ? "" : "(" + (v.cybertechnology_spec) + ")"; setAttrs({cybertechnology_spec_display: spe});});});
+	on("change:firstaid_spec", function() {getAttrs(["firstaid_spec"], function(v) {spe = (v.firstaid_spec === '') ? "" : "(" + (v.firstaid_spec) + ")"; setAttrs({firstaid_spec_display: spe});});});
+	on("change:medicine_spec", function() {getAttrs(["medicine_spec"], function(v){spe = (v.medicine_spec === '') ? "" : "(" + (v.medicine_spec) + ")"; setAttrs({medicine_spec_display: spe});});});
+	on("change:biotechnology_spec", function() {getAttrs(["biotechnology_spec"], function(v) {spe = (v.biotechnology_spec === '') ? "" : "(" + (v.biotechnology_spec) + ")"; setAttrs({biotechnology_spec_display: spe});});});
+	on("change:blades_spec", function() {getAttrs(["blades_spec"], function(v){spe = (v.blades_spec === '') ? "" : "(" + (v.blades_spec) + ")";setAttrs({blades_spec_display: spe});});});
+	on("change:clubs_spec", function() {getAttrs(["clubs_spec"], function(v) {spe = (v.clubs_spec === '') ? "" : "(" + (v.clubs_spec) + ")"; setAttrs({clubs_spec_display: spe});});});
+	on("change:unarmedcombat_spec", function() {getAttrs(["unarmedcombat_spec"], function(v){spe = (v.unarmedcombat_spec === '') ? "" : "(" + (v.unarmedcombat_spec) + ")"; setAttrs({unarmedcombat_spec_display: spe});});});
+	on("change:banishing_spec", function() {getAttrs(["banishing_spec"], function(v) {spe = (v.banishing_spec === '') ? "" : "(" + (v.banishing_spec) + ")"; setAttrs({banishing_spec_display: spe});});});
+	on("change:binding_spec", function() {getAttrs(["binding_spec"], function(v){spe = (v.binding_spec === '') ? "" : "(" + (v.binding_spec) + ")"; setAttrs({binding_spec_display: spe});});});
+	on("change:summoning_spec", function() {getAttrs(["summoning_spec"], function(v) {spe = (v.summoning_spec === '') ? "" : "(" + (v.summoning_spec) + ")"; setAttrs({summoning_spec_display: spe});});});
+	on("change:cybercombat_spec", function() {getAttrs(["cybercombat_spec"], function(v){spe = (v.cybercombat_spec === '') ? "" : "(" + (v.cybercombat_spec) + ")"; setAttrs({cybercombat_spec_display: spe});});});
+	on("change:electronicwarfare_spec", function() {getAttrs(["electronicwarfare_spec"], function(v) {spe = (v.electronicwarfare_spec === '') ? "" : "(" + (v.electronicwarfare_spec) + ")"; setAttrs({electronicwarfare_spec_display: spe});});});
+	on("change:hacking_spec", function() {getAttrs(["hacking", "hacking_spec"], function(v){spe = (v.hacking_spec === '') ? "" : "(" + (v.hacking_spec) + ")"; setAttrs({hacking_spec_display: spe});});});
+	on("change:computer_spec", function() {getAttrs(["computer_spec"], function(v) {spe = (v.computer_spec === '') ? "" : "(" + (v.computer_spec) + ")"; setAttrs({computer_spec_display: spe});});});
+	on("change:hardware_spec", function() {getAttrs(["hardware_spec"], function(v){spe = (v.hardware_spec === '') ? "" : "(" + (v.hardware_spec) + ")"; setAttrs({hardware_spec_display: spe});});});
+	on("change:software_spec", function() {getAttrs(["software_spec"], function(v) {spe = (v.software_spec === '') ? "" : "(" + (v.software_spec) + ")"; setAttrs({software_spec_display: spe});});});
+	on("change:alchemy_spec", function() {getAttrs(["alchemy_spec"], function(v){spe = (v.alchemy_spec === '') ? "" : "(" + (v.alchemy_spec) + ")"; setAttrs({alchemy_spec_display: spe});});});
+	on("change:artificing_spec", function() {getAttrs(["artificing_spec"], function(v) {spe = (v.artificing_spec === '') ? "" : "(" + (v.artificing_spec) + ")"; setAttrs({artificing_spec_display: spe});});});
+	on("change:disenchanting_spec", function() {getAttrs(["disenchanting_spec"], function(v){spe = (v.disenchanting_spec === '') ? "" : "(" + (v.disenchanting_spec) + ")"; setAttrs({disenchanting_spec_display: spe});});});
+	on("change:aeromech_spec", function() {getAttrs([ "aeromech_spec"], function(v) {spe = (v.aeromech_spec === '') ? "" : "(" + (v.aeromech_spec) + ")"; setAttrs({aeromech_spec_display: spe});});});
+	on("change:automech_spec", function() {getAttrs(["automech_spec"], function(v){spe = (v.automech_spec === '') ? "" : "(" + (v.automech_spec) + ")"; setAttrs({automech_spec_display: spe});});});
+	on("change:indusmech_spec", function() {getAttrs(["indusmech_spec"], function(v) {spe = (v.indusmech_spec === '') ? "" : "(" + (v.indusmech_spec) + ")"; setAttrs({indusmech_spec_display: spe});});});
+	on("change:nautmech_spec", function() {getAttrs(["nautmech_spec"], function(v){spe = (v.nautmech_spec === '') ? "" : "(" + (v.nautmech_spec) + ")"; setAttrs({nautmech_spec_display: spe});});});
+	on("change:automatics_spec", function() {getAttrs(["automatics_spec"], function(v) {spe = (v.automatics_spec === '') ? "" : "(" + (v.automatics_spec) + ")"; setAttrs({automatics_spec_display: spe});});});
+	on("change:longarms_spec", function() {getAttrs(["longarms_spec"], function(v){spe = (v.longarms_spec === '') ? "" : "(" + (v.longarms_spec) + ")"; setAttrs({longarms_spec_display: spe});});});
+	on("change:pistols_spec", function() {getAttrs(["pistols_spec"], function(v) {spe = (v.pistols_spec === '') ? "" : "(" + (v.pistols_spec) + ")"; setAttrs({pistols_spec_display: spe});});});
+	on("change:etiquette_spec", function() {getAttrs(["etiquette_spec"], function(v){spe = (v.etiquette_spec === '') ? "" : "(" + (v.etiquette_spec) + ")"; setAttrs({etiquette_spec_display: spe});});});
+	on("change:leadership_spec", function() {getAttrs(["leadership_spec"], function(v) {spe = (v.leadership_spec === '') ? "" : "(" + (v.leadership_spec) + ")"; setAttrs({leadership_spec_display: spe});});});
+	on("change:negotiation_spec", function() {getAttrs(["negotiation_spec"], function(v){spe = (v.negotiation_spec === '') ? "" : "(" + (v.negotiation_spec) + ")"; setAttrs({negotiation_spec_display: spe});});});
+	on("change:navigation_spec", function() {getAttrs(["navigation_spec"], function(v) {spe = (v.navigation_spec === '') ? "" : "(" + (v.navigation_spec) + ")"; setAttrs({navigation_spec_display: spe});});});
+	on("change:survival_spec", function() {getAttrs(["survival_spec"], function(v){spe = (v.survival_spec === '') ? "" : "(" + (v.survival_spec) + ")";setAttrs({survival_spec_display: spe});});});
+	on("change:tracking_spec", function() {getAttrs(["tracking_spec"], function(v) {spe = (v.tracking_spec === '') ? "" : "(" + (v.tracking_spec) + ")";setAttrs({tracking_spec_display: spe});});});
+	on("change:counterspelling_spec", function() {getAttrs(["counterspelling_spec"], function(v){spe = (v.counterspelling_spec === '') ? "" : "(" + (v.counterspelling_spec) + ")";setAttrs({counterspelling_spec_display: spe});});});
+	on("change:ritualspell_spec", function() {getAttrs(["ritualspell_spec"], function(v) {spe = (v.ritualspell_spec === '') ? "" : "(" + (v.ritualspell_spec) + ")";setAttrs({ritualspell_spec_display: spe});});});
+	on("change:spellcasting_spec", function() {getAttrs(["spellcasting_spec"], function(v){spe = (v.spellcasting_spec === '') ? "" : "(" + (v.spellcasting_spec) + ")";setAttrs({spellcasting_spec_display: spe});});});
+	on("change:disguise_spec", function() {getAttrs(["disguise_spec"], function(v) {spe = (v.disguise_spec === '') ? "" : "(" + (v.disguise_spec) + ")";setAttrs({disguise_spec_display: spe});});});
+	on("change:palming_spec", function() {getAttrs(["palming_spec"], function(v){spe = (v.palming_spec === '') ? "" : "(" + (v.palming_spec) + ")";setAttrs({palming_spec_display: spe});});});
+	on("change:sneaking_spec", function() {getAttrs(["sneaking_spec"], function(v) {spe = (v.sneaking_spec === '') ? "" : "(" + (v.sneaking_spec) + ")";setAttrs({sneaking_spec_display: spe});});});
+	on("change:compiling_spec", function() {getAttrs(["compiling_spec"], function(v){spe = (v.compiling_spec === '') ? "" : "(" + (v.compiling_spec) + ")";setAttrs({compiling_spec_display: spe});});});
+	on("change:decompiling_spec", function() {getAttrs(["decompiling_spec"], function(v) {spe = (v.decompiling_spec === '') ? "" : "(" + (v.decompiling_spec) + ")";setAttrs({decompiling_spec_display: spe});});});
+	on("change:registering_spec", function() {getAttrs(["registering_spec"], function(v){spe = (v.registering_spec === '') ? "" : "(" + (v.registering_spec) + ")";;setAttrs({registering_spec_display: spe});});});
+	on("change:archery_spec", function() {getAttrs(["archery_spec"], function(v) {spe = (v.archery_spec === '') ? "" : "(" + (v.archery_spec) + ")";setAttrs({archery_spec_display: spe});});});
+	on("change:exoticmelee_spec", function() {getAttrs(["exoticmelee_spec"], function(v){spe = (v.exoticmelee_spec === '') ? "" : "(" + (v.exoticmelee_spec) + ")";setAttrs({exoticmelee_spec_display: spe});});});
+	on("change:exoticrange_spec", function() {getAttrs(["exoticrange_spec"], function(v) {spe = (v.exoticrange_spec === '') ? "" : "(" + (v.exoticrange_spec) + ")";setAttrs({exoticrange_spec_display: spe});});});
+	on("change:heavyweapons_spec", function() {getAttrs(["heavyweapons_spec"], function(v){spe = (v.heavyweapons_spec === '') ? "" : "(" + (v.heavyweapons_spec) + ")";setAttrs({heavyweapons_spec_display: spe});});});
+	on("change:throwingweapons_spec", function() {getAttrs(["throwingweapons_spec"], function(v) {spe = (v.throwingweapons_spec === '') ? "" : "(" + (v.throwingweapons_spec) + ")";setAttrs({throwingweapons_spec_display: spe});});});
+	on("change:arcana_spec", function() {getAttrs(["arcana_spec"], function(v){spe = (v.arcana_spec === '') ? "" : "(" + (v.arcana_spec) + ")";;setAttrs({arcana_spec_display: spe});});});
+	on("change:assensing_spec", function() {getAttrs(["assensing_spec"], function(v) {spe = (v.assensing_spec === '') ? "" : "(" + (v.assensing_spec) + ")";setAttrs({assensing_spec_display: spe});});});
+	on("change:astralcombat_spec", function() {getAttrs(["astralcombat", "astralcombat_spec"], function(v){spe = (v.astralcombat_spec === '') ? "" : "(" + (v.astralcombat_spec) + ")";setAttrs({astralcombat_spec_display: spe});});});
+	on("change:instruction_spec", function() {getAttrs(["instruction_spec"], function(v) {spe = (v.instruction_spec === '') ? "" : "(" + (v.instruction_spec) + ")";setAttrs({instruction_spec_display: spe});});});
+	on("change:intimidation_spec", function() {getAttrs(["intimidation_spec"], function(v){spe = (v.intimidation_spec === '') ? "" : "(" + (v.intimidation_spec) + ")";setAttrs({intimidation_spec_display: spe});});});
+	on("change:diving_spec", function() {getAttrs(["diving_spec"], function(v) {spe = (v.diving_spec === '') ? "" : "(" + (v.diving_spec) + ")";setAttrs({diving_spec_display: spe});});});
+	on("change:escapeartist_spec", function() {getAttrs(["escapeartist_spec"], function(v){spe = (v.escapeartist_spec === '') ? "" : "(" + (v.escapeartist_spec) + ")";setAttrs({escapeartist_spec_display: spe});});});
+	on("change:flight_spec", function() {getAttrs(["flight_spec"], function(v) {spe = (v.flight_spec === '') ? "" : "(" + (v.flight_spec) + ")";setAttrs({flight_spec_display: spe});});});
+	on("change:freefall_spec", function() {getAttrs(["freefall_spec"], function(v){spe = (v.freefall_spec === '') ? "" : "(" + (v.freefall_spec) + ")";setAttrs({freefall_spec_display: spe});});});
+	on("change:animalhandling_spec", function() {getAttrs(["animalhandling_spec"], function(v) {spe = (v.animalhandling_spec === '') ? "" : "(" + (v.animalhandling_spec) + ")";setAttrs({animalhandling_spec_display: spe});});});
+	on("change:armorer_spec", function() {getAttrs(["armorer_spec"], function(v){spe = (v.armorer_spec === '') ? "" : "(" + (v.armorer_spec) + ")";setAttrs({armorer_spec_display: spe});});});
+	on("change:artisan_spec", function() {getAttrs(["artisan_spec"], function(v) {spe = (v.artisan_spec === '') ? "" : "(" + (v.artisan_spec) + ")";setAttrs({artisan_spec_display: spe});});});
+	on("change:chemistry_spec", function() {getAttrs(["chemistry_spec"], function(v){spe = (v.chemistry_spec === '') ? "" : "(" + (v.chemistry_spec) + ")";setAttrs({chemistry_spec_display: spe});});});
+	on("change:demolitions_spec", function() {getAttrs(["demolitions_spec"], function(v) {spe = (v.demolitions_spec === '') ? "" : "(" + (v.demolitions_spec) + ")";setAttrs({demolitions_spec_display: spe});});});
+	on("change:forgery_spec", function() {getAttrs(["forgery_spec"], function(v){spe = (v.forgery_spec === '') ? "" : "(" + (v.forgery_spec) + ")";;setAttrs({forgery_spec_display: spe});});});
+	on("change:locksmith_spec", function() {getAttrs(["locksmith_spec"], function(v) {spe = (v.locksmith_spec === '') ? "" : "(" + (v.locksmith_spec) + ")";setAttrs({locksmith_spec_display: spe});});});
+	on("change:gunnery_spec", function() {getAttrs(["gunnery_spec"], function(v){spe = (v.gunnery_spec === '') ? "" : "(" + (v.gunnery_spec) + ")";setAttrs({gunnery_spec_display: spe});});});
+	on("change:pilotaerospace_spec", function() {getAttrs([ "pilotaerospace_spec"], function(v) {spe = (v.pilotaerospace_spec === '') ? "" : "(" + (v.pilotaerospace_spec) + ")";setAttrs({pilotaerospace_spec_display: spe});});});
+	on("change:pilotaircraft_spec", function() {getAttrs(["pilotaircraft_spec"], function(v){spe = (v.pilotaircraft_spec === '') ? "" : "(" + (v.pilotaircraft_spec) + ")";setAttrs({pilotaircraft_spec_display: spe});});});
+	on("change:pilotexotic_spec", function() {getAttrs(["pilotexotic_spec"], function(v) {spe = (v.pilotexotic_spec === '') ? "" : "(" + (v.pilotexotic_spec) + ")";setAttrs({pilotexotic_spec_display: spe});});});
+	on("change:pilotground_spec", function() {getAttrs(["pilotground_spec"], function(v){spe = (v.pilotground_spec === '') ? "" : "(" + (v.pilotground_spec) + ")";setAttrs({pilotground_spec_display: spe});});});
+	on("change:pilotwalker_spec", function() {getAttrs(["pilotwalker_spec"], function(v) {spe = (v.pilotwalker_spec === '') ? "" : "(" + (v.pilotwalker_spec) + ")";setAttrs({pilotwalker_spec_display: spe});});});
+	on("change:pilotwatercraft_spec", function() {getAttrs(["pilotwatercraft_spec"], function(v){spe = (v.pilotwatercraft_spec === '') ? "" : "(" + (v.pilotwatercraft_spec) + ")";setAttrs({pilotwatercraft_spec_display: spe});});});
+	on("change:perception_spec", function() {getAttrs(["perception_spec"], function(v) {spe = (v.perception_spec === '') ? "" : "(" + (v.perception_spec) + ")";setAttrs({perception_spec_display: spe});});});
 
 </script>

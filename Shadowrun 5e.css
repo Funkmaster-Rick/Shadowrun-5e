@@ -30,13 +30,9 @@ button[type="roll"] {
 	padding: 0px 0px;
 }
 
-button:hover {
-	background-color: transparent;
-	color: #FCD116;
-}
-
 button > h2:hover,
-button > span:hover {
+button > span:hover,
+label > button[type="roll"]:hover {
 	color: #fff;
 	text-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px #610b0d;
 }
@@ -405,28 +401,29 @@ span {
 			width: 20.6% !important;
 		}
 
-		/***** Core Combat Inputs *****/
-		.sheet-cc-arm input[type="text"]  {
-			width: 45%
+		/***** Core Combat Info *****/
+		.sheet-cc-arm button[type="roll"] {
+			font-size: 0.9em;
+			padding: 2px 3px;
 		}
 
-		.sheet-cc-arm input[type="number"]  {
-			width: 24%;
+		.sheet-cc-arm div:nth-of-type(1) {
+			display: inline-block;
+			overflow: hidden; 
+			vertical-align: middle;
+			width: 35%;
 		}
 
-		.sheet-cc-ran input[type="text"],
-		.sheet-cc-mel input[type="text"]  {
-			width: 64%;
+		.sheet-armor-buttons {
+			display: inline-block;
+			font-size: 1.2em;
+			line-height: 20px;
+			margin-left: 2%;
 		}
 
-		.sheet-cc-ran + .sheet-cc-row input[type="text"],
-		.sheet-cc-ran + .sheet-cc-row input[type="number"] {
-			width: 10%;
-		}
-
-		.sheet-cc-mel + .sheet-cc-row input[type="text"],
-		.sheet-cc-mel + .sheet-cc-row input[type="number"] {
-			width: 18%;
+		.sheet-armor-buttons span {
+			font-size: 1.2em;
+			margin-left: -5px;
 		}
 
 	/***** Attributes Box *****/
@@ -947,7 +944,7 @@ span {
 
 	/***** Skills *****/
 	.sheet-skill-box .sheet-medium-box {
-		margin-top: -17px;
+		margin-top: -18px;
 	}
 
 	.sheet-skill-box h3:first-child {
@@ -1054,13 +1051,17 @@ span {
 			/***** Skills repeating sections on toggles *****/
 			.sheet-skills-active,
 			.sheet-skills-know,
-			.sheet-skills-lang {
+			.sheet-skills-lang,
+			.sheet-quality,
+			.sheet-martial {
 				display: none;
 			}
 
-			.sheet-skill-toggle[value="active"] ~ .sheet-skills-active,
-			.sheet-skill-toggle[value="knowledge"] ~ .sheet-skills-know,
-			.sheet-skill-toggle[value="language"] ~ .sheet-skills-lang {
+			.sheet-tab-switch[value="active"] ~ .sheet-skills-active,
+			.sheet-tab-switch[value="knowledge"] ~ .sheet-skills-know,
+			.sheet-tab-switch[value="language"] ~ .sheet-skills-lang,
+			.sheet-tab-switch[value="quality"] ~ .sheet-quality,
+			.sheet-tab-switch[value="martial"] ~ .sheet-martial {
 				display: inline;
 			}
 
@@ -1073,7 +1074,7 @@ span {
 	}
 
 		/***** Display Flags used in Collapsable areas... *****/
-		.sheet-quality .sheet-display-flag,
+		.sheet-quality-box .sheet-display-flag,
 		.sheet-contacts .sheet-display-flag,
 		.sheet-item-box .sheet-display-flag,
 		.sheet-spell-box .sheet-display-flag,
@@ -1137,30 +1138,64 @@ span {
 	}
 
 	/***** Qualities *****/
-	.sheet-quality h3:first-child {
-		margin-right: 82%;
+	.sheet-quality-box .sheet-medium-box {
+		margin-top: -18px;
+	}
+
+	.sheet-quality-box h3:first-child {
+		margin-right: 70%;
+		width: 15%;
 	}
 
 		/***** Qualities Settings *****/
-		.sheet-quality .sheet-settings div,
-		.sheet-quality .sheet-display {
+		.sheet-quality-box .sheet-settings div,
+		.sheet-quality-box .sheet-display {
 			display: inline-block;
 		}
 
-		.sheet-quality .sheet-settings div {
+		.sheet-quality-box .sheet-settings div {
 			width: 100%;
 		}
 
 		.sheet-quality .sheet-settings input[type="text"],
 		.sheet-quality .sheet-display-row:nth-of-type(1)  {
 			margin-right: 2%;
-			width: 87%;
+			width: 82%;
 		}
 
 		.sheet-quality .sheet-display-row:nth-of-type(2),
 		.sheet-quality .sheet-settings select  {
 			width: 8%;
 		}
+
+		/***** Qualities & Marital Art tabs *****/
+		.sheet-quality-box .sheet-tab-switch {
+			margin-bottom: 2px;
+			margin-right: 12%;
+			top: -20px;
+			width: 25%;
+		}
+
+		.sheet-quality-box .sheet-tab-switch:nth-of-type(2) {
+			margin-right: 0px;
+			width: 35%;
+		}
+
+	/***** Marital Art *****/
+	.sheet-martial h3:first-child {
+		margin-right: 39%;
+	}
+
+	.sheet-martial input[type="text"],
+	.sheet-martial .sheet-display-row {
+		width: 54%;
+	}
+
+	.sheet-martial input[type="text"]:nth-of-type(2),
+	.sheet-martial .sheet-display-row:nth-of-type(2) {
+		text-align: left;
+		width: 43%;
+	}
 
 	/***** Lifestyle for PC sheet *****/
 	.sheet-lifestyle h3:nth-of-type(2) {
@@ -1265,8 +1300,8 @@ span {
 			width: 100%;
 		}
 
-		.sheet-weapon-toggle[value="range"] ~ .sheet-weapon-range,
-		.sheet-weapon-toggle[value="melee"] ~ .sheet-weapon-melee,
+		.sheet-tab-switch[value="range"] ~ .sheet-weapon-range,
+		.sheet-tab-switch[value="melee"] ~ .sheet-weapon-melee,
 		.sheet-arms .sheet-display  {
 			display: inline-block;
 		}
@@ -1347,6 +1382,11 @@ span {
 		/***** Armor for PC Sheet *****/
 		.sheet-armor-box h3 {
 			margin-right: 5.5px;
+		}
+
+		.sheet-armor-box button:nth-child(1n+2) {
+			height: 25px;
+			width: 25px;
 		}
 
 			/***** Armor Settings Inputs *****/
@@ -1588,28 +1628,29 @@ span {
 	}
 
 		/***** Cyberdeck Settings *****/
-		/*.sheet-matrix .sheet-repeat-box {
-			margin-left: 0px;
-		}*/
+		.sheet-cyberdeck button {
+			font-weight: bold;
+		}
 
 		.sheet-cyberdeck h3 {
 			line-height: 20px;
 		}
 
-		.sheet-cyberdeck h3 + h3 {
-			margin-left: 8%;
-		}
-
-		.sheet-cyberdeck h3 + h3 + h3 {
-			margin-left: 3%;
-		}
-
-		.sheet-cyberdeck h3 + h3 + h3 + h3 {
+		.sheet-cyberdeck h3:nth-of-type(2) {
 			margin-left: 2%;
 		}
 
+		.sheet-cyberdeck h3:nth-of-type(3) {
+			margin-left: 1%;
+		}
+
+		.sheet-cyberdeck h3:nth-of-type(4) {
+			margin-left: 0%;
+			margin-right: 15%;
+		}
+
 		.sheet-cyberdeck .sheet-row-long h3:first-child {
-			margin-left: 26%;
+			margin-left: 16%;
 		}
 
 		.sheet-cyberdeck input[type="number"] {
@@ -1618,13 +1659,106 @@ span {
 		}
 
 		.sheet-cyberdeck .sheet-row-long:nth-of-type(1n+3) label {
-			width: 25%;
+			width: 15%;
 			padding-bottom: 5px;
+			padding-right: 0px;
 		}
 
 		.sheet-cyberdeck .sheet-row-long span {
+			margin-left: 1%;
+			margin-right: 1%;
+		}
+
+		/**** Matrix Bubbles ****/
+		.sheet-pc .sheet-device-attr {
+			display: inline;
+		}
+
+		.sheet-matrix-tot {
+			display: inline-block;
+			height: 20px;
+			width: 25px;
+		}
+
+		.sheet-matrix-bubble {
+			display: inline;
+			margin-left: 15px;
+			margin-right: 25px;
+			background-color:  #222;
+		}
+
+		.sheet-matrix-bubble span:nth-of-type(6),
+		.sheet-matrix-bubble input[type="radio"]:nth-of-type(6) {
 			margin-left: 2%;
-			margin-right: 2%;
+		}
+
+		.sheet-matrix-bubble input[type="radio"] {
+			height: 15px;
+			left: -8px;
+			width: 15px;
+		}
+
+		.sheet-matrix-bubble input[type="radio"] + span {
+			border-radius: 3px;
+			display: inline-block;
+			height: 18px;
+			margin-left: -25px;
+			top: 5px;
+			width: 18px;
+		}
+
+		.sheet-matrix-bubble input[type="radio"]:checked ~ input[type="radio"] + span {
+			height: 14px;
+			margin-bottom: 3px;
+			opacity: 0.5;
+		}
+
+		.sheet-matrixAttack {
+			box-shadow: 0px 0px 10px 2px  #cc0701;
+		}
+
+		.sheet-matrixAttack span {
+			border: 2px solid #3a0000;
+			background-color: #cc0701;
+			-webkit-box-shadow: inset 0px 1px 5px 2px #3a0000;
+			-moz-box-shadow: inset 0px 1px 5px 2px #3a0000;
+			box-shadow: inset 0px 1px 5px 2px #3a0000;
+		}
+
+		.sheet-matrixSleaze {
+			box-shadow: 0px 0px 10px 2px  #007bfc;
+		}
+
+		.sheet-matrixSleaze span {
+			border: 2px solid #000e3b;
+			background-color: #007bfc;
+			-webkit-box-shadow: inset 0px 1px 5px 2px #000e3b;
+			-moz-box-shadow: inset 0px 1px 5px 2px #000e3b;
+			box-shadow: inset 0px 1px 5px 2px #000e3b;
+		}
+
+		.sheet-matrixData {
+			box-shadow: 0px 0px 10px 2px  #88dd04;
+		}
+
+		.sheet-matrixData span {
+			border: 2px solid #074202;
+			background-color: #88dd04;
+			-webkit-box-shadow: inset 0px 1px 5px 2px #074202;
+			-moz-box-shadow: inset 0px 1px 5px 2px #074202;
+			box-shadow: inset 0px 1px 5px 2px #074202;
+		}
+
+		.sheet-matrixFirewall {
+			box-shadow: 0px 0px 10px 2px  #f88703;
+		}
+
+		.sheet-matrixFirewall span {
+			border: 2px solid #470101;
+			background-color: #f88703;
+			-webkit-box-shadow: inset 0px 1px 5px 2px #470101;
+			-moz-box-shadow: inset 0px 1px 5px 2px #470101;
+			box-shadow: inset 0px 1px 5px 2px #470101;
 		}
 
 		/***** Matrix Programs section *****/
@@ -1779,6 +1913,11 @@ span {
 	padding: 0px;
 }
 
+.sheet-npc button:hover {
+	background-color: transparent;
+	color: #FCD116;
+}
+
 .sheet-npc button[type="roll"]:hover,
 .sheet-npc button[type="roll"]:focus {
 	color: #fff;
@@ -1899,7 +2038,11 @@ span {
 	}
 
 	.sheet-skill-col label {
-		font-size: 0.9em;
+		font-size: 1.1em;
+	}
+
+	.sheet-skill-col label:first-child {
+		text-decoration: underline;
 	}
 
 	.sheet-skill-col span {
@@ -2028,8 +2171,6 @@ span {
 	.sheet-skill-col li > input[type="checkbox"] {
 		vertical-align: baseline !important;
 	}
-
-	.sheet-skill-col label {text-decoration: underline;}
 
 	.sheet-stats ul {
 		list-style-type: none;
@@ -2286,84 +2427,39 @@ span {
 	}
 
 	/**** Matrix Bubbles ****/
-		.sheet-npc .sheet-matrix-bubble {
-			display: inline;
-			margin-left: 15px;
-			margin-right: 25px;
+		.sheet-npc  .sheet-matrix-bubble {
+			background-color: transparent;
 		}
 
-		.sheet-5bub + span {
-			margin-right: 15px;
-		}
-
-		.sheet-npc .sheet-matrix-bubble input[type="radio"] {
+		.sheet-npc  .sheet-matrix-bubble input[type="radio"] {
 			height: 25px;
 			width: 20px;
+			left: 0px;
 		}
 
-		.sheet-npc .sheet-matrix-bubble input[type="radio"] + span {
+		.sheet-npc  .sheet-matrix-bubble input[type="radio"] + span {
 			border-radius: 5px;
-			display: inline-block;
 			height: 25px;
 			left: 5px;
-			margin-left: -25px;
-			top: 5px;
 			width: 20px;
 		}
 
-		.sheet-npc .sheet-matrix-bubble input[type="radio"]:checked ~ input[type="radio"] + span {
-			height: 14px;
-			margin-bottom: 3px;
-			opacity: 0.5;
-		}
-
-		.sheet-npc .sheet-matrixAttack {
+		.sheet-npc  .sheet-matrixAttack {
 			box-shadow: 0px 0px 29px 8px  #cc0701;
 		}
 
-		.sheet-npc .sheet-matrixAttack span {
-			border: 2px solid #3a0000;
-			background-color: #cc0701;
-			-webkit-box-shadow: inset 0px 1px 5px 2px #3a0000;
-			-moz-box-shadow: inset 0px 1px 5px 2px #3a0000;
-			box-shadow: inset 0px 1px 5px 2px #3a0000;
-		}
-
-		.sheet-npc .sheet-matrixSleaze {
+		.sheet-npc  .sheet-matrixSleaze {
 			box-shadow: 0px 0px 29px 8px  #007bfc;
 		}
 
-		.sheet-npc .sheet-matrixSleaze span {
-			border: 2px solid #000e3b;
-			background-color: #007bfc;
-			-webkit-box-shadow: inset 0px 1px 5px 2px #000e3b;
-			-moz-box-shadow: inset 0px 1px 5px 2px #000e3b;
-			box-shadow: inset 0px 1px 5px 2px #000e3b;
-		}
-
-		.sheet-npc .sheet-matrixData {
+		.sheet-npc  .sheet-matrixData {
 			box-shadow: 0px 0px 29px 8px  #88dd04;
 		}
 
-		.sheet-npc .sheet-matrixData span {
-			border: 2px solid #074202;
-			background-color: #88dd04;
-			-webkit-box-shadow: inset 0px 1px 5px 2px #074202;
-			-moz-box-shadow: inset 0px 1px 5px 2px #074202;
-			box-shadow: inset 0px 1px 5px 2px #074202;
-		}
-
-		.sheet-npc .sheet-matrixFirewall {
+		.sheet-npc  .sheet-matrixFirewall {
 			box-shadow: 0px 0px 29px 8px  #f88703;
 		}
 
-		.sheet-npc .sheet-matrixFirewall span {
-			border: 2px solid #470101;
-			background-color: #f88703;
-			-webkit-box-shadow: inset 0px 1px 5px 2px #470101;
-			-moz-box-shadow: inset 0px 1px 5px 2px #470101;
-			box-shadow: inset 0px 1px 5px 2px #470101;
-		}
 
 	/**** Matrix Program Customizations ****/
 		.sheet-npc .sheet-matrix .repcontainer {
@@ -2469,7 +2565,7 @@ span {
 	}
 
 /**** Armor Buttons ****/
-	.sheet-armor-buttons {margin-left: 15px;}
+	.sheet-npc .sheet-armor-buttons {margin-left: 15px;}
 
 	.sheet-armor-buttons,
 	.sheet-armor-buttons span {
@@ -2534,7 +2630,7 @@ span {
 	}
 
 /**** Show stats normally and view dice pools on hover ****/	
-.sheet-hover,
+/*.sheet-hover,
 .sheet-hoverswitch:hover .sheet-default {
 	display: none;
 }
@@ -2542,7 +2638,7 @@ span {
 .sheet-default,
 .sheet-hoverswitch:hover .sheet-hover {
 	display: inherit;
-}
+} */
 
 
 /**** Footer ****/
