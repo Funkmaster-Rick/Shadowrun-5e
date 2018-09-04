@@ -62,6 +62,7 @@
 					<div class="row-long pd-kar">
 						<h2>Karma</h2><input type="number" name="attr_karma" placeholder="#" />
 						<h2>Total Karma</h2><input type="number" name="attr_total_karma" placeholder="#" />
+						<h2>Misc</h2><input type="text" name="attr_misc" placeholder="" />
 					</div>
 				</div>
 			</div>
@@ -467,7 +468,7 @@
 									<input type="number" name="attr_rank" placeholder="0" />
 									<div class="settings-row">
 										<div><label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" /></div>
-										<div><label>Modifier</label><br /><input type="number" name="attr_rank_modifier" placeholder="0" /></div>
+										<div><label>Skill Modifier</label><input type="number" name="attr_rank_modifier" placeholder="0" /></div>
 									</div>
 									<label>Notes</label>
 									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
@@ -505,7 +506,7 @@
 									<input type="number" name="attr_rank" placeholder="0" />
 									<div class="settings-row">
 										<div><label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" /></div>
-										<div><label>Modifier</label><br /><input class="language-native" type="number" min="0" name="attr_rank_modifier" placeholder="0" /></div>
+										<div><label>Skill Modifier</label><input class="language-native" type="number" min="0" name="attr_rank_modifier" placeholder="0" /></div>
 									</div>
 									<label>Notes</label>
 									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
@@ -542,12 +543,11 @@
 		<div class="pc-row">
 			<div class="header right-header"><h1>Core Combat Info</h1><div class="right-tri"></div></div>
 			<div class="border-box">
-				<div class="pc-box small-box">
+				<div class="pc-box small-box core-combat">
 					<div class="row-long cc-arm">
 						<h2>Primary Armor</h2>
-						<div>
-							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Soak}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Soak"><span name="attr_armor_name"></span></button>
-						</div>
+						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Soak}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Soak" style="width: 32%;">
+						<span name="attr_armor_name"></span></button>
 						<h3>Rating</h3>
 						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{armor}}}{{base= Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{armor_rating}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><span name="attr_armor_rating"></span></button>
 						<div class="armor-buttons">
@@ -559,16 +559,22 @@
 							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Radiation Protection}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{radiation_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Radiation Protection"><span class="pictos3">l</span></button>
 						</div>
 					</div>
-					<div class="row-long cc-ran"><h2>Primary Ranged Weapon</h2><span name="attr_primary_range_weapon"></span></div>
+					<div class="row-long cc-row">
+						<h2>Primary Ranged Weapon</h2>
+						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{primary_range_weapon}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{primary_range_weapon_skill}+@{primary_range_weapon_dicepool})+@{agility}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Primary Weapon"><span name="attr_primary_range_weapon"></span></button>
+					</div>
 					<div class="cc-row">
-						<h3>Dam</h3><span name="attr_primary_range_weapon_dam"></span>
+						<h3>Dam</h3><span name="attr_primary_range_weapon_damage" style="width: 10%;"></span>
 						<h3>ACC</h3><span name="attr_primary_range_weapon_acc"></span>
 						<h3>AP</h3><span name="attr_primary_range_weapon_ap"></span>
 						<h3>Mode</h3><span name="attr_primary_range_weapon_mode"></span>
-						<h3>RC</h3><span name="attr_primary_range_weapon_rc"></span>
+						<h3>RC</h3><span name="attr_primary_range_weapon_recoil"></span>
 						<h3>Ammo</h3><span name="attr_primary_range_weapon_ammo"></span>
 					</div>
-					<div class="row-long cc-mel"><h2>Primary Melee Weapon</h2><span name="attr_primary_melee_weapon"></span></div>
+					<div class="row-long cc-row">
+						<h2>Primary Melee Weapon</h2>
+						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{primary_melee_weapon}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{primary_melee_weapon_skill}+@{primary_melee_weapon_dicepool})+@{agility}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Primary Weapon"><span name="attr_primary_melee_weapon"></span></button>
+					</div>
 					<div class="cc-row">
 						<h3>Reach</h3><span name="attr_primary_range_weapon_reach"></span>
 						<h3>Dam</h3><span name="attr_primary_range_weapon_dam"></span>
@@ -749,7 +755,7 @@
 					</div>
 					<div class="weapon-range">
 						<fieldset class="repeating_range">
-							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" value="primary" /><span>x</span>
 							<div class="settings">
 								<div>
 									<input type="text" name="attr_weapon" placeholder="Ares Alpha" />
@@ -768,7 +774,7 @@
 									<div class="settings-row">
 										<label>Mode Options</label><input type="text" name="attr_mode_options" placeholder="SA/BF/FA" />
 										<label>Range</label><input type="text" name="attr_range" placeholder="25/150/350/550" />
-										<label>Primary</label><input type="checkbox" class="skill-select" name="attr_primary_flag" checked="checked" />
+										<label>Primary</label><input type="checkbox" class="skill-select" name="attr_primary" value="primary" />
 									</div>
 									<div class="settings-row">
 										<input type="hidden" name="attr_dicepool" value="0" />
@@ -835,7 +841,7 @@
 									<input type="text" name="attr_damage" placeholder="6P" />
 									<input type="number" name="attr_acc" placeholder="7" />
 									<input type="number" name="attr_ap" placeholder="-3" />
-									<input type="checkbox" class="primary-flag" name="attr_primary_flag" checked="checked" /><span>S</span>
+									<label>Primary</label><input type="checkbox" class="skill-select" name="attr_primary" value="primary" />
 									<div class="settings-row">
 										<input type="hidden" name="attr_dicepool" value="0" />
 										<label>Combat Skill</label>
@@ -895,7 +901,10 @@
 								<input type="number" name="attr_electrical_modifier" min="0" value="0" placeholder="+5" />
 								<input type="number" name="attr_fire_modifier" min="0" value="0" placeholder="0" />
 								<input type="number" name="attr_radiation_modifier" min="0" value="0" placeholder="0" />
-								<input type="checkbox" class="primary-flag" name="attr_primary" value="primary" /><span>S</span>
+								<div class="settings-row">
+									<label>Primary</label><input type="checkbox" class="skill-select" name="attr_primary_flag" checked="checked" />
+									<label>modifier Dice</label><input type="number" name="attr_dicepool_modifier" />
+								</div>
 								<div class="settings-row">
 									<label>Notes</label>
 									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
@@ -1250,7 +1259,7 @@
 					</div>
 					<div class="row-long">
 						<h3>Total</h3><h3>Temp</h3><h3>modifier</h3><h3>Base</h3><h3>Base slider</h3><br />
-						<label><button type="roll" value="&{template:sRun}{{header=Attack}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Attack</button></label>
+						<label><button type="roll" value="&{template:sRun}{{header=Attack}}{{base=Attack}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Attack</button></label>
 						<div class="matrix-tot"><span name="attr_attack"></span></div><span> = </span>
 						<input type="number" name="attr_attack_temp" min="0" value="" placeholder="7" /><spam> + </spam>
 						<input type="number" name="attr_attack_modifier" min="0" value="" placeholder="0" /><spam> + </spam>
@@ -1333,6 +1342,21 @@
 							</div>
 						</div>
 					</div>
+					<div class="edg-hex">
+						<h2>Condition Monitor</h2>
+						<input type="radio" name="attr_matrix_con" value="1" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="2" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="3" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="4" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="5" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="6" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="7" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="8" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="9" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="10" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="11" /><span class="hexagon"></span>
+						<input type="radio" name="attr_matrix_con" value="12" /><span class="hexagon"></span>
+					</div>
 					<h3>Programs</h3>
 					<div class="program-box">
 						<fieldset class="repeating_programs">
@@ -1353,21 +1377,6 @@
 								</div>
 							</div>
 						</fieldset>
-					</div>
-					<div class="edg-hex">
-						<h2>Matrix Condition Monitor</h2>
-						<input type="radio" name="attr_matrix_con" value="1" /><span class="hexagon"></span>
-						<input type="radio" name="attr_matrix_con" value="2" /><span class="hexagon"></span>
-						<input type="radio" name="attr_matrix_con" value="3" /><span class="hexagon"></span>
-						<input type="radio" name="attr_matrix_con" value="4" /><span class="hexagon"></span>
-						<input type="radio" name="attr_matrix_con" value="5" /><span class="hexagon"></span>
-						<input type="radio" name="attr_matrix_con" value="6" /><span class="hexagon"></span>
-						<input type="radio" name="attr_matrix_con" value="7" /><span class="hexagon"></span>
-						<input type="radio" name="attr_matrix_con" value="8" /><span class="hexagon"></span>
-						<input type="radio" name="attr_matrix_con" value="9" /><span class="hexagon"></span>
-						<input type="radio" name="attr_matrix_con" value="10" /><span class="hexagon"></span>
-						<input type="radio" name="attr_matrix_con" value="11" /><span class="hexagon"></span>
-						<input type="radio" name="attr_matrix_con" value="12" /><span class="hexagon"></span>
 					</div>
 				</div>
 			</div>
@@ -3113,15 +3122,34 @@
 
 <input type="hidden" name="attr_armor_name" value="" />
 <input type="hidden" name="attr_soak" min="0" value="0" />
-<input type="hidden" name="attr_acid_protection" min="0" value="0" />
-<input type="hidden" name="attr_cold_protection" min="0" value="0" />
-<input type="hidden" name="attr_electrical_protection" min="0" value="0" />
-<input type="hidden" name="attr_fire_protection" min="0" value="0" />
-<input type="hidden" name="attr_radiation_protection" min="0" value="0" />
+<input type="hidden" name="attr_acid_protection" min="0" value="0" /><!-- Not used yet -->
+<input type="hidden" name="attr_cold_protection" min="0" value="0" /><!-- Not used yet -->
+<input type="hidden" name="attr_electrical_protection" min="0" value="0" /><!-- Not used yet -->
+<input type="hidden" name="attr_fire_protection" min="0" value="0" /><!-- Not used yet -->
+<input type="hidden" name="attr_radiation_protection" min="0" value="0" /><!-- Not used yet -->
+
+<input type="hidden" name="attr_primary_range_weapon" />
+<input type="hidden" name="attr_primary_range_weapon_skill" />
+<input type="hidden" name="attr_primary_range_weapon_damage" />
+<input type="hidden" name="attr_primary_range_weapon_dicepool" />
+<input type="hidden" name="attr_primary_range_weapon_acc" />
+<input type="hidden" name="attr_primary_range_weapon_ap" />
+<input type="hidden" name="attr_primary_range_weapon_mode" />
+<input type="hidden" name="attr_primary_range_weapon_recoil" />
+<input type="hidden" name="attr_primary_range_weapon_ammo" />
+
+<input type="hidden" name="attr_primary_melee_weapon" />
+<input type="hidden" name="attr_primary_melee_weapon_skill" />
+<input type="hidden" name="attr_primary_melee_weapon_damage" />
+<input type="hidden" name="attr_primary_melee_weapon_dicepool" />
+<input type="hidden" name="attr_primary_melee_weapon_acc" />
+<input type="hidden" name="attr_primary_melee_weapon_ap" />
+<input type="hidden" name="attr_primary_melee_weapon_reach" />
 
 <input type="hidden" name="attr_lifestyle_display" />
 <input type="hidden" name="attr_primary_nuyen" />
 <input type="hidden" name="attr_primary_licenses" />
+
 
 <!--Sheet Worker-->
 <script type="text/worker">
@@ -3945,25 +3973,53 @@ on("change:device_rating change:matrix_modifier", function() {
 	});
 
 //Repeating Range & Melee weapons dicepools
-	on("change:repeating_range", function(){
-		getAttrs(["repeating_range_dicepool_modifier", "repeating_range_spec"], function(v){
+	on("change:repeating_range", function() {
+		getAttrs(["repeating_range_dicepool_modifier", "repeating_range_spec", "repeating_range_primary", "repeating_range_weapon", "repeating_range_damage", "repeating_range_acc",
+			"repeating_range_ap", "repeating_range_mode", "repeating_range_recoil", "repeating_range_ammo", "repeating_range_skill"], function(v){
 			const bon = parseInt(v.repeating_range_dicepool_modifier) || 0;
 			const spec = parseInt(v.repeating_range_spec) || 0;
-			let tot = bon + spec;
+			let update = {};
 
-			setAttrs({repeating_range_dicepool: tot});
+			update["repeating_range_dicepool"] = bon + spec;
+
+			if (v.repeating_range_primary === "primary") {
+				update["primary_range_weapon"] = v.repeating_range_weapon;
+				update["primary_range_weapon_dicepool"] = bon + spec;
+				if (v.repeating_range_skill) {update["primary_range_weapon_skill"] = v.repeating_range_skill};
+				if (v.repeating_range_damage) {update["primary_range_weapon_damage"] = v.repeating_range_damage};
+				if (v.repeating_range_acc) {update["primary_range_weapon_acc"] = v.repeating_range_acc};
+				if (v.repeating_range_ap) {update["primary_range_weapon_ap"] = v.repeating_range_ap};
+				if (v.repeating_range_mode) {update["primary_range_weapon_mode"] = v.repeating_range_mode};
+				if (v.repeating_range_recoil) {update["primary_range_weapon_recoil"] = v.repeating_range_recoil};
+				if (v.repeating_range_ammo) {update["primary_range_weapon_ammo"] = v.repeating_range_ammo};
+			};
+
+			setAttrs(update);
 		});
 	});
 
-	on("change:repeating_melee", function(){
-		getAttrs(["repeating_melee_dicepool_modifier", "repeating_melee_spec"], function(v){
+	on("change:repeating_melee", function() {
+		getAttrs(["repeating_dicepool_modifier", "repeating_melee_spec", "repeating_melee_primary", "repeating_melee_weapon", "repeating_melee_damage", "repeating_melee_acc",
+			"repeating_melee_ap", "repeating_melee_reach", "repeating_melee_skill"], function(v){
 			const bon = parseInt(v.repeating_melee_dicepool_modifier) || 0;
 			const spec = parseInt(v.repeating_melee_spec) || 0;
-			let tot = bon + spec;
+			let update = {};
 
-			setAttrs({repeating_melee_dicepool: tot});
+			update["repeating_melee_dicepool"] = bon + spec;
+
+			if (v.repeating_melee_primary === "primary") {
+				update["primary_melee_weapon"] = v.repeating_melee_weapon;
+				update["primary_melee_weapon_dicepool"] = bon + spec;
+				if (v.repeating_melee_skill) {update["primary_melee_weapon_skill"] = v.repeating_melee_skill};
+				if (v.repeating_melee_damage) {update["primary_melee_weapon_damage"] = v.repeating_melee_damage};
+				if (v.repeating_melee_acc) {update["primary_melee_weapon_acc"] = v.repeating_melee_acc};
+				if (v.repeating_melee_ap) {update["primary_melee_weapon_ap"] = v.repeating_melee_ap};
+				if (v.repeating_melee_reach) {update["primary_melee_weapon_reach"] = v.repeating_melee_reach};
+			};
+
+			setAttrs(update);
 		});
-	});
+	});		
 
 //Repeating IDs & Lifestyles Section Display
 	on("change:repeating_lifestyle", function() {
