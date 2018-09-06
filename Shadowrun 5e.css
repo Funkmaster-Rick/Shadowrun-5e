@@ -98,6 +98,7 @@ input[type="text"] {
 
 input[type="number"] {
 	text-align: center;
+	border: 1px solid #b8b7b6;
 }
 
 input::placeholder {
@@ -192,14 +193,15 @@ span {
 .sheet-tabs input[type="checkbox"] {
 	height: 18px;
 	position: absolute;
+	width: 5%;
 }
 
-.sheet-tabs input[type="radio"]:nth-of-type(3) {
-	width: 50px;
+.sheet-tabs input[type="radio"]:nth-of-type(8) {
+	width: 6%;
 }
 
-.sheet-tabs input[type="radio"]:nth-of-type(4) {
-	width: 60px;
+.sheet-tabs input[type="radio"]:nth-of-type(9) {
+	width: 2%;
 }
 
 .sheet-tabs input[type="radio"] + span,
@@ -386,6 +388,10 @@ span {
 	}
 
 		/***** Personal Data Inputs *****/
+		.sheet-core-info input {
+			background: transparent;
+		}
+
 		.sheet-pd-nam input[type="text"]  {
 			width: 66%;
 		}
@@ -399,16 +405,20 @@ span {
 		}
 
 		.sheet-pd-rep input[type="number"] {
+			border: none;
 			width: 13.5%;
 		}
 
-		.sheet-pd-kar input {
-			width: 20.6% !important;
+		.sheet-pd-kar input[type="number"],
+		.sheet-pd-kar input[type="text"] {
+			border: none;
+			width: 20.6%;
 		}
 
 		/***** Core Combat Info *****/
 		.sheet-core-combat button[type="roll"] {
-			font-size: 0.9em
+			font-size: 0.9em;
+			text-align: left;
 		}
 
 		.sheet-core-combat  h2,
@@ -599,13 +609,15 @@ span {
 		}
 
 		/***** Edge Hexagons Inputs *****/
-		.sheet-edg-hex {
+		.sheet-edg-hex,
+		.sheet-con-hex {
 			position: relative;
 			top: -70px;
 			width: 180px;
 		}
 
-		.sheet-edg-hex input[type="radio"] {
+		.sheet-edg-hex input[type="checkbox"],
+		.sheet-con-hex input[type="radio"] {
 			height: 20px;
 			margin-right: -21px;
 			top: -9px;
@@ -641,46 +653,46 @@ span {
 		  border-top: 5.77px solid #222;
 		}
 
-		.sheet-edg-hex input[type="radio"]:checked ~ .sheet-hexagon {
+		.sheet-con-hex input[type="radio"]:checked ~ .sheet-hexagon {
 			background-color: #610b0d;
 		}
 
-		.sheet-edg-hex input[type="radio"]:checked ~ .sheet-hexagon:before {
+		.sheet-con-hex input[type="radio"]:checked ~ .sheet-hexagon:before {
 			border-bottom-color: #610b0d;
 		}
 
-		.sheet-edg-hex input[type="radio"]:checked ~ .sheet-hexagon:after {
+		.sheet-con-hex input[type="radio"]:checked ~ .sheet-hexagon:after {
 			border-top-color: #610b0d;
 		}
 
-		.sheet-edg-hex input[type="radio"] + .sheet-hexagon,
-		.sheet-edg-hex input[type="radio"]:checked + .sheet-hexagon {
+		.sheet-con-hex input[type="radio"] + .sheet-hexagon,
+		.sheet-con-hex input[type="radio"]:checked + .sheet-hexagon {
 			background-color: #222;
 		}
 
-		.sheet-edg-hex input[type="radio"]:checked + .sheet-hexagon:before  {
+		.sheet-con-hex input[type="radio"]:checked + .sheet-hexagon:before  {
 			border-bottom-color: #222;
 		}
 
-		.sheet-edg-hex input[type="radio"]:checked + .sheet-hexagon:after {
+		.sheet-con-hex input[type="radio"]:checked + .sheet-hexagon:after {
 			border-top-color: #222;
 		}
 
 		/***** Hexes Appear & Disappear *****/
-		.sheet-hex-hider[value="1"] ~ input[type="radio"]:nth-child(1n+3),
-		.sheet-hex-hider[value="1"] ~ input[type="radio"]:nth-child(1n+3) + span,
-		.sheet-hex-hider[value="2"] ~ input[type="radio"]:nth-child(1n+5),
-		.sheet-hex-hider[value="2"] ~ input[type="radio"]:nth-child(1n+5) + span,
-		.sheet-hex-hider[value="3"] ~ input[type="radio"]:nth-child(1n+7),
-		.sheet-hex-hider[value="3"] ~ input[type="radio"]:nth-child(1n+7) + span,
-		.sheet-hex-hider[value="4"] ~ input[type="radio"]:nth-child(1n+9),
-		.sheet-hex-hider[value="4"] ~ input[type="radio"]:nth-child(1n+9) + span,
-		.sheet-hex-hider[value="5"] ~ input[type="radio"]:nth-child(1n+11),
-		.sheet-hex-hider[value="5"] ~ input[type="radio"]:nth-child(1n+11) + span,
-		.sheet-hex-hider[value="6"] ~ input[type="radio"]:nth-child(1n+13),
-		.sheet-hex-hider[value="6"] ~ input[type="radio"]:nth-child(1n+13) + span,		
-		.sheet-hex-hider[value="7"] ~ input[type="radio"]:nth-child(1n+15),
-		.sheet-hex-hider[value="7"] ~ input[type="radio"]:nth-child(1n+15) + span {
+		.sheet-hex-hider[value="1"] ~ input[type="checkbox"]:nth-child(1n+3),
+		.sheet-hex-hider[value="1"] ~ input[type="checkbox"]:nth-child(1n+3) + span,
+		.sheet-hex-hider[value="2"] ~ input[type="checkbox"]:nth-child(1n+5),
+		.sheet-hex-hider[value="2"] ~ input[type="checkbox"]:nth-child(1n+5) + span,
+		.sheet-hex-hider[value="3"] ~ input[type="checkbox"]:nth-child(1n+7),
+		.sheet-hex-hider[value="3"] ~ input[type="checkbox"]:nth-child(1n+7) + span,
+		.sheet-hex-hider[value="4"] ~ input[type="checkbox"]:nth-child(1n+9),
+		.sheet-hex-hider[value="4"] ~ input[type="checkbox"]:nth-child(1n+9) + span,
+		.sheet-hex-hider[value="5"] ~ input[type="checkbox"]:nth-child(1n+11),
+		.sheet-hex-hider[value="5"] ~ input[type="checkbox"]:nth-child(1n+11) + span,
+		.sheet-hex-hider[value="6"] ~ input[type="checkbox"]:nth-child(1n+13),
+		.sheet-hex-hider[value="6"] ~ input[type="checkbox"]:nth-child(1n+13) + span,		
+		.sheet-hex-hider[value="7"] ~ input[type="checkbox"]:nth-child(1n+15),
+		.sheet-hex-hider[value="7"] ~ input[type="checkbox"]:nth-child(1n+15) + span {
 			display: none; 
 		}
 
@@ -869,12 +881,22 @@ span {
 	}
 		/***** Secondary tabs *****/
 		.sheet-htab {
-			z-index: -1;
 			margin-right: -47px;
 		}
 
-		.sheet-htab:first-child {
-			z-index: 0;
+		.sheet-htab input[type="radio"] {
+			margin-right: -80px;
+			top: 4px;
+			width: 80px;
+		}
+
+		.sheet-htab input[type="radio"] + h1 {
+			color: #222;
+		}
+
+		.sheet-htab input[type="radio"]:hover ~ h1,
+		.sheet-htab input[type="radio"]:checked ~ h1  {
+			color: #fff;
 		}
 
 		/***** Repeating Section *****/
@@ -902,6 +924,11 @@ span {
 			}
 
 			/***** Repeating Box Settings Inputs *****/
+			.sheet-repeat-box .sheet-settings input[type="text"] {
+				border: 1px solid #b8b7b6;
+				border-radius: 0px;
+			}
+
 			.sheet-repeat-box .sheet-settings input[type="number"] {
 				height: 25px;
 				width: 35px;
@@ -959,10 +986,6 @@ span {
 	}
 
 	/***** Skills *****/
-	.sheet-skill-box .sheet-medium-box {
-		margin-top: -18px;
-	}
-
 	.sheet-skill-box h3:first-child {
 		margin-right: 67%;
 	}
@@ -989,14 +1012,6 @@ span {
 	.sheet-attr-select option:nth-of-type(1n+9) {
 		color: #7a2593;
 	}
-
-		/***** Skills Radio Toggles for Switching Tabs*****/
-		.sheet-skill-box input[type="radio"] {
-			left: 65px;
-			margin-right: 15px;
-			top: -20px;
-			width: 80px;
-		}
 
 		/***** Skills Repeating Section *****/
 			/***** Skills Settings *****/
@@ -1157,10 +1172,6 @@ span {
 	}
 
 	/***** Qualities *****/
-	.sheet-quality-box .sheet-medium-box {
-		margin-top: -18px;
-	}
-
 	.sheet-quality-box h3:first-child {
 		margin-right: 70%;
 		width: 15%;
@@ -1188,33 +1199,31 @@ span {
 		}
 
 		/***** Qualities & Marital Art tabs *****/
-		.sheet-quality-box .sheet-tab-switch {
-			margin-bottom: 2px;
-			margin-right: 12%;
-			top: -20px;
-			width: 25%;
+		.sheet-quality-box .sheet-htab input[type="radio"] {
+			margin-right: -100px;
+			width: 100px;
 		}
 
-		.sheet-quality-box .sheet-tab-switch:nth-of-type(2) {
-			margin-right: 0px;
-			width: 35%;
+		.sheet-quality-box .sheet-header:nth-of-type(2) .sheet-htab input[type="radio"] {
+			margin-right: -150px;
+			width: 150px;
 		}
 
-	/***** Marital Art *****/
-	.sheet-martial h3:first-child {
-		margin-right: 39%;
-	}
+		/***** Marital Art *****/
+		.sheet-martial h3:first-child {
+			margin-right: 39%;
+		}
 
-	.sheet-martial input[type="text"],
-	.sheet-martial .sheet-display-row {
-		width: 54%;
-	}
+		.sheet-martial input[type="text"],
+		.sheet-martial .sheet-display-row {
+			width: 54%;
+		}
 
-	.sheet-martial input[type="text"]:nth-of-type(2),
-	.sheet-martial .sheet-display-row:nth-of-type(2) {
-		text-align: left;
-		width: 43%;
-	}
+		.sheet-martial input[type="text"]:nth-of-type(2),
+		.sheet-martial .sheet-display-row:nth-of-type(2) {
+			text-align: left;
+			width: 43%;
+		}
 
 	/***** Lifestyle for PC sheet *****/
 	.sheet-lifestyle h3:nth-of-type(2) {
@@ -1261,12 +1270,12 @@ span {
 
 	/***** Contact for PC sheet *****/
 	.sheet-contacts h3:nth-of-type(1) {
-		margin-right: 52%;
+		margin-right: 53%;
 	}
 
 	.sheet-contacts h3:nth-of-type(2),
 	.sheet-contacts h3:nth-of-type(3) {
-		margin-right: 5%;
+		margin-right: 3%;
 	}
 
 		/***** Contacts Settings for PC sheet *****/
@@ -1277,11 +1286,11 @@ span {
 
 		.sheet-contacts input[type="text"]:nth-of-type(1) {
 			margin-right: 5px;
-			width: 51%;
+			width: 58%;
 		}
 
 		.sheet-contacts input[type="number"] {
-			margin-right: 12px;
+			margin-right: 4.1%;
 		}
 
 		.sheet-contacts input[type="text"]:nth-of-type(4) {
@@ -1308,10 +1317,6 @@ span {
 		margin-left: -35px;
 	}
 
-	.sheet-arms .sheet-weapon-box input[type="radio"] {
-		left: 125px;
-	}
-
 		/***** Weapons for PC sheet *****/
 		.sheet-pc .sheet-weapon-range,
 		.sheet-pc .sheet-weapon-melee {
@@ -1324,19 +1329,6 @@ span {
 		.sheet-arms .sheet-display  {
 			display: inline-block;
 		}
-
-			/***** Weapon Radio Toggles for Switching Tabs*****/
-			.sheet-weapon-box input[type="radio"] {
-				left: 140px;
-				margin-right: 15px;
-				top: -20px;
-				width: 75px;
-			}
-
-			/***** Weapon Headers *****/
-			.sheet-weapon-box .sheet-medium-box {
-				margin-top: -17px;
-			}
 
 			/***** Weapon Settings Inputs *****/
 			.sheet-weapon-box select {
@@ -1365,7 +1357,6 @@ span {
 			.sheet-arms .sheet-display-row:nth-of-type(2) {
 				width: 11%;
 			}
-
 
 			.sheet-weapon-box label + input[type="text"] {
 				width: 28%;
@@ -1512,17 +1503,6 @@ span {
 			margin-left: -45px;
 		}
 
-		.sheet-spell-box .sheet-medium-box {
-			margin-top: -17px;
-		}
-
-		.sheet-spell-box input[type="radio"] {
-			left: 80px;
-			margin-right: 10px;
-			top: -20px;
-			width: 80px;
-		}
-
 		.sheet-spell-box h3 {
 			margin-right: 3px;
 			width: 16%;
@@ -1652,7 +1632,7 @@ span {
 		}
 
 	/***** Matrix Section *****/
-	.sheet-matrix .sheet-edg-hex {
+	.sheet-matrix .sheet-con-hex {
 		margin-right: 0px;
 		margin-top: 5px;
 		position: unset;
@@ -1669,7 +1649,7 @@ span {
 		}
 
 		.sheet-cyberdeck h3:nth-of-type(2) {
-			margin-left: 2%;
+			margin-left: 5%;
 		}
 
 		.sheet-cyberdeck h3:nth-of-type(3) {
@@ -1682,12 +1662,17 @@ span {
 		}
 
 		.sheet-cyberdeck .sheet-row-long h3:first-child {
-			margin-left: 16%;
+			margin-left: 15%;
 		}
 
 		.sheet-cyberdeck input[type="number"] {
 			height: 20px;
 			width: 25px;
+		}
+
+		.sheet-cyberdeck .sheet-row-long:nth-of-type(1) input[type="text"] {
+			background: transparent;
+			width: 90%;
 		}
 
 		.sheet-cyberdeck .sheet-row-long:nth-of-type(1n+3) label {
@@ -1902,6 +1887,29 @@ span {
 				width: 7%;
 			}
 
+	/***** Vehicle Section *****/
+	.sheet-vehicle-box .sheet-settings div {
+		display: inline-block;
+		width: 100%;
+	}
+
+	.sheet-vehicle-box input[type="text"] {
+		width: 50%;
+	}
+
+	.sheet-vehicle-box label  {
+		width: 18%;
+	}
+
+	.sheet-vehicle-box label:nth-of-type(2) {
+		text-align: right;
+		width: 11%;
+	}
+
+	.sheet-vehicle-box label:nth-child(1n+4) {
+		text-align: right;
+		width: 23%;
+	}
 
 	/***** Options Section *****/
 	.sheet-options .sheet-pc-box {
@@ -1929,7 +1937,7 @@ span {
 }
 
 .sheet-npc button[type="roll"] {
-	color: #FCD116;
+	color: #fff;
 	font-size: 14px;
 	margin: 0px;
 	padding: 0px;
@@ -1942,15 +1950,16 @@ span {
 
 .sheet-npc button[type="roll"]:hover,
 .sheet-npc button[type="roll"]:focus {
-	color: #fff;
+	color: #FCD116;
 }
 
 .sheet-npc .sheet-toggle-buttons button {
 	color: #fff;
 }
 
-.sheet-npc h1, .sheet-npc h2 {
-	color: #FCD116;
+.sheet-npc h1, 
+.sheet-npc h2 {
+	color: #fff;
 	font-size: 1.5em;
 }
 
@@ -1974,8 +1983,6 @@ span {
 	color: #fff;
 	margin-top: -35px;
 }
-
-.sheet-npc .sheet-display label {color: #FCD116;} 
 
 .sheet-npc .sheet-display .sheet-attr-header button:hover,
 .sheet-npc textarea {
@@ -2153,12 +2160,12 @@ span {
 	}
 
 	.sheet-attribute button {
-		color: #FCD116;
+		color: #fff;
 	}
 
 	.sheet-attribute button:hover,
 	.sheet-attribute button:focus {
-		color: #fff;
+		color: #FCD116;
 	}
 
 	.sheet-attr-header {
