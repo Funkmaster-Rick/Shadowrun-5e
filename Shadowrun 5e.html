@@ -409,6 +409,7 @@
 										<option value="Demolitions">Demolitions</option>
 										<option value="Electronic Warfare">Electronic Warfare</option>
 										<option value="First Aid">First Aid</option>
+										<option value="Forgery">Forgery</option>
 										<option value="Hacking">Hacking</option>
 										<option value="Hardware">Hardware</option>
 										<option value="Industrial Mechanic">Industrial Mechanic</option>
@@ -558,7 +559,7 @@
 					</div>
 					<div class="row-long cc-row">
 						<h2>Primary Ranged Weapon</h2>
-						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{primary_range_weapon}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{primary_range_weapon_skill}+@{primary_range_weapon_dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Primary Weapon"><span name="attr_primary_range_weapon"></span></button>
+						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{primary_range_weapon}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{primary_range_weapon_skill}+@{primary_range_weapon_dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Mode @{mode}, ACC @{acc}, DV @{damage}, AP @{ap}}}" title="Primary Weapon"><span name="attr_primary_range_weapon"></span></button>
 					</div>
 					<div class="cc-row">
 						<h3>Dam</h3><span name="attr_primary_range_weapon_damage" style="width: 10%;"></span>
@@ -570,13 +571,13 @@
 					</div>
 					<div class="row-long cc-row">
 						<h2>Primary Melee Weapon</h2>
-						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{primary_melee_weapon}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{primary_melee_weapon_skill}+@{primary_melee_weapon_dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Primary Weapon"><span name="attr_primary_melee_weapon"></span></button>
+						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{primary_melee_weapon}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{primary_melee_weapon_skill}+@{primary_melee_weapon_dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{acc}, DV @{damage}, AP @{ap}, Reach @{reach}}}" title="Primary Weapon"><span name="attr_primary_melee_weapon"></span></button>
 					</div>
 					<div class="cc-row">
-						<h3>Reach</h3><span name="attr_primary_range_weapon_reach"></span>
-						<h3>Dam</h3><span name="attr_primary_range_weapon_dam"></span>
-						<h3>ACC</h3><span name="attr_primary_range_weapon_acc"></span>
-						<h3>AP</h3><span name="attr_primary_range_weapon_ap"></span>
+						<h3>Reach</h3><span name="attr_primary_melee_weapon_reach"></span>
+						<h3>Dam</h3><span name="attr_primary_melee_weapon_damage"></span>
+						<h3>ACC</h3><span name="attr_primary_melee_weapon_acc"></span>
+						<h3>AP</h3><span name="attr_primary_melee_weapon_ap"></span>
 					</div>
 				</div>
 			</div>
@@ -896,7 +897,7 @@
 						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
 						<div class="settings">
 							<div>
-								<input type="text" name="attr_armor" placeholder="Armor Jacket" />
+								<input type="text" name="attr_name" placeholder="Armor Jacket" />
 								<input type="number" name="attr_rating" min="0" value="0" placeholder="12" />
 								<input type="number" name="attr_acid_modifier" min="0" value="0" placeholder="+5" />
 								<input type="number" name="attr_cold_modifier" min="0" value="0" placeholder="0" />
@@ -904,7 +905,7 @@
 								<input type="number" name="attr_fire_modifier" min="0" value="0" placeholder="0" />
 								<input type="number" name="attr_radiation_modifier" min="0" value="0" placeholder="0" />
 								<div class="settings-row">
-									<label>Primary</label><input type="checkbox" class="skill-select" name="attr_primary_flag" checked="checked" />
+									<label>Primary</label><input type="checkbox" class="skill-select" name="attr_primary" value="primary" />
 									<label>modifier Dice</label><input type="number" name="attr_dicepool_modifier" />
 								</div>
 								<div class="settings-row">
@@ -914,24 +915,24 @@
 							</div>
 						</div>
 						<div class="display">
-							<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Soak}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><span name="attr_armor"></span></button></div>
+							<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Soak}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><span name="attr_name"></span></button></div>
 							<div class="display-row hoverswitch">
 								<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{armor}}}{{base= Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{rating}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
 								<span class="default" name="attr_rating"></span><!--<span class="hover" name="attr_soak"></span>--></button>
 							</div>
-							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Acid Protection}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{acid_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Acid Protection}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{acid_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
 								<span class="default" name="attr_acid_modifier"></span><!--<span class="hover" name="attr_acid_protection"></span>--></button>
 							</div>
-							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Cold Protection}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{cold_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Cold Protection}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{cold_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
 								<span class="default" name="attr_cold_modifier"></span><!--<span class="hover" name="attr_cold_protection"></span>--></button>
 							</div>
-							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Electrical Protection}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{electrical_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Electrical Protection}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{electrical_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
 								<span class="default" name="attr_electrical_modifier"></span><!--<span class="hover" name="attr_electrical_protection"></span>--></button>
 							</div>
-							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Fire Protection}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{fire_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Fire Protection}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{fire_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
 								<span class="default" name="attr_fire_modifier"></span><!--<span class="hover" name="attr_fire_protection"></span>--></button>
 							</div>
-							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Radiation Protection}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{radiation_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
+							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Radiation Protection}}{{base=Body ♦ Armor}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{radiation_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">
 								<span class="default" name="attr_radiation_modifier"></span><!--<span class="hover" name="attr_radiation_protection"></span>--></button>
 							</div>
 							<input class="display-flag" type="checkbox" name="attr_display_flag" /><span>i</span>
@@ -3278,7 +3279,7 @@
 		update_defense();
 	});
 
-	on("change:armor_rating", function () {
+	on("change:armor_rating change:soak_modifier", function () {
 		update_soak();
 	});
 
@@ -3302,7 +3303,7 @@
 		update_memory();
 	});
 
-	on("change: walk_bonus change:run_bonus", function () {
+	on("change:walk_bonus change:run_bonus", function () {
 		update_movement();
 	});
 
@@ -3508,7 +3509,7 @@
 				const body = parseInt(v.body) || 0;
 				const armor = parseInt(v.armor_rating) || 0;
 				const mod = parseInt(v.soak_modifier) || 0;
-				let tot = body + armor;
+				let tot = body + armor + mod;
 
 				setAttrs({soak: tot});
 			});
@@ -3516,18 +3517,20 @@
 
 		//Set Primary Armor when the star is selected
 			on("change:repeating_armor", function() {
-				getAttrs(["repeating_armor_armor", "repeating_armor_rating", "repeating_armor_acid_modifier", "repeating_armor_cold_modifier", "repeating_armor_electrical_modifier", "repeating_armor_fire_modifier", "repeating_armor_radiation_modifier", "repeating_armor_primary"], function(v) {
+				console.log(":+:+:+:+: repeating armor ran!! :+:+:+:+:");
+				getAttrs(["repeating_armor_name", "repeating_armor_rating", "repeating_armor_acid_modifier", "repeating_armor_electrical_modifier", "repeating_armor_cold_modifier", "repeating_armor_fire_modifier", "repeating_armor_radiation_modifier", "repeating_armor_primary", "repeating_armor_dicepool_modifier"], function(v) {
+					console.log("IS THIS OWRKING NOW?W?W?W");
 					let update = {};
 
 					if (v.repeating_armor_primary === "primary") {
-						update["armor_name"] = v.repeating_armor_armor;
+						update["armor_name"] = v.repeating_armor_name;
 						if (v.repeating_armor_rating) {update["armor_rating"] = v.repeating_armor_rating};
+						if (v.repeating_armor_dicepool_modifier) {update["soak_modifier"] = v.repeating_armor_dicepool_modifier};
 						if (v.repeating_armor_acid_modifier) {update["acid_modifier"] = v.repeating_armor_acid_modifier};
 						if (v.repeating_armor_cold_modifier) {update["cold_modifier"] = v.repeating_armor_cold_modifier};
 						if (v.repeating_armor_electrical_modifier) {update["electrical_modifier"] = v.repeating_armor_electrical_modifier};
 						if (v.repeating_armor_fire_modifier) {update["fire_modifier"] = v.repeating_armor_fire_modifier};
 						if (v.repeating_armor_radiation_modifier) {update["radiation_modifier"] = v.repeating_armor_radiation_modifier};
-
 					};
 
 					setAttrs(update);

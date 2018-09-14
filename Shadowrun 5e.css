@@ -653,29 +653,47 @@ span {
 		  border-top: 5.77px solid #222;
 		}
 
+		.sheet-edg-hex input[type="checkbox"]:checked ~ .sheet-hexagon,
 		.sheet-con-hex input[type="radio"]:checked ~ .sheet-hexagon {
 			background-color: #610b0d;
 		}
 
+		.sheet-edg-hex input[type="checkbox"]:checked ~ .sheet-hexagon:before,
 		.sheet-con-hex input[type="radio"]:checked ~ .sheet-hexagon:before {
 			border-bottom-color: #610b0d;
 		}
 
+		.sheet-edg-hex input[type="checkbox"]:checked ~ .sheet-hexagon:after,
 		.sheet-con-hex input[type="radio"]:checked ~ .sheet-hexagon:after {
 			border-top-color: #610b0d;
 		}
 
+		.sheet-edg-hex input[type="checkbox"]:checked + .sheet-hexagon,
 		.sheet-con-hex input[type="radio"] + .sheet-hexagon,
 		.sheet-con-hex input[type="radio"]:checked + .sheet-hexagon {
 			background-color: #222;
 		}
 
+		.sheet-edg-hex input[type="checkbox"]:checked + .sheet-hexagon:before,
 		.sheet-con-hex input[type="radio"]:checked + .sheet-hexagon:before  {
 			border-bottom-color: #222;
 		}
 
+		.sheet-edg-hex input[type="checkbox"]:checked + .sheet-hexagon:after,
 		.sheet-con-hex input[type="radio"]:checked + .sheet-hexagon:after {
 			border-top-color: #222;
+		}
+
+		.sheet-hex-hider[value="0"] ~ input[type="checkbox"] + .sheet-hexagon {
+			background-color: #610b0d;
+		}
+
+		.sheet-hex-hider[value="0"] ~ input[type="checkbox"] + .sheet-hexagon:before {
+			border-bottom-color: #610b0d;
+		}
+
+		.sheet-hex-hider[value="0"] ~ input[type="checkbox"] + .sheet-hexagon:after {
+			border-top-color: #610b0d;
 		}
 
 		/***** Hexes Appear & Disappear *****/
