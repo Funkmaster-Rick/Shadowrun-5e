@@ -1529,11 +1529,13 @@
 								<div class="row-long">
 									<label style="width: 8%;">Name</label>
 										<input type="text" name="attr_name" placeholder="name" />
+										<input type="hidden" name="attr_display_name" />
 									<label>Handling</label>
 										<input type="hidden" name="attr_handling" />
 										<input type="number" name="attr_handling_base" placeholder="#" />
 										<input type="number" name="attr_handling_modifier" placeholder="#" />
 										<input type="number" name="attr_handling_temp" placeholder="#" />
+										<input type="hidden" name="attr_display_handling" placeholder="#" />
 								</div>
 								<div class="row-long">
 									<label>Acceleration</label>
@@ -1541,11 +1543,13 @@
 										<input type="number" name="attr_acceleration_base" placeholder="#" />
 										<input type="number" name="attr_acceleration_modifier" placeholder="#" />
 										<input type="number" name="attr_acceleration_temp" placeholder="#" />
+										<input type="hidden" name="attr_display_acceleration" placeholder="#" />
 									<label>Speed</label>
 										<input type="hidden" name="attr_speed" />
 										<input type="number" name="attr_speed_base" placeholder="#" />
 										<input type="number" name="attr_speed_modifier" placeholder="#" />
 										<input type="number" name="attr_speed_temp" placeholder="#" />
+										<input type="hidden" name="attr_display_speed" placeholder="#" />
 								</div>
 								<div class="row-long">
 									<label>Pilot</label>
@@ -1553,11 +1557,13 @@
 										<input type="number" name="attr_pilot_base" placeholder="#" />
 										<input type="number" name="attr_pilot_modifier" placeholder="#" />
 										<input type="number" name="attr_pilot_temp" placeholder="#" />
+										<input type="hidden" name="attr_display_pilot" placeholder="#" />
 									<label>Body</label>
 										<input type="hidden" name="attr_body" />
 										<input type="number" name="attr_body_base" placeholder="#" />
 										<input type="number" name="attr_body_modifier" placeholder="#" />
 										<input type="number" name="attr_body_temp" placeholder="#" />
+										<input type="hidden" name="attr_display_body" placeholder="#" />
 								</div>
 								<div class="row-long">
 									<label>Armor</label>
@@ -1565,19 +1571,39 @@
 										<input type="number" name="attr_armor_base" placeholder="#" />
 										<input type="number" name="attr_armor_modifier" placeholder="#" />
 										<input type="number" name="attr_armor_temp" placeholder="#" />
+										<input type="hidden" name="attr_display_armor" placeholder="#" />
 									<label>Sensor</label>
 										<input type="hidden" name="attr_sensor"  />
-										<input type="number" name="attr_sensort_base" placeholder="#" />
+										<input type="number" name="attr_sensor_base" placeholder="#" />
 										<input type="number" name="attr_sensor_modifier" placeholder="#" />
 										<input type="number" name="attr_sensor_temp" placeholder="#" />
+										<input type="hidden" name="attr_display_sensor" placeholder="#" />
+								</div>
+								<div class="row-long">
+									<h3>Base</h3><h3>Modifier</h3><h3>Temp</h3><h3>Base</h3><h3>Modifier</h3><h3>Temp</h3>
 								</div>
 								<h3>Notes</h3>
 								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 							</div>
 						</div>
 						<div class="display">
-							<h3>Name</h3>
-							<h3>Handling</h3>	
+							<input class="display-flag" type="checkbox" name="attr_display_flag" />
+							<div class="row-long">
+								<div class="display-row"><h3 style="width: 18%;">Vehicle</h3><div style="width: 79%;"><span name="attr_display_name"></span></div></div>
+								<div class="display-row"><h3>Handling</h3><div><span name="attr_display_handling"></span></div></div>
+							</div>
+							<div class="row-long">
+								<div class="display-row"><h3>Acceleration</h3><div><span name="attr_display_acceleration"></span></div></div>
+								<div class="display-row"><h3>Speed</h3><div><span name="attr_display_speed"></span></div></div>
+							</div>
+							<div class="row-long">
+								<div class="display-row"><h3>Pilot</h3><div><span name="attr_display_pilot"></span></div></div>
+								<div class="display-row"><h3>Body</h3><div><span name="attr_display_body"></span></div></div>
+							</div>
+							<div class="row-long">
+								<div class="display-row"><h3>Armor</h3><div><span name="attr_display_armor"></span></div></div>
+								<div class="display-row"><h3>Sensor</h3><div><span name="attr_display_sensor"></span></div></div>
+							</div>
 							<div class="collapsable">  
 								<div class="desc"><span name="attr_notes"></span></div>
 							</div>
@@ -3311,11 +3337,11 @@
 	on("change:body_base change:body_modifier", function() {
 		getAttrs(["body_base", "body_modifier"], function(v) {
 			var bas = parseInt(v.body_base) || 0;
-			var bon = parseInt(v.body_modifier) || 0;
-			var stat = bas + bon;
+			var mod = parseInt(v.body_modifier) || 0;
+			var stat = bas + mod;
 			let update = {};
 			update["body"] = stat;
-			(bon != 0) ? update["display_body"] = bas + " (" + stat + ")" : update["display_body"] = bas;
+			(mod != 0) ? update["display_body"] = bas + " (" + stat + ")" : update["display_body"] = bas;
 			setAttrs(update);
 		});
 	});
@@ -3323,12 +3349,12 @@
 	on("change:agility_base change:agility_modifier", function() {
 		getAttrs(["agility_base", "agility_modifier"], function(v) {
 			var bas = parseInt(v.agility_base) || 0;
-			var bon = parseInt(v.agility_modifier) || 0;
-			var stat = bas + bon;
+			var mod = parseInt(v.agility_modifier) || 0;
+			var stat = bas + mod;
 			let update = {};
 
 			update["agility"] = stat;
-			(bon != 0) ? update["display_agility"] = bas + " (" + stat + ")" : update["display_agility"] = bas;
+			(mod != 0) ? update["display_agility"] = bas + " (" + stat + ")" : update["display_agility"] = bas;
 			setAttrs(update);
 		});
 	});	
@@ -3336,12 +3362,12 @@
 	on("change:reaction_base change:reaction_modifier", function() {
 		getAttrs(["reaction_base", "reaction_modifier"], function(v) {
 			var bas = parseInt(v.reaction_base) || 0;
-			var bon = parseInt(v.reaction_modifier) || 0;
-			var stat = bas + bon;
+			var mod = parseInt(v.reaction_modifier) || 0;
+			var stat = bas + mod;
 			let update = {};
 
 			update["reaction"] = stat;
-			(bon != 0) ? update["display_reaction"] = bas + " (" + stat + ")": update["display_reaction"] = bas;
+			(mod != 0) ? update["display_reaction"] = bas + " (" + stat + ")": update["display_reaction"] = bas;
 			setAttrs(update);
 		});
 	});
@@ -3349,12 +3375,12 @@
 	on("change:strength_base change:strength_modifier", function() {
 		getAttrs(["strength_base", "strength_modifier"], function(v) {
 			var bas = parseInt(v.strength_base) || 0;
-			var bon = parseInt(v.strength_modifier) || 0;
-			var stat = bas + bon;
+			var mod = parseInt(v.strength_modifier) || 0;
+			var stat = bas + mod;
 			let update = {};
 
 			update["strength"] = stat;
-			(bon != 0) ? update["display_strength"] = bas + " (" + stat + ")" : update["display_strength"] = bas;
+			(mod != 0) ? update["display_strength"] = bas + " (" + stat + ")" : update["display_strength"] = bas;
 			setAttrs(update);
 		});
 	});
@@ -3362,12 +3388,12 @@
 	on("change:willpower_base change:willpower_modifier", function() {
 		getAttrs(["willpower_base", "willpower_modifier"], function(v) {
 			var bas = parseInt(v.willpower_base) || 0;
-			var bon = parseInt(v.willpower_modifier) || 0;
-			var stat = bas + bon;
+			var mod = parseInt(v.willpower_modifier) || 0;
+			var stat = bas + mod;
 			let update = {};
 
 			update["willpower"] = stat;
-			(bon != 0) ? update["display_willpower"] = bas + " (" + stat + ")" : update["display_willpower"] = bas;
+			(mod != 0) ? update["display_willpower"] = bas + " (" + stat + ")" : update["display_willpower"] = bas;
 			setAttrs(update);
 		});
 	});
@@ -3375,12 +3401,12 @@
 	on("change:logic_base change:logic_modifier", function() {
 		getAttrs(["logic_base", "logic_modifier"], function(v) {
 			var bas = parseInt(v.logic_base) || 0;
-			var bon = parseInt(v.logic_modifier) || 0;
-			var stat = bas + bon;
+			var mod = parseInt(v.logic_modifier) || 0;
+			var stat = bas + mod;
 			let update = {};
 
 			update["logic"] = stat;
-			(bon != 0) ? update["display_logic"] = bas + " (" + stat + ")" : update["display_logic"] = bas;
+			(mod != 0) ? update["display_logic"] = bas + " (" + stat + ")" : update["display_logic"] = bas;
 			setAttrs(update);
 		});
 	});
@@ -3388,12 +3414,12 @@
 	on("change:intuition_base change:intuition_modifier", function() {
 		getAttrs(["intuition_base", "intuition_modifier"], function(v) {
 			var bas = parseInt(v.intuition_base) || 0;
-			var bon = parseInt(v.intuition_modifier) || 0;
-			var stat = bas + bon;
+			var mod = parseInt(v.intuition_modifier) || 0;
+			var stat = bas + mod;
 			let update = {};
 
 			update["intuition"] = stat;
-			(bon != 0) ? update["display_intuition"] = bas + " (" + stat + ")" : update["display_intuition"] = bas;
+			(mod != 0) ? update["display_intuition"] = bas + " (" + stat + ")" : update["display_intuition"] = bas;
 			setAttrs(update);
 		});
 	});
@@ -3401,12 +3427,12 @@
 	on("change:charisma_base change:charisma_modifier", function() {
 		getAttrs(["charisma_base", "charisma_modifier"], function(v) {
 			var bas = parseInt(v.charisma_base) || 0;
-			var bon = parseInt(v.charisma_modifier) || 0;
-			var stat = bas + bon;
+			var mod = parseInt(v.charisma_modifier) || 0;
+			var stat = bas + mod;
 			let update = {};
 
 			update["charisma"] = stat;
-			(bon != 0) ? update["display_charisma"] = bas + " (" + stat + ")" : update["display_charisma"] = bas;
+			(mod != 0) ? update["display_charisma"] = bas + " (" + stat + ")" : update["display_charisma"] = bas;
 			setAttrs(update);
 		});
 	});
@@ -3414,12 +3440,12 @@
 	on("change:magic_base change:magic_modifier", function() {
 		getAttrs(["magic_base", "magic_modifier"], function(v) {
 			var bas = parseInt(v.magic_base) || 0;
-			var bon = parseInt(v.magic_modifier) || 0;
-			var stat = bas + bon;
+			var mod = parseInt(v.magic_modifier) || 0;
+			var stat = bas + mod;
 			let update = {};
 
 			update["magic"] = stat;
-			(bon != 0) ? update["display_magic"] = bas + " (" + stat + ")" : update["display_magic"] = bas;
+			(mod != 0) ? update["display_magic"] = bas + " (" + stat + ")" : update["display_magic"] = bas;
 			setAttrs(update);
 		});
 	});
@@ -3427,12 +3453,12 @@
 	on("change:resonance_base change:resonance_modifier", function() {
 		getAttrs(["resonance_base", "resonance_modifier"], function(v) {
 			var bas = parseInt(v.resonance_base) || 0;
-			var bon = parseInt(v.resonance_modifier) || 0;
-			var stat = bas + bon;
+			var mod = parseInt(v.resonance_modifier) || 0;
+			var stat = bas + mod;
 			let update = {};
 
 			update["resonance"] = stat;
-			(bon != 0) ? update["display_resonance"] = bas + " (" + stat + ")" : update["display_resonance"] = bas;
+			(mod != 0) ? update["display_resonance"] = bas + " (" + stat + ")" : update["display_resonance"] = bas;
 			setAttrs(update);
 		});
 	});
@@ -3441,9 +3467,9 @@
 	var update_overflow = function () {
 		getAttrs(["body", "overflow_modifier"], function(v) {
 			var bas = parseInt(v.body) || 0;
-			var bon = parseInt(v.overflow_modifier) || 0;
+			var mod = parseInt(v.overflow_modifier) || 0;
 
-			setAttrs({overflow: bas + bon});
+			setAttrs({overflow: bas + mod});
 		});
 	};
 
@@ -3454,9 +3480,9 @@
 			var int = parseInt(v.intuition) || 0;
 			var wil = parseInt(v.willpower) || 0;
 			var log = parseInt(v.logic) || 0;
-			var bon = parseInt(v.mental_limit_modifier) || 0;
+			var mod = parseInt(v.mental_limit_modifier) || 0;
 			var tot = ((int + wil + (log * 2))/3);
-			var num = Math.ceil(tot) + bon;
+			var num = Math.ceil(tot) + mod;
 
 			setAttrs({mental_limit: num});
 		});
@@ -3468,9 +3494,9 @@
 				var bod = parseInt(v.body) || 0;
 				var rea = parseInt(v.reaction) || 0;
 				var str = parseInt(v.strength) || 0;
-				var bon = parseInt(v.physical_limit_modifier) || 0;
+				var mod = parseInt(v.physical_limit_modifier) || 0;
 				var tot = ((bod + rea + (str * 2))/3);
-				var num = Math.ceil(tot) + bon;
+				var num = Math.ceil(tot) + mod;
 
 				setAttrs({physical_limit: num});
 			});
@@ -3482,9 +3508,9 @@
 				var cha = parseInt(v.charisma) || 0;
 				var wil = parseInt(v.willpower) || 0;
 				var ess = Math.ceil(v.essence) || 0;
-				var bon = parseInt(v.social_limit_modifier) || 0;
+				var mod = parseInt(v.social_limit_modifier) || 0;
 				var tot = ((ess + wil + (cha * 2))/3);
-				var num = Math.ceil(tot) + bon;
+				var num = Math.ceil(tot) + mod;
 				
 				setAttrs({social_limit: num});
 			});
@@ -3496,8 +3522,8 @@
 			getAttrs(["reaction", "intuition", "defense_modifier"], function(v){
 				var rea = parseInt(v.reaction) || 0;
 				var int = parseInt(v.intuition) || 0;
-				var bon = parseInt(v.defense_modifier) || 0;
-				var tot = rea + int + bon;
+				var mod = parseInt(v.defense_modifier) || 0;
+				var tot = rea + int + mod;
 
 				setAttrs({defense: tot});
 			});
@@ -3541,9 +3567,9 @@
 		getAttrs(["body", "strength", "lift_carry_modifier"], function(v) {
 			var attrOne = parseInt(v.body) || 0;
 			var attrTwo = parseInt(v.strength) || 0;
-			var bon = parseInt(v.lift_carry_modifier) || 0;
+			var mod = parseInt(v.lift_carry_modifier) || 0;
 
-			setAttrs({lift_carry: attrOne + attrTwo + bon});
+			setAttrs({lift_carry: attrOne + attrTwo + mod});
 		});
 	};
 
@@ -3551,9 +3577,9 @@
 		getAttrs(["charisma", "willpower", "composure_modifier"], function(v) {
 			var attrOne = parseInt(v.charisma) || 0;
 			var attrTwo = parseInt(v.willpower) || 0;
-			var bon = parseInt(v.composure_modifier) || 0;
+			var mod = parseInt(v.composure_modifier) || 0;
 
-			setAttrs({composure: attrOne + attrTwo + bon});
+			setAttrs({composure: attrOne + attrTwo + mod});
 		});
 	};
 	
@@ -3561,9 +3587,9 @@
 		getAttrs(["charisma", "intuition", "judge_intentions_modifier"], function(v) {
 			var attrOne = parseInt(v.charisma) || 0;
 			var attrTwo = parseInt(v.intuition) || 0;
-			var bon = parseInt(v.judge_intentions_modifier) || 0;
+			var mod = parseInt(v.judge_intentions_modifier) || 0;
 
-			setAttrs({judge_intentions: attrOne + attrTwo + bon});
+			setAttrs({judge_intentions: attrOne + attrTwo + mod});
 		});
 	};
 
@@ -3572,9 +3598,9 @@
 		getAttrs(["logic", "willpower", "memory_modifier"], function(v) {
 			var attrOne = parseInt(v.logic) || 0;
 			var attrTwo = parseInt(v.willpower) || 0;
-			var bon = parseInt(v.memory_modifier) || 0;
+			var mod = parseInt(v.memory_modifier) || 0;
 
-			setAttrs({memory: attrOne + attrTwo + bon});
+			setAttrs({memory: attrOne + attrTwo + mod});
 		});
 	};
 
@@ -3582,10 +3608,10 @@
 	var update_movement = function () {
 		getAttrs(["agility", "walk_modifier", "run_modifier"], function(v) {
 			var agi = parseInt(v.agility) || 0;
-			var wbon = parseInt(v.walk_modifier) || 0;
-			var rbon = parseInt(v.run_modifier) || 0;
-			var walk = (agi * 2) + wbon;
-			var run = (agi * 4) + rbon;
+			var wmod = parseInt(v.walk_modifier) || 0;
+			var rmod = parseInt(v.run_modifier) || 0;
+			var walk = (agi * 2) + wmod;
+			var run = (agi * 4) + rmod;
 			let update = {};
 			update["walk"] = walk;
 			update["run"] = run;
@@ -3598,9 +3624,9 @@
 		var update_physicalTrack = function() {
 			getAttrs(["body","physical_modifier", "sheet_type"], function(v) {
 				var bod = parseInt(v.body) || 0;
-				var bon = parseInt(v.physical_modifier) || 0;
-				tra = (v.sheet_type === "pc" || v.sheet_type === "goon") ? (Math.ceil(bod/2) + 8 + bon) : 
-					  ((v.sheet_type === "vehicle") ? (Math.ceil(bod/2) + 12 + bon) :
+				var mod = parseInt(v.physical_modifier) || 0;
+				tra = (v.sheet_type === "pc" || v.sheet_type === "goon") ? (Math.ceil(bod/2) + 8 + mod) : 
+					  ((v.sheet_type === "vehicle") ? (Math.ceil(bod/2) + 12 + mod) :
 					  "Not a goon or vehicle");
 				let update = {};
 				update["physical"] = tra;
@@ -3613,8 +3639,8 @@
 		var update_stunTrack = function () {
 			getAttrs(["willpower","stun_modifier"], function(v){
 				var wil = parseInt(v.willpower) || 0;
-				var bon = parseInt(v.stun_modifier) || 0;
-				var tot = Math.ceil(wil/2) + 8 + bon;
+				var mod = parseInt(v.stun_modifier) || 0;
+				var tot = Math.ceil(wil/2) + 8 + mod;
 				let update = {};
 				update["stun"] = tot;
 				update["stun_max"] = tot;
@@ -3691,8 +3717,8 @@
 on("change:device_rating change:matrix_modifier", function() {
 	getAttrs(["device_rating","matrix_modifier"], function(v){
 		var dev = parseInt(v.device_rating) || 0;
-		var bon = parseInt(v.matrix_modifier) || 0;
-		var tot = Math.ceil(dev/2) + 8 + bon;
+		var mod = parseInt(v.matrix_modifier) || 0;
+		var tot = Math.ceil(dev/2) + 8 + mod;
 
 		setAttrs({matrix: tot});
 		setAttrs({matrix_max: tot});
@@ -3704,12 +3730,12 @@ on("change:device_rating change:matrix_modifier", function() {
 		getAttrs(["reaction", "intuition", "initiative_modifier"], function(v){
 			var rea = parseInt(v.reaction) || 0;
 			var int = parseInt(v.intuition) || 0;
-			var bon = parseInt(v.initiative_modifier) || 0;
+			var mod = parseInt(v.initiative_modifier) || 0;
 			var bas = rea + int;
-			var tot = rea + int + bon;
+			var tot = rea + int + mod;
 			let update = {};
 			update["initiative_mod"] = tot;
-			(bon != 0) ? update["display_initiative_mod"] = bas + " (" + tot + ")" : update["display_initiative_mod"] = bas;
+			(mod != 0) ? update["display_initiative_mod"] = bas + " (" + tot + ")" : update["display_initiative_mod"] = bas;
 			setAttrs(update);
 		});
 	};
@@ -3717,8 +3743,8 @@ on("change:device_rating change:matrix_modifier", function() {
 
 	 on("change:initiative_dice_modifier change:edge_toggle", function () {
 		getAttrs(["initiative_dice_modifier", "edge_toggle"], function(v){
-			var bon = parseInt(v.initiative_dice_modifier) || 0;
-			var tot = Math.min(bon+1,5);
+			var mod = parseInt(v.initiative_dice_modifier) || 0;
+			var tot = Math.min(mod+1,5);
 			edg = (v.edge_toggle == 0) ? tot : 5;
 
 			setAttrs({initiative_dice: edg});
@@ -3729,19 +3755,19 @@ on("change:device_rating change:matrix_modifier", function() {
 	on("change:intuition change:astral_mod_modifier", function() {
 		getAttrs(["intuition", "astral_mod_modifier"], function(v) {
 			var int = parseInt(v.intuition) || 0;
-			var bon = parseInt(v.astral_mod_modifier) || 0;
+			var mod = parseInt(v.astral_mod_modifier) || 0;
 			var bas = int * 2;
-			var tot = (int * 2) + bon;
+			var tot = (int * 2) + mod;
 
 			setAttrs({astral_mod: tot});
-			(bon != 0) ? setAttrs({display_astral_mod: bas + " (" + tot + ")"}) : setAttrs({display_astral_mod: bas});
+			(mod != 0) ? setAttrs({display_astral_mod: bas + " (" + tot + ")"}) : setAttrs({display_astral_mod: bas});
 		});
 	});
 
 	on("change:astral_dice_modifier change:edge_toggle", function () {
 		getAttrs(["astral_dice_modifier", "edge_toggle"], function(v){
-			var bon = parseInt(v.astral_dice_modifier) || 0;
-			var tot = Math.min(bon+3,5);
+			var mod = parseInt(v.astral_dice_modifier) || 0;
+			var tot = Math.min(mod+3,5);
 			edg = (v.edge_toggle == 0) ? tot : 5;
 
 			setAttrs({astral_dice: edg});
@@ -4030,15 +4056,15 @@ on("change:device_rating change:matrix_modifier", function() {
 	on("change:repeating_range", function() {
 		getAttrs(["repeating_range_dicepool_modifier", "repeating_range_spec", "repeating_range_primary", "repeating_range_weapon", "repeating_range_damage", "repeating_range_acc",
 			"repeating_range_ap", "repeating_range_mode", "repeating_range_recoil", "repeating_range_ammo", "repeating_range_skill"], function(v){
-			const bon = parseInt(v.repeating_range_dicepool_modifier) || 0;
+			const mod = parseInt(v.repeating_range_dicepool_modifier) || 0;
 			const spec = parseInt(v.repeating_range_spec) || 0;
 			let update = {};
 
-			update["repeating_range_dicepool"] = bon + spec;
+			update["repeating_range_dicepool"] = mod + spec;
 
 			if (v.repeating_range_primary === "primary") {
 				update["primary_range_weapon"] = v.repeating_range_weapon;
-				update["primary_range_weapon_dicepool"] = bon + spec;
+				update["primary_range_weapon_dicepool"] = mod + spec;
 				if (v.repeating_range_skill) {update["primary_range_weapon_skill"] = v.repeating_range_skill};
 				if (v.repeating_range_damage) {update["primary_range_weapon_damage"] = v.repeating_range_damage};
 				if (v.repeating_range_acc) {update["primary_range_weapon_acc"] = v.repeating_range_acc};
@@ -4055,15 +4081,15 @@ on("change:device_rating change:matrix_modifier", function() {
 	on("change:repeating_melee", function() {
 		getAttrs(["repeating_dicepool_modifier", "repeating_melee_spec", "repeating_melee_primary", "repeating_melee_weapon", "repeating_melee_damage", "repeating_melee_acc",
 			"repeating_melee_ap", "repeating_melee_reach", "repeating_melee_skill"], function(v){
-			const bon = parseInt(v.repeating_melee_dicepool_modifier) || 0;
+			const mod = parseInt(v.repeating_melee_dicepool_modifier) || 0;
 			const spec = parseInt(v.repeating_melee_spec) || 0;
 			let update = {};
 
-			update["repeating_melee_dicepool"] = bon + spec;
+			update["repeating_melee_dicepool"] = mod + spec;
 
 			if (v.repeating_melee_primary === "primary") {
 				update["primary_melee_weapon"] = v.repeating_melee_weapon;
-				update["primary_melee_weapon_dicepool"] = bon + spec;
+				update["primary_melee_weapon_dicepool"] = mod + spec;
 				if (v.repeating_melee_skill) {update["primary_melee_weapon_skill"] = v.repeating_melee_skill};
 				if (v.repeating_melee_damage) {update["primary_melee_weapon_damage"] = v.repeating_melee_damage};
 				if (v.repeating_melee_acc) {update["primary_melee_weapon_acc"] = v.repeating_melee_acc};
@@ -4155,6 +4181,118 @@ on("change:device_rating change:matrix_modifier", function() {
 			let tot = temp + base + mod;
 
 			setAttrs({firewall: tot});
+		});
+	});
+
+//Vehicle displays for PCs
+	on("change:repeating_vehicle:name", function(){
+		getAttrs(["repeating_vehicle_name", "repeating_vehicle_display_name"], function(v) {
+			const name = (v.repeating_vehicle_name);
+			const dis = (v.repeating_vehicle_display_name);
+			let update = {};
+
+			let displayName = ((name).length > 0 && (name).length <= 24) ? name : ((name).length > 24 ) ? (name).slice(0, 24) + "..." : " ";
+			if (dis != displayName) {update["repeating_vehicle_display_name"] = displayName};
+
+			setAttrs(update);
+		});
+	});
+
+	on("change:repeating_vehicle:handling_base change:repeating_vehicle:handling_modifier change:repeating_vehicle:handling_temp", function(){
+		getAttrs(["repeating_vehicle_handling_base", "repeating_vehicle_handling_modifier", "repeating_vehicle_handling_temp"], function(v) {
+			const base = parseInt(v.repeating_vehicle_handling_base) || 0;
+			const mod = parseInt(v.repeating_vehicle_handling_modifier) || 0;
+			const temp = parseInt(v.repeating_vehicle_handling_temp) || 0;
+			let tot = base + mod + temp;
+			let update = {};
+			update["repeating_vehicle_handling"] = tot;
+			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_handling"] = base + " (" + tot + ")" : update["repeating_vehicle_display_handling"] = base;
+
+			setAttrs(update);
+		});
+	});
+
+	on("change:repeating_vehicle:acceleration_base change:repeating_vehicle:acceleration_modifier change:repeating_vehicle:acceleration_temp", function(){
+		getAttrs(["repeating_vehicle_acceleration_base", "repeating_vehicle_acceleration_modifier", "repeating_vehicle_acceleration_temp"], function(v) {
+			const base = parseInt(v.repeating_vehicle_acceleration_base) || 0;
+			const mod = parseInt(v.repeating_vehicle_acceleration_modifier) || 0;
+			const temp = parseInt(v.repeating_vehicle_acceleration_temp) || 0;
+			let tot = base + mod + temp;
+			let update = {};
+			update["repeating_vehicle_acceleration"] = tot;
+			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_acceleration"] = base + " (" + tot + ")" : update["repeating_vehicle_display_acceleration"] = base;
+
+			setAttrs(update);
+		});
+	});
+
+	on("change:repeating_vehicle:speed_base change:repeating_vehicle:speed_modifier change:repeating_vehicle:speed_temp", function(){
+		getAttrs(["repeating_vehicle_speed_base", "repeating_vehicle_speed_modifier", "repeating_vehicle_speed_temp"], function(v) {
+			const base = parseInt(v.repeating_vehicle_speed_base) || 0;
+			const mod = parseInt(v.repeating_vehicle_speed_modifier) || 0;
+			const temp = parseInt(v.repeating_vehicle_speed_temp) || 0;
+			let tot = base + mod + temp;
+			let update = {};
+			update["repeating_vehicle_speed"] = tot;
+			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_speed"] = base + " (" + tot + ")" : update["repeating_vehicle_display_speed"] = base;
+
+			setAttrs(update);
+		});
+	});
+
+	on("change:repeating_vehicle:pilot_base change:repeating_vehicle:pilot_modifier change:repeating_vehicle:pilot_temp", function(){
+		getAttrs(["repeating_vehicle_pilot_base", "repeating_vehicle_pilot_modifier", "repeating_vehicle_pilot_temp"], function(v) {
+			const base = parseInt(v.repeating_vehicle_pilot_base) || 0;
+			const mod = parseInt(v.repeating_vehicle_pilot_modifier) || 0;
+			const temp = parseInt(v.repeating_vehicle_pilot_temp) || 0;
+			let tot = base + mod + temp;
+			let update = {};
+			update["repeating_vehicle_pilot"] = tot;
+			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_pilot"] = base + " (" + tot + ")" : update["repeating_vehicle_display_pilot"] = base;
+
+			setAttrs(update);
+		});
+	});
+
+	on("change:repeating_vehicle:body_base change:repeating_vehicle:body_modifier change:repeating_vehicle:body_temp", function(){
+		getAttrs(["repeating_vehicle_body_base", "repeating_vehicle_body_modifier", "repeating_vehicle_body_temp"], function(v) {
+			const base = parseInt(v.repeating_vehicle_body_base) || 0;
+			const mod = parseInt(v.repeating_vehicle_body_modifier) || 0;
+			const temp = parseInt(v.repeating_vehicle_body_temp) || 0;
+			let tot = base + mod + temp;
+			let update = {};
+			update["repeating_vehicle_body"] = tot;
+			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_body"] = base + " (" + tot + ")" : update["repeating_vehicle_display_body"] = base;
+
+			setAttrs(update);
+		});
+	});
+
+	on("change:repeating_vehicle:armor_base change:repeating_vehicle:armor_modifier change:repeating_vehicle:armor_temp", function(){
+		getAttrs(["repeating_vehicle_armor_base", "repeating_vehicle_armor_modifier", "repeating_vehicle_armor_temp"], function(v) {
+			const base = parseInt(v.repeating_vehicle_armor_base) || 0;
+			const mod = parseInt(v.repeating_vehicle_armor_modifier) || 0;
+			const temp = parseInt(v.repeating_vehicle_armor_temp) || 0;
+			let tot = base + mod + temp;
+			let update = {};
+			update["repeating_vehicle_armor"] = tot;
+			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_armor"] = base + " (" + tot + ")" : update["repeating_vehicle_display_armor"] = base;
+
+			setAttrs(update);
+		});
+	});
+
+	on("change:repeating_vehicle:sensor_base change:repeating_vehicle:sensor_modifier change:repeating_vehicle:sensor_temp", function(){
+		getAttrs(["repeating_vehicle_sensor_base", "repeating_vehicle_sensor_modifier", "repeating_vehicle_sensor_temp"], function(v) {
+			const base = parseInt(v.repeating_vehicle_sensor_base) || 0;
+			const mod = parseInt(v.repeating_vehicle_sensor_modifier) || 0;
+			const temp = parseInt(v.repeating_vehicle_sensor_temp) || 0;
+			let tot = base + mod + temp;
+			let update = {};
+			update["repeating_vehicle_sensor"] = tot;
+			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_sensor"] = base + " (" + tot + ")" : update["repeating_vehicle_display_sensor"] = base;
+
+			setAttrs(update);
 		});
 	});
 
