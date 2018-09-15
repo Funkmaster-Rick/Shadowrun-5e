@@ -232,8 +232,8 @@
 							<input type="hidden" name="attr_run" value="24" />
 							<label>Movement</label>
 							<div class="attr-und">
-								<input type="number" name="attr_walk_modifier" value="0" placeholder="0" /><span class="tiny-span"> / </span>
-								<input type="number" name="attr_run_modifier" value="0" placeholder="0" /><span class="tiny-span"> / +</span>
+								<input type="number" name="attr_walk_modifier" value="" placeholder="0" /><span class="tiny-span"> / </span>
+								<input type="number" name="attr_run_modifier" value="" placeholder="0" /><span class="tiny-span"> / +</span>
 								<input type="number" name="attr_movement_mod" value="2" placeholder="2" />
 							</div>
 						</div>
@@ -474,8 +474,8 @@
 							</div>
 							<div class="display">
 								<div class="name">
-									<button type="roll" ><span name="attr_display"></span></button>
-									<button class="spec-button" type="roll" value=""><span name="attr_display_specialization"></span></button>
+									<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><span name="attr_display"></span></button>
+									<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}"><span name="attr_display_specialization"></span></button>
 								</div>
 								<div class="rank"><span name="attr_display_rank"></span></div>
 							</div>
@@ -512,8 +512,8 @@
 							</div>
 							<div class="display">
 								<div class="name">
-									<button type="roll" ><span name="attr_display"></span></button>
-									<button class="spec-button" type="roll" value=""><span name="attr_display_specialization"></span></button>
+									<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><span name="attr_display"></span></button>
+									<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}"><span name="attr_display_specialization"></span></button>
 								</div>
 								<div class="rank"><span name="attr_display_rank"></span></div>
 							</div>
