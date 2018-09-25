@@ -289,6 +289,7 @@
 						</div>
 					</div><!-- ~~~~~~~~ End of PC Display Attributes ~~~~~~~~ -->
 					<div class="edg-hex">
+						<input class="edge-zero"type="hidden" name="attr_edge_hex" value="0"/>
 						<input class="hex-hider"type="hidden" name="attr_edge" value="1"/>
 						<input type="checkbox" name="attr_edge_hex" value="1" /><span class="hexagon"></span>
 						<input type="checkbox" name="attr_edge_hex" value="2" /><span class="hexagon"></span>
@@ -323,6 +324,25 @@
 					</div>
 					<input class="tab-switch" type="hidden" name="attr_skill_toggle" value="active">
 					<div class="skills-active">
+						<div class="row-long">
+							<div class="name">
+								<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Default Skill}}{{base=@{default_display}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{default_attribute}+(-1)+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" ><span>Default a skill</span></button>
+							</div>
+							<div class="rank"></div>
+								<input type="hidden" name="attr_default_display" />
+								<select class="attr-select" name="attr_default_attribute" style="position: inherit;">
+								<option value="@{body}">Body</option>
+								<option value="@{agility}" selected="selected">Agility</option>
+								<option value="@{reaction}">Reaction</option>
+								<option value="@{strength}">Strength</option>
+								<option value="@{willpower}">Willpower</option>
+								<option value="@{logic}">Logic</option>
+								<option value="@{intuition}">Intuition</option>
+								<option value="@{charisma}">Charisma</option>
+								<option value="@{magic}">Magic</option>
+								<option value="@{resonance}">Resonance</option>
+							</select>
+						</div>
 						<fieldset class="repeating_active">
 							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
 							<div class="settings">
@@ -559,7 +579,7 @@
 					</div>
 					<div class="row-long cc-row">
 						<h2>Primary Ranged Weapon</h2>
-						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{primary_range_weapon}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{primary_range_weapon_skill}+@{primary_range_weapon_dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Mode @{mode}, ACC @{acc}, DV @{damage}, AP @{ap}}}" title="Primary Weapon"><span name="attr_primary_range_weapon"></span></button>
+						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{primary_range_weapon}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{primary_range_weapon_skill}+@{primary_range_weapon_dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Mode @{primary_range_weapon_mode}, ACC @{primary_range_weapon_acc}, DV @{primary_range_weapon_damage}, AP @{primary_range_weapon_ap}}}" title="Primary Weapon"><span name="attr_primary_range_weapon"></span></button>
 					</div>
 					<div class="cc-row">
 						<h3>Dam</h3><span name="attr_primary_range_weapon_damage" style="width: 10%;"></span>
@@ -571,7 +591,7 @@
 					</div>
 					<div class="row-long cc-row">
 						<h2>Primary Melee Weapon</h2>
-						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{primary_melee_weapon}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{primary_melee_weapon_skill}+@{primary_melee_weapon_dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{acc}, DV @{damage}, AP @{ap}, Reach @{reach}}}" title="Primary Weapon"><span name="attr_primary_melee_weapon"></span></button>
+						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{primary_melee_weapon}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[((@{primary_melee_weapon_skill}+@{primary_melee_weapon_dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{primary_melee_weapon_acc}, DV @{primary_melee_weapon_damage}, AP @{primary_melee_weapon_ap}, Reach @{primary_melee_weapon_reach}}}" title="Primary Weapon"><span name="attr_primary_melee_weapon"></span></button>
 					</div>
 					<div class="cc-row">
 						<h3>Reach</h3><span name="attr_primary_melee_weapon_reach"></span>
@@ -1346,7 +1366,7 @@
 						</div>
 					</div>
 					<div class="con-hex">
-						<h2>Condition Monitor</h2>
+						<input type="radio" name="attr_matrix_con" value="0" /><h2>Condition Monitor</h2>
 						<input type="radio" name="attr_matrix_con" value="1" /><span class="hexagon"></span>
 						<input type="radio" name="attr_matrix_con" value="2" /><span class="hexagon"></span>
 						<input type="radio" name="attr_matrix_con" value="3" /><span class="hexagon"></span>
@@ -4051,6 +4071,22 @@ on("change:device_rating change:matrix_modifier", function() {
 			setAttrs(update);
 		});
 	});
+
+	//Setting the Default attribute name for default skill
+	on("change:default_attribute", function() {
+		getAttrs(["default_attribute", "default_display"], function(v) {
+			const display = (v.default_display);
+			const attribute = (v.default_attribute);
+			let update = {};
+
+			//This sets a hidden input with the appropraite Attribute name so the roll template can use it to indicate what attribute was rolled
+			let attributeNew = attribute.slice(2, -1);
+			if (attributeNew != display) {update["default_display"] = attributeNew;};
+
+			setAttrs(update);
+		});
+	});
+
 
 //Repeating Range & Melee weapons dicepools
 	on("change:repeating_range", function() {
