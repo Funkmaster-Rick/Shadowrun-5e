@@ -1,30 +1,33 @@
 <!-- ~~~~~~~~ Character Sheet Page, default view ~~~~~~~~ -->    
-<input class="sheet_type" name="attr_sheet_type" type="hidden" value="pc">
+	<input class="sheet_type" name="attr_sheet_type" type="hidden" value="pc">
 <!-- ~~~~~~~~ Show & hide optional Magic & Resonance areas ~~~~~~~~ --> 
-<input class="character-type" name="attr_flag_special" type="hidden" value="mundane">
+	<input class="character-type" name="attr_flag_special" type="hidden" value="mundane">
 
-<div class="tabs">
-	<div class="tab-whisper">
-		<input type="radio" name="attr_gm_toggle" value="" checked="checked" /><span>Public</span>
-		<input type="radio" name="attr_gm_toggle" value="/w gm" /><span>To GM</span>
+<!-- ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~  ~~~~~~~~  ~~~~~~~~ ~~~~~~~~ -->
+<!-- ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ TABS ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  -->
+<!-- ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  ~~~~~~~~  ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  -->
+	<div class="tabs">
+		<div class="tab-whisper">
+			<input type="radio" name="attr_gm_toggle" value="" checked="checked" /><span>Public</span>
+			<input type="radio" name="attr_gm_toggle" value="/w gm" /><span>To GM</span>
+		</div>
+		<div class="tab-toggles">
+			<input type="checkbox" name="attr_wound_toggle" value="@{wounds}" checked="checked" /><span>Wounds</span>
+			<input type="checkbox" name="attr_modifier_toggle" value="?{Modifiers +/-|0}" /><span>Modifiers</span>
+			<input type="checkbox" name="attr_edge_toggle" value="@{edge}" /><span>Edge</span>
+		</div>
+		<div class="tab-col">
+			<input type="radio" name="attr_tab" value="core" title="Core sheet" /><span>Core</span>
+			<input type="radio" name="attr_tab" value="arms" title="Arms"/><span>Arms</span>
+			<input type="radio" name="attr_tab" value="augs" title="Augs"/><span>Augs</span>
+			<input type="radio" name="attr_tab" value="gear" title="Gear"/><span>Gear</span>
+			<input type="radio" name="attr_tab" value="magic" title="Magic"/><span>Magic</span>
+			<input type="radio" name="attr_tab" value="matrix" title="Matrix"/><span>Matrix</span>
+			<input type="radio" name="attr_tab" value="social" title="Social"/><span>Social</span>
+			<input type="radio" name="attr_tab" value="vehicle" title="Vehicle"/><span>Vehicle</span>
+			<input type="radio" name="attr_tab" value="options" title="Sheet Options"  checked="checked"/><span>y</span>
+		</div>
 	</div>
-	<div class="tab-toggles">
-		<input type="checkbox" name="attr_wound_toggle" value="@{wounds}" checked="checked" /><span>Wounds</span>
-		<input type="checkbox" name="attr_modifier_toggle" value="?{Modifiers +/-|0}" /><span>Modifiers</span>
-		<input type="checkbox" name="attr_edge_toggle" value="@{edge}" /><span>Edge</span>
-	</div>
-	<div class="tab-col">
-		<input type="radio" name="attr_tab" value="core" title="Core sheet" /><span>Core</span>
-		<input type="radio" name="attr_tab" value="arms" title="Arms"/><span>Arms</span>
-		<input type="radio" name="attr_tab" value="augs" title="Augs"/><span>Augs</span>
-		<input type="radio" name="attr_tab" value="gear" title="Gear"/><span>Gear</span>
-		<input type="radio" name="attr_tab" value="magic" title="Magic"/><span>Magic</span>
-		<input type="radio" name="attr_tab" value="matrix" title="Matrix"/><span>Matrix</span>
-		<input type="radio" name="attr_tab" value="social" title="Social"/><span>Social</span>
-		<input type="radio" name="attr_tab" value="vehicle" title="Vehicle"/><span>Vehicle</span>
-		<input type="radio" name="attr_tab" value="options" title="Sheet Options"  checked="checked"/><span>y</span>
-	</div>
-</div>
 
 <!-- ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~  ~~~~~~~~  ~~~~~~~~ ~~~~~~~~ -->
 <!-- ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ Start of PC Sheet ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  -->
@@ -67,12 +70,12 @@
 				</div>
 			</div>
 		</div>
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of Attributes Row  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of Attributes Row  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<div class="pc-row">
 			<div class="header"><div class="triangle"></div><h1>Attributes</h1></div>
 			<div class="border-box">
 				<div class="pc-box medium-box attr-box">
-					<input type="checkbox" class="settings-toggle" name="attr_flag_attribute" checked="checked" /><span>y</span>
+					<input type="checkbox" class="settings-toggle" name="attr_flag_attribute" checked="checked" /><span>x</span>
 					<div class="settings">
 						<div class="attr-col">
 							<!-- ~~:+: Body :+:~~ -->
@@ -170,7 +173,7 @@
 							<!-- ~~:+: Initiative :+:~~ -->
 							<input type="hidden" name="attr_initiative_mod" value="6" />
 							<input type="hidden" name="attr_initiative_dice" value="1" min="1" max="5" />
-							<label class="attr-ini red">Initative</label>
+							<label class="attr-ini red">Initiative</label>
 							<div class="attr-und attr-ini">
 								<input type="number" name="attr_initiative_modifier" value="0" placeholder="0" /><span class="tiny-span"> + </span>
 								<input type="number" name="attr_initiative_dice_modifier" value="0" min="0" max="4" placeholder="modifier" /><span class="tiny-span"> d6</span><span class="tiny-span"> = </span>
@@ -303,7 +306,7 @@
 				</div>
 			</div>
 		</div><!-- ~~~~~~~~ End of PC Attributes~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of Skills Row  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of Skills Row  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<div class="pc-row">
 			<div class="header">
 				<div class="header htab">
@@ -325,12 +328,11 @@
 					<input class="tab-switch" type="hidden" name="attr_skill_toggle" value="active">
 					<div class="skills-active">
 						<div class="row-long">
-							<div class="name">
+							<div class="name" style="width: 81%;">
 								<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Default Skill}}{{base=@{default_display}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}@{modifier_toggle}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{default_attribute}+(-1)+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" ><span>Default a skill</span></button>
 							</div>
-							<div class="rank"></div>
-								<input type="hidden" name="attr_default_display" />
-								<select class="attr-select" name="attr_default_attribute" style="position: inherit;">
+							<input type="hidden" name="attr_default_display" />
+							<select class="attr-select" name="attr_default_attribute" style="position: inherit;">
 								<option value="@{body}">Body</option>
 								<option value="@{agility}" selected="selected">Agility</option>
 								<option value="@{reaction}">Reaction</option>
@@ -607,17 +609,17 @@
 			<div class="header right-header"><h1>Condition Monitor</h1><div class="right-tri"></div></div>
 			<div class="border-box">
 				<div class="pc-box medium-box condition-box">
-					<input type="checkbox" class="settings-toggle" name="attr_flag_condition" checked="checked" /><span>y</span>
+					<input type="checkbox" class="settings-toggle" name="attr_flag_condition" checked="checked" /><span>x</span>
 					<div class="settings">
-						<label>Condition Monitor (P/S): </label>
+						<label>Condition Monitor Modifiers (P/S): </label>
 						<input type="hidden" name="attr_physical" value="10" />
 						<input type="hidden" name="attr_stun" value="10" />
 						<input type="hidden" name="attr_physical_max" min="0" value="10" />
 						<input type="hidden" name="attr_stun_max" min="0" value="10" />
-						<input type="number" name="attr_physical_modifier" value="" placeholder="modifier" /><span> / </span>
-						<input type="number" name="attr_stun_modifier" value="" placeholder="modifier" /><br />
+						<input type="number" name="attr_physical_modifier" value="" placeholder="#" /><span> / </span>
+						<input type="number" name="attr_stun_modifier" value="" placeholder="#" /><br />
 						<input type="hidden" name="attr_overflow" value="3" />
-						<label>Overflow</label><input type="number" name="attr_overflow_modifier" value="" placeholder="modifier" /><br />
+						<label>Overflow Modifier</label><input type="number" name="attr_overflow_modifier" value="" placeholder="#" /><br />
 						<label>Pain Tolerance</label><input type="number" name="attr_pain_tolerance" value="0" placeholder="#" />
 						<div class="con-footer">
 							<span>Low Pain Tolernace adds a -1 and High Pain Tolerance adds a +1 per rank.</span>
@@ -1636,36 +1638,54 @@
 	<div class="options pc-col"><!-- ~~~~~~~~ Start of the PC Options Page ~~~~~~~~ -->
 		<div class="pc-row">
 			<div class="header right-header"><h1>Options</h1><div class="right-tri"></div></div>
-			<div class="border-box repeat-box deck-box">
+			<div class="border-box">
 				<div class="pc-box">
-					<div>
-						<h2>Hide Tabs:</h2><br />
-						<label>Matrix</label><input type="checkbox" name="attr_tab_cyberdeck"><br />
-						<label>Augmentations (Augs)</labe><input type="checkbox" name="attr_tab_augmentations"><br />
-						<label>Vehicle</label><input type="checkbox" name="attr_tab_vehicle"><br />
-						<label>Magic</label> <input type="checkbox" name="attr_tab_special"><br />
+					<div class="op-col">
+						<div>
+							<h2>Character:</h2><br />
+							<label>Mundane</label><input class="character-type" type="checkbox" name="attr_flag_special" value="mundane" title="Mundane" checked="checked" /><br />
+							<label>Awakened</label><input class="character-type" type="checkbox" name="attr_flag_special" value="magic" title="Magic" /><br />
+							<label>Emerged</label><input class="character-type" type="checkbox" name="attr_flag_special" value="resonance" title="Resonance" />
+						</div>
+						<div>
+							<h2>Hide Tabs</h2><br />
+							<label>Matrix</label><input type="checkbox" name="attr_tab_cyberdeck"><br />
+							<label>Arms</label><input type="checkbox" name="attr_tab_arms"><br />
+							<label>Augmentations</label><input type="checkbox" name="attr_tab_augs"><br />
+							<label>Gear</label><input type="checkbox" name="attr_tab_gear"><br />
+							<label>Magic</label><input type="checkbox" name="attr_tab_special"><br />
+							<label>Matrix</label><input type="checkbox" name="attr_tab_matrix"><br />
+							<label>Social</label><input type="checkbox" name="attr_tab_social"><br />
+							<label>Vehicle</label><input type="checkbox" name="attr_tab_vehicle"><br />
+						</div>
+						<div>
+							<h2>NPC Select: </h2><br />
+							<select name="attr_sheet_type">
+								<option value="pc">PC</option>
+								<option value="goon">Goon</option>
+								<option value="host">Host</option>
+								<option value="vehicle">Vehicle</option>
+							</select>
+						</div>
 					</div>
-					<div>
-						<h2>Character:</h2><br />
-						<label>Mundane</label><input class="character-type" type="checkbox" name="attr_flag_special" value="mundane" title="Mundane" checked="checked" /><br />
-						<label>Awakened</label><input class="character-type" type="checkbox" name="attr_flag_special" value="magic" title="Magic" /><br />
-						<label>Emerged</label><input class="character-type" type="checkbox" name="attr_flag_special" value="resonance" title="Resonance" />
-					</div>
-					<div>
-						<h2>NPC Select: </h2><br />
-						<select name="attr_sheet_type">
-							<option value="pc">PC</option>
-							<option value="goon">Goon</option>
-							<option value="host">Host</option>
-							<option value="vehicle">Vehicle</option>
-						</select>
-					</div>
-					<div>
-						<h2>Global Modifiers</h2>
-						<label>Soak</label><input type="number" name="attr_global_modifier_soak"><br />
-						<label>Defense</label><input type="number" name="attr_global_modifier_defense"><br />
-						<label>Range Defense</label><input type="number" name="attr_global_modifier_defense_range"><br />
-						<label>Melee Defense</label><input type="number" name="attr_global_modifier_defense_melee">
+					<div class="op-col">
+						<div>
+							<h2>Global Temporary Bonuses</h2><br />
+							<label>Soak</label><input type="number" name="attr_global_soak"><br />
+							<label>Defense</label><input type="number" name="attr_global_defense"><br />
+							<label>Range Defense</label><input type="number" name="attr_global_defense_range"><br />
+							<label>Melee Defense</label><input type="number" name="attr_global_defense_melee"><br />
+							<label>Body</label><input type="number" name="attr_global_body"><br />
+							<label>Agility</label><input type="number" name="attr_global_agility"><br />
+							<label>Reaction</label><input type="number" name="attr_global_reaction"><br />
+							<label>Strength</label><input type="number" name="attr_global_strength"><br />
+							<label>Willpower</label><input type="number" name="attr_global_willpower"><br />
+							<label>Logic</label><input type="number" name="attr_global_logic"><br />
+							<label>Intuition</label><input type="number" name="attr_global_intuition"><br />
+							<label>Charisma</label><input type="number" name="attr_global_charisma"><br />
+							<label>Initiative</label><input type="number" name="attr_global_initiative"><br />
+							<label>Initiative Dice</label><input type="number" name="attr_global_initiative_dice"><br />
+						</div>
 					</div>
 				</div>
 			</div>
@@ -1673,9 +1693,9 @@
 	</div>
 </div><!-- ~~~~~~~~ End of PC Sheet  ~~~~~~~~ -->
 
-<!-- ~~~~~~~~+:+:::::+:+::+:+:+::+:+:+:+::+:+:::::+:+:+:+:::::+:+::+:+:+::+:+:+:+::+:+:::::+:+:+:+::+:+::+:+:+::+:+:+:+::+:+:::::+:+:+:+:::::+:+::+:+:+::+:+:+:+::+:+:::::+:+:~~~~~~~~ -->
-<!-- ~~~~~~~~:+:+::+:+:+:+:+::+:+:+:+:::::+:+::+:+:+::+:+:+:+::+:+:::::+:+:+:+: Start of PC Sheet :+:+::+:+:+::+:+:+:+::+:+:::::+:+:+:+:::::+:+::+:+:+::+:+:+:+::+:+:::::+:+:~~~~~~~~ -->
-<!-- ~~~~~~~~+:+:::::+:+::+:+:::::+:+::+:+:::::+:+:+:::::+:+::+:+:+::+:+:+:+::+:+:::::+:+:+:+:::::+:+::+:+:+::+:+:+:+::+:+:::::+:+:+:+:::::+:+::+:+:+::+:+:+:+::+:+:::::+:+:+~~~~~~~~ -->
+<!-- ~~~~~~~~+:+:::::+:+::+:+:+::+:+:+:+::+:+::::::+:+::+:+:+:+::+:+:::::+:+:+:+:::::+:+::+:+:+::+:+:+:+::+:+:::::+:+:~~~~~~~~ -->
+<!-- ~~~~~~~~:+:+::+:+:+:+:+::+:+:+:+:+:+: Start of NPC Sheet :+:+::+:+:+::+:+:+:+::+:+:+::+:+:+:+::+:+:::::+:+:~~~~~~~~ -->
+<!-- ~~~~~~~~+:+:::::+:+::+:+:::::+:+::+:+:+::+:+:+:+::+:+:::::+:+:::::+:+:+:+:::::+:+::+:+:+::+:+:+:+::+:+:::::+:+:+~~~~~~~~ -->
 <div class="npc">
 	<div class="roll-toggles"><!-- ~~~~~~~~ Roll Buttons & Toggles  ~~~~~~~~ -->
 		<div class="toggle-buttons">
@@ -1840,7 +1860,7 @@
 				<label>Armor Total: </label>
 				<input type="number" name="attr_armor_rating" value="0" placeholder="9" />
 				<br />
-				<label>Soak Pool: </label>
+				<label>Soak Bonus: </label>
 				<input type="number" name="attr_soak_modifier" value="0" placeholder="0" />
 				<br />
 				<label>Acid Protection: </label>
@@ -1867,7 +1887,7 @@
 			</div>
 		<!-- ~~~~~~~~ Skills  ~~~~~~~~ -->
 			<div class="goon">
-				<label>Skills (Dice Pools): </label>
+				<h2>Skills (Dice Pools): </h2>
 				<div class="skill-row">
 					<ul class="skill-col">
 						<li><label>Acting</label>
@@ -2415,7 +2435,10 @@
 			</div>
 		<!-- ~~~~~~~~ Armor  ~~~~~~~~ -->
 		<div class="goon vehicle">
-			<label><button  type='roll' value="@{gm_toggle} &{template:sRun}{{header=Armor Roll}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{armor}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Armor Roll">Armor: </button></label><span name="attr_armor"></span>
+			<label style="margin-right: 5px;">
+				<button  type='roll' value="@{gm_toggle} &{template:sRun}{{header=Armor Roll}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{armor}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Armor Roll">Armor: </button>
+			</label>
+			<span name="attr_armor"></span>
 			<div class="armor-buttons">
 				<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Soak}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{soak}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Soak"><span class="pictos3">b</span></button>
 				<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Acid Protection}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{acid_protection}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}" title="Acid Protection"><span class="pictos3">d</span></button>
