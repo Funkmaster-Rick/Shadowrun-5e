@@ -30,7 +30,8 @@
 			margin: 0px 0px 0px 0px;
 			padding: 0px 0px;}
 
-	button:before {display: none;}
+		button:before {display: none;}
+		button:hover {background-color: transparent;}
 
 	div {background-color: transparent;}
 
@@ -159,19 +160,18 @@
 			width: 5%;}
 
 			.sheet-tabs input[type="radio"]:nth-of-type(8) {width: 6%;}
-
 			.sheet-tabs input[type="radio"]:nth-of-type(9) {width: 2%;}
 
 			.sheet-tabs input[type="radio"] + span,
-			.sheet-tabs input[type="checkbox"] + span  {
+			.sheet-tabs input[type="checkbox"] + span {
 				border-radius: 5px;
 				border: 1px solid #000;
 				font-family: sans-serif;
 				font-weight: bolder;
-				padding: 3px;}
+				padding: 3px;}			
 
 			.sheet-tabs input[type="radio"]:checked + span,
-			.sheet-tabs input[type="checkbox"]:checked + span  {
+			.sheet-tabs input[type="checkbox"]:checked + span {
 				background-color: #610b0d;
 				color: #fff;}	
 
@@ -181,14 +181,32 @@
 		.sheet-tab-toggles {
 			margin-right: 8%;}
 
-		.sheet-sheet_type[value="goon"] ~ .sheet-tabs,
-		.sheet-sheet_type[value="host"] ~ .sheet-tabs,
-		.sheet-sheet_type[value="vehicle"] ~ .sheet-tabs,
-		div.sheet-tab-sheet {
-			display: none;}
+		.sheet-tabs span.sheet-d6 {
+			font-size: 1.7em;
+			position: relative;
+			top: -3px;
+			vertical-align: middle;}
 
-		.sheet-sheet_type:not[value="pc"] ~ .sheet-tab-sheet {
-			display: inline;}
+		/***** NPC TABS CUSTOMIZATIONS *****/
+			div.sheet-tab-sheet,
+			.sheet-sheet_type:not([value="pc"]) ~ .sheet-tabs div.sheet-tab-col {
+				display: none;}
+
+			.sheet-sheet_type:not([value="pc"]) ~ .sheet-tabs div.sheet-tab-sheet {display: inline;}
+
+			.sheet-sheet_type:not([value="pc"]) ~ .sheet-tabs {
+				color: #9a9a9a;
+				top: 30px;}
+
+			.sheet-sheet_type:not([value="pc"]) ~ .sheet-tabs span.sheet-d6 {color: #fff;}
+
+			.sheet-sheet_type:not([value="pc"]) ~ .sheet-tabs input[type="radio"],
+			.sheet-sheet_type:not([value="pc"]) ~ .sheet-tabs input[type="checkbox"] {
+				top: -2px;}
+
+				.sheet-sheet_type:not([value="pc"]) ~ .sheet-tabs input[type="radio"] {width: 9%;}
+				.sheet-sheet_type:not([value="pc"]) ~ .sheet-tabs input[type="checkbox"] {width: 12%;}
+				.sheet-sheet_type:not([value="pc"]) ~ .sheet-tabs input[type="checkbox"]:nth-of-type(3) {width: 8%;}
 
 /********************************************************************************************************/
 /**************************************** START OF THE PC SHEET *******************************************/
@@ -1504,7 +1522,6 @@
 		background-color: transparent;
 		text-shadow: none;}
 
-
 	.sheet-npc h1, 
 	.sheet-npc h2,
 	.sheet-npc h4,
@@ -1536,7 +1553,8 @@
 
 	.sheet-npc input,
 	.sheet-npc textarea,
-	.sheet-npc select  {
+	.sheet-npc select,
+	.sheet-sheet_type:not([value="pc"]) ~ .sheet-tabs select {
 		color: #fff;
 		background-color: #555;}
 
@@ -1546,7 +1564,10 @@
 
 	.sheet-npc .sheet-display div {width: 100%;}
 
-	/***** Customize columns & rows *****/
+	/*:+:+:+: NPC STATS :+:+:+:*/
+		.sheet-stats {display: inline;}
+
+	/*:+:+:+: NPC CUSTOMIZED ROWS & COLUMNS :+:+:+:*/
 		.sheet-row {margin: 0px 0px 0px 0px;}
 
 		.sheet-leftcol,
@@ -1567,7 +1588,7 @@
 
 		.sheet-leftcol label {margin-right: 5px;}
 
-	/***** Toggles & the Gear icons *****/
+	/*:+:+:+: NPC TOGGLES & GEAR ICONS :+:+:+:*/
 		.sheet-settings-toggle input[type="checkbox"] + span {
 		    background: transparent;
 		    font-family: pictos;
@@ -1592,33 +1613,31 @@
 		input.sheet-npc-type:hover + span.sheet-vehicle-flag {
 			 color: #FCD116;}
 
-	/***** Skill Columns *****/
-		.sheet-skill-col label {font-size: 1.15em;}
+	/*:+:+:+: NPC SKILLS :+:+:+:*/
+		.sheet-npc .sheet-skill-box select {
+			font-size: 1.1em;
+			height: 25px;
+			width: 20%;}
 
-		.sheet-skill-col span {text-transform: capitalize;}
+			.sheet-npc .sheet-skill-box select:last-child {width: 9%;}
 
-		.sheet-skill-col input[type="checkbox"] {
-			left: 100px;
-			margin-left: -105px;
-			position: relative;
-			width: 80%;}
+		.sheet-npc .sheet-skill-box .sheet-settings-toggle,
+		.sheet-npc .sheet-skill-box .sheet-settings-toggle + span {
+			left: -5%;
+			position: absolute;
+			opacity: 0;}
 
-		.sheet-skill-col input[type="number"] {float: right;}
+			.sheet-npc .sheet-skill-box input.sheet-settings-toggle {width: 5%}
+			.sheet-npc .sheet-skill-box .sheet-settings-toggle:hover + span {opacity: 1;}
+			.sheet-npc .sheet-skill-box .sheet-settings-toggle:hover ~ .sheet-display {margin-left: 10px;}
 
-		.sheet-skill-col input[type="text"],
-		.sheet-skill-col input[type="text"] + input[type="number"] {
-			display: none;}
+		.sheet-npc .sheet-skill-box .sheet-display div {
+			width: fit-content;}
 
-		.sheet-skill-col input[type="checkbox"]:checked ~ input[type="text"] {
-			margin-bottom: 3px;
-			text-align: left;
-			width: 133px;}
+		.sheet-npc .sheet-skill-box .repcontainer,
+		.sheet-npc .sheet-skill-box .repitem {display: inline;}
 
-		.sheet-skill-col input[type="checkbox"]:checked ~ input[type="text"],
-		.sheet-skill-col input[type="checkbox"]:checked ~ input[type="number"] {
-			display: inline-block;}
-
-	/***** Settings & Display Customizations *****/
+	/*:+:+:+: NPC SETTINGS & DISPLAYS :+:+:+:*/
 		.sheet-npc .sheet-settings input[type="text"] {
 			height: auto;
 			width: 115px;}
@@ -1654,10 +1673,7 @@
 			text-align: left;
 			width: 100%;}
 
-	/***** Customize Stats section *****/
-		.sheet-stats {display: inline;}
-
-	/***** Customize Attribute Section *****/
+	/*:+:+:+: NPC ATTRIBUTES :+:+:+:*/
 		.sheet-attribute {
 			border-bottom: 1px solid #fff;
 			border-top: 1px solid #fff;
@@ -1670,7 +1686,7 @@
 			text-align: center;
 			width: 80%;}
 
-	/***** Bonus Row Customization *****/
+	/*:+:+:+: NPC BONUS ROW CUSTOMIZATIONS :+:+:+:*/
 		.sheet-bonusrow {
 			display: inline-block;
 			width: 100%;}
@@ -1680,9 +1696,9 @@
 			margin-right: 5px;
 			width: 23.2% !important;}
 
-		input.sheet-con-reset + label {float: left;}
+			input.sheet-con-reset + label {float: left;}
 
-	/***** Customizations to skills section *****/
+	/***** Customizations to skills section 
 		.sheet-npc .sheet-skill-row {margin: 5px 0px 0px 0px;}
 
 		.sheet-skill-col {
@@ -1712,7 +1728,7 @@
 
 		.sheet-stats div.sheet-spacer {
 			height: 15px;
-			margin-bottom: 5px;}
+			margin-bottom: 5px;}*****/
 
 	/**** Customizations of Displays ****/
 		.sheet-textrow {
@@ -1738,8 +1754,8 @@
 		.sheet-repeating input.sheet-settings-toggle + span {
 			position: relative;}
 
-		.sheet-stats input.sheet-settings-toggle + span {
-			left: -4%;}
+		.sheet-npc-stats-toggle {left: 95%;}
+		.sheet-npc-stats-toggle + span {left: 90%;}
 
 		.sheet-textrow input.sheet-settings-toggle {
 			left: 775px;
@@ -2041,16 +2057,9 @@
 
 		.sheet-type-toggles input[type="radio"] {left: 23px;}*/
 
-		span.sheet-pictosC {font-family: "Pictos Custom";}
-
-		span.sheet-pictos3 {font-family: "Pictos Three";}
-
-		span.sheet-d6 {
-			font-family: "dicefontd6";
-			font-size: 1.7em;
-			position: relative;
-			top: -3px;
-			vertical-align: middle;}
+	span.sheet-pictosC {font-family: "Pictos Custom";}
+	span.sheet-pictos3 {font-family: "Pictos Three";}
+	span.sheet-d6 {font-family: "dicefontd6";}	
 
 /********************************************************************************************************/
 /**************************************** FOOTER *******************************************/
