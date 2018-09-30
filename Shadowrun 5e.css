@@ -4,6 +4,8 @@
 	Purple: #7a2593;
 	Gray: #555; (primaryly on the NPC sheet)
 	Light gray: #9a9a9a;
+	Blacker: #040404; (primaryly on the NPC sheet)
+	Blackish: #1c1c1c; (Gray on the role template)
 */
 
 /********************************************************************************************************/
@@ -120,14 +122,14 @@
 	.sheet-hide-magic,
 	.sheet-hide-resonance,
 	.sheet-options_toggle[value="options"] ~ .sheet-pc,
-	.sheet-options_toggle[value="options"] ~ .sheet-npc {
+	.sheet-options_toggle[value="options"] ~ .sheet-npc{
 	    display: none;} 
 
 	.sheet-static,
-	.sheet-sheet_type[value="pc"] ~ .sheet-pc,
 	.sheet-sheet_type[value="goon"] ~ .sheet-npc,
 	.sheet-sheet_type[value="host"] ~ .sheet-npc,
 	.sheet-sheet_type[value="vehicle"] ~ .sheet-npc,
+	.sheet-sheet_type[value="pc"] ~ .sheet-pc,
 	.sheet-options_toggle[value="arms"] ~ .sheet-arms,
 	.sheet-options_toggle[value="augs"] ~ .sheet-augs,
 	.sheet-options_toggle[value="options"] ~ .sheet-options,
@@ -177,12 +179,16 @@
 
 		.sheet-tab-whisper,
 		.sheet-tab-toggles {
-			margin-right: 10%;}
+			margin-right: 8%;}
 
 		.sheet-sheet_type[value="goon"] ~ .sheet-tabs,
 		.sheet-sheet_type[value="host"] ~ .sheet-tabs,
-		.sheet-sheet_type[value="vehicle"] ~ .sheet-tabs {
+		.sheet-sheet_type[value="vehicle"] ~ .sheet-tabs,
+		div.sheet-tab-sheet {
 			display: none;}
+
+		.sheet-sheet_type:not[value="pc"] ~ .sheet-tab-sheet {
+			display: inline;}
 
 /********************************************************************************************************/
 /**************************************** START OF THE PC SHEET *******************************************/
@@ -229,7 +235,7 @@
 			height: 50%;
 			margin-bottom: 30px;
 			vertical-align: top;
-			width: 55%;}
+			width: 50%;}
 
 		.sheet-pc input[type="number"] {border: 1px solid #b8b7b6;}
 
@@ -331,7 +337,8 @@
 	/***** PLAYER DATA INPUTS *****/
 		.sheet-info-box {
 			display: inline-block;
-			margin-bottom: 25px;
+			margin-bottom: 10px;
+			margin-top: 10px;
 			width: 40%;}
 
 			.sheet-info-box h1,
@@ -740,6 +747,9 @@
 			padding-left: 1.5em;
 			width: 100%;
 			word-break: break-word;}
+
+		.sheet-collapsable span {
+			white-space: pre-line;}
 
 		/***** DISPLAY FLAG FOR THE COLLAPSABLE DIVS *****/
 			.sheet-quality-box .sheet-display-flag,
@@ -1494,12 +1504,13 @@
 		background-color: transparent;
 		text-shadow: none;}
 
-	.sheet-npc .sheet-toggle-buttons button,
+
 	.sheet-npc h1, 
 	.sheet-npc h2,
 	.sheet-npc h4,
 	.sheet-npc hr,
-	.sheet-npc label {
+	.sheet-npc label,
+	.sheet-sheet_type[value="npc"] ~ .sheet-tab-toggles button {
 		color: #fff;}
 
 	.sheet-npc h1, 
@@ -1510,6 +1521,13 @@
 
 	.sheet-npc h1 {
 		font-size: 2em;}
+
+	.sheet-npc h1 {
+		font-size: 1.5em;
+		line-height: 15px;
+		margin-bottom: 5px;
+		margin-top: 10px;}
+
 
 	.sheet-npc h4 {
 		font-size: 1em;
@@ -1566,17 +1584,9 @@
 		.sheet-character-type:checked + label,
 		.sheet-character-type:hover + label,
 		input.sheet-con-reset:hover ~ label.sheet-cond-header,
-		input.sheet-whisper-flag:checked ~ span.sheet-whisper-flag,
-		input.sheet-wound-flag:checked ~ span.sheet-wound-flag,
-		input.sheet-modifier-flag:checked ~ span.sheet-modifier-flag,
-		input.sheet-edge-flag:checked ~ span.sheet-edge-flag,
 		input.sheet-npc-type:checked + span.sheet-goon-flag,
 		input.sheet-npc-type:checked + span.sheet-host-flag, 
 		input.sheet-npc-type:checked + span.sheet-vehicle-flag, 
-		input.sheet-whisper-flag:hover ~ span.sheet-whisper-flag,
-		input.sheet-wound-flag:hover ~ span.sheet-wound-flag,
-		input.sheet-modifier-flag:hover ~ span.sheet-modifier-flag,
-		input.sheet-edge-flag:hover ~ span.sheet-edge-flag,
 		input.sheet-npc-type:hover + span.sheet-goon-flag,
 		input.sheet-npc-type:hover + span.sheet-host-flag, 
 		input.sheet-npc-type:hover + span.sheet-vehicle-flag {
@@ -1740,7 +1750,7 @@
 			top: -10px;}
 
 		.sheet-repeating input.sheet-settings-toggle {
-			left: -5px;
+			left: -10px;
 			top: 5px;}
 
 		.sheet-repeating input.sheet-settings-toggle + span {
@@ -2020,35 +2030,27 @@
 				height: 20px;
 				width: 20px;}
 
-			.sheet-toggle-buttons,
+		/*	.sheet-toggle-buttons,
 			.sheet-toggle-toggles,
 			.sheet-type-toggles {
-				display: inline-block;}
+				display: inline-block;}  Class was removed 
 
 				.sheet-toggle-buttons {margin-right: 7px;}
 				.sheet-toggle-toggles {letter-spacing: -8px;}
 				.sheet-type-toggles {margin-left: 45%;}
 
-		.sheet-type-toggles input[type="radio"] {left: 23px;}
+		.sheet-type-toggles input[type="radio"] {left: 23px;}*/
 
 		span.sheet-pictosC {font-family: "Pictos Custom";}
 
 		span.sheet-pictos3 {font-family: "Pictos Three";}
 
-		span.sheet-d6 {font-family: "dicefontd6";}
-
-		input.sheet-whisper-flag,
-		input.sheet-wound-flag,
-		input.sheet-modifier-flag,
-		input.sheet-edge-flag {
-		 	left: 20px;
-		 	opacity: 0;}
-
-		span.sheet-wound-line {
-			color: #000;
-			font-size: 1em;
-			left: -9%;
-			top: -1px;}
+		span.sheet-d6 {
+			font-family: "dicefontd6";
+			font-size: 1.7em;
+			position: relative;
+			top: -3px;
+			vertical-align: middle;}
 
 /********************************************************************************************************/
 /**************************************** FOOTER *******************************************/
@@ -2060,8 +2062,7 @@
 		line-height: 15px;
 		margin-top: 15px;
 		text-align: left;
-		width: 700px;
-	}
+		width: 700px;}
 
 /********************************************************************************************************/
 /**************************************** REPEATING SECTIONS *******************************************/
@@ -2159,7 +2160,7 @@
 		color: #fff;
 		text-align: center;
 		font-size: 18px;
-		background-color: #1c1c1c;
+		background-color: #555;
 		line-height: 1.1em;
 		vertical-align: middle;
 		font-family: "helvetica";
@@ -2167,7 +2168,7 @@
 		padding: 5px 5px 3px 5px;
 		border-radius: 0px;}
 
-	.sheet-rolltemplate-sRun .sheet-template-row:last-child {background-color: #555;}
+	.sheet-rolltemplate-sRun .sheet-template-row:nth-child(2n+0) {background-color: #1c1c1c;}
 
 	.sheet-rolltemplate-sRun .inlinerollresult {
 		display:inline-block;
