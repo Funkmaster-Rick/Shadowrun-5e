@@ -1953,6 +1953,10 @@
 				left: 15px;
 				top: 5px;}
 
+				.sheet-host input.sheet-program-toggle {
+				left: 5px;
+				top: 2px;}
+
 			span.sheet-program-toggle {
 				font-size: 15px !important;
 				left: 24px;

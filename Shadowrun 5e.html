@@ -2326,7 +2326,7 @@
 				<div class="display">
 					<input type="hidden" name="attr_weapon" value="" />
 					<div class="repeat-indent">
-						<span class="weapon-dice">(<span name="attr_weapon_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{weapon_type}}}{{base=Base}}{{dice=[[(@{weapon_dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{weapon_acc}, DV @{weapon_dv}, AP @{weapon_ap}}}{{rea=[[@{weapon_reach}]]}}"><span name="attr_weapon_name"></span></button><span name="attr_weapon"></span>
+						<span class="weapon-dice">(<span name="attr_weapon_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{weapon_type}}}{{base=Base}}{{dice=[[(@{weapon_dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{weapon_acc}, DV @{weapon_dv}, AP @{weapon_ap}}}{{rea=[[@{weapon_reach}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_weapon_name"></span></button><span name="attr_weapon"></span>
 					</div>
 				</div>
 			</div>
@@ -2394,7 +2394,7 @@
 				<div class="display">
 					<input type="hidden" name="attr_spell" value="" />
 					<div class="repeat-indent">
-						<span class="weapon-dice">(<span name="attr_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Base}}{{dice=[[(@{dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{drain})]]}}"><span name="attr_name"></span></button><span name="attr_spell"></span>
+						<span class="weapon-dice">(<span name="attr_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Base}}{{dice=[[(@{dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{drain})]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_name"></span></button><span name="attr_spell"></span>
 					</div>
 				</div>
 			</div>
@@ -2431,7 +2431,7 @@
 				<div class="display">
 					<input type="hidden" name="attr_form" value="" />
 					<div class="repeat-indent">
-						<span class="weapon-dice">(<span name="attr_software_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{form}}}{{base=Base}}{{dice=[[(@{form_dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=?{Level|}, Fade [[?{Level|}+(@{form_fade})]]}}"><span name="attr_form_name"></span></button><span name="attr_form"></span>
+						<span class="weapon-dice">(<span name="attr_software_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{form}}}{{base=Base}}{{dice=[[(@{form_dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=?{Level|}, Fade [[?{Level|}+(@{form_fade})]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_form_name"></span></button><span name="attr_form"></span>
 					</div>
 				</div>
 			</div>
@@ -2480,7 +2480,7 @@
 					<input type="hidden" class="program-toggle" name="attr_program_toggle" value="" />
 					<div class="repeat-indent">
 						<input type="checkbox" class="program-toggle" name="attr_program_toggle" checked="checked" /><span class="program-toggle">Q</span>
-						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{IC_name}}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}@{modifier_toggle}{{dice=[[(@{IC_attack}+@{modifier_toggle})d6>5@{explode_toggle}]]}}{{desc=@{IC_note}}"><span name="attr_IC_name"></span></button><span name="attr_IC"></span>
+						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Intrusion Countermeasures}}{{base=Base}}{{dice=[[(@{IC_attack}+@{modifier_toggle})d6>5@{explode_toggle}]]}}{{desc=@{IC_note}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_IC_name"></span></button><span name="attr_IC"></span>
 					</div>
 				</div>
 			</div>
@@ -2493,11 +2493,11 @@
 			<h2>Matrix Device:</h2><input type="text" name="attr_device_name" placeholder="Sony CIY-720" />
 		</div>
 		<div class="2col">
-			<label><button type="roll" value="&{template:sRun}{{header=Matrix Resistance}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{device_rating}+@{firewall})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Device Rating</button></label>
+			<label><button type="roll" value="&{template:sRun}{{header=Matrix Resistance}}{{base=Base}}{{dice=[[(@{device_rating}+@{firewall})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Device Rating</button></label>
 			<input type="number" name="attr_device_rating" value="" placeholder="4" />
 		</div>
 		<div class="device-attr">
-			<label><button type="roll" value="&{template:sRun}{{header=Attack}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{attack}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Attack</button></label>
+			<label><button type="roll" value="&{template:sRun}{{header=Attack}}{{base=Base}}{{dice=[[(@{attack}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Attack</button></label>
 			<div class="matrix-bubble matrixAttack">
 				<input type="radio" name="attr_attack" value="1" /><span></span>
 				<input type="radio" name="attr_attack" value="2" /><span></span>
@@ -2523,7 +2523,7 @@
 			<input type="number" name="attr_attack" value="" placeholder="4" />
 		</div>
 		<div class="device-attr">
-			<label><button type="roll" value="&{template:sRun}{{header=Sleaze}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{sleaze}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Sleaze</button></label>
+			<label><button type="roll" value="&{template:sRun}{{header=Sleaze}}{{base=Base}}{{dice=[[(@{sleaze}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Sleaze</button></label>
 			<div class="matrix-bubble matrixSleaze">
 				<input type="radio" name="attr_sleaze" value="1" /><span></span>
 				<input type="radio" name="attr_sleaze" value="2" /><span></span>
@@ -2549,7 +2549,7 @@
 			<input type="number" name="attr_sleaze" value="" placeholder="4" />
 		</div>
 		<div class="device-attr">
-			<label><button type="roll" value="&{template:sRun}{{header=Data Processing}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{data_processing}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Data Processing</button></label>
+			<label><button type="roll" value="&{template:sRun}{{header=Data Processing}}{{base=Base}}{{dice=[[(@{data_processing}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Data Processing</button></label>
 			<div class="matrix-bubble matrixData">
 				<input type="radio" name="attr_data_processing" value="1" /><span></span>
 				<input type="radio" name="attr_data_processing" value="2" /><span></span>
@@ -2575,7 +2575,7 @@
 			<input type="number" name="attr_data_processing" value="" placeholder="4" />
 		</div>
 		<div class="device-attr">
-			<label><button type="roll" value="&{template:sRun}{{header=Firewall}}{{base=Base}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{dice=[[(@{firewall}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">Firewall</button></label>
+			<label><button type="roll" value="&{template:sRun}{{header=Firewall}}{{base=Base}}{{dice=[[(@{firewall}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Firewall</button></label>
 			<div class="matrix-bubble matrixFirewall">
 				<input type="radio" name="attr_firewall" value="1" /><span></span>
 				<input type="radio" name="attr_firewall" value="2" /><span></span>
