@@ -18,7 +18,7 @@
 			<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Dice Roll}}{{base=Base}}{{dice=[[(?{Base d6s|0}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="D6 Roll"><span class="d6">L</span></button>
 		</div>
 		<div class="tab-col">
-			<input type="radio" name="attr_tab" value="core" title="Core sheet" /><span>Core</span>
+			<input type="radio" name="attr_tab" value="core" title="Core Sheet" /><span>Core</span>
 			<input type="radio" name="attr_tab" value="arms" title="Arms"/><span>Arms</span>
 			<input type="radio" name="attr_tab" value="augs" title="Augs"/><span>Augs</span>
 			<input type="radio" name="attr_tab" value="gear" title="Gear"/><span>Gear</span>
@@ -26,12 +26,13 @@
 			<input type="radio" name="attr_tab" value="matrix" title="Matrix"/><span>Matrix</span>
 			<input type="radio" name="attr_tab" value="social" title="Social"/><span>Social</span>
 			<input type="radio" name="attr_tab" value="vehicle" title="Vehicle"/><span>Vehicle</span>
-			<input type="radio" name="attr_tab" value="options" title="Sheet Options"  checked="checked"/><span>y</span>
+			<input type="radio" name="attr_tab" value="options" title="Sheet Options" checked="checked"/><span>y</span>
 		</div>
 		<div class="tab-sheet">
 			<select name="attr_sheet_type">
 				<option value="goon">Goon</option>
 				<option value="host">Host</option>
+				<option value="sprite">Sprite</option>
 				<option value="vehicle">Vehicle</option>
 				<option value="pc">PC</option>
 			</select>
@@ -42,12 +43,13 @@
 <!-- ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ Start of PC Sheet ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  -->
 <!-- ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  ~~~~~~~~  ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  -->
 <div class="pc">
-	<input class="options_toggle" name="attr_tab" type="hidden" value="core" />
+	<input class="options_toggle" name="attr_tab" type="hidden" value="options" />
 	<img src="https://raw.githubusercontent.com/clevett/Shadowrun-5e/master/ShadowrunLogo.png" style="max-height: 200px;" />
 	<div class="info-box">
 		<h1>Character</h1><input type="text" name="attr_character_name" placeholder="Character name" /><br />
 		<h1>Player</h1><input type="text" name="attr_player_name" placeholder="Player name" /><br />
 	</div>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF THE STATIC LEFT COLUMN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<div class="static pc-col">
 		<div class="pc-row core-info">
 			<div class="header"><div class="triangle"></div><h1>Personal Data</h1></div>
@@ -79,7 +81,7 @@
 				</div>
 			</div>
 		</div>
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of Attributes Row  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF ATTRIBUTES ROW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<div class="pc-row">
 			<div class="header"><div class="triangle"></div><h1>Attributes</h1></div>
 			<div class="border-box">
@@ -315,7 +317,7 @@
 				</div>
 			</div>
 		</div><!-- ~~~~~~~~ End of PC Attributes~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of Skills Row  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF SKILLS ROW  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<div class="pc-row">
 			<div class="header">
 				<div class="header htab">
@@ -497,7 +499,7 @@
 									<input type="number" name="attr_rank" placeholder="0" />
 									<div class="settings-row">
 										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
-										<label>Skill Modifier</label><input type="number" name="attr_rank_modifier" placeholder="0" />
+										<label>Rating Modifier</label><input type="number" name="attr_rank_modifier" placeholder="0" />
 									</div>
 									<label>Notes</label>
 									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
@@ -535,7 +537,7 @@
 									<input type="number" name="attr_rank" placeholder="0" />
 									<div class="settings-row">
 										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
-										<label>Skill Modifier</label><input class="language-native" type="number" min="0" name="attr_rank_modifier" placeholder="0" />
+										<label>Rating Modifier</label><input class="language-native" type="number" min="0" name="attr_rank_modifier" placeholder="0" />
 									</div>
 									<label>Notes</label>
 									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
@@ -566,8 +568,8 @@
 				</div>
 			</div>
 		</div><!-- ~~~~~~~~ End of PC Skills ~~~~~~~~ -->
-	</div><!-- ~~~~~~~~ End of left column with the core data  ~~~~~~~~ -->
-	<!-- ~~~~~~~~Start of right column that contains core info ~~~~~~~~ -->
+	</div><!-- ~~~~~~~~ END OF THE STATIC LEFT COLUMN ~~~~~~~~ -->
+	<!-- ~~~~~~~~ START OF THE RIGHT COLUMN 'CORE' ~~~~~~~~ -->
 	<div class="core pc-col">
 		<div class="pc-row">
 			<div class="header right-header"><h1>Core Combat Info</h1><div class="right-tri"></div></div>
@@ -613,7 +615,7 @@
 				</div>
 			</div>
 		</div>
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start Condition Monitor Row  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF THE CONDITION MONITOR ROW  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<div class="pc-row">
 			<div class="header right-header"><h1>Condition Monitor</h1><div class="right-tri"></div></div>
 			<div class="border-box">
@@ -690,7 +692,7 @@
 				</div>
 			</div>
 		</div><!-- ~~~~~~~~ End of Condition Monitor ~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start Quality Row ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF THE QUALITY ROW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<div class="pc-row quality-box">
 			<div class="header right-header htab">
 				<input class="tab-switch" type="radio" name="attr_quality_toggle" value="quality" checked="checked" />
@@ -764,8 +766,8 @@
 				</div>
 			</div>
 		</div><!-- ~~~~~~~~ End of Quality row ~~~~~~~~ -->
-	</div><!-- ~~~~~~~~ End of right column that contains core info ~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the ARMS Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	</div><!-- ~~~~~~~~ END OF THE RIGHT COLUMN 'CORE' ~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF THE RIGHT COLUMN 'ARMS' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<div class="arms pc-col">
 		<div class="pc-row weapon-box"><!-- ~~~~~~~~ Start of the Weapon Section  ~~~~~~~~ -->
 			<div class="header right-header"><h1>Weapons</h1><div class="right-tri"></div></div>
@@ -975,8 +977,8 @@
 				</div>
 			</div>
 		</div><!-- ~~~~~~~~ End of the ARMOR Section  ~~~~~~~~ -->
-	</div><!-- ~~~~~~~~ End of the ARMS Column  ~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the AUGEMENTATIONS Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	</div><!-- ~~~~~~~~ END OF THE RIGHT COLUMN 'ARMS' ~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF THE RIGHT COLUMN 'AUGS' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<div class="augs pc-col">
 		<div class="pc-row">
 			<div class="header right-header"><h1>Augmentations</h1><div class="right-tri"></div></div>
@@ -1009,8 +1011,8 @@
 				</div>
 			</div>
 		</div>
-	</div><!-- ~~~~~~~~ End of the AUGMENTATIONS Column  ~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the GEARS Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	</div><!-- ~~~~~~~~ END OF THE RIGHT COLUMN 'AUGS'  ~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF THE RIGHT COLUMN 'GEAR' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<div class="gear pc-col">
 		<div class="header right-header"><h1>Gear</h1><div class="right-tri"></div></div>
 		<div class="border-box repeat-box item-box">
@@ -1039,8 +1041,8 @@
 				</fieldset>
 			</div>
 		</div>
-	</div><!-- ~~~~~~~~ End of the GEAR Column  ~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the MAGIC Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	</div><!-- ~~~~~~~~ END OF THE RIGHT COLUMN 'GEAR'  ~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF THE RIGHT COLUMN 'MAGIC' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<div class="magic pc-col">
 		<div class="pc-row spell-box">
 			<div class="header right-header"><h1>Magic</h1><div class="right-tri"></div></div>
@@ -1242,7 +1244,7 @@
 				</div>
 			</div>
 		</div>
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the Powers Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF THE POWERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<div class="pc-row">
 			<div class="header right-header"><h1>Adept Powers or Other Abilities</h1><div class="right-tri"></div></div>
 			<div class="border-box repeat-box powers-box">
@@ -1272,8 +1274,8 @@
 				</div>
 			</div>
 		</div>
-	</div><!-- ~~~~~~~~ End of the Magic Column  ~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the MATRIX Column  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	</div><!-- ~~~~~~~~ END OF THE RIGHT COLUMN 'MAGIC'  ~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF THE RIGHT COLUMN 'MATRIX'  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<div class="matrix pc-col">
 		<div class="pc-row"><!-- ~~~~~~~~ Start of the Cyberdeck Row  ~~~~~~~~ -->
 			<div class="header right-header"><h1>Cyberdeck</h1><div class="right-tri"></div></div>
@@ -1474,8 +1476,8 @@
 				</div>
 			</div>
 		</div>
-	</div><!-- ~~~~~~~~ End of the MATRIX Column  ~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the SOCIAL Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	</div><!-- ~~~~~~~~ END OF THE RIGHT COLUMN 'MATRIX' ~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF THE RIGHT COLUMN 'SOCIAL' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<div class="social pc-col">
 		<div class="pc-row"><!-- ~~~~~~~~ Start of Lifestyles Row  ~~~~~~~~ -->
 			<div class="header right-header"><h1>IDs/Lifestyles/Currency</h1><div class="right-tri"></div></div>
@@ -1545,8 +1547,8 @@
 				</div>
 			</div>
 		</div><!-- ~~~~~~~~ End of Contacts row ~~~~~~~~ -->
-	</div><!-- ~~~~~~~~ End of the Social Column  ~~~~~~~~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start of the VEHICLE Column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	</div><!-- ~~~~~~~~ END OF THE RIGHT COLUMN 'SOCIAL' ~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF THE RIGHT COLUMN 'VEHICLE' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<div class="vehicle pc-col">
 		<div class="pc-row">
 			<div class="header right-header"><h1>Vehicle</h1><div class="right-tri"></div></div>
@@ -1643,7 +1645,8 @@
 			</div>
 		</div>
 	</div><!-- ~~~~~~~~ End of the VEHICLE Column  ~~~~~~~~ -->
-	<div class="options pc-col"><!-- ~~~~~~~~ Start of the PC Options Page ~~~~~~~~ -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF THE RIGHT COLUMN 'OPTIONS' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<div class="options pc-col">
 		<div class="pc-row">
 			<div class="header right-header"><h1>Options</h1><div class="right-tri"></div></div>
 			<div class="border-box">
@@ -1655,7 +1658,7 @@
 							<label>Awakened</label><input class="character-type" type="checkbox" name="attr_flag_special" value="magic" title="Magic" /><br />
 							<label>Emerged</label><input class="character-type" type="checkbox" name="attr_flag_special" value="resonance" title="Resonance" />
 						</div>
-						<div>
+						<!--<div>
 							<h2>Hide Tabs</h2><br />
 							<label>Matrix</label><input type="checkbox" name="attr_tab_cyberdeck"><br />
 							<label>Arms</label><input type="checkbox" name="attr_tab_arms"><br />
@@ -1665,9 +1668,9 @@
 							<label>Matrix</label><input type="checkbox" name="attr_tab_matrix"><br />
 							<label>Social</label><input type="checkbox" name="attr_tab_social"><br />
 							<label>Vehicle</label><input type="checkbox" name="attr_tab_vehicle"><br />
-						</div>
+						</div>-->
 						<div>
-							<h2>NPC Select: </h2><br />
+							<h2>Sheet Select: </h2><br />
 							<select name="attr_sheet_type">
 								<option value="pc">PC</option>
 								<option value="goon">Goon</option>
@@ -1679,26 +1682,30 @@
 					<div class="op-col">
 						<div>
 							<h2>Global Temporary Bonuses</h2><br />
-							<label>Soak</label><input type="number" name="attr_global_soak"><br />
-							<label>Defense</label><input type="number" name="attr_global_defense"><br />
-							<label>Range Defense</label><input type="number" name="attr_global_defense_range"><br />
-							<label>Melee Defense</label><input type="number" name="attr_global_defense_melee"><br />
-							<label>Body</label><input type="number" name="attr_global_body"><br />
-							<label>Agility</label><input type="number" name="attr_global_agility"><br />
-							<label>Reaction</label><input type="number" name="attr_global_reaction"><br />
-							<label>Strength</label><input type="number" name="attr_global_strength"><br />
-							<label>Willpower</label><input type="number" name="attr_global_willpower"><br />
-							<label>Logic</label><input type="number" name="attr_global_logic"><br />
-							<label>Intuition</label><input type="number" name="attr_global_intuition"><br />
-							<label>Charisma</label><input type="number" name="attr_global_charisma"><br />
-							<label>Initiative</label><input type="number" name="attr_global_initiative"><br />
-							<label>Initiative Dice</label><input type="number" name="attr_global_initiative_dice"><br />
+							<label>Soak</label><input type="number" name="attr_soak_temp"><br />
+							<label>Defense</label><input type="number" name="attr_defense_temp"><br />
+							<hr />
+							<label>Body</label><input type="number" name="attr_body_temp"><br />
+							<label>Agility</label><input type="number" name="attr_agility_temp"><br />
+							<label>Reaction</label><input type="number" name="attr_reaction_temp"><br />
+							<label>Strength</label><input type="number" name="attr_strength_temp"><br />
+							<label>Willpower</label><input type="number" name="attr_willpower_temp"><br />
+							<label>Logic</label><input type="number" name="attr_logic_temp"><br />
+							<label>Intuition</label><input type="number" name="attr_intuition_temp"><br />
+							<label>Charisma</label><input type="number" name="attr_charisma_temp"><br />
+							<hr />
+							<label>Initiative</label><input type="number" name="attr_initiative_temp"><br />
+							<label>Initiative Dice</label><input type="number" name="attr_initiative_dice_temp"><br />
+							<hr />
+							<label>Mental Limit</label><input type="number" name="attr_mental_limit_temp"><br />
+							<label>Physical Limit</label><input type="number" name="attr_physical_limit_temp"><br />
+							<label>Social Limit</label><input type="number" name="attr_social_limit_temp"><br />
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div><!-- ~~~~~~~~ End of the OPTIONS Column  ~~~~~~~~ -->
 </div><!-- ~~~~~~~~ End of PC Sheet  ~~~~~~~~ -->
 
 <!-- ~~~~~~~~+:+:::::+:+::+:+:+::+:+:+:+::+:+::::::+:+::+:+:+:+::+:+:::::+:+:+:+:::::+:+::+:+:+::+:+:+:+::+:+:::::+:+:~~~~~~~~ -->
@@ -1712,44 +1719,39 @@
 		<!-- ~~~~~~~~ Attributes  ~~~~~~~~ -->
 			<div class="goon attribute">
 				<input type="hidden" class="character-type" name="attr_flag_special" />
-				<div class="attr-header"><label>B</label><br />
-					<input type="number" name="attr_body_base" value="3" placeholder="3" /><br />
-					<span>(</span><input type="number" name="attr_body_modifier" value="" placeholder="+" /><span>)</span>
+				<div class="attr-header">
+					<label>B</label><br />
+					<input type="number" name="attr_body_base" value="3" placeholder="3" /><br /><span>(</span><input type="number" name="attr_body_modifier" value="" placeholder="+" /><span>)</span>
 				</div>
-				<div class="attr-header"><label>A</label><br />
-					<input type="number" name="attr_agility_base" value="3" placeholder="3" /><br />
-					<span>(</span><input type="number" name="attr_agility_modifier" value="" placeholder="+" /><span>)</span>
+				<div class="attr-header">
+					<label>A</label><br />
+					<input type="number" name="attr_agility_base" value="3" placeholder="3" /><br /><span>(</span><input type="number" name="attr_agility_modifier" value="" placeholder="+" /><span>)</span>
 				</div>
-				<div class="attr-header"><label>R</label><br />
-					<input type="number" name="attr_reaction_base" value="3" placeholder="3" /><br />
-					<span>(</span><input type="number" name="attr_reaction_modifier" value="" placeholder="+" /><span>)</span>
+				<div class="attr-header">
+					<label>R</label><br />
+					<input type="number" name="attr_reaction_base" value="3" placeholder="3" /><br /><span>(</span><input type="number" name="attr_reaction_modifier" value="" placeholder="+" /><span>)</span>
 				</div>
-				<div class="attr-header"><label>S</label><br />
-					<input type="number" name="attr_strength_base" value="3" placeholder="3" /><br />
-					<span>(</span><input type="number" name="attr_strength_modifier" value="" placeholder="+" /><span>)</span>
+				<div class="attr-header">
+					<label>S</label><br />
+					<input type="number" name="attr_strength_base" value="3" placeholder="3" /><br /><span>(</span><input type="number" name="attr_strength_modifier" value="" placeholder="+" /><span>)</span>
 				</div>
 				<div class="attr-header"><label>W</label><br />
-					<input type="number" name="attr_willpower_base" value="3" placeholder="3" /><br />
-					<span>(</span><input type="number" name="attr_willpower_modifier" value="" placeholder="+" /><span>)</span>
+					<input type="number" name="attr_willpower_base" value="3" placeholder="3" /><br /><span>(</span><input type="number" name="attr_willpower_modifier" value="" placeholder="+" /><span>)</span>
 				</div>
 				<div class="attr-header"><label>L</label><br />
-					<input type="number" name="attr_logic_base" value="3" placeholder="3" /><br />
-					<span>(</span><input type="number" name="attr_logic_modifier" value="" placeholder="+" /><span>)</span>
+					<input type="number" name="attr_logic_base" value="3" placeholder="3" /><br /><span>(</span><input type="number" name="attr_logic_modifier" value="" placeholder="+" /><span>)</span>
 				</div>
 				<div class="attr-header"><label>I</label><br />
-					<input type="number" name="attr_intuition_base" value="3" placeholder="3" /><br />
-					<span>(</span><input type="number" name="attr_intuition_modifier" value="" placeholder="+" /><span>)</span>
+					<input type="number" name="attr_intuition_base" value="3" placeholder="3" /><br /><span>(</span><input type="number" name="attr_intuition_modifier" value="" placeholder="+" /><span>)</span>
 				</div>
 				<div class="attr-header"><label>C</label><br />
-					<input type="number" name="attr_charisma_base" value="3" placeholder="3" /><br />
-					<span>(</span><input type="number" name="attr_charisma_modifier" value="" placeholder="+" /><span>)</span>
+					<input type="number" name="attr_charisma_base" value="3" placeholder="3" /><br /><span>(</span><input type="number" name="attr_charisma_modifier" value="" placeholder="+" /><span>)</span>
 				</div>
 				<div class="attr-header"><label>E</label><br /><input type="number" name="attr_edge" value="3" placeholder="3" /></div>
 				<div class="attr-header"><label>Ess</label><br /><input type="number" name="attr_essence" value="6" placeholder="3"  /></div>
 				<div class="attr-header magic"><label>M</label><br /><input type="number" name="attr_magic" value="3" placeholder="0" /></div>
 				<div class="attr-header magic"><label>F</label><br /><input type="number" name="attr_force" value="3" placeholder="0" /></div>
 				<div class="attr-header resonance"><label>R</label><br /><input type="number" name="attr_resonance" value="3" placeholder="0" /></div>
-				<div class="attr-header resonance"><label>L</label><br /><input type="number" name="attr_level" value="" placeholder="0" /></div>
 			</div>
 			<div class="host attribute">
 				<div class="attr-header"><label>Host Rating</label><br /><input type="number" name="attr_host_rating" value="" placeholder="5" /></div>
@@ -1769,6 +1771,13 @@
 				<div class="attr-header"><label>Sensor</label><br /><input type="number" name="attr_sensor" value="" placeholder="3" /></div>
 				<div class="attr-header"><label>Seat</label><br /><input type="number" name="attr_seating" value="" placeholder="3" /></div>
 			</div>
+			<div class="sprite attribute">
+				<div class="attr-header"><label>Level</label><br /><input type="number" name="attr_level" value="" placeholder="5" /></div>
+				<div class="attr-header"><label>Attack</label><br /><input type="number" name="attr_attack" value="" placeholder="5" /></div>
+				<div class="attr-header"><label>Sleaze</label><br /><input type="number" name="attr_sleaze" value="" placeholder="6" /></div>
+				<div class="attr-header"><label>Data Processing</label><br /><input type="number" name="attr_data_processing" value="" placeholder="7" /></div>
+				<div class="attr-header"><label>Firewall</label><br /><input type="number" name="attr_firewall" value="" placeholder="8" /></div>
+			</div>
 		<!-- ~~~~~~~~ modifieres  ~~~~~~~~ -->
 			<h1>Bonuses </h1>
 			<div class="leftcol"><!--Start Left modifieres-->
@@ -1787,12 +1796,16 @@
 						<input type="number" name="attr_astral_mod_modifier" value="0" placeholder="0" /><span> + </span>
 						<input type="number" name="attr_astral_dice_modifier" value="0" min="0" max="3" placeholder="0" /><span> d6</span>
 					</div>
+				</div>
+				<div class="goon sprite">
 					<label>Matrix Initiative: </label>
 					<input type="hidden" name="attr_matrix_mod" value="0" />
 					<input type="hidden" name="attr_matrix_dice" max="5" />
 					<input type="number" name="attr_matrix_mod_modifier" value="0" placeholder="0" /><span> + </span>
 					<input type="number" name="attr_matrix_dice_modifier" value="0" min="0" max="4" placeholder="0" /><span> d6</span>
 					<br />
+				</div>
+				<div class="goon">
 					<label>Movement: </label>
 					<input type="hidden" name="attr_walk" value="12" />
 					<input type="hidden" name="attr_run" value="24" />
@@ -1815,9 +1828,7 @@
 					<span>Mental </span><input type="number" name="attr_mental_limit_modifier" value="0" placeholder="0" />,
 					<span>Social </span><input type="number" name="attr_social_limit_modifier" value="0" placeholder="0" />
 					<br />
-					<label>Pain Tolerance: </label>
-					<input type="number" name="attr_pain_tolerance" min="-1" max="3" value="0" placeholder="0" />
-					<br />
+					<label>Pain Tolerance: </label><input type="number" name="attr_pain_tolerance" min="-1" max="3" value="0" placeholder="0" /><br />
 				</div>
 				<div class="vehicle">
 					<label>Condition Monitor (P/M): </label>
@@ -1828,15 +1839,9 @@
 					<input type="number" name="attr_physical_modifier" value="0" placeholder="0" /><span> / </span>
 					<input type="number" name="attr_matrix_modifier" value="0" placeholder="0" />
 					<br />
-					<label>Data Processing: </label>
-					<input type="number" name="attr_data_processing" min="0" value="" placeholder="0" />
-					<br />
-					<label>Firewall: </label>
-					<input type="number" name="attr_firewall" min="0" value="" placeholder="0" />
-					<br />
-					<label>Device Rating: </label>
-					<input type="number" name="attr_device_rating" min="0" value="" placeholder="0" />
-					<br />
+					<label>Data Processing: </label><input type="number" name="attr_data_processing" min="0" value="" placeholder="0" /><br />
+					<label>Firewall: </label><input type="number" name="attr_firewall" min="0" value="" placeholder="0" /><br />
+					<label>Device Rating: </label><input type="number" name="attr_device_rating" min="0" value="" placeholder="0" /><br />
 				</div>
 				<div class="goon vehicle">
 					<label>Defense: </label>
@@ -1845,27 +1850,13 @@
 				</div>
 			</div><!--End Left modifieres-->
 			<div class="goon vehicle 2col"><!--Start Mid modifieres-->
-				<label>Armor Rating: </label>
-				<input type="number" name="attr_armor_rating" value="0" placeholder="9" />
-				<br />
-				<label>Soak Bonus: </label>
-				<input type="number" name="attr_soak_modifier" value="0" placeholder="0" />
-				<br />
-				<label>Acid Protection: </label>
-				<input type="number" name="attr_acid_modifier" value="0" placeholder="0" />
-				<br />
-				<label>Cold Protection: </label>
-				<input type="number" name="attr_cold_modifier" value="0" placeholder="0" />
-				<br />
-				<label>Electrical Protection: </label>
-				<input type="number" name="attr_electrical_modifier" value="0" placeholder="0" />
-				<br />
-				<label>Fire Protection: </label>
-				<input type="number" name="attr_fire_modifier" value="0" placeholder="0" />
-				<br />
-				<label>Radiation Protection: </label>
-				<input type="number" name="attr_radiation_modifier" value="0" placeholder="0" />
-				<br />
+				<label>Armor Rating: </label><input type="number" name="attr_armor_rating" value="0" placeholder="9" /><br />
+				<label>Soak Bonus: </label><input type="number" name="attr_soak_modifier" value="0" placeholder="0" /><br />
+				<label>Acid Protection: </label><input type="number" name="attr_acid_modifier" value="0" placeholder="0" /><br />
+				<label>Cold Protection: </label><input type="number" name="attr_cold_modifier" value="0" placeholder="0" /><br />
+				<label>Electrical Protection: </label><input type="number" name="attr_electrical_modifier" value="0" placeholder="0" /><br />
+				<label>Fire Protection: </label><input type="number" name="attr_fire_modifier" value="0" placeholder="0" /><br />
+				<label>Radiation Protection: </label><input type="number" name="attr_radiation_modifier" value="0" placeholder="0" /><br />
 			</div>
 			<div class="goon 2col"><!--Start Right Checkboxes -->
 				<input class="character-type" type="radio" name="attr_flag_special" value="mundane" title="Mundane" checked="checked" /><label>Mundane</label><br />
@@ -1876,44 +1867,30 @@
 			<br />
 		<!-- ~~~~~~~~ Qualities/Augs/Init/Gear/Weakness & Other STUFF ~~~~~~~~ -->
 			<div class="goon textrow">
-				<label>Qualities: </label>
-				<textarea name="attr_quality" placeholder="Quality"></textarea>
-				<br />
-				<label>Augmentations: </label>
-				<textarea name="attr_augmentations" placeholder="Augmentations"></textarea>
-				<br />
+				<label>Qualities: </label><textarea name="attr_quality" placeholder="Quality"></textarea><br />
+				<label>Augmentations: </label><textarea name="attr_augmentations" placeholder="Augmentations"></textarea><br />
 			</div>
 			<div class="goon vehicle textrow">
-				<label>Gear: </label>
-				<textarea name="attr_gear" placeholder="Gear"></textarea>
+				<label>Gear: </label><textarea name="attr_gear" placeholder="Gear"></textarea>
 			</div>
 			<div class="vehicle textrow">
-				<label>Programs: </label>
-				<textarea name="attr_programs" placeholder="Programs"></textarea>
-				<br />
-				<label>Modifications: </label>
-				<textarea name="attr_modifications" placeholder="Modifications"></textarea>
+				<label>Programs: </label><textarea name="attr_programs" placeholder="Programs"></textarea><br />
+				<label>Modifications: </label><textarea name="attr_modifications" placeholder="Modifications"></textarea>
 			</div>
 			<div class="goon textrow">
 				<input type="hidden" class="character-type" name="attr_flag_special" />
 				<div class="magic textrow">
-					<label>Initiate: </label><input type="number" name="attr_initiate" value="0" placeholder="Grade" />
-					<textarea name="attr_metamagic" placeholder="Metamagics"></textarea>
-					<br />
-					<label>Powers: </label>
-					<textarea name="attr_powers" placeholder="Powers"></textarea>
-					<br />
-					<label>Weakness: </label>
-					<textarea  name="attr_weakness" placeholder="Weaknesses"></textarea>
+					<label>Initiate: </label><input type="number" name="attr_initiate" value="0" placeholder="Grade" /><textarea name="attr_metamagic" placeholder="Metamagics"></textarea><br />
+					<label>Powers: </label><textarea name="attr_powers" placeholder="Powers"></textarea><br />
+					<label>Weakness: </label><textarea  name="attr_weakness" placeholder="Weaknesses"></textarea>
 				</div>
 				<input type="hidden" class="character-type" name="attr_flag_special" />
 				<div class="resonance textrow">
-					<label>Submersion: </label><input type="number" name="attr_submersion" value="0" placeholder="Grade" />
-					<textarea name="attr_echos" placeholder="Echos"></textarea>
-					<br />
-					<label>Sprite Powers: </label>
-					<textarea name="attr_powers" placeholder="Powers"></textarea>
+					<label>Submersion: </label><input type="number" name="attr_submersion" value="0" placeholder="Grade" /><textarea name="attr_echos" placeholder="Echos"></textarea><br />
 				</div>
+			</div>
+			<div class="sprite textrow">
+				<label>Sprite Powers: </label><textarea name="attr_powers" placeholder="Powers"></textarea>
 			</div>
 		</div><!-- ~~~~~~~~ End of Settings  ~~~~~~~~ -->
 		<div class="display">
@@ -1934,14 +1911,13 @@
 				<div class="attr-header magic"><label>M</label><br /><span name="attr_magic"></span></div>
 				<div class="attr-header magic"><label>F</label><br /><span name="attr_force"></span></div>
 				<div class="attr-header resonance"><label>R</label><br /><span name="attr_resonance"></span></div>
-				<div class="attr-header resonance"><label>L</label><br /><span name="attr_level"></span></div>
 			</div>
 			<div class="host attribute">
 				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Matrix Resistance}}{{base=Host Rating ♦ Host Rating}}{{dice=[[(@{host_rating}+@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Host Rating</button></label><br /><span name="attr_host_rating"></span></div>
 				<br />
 				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Attack ♦ Host Rating}}{{base=Attack}}{{dice=[[(@{attack}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Attack</button></label><br /><span name="attr_attack"></span></div>
 				<br />
-				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Sleaze}}{{base=Sleaze ♦ Host Rating}{{dice=[[(@{sleaze}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Sleaze</button></label><br /><span name="attr_sleaze"></span></div>
+				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Sleaze}}{{base=Sleaze ♦ Host Rating}}{{dice=[[(@{sleaze}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Sleaze</button></label><br /><span name="attr_sleaze"></span></div>
 				<br />
 				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Data Processing}}{{base=Data Processing ♦ Host Rating}}{{dice=[[(@{data_processing}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Data Processing</button></label><br /><span name="attr_data_processing"></span></div>
 				<br />
@@ -1958,11 +1934,23 @@
 				<div class="attr-header"><label>Sensor</label><br /><span name="attr_sensor"></span></div>
 				<div class="attr-header"><label>Seat</label><br /><span name="attr_seating"></span></div>
 			</div>
+			<div class="sprite attribute">
+				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Matrix Resistance}}{{base=Level ♦ Level}}{{dice=[[(@{level}+@{level}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Level</button></label><br /><span name="attr_level"></span></div>
+				<br />
+				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Attack ♦ Level}}{{base=Attack}}{{dice=[[(@{attack}+@{level}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Attack</button></label><br /><span name="attr_attack"></span></div>
+				<br />
+				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Sleaze}}{{base=Sleaze ♦ Level}}{{dice=[[(@{sleaze}+@{level}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Sleaze</button></label><br /><span name="attr_sleaze"></span></div>
+				<br />
+				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Data Processing}}{{base=Data Processing ♦ Level}}{{dice=[[(@{data_processing}+@{level}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Data Processing</button></label><br /><span name="attr_data_processing"></span></div>
+				<br />
+				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Firewall}}{{base=Firewall ♦ Level}}{{dice=[[(@{firewall}+@{level}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Firewall</button></label><br /><span name="attr_firewall"></span></div>
+			</div>
 		<!-- ~~~~~~~~ Initiative  ~~~~~~~~ -->
 			<div class="goon">
-				<label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Initiative}}{{base=Base}}{{dice=[[(@{initiative_mod}+@{wound_toggle}+@{modifier_toggle})+(@{initiative_dice})d6cf0 &{tracker}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Initiative: </button></label>
-				<span name="attr_display_initiative_mod"></span><span> + </span><span name="attr_initiative_dice"></span><span>d6</span>
-				<br />
+				<div>
+					<label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Initiative}}{{base=Base}}{{dice=[[(@{initiative_mod}+@{wound_toggle}+@{modifier_toggle})+(@{initiative_dice})d6cf0 &{tracker}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Initiative: </button></label>
+					<span name="attr_display_initiative_mod"></span><span> + </span><span name="attr_initiative_dice"></span><span>d6</span>
+				</div>
 		<!-- ~~~~~~~~ Astral Initiative  ~~~~~~~~ -->
 				<input type="hidden" class="character-type" name="attr_flag_special" />
 				<div class="magic">
@@ -1972,272 +1960,291 @@
 				</div>
 			</div>
 		<!-- ~~~~~~~~ Matrix Initiative  ~~~~~~~~ -->
-			<label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Matrix Initiative}}{{base=Base}}{{dice=[[(@{matrix_mod}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Matrix Initiative: </button></label>
-			<span name="attr_display_matrix_mod"></span><span> + </span><span name="attr_matrix_dice"></span><span>d6</span>
-			<br />
+			<div class="goon sprite">
+				<label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Matrix Initiative}}{{base=Base}}{{dice=[[(@{matrix_mod}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Matrix Initiative: </button></label>
+				<span name="attr_display_matrix_mod"></span><span> + </span><span name="attr_matrix_dice"></span><span>d6</span>
+			</div>
 			<div class="goon">
-	<!-- ~~~~~~~~ Movement  ~~~~~~~~ -->
-				<label>Movement: </label>
-				<span name="attr_walk" title="Walk Rate"></span><span> / </span><span name="attr_run" title="Run Tate"></span><span> / +</span><span name="attr_movement_mod"></span>
-				<br />
+		<!-- ~~~~~~~~ Movement  ~~~~~~~~ -->
+				<div><label>Movement: </label><span name="attr_walk" title="Walk Rate"></span><span> / </span><span name="attr_run" title="Run Tate"></span><span> / +</span><span name="attr_movement_mod"></span></div>
 		<!-- ~~~~~~~~ Condition Monitor  ~~~~~~~~ -->
-				<input type="checkbox" class="con-reset" name="attr_cond_reset">
-				<label class="cond-header">Condition Monitor (P/S): </label>
-				<span name="attr_physical" title="Physical"></span><span> / </span><span name="attr_stun" title="Stun"></span>
-				<br />
+				<div>
+					<input type="checkbox" class="con-reset" name="attr_cond_reset">
+					<label class="cond-header">Condition Monitor (P/S): </label>
+					<span name="attr_physical" title="Physical"></span><span> / </span><span name="attr_stun" title="Stun"></span>
+				</div>
 		<!-- ~~~~~~~~ Limits  ~~~~~~~~ -->
-				<label>Limits: </label>
-				<span>Physical </span><span name="attr_physical_limit"></span>,
-				<span>Mental </span><span name="attr_mental_limit"></span>,
-				<span>Social </span><span name="attr_social_limit"></span>
+				<div>
+					<label>Limits: </label>
+					<span>Physical </span><span name="attr_physical_limit"></span>,
+					<span>Mental </span><span name="attr_mental_limit"></span>,
+					<span>Social </span><span name="attr_social_limit"></span>
+				</div>
 			</div>
 		<!-- ~~~~~~~~ Vehicle Display  ~~~~~~~~ -->
 			<div class="vehicle">
-				<label>Data Processing: </label><span name="attr_data_processing"></span><br />
-				<label>Firewall: </label><span name="attr_firewall"></span><br />
-				<label>Device Rating: </label><span name="attr_device_rating"></span><br />
-				<input type="checkbox" class="con-reset" name="attr_cond_reset">
-				<label class="cond-header">Condition Monitor (P/M): </label>
-				<span name="attr_physical" title="Physical"></span><span> / </span><span name="attr_matrix" title="Matrix"></span>
-				<br />
+				<div>
+					<label>Data Processing: </label><span name="attr_data_processing"></span><br />
+					<label>Firewall: </label><span name="attr_firewall"></span><br />
+					<label>Device Rating: </label><span name="attr_device_rating"></span><br />
+					<input type="checkbox" class="con-reset" name="attr_cond_reset">
+					<label class="cond-header">Condition Monitor (P/M): </label>
+					<span name="attr_physical" title="Physical"></span><span> / </span><span name="attr_matrix" title="Matrix"></span>
+				</div>
 			</div>
 		<!-- ~~~~~~~~ Host Display  ~~~~~~~~ -->
 			<div class="host">
 				<label class="cond-header">Condition Monitor (M): </label></span><span name="attr_matrix" title="Matrix"></span>
 			</div>
 		<!-- ~~~~~~~~ Armor  ~~~~~~~~ -->
-		<div class="goon vehicle">
-			<label style="margin-right: 5px;">
-				<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Soak}}{{base=Base}}{{dice=[[(@{soak}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Soak">
-					Armor: 
-				</button>
-			</label>
-			<button  type='roll' value="@{gm_toggle} &{template:sRun}{{header=Armor Roll}}{{base=Base}}{{dice=[[(@{armor_rating}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Armor Roll">
-				<span name="attr_armor_rating"></span>
-			</button>
-			<div class="armor-buttons">
-				<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Defense}}{{base=Base}}{{dice=[[(@{defense}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Defense Roll"><span class="pictosC">e</span></button>
-				<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Acid Protection}}{{base=Base}}{{dice=[[(@{acid_protection}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Acid Protection"><span class="pictos3">d</span></button>
-				<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Cold Protection}}{{base=Base}}{{dice=[[(@{cold_protection}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Cold Protection"><span>b</span></button>
-				<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Electricity Protection}}{{base=Base}}{{dice=[[(@{electrical_protection}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Electrical Protection"><span>e</span></button>
-				<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Fire Protection}}{{base=Base}}{{dice=[[(@{fire_protection}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Fire Protection"><span class="pictos3">j</span></button>
-				<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Radiation Protection}}{{base=Base}}{{dice=[[(@{radiation_protection}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Radiation Protection"><span class="pictos3">l</span></button>
-			</div>
-		</div>
-		<!-- ~~~~~~~~ Skills  ~~~~~~~~ -->
-		<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
-		<div class="goon skills">
-			<div class="skill-box"><label>Skills: </label>
-				<fieldset class="repeating_active">
-					<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
-					<div class="settings">
-						<div class="skills-row">
-							<input type="hidden" name="attr_dicepool" />
-							<div class="settings-row">
-								<label>Skill</label>
-								<select class="skill-select" name="attr_skill">
-									<option class="option-headers" disabled="true">Combat Skills</option>
-									<option class="option-groups" value="Close Combat Group">Close Combat Group</option>
-									<option class="option-groups" value="Firearms Group">Firearms Group</option>
-									<option value="Archery">Archery</option>
-									<option value="Automatics">Automatics</option>
-									<option value="Blades">Blades</option>
-									<option value="Clubs">Clubs</option>
-									<option value="Exotic Melee">Exotic Melee</option>
-									<option value="Exotic Range">Exotic Range</option>
-									<option value="Heavy Weapons">Heavy Weapons</option>
-									<option value="Longarms">Longarms</option>
-									<option value="Pistols">Pistols</option>
-									<option value="Throwing Weapons">Throwing Weapons</option>
-									<option value="Unarmed Combat" >Unarmed Combat</option>
-									<option class="option-headers" disabled="true">Physical Skills</option>
-									<option class="option-groups" value="Athletics Group">Athletics Group</option>
-									<option class="option-groups" value="Outdoors Group">Outdoors Group</option>
-									<option class="option-groups" value="Stealth Group">Stealth Group</option>
-									<option value="Disguise">Disguise</option>
-									<option value="Diving">Diving</option>
-									<option value="Escape Artist">Escape Artist</option>
-									<option value="Flight">Flight</option>
-									<option value="Free Fall">Free Fall</option>
-									<option value="Gymnastics">Gymnastics</option>
-									<option value="Palming">Palming</option>
-									<option value="Perception">Perception</option>
-									<option value="Running">Running</option>
-									<option value="Sneaking">Sneaking</option>
-									<option value="Survival">Survival</option>
-									<option value="Swimming">Swimming</option>
-									<option value="Tracking">Tracking</option>
-									<option class="option-headers" disabled="true">Social Skills</option>
-									<option class="option-groups" value="Acting Group">Acting Group</option>
-									<option class="option-groups" value="Influence Group">Influence Group</option>
-									<option value="Con">Con</option>
-									<option value="Etiquette">Etiquette</option>
-									<option value="Impersonation">Impersonation</option>
-									<option value="Instruction">Instruction</option>
-									<option value="Intimidation">Intimidation</option>
-									<option value="Leadership">Leadership</option>
-									<option value="Negotiation">Negotiation</option>
-									<option value="Performance">Performance</option>
-									<option class="option-headers" disabled="true">Magical Skills</option>
-									<option class="option-groups" value="Conjuring Group">Conjuring Group</option>
-									<option class="option-groups" value="Enchanting Group">Enchanting Group</option>
-									<option class="option-groups" value="Sorcery Group">Sorcery Group</option>
-									<option value="Alchemy">Alchemy</option>
-									<option value="Arcana">Arcana</option>
-									<option value="Assensing">Assensing</option>
-									<option value="Astral Combat">Astral Combat</option>
-									<option value="Banishing">Banishing</option>
-									<option value="Binding">Binding</option>
-									<option value="Counterspelling">Counterspelling</option>
-									<option value="Disenchanting">Disenchanting</option>
-									<option value="Ritual Spellcasting">Ritual Spellcasting</option>
-									<option value="Spellcasting">Spellcasting</option>
-									<option value="Summoning">Summoning</option>
-									<option class="option-headers" disabled="true">Resonance Skills</option>
-									<option class="option-groups" value="Tasking Group">Tasking Group</option>
-									<option value="Compiling">Compiling</option>
-									<option value="Decompiling">Decompiling</option>
-									<option value="Registering">Registering</option>
-									<option class="option-headers" disabled="true">Technical Skills</option>
-									<option class="option-groups" value="Biotech Group">Biotech Group</option>
-									<option class="option-groups" value="Cracking Group">Cracking Group</option>
-									<option class="option-groups" value="Electronics Group">Electronics Group</option>
-									<option class="option-groups" value="Engineering Group">Engineering Group</option>
-									<option value="Aeronautics Mechanic">Aeronautics Mechanic</option>
-									<option value="Animal Handling">Animal Handling</option>
-									<option value="Armorer">Armorer</option>
-									<option value="Automotive Mechanic">Automotive Mechanic</option>
-									<option value="Biotechnology">Biotechnology</option>
-									<option value="Chemistry">Chemistry</option>
-									<option value="Computer">Computer</option>
-									<option value="Cybercombat">Cybercombat</option>
-									<option value="Demolitions">Demolitions</option>
-									<option value="Cybertechnology">Cybertechnology</option>
-									<option value="Demolitions">Demolitions</option>
-									<option value="Electronic Warfare">Electronic Warfare</option>
-									<option value="First Aid">First Aid</option>
-									<option value="Forgery">Forgery</option>
-									<option value="Hacking">Hacking</option>
-									<option value="Hardware">Hardware</option>
-									<option value="Industrial Mechanic">Industrial Mechanic</option>
-									<option value="Locksmith">Locksmith</option>
-									<option value="Medicine">Medicine</option>
-									<option value="Nautical Mechanic">Nautical Mechanic</option>
-									<option value="Navigation">Navigation</option>
-									<option value="Gunnery">Gunnery</option>
-									<option value="Pilot Aerospace">Pilot Aerospace</option>
-									<option value="Pilot Aircraft">Pilot Aircraft</option>
-									<option value="Pilot Exotic Vehicle">Pilot Exotic Vehicle</option>
-									<option value="Pilot Ground Craft">Pilot Ground Craft</option>
-									<option value="Pilot Walker">Pilot Walker</option>
-									<option value="Pilot Watercraft">Pilot Watercraft</option>
-								</select>
-								<label>Rating</label><input type="number" name="attr_rank" min="0" placeholder="0" />
-								<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
-								<label>Rating Modifier</label><input type="number" name="attr_rank_modifier" min="0" placeholder="0" />
-								<input type="hidden" name="attr_display_attribute" />
-								<select name="attr_attribute">
-									<option value="@{body}">BOD</option>
-									<option value="@{agility}" selected="selected">AGI</option>
-									<option value="@{reaction}">REA</option>
-									<option value="@{strength}">STR</option>
-									<option value="@{willpower}">WIL</option>
-									<option value="@{logic}">LOG</option>
-									<option value="@{intuition}">INT</option>
-									<option value="@{charisma}">CHA</option>
-									<option value="@{magic}">MAG</option>
-									<option value="@{resonance}">RES</option>
-								</select>
-							</div>
-						</div>
+			<div class="goon vehicle">
+				<div>
+					<label>
+						<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Soak}}{{base=Base}}{{dice=[[(@{soak}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Soak">
+							Armor: 
+						</button>
+					</label>
+					<button  type='roll' value="@{gm_toggle} &{template:sRun}{{header=Armor Roll}}{{base=Base}}{{dice=[[(@{armor_rating}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Armor Roll">
+						<span name="attr_armor_rating"></span>
+					</button>
+					<div class="armor-buttons">
+						<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Defense}}{{base=Base}}{{dice=[[(@{defense}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Defense Roll"><span class="pictosC">e</span></button>
+						<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Acid Protection}}{{base=Base}}{{dice=[[(@{acid_protection}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Acid Protection"><span class="pictos3">d</span></button>
+						<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Cold Protection}}{{base=Base}}{{dice=[[(@{cold_protection}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Cold Protection"><span>b</span></button>
+						<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Electricity Protection}}{{base=Base}}{{dice=[[(@{electrical_protection}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Electrical Protection"><span>e</span></button>
+						<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Fire Protection}}{{base=Base}}{{dice=[[(@{fire_protection}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Fire Protection"><span class="pictos3">j</span></button>
+						<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Radiation Protection}}{{base=Base}}{{dice=[[(@{radiation_protection}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Radiation Protection"><span class="pictos3">l</span></button>
 					</div>
-					<div class="display">
-						<div class="name">
+				</div>
+			</div>
+	<!-- ~~~~~~~~ Skills  ~~~~~~~~ -->
+			<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
+			<div class="goon skills">
+				<div class="skill-box"><label>Skills: </label>
+					<fieldset class="repeating_active">
+						<div class="npc-skill">
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
 							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" ><span name="attr_display"></span></button>
 							<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display_specialization"></span></button>
 							<span name="attr_display_rank"></span><span>,</span>
+							<div class="settings">
+								<div class="skills-row">
+									<input type="hidden" name="attr_dicepool" />
+									<div class="settings-row">
+										<label>Skill</label>
+										<select class="skill-select" name="attr_skill">
+											<option class="option-headers" disabled="true">Combat Skills</option>
+											<option class="option-groups" value="Close Combat Group">Close Combat Group</option>
+											<option class="option-groups" value="Firearms Group">Firearms Group</option>
+											<option value="Archery">Archery</option>
+											<option value="Automatics">Automatics</option>
+											<option value="Blades">Blades</option>
+											<option value="Clubs">Clubs</option>
+											<option value="Exotic Melee">Exotic Melee</option>
+											<option value="Exotic Range">Exotic Range</option>
+											<option value="Heavy Weapons">Heavy Weapons</option>
+											<option value="Longarms">Longarms</option>
+											<option value="Pistols">Pistols</option>
+											<option value="Throwing Weapons">Throwing Weapons</option>
+											<option value="Unarmed Combat" >Unarmed Combat</option>
+											<option class="option-headers" disabled="true">Physical Skills</option>
+											<option class="option-groups" value="Athletics Group">Athletics Group</option>
+											<option class="option-groups" value="Outdoors Group">Outdoors Group</option>
+											<option class="option-groups" value="Stealth Group">Stealth Group</option>
+											<option value="Disguise">Disguise</option>
+											<option value="Diving">Diving</option>
+											<option value="Escape Artist">Escape Artist</option>
+											<option value="Flight">Flight</option>
+											<option value="Free Fall">Free Fall</option>
+											<option value="Gymnastics">Gymnastics</option>
+											<option value="Palming">Palming</option>
+											<option value="Perception">Perception</option>
+											<option value="Running">Running</option>
+											<option value="Sneaking">Sneaking</option>
+											<option value="Survival">Survival</option>
+											<option value="Swimming">Swimming</option>
+											<option value="Tracking">Tracking</option>
+											<option class="option-headers" disabled="true">Social Skills</option>
+											<option class="option-groups" value="Acting Group">Acting Group</option>
+											<option class="option-groups" value="Influence Group">Influence Group</option>
+											<option value="Con">Con</option>
+											<option value="Etiquette">Etiquette</option>
+											<option value="Impersonation">Impersonation</option>
+											<option value="Instruction">Instruction</option>
+											<option value="Intimidation">Intimidation</option>
+											<option value="Leadership">Leadership</option>
+											<option value="Negotiation">Negotiation</option>
+											<option value="Performance">Performance</option>
+											<option class="option-headers" disabled="true">Magical Skills</option>
+											<option class="option-groups" value="Conjuring Group">Conjuring Group</option>
+											<option class="option-groups" value="Enchanting Group">Enchanting Group</option>
+											<option class="option-groups" value="Sorcery Group">Sorcery Group</option>
+											<option value="Alchemy">Alchemy</option>
+											<option value="Arcana">Arcana</option>
+											<option value="Assensing">Assensing</option>
+											<option value="Astral Combat">Astral Combat</option>
+											<option value="Banishing">Banishing</option>
+											<option value="Binding">Binding</option>
+											<option value="Counterspelling">Counterspelling</option>
+											<option value="Disenchanting">Disenchanting</option>
+											<option value="Ritual Spellcasting">Ritual Spellcasting</option>
+											<option value="Spellcasting">Spellcasting</option>
+											<option value="Summoning">Summoning</option>
+											<option class="option-headers" disabled="true">Resonance Skills</option>
+											<option class="option-groups" value="Tasking Group">Tasking Group</option>
+											<option value="Compiling">Compiling</option>
+											<option value="Decompiling">Decompiling</option>
+											<option value="Registering">Registering</option>
+											<option class="option-headers" disabled="true">Technical Skills</option>
+											<option class="option-groups" value="Biotech Group">Biotech Group</option>
+											<option class="option-groups" value="Cracking Group">Cracking Group</option>
+											<option class="option-groups" value="Electronics Group">Electronics Group</option>
+											<option class="option-groups" value="Engineering Group">Engineering Group</option>
+											<option value="Aeronautics Mechanic">Aeronautics Mechanic</option>
+											<option value="Animal Handling">Animal Handling</option>
+											<option value="Armorer">Armorer</option>
+											<option value="Automotive Mechanic">Automotive Mechanic</option>
+											<option value="Biotechnology">Biotechnology</option>
+											<option value="Chemistry">Chemistry</option>
+											<option value="Computer">Computer</option>
+											<option value="Cybercombat">Cybercombat</option>
+											<option value="Demolitions">Demolitions</option>
+											<option value="Cybertechnology">Cybertechnology</option>
+											<option value="Demolitions">Demolitions</option>
+											<option value="Electronic Warfare">Electronic Warfare</option>
+											<option value="First Aid">First Aid</option>
+											<option value="Forgery">Forgery</option>
+											<option value="Hacking">Hacking</option>
+											<option value="Hardware">Hardware</option>
+											<option value="Industrial Mechanic">Industrial Mechanic</option>
+											<option value="Locksmith">Locksmith</option>
+											<option value="Medicine">Medicine</option>
+											<option value="Nautical Mechanic">Nautical Mechanic</option>
+											<option value="Navigation">Navigation</option>
+											<option value="Gunnery">Gunnery</option>
+											<option value="Pilot Aerospace">Pilot Aerospace</option>
+											<option value="Pilot Aircraft">Pilot Aircraft</option>
+											<option value="Pilot Exotic Vehicle">Pilot Exotic Vehicle</option>
+											<option value="Pilot Ground Craft">Pilot Ground Craft</option>
+											<option value="Pilot Walker">Pilot Walker</option>
+											<option value="Pilot Watercraft">Pilot Watercraft</option>
+										</select>
+										<label>Rating</label><input type="number" name="attr_rank" min="0" placeholder="0" />
+										<label>Spec.</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
+										<label>Rating Modifier</label><input type="number" name="attr_rank_modifier" min="0" placeholder="0" />
+										<input type="hidden" name="attr_display_attribute" />
+										<select name="attr_attribute">
+											<option value="@{body}">BOD</option>
+											<option value="@{agility}" selected="selected">AGI</option>
+											<option value="@{reaction}">REA</option>
+											<option value="@{strength}">STR</option>
+											<option value="@{willpower}">WIL</option>
+											<option value="@{logic}">LOG</option>
+											<option value="@{intuition}">INT</option>
+											<option value="@{charisma}">CHA</option>
+											<option value="@{magic}">MAG</option>
+											<option value="@{resonance}">RES</option>
+										</select>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
-				</fieldset>
-			</div>
-<!--			<div class="skill-box">
+					</fieldset>
+				</div>
+				<div class="skill-box"><label>Knowledge Skills: </label>
 					<fieldset class="repeating_knowledge">
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
-						<div class="settings">
-							<div class="skills-row">
-								<input type="hidden" name="attr_dicepool" />
-								<input type="text" name="attr_skill" placeholder="Knowledge skill name" />
-								<input type="number" name="attr_rank" placeholder="0" />
-								<div class="settings-row">
-									<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
-									<label>Skill Modifier</label><input type="number" name="attr_rank_modifier" placeholder="0" />
+						<div class="npc-skill">
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" ><span name="attr_display"></span></button>
+							<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display_specialization"></span></button>
+							<span name="attr_display_rank"></span><span>,</span>
+							<div class="settings">
+								<div class="skills-row">
+									<input type="hidden" name="attr_dicepool" />
+									<div class="settings-row">
+										<label>Skill</label><input type="text" name="attr_skill" placeholder="Knowledge skill name" />										
+										<label>Rating</label><input type="number" name="attr_rank" min="0" placeholder="0" />
+										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
+										<label>Rating Modifier</label><input type="number" name="attr_rank_modifier" min="0" placeholder="0" />
+										<input type="hidden" name="attr_display_attribute" />
+										<select name="attr_attribute">
+											<option value="@{body}">BOD</option>
+											<option value="@{agility}" selected="selected">AGI</option>
+											<option value="@{reaction}">REA</option>
+											<option value="@{strength}">STR</option>
+											<option value="@{willpower}">WIL</option>
+											<option value="@{logic}" selected="selected">LOG</option>
+											<option value="@{intuition}">INT</option>
+											<option value="@{charisma}">CHA</option>
+											<option value="@{magic}">MAG</option>
+											<option value="@{resonance}">RES</option>
+										</select>
+									</div>
 								</div>
-								<label>Notes</label>
-								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 							</div>
 						</div>
-						<div class="display">
-							<div class="name">
-								<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display"></span></button>
-								<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display_specialization"></span></button>
-							</div>
-							<div class="rank"><span name="attr_display_rank"></span></div>
-						</div>
-						<input type="hidden" name="attr_display_attribute" />
-						<select class="attr-select" name="attr_attribute">
-							<option value="@{body}">Body</option>
-							<option value="@{agility}">Agility</option>
-							<option value="@{reaction}">Reaction</option>
-							<option value="@{strength}">Strength</option>
-							<option value="@{willpower}">Willpower</option>
-							<option value="@{logic}" selected="selected">Logic</option>
-							<option value="@{intuition}">Intuition</option>
-							<option value="@{charisma}">Charisma</option>
-							<option value="@{magic}">Magic</option>
-							<option value="@{resonance}">Resonance</option>
-						</select>
 					</fieldset>
 				</div>
-				<div class="skill-box">
+				<div class="skill-box"><label>Language Skills: </label>
 					<fieldset class="repeating_language">
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
-						<div class="settings">
-							<div class="skills-row">
-								<input type="hidden" name="attr_dicepool" />
-								<input type="text" name="attr_skill" placeholder="Language" />
-								<input type="number" name="attr_rank" placeholder="0" />
-								<div class="settings-row">
-									<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
-									<label>Skill Modifier</label><input class="language-native" type="number" min="0" name="attr_rank_modifier" placeholder="0" />
+						<div class="npc-skill">
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" ><span name="attr_display"></span></button>
+							<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display_specialization"></span></button>
+							<span name="attr_display_rank"></span><span>,</span>
+							<div class="settings">
+								<div class="skills-row">
+									<input type="hidden" name="attr_dicepool" />
+									<div class="settings-row">
+										<label>Skill</label><input type="text" name="attr_skill" placeholder="Language" />										
+										<label>Rating</label><input type="number" name="attr_rank" min="0" placeholder="0" />
+										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
+										<label>Rating Modifier</label><input type="number" name="attr_rank_modifier" min="0" placeholder="0" />
+										<input type="hidden" name="attr_display_attribute" />
+										<select name="attr_attribute">
+											<option value="@{body}">BOD</option>
+											<option value="@{agility}" selected="selected">AGI</option>
+											<option value="@{reaction}">REA</option>
+											<option value="@{strength}">STR</option>
+											<option value="@{willpower}">WIL</option>
+											<option value="@{logic}">LOG</option>
+											<option value="@{intuition}" selected="selected">INT</option>
+											<option value="@{charisma}">CHA</option>
+											<option value="@{magic}">MAG</option>
+											<option value="@{resonance}">RES</option>
+										</select>
+									</div>
 								</div>
-								<label>Notes</label>
-								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 							</div>
 						</div>
-						<div class="display">
-							<div class="name">
-								<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display"></span></button>
-								<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display_specialization"></span></button>
-							</div>
-							<div class="rank"><span name="attr_display_rank"></span></div>
-						</div>
-						<input type="hidden" name="attr_display_attribute" />
-						<select class="attr-select" name="attr_attribute">
-							<option value="@{body}">Body</option>
-							<option value="@{agility}">Agility</option>
-							<option value="@{reaction}">Reaction</option>
-							<option value="@{strength}">Strength</option>
-							<option value="@{willpower}">Willpower</option>
-							<option value="@{logic}">Logic</option>
-							<option value="@{intuition}" selected="selected">Intuition</option>
-							<option value="@{charisma}">Charisma</option>
-							<option value="@{magic}">Magic</option>
-							<option value="@{resonance}">Resonance</option>
-						</select>
 					</fieldset>
 				</div>
-			</div> --->
-		</div><!-- ~~~~~~~~ End of Dipslay Skills ~~~~~~~~ -->
+			</div><!-- ~~~~~~~~ End of  Skills ~~~~~~~~ -->
+			<div class="sprite skills">
+				<div class="skill-box"><label>Skills: </label>
+					<fieldset class="repeating_active">
+						<div class="npc-skill">
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=Level}}{{dice=[[(@{level}+@{level}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display"></span></button>
+							<span name="attr_level"></span><span>,</span>
+							<div class="settings">
+								<div class="skills-row">
+									<div class="settings-row">
+										<label>Skill</label>
+										<select class="skill-select" name="attr_skill">
+											<option value="Computer">Computer</option>
+											<option value="Cybercombat">Cybercombat</option>
+											<option value="Electronic Warfare">Electronic Warfare</option>
+											<option value="Hacking">Hacking</option>
+											<option value="Hardware">Hardware</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
 		<!-- ~~~~~~~~ Qualities/Augs/Init/Gear/Weakness & Other STUFF ~~~~~~~~ -->
 			<div class="goon textrow">
 				<input type="hidden" class="optional-flag" name="attr_quality" value="0" />
@@ -2298,7 +2305,7 @@
 		<label style="margin-bottom: 10px;">Weapons: </label>
 		<fieldset class="repeating_weapon">
 			<div class="repeating toggle">
-				<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" /><span>y</span>
+				<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" /><span>x</span>
 				<div class="settings">
 					<div class="repeat-section">
 						<input type="radio" class="range-toggle" name="attr_weapon_range" value="0" checked="checked" /><span>Range</span>
@@ -2337,7 +2344,7 @@
 	<div class="magic"><label style="margin-bottom: 10px;">Spells: </label>
 		<fieldset class="repeating_NPCspell">
 			<div class="repeating toggle">
-				<input type="checkbox" class="settings-toggle" name="attr_toggle" checked="checked" /><span>y</span>
+				<input type="checkbox" class="settings-toggle" name="attr_toggle" checked="checked" /><span>x</span>
 				<div class="settings">
 					<div class="repeat-section">
 						<div class="repeat-row"><h4>Category</h4>
@@ -2405,7 +2412,7 @@
 	<div class="resonance"><label>Complex Forms: </label>
 		<fieldset class="repeating_form">
 			<div class="repeating spell toggle">
-				<input type="checkbox" class="settings-toggle" name="attr_form_toggle" checked="checked" /><span>y</span>
+				<input type="checkbox" class="settings-toggle" name="attr_form_toggle" checked="checked" /><span>x</span>
 				<div class="settings">
 					<div class="repeat-section">
 						<div class="repeat-row"><h4>Dice</h4><input type="number" name="attr_software_dice" value="" placeholder="Dice" /></div>
@@ -2442,7 +2449,7 @@
 	<div class="host"><label>Intrusion Countermeasures: </label>
 		<fieldset class="repeating_IC">
 			<div class="repeating toggle">
-				<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" /><span>y</span>
+				<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" /><span>x</span>
 				<div class="settings">
 					<div class="repeat-section">
 						<div class="repeat-row"><h4>Name</h4><input type="text" name="attr_IC_name" value="" placeholder="IC Name" /></div>
@@ -2604,7 +2611,7 @@
 			<h3>Programs</h3>
 			<fieldset class="repeating_programs">
 			<div class="repeating toggle">
-				<input type="checkbox" class="settings-toggle" name="attr_program_toggle" checked="checked" /><span>y</span>
+				<input type="checkbox" class="settings-toggle" name="attr_program_toggle" checked="checked" /><span>x</span>
 				<div class="settings">
 					<input type="text" name="attr_program" value="" placeholder="Program Name" />
 					<br />
@@ -2887,6 +2894,7 @@
 			update["body"] = stat;
 			(mod != 0) ? update["display_body"] = bas + " (" + stat + ")" : update["display_body"] = bas;
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -2900,6 +2908,7 @@
 			update["agility"] = stat;
 			(mod != 0) ? update["display_agility"] = bas + " (" + stat + ")" : update["display_agility"] = bas;
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});	
 
@@ -2913,6 +2922,7 @@
 			update["reaction"] = stat;
 			(mod != 0) ? update["display_reaction"] = bas + " (" + stat + ")": update["display_reaction"] = bas;
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -2926,6 +2936,7 @@
 			update["strength"] = stat;
 			(mod != 0) ? update["display_strength"] = bas + " (" + stat + ")" : update["display_strength"] = bas;
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -2939,6 +2950,7 @@
 			update["willpower"] = stat;
 			(mod != 0) ? update["display_willpower"] = bas + " (" + stat + ")" : update["display_willpower"] = bas;
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -2952,6 +2964,7 @@
 			update["logic"] = stat;
 			(mod != 0) ? update["display_logic"] = bas + " (" + stat + ")" : update["display_logic"] = bas;
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -2965,6 +2978,7 @@
 			update["intuition"] = stat;
 			(mod != 0) ? update["display_intuition"] = bas + " (" + stat + ")" : update["display_intuition"] = bas;
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -2978,6 +2992,7 @@
 			update["charisma"] = stat;
 			(mod != 0) ? update["display_charisma"] = bas + " (" + stat + ")" : update["display_charisma"] = bas;
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -2991,6 +3006,7 @@
 			update["magic"] = stat;
 			(mod != 0) ? update["display_magic"] = bas + " (" + stat + ")" : update["display_magic"] = bas;
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -3004,6 +3020,7 @@
 			update["resonance"] = stat;
 			(mod != 0) ? update["display_resonance"] = bas + " (" + stat + ")" : update["display_resonance"] = bas;
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -3014,6 +3031,7 @@
 			var mod = parseInt(v.overflow_modifier) || 0;
 
 			setAttrs({overflow: bas + mod});
+			console.log("RUNNING");
 		});
 	};
 
@@ -3029,6 +3047,7 @@
 			var num = Math.ceil(tot) + mod;
 
 			setAttrs({mental_limit: num});
+			console.log("RUNNING");
 		});
 	};
 
@@ -3043,6 +3062,7 @@
 				var num = Math.ceil(tot) + mod;
 
 				setAttrs({physical_limit: num});
+				console.log("RUNNING");
 			});
 		};
 
@@ -3057,6 +3077,7 @@
 				var num = Math.ceil(tot) + mod;
 				
 				setAttrs({social_limit: num});
+				console.log("RUNNING");
 			});
 		};
 
@@ -3070,6 +3091,7 @@
 				var tot = rea + int + mod;
 
 				setAttrs({defense: tot});
+				console.log("RUNNING");
 			});
 		};
 
@@ -3082,6 +3104,7 @@
 				let tot = body + armor + mod;
 
 				setAttrs({soak: tot});
+				console.log("RUNNING");
 			});
 		};
 
@@ -3104,6 +3127,7 @@
 					};
 
 					setAttrs(update);
+					console.log("RUNNING");
 				});
 			});
 
@@ -3114,6 +3138,7 @@
 			var mod = parseInt(v.lift_carry_modifier) || 0;
 
 			setAttrs({lift_carry: attrOne + attrTwo + mod});
+			console.log("RUNNING");
 		});
 	};
 
@@ -3124,6 +3149,7 @@
 			var mod = parseInt(v.composure_modifier) || 0;
 
 			setAttrs({composure: attrOne + attrTwo + mod});
+			console.log("RUNNING");
 		});
 	};
 	
@@ -3134,6 +3160,7 @@
 			var mod = parseInt(v.judge_intentions_modifier) || 0;
 
 			setAttrs({judge_intentions: attrOne + attrTwo + mod});
+			console.log("RUNNING");
 		});
 	};
 
@@ -3145,6 +3172,7 @@
 			var mod = parseInt(v.memory_modifier) || 0;
 
 			setAttrs({memory: attrOne + attrTwo + mod});
+			console.log("RUNNING");
 		});
 	};
 
@@ -3160,6 +3188,7 @@
 			update["walk"] = walk;
 			update["run"] = run;
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	};
 
@@ -3176,6 +3205,7 @@
 				update["physical"] = tra;
 				update["physical_max"] = tra;
 				setAttrs(update);
+				console.log("RUNNING");
 			});
 		};
 
@@ -3189,6 +3219,7 @@
 				update["stun"] = tot;
 				update["stun_max"] = tot;
 				setAttrs(update);
+				console.log("RUNNING");
 			});
 		};
 
@@ -3203,6 +3234,7 @@
 			(Dam === Wou) ? console.log("Damage is already tracked") : 
 			((phy < Max && Dam != Wou) ? setAttrs({physical_damage: Wou}) :
 			setAttrs({physical_damage: 0}));
+			console.log("RUNNING");
 		});
 	});
 
@@ -3213,6 +3245,7 @@
 			var Max = parseInt(v.physical_max) || 0;
 			var Wou = Max - Dam;
 			(phy === Wou) ? console.log("Physical is already tracked") : setAttrs({physical: Wou});
+			console.log("RUNNING");
 		});
 	});
 
@@ -3226,6 +3259,7 @@
 			(Dam === Wou) ? console.log("Damage is already tracked") : 
 			((stu < Max && Dam != Wou) ? setAttrs({stun_damage: Wou}) :
 			setAttrs({stun_damage: 0}));
+			console.log("RUNNING");
 		});
 	});
 
@@ -3236,6 +3270,7 @@
 			var Max = parseInt(v.stun_max) || 0;
 			var Wou = Max - Dam;
 			(stu === Wou) ? console.log("stun is already tracked") : setAttrs({stun: Wou});
+			console.log("RUNNING");
 		});
 	});
 
@@ -3254,6 +3289,7 @@
 			wou = Math.floor(-(pMod) + -(sMod));
 			
 			setAttrs({wounds: wou});
+			console.log("RUNNING");
 		});
 	});
 
@@ -3266,6 +3302,7 @@ on("change:device_rating change:matrix_modifier", function() {
 
 		setAttrs({matrix: tot});
 		setAttrs({matrix_max: tot});
+		console.log("RUNNING");
 	});
 });
 
@@ -3281,6 +3318,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			update["initiative_mod"] = tot;
 			(mod != 0) ? update["display_initiative_mod"] = bas + " (" + tot + ")" : update["display_initiative_mod"] = bas;
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	};
 
@@ -3292,6 +3330,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			edg = (v.edge_toggle == 0) ? tot : 5;
 
 			setAttrs({initiative_dice: edg});
+			console.log("RUNNING");
 		});
 	});
 
@@ -3305,6 +3344,7 @@ on("change:device_rating change:matrix_modifier", function() {
 
 			setAttrs({astral_mod: tot});
 			(mod != 0) ? setAttrs({display_astral_mod: bas + " (" + tot + ")"}) : setAttrs({display_astral_mod: bas});
+			console.log("RUNNING");
 		});
 	});
 
@@ -3315,11 +3355,12 @@ on("change:device_rating change:matrix_modifier", function() {
 			edg = (v.edge_toggle == 0) ? tot : 5;
 
 			setAttrs({astral_dice: edg});
+			console.log("RUNNING");
 		});
 	});
 
 	//Calculate Matrix Initiatve. This is just Initiative for Host & Vehicles
-	on("change:host_rating change:data_processing change:pilot change:intuition change:matrix_mod_modifier change:matrix_dice_modifier change:edge_toggle", function() {
+	on("change:host_rating change:data_processing change:pilot change:intuition change:matrix_mod_modifier change:matrix_dice_modifier change:edge_toggle change:level", function() {
 		getAttrs(["sheet_type", "data_processing", "pilot", "intuition", "matrix_mod_modifier", "matrix_dice_modifier", "host_rating", "edge_toggle"], function(v) {
 			var dat = parseInt(v.data_processing) || 0;
 			var pil = parseInt(v.pilot) || 0;
@@ -3327,10 +3368,12 @@ on("change:device_rating change:matrix_modifier", function() {
 			var mat = parseInt(v.matrix_mod_modifier) || 0;
 			var dic = parseInt(v.matrix_dice_modifier) || 0;
 			var hos = parseInt(v.host_rating) || 0;
+			var lev = parseInt(v.level) || 0;
 
 			ini = (v.sheet_type === "goon") ? dat + int + mat :
 				  ((v.sheet_type === "vehicle") ? dat + pil :
 				  ((v.sheet_type === "host") ? dat + hos :
+				  ((v.sheet_type === "sprite") ? lev + lev + mat:
 				  	"Invald sheet type"));
 
 			dice = (v.sheet_type === "goon" && v.edge_toggle == 0) ? 4 + dic : 
@@ -3341,6 +3384,8 @@ on("change:device_rating change:matrix_modifier", function() {
 			setAttrs({matrix_dice: dice});
 
 			(mat != 0) ? setAttrs({display_matrix_mod: dat + int + " (" + ini + ")"}) : setAttrs({display_matrix_mod: dat + int});
+
+			console.log("RUNNING");
 		});
 	});
 
@@ -3350,6 +3395,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			edg = (v.edge_toggle != 0) ? "!" : "";
 
 			setAttrs({explode_toggle: edg});
+			console.log("RUNNING");
 		});
 	});
 
@@ -3372,6 +3418,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			};
 
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});	
 
@@ -3405,6 +3452,7 @@ on("change:device_rating change:matrix_modifier", function() {
 					  (" [" + typ + acc + dv + ap + not + "]"));
 
 	        setAttrs({repeating_weapon_weapon: display});
+	        console.log("RUNNING");
 	    });
 	});
 
@@ -3424,6 +3472,7 @@ on("change:device_rating change:matrix_modifier", function() {
 					  ((com === "Indirect, Force ?{Force|}, AP -") ? (" (Indirect) " + "[" + typ + ran + dam + dur + dra + not + "]") :
 					  (" [" + typ + ran + dur + dra + not + "]"));
 	        setAttrs({repeating_NPCspell_spell: display});
+	        console.log("RUNNING");
 	    });
 	});
 
@@ -3441,6 +3490,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			var display = (" [" + tar + dur + fad + not + "]");
 
 	        setAttrs({repeating_form_form: display});
+	        console.log("RUNNING");
 	    });
 	});
 
@@ -3456,6 +3506,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			display = (v.repeating_IC_IC_limit === "@{data_processing}") ? (" (" + "[" + data + "]" + " vs. " + attr + " + " + mat + ", " + not + ")") : (" (" + "[" + att + "]" + " vs. " + attr + " + " + mat + ", " + not + ")");
 
 	        setAttrs({repeating_IC_IC: display});
+	        console.log("RUNNING");
 	    });
 	});
 
@@ -3468,6 +3519,7 @@ on("change:device_rating change:matrix_modifier", function() {
 
 			setAttrs({matrix: tot});
 			setAttrs({ic_attack: atk});
+			console.log("RUNNING");
 		});
 	});
 
@@ -3508,6 +3560,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			};
 
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -3550,6 +3603,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			if (attributeNew != v.repeating_knowledge_display_attribute) {update["repeating_knowledge_display_attribute"] = attributeNew;};
 
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -3593,6 +3647,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			if (attributeNew != v.repeating_language_display_attribute) {update["repeating_language_display_attribute"] = attributeNew;};
 
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -3608,6 +3663,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			if (attributeNew != display) {update["default_display"] = attributeNew;};
 
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -3635,6 +3691,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			};
 
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -3658,6 +3715,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			};
 
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});		
 
@@ -3682,7 +3740,8 @@ on("change:device_rating change:matrix_modifier", function() {
 
 			var display = name + " / " + life + " / " + funds + " / " + lice;
 
-			setAttrs({repeating_lifestyle_display: display})
+			setAttrs({repeating_lifestyle_display: display});
+			console.log("RUNNING");
 
 		});
 	});
@@ -3695,6 +3754,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			((name).length > 0 && (name).length <= 30) ? setAttrs({repeating_contacts_display: (name)}) : 
 				((name).length > 30) ? setAttrs({repeating_contacts_display: (name).slice(0, 30) + "..."}) :
 				setAttrs({repeating_contacts_display: " "});
+			console.log("RUNNING");
 		});
 	});
 
@@ -3708,6 +3768,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			let tot = temp + base + mod;
 
 			setAttrs({attack: tot});
+			console.log("RUNNING");
 		});
 	});
 
@@ -3719,6 +3780,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			let tot = temp + base + mod;
 
 			setAttrs({sleaze: tot});
+			console.log("RUNNING");
 		});
 	});
 
@@ -3730,6 +3792,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			let tot = temp + base + mod;
 
 			setAttrs({data_processing: tot});
+			console.log("RUNNING");
 		});
 	});
 
@@ -3741,6 +3804,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			let tot = temp + base + mod;
 
 			setAttrs({firewall: tot});
+			console.log("RUNNING");
 		});
 	});
 
@@ -3755,6 +3819,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			if (dis != displayName) {update["repeating_vehicle_display_name"] = displayName};
 
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -3769,6 +3834,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_handling"] = base + " (" + tot + ")" : update["repeating_vehicle_display_handling"] = base;
 
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -3783,6 +3849,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_acceleration"] = base + " (" + tot + ")" : update["repeating_vehicle_display_acceleration"] = base;
 
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -3797,6 +3864,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_speed"] = base + " (" + tot + ")" : update["repeating_vehicle_display_speed"] = base;
 
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -3811,6 +3879,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_pilot"] = base + " (" + tot + ")" : update["repeating_vehicle_display_pilot"] = base;
 
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -3825,6 +3894,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_body"] = base + " (" + tot + ")" : update["repeating_vehicle_display_body"] = base;
 
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -3839,6 +3909,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_armor"] = base + " (" + tot + ")" : update["repeating_vehicle_display_armor"] = base;
 
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
@@ -3853,6 +3924,7 @@ on("change:device_rating change:matrix_modifier", function() {
 			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_sensor"] = base + " (" + tot + ")" : update["repeating_vehicle_display_sensor"] = base;
 
 			setAttrs(update);
+			console.log("RUNNING");
 		});
 	});
 
