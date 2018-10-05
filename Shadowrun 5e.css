@@ -453,54 +453,72 @@
 				left: 65%;
 				top: -20px;}
 
-			.sheet-attr-box input.sheet-settings-toggle + span {
-				color: #fff;
-				font-size: 1em;
-				left: 59%;
-				position: relative;
-				top: -20px;}
+				.sheet-attr-box input.sheet-settings-toggle + span {
+					color: #fff;
+					font-size: 1em;
+					left: 59%;
+					position: relative;
+					top: -20px;}
 
 			.sheet-attr-col {
 				display: inline-block;
-				margin-top: 3.5px;
+				margin-top: 10px;
 				vertical-align: top;
-				width: 54%;}
+				width: 48%;}
 
-			.sheet-attr-col:first-child {
-				width: 45%;}
-
-				.sheet-attr-col h2,
-				.sheet-attr-col label,
 				.sheet-attr-col button[type="roll"] {
 					border-bottom: 1px solid #000;
+					border-radius: 0px;
+					cursor: pointer;
 					display: inline-block;
-					font-size: 11px;
+					font-size: 0.9em;
 					line-height: 18px;
 					margin-bottom: 0px;
+					margin-left: 0px;
 					margin-right: 5px;
 					padding-right: 2px;
 					text-align: right;
-					width: 43%;}
+					width: 35%;}
 
-					.sheet-attr-col button[type="roll"] {
-						border-radius: 0px;
-						margin-left: 0px;}
+				.sheet-attr-col input[type="number"],
+				.sheet-attr-col .sheet-totals {
+					border-radius: 0px;
+					display: inline;
+					height: 20px;
+					text-align: center;
+					width: 20%;
+					padding: 0px 2px;}
 
-					.sheet-attr-col button > h2 {
-						border-bottom: none;
-						width: auto;}
+				.sheet-attr-col button > span {font-weight: bold;}
 
-					.sheet-attr-col:first-child label {width: 40%;}
+			.sheet-attr-col-left {margin-left: -13%;}
 
-				.sheet-attr-col h3 {
-					color: #000;
-					margin-bottom: -3px;}
+			.sheet-attr-col-right {width: 50%;}
 
-			.sheet-attr-lim {margin-top: 20px;}
+				.sheet-attr-col-right .sheet-attr-ini input[type="number"] {width: 15%;}
 
-				.sheet-attr-lim h2 {
-					font-size: 11.7px;
-					width: 21%;}
+				.sheet-attr-col-right button[type="roll"] {
+					margin-right: 0px;
+					width: 55%;}
+
+				.sheet-settings-toggle:checked ~ .sheet-attr-col-right .sheet-attr-ini {width: 70%;}
+
+					.sheet-settings-toggle:checked ~ .sheet-attr-col-right button.sheet-attr-ini {width: 28%;}
+
+					.sheet-settings-toggle:checked ~ .sheet-attr-col-right button.sheet-attr-ini .sheet-init-settings {display: inline;}
+
+					.sheet-attr-col-right button.sheet-attr-ini .sheet-init-settings,
+					.sheet-settings-toggle:checked ~ .sheet-attr-col-right button.sheet-attr-ini .sheet-init-display {
+						display: none;}
+
+				.sheet-attr-col-right label {
+					border-bottom: 1px solid #000;
+					font-size: 0.9em;
+					height: 22px;
+					text-align: right;
+					width: 55%;}
+
+				.sheet-attr-col-right .sheet-attr-und {width: 43%;}
 
 			.sheet-attr-und {
 				border-bottom: 1px solid #000;
@@ -508,43 +526,28 @@
 				height: 22px;
 				margin-bottom: 4px;
 				vertical-align: top;
-				width: 53%;}
+				width: 60%;}
 
-		/***** ATTRIBUTE SETTINGS *****/
-			.sheet-attr-box .sheet-settings,
-			.sheet-attr-box .sheet-display,
-			.sheet-condition-box .sheet-display,
-			.sheet-condition-box .sheet-settings {
-				margin-top: -10px;}
+				.sheet-attr-und .sheet-display {text-align: center;}
 
-			.sheet-settings .sheet-attr-col input[type="number"] {
-				margin-bottom: 8px;
-				padding: 0px 2px;}
+			.sheet-tiny-span {font-size: 0.75em;}
 
-			.sheet-attr-col input[type="number"],
-			.sheet-attr-col .sheet-totals {
-				border-radius: 0px;
-				display: inline;
-				height: 20px;
-				text-align: center;
-				width: 20%;}
+		/***** ATTRIBUTE LIMITS *****/	
+			.sheet-attr-lim {margin-top: 20px;}
 
-			.sheet-tiny-span {font-size: 0.8em;}
+				.sheet-attr-lim div {
+					display: inline-block;
+					height: 22px;
+					text-align: center;
+					width: 10%;}
 
-			.sheet-attr-ini {width: 71%;}
-				.sheet-attr-ini input[type="number"] {width: 15%;}
 				.sheet-attr-lim input[type="number"] {width: 6%;}
+
+				.sheet-attr-lim label {width: auto;}
+
 				.sheet-attr-lim span + span {margin-right: 1%;}
-				label.sheet-attr-ini {width: 25%;}
 
-		/***** ATTRIBUTE DISPLAY *****/
-			.sheet-display .sheet-attr-und {text-align: center;}
-
-			.sheet-attr-lim div {
-				display: inline-block;
-				height: 22px;
-				text-align: center;
-				width: 10%;}
+				.sheet-attr-lim .sheet-display {width: 100%;}
 
 		/***** ATTRIBUTE AND CONDITION MONITOR SETTINGS TOGGLES *****/
 			.sheet-attr-box input.sheet-settings-toggle,
@@ -577,6 +580,10 @@
 				text-align: center;
 				width: 100%;}
 
+			.sheet-condition-box .sheet-display,
+			.sheet-condition-box .sheet-settings {
+					margin-top: -20px;}
+
 			/***** CONDITION MONITOR SETTINGS  *****/
 				.sheet-condition-box .sheet-settings input {
 					border-bottom: 1px solid #000;
@@ -592,6 +599,7 @@
 				.sheet-con-footer .sheet-attr-und {
 					display: inline-block;
 					margin-bottom: -5px;
+					text-align: center;
 					width: 60%;}
 
 				.sheet-con-track input[type="checkbox"]  {
@@ -1012,10 +1020,7 @@
 	/***** LIFESTYLES *****/
 		.sheet-lifestyle h3:nth-of-type(2) {margin-right: 1%;}
 		.sheet-lifestyle input[type="text"] {
-			background-color: #e7e6e5;
-			border-bottom: 1px solid #000;
-			border-radius: 0px;
-			width: 100%;}
+			background-color: transparent;}
 
 		/***** LIFESTYLE SETTINGS *****/
 			.sheet-lifestyle textarea {
@@ -1431,8 +1436,7 @@
 		.sheet-edg-hex,
 		.sheet-con-hex {
 			position: relative;
-			top: -70px;
-			width: 180px;}
+			top: -60px;}
 
 			.sheet-edg-hex input[type="checkbox"],
 			.sheet-con-hex input[type="radio"] {
@@ -1655,11 +1659,16 @@
 		.sheet-settings,
 		.sheet-weapon-melee,
 		.sheet-weapon-range,
-		input.sheet-settings-toggle:checked ~ div.sheet-display {
+		input.sheet-settings-toggle:checked ~ div.sheet-display,
+		input.sheet-settings-toggle:checked ~ .sheet-attr-col .sheet-attr-und div.sheet-display,
+		input.sheet-settings-toggle ~ .sheet-attr-lim div.sheet-settings,
+		input.sheet-settings-toggle:checked ~ .sheet-attr-lim div.sheet-display {
 			display: none;}
 
 		.sheet-display,
-		input.sheet-settings-toggle:checked ~ div.sheet-settings {
+		input.sheet-settings-toggle:checked ~ div.sheet-settings,
+		input.sheet-settings-toggle:checked ~ .sheet-attr-col .sheet-attr-und div.sheet-settings,
+		input.sheet-settings-toggle:checked ~ .sheet-attr-lim div.sheet-settings  {
 			background: none;
 			display: inherit;
 			font-size: 1em;
