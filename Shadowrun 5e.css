@@ -1011,11 +1011,13 @@
 
 	/***** LIFESTYLES *****/
 		.sheet-lifestyle h3:nth-of-type(2) {margin-right: 1%;}
+		.sheet-lifestyle input[type="text"] {
+			background-color: #e7e6e5;
+			border-bottom: 1px solid #000;
+			border-radius: 0px;
+			width: 100%;}
 
 		/***** LIFESTYLE SETTINGS *****/
-			.sheet-lifestyle input[type="number"] {width: 39%;}
-			.sheet-lifestyle input[type="text"] {width: 79%;}
-
 			.sheet-lifestyle textarea {
 				min-height: 30px;
 				margin: 0px 0px 0px 0px;}
@@ -1025,8 +1027,6 @@
 				display: inline-block;
 				font-family: sans-serif;
 				width: 24%;}
-
-			.sheet-lifestyle .sheet-row-long:nth-of-type(2) input[type="text"] {width: 40%;}
 
 			.sheet-lifestyle .sheet-display-flag:checked ~ span:nth-of-type(1),
 			.sheet-lifestyle .sheet-display-flag ~ span:nth-of-type(1n+2) {

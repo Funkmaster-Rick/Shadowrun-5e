@@ -1483,13 +1483,9 @@
 			<div class="header right-header"><h1>IDs/Lifestyles/Currency</h1><div class="right-tri"></div></div>
 			<div class="border-box repeat-box lifestyle">
 				<div class="pc-box small-box social-box">
-					<div class="row-long">
-						<h3>Primary Lifestyle</h3><div><span name="attr_lifestyle_display"></span></div>
-					</div>
-					<div class="row-long">
-						<h3>Nuyen</h3><div><span name="attr_primary_nuyen"></span></div>
-						<h3>Licenses</h3><div><span name="attr_primary_licenses"></span></div>
-					</div>
+					<div><h3>Primary Lifestyle</h3><br /><input type="text" name="attr_primary_lifestyle" placeholder="Middle /w GRID subscription" /></div>
+					<div><h3>Primary Nuyen</h3><br /><input type="text" name="attr_primary_nuyen"  placeholder="$1,000 UCAS" /></div>
+					<div><h3>Primary Licenses</h3><br /><input type="text" name="attr_primary_licenses" placeholder="Technomancer, Pistols..." /></div>
 					<div class="row-long">
 						<h3>Fake IDs / Related Lifestyles / Funds / Licenses</h3>
 					</div>
@@ -2894,7 +2890,6 @@
 			update["body"] = stat;
 			(mod != 0) ? update["display_body"] = bas + " (" + stat + ")" : update["display_body"] = bas;
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -2908,7 +2903,6 @@
 			update["agility"] = stat;
 			(mod != 0) ? update["display_agility"] = bas + " (" + stat + ")" : update["display_agility"] = bas;
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});	
 
@@ -2922,7 +2916,6 @@
 			update["reaction"] = stat;
 			(mod != 0) ? update["display_reaction"] = bas + " (" + stat + ")": update["display_reaction"] = bas;
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -2936,7 +2929,6 @@
 			update["strength"] = stat;
 			(mod != 0) ? update["display_strength"] = bas + " (" + stat + ")" : update["display_strength"] = bas;
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -2950,7 +2942,6 @@
 			update["willpower"] = stat;
 			(mod != 0) ? update["display_willpower"] = bas + " (" + stat + ")" : update["display_willpower"] = bas;
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -2964,7 +2955,6 @@
 			update["logic"] = stat;
 			(mod != 0) ? update["display_logic"] = bas + " (" + stat + ")" : update["display_logic"] = bas;
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -2978,7 +2968,6 @@
 			update["intuition"] = stat;
 			(mod != 0) ? update["display_intuition"] = bas + " (" + stat + ")" : update["display_intuition"] = bas;
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -2992,7 +2981,6 @@
 			update["charisma"] = stat;
 			(mod != 0) ? update["display_charisma"] = bas + " (" + stat + ")" : update["display_charisma"] = bas;
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -3006,7 +2994,6 @@
 			update["magic"] = stat;
 			(mod != 0) ? update["display_magic"] = bas + " (" + stat + ")" : update["display_magic"] = bas;
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -3020,7 +3007,6 @@
 			update["resonance"] = stat;
 			(mod != 0) ? update["display_resonance"] = bas + " (" + stat + ")" : update["display_resonance"] = bas;
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -3031,7 +3017,6 @@
 			var mod = parseInt(v.overflow_modifier) || 0;
 
 			setAttrs({overflow: bas + mod});
-			console.log("RUNNING");
 		});
 	};
 
@@ -3047,7 +3032,6 @@
 			var num = Math.ceil(tot) + mod;
 
 			setAttrs({mental_limit: num});
-			console.log("RUNNING");
 		});
 	};
 
@@ -3062,7 +3046,6 @@
 				var num = Math.ceil(tot) + mod;
 
 				setAttrs({physical_limit: num});
-				console.log("RUNNING");
 			});
 		};
 
@@ -3077,7 +3060,6 @@
 				var num = Math.ceil(tot) + mod;
 				
 				setAttrs({social_limit: num});
-				console.log("RUNNING");
 			});
 		};
 
@@ -3091,7 +3073,6 @@
 				var tot = rea + int + mod;
 
 				setAttrs({defense: tot});
-				console.log("RUNNING");
 			});
 		};
 
@@ -3104,7 +3085,6 @@
 				let tot = body + armor + mod;
 
 				setAttrs({soak: tot});
-				console.log("RUNNING");
 			});
 		};
 
@@ -3127,7 +3107,6 @@
 					};
 
 					setAttrs(update);
-					console.log("RUNNING");
 				});
 			});
 
@@ -3138,7 +3117,6 @@
 			var mod = parseInt(v.lift_carry_modifier) || 0;
 
 			setAttrs({lift_carry: attrOne + attrTwo + mod});
-			console.log("RUNNING");
 		});
 	};
 
@@ -3149,7 +3127,6 @@
 			var mod = parseInt(v.composure_modifier) || 0;
 
 			setAttrs({composure: attrOne + attrTwo + mod});
-			console.log("RUNNING");
 		});
 	};
 	
@@ -3160,7 +3137,6 @@
 			var mod = parseInt(v.judge_intentions_modifier) || 0;
 
 			setAttrs({judge_intentions: attrOne + attrTwo + mod});
-			console.log("RUNNING");
 		});
 	};
 
@@ -3172,7 +3148,6 @@
 			var mod = parseInt(v.memory_modifier) || 0;
 
 			setAttrs({memory: attrOne + attrTwo + mod});
-			console.log("RUNNING");
 		});
 	};
 
@@ -3188,7 +3163,6 @@
 			update["walk"] = walk;
 			update["run"] = run;
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	};
 
@@ -3205,7 +3179,6 @@
 				update["physical"] = tra;
 				update["physical_max"] = tra;
 				setAttrs(update);
-				console.log("RUNNING");
 			});
 		};
 
@@ -3219,7 +3192,6 @@
 				update["stun"] = tot;
 				update["stun_max"] = tot;
 				setAttrs(update);
-				console.log("RUNNING");
 			});
 		};
 
@@ -3234,7 +3206,6 @@
 			(Dam === Wou) ? console.log("Damage is already tracked") : 
 			((phy < Max && Dam != Wou) ? setAttrs({physical_damage: Wou}) :
 			setAttrs({physical_damage: 0}));
-			console.log("RUNNING");
 		});
 	});
 
@@ -3245,7 +3216,6 @@
 			var Max = parseInt(v.physical_max) || 0;
 			var Wou = Max - Dam;
 			(phy === Wou) ? console.log("Physical is already tracked") : setAttrs({physical: Wou});
-			console.log("RUNNING");
 		});
 	});
 
@@ -3259,7 +3229,6 @@
 			(Dam === Wou) ? console.log("Damage is already tracked") : 
 			((stu < Max && Dam != Wou) ? setAttrs({stun_damage: Wou}) :
 			setAttrs({stun_damage: 0}));
-			console.log("RUNNING");
 		});
 	});
 
@@ -3270,7 +3239,6 @@
 			var Max = parseInt(v.stun_max) || 0;
 			var Wou = Max - Dam;
 			(stu === Wou) ? console.log("stun is already tracked") : setAttrs({stun: Wou});
-			console.log("RUNNING");
 		});
 	});
 
@@ -3289,7 +3257,6 @@
 			wou = Math.floor(-(pMod) + -(sMod));
 			
 			setAttrs({wounds: wou});
-			console.log("RUNNING");
 		});
 	});
 
@@ -3302,7 +3269,6 @@ on("change:device_rating change:matrix_modifier", function() {
 
 		setAttrs({matrix: tot});
 		setAttrs({matrix_max: tot});
-		console.log("RUNNING");
 	});
 });
 
@@ -3318,7 +3284,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			update["initiative_mod"] = tot;
 			(mod != 0) ? update["display_initiative_mod"] = bas + " (" + tot + ")" : update["display_initiative_mod"] = bas;
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	};
 
@@ -3330,7 +3295,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			edg = (v.edge_toggle == 0) ? tot : 5;
 
 			setAttrs({initiative_dice: edg});
-			console.log("RUNNING");
 		});
 	});
 
@@ -3344,7 +3308,6 @@ on("change:device_rating change:matrix_modifier", function() {
 
 			setAttrs({astral_mod: tot});
 			(mod != 0) ? setAttrs({display_astral_mod: bas + " (" + tot + ")"}) : setAttrs({display_astral_mod: bas});
-			console.log("RUNNING");
 		});
 	});
 
@@ -3355,12 +3318,11 @@ on("change:device_rating change:matrix_modifier", function() {
 			edg = (v.edge_toggle == 0) ? tot : 5;
 
 			setAttrs({astral_dice: edg});
-			console.log("RUNNING");
 		});
 	});
 
 	//Calculate Matrix Initiatve. This is just Initiative for Host & Vehicles
-	on("change:host_rating change:data_processing change:pilot change:intuition change:matrix_mod_modifier change:matrix_dice_modifier change:edge_toggle change:level", function() {
+	on("change:host_rating change:data_processing change:pilot change:intuition change:matrix_mod_modifier change:matrix_dice_modifier change:edge_toggle", function() {
 		getAttrs(["sheet_type", "data_processing", "pilot", "intuition", "matrix_mod_modifier", "matrix_dice_modifier", "host_rating", "edge_toggle"], function(v) {
 			var dat = parseInt(v.data_processing) || 0;
 			var pil = parseInt(v.pilot) || 0;
@@ -3368,12 +3330,10 @@ on("change:device_rating change:matrix_modifier", function() {
 			var mat = parseInt(v.matrix_mod_modifier) || 0;
 			var dic = parseInt(v.matrix_dice_modifier) || 0;
 			var hos = parseInt(v.host_rating) || 0;
-			var lev = parseInt(v.level) || 0;
 
 			ini = (v.sheet_type === "goon") ? dat + int + mat :
 				  ((v.sheet_type === "vehicle") ? dat + pil :
 				  ((v.sheet_type === "host") ? dat + hos :
-				  ((v.sheet_type === "sprite") ? lev + lev + mat:
 				  	"Invald sheet type"));
 
 			dice = (v.sheet_type === "goon" && v.edge_toggle == 0) ? 4 + dic : 
@@ -3384,8 +3344,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			setAttrs({matrix_dice: dice});
 
 			(mat != 0) ? setAttrs({display_matrix_mod: dat + int + " (" + ini + ")"}) : setAttrs({display_matrix_mod: dat + int});
-
-			console.log("RUNNING");
 		});
 	});
 
@@ -3395,7 +3353,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			edg = (v.edge_toggle != 0) ? "!" : "";
 
 			setAttrs({explode_toggle: edg});
-			console.log("RUNNING");
 		});
 	});
 
@@ -3418,7 +3375,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			};
 
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});	
 
@@ -3452,7 +3408,6 @@ on("change:device_rating change:matrix_modifier", function() {
 					  (" [" + typ + acc + dv + ap + not + "]"));
 
 	        setAttrs({repeating_weapon_weapon: display});
-	        console.log("RUNNING");
 	    });
 	});
 
@@ -3472,7 +3427,6 @@ on("change:device_rating change:matrix_modifier", function() {
 					  ((com === "Indirect, Force ?{Force|}, AP -") ? (" (Indirect) " + "[" + typ + ran + dam + dur + dra + not + "]") :
 					  (" [" + typ + ran + dur + dra + not + "]"));
 	        setAttrs({repeating_NPCspell_spell: display});
-	        console.log("RUNNING");
 	    });
 	});
 
@@ -3490,7 +3444,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			var display = (" [" + tar + dur + fad + not + "]");
 
 	        setAttrs({repeating_form_form: display});
-	        console.log("RUNNING");
 	    });
 	});
 
@@ -3506,7 +3459,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			display = (v.repeating_IC_IC_limit === "@{data_processing}") ? (" (" + "[" + data + "]" + " vs. " + attr + " + " + mat + ", " + not + ")") : (" (" + "[" + att + "]" + " vs. " + attr + " + " + mat + ", " + not + ")");
 
 	        setAttrs({repeating_IC_IC: display});
-	        console.log("RUNNING");
 	    });
 	});
 
@@ -3519,7 +3471,6 @@ on("change:device_rating change:matrix_modifier", function() {
 
 			setAttrs({matrix: tot});
 			setAttrs({ic_attack: atk});
-			console.log("RUNNING");
 		});
 	});
 
@@ -3560,7 +3511,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			};
 
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -3603,7 +3553,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			if (attributeNew != v.repeating_knowledge_display_attribute) {update["repeating_knowledge_display_attribute"] = attributeNew;};
 
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -3647,7 +3596,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			if (attributeNew != v.repeating_language_display_attribute) {update["repeating_language_display_attribute"] = attributeNew;};
 
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -3663,7 +3611,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			if (attributeNew != display) {update["default_display"] = attributeNew;};
 
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -3691,7 +3638,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			};
 
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -3715,7 +3661,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			};
 
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});		
 
@@ -3740,8 +3685,7 @@ on("change:device_rating change:matrix_modifier", function() {
 
 			var display = name + " / " + life + " / " + funds + " / " + lice;
 
-			setAttrs({repeating_lifestyle_display: display});
-			console.log("RUNNING");
+			setAttrs({repeating_lifestyle_display: display})
 
 		});
 	});
@@ -3754,7 +3698,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			((name).length > 0 && (name).length <= 30) ? setAttrs({repeating_contacts_display: (name)}) : 
 				((name).length > 30) ? setAttrs({repeating_contacts_display: (name).slice(0, 30) + "..."}) :
 				setAttrs({repeating_contacts_display: " "});
-			console.log("RUNNING");
 		});
 	});
 
@@ -3768,7 +3711,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			let tot = temp + base + mod;
 
 			setAttrs({attack: tot});
-			console.log("RUNNING");
 		});
 	});
 
@@ -3780,7 +3722,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			let tot = temp + base + mod;
 
 			setAttrs({sleaze: tot});
-			console.log("RUNNING");
 		});
 	});
 
@@ -3792,7 +3733,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			let tot = temp + base + mod;
 
 			setAttrs({data_processing: tot});
-			console.log("RUNNING");
 		});
 	});
 
@@ -3804,7 +3744,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			let tot = temp + base + mod;
 
 			setAttrs({firewall: tot});
-			console.log("RUNNING");
 		});
 	});
 
@@ -3819,7 +3758,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			if (dis != displayName) {update["repeating_vehicle_display_name"] = displayName};
 
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -3834,7 +3772,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_handling"] = base + " (" + tot + ")" : update["repeating_vehicle_display_handling"] = base;
 
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -3849,7 +3786,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_acceleration"] = base + " (" + tot + ")" : update["repeating_vehicle_display_acceleration"] = base;
 
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -3864,7 +3800,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_speed"] = base + " (" + tot + ")" : update["repeating_vehicle_display_speed"] = base;
 
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -3879,7 +3814,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_pilot"] = base + " (" + tot + ")" : update["repeating_vehicle_display_pilot"] = base;
 
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -3894,7 +3828,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_body"] = base + " (" + tot + ")" : update["repeating_vehicle_display_body"] = base;
 
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -3909,7 +3842,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_armor"] = base + " (" + tot + ")" : update["repeating_vehicle_display_armor"] = base;
 
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
 
@@ -3924,8 +3856,6 @@ on("change:device_rating change:matrix_modifier", function() {
 			(mod != 0 || temp != 0) ? update["repeating_vehicle_display_sensor"] = base + " (" + tot + ")" : update["repeating_vehicle_display_sensor"] = base;
 
 			setAttrs(update);
-			console.log("RUNNING");
 		});
 	});
-
-</script>
+	</script>
