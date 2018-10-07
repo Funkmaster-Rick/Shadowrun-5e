@@ -936,7 +936,9 @@
 				.sheet-arms .sheet-display .sheet-display-row:first-child {
 					text-align: left;
 					width: 38%;
-					margin-right: 4px;}
+					margin-right: 1%;}
+
+					.sheet-arms h3:first-child {margin-right: 2%;}
 
 				.sheet-weapon-range h3 {margin-right: 3px;}
 				.sheet-weapon-melee h3 {margin-right: 10px;}
@@ -1532,41 +1534,47 @@
 		margin: 0px;
 		padding: 0px;}
 
-	.sheet-npc label > button[type="roll"] {
-		font-weight: bold;}
+		.sheet-npc label > button[type="roll"] {
+			font-weight: bold;}
 
-	.sheet-npc button:hover {
-		background-color: transparent;
-		text-shadow: none;}
+		.sheet-npc button:hover {
+			background-color: transparent;
+			text-shadow: none;}
 
 	.sheet-npc h1, 
 	.sheet-npc h2,
+	.sheet-npc h3,
 	.sheet-npc h4,
 	.sheet-npc hr,
 	.sheet-npc label,
 	.sheet-sheet_type[value="npc"] ~ .sheet-tab-toggles button {
 		color: #fff;}
 
-	.sheet-npc h1, 
-	.sheet-npc h2,
-	.sheet-npc h4,
-	.sheet-skill-col label:first-child  {
-		text-decoration: underline;}
+		.sheet-npc h1,
+		.sheet-npc h3,
+		.sheet-npc h4,
+		.sheet-npc .sheet-repeating label {
+			text-decoration: underline;}
 
-	.sheet-npc h1 {
-		font-size: 2em;}
+		.sheet-npc h1,
+		.sheet-npc h2 {
+			line-height: 15px;
+			margin-bottom: 10px;
+			margin-top: 5px;}
 
-	.sheet-npc h1 {
-		font-size: 1.5em;
-		line-height: 15px;
-		margin-bottom: 5px;
-		margin-top: 10px;}
+			.sheet-npc h1 {font-size: 1.25em;}
+			.sheet-npc h2 {font-size: 1em;}
 
+		.sheet-npc h3,
+		.sheet-npc h4,
+		.sheet-npc .sheet-repeating label {
+			font-size: 1em;
+			font-variant: small-caps;
+			text-align: center;}
 
-	.sheet-npc h4 {
-		font-size: 1em;
-		font-variant: small-caps;
-		text-align: center;}
+		.sheet-npc .sheet-repeating label {
+			font-size: 0.9em;
+			width: 100%;}
 
 	.sheet-npc input,
 	.sheet-npc textarea,
@@ -1574,6 +1582,8 @@
 	.sheet-sheet_type:not([value="pc"]) ~ .sheet-tabs select {
 		color: #fff;
 		background-color: #555;}
+
+		.sheet-npc input {margin-bottom: 5px;}
 
 	.sheet-npc label {font-size: 1em;}
 
@@ -1589,19 +1599,20 @@
 		.sheet-2col {
 			display: inline-block;
 			vertical-align: top;
-			width: calc(40% - 0px);}
+			width: calc(45% - 0px);}
 
-		.sheet-2col {width:calc(29% - 0px);}
+		.sheet-2col {width:calc(25% - 0px);}
 
-		.sheet-leftcol span,
-		.sheet-2col span {margin-left: -2px;}
+			.sheet-leftcol input[type="number"]{width: 10%;}
+			.sheet-2col input[type="number"] {width: 20%;}
+
+			.sheet-leftcol span,
+			.sheet-2col span {margin-left: -2px;}
 
 		.sheet-npc input.sheet-character-type {
 			left: 90px;
 			margin-left: -80px;
 			width: 90px;}
-
-		.sheet-leftcol label {margin-right: 5px;}
 
 	/*:+:+:+: NPC TOGGLES & GEAR ICONS :+:+:+:*/
 		.sheet-settings-toggle input[type="checkbox"] + span {
@@ -1619,24 +1630,10 @@
 		.sheet-toggle input[type="radio"]:checked + span,
 		.sheet-character-type:checked + label,
 		.sheet-character-type:hover + label,
-		input.sheet-con-reset:hover ~ label.sheet-cond-header
-		/*input.sheet-npc-type:checked + span.sheet-goon-flag,
-		input.sheet-npc-type:checked + span.sheet-host-flag, 
-		input.sheet-npc-type:checked + span.sheet-sprite-flag,
-		input.sheet-npc-type:checked + span.sheet-vehicle-flag, 
-		input.sheet-npc-type:hover + span.sheet-goon-flag,
-		input.sheet-npc-type:hover + span.sheet-host-flag,
-		input.sheet-npc-type:hover + span.sheet-sprite-flag, 
-		input.sheet-npc-type:hover + span.sheet-vehicle-flag*/ {
+		input.sheet-con-reset:hover ~ label.sheet-cond-header {
 			 color: #FCD116;}
 
 	/*:+:+:+: NPC SETTINGS & DISPLAYS :+:+:+:*/
-		.sheet-npc .sheet-settings input[type="text"] {
-			height: auto;
-			width: 115px;}
-
-		.sheet-npc .sheet-settings input[type="number"] {width: 30px;}
-
 		.sheet-npc .sheet-display,
 		.sheet-npc .sheet-display .sheet-goon,
 		.sheet-npc .sheet-display .sheet-host,
@@ -1657,8 +1654,6 @@
 			white-space: pre-line;}
 
 		.sheet-settings,
-		.sheet-weapon-melee,
-		.sheet-weapon-range,
 		input.sheet-settings-toggle:checked ~ div.sheet-display,
 		input.sheet-settings-toggle:checked ~ .sheet-attr-col .sheet-attr-und div.sheet-display,
 		input.sheet-settings-toggle ~ .sheet-attr-lim div.sheet-settings,
@@ -1707,18 +1702,22 @@
 			vertical-align: top;
 			margin-bottom: 0px;}
 
-		.sheet-npc-skill {
+	/*:+:+:+: NPC INLINE REPEAITNG SECTIONS LIKE SKILLS :+:+:+:*/
+		.sheet-npc-repeating {
 			display: inline-block;
 			position: relative;}
 
-			.sheet-npc-skill button[type="roll"] {margin-left: 8px;}
+			.sheet-npc-repeating button[type="roll"] {margin-left: 8px;}
 
-			.sheet-npc-skill .sheet-settings {
+			.sheet-npc-repeating textarea {margin-top: 5px;}
+
+			.sheet-npc-repeating .sheet-settings {
 				border-bottom: 1px dotted #FCD116;
 				font-size: 13px;
 				min-width: 700px;}
 
-			.sheet-npc-skill input[type="text"] {width: 30%;}
+			.sheet-npc-repeating .sheet-settings input[type="text"] {width: 30%;}
+
 
 	/*:+:+:+: NPC ATTRIBUTES :+:+:+:*/
 		.sheet-attribute {
@@ -1727,6 +1726,9 @@
 			margin: 10px 0px;
 			text-indent: center;
 			width: 100%;}
+
+			.sheet-attribute input[type="number"] {
+				width: 50%;}
 
 		.sheet-attr-header {
 			margin-bottom: 5px;
@@ -1796,91 +1798,87 @@
 	/*:+:+:+: REPEATING SECTIONS :+:+:+:*/
 		.sheet-repeating,
 		.sheet-repeat-section {
-			display:inline-block;}
+			display:inline-block;
+			width: 100%;}
 
-		.sheet-repeating button.sheet-display {
-			text-align: left;} 
+			.sheet-repeating button.sheet-display {
+				text-align: left;} 
 
-		.sheet-repeating input[type="checkbox"],
-		.sheet-repeating input[type="checkbox"] + span {
-			position: absolute;}
+			.sheet-repeating input[type="checkbox"],
+			.sheet-repeating input[type="checkbox"] + span {
+				position: absolute;}
+
+				.sheet-repeating input[type="checkbox"] {
+					width: 15px;
+					height: 15px;}
+
+			.sheet-repeating label {padding: 0px;} 
 
 		.sheet-repeat-indent {
 			padding-left: 2.5em; 
 			text-indent: -1.5em;}
 
-		.sheet-repeating .sheet-display {
-			display: inline-flex;}
+		.sheet-repeating .sheet-display {display: inline-flex;}
 
 		.sheet-repeat-section input {
-			height: 25px;
+			height: 27px;
 			background-color: transparent;
 			border-bottom: 1px solid #fff;
 			border-radius: 0px;}
 
+			.sheet-repeat-section input[type="number"] {width: 100%;}
+			.sheet-repeat-section input[type="text"] {width: 100%;}
+
 		.sheet-repeat-row {
 			display: inherit;
-			width: fit-content;}
+			width: 5%;}
 
-		.sheet-repeat-row span {
-			font-size: 0.8em;}
+			.sheet-repeat-row-8 {width: 8%;}
+			.sheet-repeat-row-11 {width: 11%;}
+			.sheet-repeat-row-15 {width: 15%;}
+			.sheet-repeat-row-20 {width: 20%;}
+
+			.sheet-repeat-row span {font-size: 0.8em;}
+
+		.sheet-repeat-dice {font-size: 12px;}
 
 	/*:+:+:+: NPC WEAPONS :+:+:+:*/
-		span.sheet-weapon-dice,
-		.sheet-weapon-dice span {font-size: 12px;}
+		.sheet-repeat-row.sheet-weapon-range,
+		.sheet-repeat-row.sheet-weapon-melee  {
+			display: none;}
 
-		.sheet-weapon-settings label {
-			font-size: 11px;
-			font-weight: bold;
-		    line-height: 15px;  
-		    margin: auto;
-		    vertical-align: super;
-		    width: 100%;}
+			input.sheet-range-toggle,
+			input.sheet-melee-toggle {
+				left: 28px;
+				margin-left: -32px;
+				position: relative;}
 
-		.sheet-repeating input[type="checkbox"] {
-			width: 15px;
-			height: 15px;}
+				input.sheet-melee-toggle:checked ~ div.sheet-weapon-melee,
+				input.sheet-range-toggle:checked ~ div.sheet-weapon-range {
+					display: inherit;} 
 
-		input.sheet-melee-toggle:checked ~ div.sheet-weapon-melee,
-		input.sheet-range-toggle:checked ~ div.sheet-weapon-range {display: inherit;} 
+				input.sheet-melee-toggle + span {margin-right: 0px !important;}
 
 		.sheet-npc.sheet-settings input[type="checkbox"] + span,
 		.sheet-npc .sheet-weapon-range input[type="number"] + span,
 		.sheet-npc .sheet-settings input[type="radio"] + span {
 			font-family: sans-serif;
 			font-size: 12px;
-			margin-left: 0px;
-			margin-right: -9px;} 
+			margin-left: -9px;
+			margin-right: 10px;} 
 
 		.sheet-weapon-note {
 			display: inherit;
-			margin-top: 3px;}
+			margin-top: 3px;
+			width: 100%;}
 
-		.sheet-npc .sheet-settings .sheet-weapon-note input[type="text"] {
-			text-align: left;
-			width: 700px;}
-
-		input.sheet-range-toggle,
-		input.sheet-melee-toggle {
-			left: 36px;
-			margin-left: -25px;
-			position: relative;
-		}
-
-		.sheet-repeating .sheet-settings input[type="number"],
-		input.sheet-wea-dv {
-			width: 35px !important;}
-
-		input.sheet-melee-toggle + span {margin-right: 0px !important;}
+			.sheet-npc .sheet-settings .sheet-weapon-note input[type="text"] {text-align: left;}
 
 	/*:+:+:+: NPC SPELLS :+:+:+:*/
 		input.sheet-spell-toggle {margin: 0px -38px 0px 5px;}
 
-		.sheet-magic .sheet-repeating select,
-		.sheet-npc .sheet-matrix .sheet-2col label {
-			width: fit-content;}
-
-		input.sheet-spell-input {width: 35px !important;}
+		.sheet-magic .sheet-repeating select {
+			width: 100%;}
 
 	/*:+:+:+: NPC MATRIX :+:+:+:*/
 		.sheet-npc .sheet-matrix h2 {
@@ -1978,6 +1976,11 @@
 					top: 2px;}
 
 				.sheet-program-toggle[value="0"] + div.sheet-repeat-indent {opacity: 0.3;}
+
+	/*:+:+:+: NPC HOSTS :+:+:+:*/	
+		.sheet-host .sheet-repeat-section input[type="text"],
+		.sheet-host .sheet-repeat-section select {
+			width: 100%;}
 
 	/*:+:+:+: HIDE SECTOINS WHEN NOT IN USE :+:+:+:*/
 		.sheet-matrix,

@@ -189,7 +189,7 @@
 						<!-- ~~:+: Essence :+:~~ -->
 						<label>Essence</label>
 						<div class="attr-und">
-							<div class="settings"><input type="text" min="0" name="attr_essence" placeholder="6" style="width: 45%;" /></div>
+							<div class="settings"><input type="text" min="0" name="attr_essence" placeholder="6" style="width: 60%; border: 1px solid #b8b7b6;" /></div>
 							<div class="display"><span name="attr_essence"></span></div>
 						</div>
 						<!-- ~~:+: Magic or Resonance :+:~~ -->
@@ -229,7 +229,7 @@
 								<span name="attr_display_initiative_mod"></span><span class="tiny-span"> + </span><span name="attr_initiative_dice"></span><span class="tiny-span"> d6</span>
 							</div>
 						</div>
-						<!-- ~~:+: Matrix Initaitve :+:~~ -->
+						<!-- ~~:+: Matrix Initative :+:~~ -->
 						<input type="hidden" name="attr_matrix_mod" value="0" />
 						<input type="hidden" name="attr_matrix_dice" max="5" />
 						<button class="attr-ini" type="roll" value="@{gm_toggle} &{template:sRun}{{header=Matrix Initiative}}{{base=Base}}{{dice=[[(@{matrix_mod}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">
@@ -497,6 +497,7 @@
 										<option value="Pilot Ground Craft">Pilot Ground Craft</option>
 										<option value="Pilot Walker">Pilot Walker</option>
 										<option value="Pilot Watercraft">Pilot Watercraft</option>
+										<option value="Software">Software</option>
 									</select>
 									<input type="number" name="attr_rank" min="0" placeholder="0" />
 									<div class="settings-row">
@@ -1033,7 +1034,7 @@
 							<div> 
 								<input type="text" name="attr_augmentation" placeholder="Augementation" />
 								<input type="number" name="attr_rating" placeholder="#" />
-								<input type="number" name="attr_essence" placeholder="6" />
+								<input type="text" name="attr_essence" placeholder="6" style="width: 10%" />
 								<label>Notes</label>
 								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 							</div>
@@ -1325,7 +1326,8 @@
 						<label>Model</label><input type="text" name="attr_cyberdeck" value="" placeholder="Sony CYI-720" />
 					</div>
 					<div class="row-long">
-						<label>Device Rating</label><input type="number" name="attr_device_rating" min="0" value="" placeholder="4" style="margin-right: 23%;" />
+						<label><button type="roll" value="&{template:sRun}{{header=Matrix Soak}}{{base=Device Rating}}{{dice=[[(@{device_rating}+@{firewall}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">
+						Device Rating</button></label><input type="number" name="attr_device_rating" min="0" value="" placeholder="4" style="margin-right: 15%;" />
 						<label>Attribute Array</label>
 						<input type="number" name="attr_attribute_1" min="0" value="" placeholder="7" />
 						<input type="number" name="attr_attribute_2" min="0" value="" placeholder="6" />
@@ -1488,7 +1490,7 @@
 								<input type="number" name="attr_fade" value="" placeholder="-1" />
 								<div class="settings-row">
 									<input type="hidden" name="attr_dicepool" value="0" />
-									<label>Technical Skill</label>
+									<label>Tech. Skill</label>
 									<select class="skill-select" name="attr_skill">
 										<option class="option-headers" disabled="true">Technical Skills</option>
 										<option class="option-groups" value="@{electronics}">Electronics Group</option>
@@ -1711,6 +1713,7 @@
 								<option value="pc">PC</option>
 								<option value="goon">Goon</option>
 								<option value="host">Host</option>
+								<option value="sprite">Sprite</option>
 								<option value="vehicle">Vehicle</option>
 							</select>
 						</div>
@@ -1784,7 +1787,7 @@
 					<input type="number" name="attr_charisma_base" value="3" placeholder="3" /><br /><span>(</span><input type="number" name="attr_charisma_modifier" value="" placeholder="+" /><span>)</span>
 				</div>
 				<div class="attr-header"><label>E</label><br /><input type="number" name="attr_edge" value="3" placeholder="3" /></div>
-				<div class="attr-header"><label>Ess</label><br /><input type="number" name="attr_essence" value="6" placeholder="3"  /></div>
+				<div class="attr-header"><label>Ess</label><br /><input type="text" name="attr_essence" value="6" placeholder="3"  style="width: 80%;" /></div>
 				<div class="attr-header magic"><label>M</label><br /><input type="number" name="attr_magic" value="3" placeholder="0" /></div>
 				<div class="attr-header magic"><label>F</label><br /><input type="number" name="attr_force" value="3" placeholder="0" /></div>
 				<div class="attr-header resonance"><label>R</label><br /><input type="number" name="attr_resonance" value="3" placeholder="0" /></div>
@@ -1808,14 +1811,14 @@
 				<div class="attr-header"><label>Seat</label><br /><input type="number" name="attr_seating" value="" placeholder="3" /></div>
 			</div>
 			<div class="sprite attribute">
-				<div class="attr-header"><label>Level</label><br /><input type="number" name="attr_level" value="" placeholder="5" /></div>
+				<div class="attr-header"><label>Level / Resonance</label><br /><input type="number" name="attr_level" value="" placeholder="5" /></div>
 				<div class="attr-header"><label>Attack</label><br /><input type="number" name="attr_attack" value="" placeholder="5" /></div>
 				<div class="attr-header"><label>Sleaze</label><br /><input type="number" name="attr_sleaze" value="" placeholder="6" /></div>
 				<div class="attr-header"><label>Data Processing</label><br /><input type="number" name="attr_data_processing" value="" placeholder="7" /></div>
 				<div class="attr-header"><label>Firewall</label><br /><input type="number" name="attr_firewall" value="" placeholder="8" /></div>
 			</div>
 		<!-- ~~~~~~~~ modifieres  ~~~~~~~~ -->
-			<h1>Bonuses </h1>
+			<h1>Bonuses</h1>
 			<div class="leftcol"><!--Start Left modifieres-->
 			<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
 				<div class="goon">
@@ -1925,9 +1928,6 @@
 					<label>Submersion: </label><input type="number" name="attr_submersion" value="0" placeholder="Grade" /><textarea name="attr_echos" placeholder="Echos"></textarea><br />
 				</div>
 			</div>
-			<div class="sprite textrow">
-				<label>Sprite Powers: </label><textarea name="attr_powers" placeholder="Powers"></textarea>
-			</div>
 		</div><!-- ~~~~~~~~ End of Settings  ~~~~~~~~ -->
 		<div class="display">
 		<!-- ~~~~~~~~ Attributes  ~~~~~~~~ -->
@@ -1951,7 +1951,7 @@
 			<div class="host attribute">
 				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Matrix Resistance}}{{base=Host Rating ♦ Host Rating}}{{dice=[[(@{host_rating}+@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Host Rating</button></label><br /><span name="attr_host_rating"></span></div>
 				<br />
-				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Attack ♦ Host Rating}}{{base=Attack}}{{dice=[[(@{attack}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Attack</button></label><br /><span name="attr_attack"></span></div>
+				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Attack}}{{base=Attack}}{{dice=[[(@{attack}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Attack</button></label><br /><span name="attr_attack"></span></div>
 				<br />
 				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Sleaze}}{{base=Sleaze ♦ Host Rating}}{{dice=[[(@{sleaze}+(@{host_rating})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Sleaze</button></label><br /><span name="attr_sleaze"></span></div>
 				<br />
@@ -1971,7 +1971,7 @@
 				<div class="attr-header"><label>Seat</label><br /><span name="attr_seating"></span></div>
 			</div>
 			<div class="sprite attribute">
-				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Matrix Resistance}}{{base=Level ♦ Level}}{{dice=[[(@{level}+@{level}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Level</button></label><br /><span name="attr_level"></span></div>
+				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Matrix Resistance}}{{base=Level ♦ Level}}{{dice=[[(@{level}+@{level}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Level / Resonance</button></label><br /><span name="attr_level"></span></div>
 				<br />
 				<div class="attr-header"><label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Attack ♦ Level}}{{base=Attack}}{{dice=[[(@{attack}+@{level}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Attack</button></label><br /><span name="attr_attack"></span></div>
 				<br />
@@ -1996,7 +1996,7 @@
 				</div>
 			</div>
 		<!-- ~~~~~~~~ Matrix Initiative  ~~~~~~~~ -->
-			<div class="goon sprite">
+			<div class="host goon sprite">
 				<label><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Matrix Initiative}}{{base=Base}}{{dice=[[(@{matrix_mod}+@{wound_toggle}+@{modifier_toggle})+(@{matrix_dice})d6cf0 &{tracker}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Matrix Initiative: </button></label>
 				<span name="attr_display_matrix_mod"></span><span> + </span><span name="attr_matrix_dice"></span><span>d6</span>
 			</div>
@@ -2028,9 +2028,16 @@
 					<span name="attr_physical" title="Physical"></span><span> / </span><span name="attr_matrix" title="Matrix"></span>
 				</div>
 			</div>
+		<!-- ~~~~~~~~ Sprite Display  ~~~~~~~~ -->
+			<div class="sprite">
+				<div>
+					<input type="checkbox" class="con-reset" name="attr_cond_reset">
+					<label class="cond-header">Condition Monitor (M): </label><span name="attr_matrix" title="Matrix"></span>
+				</div>
+			</div>
 		<!-- ~~~~~~~~ Host Display  ~~~~~~~~ -->
 			<div class="host">
-				<label class="cond-header">Condition Monitor (M): </label></span><span name="attr_matrix" title="Matrix"></span>
+				<label class="cond-header">Condition Monitor (M): </label><span name="attr_matrix" title="Matrix"></span>
 			</div>
 		<!-- ~~~~~~~~ Armor  ~~~~~~~~ -->
 			<div class="goon vehicle">
@@ -2058,7 +2065,7 @@
 			<div class="goon skills">
 				<div class="skill-box"><label>Skills: </label>
 					<fieldset class="repeating_active">
-						<div class="npc-skill">
+						<div class="npc-repeating">
 							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
 							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" ><span name="attr_display"></span></button>
 							<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display_specialization"></span></button>
@@ -2189,7 +2196,7 @@
 				</div>
 				<div class="skill-box"><label>Knowledge Skills: </label>
 					<fieldset class="repeating_knowledge">
-						<div class="npc-skill">
+						<div class="npc-repeating">
 							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
 							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" ><span name="attr_display"></span></button>
 							<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display_specialization"></span></button>
@@ -2223,7 +2230,7 @@
 				</div>
 				<div class="skill-box"><label>Language Skills: </label>
 					<fieldset class="repeating_language">
-						<div class="npc-skill">
+						<div class="npc-repeating">
 							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
 							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" ><span name="attr_display"></span></button>
 							<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display_specialization"></span></button>
@@ -2258,11 +2265,10 @@
 			</div><!-- ~~~~~~~~ End of  Skills ~~~~~~~~ -->
 			<div class="sprite skills">
 				<div class="skill-box"><label>Skills: </label>
-					<fieldset class="repeating_active">
-						<div class="npc-skill">
+					<fieldset class="repeating_active repeat-section">
+						<div class="npc-repeating">
 							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
-							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=Level}}{{dice=[[(@{level}+@{level}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display"></span></button>
-							<span name="attr_level"></span><span>,</span>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=Level}}{{dice=[[(@{level}+@{level}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display"></span></button><span>,</span>
 							<div class="settings">
 								<div class="skills-row">
 									<div class="settings-row">
@@ -2275,6 +2281,23 @@
 											<option value="Hardware">Hardware</option>
 										</select>
 									</div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+				<div class="skill-box"><label>Powers: </label>
+					<fieldset class="repeating_powers">
+						<div class="npc-repeating repeat-section">
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{power}}}{{base=Level}}{{dice=[[(@{level}+@{level}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_power"></span></button><span>,</span>
+							<div class="settings">
+								<div class="skills-row">
+									<div class="settings-row">
+										<label>Power</label><input type="text" name="attr_power" style="width: 92%" />
+									</div>
+									<label>Notes</label>
+									<textarea name="attr_notes" value="" placeholder="Powers notes"></textarea>
 								</div>
 							</div>
 						</div>
@@ -2338,28 +2361,25 @@
 	<!-- ~~~~~~~~ Weapons ~~~~~~~~ -->
 	<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
 	<div class="goon vehicle">
-		<label style="margin-bottom: 10px;">Weapons: </label>
+		<h2>Weapons: </h2>
 		<fieldset class="repeating_weapon">
 			<div class="repeating toggle">
 				<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" /><span>x</span>
 				<div class="settings">
-					<div class="repeat-section">
+					<div class="repeat-section npc-weapons">
 						<input type="radio" class="range-toggle" name="attr_weapon_range" value="0" checked="checked" /><span>Range</span>
 						<input type="radio" class="melee-toggle" name="attr_weapon_range" value="1" /><span>Melee</span>
-						<div class="repeat-row"><h4>Dice</h4><input type="number" name="attr_weapon_dice" value="" placeholder="Dice" /></div>
-						<div class="repeat-row"><h4>Name</h4><input type="text" name="attr_weapon_name" value="" placeholder="Ares Predator" /></div>
-						<div class="repeat-row"><h4>Type</h4><input type="text" name="attr_weapon_type" value="" placeholder="Heavy Pistol" /></div>
-						<div class="weapon-melee"> 
-							<div class="repeat-row"><h4>Reach</h4><input type="number" name="attr_weapon_reach" value="0" min="0" placeholder="Reach" /></div>
-						</div>
-						<div class="repeat-row"><h4>Acc</h4><input type="number" name="attr_weapon_acc" value="" placeholder="ACC" /></div>
-						<div class="repeat-row"><h4>DV</h4><input type="text" class="wea-dv" name="attr_weapon_dv" value="" placeholder="9P" /></div>
-						<div class="repeat-row"><h4>AP</h4><input type="number" name="attr_weapon_ap" value="" placeholder="AP" /></div>
-						<div class="weapon-range">
-							<div class="repeat-row"><h4>Modes</h4><input type="text" name="attr_weapon_mode" value="" placeholder="SA/BF/FA" /></div>
-							<div class="repeat-row"><h4>Recoil</h4><input type="number" name="attr_weapon_rc" value="" placeholder="Recoil" /></div>
-							<div class="repeat-row"><h4>Ammo</h4><input type="number" name="attr_weapon_ammo" value="" placeholder="15" /><span>(c)</span></div>
-						</div>
+						<div class="repeat-row"><label>Dice</label><br/><input type="number" name="attr_weapon_dice" value="" placeholder="Dice" /></div>
+						<div class="repeat-row repeat-row-20"><label>Name</label><br/><input type="text" name="attr_weapon_name" value="" placeholder="Ares Predator" /></div>
+						<div class="repeat-row repeat-row-20"><label>Type</label><br/><input type="text" name="attr_weapon_type" value="" placeholder="Heavy Pistol" /></div>
+						<div class="repeat-row weapon-melee repeat-row-8"><label>Reach</label><br/><input type="number" name="attr_weapon_reach" value="0" min="0" placeholder="Reach" /></div>
+						<div class="repeat-row"><label>Acc</label><br/><input type="number" name="attr_weapon_acc" value="" placeholder="ACC" /></div>
+						<div class="repeat-row"><label>DV</label><br/><input type="text" class="wea-dv" name="attr_weapon_dv" value="" placeholder="9P" /></div>
+						<div class="repeat-row"><label>AP</label><br/><input type="number" name="attr_weapon_ap" value="" placeholder="AP" /></div>
+						<div class="repeat-row weapon-range repeat-row-8"><label>Modes</label><br/><input type="text" name="attr_weapon_mode" value="" placeholder="SA/BF/FA" /></div>
+						<div class="repeat-row weapon-range repeat-row-8"><label>Recoil</label><br/><input type="number" name="attr_weapon_rc" value="" placeholder="Recoil" /></div>
+						<div class="repeat-row weapon-range"><label>Ammo</label><br/><input type="number" name="attr_weapon_ammo" value="" placeholder="15" /></div>
+						<div class="repeat-row weapon-range" style="width: 2%;"><span>(c)</span></div>
 						<br />
 						<div class="weapon-note">
 							<input type="text"  name="attr_weapon_note" value="" placeholder="w/ 3 clips of explosive rounds"/>
@@ -2369,7 +2389,7 @@
 				<div class="display">
 					<input type="hidden" name="attr_weapon" value="" />
 					<div class="repeat-indent">
-						<span class="weapon-dice">(<span name="attr_weapon_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{weapon_type}}}{{base=Base}}{{dice=[[(@{weapon_dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{weapon_acc}, DV @{weapon_dv}, AP @{weapon_ap}}}{{rea=[[@{weapon_reach}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_weapon_name"></span></button><span name="attr_weapon"></span>
+						<span class="repeat-dice">(<span name="attr_weapon_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{weapon_type}}}{{base=Base}}{{dice=[[(@{weapon_dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{weapon_acc}, DV @{weapon_dv}, AP @{weapon_ap}}}{{rea=[[@{weapon_reach}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_weapon_name"></span></button><span name="attr_weapon"></span>
 					</div>
 				</div>
 			</div>
@@ -2377,13 +2397,13 @@
 	</div><!-- ~~~~~~~~ End Weapons ~~~~~~~~ -->
 	<!-- ~~~~~~~~ Spells ~~~~~~~~ -->
 	<input type="hidden" class="character-type" name="attr_flag_special" />
-	<div class="magic"><label style="margin-bottom: 10px;">Spells: </label>
+	<div class="magic"><h2>Spells: </h2>
 		<fieldset class="repeating_NPCspell">
 			<div class="repeating toggle">
 				<input type="checkbox" class="settings-toggle" name="attr_toggle" checked="checked" /><span>x</span>
 				<div class="settings">
 					<div class="repeat-section">
-						<div class="repeat-row"><h4>Category</h4>
+						<div class="repeat-row repeat-row-15"><label>Category</label><br/>
 							<select name="attr_category">
 								<option class="option" value="Combat" selected="selected">Combat</option>
 								<option class="option" value="Detection">Detection</option>
@@ -2392,15 +2412,15 @@
 								<option class="option" value="Manipulation">Manipulation</option>
 							</select>
 						</div>
-						<div class="repeat-row"><h4>Dice</h4><input type="number" name="attr_dice" value="" placeholder="Dice" /></div>
-						<div class="repeat-row"><h4>Name</h4><input type="text" name="attr_name" value="" placeholder="Fireball" /></div>
-						<div class="repeat-row"><h4>Type</h4>
+						<div class="repeat-row"><label>Dice</label><br/><input type="number" name="attr_dice" value="" placeholder="Dice" /></div>
+						<div class="repeat-row repeat-row-20"><label>Name</label><br/><input type="text" name="attr_name" value="" placeholder="Fireball" /></div>
+						<div class="repeat-row repeat-row-11"><label>Type</label><br/>
 							<select name="attr_type">
 								<option class="option" value="M" selected="selected">Mana</option>
 								<option class="option" value="P">Physical</option>
 							</select>
 						</div>
-						<div class="repeat-row">
+						<div class="repeat-row repeat-row-11"><label>Range</label><br/>
 							<select name="attr_range">
 								<option value="LOS" selected="selected">LOS</option>
 								<option value="LOS (A)">LOS (A)</option>
@@ -2409,7 +2429,7 @@
 								<option value="T (A)">T (A)</option>
 							</select>
 						</div>
-						<div class="repeat-row">
+						<div class="repeat-row" style="width: 14%;"><label>Duration</label><br/>
 							<select name="attr_duration">
 								<option value="Instant" selected="selected">Instant</option>
 								<option value="Permanent">Permanent</option>
@@ -2417,16 +2437,16 @@
 								<option value="Sustained">Sustained</option>
 							</select>
 						</div>
-						<div class="repeat-row"><h4>Drain Value</h4><span>F +/- </span><input type="number" name="attr_drain" value="" placeholder="-1" /></div>
+						<div class="repeat-row"><label>Drain</label><br/><input type="number" name="attr_drain" value="" placeholder="-1" /></div>
 						<input class="category" name="attr_category" type="hidden" value="Combat">
-						<div class="repeat-row"><h4>Combat</h4>
+						<div class="repeat-row repeat-row-11"><label>Combat</label><br/>
 							<select class="combat-type" name="attr_combat_type">
 								<option class="option" value="Force " selected="selected"></option>
 								<option class="option" value="Direct, Force ">Direct</option>
 								<option class="option" value="Indirect, Force ?{Force|}, AP -">Indirect</option>
 							</select>
 						</div>
-						<div class="repeat-row"><h4>Damage</h4>
+						<div class="repeat-row" style="width: 4%;"><label>Damage</label><br/>
 							<input class="spell-input" type="text" name="attr_damage" value="" placeholder="P" />
 						</div>
 						<div class="weapon-note">
@@ -2437,7 +2457,7 @@
 				<div class="display">
 					<input type="hidden" name="attr_spell" value="" />
 					<div class="repeat-indent">
-						<span class="weapon-dice">(<span name="attr_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Base}}{{dice=[[(@{dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{drain})]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_name"></span></button><span name="attr_spell"></span>
+						<span class="repeat-dice">(<span name="attr_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Base}}{{dice=[[(@{dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{drain})]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_name"></span></button><span name="attr_spell"></span>
 					</div>
 				</div>
 			</div>
@@ -2445,15 +2465,15 @@
 	</div><!-- ~~~~~~~~ End of Spells ~~~~~~~~ -->
 	<!-- ~~~~~~~~ Complex Forms ~~~~~~~~ -->
 	<input type="hidden" class="character-type" name="attr_flag_special" />
-	<div class="resonance"><label>Complex Forms: </label>
+	<div class="resonance"><h2>Complex Forms: </h2>
 		<fieldset class="repeating_form">
 			<div class="repeating spell toggle">
 				<input type="checkbox" class="settings-toggle" name="attr_form_toggle" checked="checked" /><span>x</span>
 				<div class="settings">
 					<div class="repeat-section">
-						<div class="repeat-row"><h4>Dice</h4><input type="number" name="attr_software_dice" value="" placeholder="Dice" /></div>
-						<div class="repeat-row"><h4>Name</h4><input type="text" name="attr_form_name" value="" placeholder="Editor" /></div>
-						<div class="repeat-row"><h4>Target</h4>
+						<div class="repeat-row"><label>Dice</label><input type="number" name="attr_software_dice" value="" placeholder="Dice" /></div>
+						<div class="repeat-row repeat-row-20"><label>Name</label><input type="text" name="attr_form_name" value="" placeholder="Editor" /></div>
+						<div class="repeat-row repeat-row-11"><label>Target</label>
 							<select name="attr_form_target">
 								<option class="option" value="Device" selected="selected">Device</option>
 								<option class="option" value="File">File</option>
@@ -2464,8 +2484,8 @@
 								<option class="option" value="Sprite">Sprite</option>
 							</select>
 						</div>
-						<div class="repeat-row"><h4>Dur.</h4><input class="spell-input" type="text" name="attr_form_duration" value="" placeholder="P" /></div>
-						<div class="repeat-row"><h4>Fade Value</h4><span>L +/- </span><input type="number" name="attr_form_fade" value="" placeholder="+2" /></div>
+						<div class="repeat-row repeat-row-11"><label>Duration</label><input class="spell-input" type="text" name="attr_form_duration" value="" placeholder="P" /></div>
+						<div class="repeat-row repeat-row-11"><label>Fade Value</label><input type="number" name="attr_form_fade" value="" placeholder="+2" /></div>
 						<div class="weapon-note">
 							<input type="text"  name="attr_form_note" value="" placeholder="Form notes"/>
 						</div>
@@ -2474,7 +2494,7 @@
 				<div class="display">
 					<input type="hidden" name="attr_form" value="" />
 					<div class="repeat-indent">
-						<span class="weapon-dice">(<span name="attr_software_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{form}}}{{base=Base}}{{dice=[[(@{form_dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=?{Level|}, Fade [[?{Level|}+(@{form_fade})]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_form_name"></span></button><span name="attr_form"></span>
+						<span class="repeat-dice">(<span name="attr_software_dice"></span>)</span> <button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{form}}}{{base=Base}}{{dice=[[(@{form_dice}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=?{Level|}, Fade [[?{Level|}+(@{form_fade})]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_form_name"></span></button><span name="attr_form"></span>
 					</div>
 				</div>
 			</div>
@@ -2482,22 +2502,22 @@
 	</div><!-- ~~~~~~~~ End of Complex Forms ~~~~~~~~ -->
 	<!-- ~~~~~~~~ IC! ~~~~~~~~ -->
 	<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
-	<div class="host"><label>Intrusion Countermeasures: </label>
+	<div class="host"><h2>Intrusion Countermeasures: </h2>
 		<fieldset class="repeating_IC">
 			<div class="repeating toggle">
 				<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" /><span>x</span>
 				<div class="settings">
 					<div class="repeat-section">
-						<div class="repeat-row"><h4>Name</h4><input type="text" name="attr_IC_name" value="" placeholder="IC Name" /></div>
+						<div class="repeat-row" style="width: 38%;"><label>Name</label><input type="text" name="attr_IC_name" value="" placeholder="IC Name" /></div>
 						<span>[</span>
-						<div class="repeat-row"><h4>IC Limit</h4>
+						<div class="repeat-row"><label>IC Limit</label>
 							<select name="attr_IC_limit" title="Limit">
 								<option class="option" value="@{attack}" selected="selected">Attack</option>
 								<option class="option" value="@{data_processing}">Data Processing</option>
 							</select>
 						</div>
 						<span>]</span>
-						<div class="repeat-row"><h4>Defense Attribute</h4>
+						<div class="repeat-row"><label>Defense Attribute</label>
 							<select name="attr_IC_attribute" title="Mental attribute resistance">
 								<option class="option" value="Willpower" selected="selected">Willpower</option>
 								<option class="option" value="Intuition">Intuition</option>
@@ -2505,7 +2525,7 @@
 							</select>
 						</div>
 						<span> vs. </span>
-						<div class="repeat-row"><h4>Defense Matrix Attr.</h4>
+						<div class="repeat-row"><label>Defense Matrix Attr.</label>
 							<select name="attr_IC_matrix" title="Matrix attribute resistance">
 								<option class="option" value="Attack">Attack</option>
 								<option class="option" value="Sleaze">Sleaze</option>
@@ -2523,7 +2543,7 @@
 					<input type="hidden" class="program-toggle" name="attr_program_toggle" value="" />
 					<div class="repeat-indent">
 						<input type="checkbox" class="program-toggle" name="attr_program_toggle" checked="checked" /><span class="program-toggle">Q</span>
-						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Intrusion Countermeasures}}{{base=Base}}{{dice=[[(@{IC_attack}+@{modifier_toggle})d6>5@{explode_toggle}]]}}{{desc=@{IC_note}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_IC_name"></span></button><span name="attr_IC"></span>
+						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Intrusion Countermeasures}}{{base=Base}}{{dice=[[(@{IC_attack}+@{modifier_toggle})d6>5@{explode_toggle}]]}}{{desc=Defense: @{IC_attribute} + @{IC_matrix}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_IC_name"></span></button><span name="attr_IC"></span>
 					</div>
 				</div>
 			</div>
@@ -2533,7 +2553,7 @@
 	<input type="hidden" class="character-type" name="attr_flag_matrix" />
 	<div class="matrix">
 		<div class="2col">
-			<h2>Matrix Device:</h2><input type="text" name="attr_device_name" placeholder="Sony CIY-720" />
+			<h3>Matrix Device:</h3><input type="text" name="attr_device_name" placeholder="Sony CIY-720" />
 		</div>
 		<div class="2col">
 			<label><button type="roll" value="&{template:sRun}{{header=Matrix Resistance}}{{base=Base}}{{dice=[[(@{device_rating}+@{firewall})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Device Rating</button></label>
@@ -2694,7 +2714,7 @@
 	<input type="hidden" name="attr_wounds" value="0" />
 	<input type="hidden" name="attr_explode_toggle" value="" />
 
-	<input type="hidden" name="attr_armor_name" value="" />
+	<input type="hidden" name="attr_armor_name" value="select a Primary in Arms" />
 	<input type="hidden" name="attr_soak" min="0" value="0" />
 	<input type="hidden" name="attr_acid_protection" min="0" value="0" />
 	<input type="hidden" name="attr_cold_protection" min="0" value="0" />
@@ -2702,7 +2722,7 @@
 	<input type="hidden" name="attr_fire_protection" min="0" value="0" />
 	<input type="hidden" name="attr_radiation_protection" min="0" value="0" />
 
-	<input type="hidden" name="attr_primary_range_weapon" />
+	<input type="hidden" name="attr_primary_range_weapon" value="select a Primary in Arms" />
 	<input type="hidden" name="attr_primary_range_weapon_skill" />
 	<input type="hidden" name="attr_primary_range_weapon_damage" />
 	<input type="hidden" name="attr_primary_range_weapon_dicepool" />
@@ -2712,17 +2732,13 @@
 	<input type="hidden" name="attr_primary_range_weapon_recoil" />
 	<input type="hidden" name="attr_primary_range_weapon_ammo" />
 
-	<input type="hidden" name="attr_primary_melee_weapon" />
+	<input type="hidden" name="attr_primary_melee_weapon" value="select a Primary in Arms" />
 	<input type="hidden" name="attr_primary_melee_weapon_skill" />
 	<input type="hidden" name="attr_primary_melee_weapon_damage" />
 	<input type="hidden" name="attr_primary_melee_weapon_dicepool" />
 	<input type="hidden" name="attr_primary_melee_weapon_acc" />
 	<input type="hidden" name="attr_primary_melee_weapon_ap" />
 	<input type="hidden" name="attr_primary_melee_weapon_reach" />
-
-	<input type="hidden" name="attr_lifestyle_display" />
-	<input type="hidden" name="attr_primary_nuyen" />
-	<input type="hidden" name="attr_primary_licenses" />
 
 	<input type="hidden" name="attr_acting" min="0" value="0" />
 	<input type="hidden" name="attr_con" min="0" value="0" />
@@ -3301,16 +3317,16 @@
 	});
 
 //Calculate Device Rating Track
-on("change:device_rating change:matrix_modifier", function() {
-	getAttrs(["device_rating","matrix_modifier"], function(v){
-		var dev = parseInt(v.device_rating) || 0;
-		var mod = parseInt(v.matrix_modifier) || 0;
-		var tot = Math.ceil(dev/2) + 8 + mod;
+	on("change:device_rating change:matrix_modifier", function() {
+		getAttrs(["device_rating","matrix_modifier"], function(v){
+			var dev = parseInt(v.device_rating) || 0;
+			var mod = parseInt(v.matrix_modifier) || 0;
+			var tot = Math.ceil(dev/2) + 8 + mod;
 
-		setAttrs({matrix: tot});
-		setAttrs({matrix_max: tot});
+			setAttrs({matrix: tot});
+			setAttrs({matrix_max: tot});
+		});
 	});
-});
 
 //Calculate Initiatves
 	var update_initiative = function () {
@@ -3361,29 +3377,35 @@ on("change:device_rating change:matrix_modifier", function() {
 		});
 	});
 
-	//Calculate Matrix Initiatve. This is just Initiative for Host & Vehicles
-	on("change:host_rating change:data_processing change:pilot change:intuition change:matrix_mod_modifier change:matrix_dice_modifier change:edge_toggle", function() {
-		getAttrs(["sheet_type", "data_processing", "pilot", "intuition", "matrix_mod_modifier", "matrix_dice_modifier", "host_rating", "edge_toggle"], function(v) {
+//Calculate Matrix Initiatve.
+	on("change:host_rating change:data_processing change:pilot change:intuition change:matrix_mod_modifier change:level change:matrix_dice_modifier change:edge_toggle", function() {
+		getAttrs(["sheet_type", "data_processing", "pilot", "intuition", "matrix_mod_modifier", "host_rating", "level", "matrix_dice_modifier", "edge_toggle"], function(v) {
 			var dat = parseInt(v.data_processing) || 0;
 			var pil = parseInt(v.pilot) || 0;
 			var int = parseInt(v.intuition) || 0;
 			var mat = parseInt(v.matrix_mod_modifier) || 0;
-			var dic = parseInt(v.matrix_dice_modifier) || 0;
 			var hos = parseInt(v.host_rating) || 0;
+			var lev = parseInt(v.level) || 0;
+			var dic = parseInt(v.matrix_dice_modifier) || 0;
+			let update = {};
 
-			ini = (v.sheet_type === "goon") ? dat + int + mat :
-				  ((v.sheet_type === "vehicle") ? dat + pil :
-				  ((v.sheet_type === "host") ? dat + hos :
-				  	"Invald sheet type"));
+			dice = 	(v.sheet_type === "goon" && v.edge_toggle == 0) ? 4 + dic : 
+					((v.sheet_type === "goon" && v.edge_toggle != 0) ? 5 :
+					4);
 
-			dice = (v.sheet_type === "goon" && v.edge_toggle == 0) ? 4 + dic : 
-				   ((v.sheet_type === "goon" && v.edge_toggle != 0) ? 5 :
-				   4);
+			tot = (v.sheet_type === "vehicle") ? dat + pil :
+				  (v.sheet_type === "host") ? dat + hos :
+				  (v.sheet_type === "sprite") ? dat + lev + mat :
+				  dat + int + mat;
 
-			setAttrs({matrix_mod: ini});
-			setAttrs({matrix_dice: dice});
+			bas = (v.sheet_type === "sprite") ? dat + lev : dat + int ;
 
-			(mat != 0) ? setAttrs({display_matrix_mod: dat + int + " (" + ini + ")"}) : setAttrs({display_matrix_mod: dat + int});
+			update["matrix_mod"] = tot;
+			update["matrix_dice"] = dice;
+
+			(mat != 0) ? update["display_matrix_mod"] = bas + " (" + tot + ")" : update["display_matrix_mod"] = tot;
+
+			setAttrs(update);
 		});
 	});
 
@@ -3407,6 +3429,8 @@ on("change:device_rating change:matrix_modifier", function() {
 			if (v.sheet_type === "goon" || v.sheet_type === "pc") {
 				update["physical"] = phy;
 				update["stun"] = stun;
+			} else if (v.sheet_type === "sprite") {
+				update["matrix"] = mat;
 			} else if (v.sheet_type === "vehicle") {
 				update["physical"] = phy;
 				update["matrix"] = mat;
@@ -3511,6 +3535,16 @@ on("change:device_rating change:matrix_modifier", function() {
 
 			setAttrs({matrix: tot});
 			setAttrs({ic_attack: atk});
+		});
+	});
+
+//Sprite Condition Track
+	on("change:level", function() {
+		getAttrs(["level"], function(v) {
+			var lev = parseInt(v.level) || 0;
+			var tot = 8 + Math.ceil(lev/2);
+
+			setAttrs({matrix: tot});
 		});
 	});
 
