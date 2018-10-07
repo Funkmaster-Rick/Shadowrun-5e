@@ -449,6 +449,8 @@
 
 	/***** ATTRIBUTE AND CONDITION MONITOR *****/				
 		/***** ATTRIBUTES BOX *****/
+			.sheet-attr-box h3 {color: #000;}
+
 			.sheet-attr-box input.sheet-settings-toggle {
 				left: 65%;
 				top: -20px;}
@@ -582,7 +584,7 @@
 
 			.sheet-condition-box .sheet-display,
 			.sheet-condition-box .sheet-settings {
-					margin-top: -20px;}
+					margin-top: -10px;}
 
 			/***** CONDITION MONITOR SETTINGS  *****/
 				.sheet-condition-box .sheet-settings input {
@@ -693,7 +695,7 @@
 			/***** CONDITION MONITOR FOOTERS *****/
 			.sheet-con-footer {
 				font-size: 0.8em;
-				margin-top: 20px;}
+				margin-top: 10px;}
 
 			.sheet-con-footer label {
 				margin-right: 5px;}
@@ -951,7 +953,9 @@
 					.sheet-weapon-melee input[type="text"]:first-child {
 						width: 40%;}
 
-				.sheet-arms .sheet-display-row:nth-of-type(2),
+				.sheet-arms .sheet-display-row:nth-of-type(2) {
+					width: 7%;}
+
 				.sheet-weapon-range h3:nth-child(2),
 				.sheet-weapon-range h3:nth-child(5) {
 					width: 11%;}
@@ -1233,7 +1237,7 @@
 				background-color:  #222;}
 
 			.sheet-matrix-bubble span:nth-of-type(6),
-			.sheet-matrix-bubble input[type="radio"]:nth-of-type(6) {
+			.sheet-matrix-bubble input[type="radio"]:nth-of-type(5n+6) {
 				margin-left: 2%;}
 
 			.sheet-matrix-bubble input[type="radio"] {
@@ -1528,66 +1532,71 @@
 		padding: 10px 10px;
 		width: 720px;}
 
-	.sheet-npc button[type="roll"] {
-		color: #fff;
-		font-size: 14px;
-		margin: 0px;
-		padding: 0px;}
+		.sheet-npc button[type="roll"] {
+			color: #fff;
+			font-size: 14px;
+			margin: 0px;
+			padding: 0px;}
 
-		.sheet-npc label > button[type="roll"] {
-			font-weight: bold;}
+			.sheet-npc label > button[type="roll"] {
+				font-weight: bold;}
 
-		.sheet-npc button:hover {
-			background-color: transparent;
-			text-shadow: none;}
+			.sheet-npc button:hover {
+				background-color: transparent;
+				text-shadow: none;}
 
-	.sheet-npc h1, 
-	.sheet-npc h2,
-	.sheet-npc h3,
-	.sheet-npc h4,
-	.sheet-npc hr,
-	.sheet-npc label,
-	.sheet-sheet_type[value="npc"] ~ .sheet-tab-toggles button {
-		color: #fff;}
-
-		.sheet-npc h1,
+		.sheet-npc h1, 
+		.sheet-npc h2,
 		.sheet-npc h3,
 		.sheet-npc h4,
-		.sheet-npc .sheet-repeating label {
-			text-decoration: underline;}
+		.sheet-npc hr,
+		.sheet-npc label,
+		.sheet-sheet_type[value="npc"] ~ .sheet-tab-toggles button {
+			color: #fff;}
 
-		.sheet-npc h1,
-		.sheet-npc h2 {
-			line-height: 15px;
-			margin-bottom: 10px;
-			margin-top: 5px;}
+			.sheet-npc h1,
+			.sheet-npc h3,
+			.sheet-npc h4,
+			.sheet-npc .sheet-repeating label {
+				text-decoration: underline;}
 
-			.sheet-npc h1 {font-size: 1.25em;}
-			.sheet-npc h2 {font-size: 1em;}
+			.sheet-npc h1,
+			.sheet-npc h2 {
+				line-height: 15px;
+				margin-bottom: 10px;
+				margin-top: 5px;}
 
-		.sheet-npc h3,
-		.sheet-npc h4,
-		.sheet-npc .sheet-repeating label {
-			font-size: 1em;
-			font-variant: small-caps;
-			text-align: center;}
+				.sheet-npc h1 {font-size: 1.25em;}
+				.sheet-npc h2 {font-size: 1em;}
 
-		.sheet-npc .sheet-repeating label {
-			font-size: 0.9em;
-			width: 100%;}
+			.sheet-npc h3,
+			.sheet-npc h4,
+			.sheet-npc .sheet-repeating label {
+				font-size: 1em;
+				font-variant: small-caps;
+				text-align: center;}
 
-	.sheet-npc input,
-	.sheet-npc textarea,
-	.sheet-npc select,
-	.sheet-sheet_type:not([value="pc"]) ~ .sheet-tabs select {
-		color: #fff;
-		background-color: #555;}
+			.sheet-npc .sheet-repeating label {
+				font-size: 0.9em;
+				width: 100%;}
 
-		.sheet-npc input {margin-bottom: 5px;}
+		.sheet-npc textarea,
+		.sheet-npc select,
+		.sheet-npc .sheet-stat-inputs input,
+		.sheet-sheet_type:not([value="pc"]) ~ .sheet-tabs select,
+		.sheet-npc .sheet-matrix input {
+			color: #fff;
+			background-color: #555;}
 
-	.sheet-npc label {font-size: 1em;}
+			.sheet-npc .sheet-repeat-section select {background-color: transparent;}
 
-	.sheet-npc textarea {margin-top: -35px;}
+				.sheet-npc .sheet-repeat-section option {background-color: #000;}
+
+			.sheet-npc input {margin-bottom: 5px;}
+
+		.sheet-npc label {font-size: 1em;}
+
+		.sheet-npc textarea {margin-top: -35px;}
 
 	/*:+:+:+: NPC STATS :+:+:+:*/
 		.sheet-stats {display: inline;}
@@ -1607,7 +1616,8 @@
 			.sheet-2col input[type="number"] {width: 20%;}
 
 			.sheet-leftcol span,
-			.sheet-2col span {margin-left: -2px;}
+			.sheet-2col span {
+				margin-left: -2px;}
 
 		.sheet-npc input.sheet-character-type {
 			left: 90px;
@@ -1674,9 +1684,12 @@
 		.sheet-npc .sheet-skill-box select {
 			font-size: 1em;
 			height: 25px;
-			width: 20%;}
+			width: 60%;}
 
-			.sheet-npc .sheet-skill-box select:last-child {width: 7%;}
+			.sheet-npc .sheet-skill-box select:last-child {
+				text-transform: capitalize;
+				width: 15%;}
+
 			.sheet-npc .sheet-sprite.sheet-skills .sheet-skill-box select {width: 25%;}
 
 		.sheet-npc .sheet-skill-box .sheet-settings-toggle,
@@ -1711,12 +1724,9 @@
 
 			.sheet-npc-repeating textarea {margin-top: 5px;}
 
-			.sheet-npc-repeating .sheet-settings {
-				border-bottom: 1px dotted #FCD116;
-				font-size: 13px;
-				min-width: 700px;}
+			.sheet-npc-repeating .sheet-settings {min-width: 700px;}
 
-			.sheet-npc-repeating .sheet-settings input[type="text"] {width: 30%;}
+			.sheet-npc-repeating .sheet-settings input[type="text"] {width: 51%;}
 
 
 	/*:+:+:+: NPC ATTRIBUTES :+:+:+:*/
@@ -1812,7 +1822,11 @@
 					width: 15px;
 					height: 15px;}
 
-			.sheet-repeating label {padding: 0px;} 
+			.sheet-repeating label {padding: 0px;}
+
+			.sheet-repeating .sheet-settings,
+			.sheet-npc-repeating {
+				border-bottom: 1px dotted #FCD116;}
 
 		.sheet-repeat-indent {
 			padding-left: 2.5em; 
@@ -1826,8 +1840,13 @@
 			border-bottom: 1px solid #fff;
 			border-radius: 0px;}
 
-			.sheet-repeat-section input[type="number"] {width: 100%;}
-			.sheet-repeat-section input[type="text"] {width: 100%;}
+			.sheet-npc-weapons input[type="number"],
+			.sheet-npc-weapons input[type="text"],
+			.sheet-magic .sheet-repeat-section input[type="number"],
+			.sheet-magic .sheet-repeat-section input[type="text"],
+			.sheet-resonance .sheet-repeat-section input[type="number"],
+			.sheet-resonance .sheet-repeat-section input[type="text"] {
+				width: 100%;}
 
 		.sheet-repeat-row {
 			display: inherit;
@@ -1835,6 +1854,7 @@
 
 			.sheet-repeat-row-8 {width: 8%;}
 			.sheet-repeat-row-11 {width: 11%;}
+			.sheet-repeat-row-12 {width: 12%;}
 			.sheet-repeat-row-15 {width: 15%;}
 			.sheet-repeat-row-20 {width: 20%;}
 
@@ -1881,7 +1901,7 @@
 			width: 100%;}
 
 	/*:+:+:+: NPC MATRIX :+:+:+:*/
-		.sheet-npc .sheet-matrix h2 {
+		.sheet-npc .sheet-matrix h1 {
 			display: inline-block;
 			font-size: 1em;
 			width: 16.5%;}
@@ -1908,8 +1928,9 @@
 			background: none;
 			border-bottom: 1px solid;
 			border-radius: 0px;
+			margin-right: 1%;
 			text-align: left;
-			width: 30%;}
+			width: 50%;}
 
 			/*:+:+:+: NPC MATRIX BUBBLES :+:+:+:*/
 				.sheet-npc  .sheet-matrix-bubble {
@@ -1989,12 +2010,13 @@
 		.sheet-optional,
 		.sheet-textboxes,
 		.sheet-optional-flag[value="0"] + .sheet-attr-header,
-		.sheet-spell_category + div,
-		.sheet-spell_category + div + div,
+		.sheet-category + div,
+		.sheet-category + div + div,
 		.sheet-goon,
 		.sheet-host,
 		.sheet-sprite,
-		.sheet-vehicle  {display: none;}
+		.sheet-vehicle  {
+			display: none;}
 
 		.sheet-optional-flag:not([value="0"]) + .sheet-optional,
 		.sheet-npc-type[value="goon"] ~ .sheet-goon,
@@ -2007,9 +2029,10 @@
 			display: inherit;
 			width: 100%;}
 
-		.sheet-spell_category[value="Combat"] + div,
-		.sheet-spell_category[value="Combat"] + div + div,
-		.sheet-character-type[value="matrix"] + .sheet-matrix {display: inherit;}
+		.sheet-category[value="Combat"] + div,
+		.sheet-category[value="Combat"] + div + div,
+		.sheet-character-type[value="matrix"] + .sheet-matrix {
+			display: inherit;}
 
 		.sheet-npc-type[value="goon"] ~ div.sheet-goon.sheet-attribute,
 		.sheet-npc-type[value="host"] ~ div.sheet-host.sheet-attribute,
@@ -2018,11 +2041,13 @@
 			display: inline-flex;}
 
 		.sheet-magic-skill,
-		.sheet-resonance-skill {opacity: 0.15;}
+		.sheet-resonance-skill {
+			opacity: 0.15;}
 
 		.sheet-character-type[value="magic"] + .sheet-magic-skill,
 		.sheet-character-type[value="magic"] + .sheet-magic-skill + .sheet-magic-skill,
-		.sheet-character-type[value="resonance"] + .sheet-resonance-skill {opacity: 1;}
+		.sheet-character-type[value="resonance"] + .sheet-resonance-skill {
+			opacity: 1;}
 
 		.sheet-character-type[value="magic"] ~ .sheet-magic,
 		.sheet-character-type[value="magic"] ~ .sheet-magic + .sheet-magic,

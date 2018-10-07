@@ -8,14 +8,14 @@
 <!-- ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  ~~~~~~~~  ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  ~~~~~~~~ ~~~~~~~~ ~~~~~~~~ ~~~~~~~~  -->
 	<div class="tabs">
 		<div class="tab-whisper">
-			<input type="radio" name="attr_gm_toggle" value="" checked="checked" /><span>Public</span>
-			<input type="radio" name="attr_gm_toggle" value="/w gm" /><span>To GM</span>
+			<input type="radio" name="attr_gm_toggle" value="" checked="checked" title="@{gm_toggle}" /><span>Public</span>
+			<input type="radio" name="attr_gm_toggle" value="/w gm" title="@{gm_toggle}" /><span>To GM</span>
 		</div>
 		<div class="tab-toggles">			
-			<input type="checkbox" name="attr_wound_toggle" value="@{wounds}" checked="checked" /><span>Wounds</span>
-			<input type="checkbox" name="attr_modifier_toggle" value="?{Modifiers +/-|0}" /><span>Modifiers</span>
-			<input type="checkbox" name="attr_edge_toggle" value="@{edge}" /><span>Edge</span>
-			<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Dice Roll}}{{base=Base}}{{dice=[[(?{Base d6s|0}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="D6 Roll"><span class="d6">L</span></button>
+			<input type="checkbox" name="attr_wound_toggle" value="@{wounds}" checked="checked" title="@{wound_toggle}" /><span>Wounds</span>
+			<input type="checkbox" name="attr_modifier_toggle" value="?{Modifiers +/-|0}" title="@{modifier_toggle}" /><span>Modifiers</span>
+			<input type="checkbox" name="attr_edge_toggle" value="@{edge}" title="@{edge_toggle}"/><span>Edge</span>
+			<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Dice Roll}}{{base=Base}}{{dice=[[(?{Base d6s|0}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Roll D6s"><span class="d6">L</span></button>
 		</div>
 		<div class="tab-col">
 			<input type="radio" name="attr_tab" value="core" title="Core Sheet" /><span>Core</span>
@@ -28,7 +28,7 @@
 			<input type="radio" name="attr_tab" value="vehicle" title="Vehicle"/><span>Vehicle</span>
 			<input type="radio" name="attr_tab" value="options" title="Sheet Options" checked="checked"/><span>y</span>
 		</div>
-		<div class="tab-sheet">
+		<div class="tab-sheet" title="Sheet Type">
 			<select name="attr_sheet_type">
 				<option value="goon">Goon</option>
 				<option value="host">Host</option>
@@ -46,8 +46,8 @@
 	<input class="options_toggle" name="attr_tab" type="hidden" value="options" />
 	<img src="https://raw.githubusercontent.com/clevett/Shadowrun-5e/master/ShadowrunLogo.png" style="max-height: 200px;" />
 	<div class="info-box">
-		<h1>Character</h1><input type="text" name="attr_character_name" placeholder="Character name" /><br />
-		<h1>Player</h1><input type="text" name="attr_player_name" placeholder="Player name" /><br />
+		<h1>Character</h1><input type="text" name="attr_character_name" placeholder="Character name" title="@{character_name}" /><br />
+		<h1>Player</h1><input type="text" name="attr_player_name" placeholder="Player name" title="@{player_name}" /><br />
 	</div>
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF THE STATIC LEFT COLUMN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<div class="static pc-col">
@@ -56,27 +56,27 @@
 			<div class="border-box">
 				<div class="pc-box small-box">
 					<div class="row-long pd-nam">
-						<h2>NAME/PRIMARY ALIAS</h2><input type="text" name="attr_name" placeholder="name" />
+						<h2>NAME/PRIMARY ALIAS</h2><input type="text" name="attr_name" placeholder="name" title="@{name}" />
 					</div>
 					<div class="row-long pd-meta">
-						<h2>Metatype</h2><input type="text" name="attr_metatype" placeholder="metatype" />
-						<h2>Ethnicity</h2><input type="text" name="attr_ethnicity"placeholder="ethnicity" />
+						<h2>Metatype</h2><input type="text" name="attr_metatype" placeholder="metatype" title="@{metatype}" />
+						<h2>Ethnicity</h2><input type="text" name="attr_ethnicity" placeholder="ethnicity" title="@{ethnicity}" />
 					</div>
 					<div class="row-long pd-age">
-						<h2>Age</h2><input type="text" name="attr_age" placeholder="age" />
-						<h2>Sex</h2><input type="text" name="attr_sex" placeholder="sex" />
-						<h2>Height</h2><input type="text" name="attr_height" placeholder="height" />
-						<h2>Weight</h2><input type="text" name="attr_weight" placeholder="weight" />
+						<h2>Age</h2><input type="text" name="attr_age" placeholder="age" title="@{age}" />
+						<h2>Sex</h2><input type="text" name="attr_sex" placeholder="sex" title="@{sex}" />
+						<h2>Height</h2><input type="text" name="attr_height" placeholder="height" title="@{height}" >
+						<h2>Weight</h2><input type="text" name="attr_weight" placeholder="weight" title="@{weight}" />
 					</div>
 					<div class="row-long pd-rep">
-						<h2>Street Cred</h2><input type="number" name="attr_street_cred" placeholder="#" />
-						<h2>Notoriety</h2><input type="number" name="attr_notoriety" placeholder="#" />
-						<h2>Public Awereness</h2><input type="number" name="attr_public_awareness" placeholder="#" />
+						<h2>Street Cred</h2><input type="number" name="attr_street_cred" placeholder="#" title="@{street_cred}" />
+						<h2>Notoriety</h2><input type="number" name="attr_notoriety" placeholder="#" title="@{notoriety}" />
+						<h2>Public Awereness</h2><input type="number" name="attr_public_awareness" placeholder="#" title="@{public_awareness}" />
 					</div>
 					<div class="row-long pd-kar">
-						<h2>Karma</h2><input type="number" name="attr_karma" placeholder="#" />
-						<h2>Total Karma</h2><input type="number" name="attr_total_karma" placeholder="#" />
-						<h2>Misc</h2><input type="text" name="attr_misc" placeholder="misc" />
+						<h2>Karma</h2><input type="number" name="attr_karma" placeholder="#" title="@{karma}" />
+						<h2>Total Karma</h2><input type="number" name="attr_total_karma" placeholder="#" title="@{total_karma}" />
+						<h2>Misc</h2><input type="text" name="attr_misc" placeholder="misc" title="@{misc}" />
 					</div>
 				</div>
 			</div>
@@ -86,111 +86,111 @@
 			<div class="header"><div class="triangle"></div><h1>Attributes</h1></div>
 			<div class="border-box">
 				<div class="pc-box medium-box attr-box">
-					<input type="checkbox" class="settings-toggle" name="attr_flag_attribute" checked="checked" /><span>x</span>
+					<input type="checkbox" class="settings-toggle" name="attr_flag_attribute" checked="checked" title="Settings toggle" /><span>x</span>
 					<div class="attr-col attr-col-left">
 						<!-- ~~:+: Body :+:~~ -->
 						<input type="hidden" name="attr_body" value="" />
 						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Body}}{{base=Attributes}}{{dice=[[(@{body}+(?{2nd Attribute|None,0|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span class="red">Body</span></button>
 						<div class="attr-und">
 							<div class="settings">
-								<input type="number" name="attr_body_base" value="" placeholder="3" /><span class="tiny-span"> + </span>
-								<input type="number" name="attr_body_modifier" value="" placeholder="0" /><span class="tiny-span"> = </span>
-								<span class="totals" name="attr_display_body" /></span>
+								<input type="number" name="attr_body_base" value="" placeholder="3" title="@{body_base}" /><span class="tiny-span"> + </span>
+								<input type="number" name="attr_body_modifier" value="" placeholder="0" title="@{body_modifier}" /><span class="tiny-span"> = </span>
+								<span class="totals" name="attr_display_body" title="@{body}" /></span>
 							</div>
-							<div class="display"><span name="attr_display_body"></span></div>
+							<div class="display"><span name="attr_display_body" title="@{body}"></span></div>
 						</div>
 						<!-- ~~:+: Agility :+:~~ -->
 						<input type="hidden" name="attr_agility" value="" />
 						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Agility}}{{base=Attributes}}{{dice=[[(@{agility}+(?{2nd Attribute|None,0|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span class="red">Agility</span></button>
 						<div class="attr-und">
 							<div class="settings">
-								<input type="number" name="attr_agility_base" value="" placeholder="3" /><span class="tiny-span"> + </span>
-								<input type="number" name="attr_agility_modifier" value="" placeholder="0" /><span class="tiny-span"> = </span>
-								<span class="totals" name="attr_display_agility" /></span>
+								<input type="number" name="attr_agility_base" value="" placeholder="3" title="@{agility_base}" /><span class="tiny-span"> + </span>
+								<input type="number" name="attr_agility_modifier" value="" placeholder="0" title="@{agility_modifier}" /><span class="tiny-span"> = </span>
+								<span class="totals" name="attr_display_agility" title="@{agility}" /></span>
 							</div>
-							<div class="display"><span name="attr_display_agility"></span></div>
+							<div class="display"><span name="attr_display_agility" title="@{agility}"></span></div>
 						</div>
 						<!-- ~~:+: Reaction :+:~~ -->
 						<input type="hidden" name="attr_reaction" value="" />
 						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Reaction}}{{base=Attributes}}{{dice=[[(@{reaction}+(?{2nd Attribute|None,0|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}|None,0})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span class="red">Reaction</span></button>
 						<div class="attr-und">
 							<div class="settings">
-								<input type="number" name="attr_reaction_base" value="" placeholder="3" /><span class="tiny-span"> + </span>
-								<input type="number" name="attr_reaction_modifier" value="" placeholder="0" /><span class="tiny-span"> = </span>
-								<span class="totals" name="attr_display_reaction" /></span>
+								<input type="number" name="attr_reaction_base" value="" placeholder="3" title="@{reaction_base}"  /><span class="tiny-span"> + </span>
+								<input type="number" name="attr_reaction_modifier" value="" placeholder="0" title="@{reaction_modifier}"  /><span class="tiny-span"> = </span>
+								<span class="totals" name="attr_display_reaction" title="@{reaction}" /></span>
 							</div>
-							<div class="display"><span name="attr_display_reaction"></span></div>
+							<div class="display"><span name="attr_display_reaction" title="@{reaction}"></span></div>
 						</div>
 						<!-- ~~:+: Strength :+:~~ -->
 						<input type="hidden" name="attr_strength" value="" />
 						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Strength}}{{base=Attributes}}{{dice=[[(@{strength}+(?{2nd Attribute|None,0|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span class="red">Strength</span></button>
 						<div class="attr-und">
 							<div class="settings">
-								<input type="number" name="attr_strength_base" value="" placeholder="3" /><span class="tiny-span"> + </span>
-								<input type="number" name="attr_strength_modifier" value="" placeholder="0" /><span class="tiny-span"> = </span>
-								<span class="totals" name="attr_display_strength" /></span>
+								<input type="number" name="attr_strength_base" value="" placeholder="3" title="@{strength_base}" /><span class="tiny-span"> + </span>
+								<input type="number" name="attr_strength_modifier" value="" placeholder="0" title="@{strength_modifier}" /><span class="tiny-span"> = </span>
+								<span class="totals" name="attr_display_strength" title="@{strength}" /></span>
 							</div>
-							<div class="display"><span name="attr_display_strength"></span></div>
+							<div class="display"><span name="attr_display_strength" title="@{strength}"></span></div>
 						</div>
 						<!-- ~~:+: Willpower :+:~~ -->
 						<input type="hidden" name="attr_willpower" value="" />
 						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Willpower}}{{base=Attributes}}{{dice=[[(@{willpower}+(?{2nd Attribute|None,0|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span>Willpower</span></button>
 						<div class="attr-und">
 							<div class="settings">
-								<input type="number" name="attr_willpower_base" value="" placeholder="3" /><span class="tiny-span"> + </span>
-								<input type="number" name="attr_willpower_modifier" value="" placeholder="0" /><span class="tiny-span"> = </span>
-								<span class="totals" name="attr_display_willpower" /></span>
+								<input type="number" name="attr_willpower_base" value="" placeholder="3" title="@{willpower_base}" /><span class="tiny-span"> + </span>
+								<input type="number" name="attr_willpower_modifier" value="" placeholder="0" title="@{willpower_modifier}" /><span class="tiny-span"> = </span>
+								<span class="totals" name="attr_display_willpower" title="@{willpower}" /></span>
 							</div>
-							<div class="display"><span name="attr_display_willpower"></span></div>
+							<div class="display"><span name="attr_display_willpower" title="@{willpower}"></span></div>
 						</div>
 						<!-- ~~:+: Logic :+:~~ -->
 						<input type="hidden" name="attr_logic" value="" />
 						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Logic}}{{base=Attributes}}{{dice=[[(@{logic}+(?{2nd Attribute|None,0|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span>Logic</span></button>
 						<div class="attr-und">
 							<div class="settings">
-								<input type="number" name="attr_logic_base" value="" placeholder="3" /><span class="tiny-span"> + </span>
-								<input type="number" name="attr_logic_modifier" value="" placeholder="0" /><span class="tiny-span"> = </span>
-								<span class="totals" name="attr_display_logic" /></span>
+								<input type="number" name="attr_logic_base" value="" placeholder="3" title="@{logic_base}" /><span class="tiny-span"> + </span>
+								<input type="number" name="attr_logic_modifier" value="" placeholder="0" title="@{logic_modifier}" /><span class="tiny-span"> = </span>
+								<span class="totals" name="attr_display_logic" title="@{logic}" /></span>
 							</div>
-							<div class="display"><span name="attr_display_logic"></span></div>
+							<div class="display"><span name="attr_display_logic" title="@{logic}"></span></div>
 						</div>
 						<!-- ~~:+: Intuition :+:~~ -->
 						<input type="hidden" name="attr_intuition" value="" />
 						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Intuition}}{{base=Attributes}}{{dice=[[(@{intuition}+(?{2nd Attribute|None,0|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span>Intuition</span></button>
 						<div class="attr-und">
 							<div class="settings">
-								<input type="number" name="attr_intuition_base" value="" placeholder="3" /><span class="tiny-span"> + </span>
-								<input type="number" name="attr_intuition_modifier" value="" placeholder="0" /><span class="tiny-span"> = </span>
-								<span class="totals" name="attr_display_intuition" /></span>
+								<input type="number" name="attr_intuition_base" value="" placeholder="3" title="@{intuition_base}" /><span class="tiny-span"> + </span>
+								<input type="number" name="attr_intuition_modifier" value="" placeholder="0" title="@{intuition_modifier}" /><span class="tiny-span"> = </span>
+								<span class="totals" name="attr_display_intuition" title="@{intuition}" /></span>
 							</div>
-							<div class="display"><span name="attr_display_intuition"></span></div>
+							<div class="display"><span name="attr_display_intuition" title="@{intuition}"></span></div>
 						</div>
 						<!-- ~~:+: Charisma :+:~~ -->
 						<input type="hidden" name="attr_charisma" value="" />
 						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Charisma}}{{base=Attributes}}{{dice=[[(@{charisma}+(?{2nd Attribute|None,0|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span>Charisma</span></button>
 						<div class="attr-und">
 							<div class="settings">
-								<input type="number" name="attr_charisma_base" value="" placeholder="3" /><span class="tiny-span"> + </span>
-								<input type="number" name="attr_charisma_modifier" value="" placeholder="0" /><span class="tiny-span"> = </span>
-								<span class="totals" name="attr_display_charisma" /></span>
+								<input type="number" name="attr_charisma_base" value="" placeholder="3" title="@{charisma_base}" /><span class="tiny-span"> + </span>
+								<input type="number" name="attr_charisma_modifier" value="" placeholder="0" title="@{charisma_modifier}" /><span class="tiny-span"> = </span>
+								<span class="totals" name="attr_display_charisma" title="@{charisma}" /></span>
 							</div>
-							<div class="display"><span name="attr_display_charisma"></span></div>
+							<div class="display"><span name="attr_display_charisma" title="@{charisma}"></span></div>
 						</div>
 						<!-- ~~:+: Edge :+:~~ -->
 						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Edge}}{{base=Attributes}}{{dice=[[(@{edge}+(?{2nd Attribute|None,0|Body,@{body}|Agility,@{agility}|Reaction,@{reaction}|Strength,@{strength}|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}|Charisma,@{charisma}|Edge,@{edge}|None,0})+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span>Edge</span></button>
 						<div class="attr-und">
 							<div class="settings">
-								<input type="number" name="attr_edge" placeholder="3" />
+								<input type="number" name="attr_edge" placeholder="3" title="@{edge}" />
 							</div>
-							<div class="display"><span name="attr_edge"></span></div>
+							<div class="display"><span name="attr_edge" title="@{edge}"></span></div>
 						</div>
 					</div>
 					<div class="attr-col attr-col-right">
 						<!-- ~~:+: Essence :+:~~ -->
 						<label>Essence</label>
 						<div class="attr-und">
-							<div class="settings"><input type="text" min="0" name="attr_essence" placeholder="6" style="width: 60%; border: 1px solid #b8b7b6;" /></div>
-							<div class="display"><span name="attr_essence"></span></div>
+							<div class="settings"><input type="text" min="0" name="attr_essence" placeholder="6" style="width: 60%; border: 1px solid #b8b7b6;" title="@{essence}" /></div>
+							<div class="display"><span name="attr_essence" title="@{essence}"></span></div>
 						</div>
 						<!-- ~~:+: Magic or Resonance :+:~~ -->
 						<input type="hidden" name="attr_magic" value="3" />
@@ -199,19 +199,19 @@
 						<div class="attr-und">
 							<div class="settings">
 								<div class="hide-magic">
-									<input type="number" name="attr_magic_base" placeholder="0" /><span class="tiny-span"> + </span>
-									<input type="number" name="attr_magic_modifier" placeholder="0" /><span class="tiny-span"> = </span>
-									<span class="totals" name="attr_display_magic" /></span>
+									<input type="number" name="attr_magic_base" placeholder="0" title="@{magic_base}" /><span class="tiny-span"> + </span>
+									<input type="number" name="attr_magic_modifier" placeholder="0" title="@{magic_modifier}" /><span class="tiny-span"> = </span>
+									<span class="totals" name="attr_display_magic" title="@{magic}" /></span>
 								</div>
 								<div class="hide-resonance">
-									<input type="number" name="attr_resonance_base" placeholder="0" /><span class="tiny-span"> + </span>
-									<input type="number" name="attr_resonance_modifier" placeholder="0" /><span class="tiny-span"> = </span>
-									<span class="totals" name="attr_display_resonance" /></span>
+									<input type="number" name="attr_resonance_base" placeholder="0" title="@{resonance_base}" /><span class="tiny-span"> + </span>
+									<input type="number" name="attr_resonance_modifier" placeholder="0" title="@{resonance_modifier}" /><span class="tiny-span"> = </span>
+									<span class="totals" name="attr_display_resonance" title="@{resonance}" /></span>
 								</div>
 							</div>
 							<div class="display">
-								<div class="hide-magic"><span name="attr_display_magic"></span></div>
-								<div class="hide-resonance"><span name="attr_display_resonance"></span></div>
+								<div class="hide-magic"><span name="attr_display_magic" title="@{magic}"></span></div>
+								<div class="hide-resonance"><span name="attr_display_resonance" title="@{resonance}"></span></div>
 							</div>
 						</div>
 						<!-- ~~:+: Initiative :+:~~ -->
@@ -220,13 +220,14 @@
 						<button class="attr-ini" type="roll" value="@{gm_toggle} &{template:sRun}{{header=Initiative}}{{base=Base}}{{dice=[[(@{initiative_mod}+@{wound_toggle}+@{modifier_toggle})+(@{initiative_dice})d6cf0 &{tracker}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span class="attr-ini red">Initiative</span></button>
 						<div class="attr-und attr-ini">
 							<div class="settings">
-								<input type="number" name="attr_initiative_modifier" value="0" placeholder="0" /><span class="tiny-span"> + </span>
-								<input type="number" name="attr_initiative_dice_modifier" value="0" min="0" max="4" placeholder="modifier" /><span class="tiny-span"> d6</span><span class="tiny-span"> = </span>
-								<span name="attr_display_initiative_mod"></span><span class="tiny-span"> + </span>
-								<span name="attr_initiative_dice"></span><span class="tiny-span"> d6</span>
+								<input type="number" name="attr_initiative_modifier" value="0" placeholder="0" title="@{initiative_modifier}" /><span class="tiny-span"> + </span>
+								<input type="number" name="attr_initiative_dice_modifier" value="0" min="0" max="4" placeholder="modifier" title="@{initiative_dice_modifier}" /><span class="tiny-span"> d6</span><span class="tiny-span"> = </span>
+								<span name="attr_display_initiative_mod"></span><span class="tiny-span" title="@{initiative_mod}"> + </span>
+								<span name="attr_initiative_dice"></span><span class="tiny-span" title="@{initiative_dice}"> d6</span>
 							</div>
 							<div class="display">
-								<span name="attr_display_initiative_mod"></span><span class="tiny-span"> + </span><span name="attr_initiative_dice"></span><span class="tiny-span"> d6</span>
+								<span name="attr_display_initiative_mod" title="@{initiative_mod}"></span><span class="tiny-span"> + </span>
+								<span name="attr_initiative_dice" title="@{initiative_dice}"></span><span class="tiny-span"> d6</span>
 							</div>
 						</div>
 						<!-- ~~:+: Matrix Initative :+:~~ -->
@@ -238,13 +239,14 @@
 						</button>
 						<div class="attr-und attr-ini">
 							<div class="settings">
-								<input type="number" name="attr_matrix_mod_modifier" value="0" placeholder="0" /><span class="tiny-span"> + </span>
-								<input type="number" name="attr_matrix_dice_modifier" value="0" min="0" max="4" placeholder="modifier" /><span class="tiny-span"> d6</span><span class="tiny-span"> = </span>
-								<span name="attr_display_matrix_mod"></span><span class="tiny-span"> + </span>
-								<span name="attr_matrix_dice"></span><span class="tiny-span"> d6</span>
+								<input type="number" name="attr_matrix_mod_modifier" value="0" placeholder="0" title="@{matrix_mod_modifier}" /><span class="tiny-span"> + </span>
+								<input type="number" name="attr_matrix_dice_modifier" value="0" min="0" max="4" placeholder="modifier" title="@{matrix_dice_modifier}" /><span class="tiny-span"> d6</span><span class="tiny-span"> = </span>
+								<span name="attr_display_matrix_mod" title="@{matrix_mod}"></span><span class="tiny-span"> + </span>
+								<span name="attr_matrix_dice" title="@{matrix_mod}"></span><span class="tiny-span"> d6</span>
 							</div>
 							<div class="display">
-								<span name="attr_display_matrix_mod"></span><span class="tiny-span"> + </span><span name="attr_matrix_dice"></span><span class="tiny-span"> d6</span>
+								<span name="attr_display_matrix_mod" title="@{matrix_mod}"></span><span class="tiny-span"> + </span>
+								<span name="attr_matrix_dice" title="@{matrix_dice}"></span><span class="tiny-span"> d6</span>
 							</div>
 						</div>
 						<!-- ~~:+: Astral Initative :+:~~ -->
@@ -257,14 +259,15 @@
 						<div class="attr-und attr-ini">
 							<div class="settings">
 								<div class="hide-magic">
-									<input type="number" name="attr_astral_mod_modifier" value="0" placeholder="modifier" /><span class="tiny-span"> + </span>
-									<input type="number" name="attr_astral_dice_modifier" value="0" min="0" max="3" placeholder="modifier" /><span class="tiny-span"> d6</span><span class="tiny-span"> = </span>
-									<span name="attr_display_astral_mod"></span><span class="tiny-span"> + </span>
-									<span name="attr_astral_dice"></span><span class="tiny-span"> d6</span>
+									<input type="number" name="attr_astral_mod_modifier" value="0" placeholder="modifier" title="@{astral_mod_modifier}" /><span class="tiny-span"> + </span>
+									<input type="number" name="attr_astral_dice_modifier" value="0" min="0" max="3" placeholder="modifier" title="@{astral_dice_modifier}" /><span class="tiny-span"> d6</span><span class="tiny-span"> = </span>
+									<span name="attr_display_astral_mod" title="@{astral_mod}"></span><span class="tiny-span"> + </span>
+									<span name="attr_astral_dice" title="@{astral_dice}"></span><span class="tiny-span"> d6</span>
 								</div>
 							</div>
 							<div class="display">
-								<span name="attr_display_astral_mod"></span><span class="tiny-span"> + </span><span name="attr_astral_dice"></span><span class="tiny-span"> d6</span>
+								<span name="attr_display_astral_mod" title="@{astral_mod}"></span><span class="tiny-span"> + </span>
+								<span name="attr_astral_dice" title="@{astral_dice}"></span><span class="tiny-span"> d6</span>
 							</div>
 						</div>
 						<!-- ~~:+: Composure :+:~~ -->
@@ -272,11 +275,11 @@
 						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Composure}}{{base=Base}}{{dice=[[(@{composure}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}}"><span>Composure</span></button>
 						<div class="attr-und">
 							<div class="settings">
-								<input type="number" name="attr_composure_modifier" placeholder="0" /><span class="tiny-span"> = </span>
-								<span class="totals" name="attr_composure" /></span>
+								<input type="number" name="attr_composure_modifier" placeholder="0" title="@{composure_modifier}" /><span class="tiny-span"> = </span>
+								<span class="totals" name="attr_composure" title="@{composure}" /></span>
 							</div>
 							<div class="display">
-								<span name="attr_composure"></span>
+								<span name="attr_composure" title="@{composure}"></span>
 							</div>
 						</div>
 						<!-- ~~:+: Judge Intentions :+:~~ -->
@@ -284,11 +287,11 @@
 						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Judge Intentions}}{{base=Base}}{{dice=[[(@{judge_intentions}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span>Judge Intentions</span></button>
 						<div class="attr-und">
 							<div class="settings">
-								<input type="number" name="attr_judge_intentions_modifier" placeholder="0" /><span class="tiny-span"> = </span>
-								<span class="totals" name="attr_judge_intentions" /></span>
+								<input type="number" name="attr_judge_intentions_modifier" placeholder="0" title="@{judge_intentions_modifier}" /><span class="tiny-span"> = </span>
+								<span class="totals" name="attr_judge_intentions" title="@{judge_intentions}" /></span>
 							</div>
 							<div class="display">
-								<span name="attr_judge_intentions"></span>
+								<span name="attr_judge_intentions" title="@{judge_intentions}"></span>
 							</div>
 						</div>
 						<!-- ~~:+: Memory :+:~~ -->
@@ -296,11 +299,11 @@
 						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Memory}}{{base=Base}}{{dice=[[(@{memory}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span>Memory</span></button>
 						<div class="attr-und">
 							<div class="settings">
-								<input type="number" name="attr_memory_modifier" placeholder="0" /><span class="tiny-span"> = </span>
-								<span class="totals" name="attr_memory" /></span>
+								<input type="number" name="attr_memory_modifier" placeholder="0" title="@{memory_modifier}" /><span class="tiny-span"> = </span>
+								<span class="totals" name="attr_memory" title="@{memory}" /></span>
 							</div>
 							<div class="display">
-								<span name="attr_memory"></span>
+								<span name="attr_memory" title="@{memory}"></span>
 							</div>
 						</div>
 						<!-- ~~:+: Lift & Carry :+:~~ -->
@@ -308,11 +311,11 @@
 						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Life & Carry}}{{base=Base}}{{dice=[[(@{lift_carry}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span>Lift & Carry</span></button>
 						<div class="attr-und">
 							<div class="settings">
-								<input type="number" name="attr_lift_carry_modifier" placeholder="0" /><span class="tiny-span"> = </span>
-								<span class="totals" name="attr_lift_carry" /></span>
+								<input type="number" name="attr_lift_carry_modifier" placeholder="0" title="@{lift_carry_modifier}" /><span class="tiny-span"> = </span>
+								<span class="totals" name="attr_lift_carry" title="@{lift_carry}" /></span>
 							</div>
 							<div class="display">
-								<span name="attr_lift_carry"></span>
+								<span name="attr_lift_carry" title="@{lift_carry}"></span>
 							</div>
 						</div>
 						<!-- ~~:+: Walk & Run :+:~~ -->
@@ -321,28 +324,33 @@
 						<label>Movement</label>
 						<div class="attr-und">
 							<div class="settings">
-								<input type="number" name="attr_walk_modifier" value="" placeholder="0" /><span class="tiny-span"> / </span>
-								<input type="number" name="attr_run_modifier" value="" placeholder="0" /><span class="tiny-span"> / +</span>
-								<input type="number" name="attr_movement_mod" value="2" placeholder="2" />
+								<input type="number" name="attr_walk_modifier" value="" placeholder="0" title="@{walk_modifier}" /><span class="tiny-span"> / </span>
+								<input type="number" name="attr_run_modifier" value="" placeholder="0" title="@{run_modifier}" /><span class="tiny-span"> / +</span>
+								<input type="number" name="attr_movement_mod" value="2" placeholder="2" title="@{movement_mod}" />
 							</div>
 							<div class="display">
-								<span name="attr_walk" title="Walk Rate"></span><span> / </span><span name="attr_run" title="Run Tate"></span><span> / +</span><span name="attr_movement_mod"></span>
+								<span name="attr_walk" title="@{walk}"></span><span> / </span>
+								<span name="attr_run" title="@{run}"></span><span> / +</span>
+								<span name="attr_movement_mod" title="@{movement_mod}"></span>
 							</div>
 						</div>
 					</div>
 					<div class="attr-lim">
 						<div class="settings">
-							<label>Physical Limit: </label><input type="number" name="attr_physical_limit_modifier" placeholder="0" /><span class="tiny-span"> = </span><span class="totals" name="attr_physical_limit" /></span>
-							<label>Mental Limit: </label><input type="number" name="attr_mental_limit_modifier" placeholder="0" /><span class="tiny-span"> = </span><span class="totals" name="attr_mental_limit" /></span>
-							<label>Social Limit: </label><input type="number" name="attr_social_limit_modifier" placeholder="0" /><span class="tiny-span"> = </span><span class="totals" name="attr_social_limit" /></span>
+							<label>Physical Limit: </label><input type="number" name="attr_physical_limit_modifier" placeholder="0" title="@{physical_limit_modifier}" />
+								<span class="tiny-span"> = </span><span class="totals" name="attr_physical_limit" title="@{physical_limit}" /></span>
+							<label>Mental Limit: </label><input type="number" name="attr_mental_limit_modifier" placeholder="0" title="@{mental_limit_modifier}" />
+								<span class="tiny-span"> = </span><span class="totals" name="attr_mental_limit" title="@{mental_limit}" /></span>
+							<label>Social Limit: </label><input type="number" name="attr_social_limit_modifier" placeholder="0" title="@{social_limit_modifier}" />
+								<span class="tiny-span"> = </span><span class="totals" name="attr_social_limit" title="@{social_limit}" /></span>
 						</div>
 						<div class="display">
-							<label>Physical Limit: </label><div><span name="attr_physical_limit"></span></div>
-							<label>Mental Limit: </label><div><span name="attr_mental_limit"></span></div>
-							<label>Social Limit: </label><div><span name="attr_social_limit"></span></div>
+							<label>Physical Limit: </label><div><span name="attr_physical_limit" title="@{physical_limit}"></span></div>
+							<label>Mental Limit: </label><div><span name="attr_mental_limit" title="@{mental_limit}"></span></div>
+							<label>Social Limit: </label><div><span name="attr_social_limit" title="@{social_limit}"></span></div>
 						</div>
 					</div>
-					<div class="edg-hex">
+					<div class="edg-hex" style="width: 50%;">
 						<input class="edge-zero"type="hidden" name="attr_edge_hex" value="0"/>
 						<input class="hex-hider"type="hidden" name="attr_edge" value="1"/>
 						<input type="checkbox" name="attr_edge_hex" value="1" /><span class="hexagon"></span>
@@ -361,13 +369,19 @@
 		<div class="pc-row">
 			<div class="header">
 				<div class="header htab">
-					<div class="triangle"></div><input class="tab-switch" type="radio" name="attr_skill_toggle" value="active" checked="checked" /><h1>Active</h1><div class="right-tri"></div>
+					<div class="triangle"></div>
+					<input class="tab-switch" type="radio" name="attr_skill_toggle" value="active" checked="checked" title="Active skills" /><h1>Active</h1>
+					<div class="right-tri"></div>
 				</div>
 				<div class="header htab">
-					<div class="triangle"></div><input class="tab-switch" type="radio" name="attr_skill_toggle" value="knowledge" /><h1>Know..</h1><div class="right-tri"></div>
+					<div class="triangle"></div>
+					<input class="tab-switch" type="radio" name="attr_skill_toggle" value="knowledge" title="Knowledge skills" /><h1>Know..</h1>
+					<div class="right-tri"></div>
 				</div>
 				<div class="header htab">
-					<div class="triangle"></div><input class="tab-switch" type="radio" name="attr_skill_toggle" value="language" /><h1>Lang..</h1><div class="right-tri"></div>
+					<div class="triangle"></div>
+					<input class="tab-switch" type="radio" name="attr_skill_toggle" value="language" title="Language skills" /><h1>Lang..</h1>
+					<div class="right-tri"></div>
 				</div>
 				<div class="triangle"></div><h1>Skills</h1>
 			</div>
@@ -383,7 +397,7 @@
 								<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Default Skill}}{{base=@{default_display}}}{{dice=[[((@{default_attribute}+-1)+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" ><span>Default a skill</span></button>
 							</div>
 							<input type="hidden" name="attr_default_display" />
-							<select class="attr-select" name="attr_default_attribute" style="position: inherit;">
+							<select class="attr-select" name="attr_default_attribute" style="position: inherit;" title="Skill attribute">
 								<option value="@{body}">Body</option>
 								<option value="@{agility}" selected="selected">Agility</option>
 								<option value="@{reaction}">Reaction</option>
@@ -397,11 +411,11 @@
 							</select>
 						</div>
 						<fieldset class="repeating_active">
-							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 							<div class="settings">
 								<div class="skills-row">
 									<input type="hidden" name="attr_dicepool" />
-									<select class="skill-select" name="attr_skill">
+									<select class="skill-select" name="attr_skill" title="Active skill">
 										<option class="option-headers" disabled="true">Combat Skills</option>
 										<option class="option-groups" value="Close Combat Group">Close Combat Group</option>
 										<option class="option-groups" value="Firearms Group">Firearms Group</option>
@@ -499,10 +513,10 @@
 										<option value="Pilot Watercraft">Pilot Watercraft</option>
 										<option value="Software">Software</option>
 									</select>
-									<input type="number" name="attr_rank" min="0" placeholder="0" />
+									<input type="number" name="attr_rank" min="0" placeholder="0" title="Skill rating" />
 									<div class="settings-row">
-										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
-										<label>Rating Modifier</label><input type="number" name="attr_rank_modifier" min="0" placeholder="0" />
+										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" title="Skill specializations" />
+										<label>Rating Modifier</label><input type="number" name="attr_rank_modifier" min="0" placeholder="0" title="Skill rating bonus" />
 									</div>
 									<label>Notes</label>
 									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
@@ -513,10 +527,10 @@
 									<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" ><span name="attr_display"></span></button>
 									<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display_specialization"></span></button>
 								</div>
-								<div class="rank"><span name="attr_display_rank"></span></div>
+								<div class="rank"><span name="attr_display_rank" title="Skill rating"></span></div>
 							</div>
 							<input type="hidden" name="attr_display_attribute" />
-							<select class="attr-select" name="attr_attribute">
+							<select class="attr-select" name="attr_attribute" title="Skill attribute">
 								<option value="@{body}">Body</option>
 								<option value="@{agility}" selected="selected">Agility</option>
 								<option value="@{reaction}">Reaction</option>
@@ -532,15 +546,15 @@
 					</div>
 					<div class="skills-know">
 						<fieldset class="repeating_knowledge">
-							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 							<div class="settings">
 								<div class="skills-row">
 									<input type="hidden" name="attr_dicepool" />
-									<input type="text" name="attr_skill" placeholder="Knowledge skill name" />
-									<input type="number" name="attr_rank" placeholder="0" />
+									<input type="text" name="attr_skill" placeholder="Knowledge skill name" title="Knowledge skill name" />
+									<input type="number" name="attr_rank" placeholder="0" title="Skill rating" />
 									<div class="settings-row">
-										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
-										<label>Rating Modifier</label><input type="number" name="attr_rank_modifier" placeholder="0" />
+										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" title="Knowledge specializations" />
+										<label>Rating Modifier</label><input type="number" name="attr_rank_modifier" placeholder="0" title="Skill rating bonus" />
 									</div>
 									<label>Notes</label>
 									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
@@ -551,10 +565,10 @@
 									<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display"></span></button>
 									<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display_specialization"></span></button>
 								</div>
-								<div class="rank"><span name="attr_display_rank"></span></div>
+								<div class="rank"><span name="attr_display_rank" title="Skill rating"></span></div>
 							</div>
 							<input type="hidden" name="attr_display_attribute" />
-							<select class="attr-select" name="attr_attribute">
+							<select class="attr-select" name="attr_attribute" title="Skill attribute">
 								<option value="@{body}">Body</option>
 								<option value="@{agility}">Agility</option>
 								<option value="@{reaction}">Reaction</option>
@@ -570,15 +584,15 @@
 					</div>
 					<div class="skills-lang">
 						<fieldset class="repeating_language">
-							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 							<div class="settings">
 								<div class="skills-row">
 									<input type="hidden" name="attr_dicepool" />
-									<input type="text" name="attr_skill" placeholder="Language" />
-									<input type="number" name="attr_rank" placeholder="0" />
+									<input type="text" name="attr_skill" placeholder="Language" title="Language skill name" />
+									<input type="number" name="attr_rank" placeholder="0" title="Skill rating" />
 									<div class="settings-row">
-										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
-										<label>Rating Modifier</label><input class="language-native" type="number" min="0" name="attr_rank_modifier" placeholder="0" />
+										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" title="Language specializations" />
+										<label>Rating Modifier</label><input class="language-native" type="number" min="0" name="attr_rank_modifier" placeholder="0" title="Language rating bonus" />
 									</div>
 									<label>Notes</label>
 									<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
@@ -589,10 +603,10 @@
 									<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display"></span></button>
 									<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display_specialization"></span></button>
 								</div>
-								<div class="rank"><span name="attr_display_rank"></span></div>
+								<div class="rank"><span name="attr_display_rank" title="Skill rating"></span></div>
 							</div>
 							<input type="hidden" name="attr_display_attribute" />
-							<select class="attr-select" name="attr_attribute">
+							<select class="attr-select" name="attr_attribute" title="Skill attribute">
 								<option value="@{body}">Body</option>
 								<option value="@{agility}">Agility</option>
 								<option value="@{reaction}">Reaction</option>
@@ -618,40 +632,41 @@
 				<div class="pc-box small-box core-combat">
 					<div class="row-long cc-arm">
 						<h2>Primary Armor</h2>
-						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Soak}}{{base=Base}}{{dice=[[(@{soak}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Soak" style="width: 32%;">
-						<span name="attr_armor_name"></span></button>
+						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Soak}}{{base=Base}}{{dice=[[(@{soak}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}} style="width: 32%;">
+						<span name="attr_armor_name" title="@{soak}"></span></button>
 						<h3>Rating</h3>
-						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{armor}}}{{base= Armor}}{{dice=[[(@{armor_rating}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_armor_rating"></span></button>
+						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{armor}}}{{base= Armor}}{{dice=[[(@{armor_rating}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">
+						<span name="attr_armor_rating" title="@{armor_rating}"></span></button>
 						<div class="armor-buttons">
-							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Defense}}{{base=Base}}{{dice=[[(@{defense}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Defense Roll"><span class="pictosC">e</span></button>
-							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Acid Protection}}{{base=Base}}{{dice=[[(@{soak}+@{acid_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Acid Protection"><span class="pictos3">d</span></button>
-							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Cold Protection}}{{base=Base}}{{dice=[[(@{soak}+@{cold_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Cold Protection"><span>b</span></button>
-							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Electricity Protection}}{{base=Base}}{{dice=[[(@{soak}+@{electrical_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Electrical Protection"><span>e</span></button>
-							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Fire Protection}}{{base=Base}}{{dice=[[(@{soak}+@{fire_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Fire Protection"><span class="pictos3">j</span></button>
-							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Radiation Protection}}{{base=Base}}{{dice=[[(@{soak}+@{radiation_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Radiation Protection"><span class="pictos3">l</span></button>
+							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Defense}}{{base=Base}}{{dice=[[(@{defense}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Defense Roll"><span class="pictosC" title="@{defense}">e</span></button>
+							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Acid Protection}}{{base=Base}}{{dice=[[(@{soak}+@{acid_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Acid Protection"><span class="pictos3" title="@{acid_modifier}">d</span></button>
+							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Cold Protection}}{{base=Base}}{{dice=[[(@{soak}+@{cold_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Cold Protection"><span title="@{cold_modifier}">b</span></button>
+							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Electricity Protection}}{{base=Base}}{{dice=[[(@{soak}+@{electrical_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Electrical Protection"><span title="@{electrical_modifier}">e</span></button>
+							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Fire Protection}}{{base=Base}}{{dice=[[(@{soak}+@{fire_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Fire Protection"><span class="pictos3" title="@{fire_modifier}">j</span></button>
+							<button type='roll' value="@{gm_toggle} &{template:sRun}{{header=Radiation Protection}}{{base=Base}}{{dice=[[(@{soak}+@{radiation_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Radiation Protection"><span class="pictos3" title="@{radiation_modifier}">l</span></button>
 						</div>
 					</div>
 					<div class="row-long cc-row">
 						<h2>Primary Ranged Weapon</h2>
-						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{primary_range_weapon}}}{{base=Base}}{{dice=[[((@{primary_range_weapon_skill}+@{primary_range_weapon_dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{primary_range_weapon_mode}, ACC @{primary_range_weapon_acc}, DV @{primary_range_weapon_damage}, AP @{primary_range_weapon_ap}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Primary Weapon"><span name="attr_primary_range_weapon"></span></button>
+						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{primary_range_weapon}}}{{base=Base}}{{dice=[[((@{primary_range_weapon_skill}+@{primary_range_weapon_dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{primary_range_weapon_mode}, ACC @{primary_range_weapon_acc}, DV @{primary_range_weapon_damage}, AP @{primary_range_weapon_ap}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Primary range weapon"><span name="attr_primary_range_weapon" title="@{primary_range_weapon}"></span></button>
 					</div>
 					<div class="cc-row">
-						<h3>Dam</h3><span name="attr_primary_range_weapon_damage" style="width: 10%;"></span>
-						<h3>ACC</h3><span name="attr_primary_range_weapon_acc"></span>
-						<h3>AP</h3><span name="attr_primary_range_weapon_ap"></span>
-						<h3>Mode</h3><span name="attr_primary_range_weapon_mode"></span>
-						<h3>RC</h3><span name="attr_primary_range_weapon_recoil"></span>
-						<h3>Ammo</h3><span name="attr_primary_range_weapon_ammo"></span>
+						<h3>Dam</h3><span name="attr_primary_range_weapon_damage" style="width: 10%;" title="@{primary_range_weapon_damage}"></span>
+						<h3>ACC</h3><span name="attr_primary_range_weapon_acc" title="@{primary_range_weapon_acc}"></span>
+						<h3>AP</h3><span name="attr_primary_range_weapon_ap" title="@{primary_range_weapon_ap}"></span>
+						<h3>Mode</h3><span name="attr_primary_range_weapon_mode" title="@{primary_range_weapon_mode}"></span>
+						<h3>RC</h3><span name="attr_primary_range_weapon_recoil" title="@{primary_range_weapon_recoil}"></span>
+						<h3>Ammo</h3><span name="attr_primary_range_weapon_ammo" title="@{primary_range_weapon_ammo}"></span>
 					</div>
 					<div class="row-long cc-row">
 						<h2>Primary Melee Weapon</h2>
-						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{primary_melee_weapon}}}{{base=Base}}{{dice=[[((@{primary_melee_weapon_skill}+@{primary_melee_weapon_dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{primary_melee_weapon_acc}, DV @{primary_melee_weapon_damage}, AP @{primary_melee_weapon_ap}, Reach @{primary_melee_weapon_reach}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Primary Weapon"><span name="attr_primary_melee_weapon"></span></button>
+						<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{primary_melee_weapon}}}{{base=Base}}{{dice=[[((@{primary_melee_weapon_skill}+@{primary_melee_weapon_dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{primary_melee_weapon_acc}, DV @{primary_melee_weapon_damage}, AP @{primary_melee_weapon_ap}, Reach @{primary_melee_weapon_reach}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Primary melee weapon"><span name="attr_primary_melee_weapon" title="@{primary_melee_weapon}"></span></button>
 					</div>
 					<div class="cc-row">
-						<h3>Reach</h3><span name="attr_primary_melee_weapon_reach"></span>
-						<h3>Dam</h3><span name="attr_primary_melee_weapon_damage"></span>
-						<h3>ACC</h3><span name="attr_primary_melee_weapon_acc"></span>
-						<h3>AP</h3><span name="attr_primary_melee_weapon_ap"></span>
+						<h3>Reach</h3><span name="attr_primary_melee_weapon_reach" title="@{primary_melee_weapon_reach}"></span>
+						<h3>Dam</h3><span name="attr_primary_melee_weapon_damage" title="@{primary_melee_weapon_damage}"></span>
+						<h3>ACC</h3><span name="attr_primary_melee_weapon_acc" title="@{primary_melee_weapon_acc}"></span>
+						<h3>AP</h3><span name="attr_primary_melee_weapon_ap" title="@{primary_melee_weapon_ap}"></span>
 					</div>
 				</div>
 			</div>
@@ -661,25 +676,25 @@
 			<div class="header right-header"><h1>Condition Monitor</h1><div class="right-tri"></div></div>
 			<div class="border-box">
 				<div class="pc-box medium-box condition-box">
-					<input type="checkbox" class="settings-toggle" name="attr_flag_condition" checked="checked" /><span>x</span>
+					<input type="checkbox" class="settings-toggle" name="attr_flag_condition" checked="checked" title="Settings toggle" /><span>x</span>
 					<div class="settings">
 						<label>Condition Monitor Modifiers (P/S): </label>
 						<input type="hidden" name="attr_physical" value="10" />
 						<input type="hidden" name="attr_stun" value="10" />
 						<input type="hidden" name="attr_physical_max" min="0" value="10" />
 						<input type="hidden" name="attr_stun_max" min="0" value="10" />
-						<input type="number" name="attr_physical_modifier" value="" placeholder="#" /><span> / </span>
-						<input type="number" name="attr_stun_modifier" value="" placeholder="#" /><br />
+						<input type="number" name="attr_physical_modifier" value="" placeholder="#" title="@{physical_modifier}" /><span> / </span>
+						<input type="number" name="attr_stun_modifier" value="" placeholder="#" title="@{stun_modifier}" /><br />
 						<input type="hidden" name="attr_overflow" value="3" />
-						<label>Overflow Modifier</label><input type="number" name="attr_overflow_modifier" value="" placeholder="#" /><br />
-						<label>Pain Tolerance</label><input type="number" name="attr_pain_tolerance" value="0" placeholder="#" />
+						<label>Overflow Modifier</label><input type="number" name="attr_overflow_modifier" value="" placeholder="#" title="@{overflow_modifier}" /><br />
+						<label>Pain Tolerance</label><input type="number" name="attr_pain_tolerance" value="0" placeholder="#" title="@{pain_tolerance}" />
 						<div class="con-footer">
 							<span>Low Pain Tolernace adds a -1 and High Pain Tolerance adds a +1 per rank.</span>
 						</div>
 					</div>
 					<div class="display">
 						<div class="con-track">
-							<input type="radio" name="attr_physical_damage" value="0" checked="checked" /><h2>Physical Damage Track</h2>
+							<input type="radio" name="attr_physical_damage" value="0" checked="checked" title="Reset physical damage" /><h2>Physical Damage Track</h2>
 							<div class="squares">
 								<input class="hex-hider" type="hidden" name="attr_physical_max" value="10" />
 								<input type="radio" name="attr_physical_damage" value="1" /><span></span>
@@ -701,12 +716,12 @@
 								<input type="radio" name="attr_physical_damage" value="17" /><span></span>
 								<input type="radio" name="attr_physical_damage" value="18" /><span></span><div>-6</div>
 							</div>
-							<div class="con-footer">
+							<div class="con-footer" title="@{overflow}">
 								<label>Overflow</label><div class="attr-und"><span name="attr_overflow"></span></div>
 							</div>
 						</div>
 						<div class="con-track">
-							<input type="radio" name="attr_stun_damage" value="0" checked="checked" /><h2>Stun Damage Track</h2>
+							<input type="radio" name="attr_stun_damage" value="0" checked="checked" title="Reset stun damage" /><h2>Stun Damage Track</h2>
 							<div class="squares">
 								<input class="hex-hider" type="hidden" name="attr_stun_max" value="10" />
 								<input type="radio" name="attr_stun_damage" value="1" /><span></span>
@@ -736,29 +751,29 @@
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ START OF THE QUALITY ROW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<div class="pc-row quality-box">
 			<div class="header right-header htab">
-				<input class="tab-switch" type="radio" name="attr_quality_toggle" value="quality" checked="checked" />
+				<input class="tab-switch" type="radio" name="attr_quality_toggle" value="quality" checked="checked" title="Qualities" />
 				<h1>Qualities</h1><div class="right-tri"></div>
 			</div>
 			<div class="header right-header">
 				<div class="header htab">
 					<div class="triangle"></div>
-					<input class="tab-switch" type="radio" name="attr_quality_toggle" value="martial" />
+					<input class="tab-switch" type="radio" name="attr_quality_toggle" value="martial" title="Martal Arts" />
 					<h1>Martial Arts</h1><div class="right-tri"></div>
 				</div>
 			</div>
 			<div class="border-box repeat-box">
 				<div class="pc-box medium-box">
-					<input class="tab-switch" type="hidden" name="attr_quality_toggle" value="quality">
+					<input class="tab-switch" type="hidden" name="attr_quality_toggle" value="quality" />
 					<div class="quality">
 						<div class="row-long">
 							<h3>Quality</h3><h3>Type</h3>
 						</div>
 						<fieldset class="repeating_quality">
-							<input type="checkbox" class="settings-toggle" name="attr_flag_quality" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag_quality" checked="checked" title="Qualities settings" /><span>x</span>
 							<div class="settings">
 								<div>
-									<input type="text" name="attr_quality" placeholder="Quality name" />
-									<select name="attr_type">
+									<input type="text" name="attr_quality" placeholder="Quality name" title="Quality name" />
+									<select name="attr_type" title="Positive or Negative quality">
 										<option value="P" selected="selected">P</option>
 										<option value="N" selected="selected">N</option>
 									</select>
@@ -770,8 +785,8 @@
 							</div>
 							<div class="display">
 								<input class="display-flag" type="checkbox" name="attr_display_flag">
-								<div class="display-row"><span name="attr_quality"></span></div>
-								<div class="display-row"><span name="attr_type"></span></div>
+								<div class="display-row"><span name="attr_quality" title="Quality name"></span></div>
+								<div class="display-row"><span name="attr_type" title="Quality type"></span></div>
 								<div class="collapsable">
 									<span class="desc" name="attr_notes"></span>
 								</div>
@@ -783,11 +798,11 @@
 							<h3>Technique</h3><h3>Style</h3>
 						</div>
 						<fieldset class="repeating_martial">
-							<input type="checkbox" class="settings-toggle" name="attr_flag_martial" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag_martial" checked="checked" title="Marital settings" /><span>x</span>
 							<div class="settings">
 								<div>
-									<input type="text" name="attr_technique" placeholder="Clinch" />
-									<input type="text" name="attr_style" placeholder="Krav Maga" />
+									<input type="text" name="attr_technique" placeholder="Clinch" title="Technique name" />
+									<input type="text" name="attr_style" placeholder="Krav Maga" title="Style name" />
 									<div class="settings-row">
 										<label>Notes</label>
 										<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
@@ -796,8 +811,8 @@
 							</div>
 							<div class="display">
 								<input class="display-flag" type="checkbox" name="attr_display_flag">
-								<div class="display-row"><span name="attr_technique"></span></div>
-								<div class="display-row"><span name="attr_style"></span></div>
+								<div class="display-row"><span name="attr_technique" title="Technique name"></span></div>
+								<div class="display-row"><span name="attr_style" title="Style name"></span></div>
 								<div class="collapsable">
 									<span class="desc" name="attr_notes"></span>
 								</div>
@@ -815,12 +830,12 @@
 			<div class="header right-header">
 				<div class="header htab">
 					<div class="triangle"></div>
-					<input class="tab-switch" type="radio" name="attr_weapon_type_toggle" value="range" checked="checked" /><h1>Ranged</h1>
+					<input class="tab-switch" type="radio" name="attr_weapon_type_toggle" value="range" checked="checked" title="Range weapons" /><h1>Ranged</h1>
 					<div class="right-tri"></div>
 				</div>
 				<div class="header htab">
 					<div class="triangle"></div>
-					<input class="tab-switch" type="radio" name="attr_weapon_type_toggle" value="melee" /><h1>Melee</h1>
+					<input class="tab-switch" type="radio" name="attr_weapon_type_toggle" value="melee" title="Melee weapons" /><h1>Melee</h1>
 					<div class="right-tri"></div>
 				</div>
 			</div>
@@ -835,28 +850,28 @@
 							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" value="primary" /><span>x</span>
 							<div class="settings">
 								<div>
-									<input type="text" name="attr_weapon" placeholder="Ares Alpha" />
-									<input type="text" name="attr_damage" placeholder="11P" style="width: 11%;" />
-									<input type="number" name="attr_acc" placeholder="5" />
-									<input type="number" name="attr_ap" placeholder="-2" />
-									<select name="attr_mode">
+									<input type="text" name="attr_weapon" placeholder="Ares Alpha" title="Weapon name" />
+									<input type="text" name="attr_damage" placeholder="11P" style="width: 11%;" title="Damage"  />
+									<input type="number" name="attr_acc" placeholder="5" title="Accuracy"  />
+									<input type="number" name="attr_ap" placeholder="-2" title="Armor Penetration"  />
+									<select name="attr_mode" title="Current mode" >
 										<option value="BF">BF</option>
 										<option value="FA">FA</option>
 										<option value="Other">Other</option>
 										<option value="SA">SA</option>
 										<option value="SS">SS</option>
 									</select>
-									<input type="number" name="attr_recoil" placeholder="2" />
-									<input type="number" name="attr_ammo" placeholder="42" />
+									<input type="number" name="attr_recoil" placeholder="2" title="Recoil Compensation" />
+									<input type="number" name="attr_ammo" placeholder="42" title="Ammo per clip" />
 									<div class="settings-row">
-										<label>Mode Options</label><input type="text" name="attr_mode_options" placeholder="SA/BF/FA" />
-										<label>Range</label><input type="text" name="attr_range" placeholder="25/150/350/550" />
-										<label>Primary</label><input type="checkbox" class="skill-select" name="attr_primary" value="primary" />
+										<label>Mode Options</label><input type="text" name="attr_mode_options" placeholder="SA/BF/FA" title="Available modes" />
+										<label>Range</label><input type="text" name="attr_range" placeholder="25/150/350/550" title="Range" />
+										<label>Primary</label><input type="checkbox" class="skill-select" name="attr_primary" value="primary" title="Add to Core tab as primary range" />
 									</div>
 									<div class="settings-row">
 										<input type="hidden" name="attr_dicepool" value="0" />
 										<label>Combat Skill</label>
-										<select class="skill-select" name="attr_skill">
+										<select class="skill-select" name="attr_skill" title="Weapon skill" >
 											<option class="option-headers" disabled="true">Combat Skills</option>
 											<option class="option-groups" value="@{firearms}">Firearms Group</option>
 											<option value="@{archery}">Archery</option>
@@ -869,8 +884,8 @@
 											<option class="option-headers" disabled="true">Vehicle Skills</option>
 											<option value="@{gunnery}" >Gunnery</option>
 										</select>
-										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" />
-										<label>modifier dice</label><input type="number" name="attr_dicepool_modifier" />
+										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" title="Applicable specialization" />
+										<label>modifier dice</label><input type="number" name="attr_dicepool_modifier" title="Additional dicepool bonus" />
 										<input class="skill-select" type="hidden" name="attr_skill" /><br />
 										<div class="exotic-warning">
 											<span><i>Exotics are not linked to skills. Use modifier Dice input to set skill dice.</i></span>
@@ -883,23 +898,23 @@
 								</div>
 							</div>
 							<div class="display">
-								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{weapon}}}{{base=Agility}}{{dice=[[((@{skill}+@{dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{mode}, ACC @{acc}, DV @{damage}, AP @{ap}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_weapon"></span></button></div>
-								<div class="display-row"><span name="attr_damage"></span></div>
-								<div class="display-row"><span name="attr_acc"></span></div>
-								<div class="display-row"><span name="attr_ap"></span></div>
-								<select name="attr_mode">
+								<div class="display-row" title="Roll attack"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{weapon}}}{{base=Agility}}{{dice=[[((@{skill}+@{dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{mode}, ACC @{acc}, DV @{damage}, AP @{ap}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_weapon"></span></button></div>
+								<div class="display-row" title="Damage"><span name="attr_damage"></span></div>
+								<div class="display-row" title="Accuracy"><span name="attr_acc"></span></div>
+								<div class="display-row" title="Armor Penetration"><span name="attr_ap"></span></div>
+								<select name="attr_mode" title="Current mode">
 									<option value="BF">BF</option>
 									<option value="FA">FA</option>
 									<option value="Other">Other</option>
 									<option value="SA">SA</option>
 									<option value="SS">SS</option>
 								</select>
-								<div class="display-row"><span name="attr_recoil"></span></div>
-								<div class="display-row"><span name="attr_ammo"></span></div>
-								<input class="display-flag" type="checkbox" name="attr_display_flag" /><span>i</span>
+								<div class="display-row" title="Recoil Compensation"><span name="attr_recoil"></span></div>
+								<div class="display-row" title="Armor per clip"><span name="attr_ammo"></span></div>
+								<input class="display-flag" type="checkbox" name="attr_display_flag" title="Display notes" /><span>i</span>
 								<div class="collapsable">
-									<div class="desc"><i><span name="attr_mode_options"></span></i></div>
-									<div class="desc"><i><span name="attr_range"></span></i></div>
+									<div class="desc" title="Mode options"><i><span name="attr_mode_options"></span></i></div>
+									<div class="desc" title="Range"><i><span name="attr_range"></span></i></div>
 									<div class="desc"><span name="attr_notes"></span></div>
 								</div>
 							</div>
@@ -910,19 +925,19 @@
 					</div>
 					<div class="weapon-melee">
 						<fieldset class="repeating_melee">
-							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 							<div class="settings">
 								<div>
-									<input type="text" name="attr_weapon" placeholder="Katana" />
-									<input type="number" name="attr_reach" placeholder="1" />
-									<input type="text" name="attr_damage" placeholder="6P" />
-									<input type="number" name="attr_acc" placeholder="7" />
-									<input type="number" name="attr_ap" placeholder="-3" />
-									<label>Primary</label><input type="checkbox" class="skill-select" name="attr_primary" value="primary" />
+									<input type="text" name="attr_weapon" placeholder="Katana" title="Weapon name" />
+									<input type="number" name="attr_reach" placeholder="1" title="Reach"/>
+									<input type="text" name="attr_damage" placeholder="6P" title="Damage"/>
+									<input type="number" name="attr_acc" placeholder="7" title="Accuracy"/>
+									<input type="number" name="attr_ap" placeholder="-3" title="Armor Penetration"/>
+									<label>Primary</label><input type="checkbox" class="skill-select" name="attr_primary" value="primary" title="Add to Core tab as primary melee"/>
 									<div class="settings-row">
 										<input type="hidden" name="attr_dicepool" value="0" />
 										<label>Combat Skill</label>
-										<select class="skill-select" name="attr_skill">
+										<select class="skill-select" name="attr_skill" title="Weapon skill">
 											<option class="option-headers" disabled="true">Combat Skills</option>
 											<option class="option-groups" value="@{closecombat}">Close Combat Group</option>
 											<option value="@{blades}">Blades</option>
@@ -932,8 +947,8 @@
 											<option class="option-headers" disabled="true">Vehicle Skills</option>
 											<option value="@{gunnery}" >Gunnery</option>
 										</select>
-										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="+2" />
-										<label>modifier Dice</label><input type="number" name="attr_dicepool_modifier" />
+										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="+2" title="Applicable specialization"/>
+										<label>modifier Dice</label><input type="number" name="attr_dicepool_modifier" title="Additional dicepool bonus"/>
 										<div class="exotic-warning">
 											<span><i>Exotic weapons are currently not linked to the skills section. Use modifier Dice input to set dicepool.</i></span>
 										</div>
@@ -945,12 +960,12 @@
 								</div>
 							</div>
 							<div class="display">
-								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{weapon}}}{{base=Agility}}{{dice=[[((@{skill} +@{dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{acc}, DV @{damage}, AP @{ap}, Reach @{reach}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_weapon"></span></button></div>
-								<div class="display-row"><span name="attr_reach"></span></div>
-								<div class="display-row"><span name="attr_damage"></span></div>
-								<div class="display-row"><span name="attr_acc"></span></div>
-								<div class="display-row"><span name="attr_ap"></span></div>
-								<input class="display-flag" type="checkbox" name="attr_display_flag" /><span>i</span>
+								<div class="display-row" title="Roll attack"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{weapon}}}{{base=Agility}}{{dice=[[((@{skill} +@{dicepool})+@{agility}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=ACC @{acc}, DV @{damage}, AP @{ap}, Reach @{reach}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_weapon"></span></button></div>
+								<div class="display-row" title="Reach"><span name="attr_reach"></span></div>
+								<div class="display-row" title="Damage"><span name="attr_damage"></span></div>
+								<div class="display-row" title="Accuracy"><span name="attr_acc"></span></div>
+								<div class="display-row" title="Armor Penetration"><span name="attr_ap"></span></div>
+								<input class="display-flag" type="checkbox" name="attr_display_flag" title="Display notes" /><span>i</span>
 								<div class="collapsable">
 									<div class="desc"><span name="attr_notes"></span></div>
 								</div>
@@ -968,19 +983,19 @@
 						<h3>Armor</h3><h3>Rating</h3><h3>Acid</h3><h3>Cold</h3><h3>Elec.</h3><h3>Fire</h3><h3>Radi.</h3>
 					</div>
 					<fieldset class="repeating_armor">
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 						<div class="settings">
 							<div>
-								<input type="text" name="attr_name" placeholder="Armor Jacket" />
-								<input type="number" name="attr_rating" min="0" value="0" placeholder="12" />
-								<input type="number" name="attr_acid_modifier" min="0" value="0" placeholder="+5" />
-								<input type="number" name="attr_cold_modifier" min="0" value="0" placeholder="0" />
-								<input type="number" name="attr_electrical_modifier" min="0" value="0" placeholder="+5" />
-								<input type="number" name="attr_fire_modifier" min="0" value="0" placeholder="0" />
-								<input type="number" name="attr_radiation_modifier" min="0" value="0" placeholder="0" />
+								<input type="text" name="attr_name" placeholder="Armor Jacket" title="Armor name" />
+								<input type="number" name="attr_rating" min="0" value="0" placeholder="12" title="Rating" />
+								<input type="number" name="attr_acid_modifier" min="0" value="0" placeholder="+5" title="Acid modifier" />
+								<input type="number" name="attr_cold_modifier" min="0" value="0" placeholder="0" title="Cold modifier" />
+								<input type="number" name="attr_electrical_modifier" min="0" value="0" placeholder="+5" title="Electrical modifier" />
+								<input type="number" name="attr_fire_modifier" min="0" value="0" placeholder="0" title="Fire modifier" />
+								<input type="number" name="attr_radiation_modifier" min="0" value="0" placeholder="0" title="Radiation modifier" />
 								<div class="settings-row">
-									<label>Primary</label><input type="checkbox" class="skill-select" name="attr_primary" value="primary" />
-									<label>modifier Dice</label><input type="number" name="attr_dicepool_modifier" />
+									<label>Primary</label><input type="checkbox" class="skill-select" name="attr_primary" value="primary" title="Add to Core tab as primary armor" />
+									<label>modifier Dice</label><input type="number" name="attr_dicepool_modifier" title="Additional dicepool bonus" />
 								</div>
 								<div class="settings-row">
 									<label>Notes</label>
@@ -989,27 +1004,27 @@
 							</div>
 						</div>
 						<div class="display">
-							<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Soak}}{{base=Body ♦ Armor}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_name"></span></button></div>
-							<div class="display-row hoverswitch">
+							<div class="display-row" title="Soak roll"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Soak}}{{base=Body ♦ Armor}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_name"></span></button></div>
+							<div class="display-row hoverswitch" title="Armor roll">
 								<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{armor}}}{{base= Armor}}{{dice=[[(@{rating}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">
 								<span class="default" name="attr_rating"></span><!--<span class="hover" name="attr_soak"></span>--></button>
 							</div>
-							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Acid Protection}}{{base=Body ♦ Armor}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{acid_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">
+							<div class="display-row hoverswitch" title="Acid protection roll"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Acid Protection}}{{base=Body ♦ Armor}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{acid_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">
 								<span class="default" name="attr_acid_modifier"></span><!--<span class="hover" name="attr_acid_protection"></span>--></button>
 							</div>
-							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Cold Protection}}{{base=Body ♦ Armor}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{cold_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">
+							<div class="display-row hoverswitch" title="Cold protection roll"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Cold Protection}}{{base=Body ♦ Armor}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{cold_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">
 								<span class="default" name="attr_cold_modifier"></span><!--<span class="hover" name="attr_cold_protection"></span>--></button>
 							</div>
-							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Electrical Protection}}{{base=Body ♦ Armor}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{electrical_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">
+							<div class="display-row hoverswitch" title="Electrical protection roll"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Electrical Protection}}{{base=Body ♦ Armor}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{electrical_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">
 								<span class="default" name="attr_electrical_modifier"></span><!--<span class="hover" name="attr_electrical_protection"></span>--></button>
 							</div>
-							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Fire Protection}}{{base=Body ♦ Armor}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{fire_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">
+							<div class="display-row hoverswitch" title="Fire protection roll"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Fire Protection}}{{base=Body ♦ Armor}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{fire_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">
 								<span class="default" name="attr_fire_modifier"></span><!--<span class="hover" name="attr_fire_protection"></span>--></button>
 							</div>
-							<div class="display-row hoverswitch"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Radiation Protection}}{{base=Body ♦ Armor}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{radiation_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">
+							<div class="display-row hoverswitch" title="Radiation protection roll"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=Radiation Protection}}{{base=Body ♦ Armor}}{{dice=[[(@{body}+@{rating}+@{dicepool_modifier}+@{radiation_modifier}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">
 								<span class="default" name="attr_radiation_modifier"></span><!--<span class="hover" name="attr_radiation_protection"></span>--></button>
 							</div>
-							<input class="display-flag" type="checkbox" name="attr_display_flag" /><span>i</span>
+							<input class="display-flag" type="checkbox" name="attr_display_flag" title="Display notes" /><span>i</span>
 							<div class="collapsable">
 								<div class="desc"><span name="attr_notes"></span></div>
 							</div>
@@ -1029,21 +1044,21 @@
 						<h3>Augementation</h3><h3>Rating</h3><h3>Essence</h3>
 					</div>
 					<fieldset class="repeating_augementations">
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 						<div class="settings">
 							<div> 
-								<input type="text" name="attr_augmentation" placeholder="Augementation" />
-								<input type="number" name="attr_rating" placeholder="#" />
-								<input type="text" name="attr_essence" placeholder="6" style="width: 10%" />
+								<input type="text" name="attr_augmentation" placeholder="Augementation" title="Augementation name" />
+								<input type="number" name="attr_rating" placeholder="#" title="Rating"  />
+								<input type="text" name="attr_essence" placeholder="6" style="width: 10%" title="Essence cost" />
 								<label>Notes</label>
 								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 							</div>
 						</div>
 						<div class="display">
-							<input class="display-flag" type="checkbox" name="attr_display_flag" />
-							<div class="display-row"><span name="attr_augmentation"></span></div>
-							<div class="display-row"><span name="attr_rating"></span></div>
-							<div class="display-row"><span name="attr_essence"></span></div>
+							<input class="display-flag" type="checkbox" name="attr_display_flag"  title="Display settings" />
+							<div class="display-row" title="Augementation"><span name="attr_augmentation"></span></div>
+							<div class="display-row" title="Rating"><span name="attr_rating"></span></div>
+							<div class="display-row" title="Essence"><span name="attr_essence"></span></div>
 							<div class="collapsable">
 								<div class="desc"><span name="attr_notes"></span></div>
 							</div>
@@ -1062,19 +1077,19 @@
 					<h3>Item</h3><h3>Rating</h3>
 				</div>
 				<fieldset class="repeating_items">
-					<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+					<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 					<div class="settings">
 						<div>
-							<input type="text" name="attr_item" placeholder="Item name" />
-							<input type="number" name="attr_rating" placeholder="#" />
+							<input type="text" name="attr_item" placeholder="Item name" title="Item name" />
+							<input type="number" name="attr_rating" placeholder="#" title="Rating"/>
 							<label>Notes</label>
 							<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
 						</div>
 					</div>
 					<div class="display">
-						<input class="display-flag" type="checkbox" name="attr_display_flag" />
-						<div class="display-row"><span name="attr_item"></span></div>
-						<div class="display-row"><span name="attr_rating"></span></div>
+						<input class="display-flag" type="checkbox" name="attr_display_flag" title="Settings toggle" />
+						<div class="display-row" title="Item name"><span name="attr_item"></span></div>
+						<div class="display-row" title="Rating"><span name="attr_rating"></span></div>
 						<div class="collapsable">
 							<div class="desc"><span name="attr_notes"></span></div>
 						</div>
@@ -1090,15 +1105,15 @@
 			<div class="header right-header">
 				<div class="header htab">
 					<div class="triangle"></div>
-					<input class="magic-toggle" type="radio" name="attr_magic_toggle" value="spells" checked="checked" /><h1>Spells</h1><div class="right-tri"></div>
+					<input class="magic-toggle" type="radio" name="attr_magic_toggle" value="spells" checked="checked" title="Spells" /><h1>Spells</h1><div class="right-tri"></div>
 				</div>
 				<div class="header htab">
 					<div class="triangle"></div>
-					<input class="magic-toggle" type="radio" name="attr_magic_toggle" value="preps" /><h1>Prep...</h1><div class="right-tri"></div>
+					<input class="magic-toggle" type="radio" name="attr_magic_toggle" value="preps" title="Preperation" /><h1>Prep...</h1><div class="right-tri"></div>
 				</div>
 				<div class="header htab">
 					<div class="triangle"></div>
-					<input class="magic-toggle" type="radio" name="attr_magic_toggle" value="rituals" /><h1>Rituals</h1><div class="right-tri"></div>
+					<input class="magic-toggle" type="radio" name="attr_magic_toggle" value="rituals" title="Rituals" /><h1>Rituals</h1><div class="right-tri"></div>
 				</div>
 			</div>
 			<div class="border-box repeat-box">
@@ -1109,31 +1124,31 @@
 					<input class="magic-toggle" type="hidden" name="attr_magic_toggle" value="spells">
 					<div class="magic-spells">
 						<fieldset class="repeating_spell">
-							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle"  /><span>x</span>
 							<div class="settings">
 								<div>
-									<input type="text" name="attr_name" placeholder="Fireball" />
-									<select name="attr_type">
+									<input type="text" name="attr_name" placeholder="Fireball" title="Spell name" />
+									<select name="attr_type" title="Type">
 										<option value="Mana" selected="selected">Mana</option>
 										<option value="Physcial">Physical</option>
 									</select>
-									<select name="attr_range">
+									<select name="attr_range" title="Range">
 										<option value="LOS" selected="selected">LOS</option>
 										<option value="LOS (A)">LOS (A)</option>
 										<option value="Special">Special</option>
 										<option value="T">T</option>
 										<option value="T (A)">T (A)</option>
 									</select>
-									<select name="attr_duration">
+									<select name="attr_duration" title="Duration">
 										<option value="Instant" selected="selected">Instant</option>
 										<option value="Permanent">Permanent</option>
 										<option value="Special">Special</option>
 										<option value="Sustained">Sustained</option>
 									</select>
-									<input type="number" name="attr_drain" value="" placeholder="-1" />
+									<input type="number" name="attr_drain" value="" placeholder="-1" title="Drain code" />
 									<div class="settings-row">
 										<label>Spell Category</label>
-										<select name="attr_category">
+										<select name="attr_category" title="Category">
 											<option class="option" value="Combat" selected="selected">Combat</option>
 											<option class="option" value="Detection">Detection</option>
 											<option class="option" value="Health">Health</option>
@@ -1142,7 +1157,7 @@
 											<option class="option" value="Other">Other</option>
 										</select>
 										<label>Combat Type</label>
-										<select class="combat-type" name="attr_combat_type">
+										<select class="combat-type" name="attr_combat_type" title="Combat type">
 											<option class="option" value="Force " selected="selected"></option>
 											<option class="option" value="Direct, Force ">Direct</option>
 											<option class="option" value="Indirect, Force ?{Force|}, AP -">Indirect</option>
@@ -1151,13 +1166,13 @@
 									<div class="settings-row">
 										<input type="hidden" name="attr_dicepool" value="0" />
 										<label>Magic Skill</label>
-										<select class="skill-select" name="attr_skill">
+										<select class="skill-select" name="attr_skill" title="Magic skill">
 											<option class="option-headers" disabled="true">Magic Skills</option>
 											<option class="option-groups" value="@{sorcery}">Sorcery Group</option>
 											<option value="@{spellcasting}" selected="selected">Spellcasting</option>
 										</select>
-										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" />
-										<label>modifier Dice</label><input type="number" name="attr_dicepool_modifier" />
+										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" title="Applicable specialization" />
+										<label>modifier Dice</label><input type="number" name="attr_dicepool_modifier" title="Additional dicepool bonus" />
 									</div>
 									<div class="settings-row">
 										<label>Notes</label>
@@ -1166,14 +1181,15 @@
 								</div>
 							</div>
 							<div class="display">
-								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Magic}}{{dice=[[((@{skill} +@{dicepool})+@{magic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{drain})]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_name"></span></button></div> <div class="display-row"><span name="attr_type"></span></div>
-								<div class="display-row"><span name="attr_range"></span></div>
-								<div class="display-row"><span name="attr_duration"></span></div>
-								<div class="display-row" style="text-align: center;"><span name="attr_drain"></span></div>
-								<input class="display-flag" type="checkbox" name="attr_display_flag" /><span>i</span>
+								<div class="display-row" title="Spell roll"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Magic}}{{dice=[[((@{skill} +@{dicepool})+@{magic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{drain})]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_name"></span></button></div>
+								<div class="display-row" title="Type"><span name="attr_type"></span></div>
+								<div class="display-row" title="Range"><span name="attr_range"></span></div>
+								<div class="display-row" title="Duration"><span name="attr_duration"></span></div>
+								<div class="display-row" style="text-align: center;" title="Drain code"><span name="attr_drain"></span></div>
+								<input class="display-flag" type="checkbox" name="attr_display_flag" title="Display notes" /><span>i</span>
 								<div class="collapsable">
-									<div class="desc"><i><span name="attr_category"></span></i></div>
-									<div class="desc"><i><input class="combat-type" type="hidden" name="attr_combat_type"/><span></span></i></div>
+									<div class="desc"><i><span name="attr_category" title="Category"></span></i></div>
+									<div class="desc"><i><input class="combat-type" type="hidden" name="attr_combat_type" title="Combat type" /><span></span></i></div>
 									<div class="desc"><span name="attr_notes"></span></div>
 								</div>
 							</div>
@@ -1181,31 +1197,31 @@
 					</div>
 					<div class="magic-preps">
 						<fieldset class="repeating_preps">
-							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 							<div class="settings">
 								<div>
-									<input type="text" name="attr_name" placeholder="Fireball" />
-									<select name="attr_type">
+									<input type="text" name="attr_name" placeholder="Fireball" title="Spell name" />
+									<select name="attr_type" title="Type">
 										<option value="Mana" selected="selected">Mana</option>
 										<option value="Physcial">Physical</option>
 									</select>
-									<select name="attr_range">
+									<select name="attr_range" title="Range">
 										<option value="LOS" selected="selected">LOS</option>
 										<option value="LOS (A)">LOS (A)</option>
 										<option value="Special">Special</option>
 										<option value="T">T</option>
 										<option value="T (A)">T (A)</option>
 									</select>
-									<select name="attr_duration">
+									<select name="attr_duration" title="Duration">
 										<option value="Instant" selected="selected">Instant</option>
 										<option value="Permanent">Permanent</option>
 										<option value="Special">Special</option>
 										<option value="Sustained">Sustained</option>
 									</select>
-									<input type="number" name="attr_drain" value="" placeholder="-1" />
+									<input type="number" name="attr_drain" value="" placeholder="-1" title="Drain code" />
 									<div class="settings-row">
 										<label>Spell Category</label>
-										<select name="attr_category">
+										<select name="attr_category" title="Category">
 											<option class="option" value="Combat" selected="selected">Combat</option>
 											<option class="option" value="Detection">Detection</option>
 											<option class="option" value="Health">Health</option>
@@ -1214,7 +1230,7 @@
 											<option class="option" value="Other">Other</option>
 										</select>
 										<label>Combat Type</label>
-										<select class="combat-type" name="attr_combat_type">
+										<select class="combat-type" name="attr_combat_type" title="Combat type">
 											<option class="option" value="Force " selected="selected"></option>
 											<option class="option" value="Direct, Force ">Direct</option>
 											<option class="option" value="Indirect, Force ?{Force|}, AP -">Indirect</option>
@@ -1223,13 +1239,13 @@
 									<div class="settings-row">
 										<input type="hidden" name="attr_dicepool" value="0" />
 										<label>Magic Skill</label>
-										<select class="skill-select" name="attr_skill">
+										<select class="skill-select" name="attr_skill" title="Magic skill">
 											<option class="option-headers" disabled="true">Magic Skills</option>
 											<option class="option-groups" value="@{enchanting}">Enchanting Group</option>
 											<option value="@{alchemy}" selected="selected">Alchemy</option>
 										</select>
-										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" />
-										<label>modifier Dice</label><input type="number" name="attr_dicepool_modifier" />
+										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" title="Applicable specialization" />
+										<label>modifier Dice</label><input type="number" name="attr_dicepool_modifier" title="Additional dicepool bonus" />
 									</div>
 									<label>Notes</label>
 									<textarea name="attr_notes" value="" placeholder="Alchemy notes"></textarea>
@@ -1237,15 +1253,15 @@
 							</div>
 							<div class="display">
 								<input class="display-flag" type="checkbox" name="attr_display_flag" />
-								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Magic}}{{dice=[[((@{skill} +@{dicepool})+@{magic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{drain})]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_name"></span></button></div>
-								<div class="display-row"><span name="attr_type"></span></div>
-								<div class="display-row"><span name="attr_range"></span></div>
-								<div class="display-row"><span name="attr_duration"></span></div>
-								<div class="display-row" style="text-align: center;"><span name="attr_drain"></span></div>
-								<input class="display-flag" type="checkbox" name="attr_display_flag" /><span>i</span>
+								<div class="display-row" title="Spell roll"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Magic}}{{dice=[[((@{skill} +@{dicepool})+@{magic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type}?{Force|}, Drain [[?{Force|}+(@{drain})]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_name"></span></button></div>
+								<div class="display-row" title="Type"><span name="attr_type"></span></div>
+								<div class="display-row" title="Range"><span name="attr_range"></span></div>
+								<div class="display-row" title="Duration"><span name="attr_duration"></span></div>
+								<div class="display-row" style="text-align: center;" title="Drain code"><span name="attr_drain"></span></div>
+								<input class="display-flag" type="checkbox" name="attr_display_flag" title="Display notes" /><span>i</span>
 								<div class="collapsable">
-									<div class="desc"><i><span name="attr_category"></span></i></div>
-									<div class="desc"><i><input class="combat-type" type="hidden" name="attr_combat_type"/><span></span></i></div>
+									<div class="desc"><i><span name="attr_category" title="Category"></span></i></div>
+									<div class="desc"><i><input class="combat-type" type="hidden" name="attr_combat_type" title="Combat type"/><span></span></i></div>
 									<div class="desc"><span name="attr_notes"></span></div>
 								</div>
 							</div>
@@ -1253,29 +1269,29 @@
 					</div>
 					<div class="magic-rituals">
 						<fieldset class="repeating_ritual">
-							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 							<div class="settings">
 								<div>
-									<input type="text" name="attr_name" placeholder="Curse (MATERIAL LINK, SPELL)" />
+									<input type="text" name="attr_name" placeholder="Curse (MATERIAL LINK, SPELL)" title="Ritual name" />
 									<div class="settings-row">
 										<input type="hidden" name="attr_dicepool" value="0" />
 										<label>Magic Skill</label>
-										<select class="skill-select" name="attr_skill">
+										<select class="skill-select" name="attr_skill" title="Magic skill">
 											<option class="option-headers" disabled="true">Magic Skills</option>
 											<option class="option-groups" value="@{sorcery}">Sorcery Group</option>
 											<option value="@{ritualspell}" selected="selected">Ritual Spellcasting</option>
 										</select>
-										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" />
-										<label>modifier Dice</label><input type="number" name="attr_dicepool_modifier" />
+										<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" title="Applicable specialization" />
+										<label>modifier Dice</label><input type="number" name="attr_dicepool_modifier" title="Additional dicepool bonus" />
 									</div>
 									<label>Notes</label>
 									<textarea name="attr_notes" value="" placeholder="Ritual notes"></textarea>
 								</div>
 							</div>
 							<div class="display">
-								<input class="display-flag" type="checkbox" name="attr_display_flag" />
-								<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Magic}}{{dice=[[((@{skill} +@{dicepool})+@{magic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Force ?{Force|}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_name"></span></button></div>
-								<input class="display-flag" type="checkbox" name="attr_display_flag" /><span>i</span>
+								<input class="display-flag" type="checkbox" name="attr_display_flag"  />
+								<div class="display-row" class="Ritual roll"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Magic}}{{dice=[[((@{skill} +@{dicepool})+@{magic}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Force ?{Force|}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_name"></span></button></div>
+								<input class="display-flag" type="checkbox" name="attr_display_flag" title="Display notes" /><span>i</span>
 								<div class="collapsable">
 									<div class="desc"><span name="attr_notes"></span></div>
 								</div>
@@ -1294,19 +1310,19 @@
 						<h3>Name</h3><h3>Rating</h3>
 					</div>
 					<fieldset class="repeating_powers">
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 						<div class="settings">
 							<div>
-								<input type="text" name="attr_name" placeholder="Adept powers or other ability" />
-								<input type="number" name="attr_rating" placeholder="#" />
+								<input type="text" name="attr_name" placeholder="Adept powers or other ability" title="Ability or power name" />
+								<input type="number" name="attr_rating" placeholder="#" title="Rating" />
 								<label>Notes</label>
 								<textarea name="attr_notes" value="" placeholder="Power notes"></textarea>
 							</div>
 						</div>
 						<div class="display">
 							<input class="display-flag" type="checkbox" name="attr_display_flag" />
-							<div class="display-row"><span name="attr_name"></span></div>
-							<div class="display-row"><span name="attr_rating"></span></div>
+							<div class="display-row" title="Ability or power name"><span name="attr_name"></span></div>
+							<div class="display-row" title="Rating"><span name="attr_rating"></span></div>
 							<div class="collapsable">
 								<div class="desc"><span name="attr_notes"></span></div>
 							</div>
@@ -1323,11 +1339,10 @@
 			<div class="border-box repeat-box matrix-box">
 				<div class="pc-box medium-box cyberdeck">
 					<div class="row-long">
-						<label>Model</label><input type="text" name="attr_cyberdeck" value="" placeholder="Sony CYI-720" />
+						<label>Model</label><input type="text" name="attr_cyberdeck" value="" placeholder="Sony CYI-720" title="Cyberdeck name" />
 					</div>
 					<div class="row-long">
-						<label><button type="roll" value="&{template:sRun}{{header=Matrix Soak}}{{base=Device Rating}}{{dice=[[(@{device_rating}+@{firewall}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">
-						Device Rating</button></label><input type="number" name="attr_device_rating" min="0" value="" placeholder="4" style="margin-right: 15%;" />
+						<label><button type="roll" value="&{template:sRun}{{header=Matrix Soak}}{{base=Device Rating}}{{dice=[[(@{device_rating}+@{firewall}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Roll matrix soak">Device Rating</button></label><input type="number" name="attr_device_rating" min="0" value="" placeholder="4" style="margin-right: 15%;" title="@{device_rating}" />
 						<label>Attribute Array</label>
 						<input type="number" name="attr_attribute_1" min="0" value="" placeholder="7" />
 						<input type="number" name="attr_attribute_2" min="0" value="" placeholder="6" />
@@ -1336,11 +1351,12 @@
 					</div>
 					<div class="row-long">
 						<h3>Total</h3><h3>Temp</h3><h3>modifier</h3><h3>Base</h3><h3>Base slider</h3><br />
-						<label><button type="roll" value="&{template:sRun}{{header=Attack}}{{base=Attack}}{{dice=[[(@{attack}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Attack</button></label>
-						<div class="matrix-tot"><span name="attr_attack"></span></div><span> = </span>
-						<input type="number" name="attr_attack_temp" min="0" value="" placeholder="0" /><spam> + </spam>
-						<input type="number" name="attr_attack_modifier" min="0" value="" placeholder="0" /><spam> + </spam>
-						<input type="number" name="attr_attack_base" min="0" value="" placeholder="7" />
+						<label><button type="roll" value="&{template:sRun}{{header=Attack}}{{base=Attack}}{{dice=[[(@{attack}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Roll attack">Attack</button>
+						</label>
+						<div class="matrix-tot" title="@{attack}" ><span name="attr_attack"></span></div><span> = </span>
+						<input type="number" name="attr_attack_temp" min="0" value="" placeholder="0" title="@{attack_temp}" /><spam> + </spam>
+						<input type="number" name="attr_attack_modifier" min="0" value="" placeholder="0" title="@{attack_modifier}" /><spam> + </spam>
+						<input type="number" name="attr_attack_base" min="0" value="" placeholder="7" title="@{attack_base}" />
 						<div class="device-attr">
 							<div class="matrix-bubble matrixAttack">
 								<input type="radio" name="attr_attack_base" value="1" /><span></span>
@@ -1357,11 +1373,11 @@
 						</div>
 					</div>
 					<div class="row-long">
-						<label><button type="roll" value="&{template:sRun}{{header=Sleaze}}{{base=Base}}{{dice=[[(@{sleaze}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Sleaze</button></label>
-						<div class="matrix-tot"><span name="attr_sleaze"></span></div><span> = </span>
-						<input type="number" name="attr_sleaze_temp" min="0" value="" placeholder="0" /><spam> + </spam>
-						<input type="number" name="attr_sleaze_modifier" min="0" value="" placeholder="0" /><spam> + </spam>
-						<input type="number" name="attr_sleaze_base" min="0" value="" placeholder="6" />
+						<label><button type="roll" value="&{template:sRun}{{header=Sleaze}}{{base=Base}}{{dice=[[(@{sleaze}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Roll sleaze">Sleaze</button></label>
+						<div class="matrix-tot" title="@{sleaze}" ><span name="attr_sleaze"></span></div><span> = </span>
+						<input type="number" name="attr_sleaze_temp" min="0" value="" placeholder="0" title="@{sleaze_temp}" /><spam> + </spam>
+						<input type="number" name="attr_sleaze_modifier" min="0" value="" placeholder="0" title="@{sleaze_modifier}" /><spam> + </spam>
+						<input type="number" name="attr_sleaze_base" min="0" value="" placeholder="6" title="@{sleaze_base}" />
 						<div class="device-attr">
 							<div class="matrix-bubble matrixSleaze">
 								<input type="radio" name="attr_sleaze_base" value="1" /><span></span>
@@ -1378,11 +1394,11 @@
 						</div>
 					</div>
 					<div class="row-long">
-						<label><button type="roll" value="&{template:sRun}{{header=Data Processing}}{{base=Base}}{{dice=[[(@{data_processing}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Data Proc.</button></label>
-						<div class="matrix-tot"><span name="attr_data_processing"></span></div><span> = </span>
-						<input type="number" name="attr_data_processing_temp" min="0" alue="" placeholder="0" /><spam> + </spam>
-						<input type="number" name="attr_data_processing_modifier" min="0" value="" placeholder="0" /><spam> + </spam>
-						<input type="number" name="attr_data_processing_base" min="0" value="" placeholder="5" />
+						<label><button type="roll" value="&{template:sRun}{{header=Data Processing}}{{base=Base}}{{dice=[[(@{data_processing}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Roll data processing">Data Proc.</button></label>
+						<div class="matrix-tot" title="@{data_processing}" ><span name="attr_data_processing"></span></div><span> = </span>
+						<input type="number" name="attr_data_processing_temp" min="0" alue="" placeholder="0" title="@{data_processing_temp}" /><spam> + </spam>
+						<input type="number" name="attr_data_processing_modifier" min="0" value="" placeholder="0" title="@{data_processing_modifier}" /><spam> + </spam>
+						<input type="number" name="attr_data_processing_base" min="0" value="" placeholder="5" title="@{data_processing_base}" />
 						<div class="device-attr">
 							<div class="matrix-bubble matrixData">
 								<input type="radio" name="attr_data_processing_base" value="1" /><span></span>
@@ -1399,11 +1415,11 @@
 						</div>
 					</div>
 					<div class="row-long">
-						<label><button type="roll" value="&{template:sRun}{{header=Firewall}}{{base=Base}}{{dice=[[(@{firewall}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Firewall</button></label>
-						<div class="matrix-tot"><span name="attr_firewall"></span></div><span> = </span>
-						<input type="number" name="attr_firewall_temp" min="0" value="" placeholder="0" /><spam> + </spam>
-						<input type="number" name="attr_firewall_modifier" min="0" value="" placeholder="0" /><spam> + </spam>
-						<input type="number" name="attr_firewall_base" min="0" value="" placeholder="4" />
+						<label><button type="roll" value="&{template:sRun}{{header=Firewall}}{{base=Base}}{{dice=[[(@{firewall}+(?{Attribute|Willpower,@{willpower}|Logic,@{logic}|Intuition,@{intuition}})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Roll firewall">Firewall</button></label>
+						<div class="matrix-tot" title="@{firewall}" ><span name="attr_firewall"></span></div><span> = </span>
+						<input type="number" name="attr_firewall_temp" min="0" value="" placeholder="0" title="@{firewall_temp}" /><spam> + </spam>
+						<input type="number" name="attr_firewall_modifier" min="0" value="" placeholder="0" title="@{firewall_modifier}" /><spam> + </spam>
+						<input type="number" name="attr_firewall_base" min="0" value="" placeholder="4" title="@{firewall_base}" />
 						<div class="device-attr">
 							<div class="matrix-bubble matrixFirewall">
 								<input type="radio" name="attr_firewall_base" value="1" /><span></span>
@@ -1437,18 +1453,18 @@
 					<h3>Programs</h3>
 					<div class="program-box">
 						<fieldset class="repeating_programs">
-							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 							<div class="settings">
 								<div>
-									<input type="text" name="attr_program" value="" placeholder="Program name" />
+									<input type="text" name="attr_program" value="" placeholder="Program name" title="Program name" />
 									<label>Notes</label>
 									<textarea name="attr_notes" placeholder="Program description"></textarea>
 								</div>
 							</div>
 							<div class="display">
-								<input type="checkbox" class="program-toggle" name="attr_program_on" checked="checked" /><span class="program-toggle" style="color: #000;">Q</span>
+								<input type="checkbox" class="program-toggle" name="attr_program_on" checked="checked" title="Program loaded" /><span class="program-toggle" style="color: #000;">Q</span>
 								<input class="display-flag" type="checkbox" name="attr_display_flag" />
-								<div class="display-row"><span name="attr_program"></span></div>
+								<div class="display-row" title="Program name"><span name="attr_program"></span></div>
 								<div class="collapsable">
 									<div class="desc"><span name="attr_notes"></span></div>
 								</div>
@@ -1466,11 +1482,11 @@
 						<h3>Complex Form</h3><h3>Target</h3><h3>Duration</h3><h3>Fade</h3>
 					</div>
 					<fieldset class="repeating_forms">
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 						<div class="settings">
 							<div> 
-								<input type="text" name="attr_name" placeholder="Editor" />
-								<select name="attr_target">
+								<input type="text" name="attr_name" placeholder="Editor" title="Complex form name" />
+								<select name="attr_target" title="Target">
 									<option class="option" value="Device" selected="selected">Device</option>
 									<option class="option" value="File">File</option>
 									<option class="option" value="Host">Host</option>
@@ -1480,24 +1496,24 @@
 									<option class="option" value="Self">Self</option>
 									<option class="option" value="Sprite">Sprite</option>
 								</select>
-								<select name="attr_duration">
+								<select name="attr_duration" title="Duration">
 									<option value="Extended">Extended</option>
 									<option value="Instant">Instant</option>
 									<option value="Permanent">Permanent</option>
 									<option value="Special">Other</option>
 									<option value="Sustained">Sustained</option>
 								</select>
-								<input type="number" name="attr_fade" value="" placeholder="-1" />
+								<input type="number" name="attr_fade" value="" placeholder="-1" title="Fade code" />
 								<div class="settings-row">
 									<input type="hidden" name="attr_dicepool" value="0" />
 									<label>Tech. Skill</label>
-									<select class="skill-select" name="attr_skill">
+									<select class="skill-select" name="attr_skill" title="Technical skill" >
 										<option class="option-headers" disabled="true">Technical Skills</option>
 										<option class="option-groups" value="@{electronics}">Electronics Group</option>
 										<option value="@{software}" selected="selected">Software</option>
 									</select>
-									<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" />
-									<label>modifier Dice</label><input type="number" name="attr_dicepool_modifier" />
+									<label>Specialization</label><input class="skill-select" type="checkbox" name="attr_spec" value="2" title="Applicable specialization" />
+									<label>modifier Dice</label><input type="number" name="attr_dicepool_modifier" title="Additional dicepool bonus" />
 								</div>
 								<label>Notes</label>
 								<textarea name="attr_notes" value="" placeholder="Notes"></textarea>
@@ -1506,10 +1522,10 @@
 						<div class="display">
 							<input class="display-flag" type="checkbox" name="attr_display_flag" />
 							<div class="display-row"><button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{name}}}{{base=Resonance}}{{dice=[[((@{skill} +@{dicepool})+@{resonance}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Level ?{Level|}, Fade [[?{Level|}+(@{fade})]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_name"></span></button></div>
-							<div class="display-row"><span name="attr_target"></span></div>
-							<div class="display-row"><span name="attr_duration"></span></div>
-							<div class="display-row" style="text-align: center;"><span name="attr_fade"></span></div>
-							<input class="display-flag" type="checkbox" name="attr_display_flag" /><span>i</span>
+							<div class="display-row" title="Target"><span name="attr_target"></span></div>
+							<div class="display-row" title="Duration"><span name="attr_duration"></span></div>
+							<div class="display-row" style="text-align: center;" title="Fade code"><span name="attr_fade"></span></div>
+							<input class="display-flag" type="checkbox" name="attr_display_flag" title="Display notes" /><span>i</span>
 							<div class="collapsable">
 								<div class="desc"><span name="attr_notes"></span></div>
 							</div>
@@ -1532,7 +1548,7 @@
 						<h3>Fake IDs / Related Lifestyles / Funds / Licenses</h3>
 					</div>
 					<fieldset class="repeating_lifestyle">
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 						<div class="settings">
 							<div>
 								<h3>Fake ID</h3><textarea name="attr_name" placeholder="John Doe"></textarea>
@@ -1560,7 +1576,7 @@
 				<div class="pc-box small-box">
 					<div class="row-long"><h3>Name</h3><h3>Loyalty</h3><h3>Connection</h3><h3>Favor</h3></div>
 					<fieldset class="repeating_contacts">
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 						<div class="settings">
 							<div>
 								<input type="text" name="attr_name" placeholder="Old Crow" />
@@ -1593,7 +1609,7 @@
 			<div class="border-box repeat-box vehicle-box">
 				<div class="pc-box medium-box">
 					<fieldset class="repeating_vehicle">
-						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+						<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 						<div class="settings">
 							<div>
 								<div class="row-long">
@@ -1691,7 +1707,7 @@
 				<div class="pc-box">
 					<div class="op-col">
 						<div>
-							<h2>Character:</h2><br />
+							<h2>Character</h2><br />
 							<label>Mundane</label><input class="character-type" type="checkbox" name="attr_flag_special" value="mundane" title="Mundane" checked="checked" /><br />
 							<label>Awakened</label><input class="character-type" type="checkbox" name="attr_flag_special" value="magic" title="Magic" /><br />
 							<label>Emerged</label><input class="character-type" type="checkbox" name="attr_flag_special" value="resonance" title="Resonance" />
@@ -1708,7 +1724,7 @@
 							<label>Vehicle</label><input type="checkbox" name="attr_tab_vehicle"><br />
 						</div>-->
 						<div>
-							<h2>Sheet Select: </h2><br />
+							<h2>Sheet Select</h2><br />
 							<select name="attr_sheet_type">
 								<option value="pc">PC</option>
 								<option value="goon">Goon</option>
@@ -1720,9 +1736,9 @@
 					</div>
 					<div class="op-col">
 						<div>
-							<h2>Global Temporary Bonuses</h2><br />
-							<label>Soak</label><input type="number" name="attr_soak_temp"><br />
+							<h2>Temporary Modifiers</h2><br />
 							<label>Defense</label><input type="number" name="attr_defense_temp"><br />
+							<label>Soak</label><input type="number" name="attr_soak_temp"><br />
 							<hr />
 							<label>Body</label><input type="number" name="attr_body_temp"><br />
 							<label>Agility</label><input type="number" name="attr_agility_temp"><br />
@@ -1732,6 +1748,8 @@
 							<label>Logic</label><input type="number" name="attr_logic_temp"><br />
 							<label>Intuition</label><input type="number" name="attr_intuition_temp"><br />
 							<label>Charisma</label><input type="number" name="attr_charisma_temp"><br />
+							<label>Magic</label><input type="number" name="attr_magic_temp"><br />
+							<label>Resonance</label><input type="number" name="attr_resonance_temp"><br />
 							<hr />
 							<label>Initiative</label><input type="number" name="attr_initiative_temp"><br />
 							<label>Initiative Dice</label><input type="number" name="attr_initiative_dice_temp"><br />
@@ -1753,7 +1771,7 @@
 <div class="npc">
 	<div class="stats toggle"><!-- ~~~~~~~~ Start of the Goon Sheet  ~~~~~~~~ -->
 		<input type="checkbox" class="settings-toggle npc-stats-toggle" name="attr_stats_toggle" checked="checked" /><span>y</span>
-		<div class="settings">
+		<div class="settings stat-inputs">
 			<input type="hidden" class="npc-type" name="attr_sheet_type" value="goon" />
 		<!-- ~~~~~~~~ Attributes  ~~~~~~~~ -->
 			<div class="goon attribute">
@@ -2066,11 +2084,11 @@
 				<div class="skill-box"><label>Skills: </label>
 					<fieldset class="repeating_active">
 						<div class="npc-repeating">
-							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" ><span name="attr_display"></span></button>
 							<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display_specialization"></span></button>
 							<span name="attr_display_rank"></span><span>,</span>
-							<div class="settings">
+							<div class="settings repeat-section">
 								<div class="skills-row">
 									<input type="hidden" name="attr_dicepool" />
 									<div class="settings-row">
@@ -2171,23 +2189,26 @@
 											<option value="Pilot Ground Craft">Pilot Ground Craft</option>
 											<option value="Pilot Walker">Pilot Walker</option>
 											<option value="Pilot Watercraft">Pilot Watercraft</option>
+											<option value="Software">Software</option>
 										</select>
 										<label>Rating</label><input type="number" name="attr_rank" min="0" placeholder="0" />
-										<label>Spec.</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
-										<label>Rating Modifier</label><input type="number" name="attr_rank_modifier" min="0" placeholder="0" />
 										<input type="hidden" name="attr_display_attribute" />
 										<select name="attr_attribute">
-											<option value="@{body}">BOD</option>
-											<option value="@{agility}" selected="selected">AGI</option>
-											<option value="@{reaction}">REA</option>
-											<option value="@{strength}">STR</option>
-											<option value="@{willpower}">WIL</option>
-											<option value="@{logic}">LOG</option>
-											<option value="@{intuition}">INT</option>
-											<option value="@{charisma}">CHA</option>
-											<option value="@{magic}">MAG</option>
-											<option value="@{resonance}">RES</option>
+											<option value="@{body}">body</option>
+											<option value="@{agility}" selected="selected">agility</option>
+											<option value="@{reaction}">reaction</option>
+											<option value="@{strength}">strength</option>
+											<option value="@{willpower}">willpower</option>
+											<option value="@{logic}" selected="selected">logic</option>
+											<option value="@{intuition}">intuition</option>
+											<option value="@{charisma}">charisma</option>
+											<option value="@{magic}">magic</option>
+											<option value="@{resonance}">resonance</option>
 										</select>
+									</div>
+									<div class="settings-row">
+										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
+										<label>Rating Modifier</label><input type="number" name="attr_rank_modifier" min="0" placeholder="0" />
 									</div>
 								</div>
 							</div>
@@ -2197,31 +2218,33 @@
 				<div class="skill-box"><label>Knowledge Skills: </label>
 					<fieldset class="repeating_knowledge">
 						<div class="npc-repeating">
-							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" ><span name="attr_display"></span></button>
 							<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display_specialization"></span></button>
 							<span name="attr_display_rank"></span><span>,</span>
-							<div class="settings">
+							<div class="settings repeat-section">
 								<div class="skills-row">
 									<input type="hidden" name="attr_dicepool" />
 									<div class="settings-row">
-										<label>Skill</label><input type="text" name="attr_skill" placeholder="Knowledge skill name" />										
+										<label>Skill</label><input type="text" name="attr_skill" placeholder="Knowledge skill name" style="width: 61%;" />										
 										<label>Rating</label><input type="number" name="attr_rank" min="0" placeholder="0" />
-										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
-										<label>Rating Modifier</label><input type="number" name="attr_rank_modifier" min="0" placeholder="0" />
 										<input type="hidden" name="attr_display_attribute" />
 										<select name="attr_attribute">
-											<option value="@{body}">BOD</option>
-											<option value="@{agility}" selected="selected">AGI</option>
-											<option value="@{reaction}">REA</option>
-											<option value="@{strength}">STR</option>
-											<option value="@{willpower}">WIL</option>
-											<option value="@{logic}" selected="selected">LOG</option>
-											<option value="@{intuition}">INT</option>
-											<option value="@{charisma}">CHA</option>
-											<option value="@{magic}">MAG</option>
-											<option value="@{resonance}">RES</option>
+											<option value="@{body}">body</option>
+											<option value="@{agility}" selected="selected">agility</option>
+											<option value="@{reaction}">reaction</option>
+											<option value="@{strength}">strength</option>
+											<option value="@{willpower}">willpower</option>
+											<option value="@{logic}" selected="selected">logic</option>
+											<option value="@{intuition}">intuition</option>
+											<option value="@{charisma}">charisma</option>
+											<option value="@{magic}">magic</option>
+											<option value="@{resonance}">resonance</option>
 										</select>
+									</div>
+									<div class="settings-row">
+										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
+										<label>Rating Modifier</label><input type="number" name="attr_rank_modifier" min="0" placeholder="0" />
 									</div>
 								</div>
 							</div>
@@ -2231,31 +2254,33 @@
 				<div class="skill-box"><label>Language Skills: </label>
 					<fieldset class="repeating_language">
 						<div class="npc-repeating">
-							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" ><span name="attr_display"></span></button>
 							<button class="spec-button" type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=@{display_attribute}}}{{dice=[[(@{dicepool}+@{attribute}+2+@{wound_toggle}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=Spec: @{specialization}}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display_specialization"></span></button>
 							<span name="attr_display_rank"></span><span>,</span>
-							<div class="settings">
+							<div class="settings repeat-section">
 								<div class="skills-row">
 									<input type="hidden" name="attr_dicepool" />
 									<div class="settings-row">
-										<label>Skill</label><input type="text" name="attr_skill" placeholder="Language" />										
+										<label>Skill</label><input type="text" name="attr_skill" placeholder="Language" style="width: 61%;" />										
 										<label>Rating</label><input type="number" name="attr_rank" min="0" placeholder="0" />
-										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
-										<label>Rating Modifier</label><input type="number" name="attr_rank_modifier" min="0" placeholder="0" />
 										<input type="hidden" name="attr_display_attribute" />
 										<select name="attr_attribute">
-											<option value="@{body}">BOD</option>
-											<option value="@{agility}" selected="selected">AGI</option>
-											<option value="@{reaction}">REA</option>
-											<option value="@{strength}">STR</option>
-											<option value="@{willpower}">WIL</option>
-											<option value="@{logic}">LOG</option>
-											<option value="@{intuition}" selected="selected">INT</option>
-											<option value="@{charisma}">CHA</option>
-											<option value="@{magic}">MAG</option>
-											<option value="@{resonance}">RES</option>
+											<option value="@{body}">body</option>
+											<option value="@{agility}" selected="selected">agility</option>
+											<option value="@{reaction}">reaction</option>
+											<option value="@{strength}">strength</option>
+											<option value="@{willpower}">willpower</option>
+											<option value="@{logic}">logic</option>
+											<option value="@{intuition}" selected="selected">intuition</option>
+											<option value="@{charisma}">charisma</option>
+											<option value="@{magic}">magic</option>
+											<option value="@{resonance}">resonance</option>
 										</select>
+									</div>
+									<div class="settings-row">
+										<label>Specializations</label><input type="text" name="attr_specialization" placeholder="Specalizations" />
+										<label>Rating Modifier</label><input type="number" name="attr_rank_modifier" min="0" placeholder="0" />
 									</div>
 								</div>
 							</div>
@@ -2267,7 +2292,7 @@
 				<div class="skill-box"><label>Skills: </label>
 					<fieldset class="repeating_active repeat-section">
 						<div class="npc-repeating">
-							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{skill}}}{{base=Level}}{{dice=[[(@{level}+@{level}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_display"></span></button><span>,</span>
 							<div class="settings">
 								<div class="skills-row">
@@ -2289,7 +2314,7 @@
 				<div class="skill-box"><label>Powers: </label>
 					<fieldset class="repeating_powers">
 						<div class="npc-repeating repeat-section">
-							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" /><span>x</span>
+							<input type="checkbox" class="settings-toggle" name="attr_flag" checked="checked" title="Settings toggle" /><span>x</span>
 							<button type="roll" value="@{gm_toggle} &{template:sRun}{{header=@{power}}}{{base=Level}}{{dice=[[(@{level}+@{level}+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{edge=[[@{edge_toggle}]]}}"><span name="attr_power"></span></button><span>,</span>
 							<div class="settings">
 								<div class="skills-row">
@@ -2364,12 +2389,12 @@
 		<h2>Weapons: </h2>
 		<fieldset class="repeating_weapon">
 			<div class="repeating toggle">
-				<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" /><span>x</span>
+				<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" title="Settings toggle" /><span>x</span>
 				<div class="settings">
 					<div class="repeat-section npc-weapons">
 						<input type="radio" class="range-toggle" name="attr_weapon_range" value="0" checked="checked" /><span>Range</span>
 						<input type="radio" class="melee-toggle" name="attr_weapon_range" value="1" /><span>Melee</span>
-						<div class="repeat-row"><label>Dice</label><br/><input type="number" name="attr_weapon_dice" value="" placeholder="Dice" /></div>
+						<div class="repeat-row"><label>Dice</label><br/><input type="number" name="attr_weapon_dice" value="" placeholder="18" /></div>
 						<div class="repeat-row repeat-row-20"><label>Name</label><br/><input type="text" name="attr_weapon_name" value="" placeholder="Ares Predator" /></div>
 						<div class="repeat-row repeat-row-20"><label>Type</label><br/><input type="text" name="attr_weapon_type" value="" placeholder="Heavy Pistol" /></div>
 						<div class="repeat-row weapon-melee repeat-row-8"><label>Reach</label><br/><input type="number" name="attr_weapon_reach" value="0" min="0" placeholder="Reach" /></div>
@@ -2400,7 +2425,7 @@
 	<div class="magic"><h2>Spells: </h2>
 		<fieldset class="repeating_NPCspell">
 			<div class="repeating toggle">
-				<input type="checkbox" class="settings-toggle" name="attr_toggle" checked="checked" /><span>x</span>
+				<input type="checkbox" class="settings-toggle" name="attr_toggle" checked="checked" title="Settings toggle" /><span>x</span>
 				<div class="settings">
 					<div class="repeat-section">
 						<div class="repeat-row repeat-row-15"><label>Category</label><br/>
@@ -2412,7 +2437,7 @@
 								<option class="option" value="Manipulation">Manipulation</option>
 							</select>
 						</div>
-						<div class="repeat-row"><label>Dice</label><br/><input type="number" name="attr_dice" value="" placeholder="Dice" /></div>
+						<div class="repeat-row"><label>Dice</label><br/><input type="number" name="attr_dice" value="" placeholder="18" /></div>
 						<div class="repeat-row repeat-row-20"><label>Name</label><br/><input type="text" name="attr_name" value="" placeholder="Fireball" /></div>
 						<div class="repeat-row repeat-row-11"><label>Type</label><br/>
 							<select name="attr_type">
@@ -2429,7 +2454,7 @@
 								<option value="T (A)">T (A)</option>
 							</select>
 						</div>
-						<div class="repeat-row" style="width: 14%;"><label>Duration</label><br/>
+						<div class="repeat-row repeat-row-12"><label>Duration</label><br/>
 							<select name="attr_duration">
 								<option value="Instant" selected="selected">Instant</option>
 								<option value="Permanent">Permanent</option>
@@ -2446,7 +2471,7 @@
 								<option class="option" value="Indirect, Force ?{Force|}, AP -">Indirect</option>
 							</select>
 						</div>
-						<div class="repeat-row" style="width: 4%;"><label>Damage</label><br/>
+						<div class="repeat-row"><label>Dam.</label><br/>
 							<input class="spell-input" type="text" name="attr_damage" value="" placeholder="P" />
 						</div>
 						<div class="weapon-note">
@@ -2468,12 +2493,12 @@
 	<div class="resonance"><h2>Complex Forms: </h2>
 		<fieldset class="repeating_form">
 			<div class="repeating spell toggle">
-				<input type="checkbox" class="settings-toggle" name="attr_form_toggle" checked="checked" /><span>x</span>
+				<input type="checkbox" class="settings-toggle" name="attr_form_toggle" checked="checked" title="Settings toggle" /><span>x</span>
 				<div class="settings">
 					<div class="repeat-section">
-						<div class="repeat-row"><label>Dice</label><input type="number" name="attr_software_dice" value="" placeholder="Dice" /></div>
+						<div class="repeat-row"><label>Dice</label><input type="number" name="attr_software_dice" value="" placeholder="18" /></div>
 						<div class="repeat-row repeat-row-20"><label>Name</label><input type="text" name="attr_form_name" value="" placeholder="Editor" /></div>
-						<div class="repeat-row repeat-row-11"><label>Target</label>
+						<div class="repeat-row repeat-row-15"><label>Target</label>
 							<select name="attr_form_target">
 								<option class="option" value="Device" selected="selected">Device</option>
 								<option class="option" value="File">File</option>
@@ -2505,19 +2530,19 @@
 	<div class="host"><h2>Intrusion Countermeasures: </h2>
 		<fieldset class="repeating_IC">
 			<div class="repeating toggle">
-				<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" /><span>x</span>
+				<input type="checkbox" class="settings-toggle" name="attr_weapon_toggle" checked="checked" title="Settings toggle" /><span>x</span>
 				<div class="settings">
 					<div class="repeat-section">
-						<div class="repeat-row" style="width: 38%;"><label>Name</label><input type="text" name="attr_IC_name" value="" placeholder="IC Name" /></div>
+						<div class="repeat-row" style="width: 33%;"><label>Name</label><input type="text" name="attr_IC_name" value="" placeholder="IC Name" /></div>
 						<span>[</span>
-						<div class="repeat-row"><label>IC Limit</label>
+						<div class="repeat-row repeat-row-20"><label>IC Limit</label><br/>
 							<select name="attr_IC_limit" title="Limit">
 								<option class="option" value="@{attack}" selected="selected">Attack</option>
 								<option class="option" value="@{data_processing}">Data Processing</option>
 							</select>
 						</div>
 						<span>]</span>
-						<div class="repeat-row"><label>Defense Attribute</label>
+						<div class="repeat-row repeat-row-20"><label>Defense Attribute</label><br/>
 							<select name="attr_IC_attribute" title="Mental attribute resistance">
 								<option class="option" value="Willpower" selected="selected">Willpower</option>
 								<option class="option" value="Intuition">Intuition</option>
@@ -2525,7 +2550,7 @@
 							</select>
 						</div>
 						<span> vs. </span>
-						<div class="repeat-row"><label>Defense Matrix Attr.</label>
+						<div class="repeat-row repeat-row-20"><label>Defense Matrix Attr.</label><br/>
 							<select name="attr_IC_matrix" title="Matrix attribute resistance">
 								<option class="option" value="Attack">Attack</option>
 								<option class="option" value="Sleaze">Sleaze</option>
@@ -2553,7 +2578,7 @@
 	<input type="hidden" class="character-type" name="attr_flag_matrix" />
 	<div class="matrix">
 		<div class="2col">
-			<h3>Matrix Device:</h3><input type="text" name="attr_device_name" placeholder="Sony CIY-720" />
+			<h1>Matrix Device:</h1><input type="text" name="attr_device_name" placeholder="Sony CIY-720" />
 		</div>
 		<div class="2col">
 			<label><button type="roll" value="&{template:sRun}{{header=Matrix Resistance}}{{base=Base}}{{dice=[[(@{device_rating}+@{firewall})+@{modifier_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{mod=[[@{modifier_toggle}]]}}{{wound=[[@{wound_toggle}]]}}{{edge=[[@{edge_toggle}]]}}">Device Rating</button></label>
@@ -2667,7 +2692,7 @@
 			<h3>Programs</h3>
 			<fieldset class="repeating_programs">
 			<div class="repeating toggle">
-				<input type="checkbox" class="settings-toggle" name="attr_program_toggle" checked="checked" /><span>x</span>
+				<input type="checkbox" class="settings-toggle" name="attr_program_toggle" checked="checked" title="Settings toggle" /><span>x</span>
 				<div class="settings">
 					<input type="text" name="attr_program" value="" placeholder="Program Name" />
 					<br />
@@ -2741,96 +2766,96 @@
 	<input type="hidden" name="attr_primary_melee_weapon_reach" />
 
 	<input type="hidden" name="attr_acting" min="0" value="0" />
-	<input type="hidden" name="attr_con" min="0" value="0" />
-	<input type="hidden" name="attr_impersonation" min="0" value="0" />
-	<input type="hidden" name="attr_performance" min="0" value="0" />
-	<input type="hidden" name="attr_athletics" min="0" value="0" />
-	<input type="hidden" name="attr_gymnastics" min="0" value="0" />
-	<input type="hidden" name="attr_running" min="0" value="0" />
-	<input type="hidden" name="attr_swimming" min="0" value="0" />
-	<input type="hidden" name="attr_biotech" min="0" value="0" />
-	<input type="hidden" name="attr_cybertechnology" min="0" value="0" />
-	<input type="hidden" name="attr_firstaid" min="0" value="0" />
-	<input type="hidden" name="attr_medicine" min="0" value="0" />
-	<input type="hidden" name="attr_biotechnology" min="0" value="0" />
-	<input type="hidden" name="attr_closecombat" min="0" value="0" />
-	<input type="hidden" name="attr_blades" min="0" value="0" />
-	<input type="hidden" name="attr_clubs" min="0" value="0" />
-	<input type="hidden" name="attr_unarmedcombat" min="0" value="0" />
-	<input type="hidden" name="attr_conjuring" min="0" value="0" />
-	<input type="hidden" name="attr_banishing" min="0" value="0" />
-	<input type="hidden" name="attr_binding" min="0" value="0" />
-	<input type="hidden" name="attr_summoning" min="0" value="0" />
-	<input type="hidden" name="attr_cracking" min="0" value="0" />
-	<input type="hidden" name="attr_cybercombat" min="0" value="0" />
-	<input type="hidden" name="attr_electronicwarfare" min="0" value="0" />
-	<input type="hidden" name="attr_hacking" min="0" value="0" />
-	<input type="hidden" name="attr_electronics" min="0" value="0" />
-	<input type="hidden" name="attr_computer" min="0" value="0" />
-	<input type="hidden" name="attr_hardware" min="0" value="0" />
-	<input type="hidden" name="attr_software" min="0" value="0" />
-	<input type="hidden" name="attr_enchanting" min="0" value="0" />
-	<input type="hidden" name="attr_alchemy" min="0" value="0" />
-	<input type="hidden" name="attr_artificing" min="0" value="0" />
-	<input type="hidden" name="attr_disenchanting" min="0" value="0" />
-	<input type="hidden" name="attr_engineering" min="0" value="0" />
 	<input type="hidden" name="attr_aeronauticsmechanic" min="0" value="0" />
-	<input type="hidden" name="attr_automotivemechanic" min="0" value="0" />
-	<input type="hidden" name="attr_industrialmechanic" min="0" value="0" />
-	<input type="hidden" name="attr_nauticalmechanic" min="0" value="0" />
-	<input type="hidden" name="attr_firearms" min="0" value="0" />
-	<input type="hidden" name="attr_automatics" min="0" min="0" value="0" />
-	<input type="hidden" name="attr_longarms" min="0" value="0" />
-	<input type="hidden" name="attr_pistols" min="0" value="0" />
-	<input type="hidden" name="attr_influence" min="0" value="0" />
-	<input type="hidden" name="attr_etiquette" min="0" value="0" />
-	<input type="hidden" name="attr_leadership" min="0" value="0" />
-	<input type="hidden" name="attr_negotiation" min="0" value="0" />
-	<input type="hidden" name="attr_outdoors" min="0" value="0" />
-	<input type="hidden" name="attr_navigation" min="0" value="0" />
-	<input type="hidden" name="attr_survival" min="0" value="0" />
-	<input type="hidden" name="attr_tracking" min="0" value="0" />
-	<input type="hidden" name="attr_sorcery" min="0" value="0" />
-	<input type="hidden" name="attr_counterspelling" min="0" value="0" />
-	<input type="hidden" name="attr_ritualspellcasting" min="0" value="0" />
-	<input type="hidden" name="attr_spellcasting" min="0" value="0" />
-	<input type="hidden" name="attr_stealth" min="0" value="0" />
-	<input type="hidden" name="attr_disguise" min="0" value="0" />
-	<input type="hidden" name="attr_palming" min="0" value="0" />
-	<input type="hidden" name="attr_sneaking" min="0" value="0" />
-	<input type="hidden" name="attr_tasking" min="0" value="0" />
-	<input type="hidden" name="attr_compiling" min="0" value="0" />
-	<input type="hidden" name="attr_decompiling" min="0" value="0" />
-	<input type="hidden" name="attr_registering" min="0" value="0" />
-	<input type="hidden" name="attr_archery" min="0" value="0" />
-	<input type="hidden" name="attr_exoticmelee" min="0" value="0" />
-	<input type="hidden" name="attr_exoticrange" min="0" value="0" />
-	<input type="hidden" name="attr_heavyweapons" min="0" value="0" />
-	<input type="hidden" name="attr_throwingweapons" min="0" value="0" />
+	<input type="hidden" name="attr_alchemy" min="0" value="0" />
+	<input type="hidden" name="attr_animalhandling" min="0" value="0" />
 	<input type="hidden" name="attr_arcana" min="0" value="0" />
+	<input type="hidden" name="attr_archery" min="0" value="0" />
+	<input type="hidden" name="attr_armorer" min="0" value="0" />
+	<input type="hidden" name="attr_artificing" min="0" value="0" />
+	<input type="hidden" name="attr_artisan" min="0" value="0" />
 	<input type="hidden" name="attr_assensing" min="0" value="0" />
 	<input type="hidden" name="attr_astralcombat" min="0" value="0" />
+	<input type="hidden" name="attr_athletics" min="0" value="0" />
+	<input type="hidden" name="attr_automatics" min="0" min="0" value="0" />
+	<input type="hidden" name="attr_automotivemechanic" min="0" value="0" />
+	<input type="hidden" name="attr_banishing" min="0" value="0" />
+	<input type="hidden" name="attr_binding" min="0" value="0" />
+	<input type="hidden" name="attr_biotech" min="0" value="0" />
+	<input type="hidden" name="attr_biotechnology" min="0" value="0" />
+	<input type="hidden" name="attr_blades" min="0" value="0" />
+	<input type="hidden" name="attr_chemistry" min="0" value="0" />
+	<input type="hidden" name="attr_closecombat" min="0" value="0" />
+	<input type="hidden" name="attr_clubs" min="0" value="0" />
+	<input type="hidden" name="attr_compiling" min="0" value="0" />
+	<input type="hidden" name="attr_computer" min="0" value="0" />
+	<input type="hidden" name="attr_con" min="0" value="0" />
+	<input type="hidden" name="attr_conjuring" min="0" value="0" />
+	<input type="hidden" name="attr_counterspelling" min="0" value="0" />
+	<input type="hidden" name="attr_cracking" min="0" value="0" />
+	<input type="hidden" name="attr_cybercombat" min="0" value="0" />
+	<input type="hidden" name="attr_cybertechnology" min="0" value="0" />
+	<input type="hidden" name="attr_decompiling" min="0" value="0" />
+	<input type="hidden" name="attr_demolitions" min="0" value="0" />
+	<input type="hidden" name="attr_disenchanting" min="0" value="0" />
+	<input type="hidden" name="attr_disguise" min="0" value="0" />
+	<input type="hidden" name="attr_diving" min="0" value="0" />
+	<input type="hidden" name="attr_electronics" min="0" value="0" />
+	<input type="hidden" name="attr_electronicwarfare" min="0" value="0" />
+	<input type="hidden" name="attr_enchanting" min="0" value="0" />
+	<input type="hidden" name="attr_engineering" min="0" value="0" />
+	<input type="hidden" name="attr_escapeartist" min="0" value="0" />
+	<input type="hidden" name="attr_etiquette" min="0" value="0" />
+	<input type="hidden" name="attr_exoticmelee" min="0" value="0" />
+	<input type="hidden" name="attr_exoticrange" min="0" value="0" />
+	<input type="hidden" name="attr_firearms" min="0" value="0" />
+	<input type="hidden" name="attr_firstaid" min="0" value="0" />
+	<input type="hidden" name="attr_flight" min="0" value="0" />
+	<input type="hidden" name="attr_forgery" min="0" value="0" />
+	<input type="hidden" name="attr_freefall" min="0" value="0" />
+	<input type="hidden" name="attr_gunnery" min="0" value="0" />
+	<input type="hidden" name="attr_gymnastics" min="0" value="0" />
+	<input type="hidden" name="attr_hacking" min="0" value="0" />
+	<input type="hidden" name="attr_hardware" min="0" value="0" />
+	<input type="hidden" name="attr_heavyweapons" min="0" value="0" />
+	<input type="hidden" name="attr_impersonation" min="0" value="0" />
+	<input type="hidden" name="attr_industrialmechanic" min="0" value="0" />
+	<input type="hidden" name="attr_influence" min="0" value="0" />
 	<input type="hidden" name="attr_instruction" min="0" value="0" />
 	<input type="hidden" name="attr_intimidation" min="0" value="0" />
-	<input type="hidden" name="attr_diving" min="0" value="0" />
-	<input type="hidden" name="attr_escapeartist" min="0" value="0" />
-	<input type="hidden" name="attr_flight" min="0" value="0" />
-	<input type="hidden" name="attr_freefall" min="0" value="0" />
-	<input type="hidden" name="attr_perception" min="0" value="0" />
-	<input type="hidden" name="attr_animalhandling" min="0" value="0" />
-	<input type="hidden" name="attr_armorer" min="0" value="0" />
-	<input type="hidden" name="attr_artisan" min="0" value="0" />
-	<input type="hidden" name="attr_chemistry" min="0" value="0" />
-	<input type="hidden" name="attr_demolitions" min="0" value="0" />
-	<input type="hidden" name="attr_forgery" min="0" value="0" />
+	<input type="hidden" name="attr_leadership" min="0" value="0" />
 	<input type="hidden" name="attr_locksmith" min="0" value="0" />
-	<input type="hidden" name="attr_gunnery" min="0" value="0" />
+	<input type="hidden" name="attr_longarms" min="0" value="0" />
+	<input type="hidden" name="attr_medicine" min="0" value="0" />
+	<input type="hidden" name="attr_nauticalmechanic" min="0" value="0" />
+	<input type="hidden" name="attr_navigation" min="0" value="0" />
+	<input type="hidden" name="attr_negotiation" min="0" value="0" />
+	<input type="hidden" name="attr_outdoors" min="0" value="0" />
+	<input type="hidden" name="attr_palming" min="0" value="0" />
+	<input type="hidden" name="attr_perception" min="0" value="0" />
+	<input type="hidden" name="attr_performance" min="0" value="0" />
 	<input type="hidden" name="attr_pilotaerospace" min="0" value="0" />
 	<input type="hidden" name="attr_pilotaircraft" min="0" value="0" />
 	<input type="hidden" name="attr_pilotexoticvehicle" min="0" value="0" />
 	<input type="hidden" name="attr_pilotgroundcraft" min="0" value="0" />
 	<input type="hidden" name="attr_pilotwalker" min="0" value="0" />
 	<input type="hidden" name="attr_pilotwatercraft" min="0" value="0" />
+	<input type="hidden" name="attr_pistols" min="0" value="0" />
+	<input type="hidden" name="attr_registering" min="0" value="0" />
+	<input type="hidden" name="attr_ritualspellcasting" min="0" value="0" />
+	<input type="hidden" name="attr_running" min="0" value="0" />
+	<input type="hidden" name="attr_sneaking" min="0" value="0" />
+	<input type="hidden" name="attr_software" min="0" value="0" />
+	<input type="hidden" name="attr_sorcery" min="0" value="0" />
+	<input type="hidden" name="attr_spellcasting" min="0" value="0" />
+	<input type="hidden" name="attr_stealth" min="0" value="0" />
+	<input type="hidden" name="attr_summoning" min="0" value="0" />
+	<input type="hidden" name="attr_survival" min="0" value="0" />
+	<input type="hidden" name="attr_swimming" min="0" value="0" />
+	<input type="hidden" name="attr_tasking" min="0" value="0" />
+	<input type="hidden" name="attr_throwingweapons" min="0" value="0" />
+	<input type="hidden" name="attr_tracking" min="0" value="0" />
+	<input type="hidden" name="attr_unarmedcombat" min="0" value="0" />
 
 <!--Sheet Worker-->
 <script type="text/worker">
@@ -2900,23 +2925,27 @@
 		update_physicalLimit();
 	});
 
-	on("change:initiative_modifier", function() {
+	on("change:initiative_modifier change:initiative_temp", function() {
 		update_initiative();
 	});
 
-	on("change:defense_modifier", function () {
+	on("change:defense_modifier change:defense_temp", function () {
 		update_defense();
 	});
 
-	on("change:armor_rating change:soak_modifier", function () {
+	on("change:armor_rating change:soak_modifier change:soak_temp", function () {
 		update_soak();
 	});
 
-	on("change:mental_limit_modifier", function () {
+	on("change:mental_limit_modifier change:mental_limit_temp", function () {
 		update_mentalLimit();
 	});
 
-	on("change:essence change:social_limit_modifier", function () {
+	on("change:physical_limit_modifier change:physical_limit_temp", function () {
+		update_physicalLimit();
+	});
+
+	on("change:essence change:social_limit_modifier change:social_limit_temp", function () {
 		update_socialLimit();
 	});
 
@@ -2932,136 +2961,156 @@
 		update_memory();
 	});
 
-	on("change:walk_bonus change:run_bonus", function () {
+	on("change:walk_modifier change:run_modifier", function () {
 		update_movement();
 	});
 
 //Calculate ATTRIBUTES
-	on("change:body_base change:body_modifier", function() {
-		getAttrs(["body_base", "body_modifier"], function(v) {
+	on("change:body_base change:body_modifier change:body_temp", function() {
+		getAttrs(["body_base", "body_modifier", "body_temp"], function(v) {
 			var bas = parseInt(v.body_base) || 0;
 			var mod = parseInt(v.body_modifier) || 0;
-			var stat = bas + mod;
+			var tem = parseInt(v.body_temp) || 0;
+			var bon = mod + tem;
+			var stat = bas + bon;
 			let update = {};
 			update["body"] = stat;
-			(mod != 0) ? update["display_body"] = bas + " (" + stat + ")" : update["display_body"] = bas;
+			(bon != 0) ? update["display_body"] = bas + " (" + stat + ")" : update["display_body"] = bas;
 			setAttrs(update);
 		});
 	});
 
-	on("change:agility_base change:agility_modifier", function() {
-		getAttrs(["agility_base", "agility_modifier"], function(v) {
+	on("change:agility_base change:agility_modifier change:agility_temp", function() {
+		getAttrs(["agility_base", "agility_modifier", "agility_temp" ], function(v) {
 			var bas = parseInt(v.agility_base) || 0;
 			var mod = parseInt(v.agility_modifier) || 0;
-			var stat = bas + mod;
+			var tem = parseInt(v.agility_temp) || 0;
+			var bon = mod + tem;
+			var stat = bas + bon;
 			let update = {};
 
 			update["agility"] = stat;
-			(mod != 0) ? update["display_agility"] = bas + " (" + stat + ")" : update["display_agility"] = bas;
+			(bon != 0) ? update["display_agility"] = bas + " (" + stat + ")" : update["display_agility"] = bas;
 			setAttrs(update);
 		});
 	});	
 
-	on("change:reaction_base change:reaction_modifier", function() {
-		getAttrs(["reaction_base", "reaction_modifier"], function(v) {
+	on("change:reaction_base change:reaction_modifier change:reaction_temp", function() {
+		getAttrs(["reaction_base", "reaction_modifier", "reaction_temp"], function(v) {
 			var bas = parseInt(v.reaction_base) || 0;
 			var mod = parseInt(v.reaction_modifier) || 0;
-			var stat = bas + mod;
+			var tem = parseInt(v.reaction_temp) || 0;
+			var bon = mod + tem;
+			var stat = bas + bon;
 			let update = {};
 
 			update["reaction"] = stat;
-			(mod != 0) ? update["display_reaction"] = bas + " (" + stat + ")": update["display_reaction"] = bas;
+			(bon != 0) ? update["display_reaction"] = bas + " (" + stat + ")": update["display_reaction"] = bas;
 			setAttrs(update);
 		});
 	});
 
-	on("change:strength_base change:strength_modifier", function() {
-		getAttrs(["strength_base", "strength_modifier"], function(v) {
+	on("change:strength_base change:strength_modifier change:strength_temp", function() {
+		getAttrs(["strength_base", "strength_modifier", "strength_temp"], function(v) {
 			var bas = parseInt(v.strength_base) || 0;
 			var mod = parseInt(v.strength_modifier) || 0;
-			var stat = bas + mod;
+			var tem = parseInt(v.strength_temp) || 0;
+			var bon = mod + tem;
+			var stat = bas + bon;
 			let update = {};
 
 			update["strength"] = stat;
-			(mod != 0) ? update["display_strength"] = bas + " (" + stat + ")" : update["display_strength"] = bas;
+			(bon != 0) ? update["display_strength"] = bas + " (" + stat + ")" : update["display_strength"] = bas;
 			setAttrs(update);
 		});
 	});
 
-	on("change:willpower_base change:willpower_modifier", function() {
-		getAttrs(["willpower_base", "willpower_modifier"], function(v) {
+	on("change:willpower_base change:willpower_modifier change:willpower_temp", function() {
+		getAttrs(["willpower_base", "willpower_modifier", "willpower_temp"], function(v) {
 			var bas = parseInt(v.willpower_base) || 0;
 			var mod = parseInt(v.willpower_modifier) || 0;
-			var stat = bas + mod;
+			var tem = parseInt(v.willpower_temp) || 0;
+			var bon = mod + tem;
+			var stat = bas + bon;
 			let update = {};
 
 			update["willpower"] = stat;
-			(mod != 0) ? update["display_willpower"] = bas + " (" + stat + ")" : update["display_willpower"] = bas;
+			(bon != 0) ? update["display_willpower"] = bas + " (" + stat + ")" : update["display_willpower"] = bas;
 			setAttrs(update);
 		});
 	});
 
-	on("change:logic_base change:logic_modifier", function() {
-		getAttrs(["logic_base", "logic_modifier"], function(v) {
+	on("change:logic_base change:logic_modifier change:logic_temp", function() {
+		getAttrs(["logic_base", "logic_modifier", "logic_temp"], function(v) {
 			var bas = parseInt(v.logic_base) || 0;
 			var mod = parseInt(v.logic_modifier) || 0;
-			var stat = bas + mod;
+			var tem = parseInt(v.logic_temp) || 0;
+			var bon = mod + tem;
+			var stat = bas + bon;
 			let update = {};
 
 			update["logic"] = stat;
-			(mod != 0) ? update["display_logic"] = bas + " (" + stat + ")" : update["display_logic"] = bas;
+			(bon != 0) ? update["display_logic"] = bas + " (" + stat + ")" : update["display_logic"] = bas;
 			setAttrs(update);
 		});
 	});
 
-	on("change:intuition_base change:intuition_modifier", function() {
-		getAttrs(["intuition_base", "intuition_modifier"], function(v) {
+	on("change:intuition_base change:intuition_modifier change:intuition_temp", function() {
+		getAttrs(["intuition_base", "intuition_modifier", "intuition_temp"], function(v) {
 			var bas = parseInt(v.intuition_base) || 0;
 			var mod = parseInt(v.intuition_modifier) || 0;
-			var stat = bas + mod;
+			var tem = parseInt(v.intuition_temp) || 0;
+			var bon = mod + tem;
+			var stat = bas + bon;
 			let update = {};
 
 			update["intuition"] = stat;
-			(mod != 0) ? update["display_intuition"] = bas + " (" + stat + ")" : update["display_intuition"] = bas;
+			(bon != 0) ? update["display_intuition"] = bas + " (" + stat + ")" : update["display_intuition"] = bas;
 			setAttrs(update);
 		});
 	});
 
-	on("change:charisma_base change:charisma_modifier", function() {
-		getAttrs(["charisma_base", "charisma_modifier"], function(v) {
+	on("change:charisma_base change:charisma_modifier change:charisma_temp", function() {
+		getAttrs(["charisma_base", "charisma_modifier", "charisma_temp"], function(v) {
 			var bas = parseInt(v.charisma_base) || 0;
 			var mod = parseInt(v.charisma_modifier) || 0;
-			var stat = bas + mod;
+			var tem = parseInt(v.charisma_temp) || 0;
+			var bon = mod + tem;
+			var stat = bas + bon;
 			let update = {};
 
 			update["charisma"] = stat;
-			(mod != 0) ? update["display_charisma"] = bas + " (" + stat + ")" : update["display_charisma"] = bas;
+			(bon != 0) ? update["display_charisma"] = bas + " (" + stat + ")" : update["display_charisma"] = bas;
 			setAttrs(update);
 		});
 	});
 
-	on("change:magic_base change:magic_modifier", function() {
-		getAttrs(["magic_base", "magic_modifier"], function(v) {
+	on("change:magic_base change:magic_modifier change:magic_temp", function() {
+		getAttrs(["magic_base", "magic_modifier", "magic_temp"], function(v) {
 			var bas = parseInt(v.magic_base) || 0;
 			var mod = parseInt(v.magic_modifier) || 0;
-			var stat = bas + mod;
+			var tem = parseInt(v.magic_temp) || 0;
+			var bon = mod + tem;
+			var stat = bas + bon;
 			let update = {};
 
 			update["magic"] = stat;
-			(mod != 0) ? update["display_magic"] = bas + " (" + stat + ")" : update["display_magic"] = bas;
+			(bon != 0) ? update["display_magic"] = bas + " (" + stat + ")" : update["display_magic"] = bas;
 			setAttrs(update);
 		});
 	});
 
-	on("change:resonance_base change:resonance_modifier", function() {
-		getAttrs(["resonance_base", "resonance_modifier"], function(v) {
+	on("change:resonance_base change:resonance_modifier change:resonance_temp", function() {
+		getAttrs(["resonance_base", "resonance_modifier", "resonance_temp"], function(v) {
 			var bas = parseInt(v.resonance_base) || 0;
 			var mod = parseInt(v.resonance_modifier) || 0;
-			var stat = bas + mod;
+			var tem = parseInt(v.resonance_temp) || 0;
+			var bon = mod + tem;
+			var stat = bas + bon;
 			let update = {};
 
 			update["resonance"] = stat;
-			(mod != 0) ? update["display_resonance"] = bas + " (" + stat + ")" : update["display_resonance"] = bas;
+			(bon != 0) ? update["display_resonance"] = bas + " (" + stat + ")" : update["display_resonance"] = bas;
 			setAttrs(update);
 		});
 	});
@@ -3079,13 +3128,15 @@
 //Calculaute limts
 	//Calculate MENTAL LIMIT
 	var update_mentalLimit = function () {
-		getAttrs(["intuition", "willpower", "logic", "mental_limit_modifier"], function(v){
+		getAttrs(["intuition", "willpower", "logic", "mental_limit_modifier", "mental_limit_temp"], function(v){
 			var int = parseInt(v.intuition) || 0;
 			var wil = parseInt(v.willpower) || 0;
 			var log = parseInt(v.logic) || 0;
 			var mod = parseInt(v.mental_limit_modifier) || 0;
+			var tem = parseInt(v.mental_limit_temp) || 0;
+			var bon = mod + tem;
 			var tot = ((int + wil + (log * 2))/3);
-			var num = Math.ceil(tot) + mod;
+			var num = Math.ceil(tot) + bon;
 
 			setAttrs({mental_limit: num});
 		});
@@ -3093,13 +3144,15 @@
 
 	//Calculate PHYSICAL LIMIT
 		var update_physicalLimit = function () {
-			getAttrs(["body", "reaction", "strength", "physical_limit_modifier"], function(v){
+			getAttrs(["body", "reaction", "strength", "physical_limit_modifier", "physical_limit_temp"], function(v){
 				var bod = parseInt(v.body) || 0;
 				var rea = parseInt(v.reaction) || 0;
 				var str = parseInt(v.strength) || 0;
 				var mod = parseInt(v.physical_limit_modifier) || 0;
+				var tem = parseInt(v.physical_limit_temp) || 0;
+				var bon = mod + tem;
 				var tot = ((bod + rea + (str * 2))/3);
-				var num = Math.ceil(tot) + mod;
+				var num = Math.ceil(tot) + bon;
 
 				setAttrs({physical_limit: num});
 			});
@@ -3107,13 +3160,15 @@
 
 	//Calculate SOCIAL LIMIT
 		var update_socialLimit = function () {
-			getAttrs(["charisma", "willpower", "essence", "social_limit_modifier"], function(v){
+			getAttrs(["charisma", "willpower", "essence", "social_limit_modifier", "social_limit_temp"], function(v){
 				var cha = parseInt(v.charisma) || 0;
 				var wil = parseInt(v.willpower) || 0;
 				var ess = Math.ceil(v.essence) || 0;
 				var mod = parseInt(v.social_limit_modifier) || 0;
+				var tem = parseInt(v.social_limit_temp) || 0;
+				var bon = mod + tem;
 				var tot = ((ess + wil + (cha * 2))/3);
-				var num = Math.ceil(tot) + mod;
+				var num = Math.ceil(tot) + bon;
 				
 				setAttrs({social_limit: num});
 			});
@@ -3122,11 +3177,12 @@
 //Calculate Common Rolls
 	//DEFENSE POOL
 		var update_defense = function () {
-			getAttrs(["reaction", "intuition", "defense_modifier"], function(v){
+			getAttrs(["reaction", "intuition", "defense_modifier", "defense_temp"], function(v){
 				var rea = parseInt(v.reaction) || 0;
 				var int = parseInt(v.intuition) || 0;
 				var mod = parseInt(v.defense_modifier) || 0;
-				var tot = rea + int + mod;
+				var tem = parseInt(v.defense_temp) || 0;
+				var tot = rea + int + mod + tem;
 
 				setAttrs({defense: tot});
 			});
@@ -3134,11 +3190,12 @@
 
 	//SOAK POOLS
 		var update_soak = function () {
-			getAttrs(["body", "armor_rating", "soak_modifier"], function(v){
+			getAttrs(["body", "armor_rating", "soak_modifier", "soak_temp"], function(v){
 				const body = parseInt(v.body) || 0;
 				const armor = parseInt(v.armor_rating) || 0;
 				const mod = parseInt(v.soak_modifier) || 0;
-				let tot = body + armor + mod;
+				var tem = parseInt(v.soak_temp) || 0;
+				var tot = rea + int + mod + tem;
 
 				setAttrs({soak: tot});
 			});
@@ -3330,12 +3387,13 @@
 
 //Calculate Initiatves
 	var update_initiative = function () {
-		getAttrs(["reaction", "intuition", "initiative_modifier"], function(v){
+		getAttrs(["reaction", "intuition", "initiative_modifier", "initiative_temp"], function(v){
 			var rea = parseInt(v.reaction) || 0;
 			var int = parseInt(v.intuition) || 0;
 			var mod = parseInt(v.initiative_modifier) || 0;
+			var tem = parseInt(v.initiative_temp) || 0;
 			var bas = rea + int;
-			var tot = rea + int + mod;
+			var tot = rea + int + mod + tem;
 			let update = {};
 			update["initiative_mod"] = tot;
 			(mod != 0) ? update["display_initiative_mod"] = bas + " (" + tot + ")" : update["display_initiative_mod"] = bas;
@@ -3344,15 +3402,17 @@
 	};
 
 
-	 on("change:initiative_dice_modifier change:edge_toggle", function () {
-		getAttrs(["initiative_dice_modifier", "edge_toggle"], function(v){
-			var mod = parseInt(v.initiative_dice_modifier) || 0;
-			var tot = Math.min(mod+1,5);
-			edg = (v.edge_toggle == 0) ? tot : 5;
+		on("change:initiative_dice_modifier change:edge_toggle change:initiative_dice_temp", function () {
+			getAttrs(["initiative_dice_modifier", "edge_toggle", "initiative_dice_temp"], function(v){
+				var mod = parseInt(v.initiative_dice_modifier) || 0;
+				var tem = parseInt(v.initiative_dice_temp) || 0;
+				var bas = mod + tem;
+				var tot = Math.min(bas+1,5);
+				edg = (v.edge_toggle == 0) ? tot : 5;
 
-			setAttrs({initiative_dice: edg});
+				setAttrs({initiative_dice: edg});
+			});
 		});
-	});
 
 	//Calculate Astral Initiatve
 	on("change:intuition change:astral_mod_modifier", function() {
