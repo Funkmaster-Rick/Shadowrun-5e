@@ -49,14 +49,14 @@
 		margin-bottom: 0px;
 		padding-right: 5px;
 		text-transform: capitalize;
-		width: fit-content;}
+		width: auto;}
 
 	input {
 		border: none;
 		cursor: auto;
 		font-weight: normal;
-		margin: 0;
-		padding-top: 5px;
+		margin: 0px;
+		padding: 0px;
 		text-align: center;
 		vertical-align: middle;
 		width: 3em;}
@@ -90,7 +90,7 @@
 	select {
 		border: none;
 		margin-bottom: 0px;
-		width: fit-content;}
+		width: auto;}
 
 	span {word-break: break-word;}
 
@@ -163,6 +163,7 @@
 		.sheet-tabs input[type="checkbox"] {
 			height: 18px;
 			position: absolute;
+			top: 0px;
 			width: 5%;}
 
 			.sheet-tabs input[type="radio"]:nth-of-type(8) {width: 6%;}
@@ -185,7 +186,7 @@
 
 		.sheet-tab-whisper,
 		.sheet-tab-toggles {
-			margin-right: 8%;}
+			margin-right: 7%;}
 
 		.sheet-tabs span.sheet-d6 {
 			font-size: 1.7em;
@@ -240,7 +241,7 @@
 			padding-right: 5px;
 			text-align: right;
 			text-transform: uppercase;
-			width: fit-content;}
+			width: auto;}
 
 		.sheet-pc h2,
 		.sheet-pc h3 {
@@ -391,7 +392,7 @@
 
 		.sheet-pd-meta input[type="text"] {width: 35.5%;}
 
-		.sheet-pd-age input[type="text"] {width: 15.8%;}
+		.sheet-pd-age input[type="text"] {width: 13%;}
 
 		.sheet-pd-rep input[type="number"] {
 			border: none;
@@ -400,7 +401,7 @@
 		.sheet-pd-kar input[type="number"],
 		.sheet-pd-kar input[type="text"] {
 			border: none;
-			width: 20.6%;}
+			width: 20%;}
 
 	/***** CORE COMBAT INFO *****/
 		.sheet-core-combat button[type="roll"] {
@@ -698,7 +699,8 @@
 				margin-top: 10px;}
 
 			.sheet-con-footer label {
-				margin-right: 5px;}
+				margin-right: 5px;
+				width: auto;}
 
 			.sheet-con-footer input[type="number"] {
 				border-bottom: 1px solid #000;
@@ -708,7 +710,7 @@
 
 	/***** REPEATING FIELDS FOR PC SECTIONS SUCH AS SKILLS *****/
 		.sheet-repeat-box .sheet-medium-box {
-			height: fit-content;
+			height: auto;
 			min-height: 200px;}
 
 		.sheet-repeat-box h3 {
@@ -848,6 +850,7 @@
 		.sheet-magic-rituals .sheet-settings div,
 		.sheet-spell-box .sheet-display, 
 		.sheet-item-box .sheet-display,
+		.sheet-item-box .sheet-settings div,
 		.sheet-aug-box .sheet-display,
 		.sheet-powers-box .sheet-display {
 			display: inline-block;
@@ -1050,14 +1053,14 @@
 
 		.sheet-contacts h3:nth-of-type(2),
 		.sheet-contacts h3:nth-of-type(3) {
-			margin-right: 3%;}
+			margin-right: 2%;}
 
 			/***** CONTACTS SETTINGS *****/
 				.sheet-contacts input[type="text"]:nth-of-type(1) {
 					margin-right: 5px;
 					width: 58%;}
 
-				.sheet-contacts input[type="number"] {margin-right: 4.1%;}
+				.sheet-contacts input[type="number"] {margin-right: 4%;}
 
 				.sheet-contacts input[type="text"]:nth-of-type(4) {
 					margin-left: -1px;
@@ -1228,7 +1231,7 @@
 			.sheet-matrix-tot {
 				display: inline-block;
 				height: 20px;
-				width: 25px;}
+				width: 20px;}
 
 			.sheet-matrix-bubble {
 				display: inline;
@@ -1339,23 +1342,27 @@
 		/***** COMPLEX FORMS *****/
 			.sheet-form-box h3 {
 				margin-right: 1%;
-				width: 15%;}
+				width: 18%;}
 
-			.sheet-form-box h3:nth-of-type(1),
+				.sheet-form-box h3:nth-of-type(1) {
+					width: 50%;}
+
+				.sheet-form-box h3:nth-of-type(4) {
+					width: 10%;}
+
+				.sheet-form-box h3:nth-of-type(5) {
+					margin-right: 0px;
+					width: 7%;}
+
 			.sheet-form-box input[type="text"] {width: 50%;}
 
-			.sheet-form-box h3:nth-of-type(3),
-			.sheet-form-box input[type="number"] {width: 18%;}
-
-			.sheet-form-box h3:nth-of-type(4) {width: 10%;}
-
-			.sheet-form-box h3:nth-of-type(5) {
-				margin-right: 0px;
-				width: 7%;}
+			.sheet-form-box input[type="number"] {width: 8%;}
 
 			/***** COMPLEX FORM SETTINGS *****/
+				.sheet-form-box .sheet-settings div {width: 100%;}
+
 				.sheet-form-box select {
-					margin-right: 1.5%;
+					margin-right: 1%;
 					width: 17%;}
 
 			/***** COMPLEX FORM DISPLAY *****/
@@ -1550,6 +1557,7 @@
 		.sheet-npc h3,
 		.sheet-npc h4,
 		.sheet-npc hr,
+		.sheet-npc input,
 		.sheet-npc label,
 		.sheet-sheet_type[value="npc"] ~ .sheet-tab-toggles button {
 			color: #fff;}
@@ -1580,6 +1588,8 @@
 				font-size: 0.9em;
 				width: 100%;}
 
+			.sheet-npc label {padding-right: 1px;}
+
 		.sheet-npc textarea,
 		.sheet-npc select,
 		.sheet-npc .sheet-stat-inputs input,
@@ -1587,8 +1597,6 @@
 		.sheet-npc .sheet-matrix input {
 			color: #fff;
 			background-color: #555;}
-
-			.sheet-npc .sheet-repeat-section select {background-color: transparent;}
 
 				.sheet-npc .sheet-repeat-section option {background-color: #000;}
 
@@ -1600,6 +1608,8 @@
 
 	/*:+:+:+: NPC STATS :+:+:+:*/
 		.sheet-stats {display: inline;}
+
+		.sheet-colon {font-weight: bold;}
 
 	/*:+:+:+: NPC CUSTOMIZED ROWS & COLUMNS :+:+:+:*/
 		.sheet-row {margin: 0px 0px 0px 0px;}
@@ -1615,9 +1625,9 @@
 			.sheet-leftcol input[type="number"]{width: 10%;}
 			.sheet-2col input[type="number"] {width: 20%;}
 
-			.sheet-leftcol span,
+		/*	.sheet-leftcol span,
 			.sheet-2col span {
-				margin-left: -2px;}
+				margin-left: -2px;} */
 
 		.sheet-npc input.sheet-character-type {
 			left: 90px;
@@ -1687,8 +1697,9 @@
 			width: 60%;}
 
 			.sheet-npc .sheet-skill-box select:last-child {
+				margin-left: 6%;
 				text-transform: capitalize;
-				width: 15%;}
+				width: 14%;}
 
 			.sheet-npc .sheet-sprite.sheet-skills .sheet-skill-box select {width: 25%;}
 
@@ -1697,7 +1708,7 @@
 			position: absolute;
 			opacity: 0;}
 
-			.sheet-skill-box input.sheet-settings-toggle:checked + span,
+			.sheet-npc .sheet-skill-box .sheet-settings-toggle:checked + span,
 			.sheet-npc .sheet-skill-box .sheet-settings-toggle:hover + span {
 				opacity: 1;}
 
@@ -1714,6 +1725,10 @@
 			display: inline-block;
 			vertical-align: top;
 			margin-bottom: 0px;}
+
+		.sheet-npc .sheet-skill-box .sheet-settings {display: none;}
+
+		.sheet-npc .sheet-skill-box .sheet-settings-toggle:checked ~ .sheet-settings {display: inline-block;}
 
 	/*:+:+:+: NPC INLINE REPEAITNG SECTIONS LIKE SKILLS :+:+:+:*/
 		.sheet-npc-repeating {
@@ -1752,7 +1767,6 @@
 
 		input.sheet-con-reset {
 			margin-left:-170px;
-			margin-right: 5px;
 			width: 24%;}
 
 			input.sheet-con-reset + label {float: left;}
@@ -1825,7 +1839,7 @@
 			.sheet-repeating label {padding: 0px;}
 
 			.sheet-repeating .sheet-settings,
-			.sheet-npc-repeating {
+			.sheet-npc-repeating .sheet-settings {
 				border-bottom: 1px dotted #FCD116;}
 
 		.sheet-repeat-indent {
@@ -1897,8 +1911,7 @@
 	/*:+:+:+: NPC SPELLS :+:+:+:*/
 		input.sheet-spell-toggle {margin: 0px -38px 0px 5px;}
 
-		.sheet-magic .sheet-repeating select {
-			width: 100%;}
+		.sheet-magic .sheet-repeating select {width: 100%;}
 
 	/*:+:+:+: NPC MATRIX :+:+:+:*/
 		.sheet-npc .sheet-matrix h1 {
@@ -1908,6 +1921,7 @@
 
 		.sheet-npc .sheet-matrix h3 {
 			color: #000;
+			margin-top: 5px;
 			text-align: center;
 			text-shadow: 0 0 25px #4f7da7, 0 0 5px #4f7da7;}
 
@@ -1917,7 +1931,7 @@
 
 		.sheet-npc .sheet-matrix label {
 			text-indent: 10px;
-			width: 18%;}
+			width: 20%;}
 
 		.sheet-npc .sheet-matrix input[type="number"] {
 			border-radius: 25px 25px;
@@ -2139,16 +2153,22 @@
 
 	.repcontrol .repcontrol_edit:after {content: '(';}
 	.repcontrol .repcontrol_add:after {content: '&';}
-		.editmode ~ .repcontrol .repcontrol_edit:after {content: ')';}
+	.editmode ~ .repcontrol .repcontrol_edit:after {content: ')';}
 
-	.sheet-pc .repcontrol .repcontrol_edit:after,
-	.sheet-pc .repcontrol .repcontrol_add:after {
-		color: #000;}
+	.repcontrol .repcontrol_edit:after,
+	.repcontrol .repcontrol_add:after {
+		color: #000;
+		left: -94%;
+		position: relative;}
 
-	.repcontrol .repcontrol_edit:hover:after,
-	.repcontrol .repcontrol_add:hover:before {
-		color: #FCD116;
-	    background-color: none;}
+		.sheet-npc .repcontrol .repcontrol_edit:after,
+		.sheet-npc .repcontrol .repcontrol_add:after {
+			color: #fff;}
+
+		.repcontrol .repcontrol_edit:hover:after,
+		.repcontrol .repcontrol_add:hover:after {
+			color: #FCD116;
+			background-color: none;}
 
 	.itemcontrol {z-index: 10;}
 
@@ -2227,3 +2247,16 @@
 	.sheet-rolltemplate-sRun .sheet-template-desc {font-size: 0.8em;}
 
 	.sheet-rolltemplate-sRun span.sheet-template-desc .inlinerollresult {font-size: 14px;}
+
+
+/********************************************************************************************************/
+/**************************************** FireFox *******************************************/
+/********************************************************************************************************/
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;}
+
+input[type=number] {
+    -moz-appearance:textfield;}
