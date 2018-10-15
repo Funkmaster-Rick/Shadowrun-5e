@@ -5,7 +5,7 @@ Version 1 of Shadowrun 5th Edition Character Sheet. This sheet includes an NPC s
 
 ## General Guidelines
 
-This sheet will work with Firefox but its best suited for Chrome.
+This sheet will work with Firefox but it's best suited for Chrome.
 
 ### Toggles
 
@@ -27,7 +27,7 @@ This sheet will work with Firefox but its best suited for Chrome.
 
 ### AI Support
 
-AI are not supported inherently but the sheet can be used for them. User the Cyberdeck in the Matrix tab to set your Matrix Attributes. Mental attributes can be entered as normal. Depth can be tracked in the Misc input in the Personal Data section. Be sure to select Emerged in the Options tab to give yourself access to the Resonance input in the Attributes section. Weakness & Powers can be tracked in the Other Abilities under the Magic tab or entered in Qualities.
+AI are not supported inherently but the sheet can be used for them. Use the Cyberdeck in the Matrix tab to set your Matrix Attributes. Mental attributes can be entered as normal. Depth can be tracked in the Misc input in the Personal Data section. Weakness & Powers can be tracked in the Other Abilities under the Magic tab or entered in Qualities.
 
 ### Attributes
 
@@ -44,7 +44,7 @@ AI are not supported inherently but the sheet can be used for them. User the Cyb
 
 ### Skills
 
-Skills are straight forward for entry. Select the skill from the drop down, input a rating, and select the attribute you wish to roll with this skill. Specializations can be added in the settings area which will add an additional button around the specializations name in the display view which can be rolled the expected +2.
+Skills are straight forward for entry. Select the skill from the drop down, input a rating, and select the attribute you wish to roll with this skill. Specializations can be added in the settings area which will add an additional button around the specializations name in the display view which will roll the skill with the expected +2.
 
 * **Default Skill** is a generic roll for defaulting any skill. It will roll the selected attribute -1.
 * **Language Skills** leaving the Skill rating input empty or entering a 0 will result in a “N” being displayed when you switch to the skill display mode.
@@ -71,7 +71,7 @@ The Core tab houses most of your standard useful data.
 
 #### Condition Monitor
 
-This is where you track damage to your conditions tracks. These will be added to a @{wounds} attribute and if the Wounds toggle is selected then it will act as a negative modifier to your rolls. Clicking the tools icon will open the Condition Settings.
+This is where you track damage to your conditions tracks. These will be added to the @{wounds} attribute and if the Wounds toggle is selected then it will act as a negative modifier to your rolls. Clicking the tools icon will open the Condition Settings.
  
 * **Condition Monitor Modifiers (P/S)** inputs can be used to add additional boxes to your physical and stun tracks respectively.
 * **Overflow Modifier** input will add a bonus to your @{overflow} attribute.
@@ -119,7 +119,7 @@ This tab is used to record all of your augmentations. It works similar to the Qu
 
 ### Gear
 
-This tab is used to track all your gear. It works similar to other sections like Qualities & Augmentations. When in display mode clicking the Item's name will expand and collapses the notes section.
+This tab is used to track all your gear. It works similar to other sections like Qualities & Augmentations. When in display mode clicking the Item's name will expand and collapse the notes section.
 
 ### Magic
 
@@ -130,7 +130,7 @@ The magic section contains three tabs for Spells, Preparations, and Rituals.
 Spells section will work very similar to the Weapons section. See that head for general guidelines.
 
 * **Drain** input will be added to the Force of a spell and the roll template will calculate the drain you need to resist. Currently it does not ensure a minimum of 2, sorry.
-* **Spell Category** select when set to Combat will toggle on an additional select & input to track Combat Type and Combat Damage type for these spells.
+* **Spell Category** when set to Combat it will toggle on an additional select & input to track Combat Type and Combat Damage type for these spells.
 
 #### Preparations
 
@@ -138,7 +138,7 @@ This section functions similar to spells above.
 
 #### Rituals
 
-Do to the special nature of rituals this section has limited functionality and mostly serves as an informational area.
+Due to the special nature of rituals this section has limited functionality and mostly serves as an informational area.
 
 #### Adept Power or Other Abilities
 
@@ -151,7 +151,7 @@ Inputs here are mostly straight forward.
 
 * **Model** and **Attribute Array** inputs are purely for recording information.
 * **Device Rating** input is used to record your device rating. The Device Rating header has a button to roll Matrix Soak (Device Rating + Firewall).
-* **Temp**, **Modifier**, and **Base** inputs can be used to calculate a total for your respective matrix attribute the base inputs share the same attribute name as the Base Slider so you should only use one of these at a time. The base input does not have a maximum in contract to the the slider which only has a capacity of ten.
+* **Temp**, **Modifier**, and **Base** inputs can be used to calculate a total for your respective matrix attribute. The base inputs share the same attribute name as the Base Slider so you should only use one of these at a time. The base input does not have a maximum in contract to the the slider which only has a capacity of ten.
 * **Base Sliders** are stylized sets of radio buttons that can be used to easily change your respective base matrix attribute. The intent is to make switching attributes more fluid. Its your preference if you want to use the input or slider.
 
 * **Attack**, **Sleaze**, **Data Proc.**, and **Firewall** buttons will prompt you for a mental attribute then roll that attribute + your attribute rating total. This makes matrix defense test easier.
@@ -197,7 +197,7 @@ NPCs are intended to be simplified stat blocks. If you are making an NPC that is
 
 ### Goon
 
-New goons sheets should intiatilly open to the settings pages.
+New goon sheets should intiatilly open to the settings pages.
 
 * **Attributes** inputs are similar to the PC sheet. The top input is your base and the second input is the modifier. NPCs do not have Temp inputs anywhere so use the modifier inputs.
 * **Bonuses** inputs on the left hand side are all added to the auto calculated attributes. This works the same way as the PC sheet.
@@ -222,7 +222,7 @@ New goons sheets should intiatilly open to the settings pages.
 These sheets are pretty basic. It has headers just like the Goon sheet with rolls auto calculated to the matrix attribute + host rating.
 
 
-* **Intrusion Countermeasures** repeating section works similar to other fields. The IC Limit, Defense Attribute, and Defense Matrix Attributes selects will let you pick appropriate info for you IC will will then be displayed in the roll template to assist with faster opposing rolls. They do not add additional functionality.
+* **Intrusion Countermeasures** repeating section works similar to other fields. The IC Limit, Defense Attribute, and Defense Matrix Attributes selects will let you pick appropriate info for your IC will will then be displayed in the roll template to assist with faster opposing rolls. They do not add additional functionality.
 
 * **IC** name will roll Host Rating + Host Rating d6s to do its thing. Having Edge toggle selected will invoke the *Rule of Six* but will not add an edge pool. Wounds toggle does nothing as IC feel no pain.....
 
